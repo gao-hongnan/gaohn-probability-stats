@@ -1,0 +1,742 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Discrete Random Variables &#8212; Machine Learning</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/tabs.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Probability" href="../02_probability/02_probability.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Machine Learning</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    <no title>
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Chapter 2. Probability
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_probability/02_probability.html">
+   Probability
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Chapter 3. Discrete Random Variables
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Discrete Random Variables
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/reigHns92/ml_blog"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/reigHns92/ml_blog/issues/new?title=Issue%20on%20page%20%2F03_discrete_random_variables/03_discrete_random_variables.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/03_discrete_random_variables/03_discrete_random_variables.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#random-variables">
+   Random Variables
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#definition">
+     Definition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#examples">
+     Examples
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#variable-vs-random-variable">
+     Variable vs Random Variable
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#summary">
+     Summary
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#probability-mass-function">
+   Probability Mass Function
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Definition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#normalization">
+     Normalization
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sturges-rule-and-cross-validation">
+     Sturges’ Rule and Cross Validation
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Discrete Random Variables</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#random-variables">
+   Random Variables
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#definition">
+     Definition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#examples">
+     Examples
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#variable-vs-random-variable">
+     Variable vs Random Variable
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#summary">
+     Summary
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#probability-mass-function">
+   Probability Mass Function
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Definition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#normalization">
+     Normalization
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sturges-rule-and-cross-validation">
+     Sturges’ Rule and Cross Validation
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <div class="math notranslate nohighlight">
+\[
+\newcommand{\st}{\mid}
+\newcommand{\S}{\Omega}
+\newcommand{\P}{\mathbb{P}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\v}{\mathbf{v}}
+\newcommand{\a}{\mathbf{a}}
+\newcommand{\b}{\mathbf{b}}
+\newcommand{\c}{\mathbf{c}}
+\newcommand{\u}{\mathbf{u}}
+\newcommand{\w}{\mathbf{w}}
+\newcommand{\x}{\mathbf{x}}
+\newcommand{\y}{\mathbf{y}}
+\newcommand{\z}{\mathbf{z}}
+\newcommand{\0}{\mathbf{0}}
+\newcommand{\1}{\mathbf{1}}
+\newcommand{\A}{\mathbf{A}}
+\newcommand{\B}{\mathbf{B}}
+\newcommand{\C}{\mathbf{C}}
+\newcommand{\E}{\mathcal{F}}
+\newcommand{\lset}{\left\{}
+\newcommand{\rset}{\right\}}
+\newcommand{\lsq}{\left[}
+\newcommand{\rsq}{\right]}
+\newcommand{\pmf}{p_X}
+\]</div>
+<section class="tex2jax_ignore mathjax_ignore" id="discrete-random-variables">
+<h1>Discrete Random Variables<a class="headerlink" href="#discrete-random-variables" title="Permalink to this headline">#</a></h1>
+<section id="random-variables">
+<h2>Random Variables<a class="headerlink" href="#random-variables" title="Permalink to this headline">#</a></h2>
+<section id="definition">
+<h3>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">#</a></h3>
+<div class="proof definition admonition" id="random_variables">
+<p class="admonition-title"><span class="caption-number">Definition 7 </span> (Random Variables)</p>
+<section class="definition-content" id="proof-content">
+<p>A <strong>random variable</strong> <span class="math notranslate nohighlight">\(X\)</span> is a function defined by the mapping</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+X: \S &amp;\to \R \\
+\xi &amp;\mapsto X(\xi)
+\end{align}
+\end{split}\]</div>
+<p>which maps an <em>outcome</em> <span class="math notranslate nohighlight">\(\xi \in \S\)</span> to a real number <span class="math notranslate nohighlight">\(X(\xi) \in \R\)</span>.</p>
+<p>We denote the range of <span class="math notranslate nohighlight">\(X\)</span> to be <span class="math notranslate nohighlight">\(x\)</span> and shorthand the notation of <span class="math notranslate nohighlight">\(X(\xi) = x\)</span> to be <span class="math notranslate nohighlight">\(X = x\)</span>.</p>
+</section>
+</div><div class="proof definition admonition" id="pre_image">
+<p class="admonition-title"><span class="caption-number">Definition 8 </span> (Pre-image of a Random Variable)</p>
+<section class="definition-content" id="proof-content">
+<p>Given a random variable <span class="math notranslate nohighlight">\(X: \S \to \R\)</span>, define a singleton set <span class="math notranslate nohighlight">\(\{x\} \subset \R\)</span>, then by
+the pre-image definition of a function, we have</p>
+<div class="math notranslate nohighlight">
+\[
+X^{-1}(\{x\}) = \lset \xi \in \S \st X(\xi) \in \{x\} \rset
+\]</div>
+<p>which is equivalent to</p>
+<div class="math notranslate nohighlight">
+\[
+X^{-1}(x) \overset{\text{def}}{=} \lset \xi \in \S \st X(\xi) = x \rset
+\]</div>
+</section>
+</div></section>
+<section id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">#</a></h3>
+<div class="proof example admonition" id="example_random_variable_coin_toss">
+<p class="admonition-title"><span>Example </span> (Coin Toss)</p>
+<section class="example-content" id="proof-content">
+<p>Consider a fair coin and define an <strong>experiment</strong> of throwing the coin twice.</p>
+<p>Define the <strong>random variable</strong> <span class="math notranslate nohighlight">\(X\)</span> to be the total number of heads in an experiment.
+(i.e if you throw 1 head and 1 tail the total number of heads in this experiment is 1).</p>
+<p>What is the probability of getting 1 head in an experiment, i.e. <span class="math notranslate nohighlight">\(\P \lsq X = 1 \rsq\)</span>?</p>
+<p><strong>Solution</strong></p>
+<p>We define the <strong>sample space</strong> <span class="math notranslate nohighlight">\(\S\)</span> of this experiment to be <span class="math notranslate nohighlight">\(\{(HH), (HT), (TH), (TT)\}\)</span>.</p>
+<p>We enumerate each <strong>outcome</strong> <span class="math notranslate nohighlight">\(\xi_i\)</span> in the <strong>sample space</strong> as</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\xi_1 = HH\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\xi_2 = HT\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\xi_3 = TH\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\xi_4 = TT\)</span></p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(\color{red} {\textbf{First}}\)</span>, recall that <span class="math notranslate nohighlight">\(X\)</span> is a <em><strong>function</strong></em> that map an outcome <span class="math notranslate nohighlight">\(\xi\)</span> from the <strong>sample space</strong> <span class="math notranslate nohighlight">\(\S\)</span>
+to a number <span class="math notranslate nohighlight">\(x\)</span> in the real space <span class="math notranslate nohighlight">\(\R\)</span>. In this context it means that <span class="math notranslate nohighlight">\(X\)</span> maps one of the four outcomes
+<span class="math notranslate nohighlight">\(\xi_i\)</span> to the total number of heads in the experiment
+(i.e <span class="math notranslate nohighlight">\(X(\cdot) = \textbf{number of heads}\)</span>).</p>
+<p>It is important to note that the codomain of <span class="math notranslate nohighlight">\(X\)</span> is not any arbitrary number. We can only map our 4
+outcomes <span class="math notranslate nohighlight">\(\xi_i\)</span> in the domain to 3 distinct numbers <span class="math notranslate nohighlight">\(0\)</span>, <span class="math notranslate nohighlight">\(1\)</span> or <span class="math notranslate nohighlight">\(2\)</span>, which we will see by manually
+enumerating each case below.</p>
+<div class="math notranslate nohighlight" id="equation-eq-outcome-to-number-of-heads">
+<span class="eqno">(1)<a class="headerlink" href="#equation-eq-outcome-to-number-of-heads" title="Permalink to this equation">#</a></span>\[
+X(\xi_1) = 2, \quad X(\xi_2) = 1, \quad X(\xi_3) = 1, \quad X(\xi_4) = 0
+\]</div>
+<p>With that, this random variable <span class="math notranslate nohighlight">\(X\)</span> is <strong>completely determined</strong>.</p>
+<p><span class="math notranslate nohighlight">\(\color{red} {\textbf{Secondly}}\)</span>, we need to examine carefully what is meant by <span class="math notranslate nohighlight">\(\P[X(\xi) = 1]\)</span>
+since this will answer the question on what is the probability of getting 1 head.</p>
+<p>However, <span class="math notranslate nohighlight">\(X(\xi) = 1\)</span> is an expression and not an event that the probability measure <span class="math notranslate nohighlight">\(\P\)</span> expects.
+Here we should recall that the probability law <span class="math notranslate nohighlight">\(\P(\cdot)\)</span> is always applied to an <strong>event</strong>
+<span class="math notranslate nohighlight">\(E \in \E\)</span> where <span class="math notranslate nohighlight">\(E\)</span> is a set.</p>
+<p>So we need to map this expression to an event <span class="math notranslate nohighlight">\(E \in \E\)</span>. So you can ask yourself how to establish
+this “mapping” of <span class="math notranslate nohighlight">\(X(\xi) = 1\)</span> to an event in our event space <span class="math notranslate nohighlight">\(\E\)</span>. This seems pretty easy since
+we already know that <span class="math notranslate nohighlight">\(X(\xi) = 1\)</span> has two cases matched in <a class="reference internal" href="#equation-eq-outcome-to-number-of-heads">(1)</a>, namely
+<span class="math notranslate nohighlight">\(X(\xi_2) = 1\)</span> and <span class="math notranslate nohighlight">\(X(\xi_3) = 1\)</span>. So we can simply define the event <span class="math notranslate nohighlight">\(E\)</span> to be
+<span class="math notranslate nohighlight">\(\lset \xi_2, \xi_3 \rset = \{(HT), (TH)\}\)</span>.</p>
+<p>We verify that <span class="math notranslate nohighlight">\(E = \lset \xi_2, \xi_3 \rset\)</span> is indeed an event in <span class="math notranslate nohighlight">\(\E\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\E = \{\emptyset, \{\xi_1\}, \{\xi_2\}, \{\xi_3\}, \{\xi_4\}, \{\xi_1\, \xi_2\}, \{\xi_1\, \xi_3\}, \{\xi_1\, \xi_4\}, \{\xi_2\, \xi_3\}, \{\xi_2\, \xi_4\}, \{\xi_3\, \xi_4\}, \S \} 
+\]</div>
+<p>More concretely, given an expression <span class="math notranslate nohighlight">\(X(\xi) = x\)</span>, we construct the event set <span class="math notranslate nohighlight">\(E\)</span> by enumerating all the outcomes <span class="math notranslate nohighlight">\(\xi_i\)</span> in the sample space <span class="math notranslate nohighlight">\(\S\)</span> that satisfy <span class="math notranslate nohighlight">\(X(\xi) = x\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+E = \lset \xi \in \S \st X(\xi) = x \rset
+\]</div>
+<p>and this coincides with the pre-image of <span class="math notranslate nohighlight">\(x\)</span> in the random variable <span class="math notranslate nohighlight">\(X\)</span> as defined in <a class="reference internal" href="#pre_image">Definition 8</a>.</p>
+<p><span class="math notranslate nohighlight">\(\color{red} {\textbf{Consequently}}\)</span>, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+    \P[X(\xi) = 1] &amp;= \P[\{(HT), (TH)\}] \\
+                   &amp;= \dfrac{2}{4} \\
+                   &amp;= 0.5
+\end{align}
+\end{split}\]</div>
+</section>
+</div></section>
+<section id="variable-vs-random-variable">
+<h3>Variable vs Random Variable<a class="headerlink" href="#variable-vs-random-variable" title="Permalink to this headline">#</a></h3>
+<div class="proof example admonition" id="example_variable_vs_random_variable">
+<p class="admonition-title"><span class="caption-number">Example 1 </span> (Variable vs Random Variable)</p>
+<section class="example-content" id="proof-content">
+<p>Professor Stanley Chan gave a good example of the difference between a variable and a random variable.</p>
+<p>The main difference is that a variable is <strong>deterministic</strong> while a random variable is <strong>non-deterministic</strong>.</p>
+<p>Consider solving the following equation:</p>
+<div class="math notranslate nohighlight">
+\[
+2X = x
+\]</div>
+<p>Then, if <span class="math notranslate nohighlight">\(x\)</span> is a fixed constant, then <span class="math notranslate nohighlight">\(X = \dfrac{x}{2}\)</span> is a variable.</p>
+<p>However, if <span class="math notranslate nohighlight">\(x\)</span> is not fixed, meaning that it can have multiple states, then <span class="math notranslate nohighlight">\(X\)</span> is a random variable
+since it is not deterministic.</p>
+<p>Tie back to the example in <a class="reference internal" href="#example_random_variable_coin_toss">Example </a>, we note that <span class="math notranslate nohighlight">\(X\)</span> is a random variable since the
+total number of heads <span class="math notranslate nohighlight">\(x\)</span> in an experiment is not fixed. It can be 0, 1 or 2 depending on your toss.</p>
+</section>
+</div></section>
+<section id="summary">
+<h3>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h3>
+<ol class="simple">
+<li><p>A random variable <span class="math notranslate nohighlight">\(X\)</span> is a function that has the sample space <span class="math notranslate nohighlight">\(\S\)</span> as its domain and the real space
+<span class="math notranslate nohighlight">\(\R\)</span> as its codomain.</p></li>
+<li><p><span class="math notranslate nohighlight">\(X(\S)\)</span> is the set of all possible values that <span class="math notranslate nohighlight">\(X\)</span> can take and the mapping is not necessarily
+a bijective function since <span class="math notranslate nohighlight">\(X(\xi)\)</span> can take on the same value for different outcomes <span class="math notranslate nohighlight">\(\xi\)</span>.</p></li>
+<li><p>The elements in <span class="math notranslate nohighlight">\(X(\S)\)</span> are denoted as <span class="math notranslate nohighlight">\(x\)</span> (i.e. <span class="math notranslate nohighlight">\(x \in X(\S)\)</span>).
+They are often called the <strong>states</strong> of <span class="math notranslate nohighlight">\(X\)</span>.</p></li>
+<li><p>It is important to not confused <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(x\)</span>. <span class="math notranslate nohighlight">\(X\)</span> is a function while <span class="math notranslate nohighlight">\(x\)</span> are the
+states of <span class="math notranslate nohighlight">\(X\)</span>.</p></li>
+<li><p>When we write <span class="math notranslate nohighlight">\(\P\lsq X = x \rsq\)</span>, we are describing the probability of the random variable <span class="math notranslate nohighlight">\(X\)</span>
+taking on a <em><strong>particular</strong></em> state <span class="math notranslate nohighlight">\(x\)</span>. This is equivalent to <span class="math notranslate nohighlight">\(\P \lsq \lset \xi \in \S \st X(\xi) = x \rset \rsq\)</span>.</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="probability-mass-function">
+<h2>Probability Mass Function<a class="headerlink" href="#probability-mass-function" title="Permalink to this headline">#</a></h2>
+<section id="id1">
+<h3>Definition<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<div class="proof definition admonition" id="def_state_space">
+<p class="admonition-title"><span class="caption-number">Definition 9 </span> (State Space)</p>
+<section class="definition-content" id="proof-content">
+<p>The set of all possible states of <span class="math notranslate nohighlight">\(X\)</span> is called the <strong>state space</strong> of <span class="math notranslate nohighlight">\(X\)</span> and is denoted as <span class="math notranslate nohighlight">\(X(\S)\)</span>.</p>
+</section>
+</div><div class="proof example admonition" id="example_state_space_coin_toss">
+<p class="admonition-title"><span class="caption-number">Example 2 </span> (State Space of Coin Toss)</p>
+<section class="example-content" id="proof-content">
+<p>Let us revisit the example in <a class="reference internal" href="#example_random_variable_coin_toss">Example </a> and examine the state space of <span class="math notranslate nohighlight">\(X\)</span>.</p>
+<p>The state space of <span class="math notranslate nohighlight">\(X\)</span> is the set of all possible values that <span class="math notranslate nohighlight">\(X\)</span> can take. As enumerated in the example,
+we see that the state space of <span class="math notranslate nohighlight">\(X\)</span> is <span class="math notranslate nohighlight">\(\{0, 1, 2\}\)</span> (i.e. <span class="math notranslate nohighlight">\(X\)</span> takes 3 states 0, 1 and 2).</p>
+</section>
+</div><div class="proof definition admonition" id="def_pmf">
+<p class="admonition-title"><span class="caption-number">Definition 10 </span> (Probability Mass Function)</p>
+<section class="definition-content" id="proof-content">
+<p>The <strong>probability mass function</strong> (PMF) of a random variable <span class="math notranslate nohighlight">\(X\)</span> is a function that maps each state
+<span class="math notranslate nohighlight">\(x\)</span> in the state space <span class="math notranslate nohighlight">\(X(\S)\)</span> to its probability <span class="math notranslate nohighlight">\(\pmf(x) = \P\lsq X = x \rsq\)</span>.</p>
+<p>We denoted the PMF as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+    \pmf: X(\S) &amp;\to [0, 1] \\ 
+    X(\S) \ni x &amp;\mapsto \pmf(x)
+\end{align}
+\end{split}\]</div>
+</section>
+</div><div class="proof example admonition" id="example_pmf_coin_toss">
+<p class="admonition-title"><span class="caption-number">Example 3 </span> (PMF of Coin Toss)</p>
+<section class="example-content" id="proof-content">
+<p>Let us revisit the example in <a class="reference internal" href="#example_random_variable_coin_toss">Example </a> and compute the PMF of <span class="math notranslate nohighlight">\(X\)</span>.</p>
+<p>Recall the sample space is given by <span class="math notranslate nohighlight">\(\S = \{(HH), (HT), (TH), (TT)\}\)</span> and the state space is given by
+<span class="math notranslate nohighlight">\(X(\S) = \{0, 1, 2\}\)</span> as enumerated in <a class="reference internal" href="#example_state_space_coin_toss">Example 2</a>.</p>
+<p>Thus, our domain of <span class="math notranslate nohighlight">\(\pmf\)</span> is <span class="math notranslate nohighlight">\(X(\S) = \{0, 1, 2\}\)</span> we have 3 mappings to compute:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+    \pmf(0) &amp;= \P\lsq X = 0 \rsq = \P\lsq \lset \xi \in \S \st X(\xi) = 0 \rset \rsq = \P\lsq \{(TT)\} \rsq = \dfrac{1}{4} \\
+    \pmf(1) &amp;= \P\lsq X = 1 \rsq = \P\lsq \lset \xi \in \S \st X(\xi) = 1 \rset \rsq = \P\lsq \{(HT), (TH)\} \rsq = \dfrac{2}{4} \\
+    \pmf(2) &amp;= \P\lsq X = 2 \rsq = \P\lsq \lset \xi \in \S \st X(\xi) = 2 \rset \rsq = \P\lsq \{(HH)\} \rsq = \dfrac{1}{4}
+\end{align}
+\end{split}\]</div>
+<p>Here we have enumerated all the possible states of <span class="math notranslate nohighlight">\(X\)</span> and computed the probability of each state.
+Thus, the PMF of <span class="math notranslate nohighlight">\(X\)</span> is completely determined by the 3 mappings above.</p>
+</section>
+</div></section>
+<section id="normalization">
+<h3>Normalization<a class="headerlink" href="#normalization" title="Permalink to this headline">#</a></h3>
+<div class="proof theorem admonition" id="thm_pmf_normalization">
+<p class="admonition-title"><span class="caption-number">Theorem 1 </span> (Normalization Property of PMF)</p>
+<section class="theorem-content" id="proof-content">
+<p>A PMF should satisfy the following normalization property:</p>
+<div class="math notranslate nohighlight" id="equation-eq-pmf-normalization">
+<span class="eqno">(2)<a class="headerlink" href="#equation-eq-pmf-normalization" title="Permalink to this equation">#</a></span>\[
+\sum_{x \in X(\S)} \pmf(x) = 1
+\]</div>
+</section>
+</div><div class="proof admonition" id="proof">
+<p>Proof. <strong>TODO</strong></p>
+</div>
+</section>
+<section id="sturges-rule-and-cross-validation">
+<h3>Sturges’ Rule and Cross Validation<a class="headerlink" href="#sturges-rule-and-cross-validation" title="Permalink to this headline">#</a></h3>
+<p>See <a class="reference external" href="https://probability4datascience.com/index.html">Introduction to Probability for Data Science</a>
+section 3.2.5.</p>
+<!-- ## Citations
+
+```{bibliography}
+``` --></section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./03_discrete_random_variables"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../02_probability/02_probability.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Probability</p>
+        </div>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Hongnan Gao<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
