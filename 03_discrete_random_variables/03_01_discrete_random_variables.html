@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Discrete Random Variables &#8212; Machine Learning</title>
+    <title>Random Variables &#8212; Machine Learning</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,10 +53,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"st": "\\mid", "S": "\\Omega", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "pmf": "p_X", "cdf": "F_X"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Probability Mass Function" href="03_02_probability_mass_function.html" />
     <link rel="prev" title="Probability" href="../02_probability/02_probability.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -137,7 +138,17 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Discrete Random Variables
+   Random Variables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_02_probability_mass_function.html">
+   Probability Mass Function
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_03_cumulative_distribution_function.html">
+   Cumulative Distribution Function
   </a>
  </li>
 </ul>
@@ -213,7 +224,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://github.com/reigHns92/ml_blog"
+        <a href="https://github.com/gao-hongnan/gaohn-probability-stats"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -230,7 +241,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/reigHns92/ml_blog/issues/new?title=Issue%20on%20page%20%2F03_discrete_random_variables/03_discrete_random_variables.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/gao-hongnan/gaohn-probability-stats/issues/new?title=Issue%20on%20page%20%2F03_discrete_random_variables/03_01_discrete_random_variables.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -258,7 +269,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/03_discrete_random_variables/03_discrete_random_variables.md"
+        <a href="../_sources/03_discrete_random_variables/03_01_discrete_random_variables.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -318,53 +329,24 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#random-variables">
-   Random Variables
+  <a class="reference internal nav-link" href="#definition">
+   Definition
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#definition">
-     Definition
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#examples">
-     Examples
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#variable-vs-random-variable">
-     Variable vs Random Variable
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#summary">
-     Summary
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#probability-mass-function">
-   Probability Mass Function
+  <a class="reference internal nav-link" href="#examples">
+   Examples
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     Definition
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#normalization">
-     Normalization
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sturges-rule-and-cross-validation">
-     Sturges’ Rule and Cross Validation
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#variable-vs-random-variable">
+   Variable vs Random Variable
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
  </li>
 </ul>
 
@@ -375,7 +357,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Discrete Random Variables</h1>
+                <h1>Random Variables</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -386,53 +368,24 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#random-variables">
-   Random Variables
+  <a class="reference internal nav-link" href="#definition">
+   Definition
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#definition">
-     Definition
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#examples">
-     Examples
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#variable-vs-random-variable">
-     Variable vs Random Variable
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#summary">
-     Summary
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#probability-mass-function">
-   Probability Mass Function
+  <a class="reference internal nav-link" href="#examples">
+   Examples
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     Definition
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#normalization">
-     Normalization
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sturges-rule-and-cross-validation">
-     Sturges’ Rule and Cross Validation
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#variable-vs-random-variable">
+   Variable vs Random Variable
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
  </li>
 </ul>
 
@@ -444,39 +397,10 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="math notranslate nohighlight">
-\[
-\newcommand{\st}{\mid}
-\newcommand{\S}{\Omega}
-\newcommand{\P}{\mathbb{P}}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\v}{\mathbf{v}}
-\newcommand{\a}{\mathbf{a}}
-\newcommand{\b}{\mathbf{b}}
-\newcommand{\c}{\mathbf{c}}
-\newcommand{\u}{\mathbf{u}}
-\newcommand{\w}{\mathbf{w}}
-\newcommand{\x}{\mathbf{x}}
-\newcommand{\y}{\mathbf{y}}
-\newcommand{\z}{\mathbf{z}}
-\newcommand{\0}{\mathbf{0}}
-\newcommand{\1}{\mathbf{1}}
-\newcommand{\A}{\mathbf{A}}
-\newcommand{\B}{\mathbf{B}}
-\newcommand{\C}{\mathbf{C}}
-\newcommand{\E}{\mathcal{F}}
-\newcommand{\lset}{\left\{}
-\newcommand{\rset}{\right\}}
-\newcommand{\lsq}{\left[}
-\newcommand{\rsq}{\right]}
-\newcommand{\pmf}{p_X}
-\]</div>
-<section class="tex2jax_ignore mathjax_ignore" id="discrete-random-variables">
-<h1>Discrete Random Variables<a class="headerlink" href="#discrete-random-variables" title="Permalink to this headline">#</a></h1>
-<section id="random-variables">
-<h2>Random Variables<a class="headerlink" href="#random-variables" title="Permalink to this headline">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="random-variables">
+<h1>Random Variables<a class="headerlink" href="#random-variables" title="Permalink to this headline">#</a></h1>
 <section id="definition">
-<h3>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">#</a></h3>
+<h2>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">#</a></h2>
 <div class="proof definition admonition" id="random_variables">
 <p class="admonition-title"><span class="caption-number">Definition 7 </span> (Random Variables)</p>
 <section class="definition-content" id="proof-content">
@@ -508,7 +432,7 @@ X^{-1}(x) \overset{\text{def}}{=} \lset \xi \in \S \st X(\xi) = x \rset
 </section>
 </div></section>
 <section id="examples">
-<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">#</a></h3>
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">#</a></h2>
 <div class="proof example admonition" id="example_random_variable_coin_toss">
 <p class="admonition-title"><span>Example </span> (Coin Toss)</p>
 <section class="example-content" id="proof-content">
@@ -570,7 +494,7 @@ E = \lset \xi \in \S \st X(\xi) = x \rset
 </section>
 </div></section>
 <section id="variable-vs-random-variable">
-<h3>Variable vs Random Variable<a class="headerlink" href="#variable-vs-random-variable" title="Permalink to this headline">#</a></h3>
+<h2>Variable vs Random Variable<a class="headerlink" href="#variable-vs-random-variable" title="Permalink to this headline">#</a></h2>
 <div class="proof example admonition" id="example_variable_vs_random_variable">
 <p class="admonition-title"><span class="caption-number">Example 1 </span> (Variable vs Random Variable)</p>
 <section class="example-content" id="proof-content">
@@ -589,7 +513,7 @@ total number of heads <span class="math notranslate nohighlight">\(x\)</span> in
 </section>
 </div></section>
 <section id="summary">
-<h3>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h3>
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
 <ol class="simple">
 <li><p>A random variable <span class="math notranslate nohighlight">\(X\)</span> is a function that has the sample space <span class="math notranslate nohighlight">\(\S\)</span> as its domain and the real space
 <span class="math notranslate nohighlight">\(\R\)</span> as its codomain.</p></li>
@@ -602,82 +526,11 @@ states of <span class="math notranslate nohighlight">\(X\)</span>.</p></li>
 <li><p>When we write <span class="math notranslate nohighlight">\(\P\lsq X = x \rsq\)</span>, we are describing the probability of the random variable <span class="math notranslate nohighlight">\(X\)</span>
 taking on a <em><strong>particular</strong></em> state <span class="math notranslate nohighlight">\(x\)</span>. This is equivalent to <span class="math notranslate nohighlight">\(\P \lsq \lset \xi \in \S \st X(\xi) = x \rset \rsq\)</span>.</p></li>
 </ol>
-</section>
-</section>
 <hr class="docutils" />
-<section id="probability-mass-function">
-<h2>Probability Mass Function<a class="headerlink" href="#probability-mass-function" title="Permalink to this headline">#</a></h2>
-<section id="id1">
-<h3>Definition<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
-<div class="proof definition admonition" id="def_state_space">
-<p class="admonition-title"><span class="caption-number">Definition 9 </span> (State Space)</p>
-<section class="definition-content" id="proof-content">
-<p>The set of all possible states of <span class="math notranslate nohighlight">\(X\)</span> is called the <strong>state space</strong> of <span class="math notranslate nohighlight">\(X\)</span> and is denoted as <span class="math notranslate nohighlight">\(X(\S)\)</span>.</p>
-</section>
-</div><div class="proof example admonition" id="example_state_space_coin_toss">
-<p class="admonition-title"><span class="caption-number">Example 2 </span> (State Space of Coin Toss)</p>
-<section class="example-content" id="proof-content">
-<p>Let us revisit the example in <a class="reference internal" href="#example_random_variable_coin_toss">Example </a> and examine the state space of <span class="math notranslate nohighlight">\(X\)</span>.</p>
-<p>The state space of <span class="math notranslate nohighlight">\(X\)</span> is the set of all possible values that <span class="math notranslate nohighlight">\(X\)</span> can take. As enumerated in the example,
-we see that the state space of <span class="math notranslate nohighlight">\(X\)</span> is <span class="math notranslate nohighlight">\(\{0, 1, 2\}\)</span> (i.e. <span class="math notranslate nohighlight">\(X\)</span> takes 3 states 0, 1 and 2).</p>
-</section>
-</div><div class="proof definition admonition" id="def_pmf">
-<p class="admonition-title"><span class="caption-number">Definition 10 </span> (Probability Mass Function)</p>
-<section class="definition-content" id="proof-content">
-<p>The <strong>probability mass function</strong> (PMF) of a random variable <span class="math notranslate nohighlight">\(X\)</span> is a function that maps each state
-<span class="math notranslate nohighlight">\(x\)</span> in the state space <span class="math notranslate nohighlight">\(X(\S)\)</span> to its probability <span class="math notranslate nohighlight">\(\pmf(x) = \P\lsq X = x \rsq\)</span>.</p>
-<p>We denoted the PMF as</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align}
-    \pmf: X(\S) &amp;\to [0, 1] \\ 
-    X(\S) \ni x &amp;\mapsto \pmf(x)
-\end{align}
-\end{split}\]</div>
-</section>
-</div><div class="proof example admonition" id="example_pmf_coin_toss">
-<p class="admonition-title"><span class="caption-number">Example 3 </span> (PMF of Coin Toss)</p>
-<section class="example-content" id="proof-content">
-<p>Let us revisit the example in <a class="reference internal" href="#example_random_variable_coin_toss">Example </a> and compute the PMF of <span class="math notranslate nohighlight">\(X\)</span>.</p>
-<p>Recall the sample space is given by <span class="math notranslate nohighlight">\(\S = \{(HH), (HT), (TH), (TT)\}\)</span> and the state space is given by
-<span class="math notranslate nohighlight">\(X(\S) = \{0, 1, 2\}\)</span> as enumerated in <a class="reference internal" href="#example_state_space_coin_toss">Example 2</a>.</p>
-<p>Thus, our domain of <span class="math notranslate nohighlight">\(\pmf\)</span> is <span class="math notranslate nohighlight">\(X(\S) = \{0, 1, 2\}\)</span> we have 3 mappings to compute:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align}
-    \pmf(0) &amp;= \P\lsq X = 0 \rsq = \P\lsq \lset \xi \in \S \st X(\xi) = 0 \rset \rsq = \P\lsq \{(TT)\} \rsq = \dfrac{1}{4} \\
-    \pmf(1) &amp;= \P\lsq X = 1 \rsq = \P\lsq \lset \xi \in \S \st X(\xi) = 1 \rset \rsq = \P\lsq \{(HT), (TH)\} \rsq = \dfrac{2}{4} \\
-    \pmf(2) &amp;= \P\lsq X = 2 \rsq = \P\lsq \lset \xi \in \S \st X(\xi) = 2 \rset \rsq = \P\lsq \{(HH)\} \rsq = \dfrac{1}{4}
-\end{align}
-\end{split}\]</div>
-<p>Here we have enumerated all the possible states of <span class="math notranslate nohighlight">\(X\)</span> and computed the probability of each state.
-Thus, the PMF of <span class="math notranslate nohighlight">\(X\)</span> is completely determined by the 3 mappings above.</p>
-</section>
-</div></section>
-<section id="normalization">
-<h3>Normalization<a class="headerlink" href="#normalization" title="Permalink to this headline">#</a></h3>
-<div class="proof theorem admonition" id="thm_pmf_normalization">
-<p class="admonition-title"><span class="caption-number">Theorem 1 </span> (Normalization Property of PMF)</p>
-<section class="theorem-content" id="proof-content">
-<p>A PMF should satisfy the following normalization property:</p>
-<div class="math notranslate nohighlight" id="equation-eq-pmf-normalization">
-<span class="eqno">(2)<a class="headerlink" href="#equation-eq-pmf-normalization" title="Permalink to this equation">#</a></span>\[
-\sum_{x \in X(\S)} \pmf(x) = 1
-\]</div>
-</section>
-</div><div class="proof admonition" id="proof">
-<p>Proof. <strong>TODO</strong></p>
-</div>
-</section>
-<section id="sturges-rule-and-cross-validation">
-<h3>Sturges’ Rule and Cross Validation<a class="headerlink" href="#sturges-rule-and-cross-validation" title="Permalink to this headline">#</a></h3>
-<p>See <a class="reference external" href="https://probability4datascience.com/index.html">Introduction to Probability for Data Science</a>
-section 3.2.5.</p>
 <!-- ## Citations
 
 ```{bibliography}
 ``` --></section>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -713,6 +566,13 @@ section 3.2.5.</p>
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title">Probability</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="03_02_probability_mass_function.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Probability Mass Function</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>
