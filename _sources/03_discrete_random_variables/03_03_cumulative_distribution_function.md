@@ -17,12 +17,21 @@ kernelspec:
 
 # Cumulative Distribution Function
 
+The PMF is one way to describe the distribution of a discrete random variable. As we will see later on,
+PMF cannot be defined for continuous random variables. The cumulative distribution function (CDF) 
+of a random variable is another method to describe the distribution of random variables.
+The advantage of the CDF is that it can be defined for any kind of random variable (discrete, 
+continuous, and mixed). {cite}`Cumulati3:online`.
+
+The take away lesson here is that CDF is another way to describe the distribution of a random variable.
+In particular, in continuous random variables, we do not have an equivalent of PMF, so we use CDF instead.
+
 ## Definition
 
 ````{prf:definition} Cumulative Distribution Function
 :label: def_cdf
 
-Let $X$ be a discrete random variable with $\S = \lset \xi_1, \xi_2, \dots, \xi_n \rset$.
+Let $X$ be a discrete random variable with $\S = \lset \xi_1, \xi_2, \dots, \xi_n \rset$ where $\xi_i \in \R$ for all $i$.
 
 Then the **cumulative distribution function** $\cdf$ is defined as 
 
@@ -47,9 +56,9 @@ Consider a random variable $X$ with the following probability mass function:
 
 $$
 \pmf(x) = \begin{cases}
-\frac{1}{4} & \text{if } x = 0 \\
-\frac{1}{2} & \text{if } x = 1 \\
-\frac{1}{4} & \text{if } x = 4 \\
+    \frac{1}{4} & \text{if } x = 0 \\
+    \frac{1}{2} & \text{if } x = 1 \\
+    \frac{1}{4} & \text{if } x = 4 \\
 \end{cases}
 $$
 
@@ -57,10 +66,20 @@ Then by definition {prf:ref}`def_cdf`, we have the CDF of $X$ to be computed as:
 
 $$
 \begin{align}
-\cdf(0) &= \P \lsq X \leq 0 \rsq = \P \lsq X = 0 \rsq = \frac{1}{4} \\
-\cdf(1) &= \P \lsq X \leq 1 \rsq = \P \lsq X = 0 \rsq + \P \lsq X = 1 \rsq = \frac{1}{4} + \frac{1}{2} = \frac{3}{4} \\
-\cdf(4) &= \P \lsq X \leq 4 \rsq = \P \lsq X = 0 \rsq + \P \lsq X = 1 \rsq + \P \lsq X = 4 \rsq = \frac{1}{4} + \frac{1}{2} + \frac{1}{4} = 1
+    \cdf(0) & = \P \lsq X \leq 0 \rsq = \P \lsq X = 0 \rsq = \frac{1}{4}                                                                           \\
+    \cdf(1) & = \P \lsq X \leq 1 \rsq = \P \lsq X = 0 \rsq + \P \lsq X = 1 \rsq = \frac{1}{4} + \frac{1}{2} = \frac{3}{4}                          \\
+    \cdf(4) & = \P \lsq X \leq 4 \rsq = \P \lsq X = 0 \rsq + \P \lsq X = 1 \rsq + \P \lsq X = 4 \rsq = \frac{1}{4} + \frac{1}{2} + \frac{1}{4} = 1
 \end{align}
+$$
+
+Thus, our CDF is given by:
+
+$$
+\cdf(x) = \begin{cases}
+    \frac{1}{4} & \text{if } x \leq 0 \\
+    \frac{3}{4} & \text{if } 0 < x \leq 1 \\
+    1          & \text{if } x > 1
+\end{cases}
 $$
 ````
 
@@ -76,4 +95,3 @@ F = np.cumsum(p)
 plt.stem(x,p,use_line_collection=True); plt.show()
 plt.step(x,F); plt.show();
 ```
-
