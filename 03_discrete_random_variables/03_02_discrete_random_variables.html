@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Cumulative Distribution Function &#8212; Machine Learning</title>
+    <title>Discrete Random Variables &#8212; Machine Learning</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -57,7 +57,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Probability Mass Function" href="03_02_probability_mass_function.html" />
+    <link rel="next" title="Probability Mass Function" href="03_03_probability_mass_function.html" />
+    <link rel="prev" title="Random Variables" href="03_01_random_variables.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -136,17 +137,22 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="03_01_discrete_random_variables.html">
+  <a class="reference internal" href="03_01_random_variables.html">
    Random Variables
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="03_02_probability_mass_function.html">
-   Probability Mass Function
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
+   Discrete Random Variables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_03_probability_mass_function.html">
+   Probability Mass Function
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_04_cumulative_distribution_function.html">
    Cumulative Distribution Function
   </a>
  </li>
@@ -201,53 +207,6 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/gao-hongnan/gaohn-probability-stats/main?urlpath=tree/docs/03_discrete_random_variables/03_03_cumulative_distribution_function.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
-  
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://colab.research.google.com/github/gao-hongnan/gaohn-probability-stats/blob/main/docs/03_discrete_random_variables/03_03_cumulative_distribution_function.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Colab"
->
-  
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_colab.png">
-  </span>
-<span class="headerbtn__text-container">Colab</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -287,7 +246,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/gao-hongnan/gaohn-probability-stats/issues/new?title=Issue%20on%20page%20%2F03_discrete_random_variables/03_03_cumulative_distribution_function.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/gao-hongnan/gaohn-probability-stats/issues/new?title=Issue%20on%20page%20%2F03_discrete_random_variables/03_02_discrete_random_variables.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -315,24 +274,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/03_discrete_random_variables/03_03_cumulative_distribution_function.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download notebook file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-code"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="../_sources/03_discrete_random_variables/03_03_cumulative_distribution_function.md"
+        <a href="../_sources/03_discrete_random_variables/03_02_discrete_random_variables.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -405,7 +347,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Cumulative Distribution Function</h1>
+                <h1>Discrete Random Variables</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -430,84 +372,30 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="cumulative-distribution-function">
-<h1>Cumulative Distribution Function<a class="headerlink" href="#cumulative-distribution-function" title="Permalink to this headline">#</a></h1>
-<p>The PMF is one way to describe the distribution of a discrete random variable. As we will see later on,
-PMF cannot be defined for continuous random variables. The cumulative distribution function (CDF)
-of a random variable is another method to describe the distribution of random variables.
-The advantage of the CDF is that it can be defined for any kind of random variable (discrete,
-continuous, and mixed). <span id="id1">[<a class="reference internal" href="../02_probability/02_probability.html#id5" title="Cumulative distribution function. https://www.probabilitycourse.com/chapter3/3_2_1_cdf.php. (Accessed on 10/01/2022)."><em>Cumulative Distribution Function</em>, n.d.</a>]</span>.</p>
-<p>The take away lesson here is that CDF is another way to describe the distribution of a random variable.
-In particular, in continuous random variables, we do not have an equivalent of PMF, so we use CDF instead.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="discrete-random-variables">
+<h1>Discrete Random Variables<a class="headerlink" href="#discrete-random-variables" title="Permalink to this headline">#</a></h1>
 <section id="definition">
 <h2>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">#</a></h2>
-<div class="proof definition admonition" id="def_cdf">
-<p class="admonition-title"><span class="caption-number">Definition 11 </span> (Cumulative Distribution Function)</p>
+<div class="proof definition admonition" id="def_countable_set">
+<p class="admonition-title"><span class="caption-number">Definition 9 </span> (Countable Set)</p>
 <section class="definition-content" id="proof-content">
-<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a discrete random variable with <span class="math notranslate nohighlight">\(\S = \lset \xi_1, \xi_2, \dots, \xi_n \rset\)</span> where <span class="math notranslate nohighlight">\(\xi_i \in \R\)</span> for all <span class="math notranslate nohighlight">\(i\)</span>.</p>
-<p>Then the <strong>cumulative distribution function</strong> <span class="math notranslate nohighlight">\(\cdf\)</span> is defined as</p>
-<div class="math notranslate nohighlight" id="equation-eq-def-cdf">
-<span class="eqno">(3)<a class="headerlink" href="#equation-eq-def-cdf" title="Permalink to this equation">#</a></span>\[
-\cdf(\xi_k) \overset{\text{def}}{=} \P \lsq X \leq \xi_k \rsq = \sum_{\ell=1}^k \P \lsq X = \xi_{\ell} \rsq = \sum_{\ell=1}^k \pmf(\xi_{\ell})
-\]</div>
-<p>Since <span class="math notranslate nohighlight">\(\P \lsq X = \xi_{\ell} \rsq\)</span> is the probability mass function, we can also replace
-the symbol with the <span class="math notranslate nohighlight">\(\pmf\)</span> symbol.</p>
-<p>If <span class="math notranslate nohighlight">\(\S = \lset \ldots, -1, 0, 1, 2, \ldots \rset\)</span>, then we can write the CDF as</p>
-<div class="math notranslate nohighlight">
-\[
-\cdf(k) \overset{\text{def}}{=} \P \lsq X \leq k \rsq = \sum_{\ell=-\infty}^k \P \lsq X = \ell \rsq = \sum_{\ell=-\infty}^k \pmf(\ell)
-\]</div>
+<p>A <strong>countable set</strong> is a set that can be put into a one-to-one correspondence with
+the natural numbers <span class="math notranslate nohighlight">\(\mathbb{N}\)</span>.</p>
+<p>Sets such as <span class="math notranslate nohighlight">\(\mathbb{N}\)</span>, <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span> and <span class="math notranslate nohighlight">\(\mathbb{Q}\)</span> are countable while intervals
+in the real space <span class="math notranslate nohighlight">\(\R\)</span> are not.</p>
 </section>
-</div><div class="proof example admonition" id="example_cdf">
-<p class="admonition-title"><span class="caption-number">Example 4 </span> (CDF)</p>
-<section class="example-content" id="proof-content">
-<p>Consider a random variable <span class="math notranslate nohighlight">\(X\)</span> with the following probability mass function:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\pmf(x) = \begin{cases}
-    \frac{1}{4} &amp; \text{if } x = 0 \\
-    \frac{1}{2} &amp; \text{if } x = 1 \\
-    \frac{1}{4} &amp; \text{if } x = 4 \\
-\end{cases}
-\end{split}\]</div>
-<p>Then by definition <a class="reference internal" href="#def_cdf">Definition 11</a>, we have the CDF of <span class="math notranslate nohighlight">\(X\)</span> to be computed as:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align}
-    \cdf(0) &amp; = \P \lsq X \leq 0 \rsq = \P \lsq X = 0 \rsq = \frac{1}{4}                                                                           \\
-    \cdf(1) &amp; = \P \lsq X \leq 1 \rsq = \P \lsq X = 0 \rsq + \P \lsq X = 1 \rsq = \frac{1}{4} + \frac{1}{2} = \frac{3}{4}                          \\
-    \cdf(4) &amp; = \P \lsq X \leq 4 \rsq = \P \lsq X = 0 \rsq + \P \lsq X = 1 \rsq + \P \lsq X = 4 \rsq = \frac{1}{4} + \frac{1}{2} + \frac{1}{4} = 1
-\end{align}
-\end{split}\]</div>
-<p>Thus, our CDF is given by:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\cdf(x) = \begin{cases}
-    \frac{1}{4} &amp; \text{if } x \leq 0 \\
-    \frac{3}{4} &amp; \text{if } 0 &lt; x \leq 1 \\
-    1          &amp; \text{if } x &gt; 1
-\end{cases}
-\end{split}\]</div>
+</div><div class="proof definition admonition" id="def_discrete_random_variables">
+<p class="admonition-title"><span class="caption-number">Definition 10 </span> (Discrete Random Variables)</p>
+<section class="definition-content" id="proof-content">
+<p>A <strong>discrete random variable</strong> <span class="math notranslate nohighlight">\(X\)</span> is a random variable<a class="footnote-reference brackets" href="#random-variable" id="id1">1</a> whose range is
+a countable set.</p>
 </section>
-</div><div class="cell tag_hide-input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
-<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">])</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
-<span class="n">F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">use_line_collection</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">F</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">();</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/03_03_cumulative_distribution_function_1_0.png" src="../_images/03_03_cumulative_distribution_function_1_0.png" />
-<img alt="../_images/03_03_cumulative_distribution_function_1_1.png" src="../_images/03_03_cumulative_distribution_function_1_1.png" />
-</div>
-</div>
+</div><hr class="footnotes docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="random-variable"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>See <a class="reference internal" href="03_01_random_variables.html#random_variables">Definition 7</a> for the definition of a random variable.</p>
+</dd>
+</dl>
 </section>
 </section>
 
@@ -538,12 +426,19 @@ the symbol with the <span class="math notranslate nohighlight">\(\pmf\)</span> s
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="03_02_probability_mass_function.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="03_01_random_variables.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Probability Mass Function</p>
+            <p class="prev-next-title">Random Variables</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="03_03_probability_mass_function.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Probability Mass Function</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>

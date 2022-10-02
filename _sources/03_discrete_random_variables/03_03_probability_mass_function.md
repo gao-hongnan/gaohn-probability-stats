@@ -6,6 +6,9 @@
 :label: def_state_space
 
 The set of all possible states of $X$ is called the **state space** of $X$ and is denoted as $X(\S)$.
+
+In particular, the state space of a discrete random variable $X$ is a countable set 
+as per {prf:ref}`def_discrete_random_variables`.
 ````
 
 ````{prf:example} State Space of Coin Toss
