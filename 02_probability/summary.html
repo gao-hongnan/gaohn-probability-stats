@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Cumulative Distribution Function &#8212; Machine Learning</title>
+    <title>Summary &#8212; Machine Learning</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -57,7 +57,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Probability Mass Function" href="03_03_probability_mass_function.html" />
+    <link rel="next" title="Random Variables" href="../03_discrete_random_variables/0301_random_variables.html" />
+    <link rel="prev" title="Baye’s Theorem and the Law of Total Probability" href="0206_bayes_theorem.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -119,13 +120,50 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Chapter 2. Probability
+  Chapter 1. Mathematical Preliminaries
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../02_probability/02_probability.html">
+  <a class="reference internal" href="../01_mathematical_preliminaries/01_combinatorics.html">
+   Permutations and Combinations
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Chapter 2. Probability
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="0202_probability_space.html">
    Probability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="0203_probability_axioms.html">
+   Probability Axioms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="0204_conditional_probability.html">
+   Conditional Probability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="0205_independence.html">
+   Independence
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="0206_bayes_theorem.html">
+   Baye’s Theorem and the Law of Total Probability
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Summary
   </a>
  </li>
 </ul>
@@ -134,24 +172,24 @@ const thebe_selector_output = ".output, .cell_output"
   Chapter 3. Discrete Random Variables
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="03_01_random_variables.html">
+  <a class="reference internal" href="../03_discrete_random_variables/0301_random_variables.html">
    Random Variables
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="03_02_discrete_random_variables.html">
+  <a class="reference internal" href="../03_discrete_random_variables/0302_discrete_random_variables.html">
    Discrete Random Variables
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="03_03_probability_mass_function.html">
+  <a class="reference internal" href="../03_discrete_random_variables/0303_probability_mass_function.html">
    Probability Mass Function
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_discrete_random_variables/0304_cumulative_distribution_function.html">
    Cumulative Distribution Function
   </a>
  </li>
@@ -206,53 +244,6 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/gao-hongnan/gaohn-probability-stats/main?urlpath=tree/docs/03_discrete_random_variables/03_04_cumulative_distribution_function.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
-  
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://colab.research.google.com/github/gao-hongnan/gaohn-probability-stats/blob/main/docs/03_discrete_random_variables/03_04_cumulative_distribution_function.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Colab"
->
-  
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_colab.png">
-  </span>
-<span class="headerbtn__text-container">Colab</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -292,7 +283,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/gao-hongnan/gaohn-probability-stats/issues/new?title=Issue%20on%20page%20%2F03_discrete_random_variables/03_04_cumulative_distribution_function.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/gao-hongnan/gaohn-probability-stats/issues/new?title=Issue%20on%20page%20%2F02_probability/summary.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -320,24 +311,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/03_discrete_random_variables/03_04_cumulative_distribution_function.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download notebook file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-code"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="../_sources/03_discrete_random_variables/03_04_cumulative_distribution_function.md"
+        <a href="../_sources/02_probability/summary.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -397,8 +371,33 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#definition">
-   Definition
+  <a class="reference internal nav-link" href="#conditional">
+   Conditional
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#independence">
+   Independence
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bayes-theorem">
+   Bayes’ Theorem
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-law-of-total-probability">
+   The Law of Total Probability
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#why-do-you-multiply-probabilities">
+   Why do you multiply probabilities?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conditional-priori-posterior">
+   Conditional, Priori, Posterior
   </a>
  </li>
 </ul>
@@ -410,7 +409,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Cumulative Distribution Function</h1>
+                <h1>Summary</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -421,8 +420,33 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#definition">
-   Definition
+  <a class="reference internal nav-link" href="#conditional">
+   Conditional
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#independence">
+   Independence
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bayes-theorem">
+   Bayes’ Theorem
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-law-of-total-probability">
+   The Law of Total Probability
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#why-do-you-multiply-probabilities">
+   Why do you multiply probabilities?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conditional-priori-posterior">
+   Conditional, Priori, Posterior
   </a>
  </li>
 </ul>
@@ -435,84 +459,108 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="cumulative-distribution-function">
-<h1>Cumulative Distribution Function<a class="headerlink" href="#cumulative-distribution-function" title="Permalink to this headline">#</a></h1>
-<p>The PMF is one way to describe the distribution of a discrete random variable. As we will see later on,
-PMF cannot be defined for continuous random variables. The cumulative distribution function (CDF)
-of a random variable is another method to describe the distribution of random variables.
-The advantage of the CDF is that it can be defined for any kind of random variable (discrete,
-continuous, and mixed). <span id="id1">[<a class="reference internal" href="../02_probability/02_probability.html#id5" title="Cumulative distribution function. https://www.probabilitycourse.com/chapter3/3_2_1_cdf.php. (Accessed on 10/01/2022)."><em>Cumulative Distribution Function</em>, n.d.</a>]</span>.</p>
-<p>The take away lesson here is that CDF is another way to describe the distribution of a random variable.
-In particular, in continuous random variables, we do not have an equivalent of PMF, so we use CDF instead.</p>
-<section id="definition">
-<h2>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">#</a></h2>
-<div class="proof definition admonition" id="def_cdf">
-<p class="admonition-title"><span class="caption-number">Definition 13 </span> (Cumulative Distribution Function)</p>
-<section class="definition-content" id="proof-content">
-<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a discrete random variable with <span class="math notranslate nohighlight">\(\S = \lset \xi_1, \xi_2, \dots, \xi_n \rset\)</span> where <span class="math notranslate nohighlight">\(\xi_i \in \R\)</span> for all <span class="math notranslate nohighlight">\(i\)</span>.</p>
-<p>Then the <strong>cumulative distribution function</strong> <span class="math notranslate nohighlight">\(\cdf\)</span> is defined as</p>
-<div class="math notranslate nohighlight" id="equation-eq-def-cdf">
-<span class="eqno">(3)<a class="headerlink" href="#equation-eq-def-cdf" title="Permalink to this equation">#</a></span>\[
-\cdf(\xi_k) \overset{\text{def}}{=} \P \lsq X \leq \xi_k \rsq = \sum_{\ell=1}^k \P \lsq X = \xi_{\ell} \rsq = \sum_{\ell=1}^k \pmf(\xi_{\ell})
-\]</div>
-<p>Since <span class="math notranslate nohighlight">\(\P \lsq X = \xi_{\ell} \rsq\)</span> is the probability mass function, we can also replace
-the symbol with the <span class="math notranslate nohighlight">\(\pmf\)</span> symbol.</p>
-<p>If <span class="math notranslate nohighlight">\(\S = \lset \ldots, -1, 0, 1, 2, \ldots \rset\)</span>, then we can write the CDF as</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="summary">
+<h1>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h1>
+<p>For now it is mostly intuition in this section.</p>
+<section id="conditional">
+<h2>Conditional<a class="headerlink" href="#conditional" title="Permalink to this headline">#</a></h2>
+<p>Therefore, after the intuition, one should not be constantly checking
+what the formula represents, if we have <span class="math notranslate nohighlight">\(\P(A ~|~ B)\)</span>, then it just
+means given <span class="math notranslate nohighlight">\(B\)</span> has happened, what is the probability of <span class="math notranslate nohighlight">\(A\)</span> happening?
+The logic becomes apparent when we reduce the whole sample space <span class="math notranslate nohighlight">\(\S\)</span> to
+be only <span class="math notranslate nohighlight">\(B\)</span> now, and that whatever <span class="math notranslate nohighlight">\(A\)</span> overlaps with <span class="math notranslate nohighlight">\(B\)</span> will be the
+probability of this conditional.</p>
+</section>
+<section id="independence">
+<h2>Independence<a class="headerlink" href="#independence" title="Permalink to this headline">#</a></h2>
+<p>So the intuition can be understood by using conditional, say
+<span class="math notranslate nohighlight">\(\P(A ~|~ B)\)</span>, if <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are truly independent, then even if <span class="math notranslate nohighlight">\(B\)</span>
+happened, the probability of <span class="math notranslate nohighlight">\(A\)</span> should remain unchanged, which means
+that <span class="math notranslate nohighlight">\(\P(A ~|~ B) = \P(A)\)</span>, but also recall the definition of
+conditionals, <span class="math notranslate nohighlight">\(\P(A ~|~ B) = \dfrac{\P(A \cap B)}{B}\)</span>, so equating them
+we have the nice equation of <span class="math notranslate nohighlight">\(\P(A)\P(B) = \P(A \cap B)\)</span>.</p>
+</section>
+<section id="bayes-theorem">
+<h2>Bayes’ Theorem<a class="headerlink" href="#bayes-theorem" title="Permalink to this headline">#</a></h2>
+<p>The observant reader should find it easy that this formula is deduced by
+abusing the fact that <span class="math notranslate nohighlight">\(\P(A \cap B) = \P(B \cap A)\)</span>, and therefore</p>
 <div class="math notranslate nohighlight">
 \[
-\cdf(k) \overset{\text{def}}{=} \P \lsq X \leq k \rsq = \sum_{\ell=-\infty}^k \P \lsq X = \ell \rsq = \sum_{\ell=-\infty}^k \pmf(\ell)
+\P(A|B) = \dfrac{\P(A\cap B)}{\P(B)} = \dfrac{\P(B \cap A)}{\P(B)} = \dfrac{\P(B ~|~ A)\P(A)}{\P(B)}
 \]</div>
+<p>since <span class="math notranslate nohighlight">\(\P(B ~|~ A) = \dfrac{\P(B \cap A)}{\P(A)}\)</span>.</p>
 </section>
-</div><div class="proof example admonition" id="example_cdf">
-<p class="admonition-title"><span class="caption-number">Example 4 </span> (CDF)</p>
-<section class="example-content" id="proof-content">
-<p>Consider a random variable <span class="math notranslate nohighlight">\(X\)</span> with the following probability mass function:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\pmf(x) = \begin{cases}
-    \frac{1}{4} &amp; \text{if } x = 0 \\
-    \frac{1}{2} &amp; \text{if } x = 1 \\
-    \frac{1}{4} &amp; \text{if } x = 4 \\
-\end{cases}
-\end{split}\]</div>
-<p>Then by definition <a class="reference internal" href="#def_cdf">Definition 13</a>, we have the CDF of <span class="math notranslate nohighlight">\(X\)</span> to be computed as:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align}
-    \cdf(0) &amp; = \P \lsq X \leq 0 \rsq = \P \lsq X = 0 \rsq = \frac{1}{4}                                                                           \\
-    \cdf(1) &amp; = \P \lsq X \leq 1 \rsq = \P \lsq X = 0 \rsq + \P \lsq X = 1 \rsq = \frac{1}{4} + \frac{1}{2} = \frac{3}{4}                          \\
-    \cdf(4) &amp; = \P \lsq X \leq 4 \rsq = \P \lsq X = 0 \rsq + \P \lsq X = 1 \rsq + \P \lsq X = 4 \rsq = \frac{1}{4} + \frac{1}{2} + \frac{1}{4} = 1
-\end{align}
-\end{split}\]</div>
-<p>Thus, our CDF is given by:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\cdf(x) = \begin{cases}
-    \frac{1}{4} &amp; \text{if } x \leq 0 \\
-    \frac{3}{4} &amp; \text{if } 0 &lt; x \leq 1 \\
-    1          &amp; \text{if } x &gt; 1
-\end{cases}
-\end{split}\]</div>
+<section id="the-law-of-total-probability">
+<h2>The Law of Total Probability<a class="headerlink" href="#the-law-of-total-probability" title="Permalink to this headline">#</a></h2>
+<p>The intuition of this is also apparent after understanding that if a
+sample space can be broken down into disjoint events
+<span class="math notranslate nohighlight">\(A_1, A_2, \ldots, A_k\)</span>, then any event <span class="math notranslate nohighlight">\(B\)</span> that is in the sample space
+must touch some of these disjoint events, whenever they overlap, we can
+represent them as <span class="math notranslate nohighlight">\(\P(A_i \cap B)\)</span>, and if we add them up it is just the
+event <span class="math notranslate nohighlight">\(B\)</span> itself. If they don’t overlap, we can still add them anyways
+since <span class="math notranslate nohighlight">\(P(A_k \cap B) = 0\)</span>. Note the loose usage of the index here, <span class="math notranslate nohighlight">\(i\)</span>
+means overlap, <span class="math notranslate nohighlight">\(k\)</span> means non-overlap.</p>
 </section>
-</div><div class="cell tag_hide-input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
-<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">])</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
-<span class="n">F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">use_line_collection</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">F</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">();</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/03_04_cumulative_distribution_function_1_0.png" src="../_images/03_04_cumulative_distribution_function_1_0.png" />
-<img alt="../_images/03_04_cumulative_distribution_function_1_1.png" src="../_images/03_04_cumulative_distribution_function_1_1.png" />
-</div>
-</div>
+<section id="why-do-you-multiply-probabilities">
+<h2>Why do you multiply probabilities?<a class="headerlink" href="#why-do-you-multiply-probabilities" title="Permalink to this headline">#</a></h2>
+<p>Consider rolling a dice twice, what is the probability that you roll a 5
+and 6 respectively.</p>
+<p>We all know the answer is
+<span class="math notranslate nohighlight">\(\dfrac{1}{6} \times \dfrac{1}{6} = \dfrac{1}{36}\)</span>. But why?</p>
+<p>This can be first understood that our denominator is the total outcomes
+in our sample space <span class="math notranslate nohighlight">\(\S\)</span>. This is <span class="math notranslate nohighlight">\(36\)</span>, why? By our counting principle
+on multiplication, we know that if we have <span class="math notranslate nohighlight">\(6\)</span> choices in roll <span class="math notranslate nohighlight">\(1\)</span> and
+<span class="math notranslate nohighlight">\(6\)</span> choices in roll 2, then the cross-product is <span class="math notranslate nohighlight">\(6 \times 6 = 36\)</span> total
+choices. One can enumerate <span class="math notranslate nohighlight">\(\{(1,1), (1,2), \ldots, (6,6)\}\)</span> to see why.</p>
+<p>Now the numerator is also related to the counting principle of
+multiplication as well! In roll 1, rolling a 5 is 1 choice, rolling a 6
+next is 1 choice, so total there is a only one combination choice
+<span class="math notranslate nohighlight">\(1 \times 1\)</span>!</p>
+<p>Now if we reframe the problem to what is the probability that you roll a
+1, 2 or 3 in the first roll and 2 or 3 in the second roll. Then of
+course our denominator don’t change as <span class="math notranslate nohighlight">\(36\)</span>, but our numerator changes,
+since in roll 1 we have 3 choices, and roll 2 have 2 choices, by the
+multiplicative principle we have a total of <span class="math notranslate nohighlight">\(3 \times 2 = 6\)</span> choices,
+and so our probability is <span class="math notranslate nohighlight">\(\dfrac{6}{36}\)</span> now. You can verify that there
+are indeed <span class="math notranslate nohighlight">\(6\)</span> choices manually.</p>
+<blockquote>
+<div><p><strong>Now the most important part is we can use this if both events are
+independent! If not we need to be careful!</strong>.</p>
+</div></blockquote>
+</section>
+<section id="conditional-priori-posterior">
+<h2>Conditional, Priori, Posterior<a class="headerlink" href="#conditional-priori-posterior" title="Permalink to this headline">#</a></h2>
+<p>Common terms in ML world.</p>
+<p>Suppose there are three types of players in a tennis tournament: A, B,
+and C. Fifty percent of the contestants in the tournament are A players,
+25% are B players, and 25% are C players. Your chance of beating the
+contestants depends on the class of the player, as follows:</p>
+<ul class="simple">
+<li><p>0.3 against an A player</p></li>
+<li><p>0.4 against a B player</p></li>
+<li><p>0.5 against a C player</p></li>
+</ul>
+<p>If you play a match in this tournament, what is the probability of your
+winning the match? Supposing that you have won a match, what is the
+probability that you played against an A player?</p>
+<p>Let <span class="math notranslate nohighlight">\(W\)</span> be the event that you win and <span class="math notranslate nohighlight">\(A\)</span> be the event that you played
+vs player <span class="math notranslate nohighlight">\(A\)</span>, then</p>
+<ul class="simple">
+<li><p>Conditional: <span class="math notranslate nohighlight">\(\P(W~|~A)\)</span> = given you played player <span class="math notranslate nohighlight">\(A\)</span>, what is your
+probability of winning?</p></li>
+<li><p>Priori: <span class="math notranslate nohighlight">\(\P(A)\)</span> = <strong>without entering the game</strong>, what is your
+probability of facing player <span class="math notranslate nohighlight">\(A\)</span>?</p></li>
+<li><p>Posterior: <span class="math notranslate nohighlight">\(\P(A~|~W)\)</span> = <strong>after entering the game and winning the
+match</strong>, what is your probability that you have actually played with
+<span class="math notranslate nohighlight">\(A\)</span>?</p></li>
+<li><p>Machine Learning: In many practical engineering problems, the
+question of interest is often the last one. That is, supposing that
+you have observed something, what is the most likely cause of that
+event? For example, supposing we have observed this particular
+dataset, what is the best Gaussian model that would fit the dataset?
+Questions like these require some analysis of conditional
+probability, prior probability, and posterior probability.</p></li>
+</ul>
 </section>
 </section>
 
@@ -529,7 +577,7 @@ the symbol with the <span class="math notranslate nohighlight">\(\pmf\)</span> s
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./03_discrete_random_variables"
+            path: "./02_probability"
         },
         predefinedOutput: true
     }
@@ -543,12 +591,19 @@ the symbol with the <span class="math notranslate nohighlight">\(\pmf\)</span> s
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="03_03_probability_mass_function.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="0206_bayes_theorem.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Probability Mass Function</p>
+            <p class="prev-next-title">Baye’s Theorem and the Law of Total Probability</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="../03_discrete_random_variables/0301_random_variables.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Random Variables</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>

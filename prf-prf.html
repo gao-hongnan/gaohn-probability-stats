@@ -122,13 +122,50 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
+  Chapter 1. Mathematical Preliminaries
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_mathematical_preliminaries/01_combinatorics.html">
+   Permutations and Combinations
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
   Chapter 2. Probability
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="02_probability/02_probability.html">
+  <a class="reference internal" href="02_probability/0202_probability_space.html">
    Probability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_probability/0203_probability_axioms.html">
+   Probability Axioms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_probability/0204_conditional_probability.html">
+   Conditional Probability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_probability/0205_independence.html">
+   Independence
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_probability/0206_bayes_theorem.html">
+   Baye’s Theorem and the Law of Total Probability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_probability/summary.html">
+   Summary
   </a>
  </li>
 </ul>
@@ -139,22 +176,22 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="03_discrete_random_variables/03_01_random_variables.html">
+  <a class="reference internal" href="03_discrete_random_variables/0301_random_variables.html">
    Random Variables
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="03_discrete_random_variables/03_02_discrete_random_variables.html">
+  <a class="reference internal" href="03_discrete_random_variables/0302_discrete_random_variables.html">
    Discrete Random Variables
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="03_discrete_random_variables/03_03_probability_mass_function.html">
+  <a class="reference internal" href="03_discrete_random_variables/0303_probability_mass_function.html">
    Probability Mass Function
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="03_discrete_random_variables/03_04_cumulative_distribution_function.html">
+  <a class="reference internal" href="03_discrete_random_variables/0304_cumulative_distribution_function.html">
    Cumulative Distribution Function
   </a>
  </li>
@@ -313,6 +350,8 @@ title="Open an issue"
    <a href="#cap-probability_law"><strong>probability_law</strong></a> | 
    <a href="#cap-random_variables"><strong>random_variables</strong></a> | 
    <a href="#cap-sample_space"><strong>sample_space</strong></a> | 
+   <a href="#cap-thm_cdf"><strong>thm_cdf</strong></a> | 
+   <a href="#cap-thm_pmf_cdf"><strong>thm_pmf_cdf</strong></a> | 
    <a href="#cap-thm_pmf_normalization"><strong>thm_pmf_normalization</strong></a>
    </div>
 
@@ -323,7 +362,7 @@ title="Open an issue"
      <tr>
        <td></td>
        <td>
-       <a href="03_discrete_random_variables/03_04_cumulative_distribution_function.html#def_cdf"><code class="xref">def_cdf</code></a> <em>(03_discrete_random_variables/03_04_cumulative_distribution_function)</em></td><td>
+       <a href="03_discrete_random_variables/0304_cumulative_distribution_function.html#def_cdf"><code class="xref">def_cdf</code></a> <em>(03_discrete_random_variables/0304_cumulative_distribution_function)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-def_countable_set"><td></td><td>
@@ -331,7 +370,7 @@ title="Open an issue"
      <tr>
        <td></td>
        <td>
-       <a href="03_discrete_random_variables/03_02_discrete_random_variables.html#def_countable_set"><code class="xref">def_countable_set</code></a> <em>(03_discrete_random_variables/03_02_discrete_random_variables)</em></td><td>
+       <a href="03_discrete_random_variables/0302_discrete_random_variables.html#def_countable_set"><code class="xref">def_countable_set</code></a> <em>(03_discrete_random_variables/0302_discrete_random_variables)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-def_discrete_random_variables"><td></td><td>
@@ -339,7 +378,7 @@ title="Open an issue"
      <tr>
        <td></td>
        <td>
-       <a href="03_discrete_random_variables/03_02_discrete_random_variables.html#def_discrete_random_variables"><code class="xref">def_discrete_random_variables</code></a> <em>(03_discrete_random_variables/03_02_discrete_random_variables)</em></td><td>
+       <a href="03_discrete_random_variables/0302_discrete_random_variables.html#def_discrete_random_variables"><code class="xref">def_discrete_random_variables</code></a> <em>(03_discrete_random_variables/0302_discrete_random_variables)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-def_pmf"><td></td><td>
@@ -347,7 +386,7 @@ title="Open an issue"
      <tr>
        <td></td>
        <td>
-       <a href="03_discrete_random_variables/03_03_probability_mass_function.html#def_pmf"><code class="xref">def_pmf</code></a> <em>(03_discrete_random_variables/03_03_probability_mass_function)</em></td><td>
+       <a href="03_discrete_random_variables/0303_probability_mass_function.html#def_pmf"><code class="xref">def_pmf</code></a> <em>(03_discrete_random_variables/0303_probability_mass_function)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-def_state_space"><td></td><td>
@@ -355,7 +394,7 @@ title="Open an issue"
      <tr>
        <td></td>
        <td>
-       <a href="03_discrete_random_variables/03_03_probability_mass_function.html#def_state_space"><code class="xref">def_state_space</code></a> <em>(03_discrete_random_variables/03_03_probability_mass_function)</em></td><td>
+       <a href="03_discrete_random_variables/0303_probability_mass_function.html#def_state_space"><code class="xref">def_state_space</code></a> <em>(03_discrete_random_variables/0303_probability_mass_function)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-event"><td></td><td>
@@ -363,7 +402,7 @@ title="Open an issue"
      <tr>
        <td></td>
        <td>
-       <a href="02_probability/02_probability.html#event"><code class="xref">event</code></a> <em>(02_probability/02_probability)</em></td><td>
+       <a href="02_probability/0202_probability_space.html#event"><code class="xref">event</code></a> <em>(02_probability/0202_probability_space)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-event_space"><td></td><td>
@@ -371,7 +410,7 @@ title="Open an issue"
      <tr>
        <td></td>
        <td>
-       <a href="02_probability/02_probability.html#event_space"><code class="xref">event_space</code></a> <em>(02_probability/02_probability)</em></td><td>
+       <a href="02_probability/0202_probability_space.html#event_space"><code class="xref">event_space</code></a> <em>(02_probability/0202_probability_space)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-example_cdf"><td></td><td>
@@ -379,7 +418,7 @@ title="Open an issue"
      <tr>
        <td></td>
        <td>
-       <a href="03_discrete_random_variables/03_04_cumulative_distribution_function.html#example_cdf"><code class="xref">example_cdf</code></a> <em>(03_discrete_random_variables/03_04_cumulative_distribution_function)</em></td><td>
+       <a href="03_discrete_random_variables/0304_cumulative_distribution_function.html#example_cdf"><code class="xref">example_cdf</code></a> <em>(03_discrete_random_variables/0304_cumulative_distribution_function)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-example_pmf_coin_toss"><td></td><td>
@@ -387,7 +426,7 @@ title="Open an issue"
      <tr>
        <td></td>
        <td>
-       <a href="03_discrete_random_variables/03_03_probability_mass_function.html#example_pmf_coin_toss"><code class="xref">example_pmf_coin_toss</code></a> <em>(03_discrete_random_variables/03_03_probability_mass_function)</em></td><td>
+       <a href="03_discrete_random_variables/0303_probability_mass_function.html#example_pmf_coin_toss"><code class="xref">example_pmf_coin_toss</code></a> <em>(03_discrete_random_variables/0303_probability_mass_function)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-example_random_variable_coin_toss"><td></td><td>
@@ -395,7 +434,7 @@ title="Open an issue"
      <tr>
        <td></td>
        <td>
-       <a href="03_discrete_random_variables/03_01_random_variables.html#example_random_variable_coin_toss"><code class="xref">example_random_variable_coin_toss</code></a> <em>(03_discrete_random_variables/03_01_random_variables)</em></td><td>
+       <a href="03_discrete_random_variables/0301_random_variables.html#example_random_variable_coin_toss"><code class="xref">example_random_variable_coin_toss</code></a> <em>(03_discrete_random_variables/0301_random_variables)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-example_state_space_coin_toss"><td></td><td>
@@ -403,7 +442,7 @@ title="Open an issue"
      <tr>
        <td></td>
        <td>
-       <a href="03_discrete_random_variables/03_03_probability_mass_function.html#example_state_space_coin_toss"><code class="xref">example_state_space_coin_toss</code></a> <em>(03_discrete_random_variables/03_03_probability_mass_function)</em></td><td>
+       <a href="03_discrete_random_variables/0303_probability_mass_function.html#example_state_space_coin_toss"><code class="xref">example_state_space_coin_toss</code></a> <em>(03_discrete_random_variables/0303_probability_mass_function)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-example_variable_vs_random_variable"><td></td><td>
@@ -411,7 +450,7 @@ title="Open an issue"
      <tr>
        <td></td>
        <td>
-       <a href="03_discrete_random_variables/03_01_random_variables.html#example_variable_vs_random_variable"><code class="xref">example_variable_vs_random_variable</code></a> <em>(03_discrete_random_variables/03_01_random_variables)</em></td><td>
+       <a href="03_discrete_random_variables/0301_random_variables.html#example_variable_vs_random_variable"><code class="xref">example_variable_vs_random_variable</code></a> <em>(03_discrete_random_variables/0301_random_variables)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-experiment"><td></td><td>
@@ -419,7 +458,7 @@ title="Open an issue"
      <tr>
        <td></td>
        <td>
-       <a href="02_probability/02_probability.html#experiment"><code class="xref">experiment</code></a> <em>(02_probability/02_probability)</em></td><td>
+       <a href="02_probability/0202_probability_space.html#experiment"><code class="xref">experiment</code></a> <em>(02_probability/0202_probability_space)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-measure_zero_sets"><td></td><td>
@@ -427,7 +466,7 @@ title="Open an issue"
      <tr>
        <td></td>
        <td>
-       <a href="02_probability/02_probability.html#measure_zero_sets"><code class="xref">measure_zero_sets</code></a> <em>(02_probability/02_probability)</em></td><td>
+       <a href="02_probability/0202_probability_space.html#measure_zero_sets"><code class="xref">measure_zero_sets</code></a> <em>(02_probability/0202_probability_space)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-pre_image"><td></td><td>
@@ -435,7 +474,7 @@ title="Open an issue"
      <tr>
        <td></td>
        <td>
-       <a href="03_discrete_random_variables/03_01_random_variables.html#pre_image"><code class="xref">pre_image</code></a> <em>(03_discrete_random_variables/03_01_random_variables)</em></td><td>
+       <a href="03_discrete_random_variables/0301_random_variables.html#pre_image"><code class="xref">pre_image</code></a> <em>(03_discrete_random_variables/0301_random_variables)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-probability_law"><td></td><td>
@@ -443,7 +482,7 @@ title="Open an issue"
      <tr>
        <td></td>
        <td>
-       <a href="02_probability/02_probability.html#probability_law"><code class="xref">probability_law</code></a> <em>(02_probability/02_probability)</em></td><td>
+       <a href="02_probability/0202_probability_space.html#probability_law"><code class="xref">probability_law</code></a> <em>(02_probability/0202_probability_space)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-random_variables"><td></td><td>
@@ -451,7 +490,7 @@ title="Open an issue"
      <tr>
        <td></td>
        <td>
-       <a href="03_discrete_random_variables/03_01_random_variables.html#random_variables"><code class="xref">random_variables</code></a> <em>(03_discrete_random_variables/03_01_random_variables)</em></td><td>
+       <a href="03_discrete_random_variables/0301_random_variables.html#random_variables"><code class="xref">random_variables</code></a> <em>(03_discrete_random_variables/0301_random_variables)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-sample_space"><td></td><td>
@@ -459,15 +498,31 @@ title="Open an issue"
      <tr>
        <td></td>
        <td>
-       <a href="02_probability/02_probability.html#sample_space"><code class="xref">sample_space</code></a> <em>(02_probability/02_probability)</em></td><td>
+       <a href="02_probability/0202_probability_space.html#sample_space"><code class="xref">sample_space</code></a> <em>(02_probability/0202_probability_space)</em></td><td>
        <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-thm_cdf"><td></td><td>
+       <strong>thm_cdf</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="03_discrete_random_variables/0304_cumulative_distribution_function.html#thm_cdf"><code class="xref">thm_cdf</code></a> <em>(03_discrete_random_variables/0304_cumulative_distribution_function)</em></td><td>
+       <em>theorem</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-thm_pmf_cdf"><td></td><td>
+       <strong>thm_pmf_cdf</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="03_discrete_random_variables/0304_cumulative_distribution_function.html#thm_pmf_cdf"><code class="xref">thm_pmf_cdf</code></a> <em>(03_discrete_random_variables/0304_cumulative_distribution_function)</em></td><td>
+       <em>theorem</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-thm_pmf_normalization"><td></td><td>
        <strong>thm_pmf_normalization</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="03_discrete_random_variables/03_03_probability_mass_function.html#thm_pmf_normalization"><code class="xref">thm_pmf_normalization</code></a> <em>(03_discrete_random_variables/03_03_probability_mass_function)</em></td><td>
+       <a href="03_discrete_random_variables/0303_probability_mass_function.html#thm_pmf_normalization"><code class="xref">thm_pmf_normalization</code></a> <em>(03_discrete_random_variables/0303_probability_mass_function)</em></td><td>
        <em>theorem</em></td></tr>
    </table>
 

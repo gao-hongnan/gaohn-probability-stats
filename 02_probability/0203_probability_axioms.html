@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Discrete Random Variables &#8212; Machine Learning</title>
+    <title>Probability Axioms &#8212; Machine Learning</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -57,8 +57,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Probability Mass Function" href="03_03_probability_mass_function.html" />
-    <link rel="prev" title="Random Variables" href="03_01_random_variables.html" />
+    <link rel="next" title="Conditional Probability" href="0204_conditional_probability.html" />
+    <link rel="prev" title="Probability" href="0202_probability_space.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -120,13 +120,50 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Chapter 2. Probability
+  Chapter 1. Mathematical Preliminaries
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../02_probability/02_probability.html">
+  <a class="reference internal" href="../01_mathematical_preliminaries/01_combinatorics.html">
+   Permutations and Combinations
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Chapter 2. Probability
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="0202_probability_space.html">
    Probability
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Probability Axioms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="0204_conditional_probability.html">
+   Conditional Probability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="0205_independence.html">
+   Independence
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="0206_bayes_theorem.html">
+   Baye’s Theorem and the Law of Total Probability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="summary.html">
+   Summary
   </a>
  </li>
 </ul>
@@ -135,24 +172,24 @@ const thebe_selector_output = ".output, .cell_output"
   Chapter 3. Discrete Random Variables
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="03_01_random_variables.html">
+  <a class="reference internal" href="../03_discrete_random_variables/0301_random_variables.html">
    Random Variables
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_discrete_random_variables/0302_discrete_random_variables.html">
    Discrete Random Variables
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="03_03_probability_mass_function.html">
+  <a class="reference internal" href="../03_discrete_random_variables/0303_probability_mass_function.html">
    Probability Mass Function
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="03_04_cumulative_distribution_function.html">
+  <a class="reference internal" href="../03_discrete_random_variables/0304_cumulative_distribution_function.html">
    Cumulative Distribution Function
   </a>
  </li>
@@ -246,7 +283,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/gao-hongnan/gaohn-probability-stats/issues/new?title=Issue%20on%20page%20%2F03_discrete_random_variables/03_02_discrete_random_variables.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/gao-hongnan/gaohn-probability-stats/issues/new?title=Issue%20on%20page%20%2F02_probability/0203_probability_axioms.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -274,7 +311,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/03_discrete_random_variables/03_02_discrete_random_variables.md"
+        <a href="../_sources/02_probability/0203_probability_axioms.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -334,9 +371,31 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#definition">
-   Definition
+  <a class="reference internal nav-link" href="#definition-the-three-axioms-of-probability-kolmogorov-axioms">
+   Definition (The Three Axioms of Probability (Kolmogorov Axioms))
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#corollary-implications-of-the-probability-axioms">
+   Corollary (Implications of the Probability Axioms)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#corollary-inclusion-exclusion-unions-of-two-non-disjoint-sets">
+     Corollary (Inclusion-Exclusion - Unions of Two Non-Disjoint Sets)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#corollary-inequality-bounds">
+     Corollary (Inequality Bounds)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#definition-mutually-exclusive-events">
+     Definition (Mutually Exclusive Events)
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -347,7 +406,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Discrete Random Variables</h1>
+                <h1>Probability Axioms</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -358,9 +417,31 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#definition">
-   Definition
+  <a class="reference internal nav-link" href="#definition-the-three-axioms-of-probability-kolmogorov-axioms">
+   Definition (The Three Axioms of Probability (Kolmogorov Axioms))
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#corollary-implications-of-the-probability-axioms">
+   Corollary (Implications of the Probability Axioms)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#corollary-inclusion-exclusion-unions-of-two-non-disjoint-sets">
+     Corollary (Inclusion-Exclusion - Unions of Two Non-Disjoint Sets)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#corollary-inequality-bounds">
+     Corollary (Inequality Bounds)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#definition-mutually-exclusive-events">
+     Definition (Mutually Exclusive Events)
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -372,30 +453,72 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="discrete-random-variables">
-<h1>Discrete Random Variables<a class="headerlink" href="#discrete-random-variables" title="Permalink to this headline">#</a></h1>
-<section id="definition">
-<h2>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">#</a></h2>
-<div class="proof definition admonition" id="def_countable_set">
-<p class="admonition-title"><span class="caption-number">Definition 9 </span> (Countable Set)</p>
-<section class="definition-content" id="proof-content">
-<p>A <strong>countable set</strong> is a set that can be put into a one-to-one correspondence with
-the natural numbers <span class="math notranslate nohighlight">\(\mathbb{N}\)</span>.</p>
-<p>Sets such as <span class="math notranslate nohighlight">\(\mathbb{N}\)</span>, <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span> and <span class="math notranslate nohighlight">\(\mathbb{Q}\)</span> are countable while intervals
-in the real space <span class="math notranslate nohighlight">\(\R\)</span> are not.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="probability-axioms">
+<h1>Probability Axioms<a class="headerlink" href="#probability-axioms" title="Permalink to this headline">#</a></h1>
+<section id="definition-the-three-axioms-of-probability-kolmogorov-axioms">
+<h2>Definition (The Three Axioms of Probability (Kolmogorov Axioms))<a class="headerlink" href="#definition-the-three-axioms-of-probability-kolmogorov-axioms" title="Permalink to this headline">#</a></h2>
+<p>A probability function <span class="math notranslate nohighlight">\(\P\)</span> must satisfy the three axioms below. Recall
+that the <strong>probability function</strong> in a well defined <strong>experiment</strong> is a
+function <span class="math notranslate nohighlight">\(\P: \E \to [0, 1]\)</span>. Informally, for any event <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(\P(A)\)</span> is
+defined as the probability of event <span class="math notranslate nohighlight">\(A\)</span> happening.</p>
+<p>This function must satisfy the following:</p>
+<ol class="simple">
+<li><p>First axiom (Non - Negativity Axiom): <span class="math notranslate nohighlight">\(\P(A) \geq 0\)</span> for any event
+<span class="math notranslate nohighlight">\(A \subseteq \S\)</span>.</p></li>
+<li><p>Second Axiom (Normalization Axiom): <span class="math notranslate nohighlight">\(\sum_{i=1}^{n}\P(A_i) = 1\)</span>
+where <span class="math notranslate nohighlight">\(A_i\)</span> are all possible outcomes for <span class="math notranslate nohighlight">\(i = 1, 2,..., n\)</span>.</p></li>
+<li><p>Third Axiom (Additivity Axiom): Given a countable sequence of
+<strong>disjoint events</strong> <span class="math notranslate nohighlight">\(A_1, A_2, ..., A_n,... \subset \S\)</span>, we have</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\P\left(\bigsqcup_{i=1}^{\infty} A_i \right) = \sum_{i=1}^{\infty}\P[A_i]
+\]</div>
 </section>
-</div><div class="proof definition admonition" id="def_discrete_random_variables">
-<p class="admonition-title"><span class="caption-number">Definition 10 </span> (Discrete Random Variables)</p>
-<section class="definition-content" id="proof-content">
-<p>A <strong>discrete random variable</strong> <span class="math notranslate nohighlight">\(X\)</span> is a random variable<a class="footnote-reference brackets" href="#random-variable" id="id1">1</a> whose range is
-a countable set.</p>
+<section id="corollary-implications-of-the-probability-axioms">
+<h2>Corollary (Implications of the Probability Axioms)<a class="headerlink" href="#corollary-implications-of-the-probability-axioms" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Probability of Empty Set: <span class="math notranslate nohighlight">\(\P(\emptyset) = 0\)</span></p></li>
+<li><p>Complements: <span class="math notranslate nohighlight">\(\P(A) = 1 - \P(A^{c})\)</span></p></li>
+</ul>
+<section id="corollary-inclusion-exclusion-unions-of-two-non-disjoint-sets">
+<h3>Corollary (Inclusion-Exclusion - Unions of Two Non-Disjoint Sets)<a class="headerlink" href="#corollary-inclusion-exclusion-unions-of-two-non-disjoint-sets" title="Permalink to this headline">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+\P(A \cup B) = \P(A) + \P(B) - \P(A \cap B)
+\]</div>
 </section>
-</div><hr class="footnotes docutils" />
-<dl class="footnote brackets">
-<dt class="label" id="random-variable"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>See <a class="reference internal" href="03_01_random_variables.html#random_variables">Definition 7</a> for the definition of a random variable.</p>
-</dd>
-</dl>
+<section id="corollary-inequality-bounds">
+<h3>Corollary (Inequality Bounds)<a class="headerlink" href="#corollary-inequality-bounds" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Union Bound: <span class="math notranslate nohighlight">\(\P(A \cup B) \leq \P(A) + P(B)\)</span></p></li>
+<li><p>Monotonicity: If <span class="math notranslate nohighlight">\(A \subset B\)</span>, then <span class="math notranslate nohighlight">\(\P(A) \leq \P(B)\)</span></p></li>
+<li><p>Numeric Bound: It immediately follows that for any event <span class="math notranslate nohighlight">\(A\)</span>,
+<span class="math notranslate nohighlight">\(\P(A) \leq 1\)</span> by Monotonicity and Axiom 2. Because an event <span class="math notranslate nohighlight">\(A\)</span> can
+at most be summed to 1, so any events must be a subset of its
+summation, so the probability of the summation is 1, hence
+<span class="math notranslate nohighlight">\(\P(A) \leq 1\)</span> by Monotonicity.</p></li>
+</ul>
+</section>
+<section id="definition-mutually-exclusive-events">
+<h3>Definition (Mutually Exclusive Events)<a class="headerlink" href="#definition-mutually-exclusive-events" title="Permalink to this headline">#</a></h3>
+<p>In logic and probability theory, two events (or propositions) are
+mutually exclusive or disjoint if they cannot both occur at the same
+time.</p>
+<p>A clear example is the set of outcomes of a single coin toss, which can
+result in either heads or tails, but not both. To be concise, let the
+event of coin landing on head be <span class="math notranslate nohighlight">\(A\)</span>, the event of coin landing on tails
+be <span class="math notranslate nohighlight">\(B\)</span>, event <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> can never occur at the same time, it is the
+case that one cannot be true if the other one is true, or at least one
+of them cannot be true.</p>
+<p>One can draw a venn diagram with event <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> being disjoint to
+illustrate the idea.</p>
+<p>Also, by <strong>Unions of Two Non-Disjoint Sets</strong>, it is easy to see that
+<span class="math notranslate nohighlight">\(\P(A \cup B) = \P(A) + \P(B)\)</span> since <span class="math notranslate nohighlight">\(\P(A \cap B) = 0\)</span>. For the coin
+toss example, since <span class="math notranslate nohighlight">\(A \cup B\)</span> spans the entire sample space, it is
+intuitive that <span class="math notranslate nohighlight">\(P(A \cup B)\)</span> (the probability of throwing a head OR a
+tail) is 1.</p>
+</section>
 </section>
 </section>
 
@@ -412,7 +535,7 @@ a countable set.</p>
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./03_discrete_random_variables"
+            path: "./02_probability"
         },
         predefinedOutput: true
     }
@@ -426,17 +549,17 @@ a countable set.</p>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="03_01_random_variables.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="0202_probability_space.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Random Variables</p>
+            <p class="prev-next-title">Probability</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="03_03_probability_mass_function.html" title="next page">
+    <a class='right-next' id="next-link" href="0204_conditional_probability.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Probability Mass Function</p>
+        <p class="prev-next-title">Conditional Probability</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

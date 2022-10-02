@@ -31,7 +31,7 @@ In particular, in continuous random variables, we do not have an equivalent of P
 ````{prf:definition} Cumulative Distribution Function
 :label: def_cdf
 
-Let $X$ be a discrete random variable with $\S = \lset \xi_1, \xi_2, \dots, \xi_n \rset$ where $\xi_i \in \R$ for all $i$.
+Let $X$ be a discrete random variable with $\S = \lset \xi_1, \xi_2, \ldots \rset$ where $\xi_i \in \R$ for all $i$.
 
 Then the **cumulative distribution function** $\cdf$ is defined as 
 
@@ -86,12 +86,84 @@ $$
 ```{code-cell} ipython3
 :tags: [hide-input]
 import warnings
-warnings.filterwarnings('ignore')
+
+warnings.filterwarnings("ignore")
 import numpy as np
 import matplotlib.pyplot as plt
+
 p = np.array([0.25, 0.5, 0.25])
 x = np.array([0, 1, 4])
 F = np.cumsum(p)
-plt.stem(x,p,use_line_collection=True); plt.show()
-plt.step(x,F); plt.show();
+# plot 2 diagrams in one figure
+# y axis start from 0 to 1
+fig, ax = plt.subplots(1, 2, sharex=False, sharey=False, figsize=(10, 5))
+ax[0].set_ylim(0, 1)
+ax[0].set_title("PDF")
+ax[0].set_ylabel("Probability")
+ax[0].set_xlabel("x")
+ax[0].stem(x, p, use_line_collection=True)
+ax[0].grid(False)
+ax[1].set_ylim(0, 1)
+ax[1].set_title("CDF")
+ax[1].set_ylabel("Probability")
+ax[1].set_xlabel("x")
+ax[1].step(x, F)
+ax[1].grid(False)
+plt.show()
 ```
+
+## Properties
+
+````{prf:theorem} Properties of CDF
+:label: thm_cdf
+
+Let $X$ be a discrete random variable with $\S = \lset \xi_1, \xi_2, \ldots \rset$ 
+where $\xi_i \in \R$ for all $i$. Then, the CDF $\cdf$ of $X$ satisfies the following properties:
+
+1. The CDF is a staircase function and is non-decreasing. That is, for any $\xi \in \S$, we have
+
+    $$
+    \cdf(\xi) \leq \cdf(\xi+1)
+    $$
+
+2. The CDF is a probability function. That is, for any $\xi \in \S$, we have
+
+    $$
+    0 \leq \cdf(\xi) \leq 1
+    $$
+
+    In particular, we have the minimum of the CDF is 0 and the maximum is 1 for 
+    $\xi = -\infty$ and $\xi = \infty$ respectively.
+
+3. The CDF is right continuous. That is, for any $\xi \in \S$, we have
+
+    $$
+    \cdf(\xi) = \lim_{\xi' \to \xi} \cdf(\xi')
+    $$
+````
+
+## PMF and CDF Conversion
+
+````{prf:theorem} PMF and CDF Conversion
+:label: thm_pmf_cdf
+
+Let $X$ be a discrete random variable with $\S = \lset \xi_1, \xi_2, \ldots \rset$ 
+where $\xi_i \in \R$ for all $i$. Then, the PMF of $X$ can be obtained from 
+the CDF by
+
+$$
+\pmf(\xi_k) = \cdf(\xi_k) - \cdf(\xi_{k-1})
+$$ (eq:pmf_cdf_1)
+
+where $X$ has a countable set of states $\S$. 
+
+Furthermore, if the sample space of the random variable $X$ contains integers from $-\infty$ to
+$\infty$, then the CDF of $X$ can be obtained from the PMF by
+
+$$
+\cdf(k) = \cdf(k) - \cdf(k-1)
+$$ (eq:pmf_cdf_2)
+````
+
+
+

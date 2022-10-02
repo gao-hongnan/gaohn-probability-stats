@@ -57,8 +57,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Cumulative Distribution Function" href="03_04_cumulative_distribution_function.html" />
-    <link rel="prev" title="Discrete Random Variables" href="03_02_discrete_random_variables.html" />
+    <link rel="next" title="Cumulative Distribution Function" href="0304_cumulative_distribution_function.html" />
+    <link rel="prev" title="Discrete Random Variables" href="0302_discrete_random_variables.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -120,13 +120,50 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
+  Chapter 1. Mathematical Preliminaries
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_mathematical_preliminaries/01_combinatorics.html">
+   Permutations and Combinations
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
   Chapter 2. Probability
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../02_probability/02_probability.html">
+  <a class="reference internal" href="../02_probability/0202_probability_space.html">
    Probability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_probability/0203_probability_axioms.html">
+   Probability Axioms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_probability/0204_conditional_probability.html">
+   Conditional Probability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_probability/0205_independence.html">
+   Independence
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_probability/0206_bayes_theorem.html">
+   Baye’s Theorem and the Law of Total Probability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_probability/summary.html">
+   Summary
   </a>
  </li>
 </ul>
@@ -137,12 +174,12 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="03_01_random_variables.html">
+  <a class="reference internal" href="0301_random_variables.html">
    Random Variables
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="03_02_discrete_random_variables.html">
+  <a class="reference internal" href="0302_discrete_random_variables.html">
    Discrete Random Variables
   </a>
  </li>
@@ -152,7 +189,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="03_04_cumulative_distribution_function.html">
+  <a class="reference internal" href="0304_cumulative_distribution_function.html">
    Cumulative Distribution Function
   </a>
  </li>
@@ -246,7 +283,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/gao-hongnan/gaohn-probability-stats/issues/new?title=Issue%20on%20page%20%2F03_discrete_random_variables/03_03_probability_mass_function.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/gao-hongnan/gaohn-probability-stats/issues/new?title=Issue%20on%20page%20%2F03_discrete_random_variables/0303_probability_mass_function.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -274,7 +311,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/03_discrete_random_variables/03_03_probability_mass_function.md"
+        <a href="../_sources/03_discrete_random_variables/0303_probability_mass_function.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -401,12 +438,12 @@ title="Print to PDF"
 <section class="definition-content" id="proof-content">
 <p>The set of all possible states of <span class="math notranslate nohighlight">\(X\)</span> is called the <strong>state space</strong> of <span class="math notranslate nohighlight">\(X\)</span> and is denoted as <span class="math notranslate nohighlight">\(X(\S)\)</span>.</p>
 <p>In particular, the state space of a discrete random variable <span class="math notranslate nohighlight">\(X\)</span> is a countable set
-as per <a class="reference internal" href="03_02_discrete_random_variables.html#def_discrete_random_variables">Definition 10</a>.</p>
+as per <a class="reference internal" href="0302_discrete_random_variables.html#def_discrete_random_variables">Definition 10</a>.</p>
 </section>
 </div><div class="proof example admonition" id="example_state_space_coin_toss">
 <p class="admonition-title"><span class="caption-number">Example 2 </span> (State Space of Coin Toss)</p>
 <section class="example-content" id="proof-content">
-<p>Let us revisit the example in <a class="reference internal" href="03_01_random_variables.html#example_random_variable_coin_toss">Example </a> and examine the state space of <span class="math notranslate nohighlight">\(X\)</span>.</p>
+<p>Let us revisit the example in <a class="reference internal" href="0301_random_variables.html#example_random_variable_coin_toss">Example </a> and examine the state space of <span class="math notranslate nohighlight">\(X\)</span>.</p>
 <p>The state space of <span class="math notranslate nohighlight">\(X\)</span> is the set of all possible values that <span class="math notranslate nohighlight">\(X\)</span> can take. As enumerated in the example,
 we see that the state space of <span class="math notranslate nohighlight">\(X\)</span> is <span class="math notranslate nohighlight">\(\{0, 1, 2\}\)</span> (i.e. <span class="math notranslate nohighlight">\(X\)</span> takes 3 states 0, 1 and 2).</p>
 </section>
@@ -427,7 +464,7 @@ we see that the state space of <span class="math notranslate nohighlight">\(X\)<
 </div><div class="proof example admonition" id="example_pmf_coin_toss">
 <p class="admonition-title"><span class="caption-number">Example 3 </span> (PMF of Coin Toss)</p>
 <section class="example-content" id="proof-content">
-<p>Let us revisit the example in <a class="reference internal" href="03_01_random_variables.html#example_random_variable_coin_toss">Example </a> and compute the PMF of <span class="math notranslate nohighlight">\(X\)</span>.</p>
+<p>Let us revisit the example in <a class="reference internal" href="0301_random_variables.html#example_random_variable_coin_toss">Example </a> and compute the PMF of <span class="math notranslate nohighlight">\(X\)</span>.</p>
 <p>Recall the sample space is given by <span class="math notranslate nohighlight">\(\S = \{(HH), (HT), (TH), (TT)\}\)</span> and the state space is given by
 <span class="math notranslate nohighlight">\(X(\S) = \{0, 1, 2\}\)</span> as enumerated in <a class="reference internal" href="#example_state_space_coin_toss">Example 2</a>.</p>
 <p>Thus, our domain of <span class="math notranslate nohighlight">\(\pmf\)</span> is <span class="math notranslate nohighlight">\(X(\S) = \{0, 1, 2\}\)</span> we have 3 mappings to compute:</p>
@@ -492,14 +529,14 @@ section 3.2.5.</p>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="03_02_discrete_random_variables.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="0302_discrete_random_variables.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title">Discrete Random Variables</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="03_04_cumulative_distribution_function.html" title="next page">
+    <a class='right-next' id="next-link" href="0304_cumulative_distribution_function.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Cumulative Distribution Function</p>
