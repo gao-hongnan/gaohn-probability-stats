@@ -506,19 +506,15 @@ In particular, in continuous random variables, we do not have an equivalent of P
 <div class="proof definition admonition" id="def_cdf">
 <p class="admonition-title"><span class="caption-number">Definition 13 </span> (Cumulative Distribution Function)</p>
 <section class="definition-content" id="proof-content">
-<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a discrete random variable with <span class="math notranslate nohighlight">\(\S = \lset \xi_1, \xi_2, \ldots \rset\)</span> where <span class="math notranslate nohighlight">\(\xi_i \in \R\)</span> for all <span class="math notranslate nohighlight">\(i\)</span>.</p>
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a discrete random variable with <span class="math notranslate nohighlight">\(\S = \lset \xi_1, \xi_2, \ldots \rset\)</span> where
+<span class="math notranslate nohighlight">\(\xi_i \in \R\)</span> for all <span class="math notranslate nohighlight">\(i\)</span>. Note that <span class="math notranslate nohighlight">\(X(\xi_i) = x_i\)</span> for all <span class="math notranslate nohighlight">\(i\)</span> where <span class="math notranslate nohighlight">\(x_i\)</span> is the state of <span class="math notranslate nohighlight">\(X\)</span>.</p>
 <p>Then the <strong>cumulative distribution function</strong> <span class="math notranslate nohighlight">\(\cdf\)</span> is defined as</p>
 <div class="math notranslate nohighlight" id="equation-eq-def-cdf">
 <span class="eqno">(3)<a class="headerlink" href="#equation-eq-def-cdf" title="Permalink to this equation">#</a></span>\[
-\cdf(\xi_k) \overset{\text{def}}{=} \P \lsq X \leq \xi_k \rsq = \sum_{\ell=1}^k \P \lsq X = \xi_{\ell} \rsq = \sum_{\ell=1}^k \pmf(\xi_{\ell})
+\cdf(x_k) \overset{\text{def}}{=} \P \lsq X \leq x_k \rsq = \sum_{\ell=1}^k \P \lsq X = x_{\ell} \rsq = \sum_{\ell=1}^k \pmf(x_{\ell})
 \]</div>
-<p>Since <span class="math notranslate nohighlight">\(\P \lsq X = \xi_{\ell} \rsq\)</span> is the probability mass function, we can also replace
+<p>Since <span class="math notranslate nohighlight">\(\P \lsq X = x_{\ell} \rsq\)</span> is the probability mass function, we can also replace
 the symbol with the <span class="math notranslate nohighlight">\(\pmf\)</span> symbol.</p>
-<p>If <span class="math notranslate nohighlight">\(\S = \lset \ldots, -1, 0, 1, 2, \ldots \rset\)</span>, then we can write the CDF as</p>
-<div class="math notranslate nohighlight">
-\[
-\cdf(k) \overset{\text{def}}{=} \P \lsq X \leq k \rsq = \sum_{\ell=-\infty}^k \P \lsq X = \ell \rsq = \sum_{\ell=-\infty}^k \pmf(\ell)
-\]</div>
 </section>
 </div><div class="proof example admonition" id="example_cdf">
 <p class="admonition-title"><span class="caption-number">Example 4 </span> (CDF)</p>
@@ -566,7 +562,7 @@ the symbol with the <span class="math notranslate nohighlight">\(\pmf\)</span> s
 <span class="c1"># y axis start from 0 to 1</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;PDF&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;PMF&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Probability&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">use_line_collection</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -582,7 +578,10 @@ the symbol with the <span class="math notranslate nohighlight">\(\pmf\)</span> s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/0304_cumulative_distribution_function_1_0.png" src="../_images/0304_cumulative_distribution_function_1_0.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matplotlib is building the font cache; this may take a moment.
+</pre></div>
+</div>
+<img alt="../_images/0304_cumulative_distribution_function_1_1.png" src="../_images/0304_cumulative_distribution_function_1_1.png" />
 </div>
 </div>
 </section>
@@ -597,23 +596,18 @@ where <span class="math notranslate nohighlight">\(\xi_i \in \R\)</span> for all
 <li><p>The CDF is a staircase function and is non-decreasing. That is, for any <span class="math notranslate nohighlight">\(\xi \in \S\)</span>, we have</p>
 <div class="math notranslate nohighlight">
 \[
-    \cdf(\xi) \leq \cdf(\xi+1)
+    \cdf(x) \leq \cdf(x+1)
     \]</div>
 </li>
-<li><p>The CDF is a probability function. That is, for any <span class="math notranslate nohighlight">\(\xi \in \S\)</span>, we have</p>
+<li><p>The CDF is a probability function.</p>
 <div class="math notranslate nohighlight">
 \[
-    0 \leq \cdf(\xi) \leq 1
+    0 \leq \cdf(x) \leq 1
     \]</div>
 <p>In particular, we have the minimum of the CDF is 0 and the maximum is 1 for
-<span class="math notranslate nohighlight">\(\xi = -\infty\)</span> and <span class="math notranslate nohighlight">\(\xi = \infty\)</span> respectively.</p>
+<span class="math notranslate nohighlight">\(x = -\infty\)</span> and <span class="math notranslate nohighlight">\(x = \infty\)</span> respectively.</p>
 </li>
-<li><p>The CDF is right continuous. That is, for any <span class="math notranslate nohighlight">\(\xi \in \S\)</span>, we have</p>
-<div class="math notranslate nohighlight">
-\[
-    \cdf(\xi) = \lim_{\xi' \to \xi} \cdf(\xi')
-    \]</div>
-</li>
+<li><p>The CDF is right continuous.</p></li>
 </ol>
 </section>
 </div></section>
@@ -623,19 +617,13 @@ where <span class="math notranslate nohighlight">\(\xi_i \in \R\)</span> for all
 <p class="admonition-title"><span class="caption-number">Theorem 3 </span> (PMF and CDF Conversion)</p>
 <section class="theorem-content" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(X\)</span> be a discrete random variable with <span class="math notranslate nohighlight">\(\S = \lset \xi_1, \xi_2, \ldots \rset\)</span>
-where <span class="math notranslate nohighlight">\(\xi_i \in \R\)</span> for all <span class="math notranslate nohighlight">\(i\)</span>. Then, the PMF of <span class="math notranslate nohighlight">\(X\)</span> can be obtained from
-the CDF by</p>
+where <span class="math notranslate nohighlight">\(\xi_i \in \R\)</span> for all <span class="math notranslate nohighlight">\(i\)</span>. Note that <span class="math notranslate nohighlight">\(X(\xi_i) = x_i\)</span> for all <span class="math notranslate nohighlight">\(i\)</span> where <span class="math notranslate nohighlight">\(x_i\)</span> is the state of <span class="math notranslate nohighlight">\(X\)</span>.
+Then, the PMF of <span class="math notranslate nohighlight">\(X\)</span> can be obtained from the CDF by</p>
 <div class="math notranslate nohighlight" id="equation-eq-pmf-cdf-1">
 <span class="eqno">(4)<a class="headerlink" href="#equation-eq-pmf-cdf-1" title="Permalink to this equation">#</a></span>\[
-\pmf(\xi_k) = \cdf(\xi_k) - \cdf(\xi_{k-1})
+\pmf(x_k) = \cdf(x_k) - \cdf(x_{k-1})
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(X\)</span> has a countable set of states <span class="math notranslate nohighlight">\(\S\)</span>.</p>
-<p>Furthermore, if the sample space of the random variable <span class="math notranslate nohighlight">\(X\)</span> contains integers from <span class="math notranslate nohighlight">\(-\infty\)</span> to
-<span class="math notranslate nohighlight">\(\infty\)</span>, then the CDF of <span class="math notranslate nohighlight">\(X\)</span> can be obtained from the PMF by</p>
-<div class="math notranslate nohighlight" id="equation-eq-pmf-cdf-2">
-<span class="eqno">(5)<a class="headerlink" href="#equation-eq-pmf-cdf-2" title="Permalink to this equation">#</a></span>\[
-\cdf(k) = \cdf(k) - \cdf(k-1)
-\]</div>
 </section>
 </div></section>
 </section>
