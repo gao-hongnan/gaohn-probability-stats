@@ -1,0 +1,975 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Exercises &#8212; Probability &amp; Statistics</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/tabs.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"st": "\\mid", "S": "\\Omega", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "pmf": "p_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Random Variables" href="../03_discrete_random_variables/0301_random_variables.html" />
+    <link rel="prev" title="Summary" href="summary.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Probability & Statistics</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Chapter 1. Mathematical Preliminaries
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_mathematical_preliminaries/01_combinatorics.html">
+   Permutations and Combinations
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Chapter 2. Probability
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="0202_probability_space.html">
+   Probability Space
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="0203_probability_axioms.html">
+   Probability Axioms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="0204_conditional_probability.html">
+   Conditional Probability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="0205_independence.html">
+   Independence
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="0206_bayes_theorem.html">
+   Baye’s Theorem and the Law of Total Probability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="summary.html">
+   Summary
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Exercises
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Chapter 3. Discrete Random Variables
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_discrete_random_variables/0301_random_variables.html">
+   Random Variables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_discrete_random_variables/0302_discrete_random_variables.html">
+   Discrete Random Variables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_discrete_random_variables/0303_probability_mass_function.html">
+   Probability Mass Function
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_discrete_random_variables/0304_cumulative_distribution_function.html">
+   Cumulative Distribution Function
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/gao-hongnan/gaohn-probability-stats/main?urlpath=tree/docs/02_probability/exercises.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/gao-hongnan/gaohn-probability-stats/blob/main/docs/02_probability/exercises.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/gao-hongnan/gaohn-probability-stats"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/gao-hongnan/gaohn-probability-stats/issues/new?title=Issue%20on%20page%20%2F02_probability/exercises.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/02_probability/exercises.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#question-6">
+   Question 6
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#question-9">
+   Question 9
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#question-10-birthday-paradox">
+   Question 10: Birthday Paradox
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Exercises</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#question-6">
+   Question 6
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#question-9">
+   Question 9
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#question-10-birthday-paradox">
+   Question 10: Birthday Paradox
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="exercises">
+<h1>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">string</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">numpy.random</span> <span class="kn">import</span> <span class="n">default_rng</span>
+
+<span class="c1"># from functools import cache # 3.9</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">cd</span> ..
+
+<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">seed_all</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/work/gaohn-probability-stats/gaohn-probability-stats/content
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Consider one day to code up random generators like Uniform Distribution from scratch:</p></li>
+<li><p><a class="reference external" href="https://github.com/neerajkumarvaid/Data-Science-From-Scratch-Python/blob/master/probability.py">https://github.com/neerajkumarvaid/Data-Science-From-Scratch-Python/blob/master/probability.py</a></p></li>
+<li><p><a class="reference external" href="https://towardsdatascience.com/how-to-generate-random-variables-from-scratch-no-library-used-4b71eb3c8dc7">https://towardsdatascience.com/how-to-generate-random-variables-from-scratch-no-library-used-4b71eb3c8dc7</a></p></li>
+</ul>
+<section id="question-6">
+<h2>Question 6<a class="headerlink" href="#question-6" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span>
+            <span class="p">(</span><span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">y</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Create meshgrids such that we enumerate cases of the range <span class="math notranslate nohighlight">\([-3, 3] \times [-3, 3]\)</span> for the values that <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> can take on. Correspondingly, set <span class="math notranslate nohighlight">\(Z = f(X, Y)\)</span> such that we have constant values for the set of values we got from the meshgrid.</p>
+<p>As an example:</p>
+<ul class="simple">
+<li><p>When <span class="math notranslate nohighlight">\(X = -3, Y = 3\)</span>, we have <span class="math notranslate nohighlight">\(Z = f(X, Y) = 2.8986519194402697e-07\)</span>. This is one contour line in the 2d space, but why it looks like a curvature (circle)? This suggests that when keeping <span class="math notranslate nohighlight">\(Z\)</span> to be the constant of <span class="math notranslate nohighlight">\(2.8986519194402697e-07\)</span>, there are many different set of <span class="math notranslate nohighlight">\((X, Y)\)</span> that gives this value!</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdGy&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/exercises_7_0.png" src="../_images/exercises_7_0.png" />
+</div>
+</div>
+</section>
+<section id="question-9">
+<h2>Question 9<a class="headerlink" href="#question-9" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @lru_cache</span>
+<span class="k">def</span> <span class="nf">calc_vowel_consonant_prob</span><span class="p">(</span>
+    <span class="n">num_simulations</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">letters</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+    <span class="n">vowels</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+    <span class="n">consonants</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+    <span class="o">*</span><span class="n">args</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;A collection of 26 English letters, a-z, is mixed in a jar. Two letters are drawn at random,</span>
+<span class="sd">    one after the other without replacement. What is the probability of drawing a vowel (a,e,i,o,u)</span>
+<span class="sd">    and a consonant in either order?</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        num_simulations (int): Number of simulations to run.</span>
+<span class="sd">        letters (List[str]): List of letters.</span>
+<span class="sd">        vowels (List[str]): List of vowels.</span>
+<span class="sd">        consonants (List[str]): List of consonants.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (float): The probability of drawing a vowel and a consonant in either order.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">rng</span> <span class="o">=</span> <span class="n">default_rng</span><span class="p">()</span>
+    
+    <span class="n">letters</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">letters</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_simulations</span><span class="p">):</span>
+        <span class="n">sample_2_letters_without_replacement</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">chosen_letters</span> <span class="o">=</span> <span class="n">letters</span><span class="p">[</span><span class="n">sample_2_letters_without_replacement</span><span class="p">]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span>
+            <span class="nb">set</span><span class="p">(</span><span class="n">chosen_letters</span><span class="p">)</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">vowels</span><span class="p">)</span>
+            <span class="ow">or</span> <span class="nb">set</span><span class="p">(</span><span class="n">chosen_letters</span><span class="p">)</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">consonants</span><span class="p">)</span>
+        <span class="p">):</span>
+            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">count</span> <span class="o">/</span> <span class="n">num_simulations</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_letters</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">ascii_lowercase</span><span class="p">)</span>
+<span class="n">vowels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;e&quot;</span><span class="p">,</span> <span class="s2">&quot;i&quot;</span><span class="p">,</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="s2">&quot;u&quot;</span><span class="p">]</span>
+<span class="n">consonants</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">all_letters</span><span class="p">)</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">vowels</span><span class="p">))</span>
+
+<span class="n">num_simulations</span> <span class="o">=</span> <span class="mi">1000000</span>
+<span class="n">calc_vowel_consonant_prob</span><span class="p">(</span><span class="n">num_simulations</span><span class="p">,</span> <span class="n">all_letters</span><span class="p">,</span> <span class="n">vowels</span><span class="p">,</span> <span class="n">consonants</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mi">26</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.323598
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sample_2_letters_without_replacement</span> <span class="pre">=</span> <span class="pre">rng.choice(a</span> <span class="pre">=</span> <span class="pre">26,</span> <span class="pre">size</span> <span class="pre">=</span> <span class="pre">2,</span> <span class="pre">replace=False)</span></code>: This is equivalent to <code class="docutils literal notranslate"><span class="pre">random.sample(range(26),</span> <span class="pre">2)</span></code> which if we set the parameters correctly, means we will sample index 0 to 25 twice, without replacement. For example, the sampled index is in a form of a array of size 2: <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">4]</span></code> which corresponds to the letters <code class="docutils literal notranslate"><span class="pre">[b,</span> <span class="pre">e]</span></code>.</p>
+<ul>
+<li><p>Note in particular this <strong>sampling</strong> is a using a <strong>uniform distribution</strong> where each letter has <span class="math notranslate nohighlight">\(\frac{1}{26}\)</span> chance of getting selected in the first sample.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">chosen_letters</span> <span class="pre">=</span> <span class="pre">np.asarray(all_letters)[sample_2_letters_without_replacement]</span></code>: This is just subsetting the index from the <code class="docutils literal notranslate"><span class="pre">all_letters</span></code>. Since <code class="docutils literal notranslate"><span class="pre">all_letters</span></code> is a list which enumerates the alphabets in order, it suffices for us to just subset the array directly to get the chosen letters.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">not</span> <span class="pre">(set(chosen_letters).issubset(vowels)</span> <span class="pre">or</span> <span class="pre">set(chosen_letters).issubset(consonant)):</span> <span class="pre">count</span> <span class="pre">+=</span> <span class="pre">1</span></code>: If our <code class="docutils literal notranslate"><span class="pre">chosen_letters</span></code> is neither a subset of the vowels or the consonant, then this means that it fulfills our condition, (i.e. one consonant and one vowel, we don’t care order since the question said either order). If condition fulfilled, <code class="docutils literal notranslate"><span class="pre">count</span></code> adds 1.</p></li>
+<li><p>Lastly, calculate the probability by dividing the <code class="docutils literal notranslate"><span class="pre">count</span></code> by the <code class="docutils literal notranslate"><span class="pre">num_simulations</span></code> to get the frequency (i.e the probability). Indeed with enough simulations, the probability converges to the theoretical answer of <span class="math notranslate nohighlight">\(0.3230...\)</span>.</p></li>
+</ul>
+</section>
+<section id="question-10-birthday-paradox">
+<h2>Question 10: Birthday Paradox<a class="headerlink" href="#question-10-birthday-paradox" title="Permalink to this headline">#</a></h2>
+<p>Settings:</p>
+<ul class="simple">
+<li><p>50 people</p>
+<ul>
+<li><p>Assume each person has a <span class="math notranslate nohighlight">\(\frac{1}{365}\)</span> probability to be assigned a birthday. In other words, the person’s birthday should come from a uniform distribution from 1 to 365.</p></li>
+<li><p>So simple modelling just allows us to draw numbers for these 50 people from <span class="math notranslate nohighlight">\([1, 365]\)</span> and whenever the number is same we say they are of the same birthday.</p></li>
+</ul>
+</li>
+<li><p>Want to find probability (frequency) of at least 2 people have same birthday.</p>
+<ul>
+<li><p>Note that in your code one should also consider any number <span class="math notranslate nohighlight">\(&gt;=2\)</span>.</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">()</span>
+<span class="n">num_possible_birthdays</span> <span class="o">=</span> <span class="mi">365</span>
+<span class="n">num_people</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">num_simulations</span> <span class="o">=</span> <span class="mi">1000</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">containsDuplicate</span><span class="p">(</span><span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Check if a list contains duplicate elements.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        nums (List[int]): List of integers.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: Boolean value to indicate if the list contains duplicate elements.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dup_dict</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nums</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">num</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dup_dict</span><span class="p">:</span>
+            <span class="n">dup_dict</span><span class="p">[</span><span class="n">num</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_one_random_birthday</span><span class="p">(</span><span class="n">num_possible_birthdays</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">365</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Generate one random birthday from 1 to num_possible_birthdays.</span>
+
+<span class="sd">    Samples 1 integer from 1 to 365 from a uniform distribution.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        num_possible_birthdays (int): The number of possible birthdays. Defaults to 365.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        birthday (int): The random birthday in integer.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Return random integers from the &quot;discrete uniform&quot; distribution of the specified dtype. If high is None (the default), then results are from 0 to low.</span>
+    <span class="n">birthday</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">integers</span><span class="p">(</span><span class="n">num_possible_birthdays</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="c1"># size=None to return integer instead of array of ints</span>
+    <span class="k">return</span> <span class="n">birthday</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_k_birthdays</span><span class="p">(</span>
+    <span class="n">num_people</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;Generates all possible birthdays for a given number of people sampled</span>
+<span class="sd">    from a uniform distribution.</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        If there are 3 people, the possible birthdays can be understood to be sampled from a uniform distribution</span>
+<span class="sd">        of 1 to 365 inclusive with replacement.</span>
+<span class="sd">        &gt;&gt;&gt; generate_k_birthdays(3, 365)</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        num_people (int): The number of people in the group.</span>
+<span class="sd">        num_possible_birthdays (int, optional): Number of possible birthdays. Defaults to 365.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        birthdays (List[int]): A list of birthdays.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">birthdays</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">generate_one_random_birthday</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_people</span><span class="p">)</span>
+    <span class="p">]</span>
+    <span class="k">return</span> <span class="n">birthdays</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calculate_same_birthday_probability</span><span class="p">(</span>
+    <span class="n">num_simulations</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Calculates the probability of the Birthday Paradox Problem.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        num_simulations (int, optional): The number of simulations to run.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        probability (float): The probability of the Birthday Paradox.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_simulations</span><span class="p">):</span>
+        <span class="n">birthdays</span> <span class="o">=</span> <span class="n">generate_k_birthdays</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">containsDuplicate</span><span class="p">(</span><span class="n">birthdays</span><span class="p">):</span>
+            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="n">probability</span> <span class="o">=</span> <span class="n">count</span> <span class="o">/</span> <span class="n">num_simulations</span>
+    <span class="k">return</span> <span class="n">probability</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">calculate_same_birthday_probability</span><span class="p">(</span><span class="n">num_simulations</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">num_people</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">num_possible_birthdays</span><span class="o">=</span><span class="mi">365</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9681
+</pre></div>
+</div>
+</div>
+</div>
+<p>We go through one loop of the simulation to understand the code:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">birthdays</span> <span class="pre">=</span> <span class="pre">default_rng().choice(a=num_possible_birthdays,</span> <span class="pre">size=num_people,</span> <span class="pre">replace=True)</span></code>: what this does is two folds,</p>
+<ul>
+<li><p>Samples 1 integer from 1 to 365 from a uniform distribution. (i.e. 1 to num_possible_birthdays)</p></li>
+<li><p>Repeat the sampling of 1 integer 50 times. (i.e. num_people=50)</p></li>
+<li><p>In short, it returns an array of 50 elements, each element is sampled uniformly from 1 to 365 inclusive.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">has_duplicates(birthdays)</span></code> checks whether the array has duplicates (i.e. akin to checking if 2 or more people has the same birthdays).</p>
+<ul>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, <code class="docutils literal notranslate"><span class="pre">count</span> <span class="pre">+=1</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Finally, the probability is the number of <code class="docutils literal notranslate"><span class="pre">count</span></code> divided by the total number of simulations. It should converge to around <span class="math notranslate nohighlight">\(0.97\)</span>.</p></li>
+<li><p>One should realize by now probability in most parts, is just the frequency of “occurring” over the total number of “events”.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calculate_same_birthday_probability_rng_choice</span><span class="p">(</span>
+    <span class="n">num_simulations</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">num_people</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
+    <span class="n">num_possible_birthdays</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">365</span><span class="p">,</span>
+    <span class="n">replace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Calculates the probability of the Birthday Paradox Problem.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        num_simulations (int, optional): The number of simulations to run.</span>
+<span class="sd">        num_people (int, optional): The number of people in the simulation.</span>
+<span class="sd">        num_possible_birthdays (int, optional): The number of possible birthdays.</span>
+<span class="sd">        replace (bool, optional): Whether or not to sample with replacement.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        probability (float): The probability of the Birthday Paradox.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_simulations</span><span class="p">):</span>
+        <span class="n">birthdays</span> <span class="o">=</span> <span class="n">default_rng</span><span class="p">()</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span>
+            <span class="n">a</span><span class="o">=</span><span class="n">num_possible_birthdays</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">num_people</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">containsDuplicate</span><span class="p">(</span><span class="n">birthdays</span><span class="p">):</span>
+            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="n">probability</span> <span class="o">=</span> <span class="n">count</span> <span class="o">/</span> <span class="n">num_simulations</span>
+    <span class="k">return</span> <span class="n">probability</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">calculate_same_birthday_probability_rng_choice</span><span class="p">(</span><span class="n">num_simulations</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">num_people</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">num_possible_birthdays</span><span class="o">=</span><span class="mi">365</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9683
+</pre></div>
+</div>
+</div>
+</div>
+<p>The below code is not mine and is taken from <a class="reference external" href="https://www.probabilisticworld.com/birthday-problem-python-simulation/">here</a>. For my reference to see if I coded correctly.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
+ 
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+ 
+<span class="n">MIN_NUM_PEOPLE</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">MAX_NUM_PEOPLE</span> <span class="o">=</span> <span class="mi">60</span>
+<span class="n">NUM_POSSIBLE_BIRTHDAYS</span> <span class="o">=</span> <span class="mi">365</span>
+<span class="n">NUM_TRIALS</span> <span class="o">=</span> <span class="mi">10000</span>
+ 
+<span class="k">def</span> <span class="nf">generate_random_birthday</span><span class="p">():</span>
+    <span class="n">birthday</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">NUM_POSSIBLE_BIRTHDAYS</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">birthday</span>
+ 
+<span class="k">def</span> <span class="nf">generate_k_birthdays</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+    <span class="n">birthdays</span> <span class="o">=</span> <span class="p">[</span><span class="n">generate_random_birthday</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="n">birthdays</span>
+ 
+<span class="k">def</span> <span class="nf">aloc</span><span class="p">(</span><span class="n">birthdays</span><span class="p">):</span>
+    <span class="n">unique_birthdays</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">birthdays</span><span class="p">)</span>
+ 
+    <span class="n">num_birthdays</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">birthdays</span><span class="p">)</span>
+    <span class="n">num_unique_birthdays</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">unique_birthdays</span><span class="p">)</span>
+    <span class="n">has_coincidence</span> <span class="o">=</span> <span class="p">(</span><span class="n">num_birthdays</span> <span class="o">!=</span> <span class="n">num_unique_birthdays</span><span class="p">)</span>
+ 
+    <span class="k">return</span> <span class="n">has_coincidence</span>
+ 
+<span class="k">def</span> <span class="nf">estimate_p_aloc</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+    <span class="n">num_aloc</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">NUM_TRIALS</span><span class="p">):</span>
+        <span class="n">birthdays</span> <span class="o">=</span> <span class="n">generate_k_birthdays</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+        <span class="n">has_coincidence</span> <span class="o">=</span> <span class="n">aloc</span><span class="p">(</span><span class="n">birthdays</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">has_coincidence</span><span class="p">:</span>
+            <span class="n">num_aloc</span> <span class="o">+=</span> <span class="mi">1</span>
+ 
+    <span class="n">p_aloc</span> <span class="o">=</span> <span class="n">num_aloc</span> <span class="o">/</span> <span class="n">NUM_TRIALS</span>
+    <span class="k">return</span> <span class="n">p_aloc</span>
+ 
+<span class="k">def</span> <span class="nf">estimate_p_aloc_for_range</span><span class="p">(</span><span class="n">ks</span><span class="p">):</span>
+    <span class="n">k_probabilities</span> <span class="o">=</span> <span class="p">[]</span>
+ 
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">ks</span><span class="p">:</span>
+        <span class="n">p_aloc</span> <span class="o">=</span> <span class="n">estimate_p_aloc</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+        <span class="n">k_probabilities</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p_aloc</span><span class="p">)</span>
+         
+    <span class="k">return</span> <span class="n">k_probabilities</span>
+ 
+<span class="n">ks</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">MIN_NUM_PEOPLE</span><span class="p">,</span> <span class="n">MAX_NUM_PEOPLE</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">k_probabilities</span> <span class="o">=</span> <span class="n">estimate_p_aloc_for_range</span><span class="p">(</span><span class="n">ks</span><span class="p">)</span>
+ 
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">49</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">&#39;#518792&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#2d3233&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#2d3233&#39;</span><span class="p">)</span>
+ 
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">ks</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">k_probabilities</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#2d3233&#39;</span><span class="p">)</span>
+ 
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#2d3233&#39;</span><span class="p">)</span>
+<span class="n">y_range</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">y_range</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#2d3233&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">60</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Number of people&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#2d3233&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;P(At Least One Coincidence)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#2d3233&#39;</span><span class="p">)</span>
+ 
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/exercises_23_0.png" src="../_images/exercises_23_0.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./02_probability"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="summary.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Summary</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../03_discrete_random_variables/0301_random_variables.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Random Variables</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Hongnan Gao<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
