@@ -40,7 +40,7 @@ $$
 ````{prf:example} PMF of Coin Toss
 :label: example_pmf_coin_toss
 
-Let us revisit the example in {prf:ref}`example_random_variable_coin_toss` and compute the PMF of $X$.
+Let us revisit {prf:ref}`example_random_variable_coin_toss` on coin toss and compute the PMF of $X$.
 
 Recall the sample space is given by $\S = \{(HH), (HT), (TH), (TT)\}$ and the state space is given by
 $X(\S) = \{0, 1, 2\}$ as enumerated in {prf:ref}`example_state_space_coin_toss`.

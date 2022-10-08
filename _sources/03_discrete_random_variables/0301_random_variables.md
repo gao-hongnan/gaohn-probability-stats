@@ -40,7 +40,6 @@ $$
 
 ````{prf:example} Coin Toss
 :label: example_random_variable_coin_toss
-:nonumber: true
 
 Consider a fair coin and define an **experiment** of throwing the coin twice.
 
