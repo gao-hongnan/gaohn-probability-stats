@@ -2,14 +2,20 @@
 
 ## Definition (Independent Events)
 
-Two events $A, B \in \E$ are **statiscally independent** if
+```{prf:definition} Independent Events
+:label: def:independent-events
+
+Let $\P$ be a probability function defined over the probability space $\pspace$.
+
+Two events $A, B \in \E$ are ***statiscally*** **independent** if
 
 $$
 \P(A \cap B) = \P(A)P(B)
-$$
+$$ (eq:independent-events)
+```
 
-
-## Intuition (Independence) \[\^intuition_independence\] \[\^**Stanley H. Chan: Introduction to Probability for Data Science, 2021. (pp. 85-88)**\] {#intuition-independence-intuition_independence-stanley-h-chan-introduction-to-probability-for-data-science-2021-pp-85-88}
+(intuition-independence)=
+## Intuition (Independence)
 
 The formula above is not at all intuitive.
 
@@ -31,7 +37,10 @@ occurring, then it means that the probability of $A$ occurring is still
 the probability of $A$ occurring. i.e $\P(A|B) = \P(A)$
 
 It follows immediately that
-$$P(A) = P(A|B) = \dfrac{P(A \cap B)}{P(B)} \Longrightarrow P(A) P(B) = P(A \cap B)$$
+
+$$
+\P(A) = \P(A ~|~ B) = \dfrac{\P(A \cap B)}{\P(B)} \Longrightarrow \P(A)\P(B) = \P(A \cap B)
+$$
 
 ```{figure} https://storage.googleapis.com/reighns/reighns_ml_projects/docs/probability_and_statistics/02_introduction_to_probability/conditional.png
 ---
@@ -47,31 +56,48 @@ name: conditional
 > conditionals, $\P(A ~|~ B) = \dfrac{\P(A \cap B)}{B}$, so equating
 > them we have the nice equation of $\P(A)\P(B) = \P(A \cap B)$.
 
-\[\^intuition_independence\]: [The definition of independence is not
-intuitive](https://math.stackexchange.com/questions/123192/the-definition-of-independence-is-not-intuitive)
-\[\^**Stanley H. Chan: Introduction to Probability for Data Science,
-1.    (pp. 85-88)**\]: **Stanley H. Chan: Introduction to Probability
-for Data Science, 2021. (pp. 85-88)**
+See chapter 2, section 2.4.2 of {cite}`chan_2021` for more details.
 
-## Definition (Equivalent Independence Definition)
+## Defining Independence in Terms of Conditional Probability
 
-We have stated this in the previous intuition section. Now we formally
-state it:
+We formally state the intuition in the previous [section](intuition-independence) as follows.
 
-Let $A$ nad $B$ be two events such that $\P(A)$ and $\P(B)$ are more
-than $0$, then $A$ and $B$ are **independent** if
+```{prf:definition} Definition of Independence in Terms of Conditional Probability
+:label: def:independence-conditional
+
+Let $\P$ be a probability function defined over the probability space $\pspace$.
+
+Let $A$ and $B$ be two events in $\E$ such that $\P(A) > 0$ and $\P(B) > 0$,
+then $A$ and $B$ are **independent** if
 
 $$
-\P(A|B) = \P(A) \quad \P(B|A) = \P(B)
+\P(A|B) = \P(A) \quad \textbf{or} \quad P(B|A) = \P(B)
 $$
+```
 
-## Definition (Disjoint vs Independence)
+## Disjoint vs Independence
 
-Given two events $A$ and $B$. The only condition when
-$\textbf{Disjoint} \iff \textbf{Independence}$ if that if $\P(A) = 0$ or
+```{prf:definition} Disjoint
+:label: def:disjoint
+
+Let $\P$ be a probability function defined over the probability space $\pspace$.
+
+Two events $A$ and $B$ are ***disjoint*** if $A \cap B = \emptyset$.
+```
+
+```{prf:theorem} Disjoint vs Independence
+:label: thm:disjoint-vs-independent
+
+Let $\P$ be a probability function defined over the probability space $\pspace$.
+
+Given two events $A$ and $B$ in $\E$. The only condition when
+$\textbf{Disjoint} \iff \textbf{Independence}$ is if $\P(A) = 0$ or
 $\P(B) = 0$.
+```
 
-## Exercise (Independence) \[\^**Stanley H. Chan: Introduction to Probability for Data Science, 2021. (pp. 87-88)**\] {#exercise-independence-stanley-h-chan-introduction-to-probability-for-data-science-2021-pp-87-88}
+## Exercise (Independence) 
+
+In {cite}`chan_2021`, chapter 2, section 2.4.2, the author gave an example that is not easy to visualize.
 
 Consider the experiment of throwing a die twice. One should be clear
 from the context that the outcomes are in the form of a tuple
@@ -121,13 +147,8 @@ I believe somewhere my intuition is flawed, the author mentioned that:
 I think I cannot understand why the author mentioned about \"first die\"
 when in event $A$, the first die is already a $3$.
 
-One can find more explanation here\[\^mathstack1\] and
-here\[\^mathstack2\].
+One can find more explanation here [^mathstack1] and
+here [^mathstack2].
 
-\[\^**Stanley H. Chan: Introduction to Probability for Data Science,
-1.    (pp. 87-88)**\]: **Stanley H. Chan: Introduction to Probability
-for Data Science, 2021. (pp. 87-88)** \[\^mathstack1\]: [Intuition on
-independence of two
-events](https://math.stackexchange.com/questions/4403684/intuition-on-independence-of-two-events/)
-\[\^mathstack2\]: [Dartboard paradox and understanding
-independence](https://math.stackexchange.com/questions/3897127/dartboard-paradox-and-understanding-independence)
+[^mathstack1]: [Intuition on independence of two events](https://math.stackexchange.com/questions/4403684/intuition-on-independence-of-two-events/)
+[^mathstack2]: [Dartboard paradox and understanding independence](https://math.stackexchange.com/questions/3897127/dartboard-paradox-and-understanding-independence)

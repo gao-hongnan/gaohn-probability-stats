@@ -53,7 +53,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"st": "\\mid", "S": "\\Omega", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "pmf": "p_X", "cdf": "F_X"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"st": "\\mid", "S": "\\Omega", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "pmf": "p_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -138,7 +138,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../02_probability/0202_probability_space.html">
-   Probability
+   Probability Space
   </a>
  </li>
  <li class="toctree-l1">
@@ -434,11 +434,11 @@ title="Print to PDF"
 <section id="definition">
 <h2>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">#</a></h2>
 <div class="proof definition admonition" id="def_state_space">
-<p class="admonition-title"><span class="caption-number">Definition 11 </span> (State Space)</p>
+<p class="admonition-title"><span class="caption-number">Definition 16 </span> (State Space)</p>
 <section class="definition-content" id="proof-content">
 <p>The set of all possible states of <span class="math notranslate nohighlight">\(X\)</span> is called the <strong>state space</strong> of <span class="math notranslate nohighlight">\(X\)</span> and is denoted as <span class="math notranslate nohighlight">\(X(\S)\)</span>.</p>
 <p>In particular, the state space of a discrete random variable <span class="math notranslate nohighlight">\(X\)</span> is a countable set
-as per <a class="reference internal" href="0302_discrete_random_variables.html#def_discrete_random_variables">Definition 10</a>.</p>
+as per <a class="reference internal" href="0302_discrete_random_variables.html#def_discrete_random_variables">Definition 15</a>.</p>
 </section>
 </div><div class="proof example admonition" id="example_state_space_coin_toss">
 <p class="admonition-title"><span class="caption-number">Example 2 </span> (State Space of Coin Toss)</p>
@@ -448,7 +448,7 @@ as per <a class="reference internal" href="0302_discrete_random_variables.html#d
 we see that the state space of <span class="math notranslate nohighlight">\(X\)</span> is <span class="math notranslate nohighlight">\(\{0, 1, 2\}\)</span> (i.e. <span class="math notranslate nohighlight">\(X\)</span> takes 3 states 0, 1 and 2).</p>
 </section>
 </div><div class="proof definition admonition" id="def_pmf">
-<p class="admonition-title"><span class="caption-number">Definition 12 </span> (Probability Mass Function)</p>
+<p class="admonition-title"><span class="caption-number">Definition 17 </span> (Probability Mass Function)</p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>probability mass function</strong> (PMF) of a random variable <span class="math notranslate nohighlight">\(X\)</span> is a function that maps each state
 <span class="math notranslate nohighlight">\(x\)</span> in the state space <span class="math notranslate nohighlight">\(X(\S)\)</span> to its probability <span class="math notranslate nohighlight">\(\pmf(x) = \P\lsq X = x \rsq\)</span>.</p>
@@ -483,11 +483,11 @@ Thus, the PMF of <span class="math notranslate nohighlight">\(X\)</span> is comp
 <section id="normalization">
 <h2>Normalization<a class="headerlink" href="#normalization" title="Permalink to this headline">#</a></h2>
 <div class="proof theorem admonition" id="thm_pmf_normalization">
-<p class="admonition-title"><span class="caption-number">Theorem 1 </span> (Normalization Property of PMF)</p>
+<p class="admonition-title"><span class="caption-number">Theorem 3 </span> (Normalization Property of PMF)</p>
 <section class="theorem-content" id="proof-content">
 <p>A PMF should satisfy the following normalization property:</p>
 <div class="math notranslate nohighlight" id="equation-eq-pmf-normalization">
-<span class="eqno">(2)<a class="headerlink" href="#equation-eq-pmf-normalization" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(4)<a class="headerlink" href="#equation-eq-pmf-normalization" title="Permalink to this equation">#</a></span>\[
 \sum_{x \in X(\S)} \pmf(x) = 1
 \]</div>
 </section>

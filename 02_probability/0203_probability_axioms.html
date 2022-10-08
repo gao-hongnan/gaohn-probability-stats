@@ -53,12 +53,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"st": "\\mid", "S": "\\Omega", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "pmf": "p_X", "cdf": "F_X"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"st": "\\mid", "S": "\\Omega", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "pmf": "p_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Conditional Probability" href="0204_conditional_probability.html" />
-    <link rel="prev" title="Probability" href="0202_probability_space.html" />
+    <link rel="prev" title="Probability Space" href="0202_probability_space.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -138,7 +138,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="0202_probability_space.html">
-   Probability
+   Probability Space
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -371,31 +371,41 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#definition-the-three-axioms-of-probability-kolmogorov-axioms">
-   Definition (The Three Axioms of Probability (Kolmogorov Axioms))
+  <a class="reference internal nav-link" href="#the-three-axioms-of-probability-kolmogorov-axioms">
+   The Three Axioms of Probability (Kolmogorov Axioms)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#corollary-implications-of-the-probability-axioms">
-   Corollary (Implications of the Probability Axioms)
+  <a class="reference internal nav-link" href="#corollaries-of-the-axioms">
+   Corollaries of the Axioms
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#corollary-inclusion-exclusion-unions-of-two-non-disjoint-sets">
-     Corollary (Inclusion-Exclusion - Unions of Two Non-Disjoint Sets)
+    <a class="reference internal nav-link" href="#probability-of-the-empty-set">
+     Probability of the Empty Set
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#corollary-inequality-bounds">
-     Corollary (Inequality Bounds)
+    <a class="reference internal nav-link" href="#probability-of-complements">
+     Probability of Complements
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#definition-mutually-exclusive-events">
-     Definition (Mutually Exclusive Events)
+    <a class="reference internal nav-link" href="#inclusion-exclusion-unions-of-two-non-disjoint-sets">
+     Inclusion-Exclusion - Unions of Two Non-Disjoint Sets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#inequality-bounds">
+     Inequality Bounds
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mutually-exclusive-events">
+   Mutually Exclusive Events
+  </a>
  </li>
 </ul>
 
@@ -417,31 +427,41 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#definition-the-three-axioms-of-probability-kolmogorov-axioms">
-   Definition (The Three Axioms of Probability (Kolmogorov Axioms))
+  <a class="reference internal nav-link" href="#the-three-axioms-of-probability-kolmogorov-axioms">
+   The Three Axioms of Probability (Kolmogorov Axioms)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#corollary-implications-of-the-probability-axioms">
-   Corollary (Implications of the Probability Axioms)
+  <a class="reference internal nav-link" href="#corollaries-of-the-axioms">
+   Corollaries of the Axioms
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#corollary-inclusion-exclusion-unions-of-two-non-disjoint-sets">
-     Corollary (Inclusion-Exclusion - Unions of Two Non-Disjoint Sets)
+    <a class="reference internal nav-link" href="#probability-of-the-empty-set">
+     Probability of the Empty Set
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#corollary-inequality-bounds">
-     Corollary (Inequality Bounds)
+    <a class="reference internal nav-link" href="#probability-of-complements">
+     Probability of Complements
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#definition-mutually-exclusive-events">
-     Definition (Mutually Exclusive Events)
+    <a class="reference internal nav-link" href="#inclusion-exclusion-unions-of-two-non-disjoint-sets">
+     Inclusion-Exclusion - Unions of Two Non-Disjoint Sets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#inequality-bounds">
+     Inequality Bounds
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mutually-exclusive-events">
+   Mutually Exclusive Events
+  </a>
  </li>
 </ul>
 
@@ -455,53 +475,82 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="probability-axioms">
 <h1>Probability Axioms<a class="headerlink" href="#probability-axioms" title="Permalink to this headline">#</a></h1>
-<section id="definition-the-three-axioms-of-probability-kolmogorov-axioms">
-<h2>Definition (The Three Axioms of Probability (Kolmogorov Axioms))<a class="headerlink" href="#definition-the-three-axioms-of-probability-kolmogorov-axioms" title="Permalink to this headline">#</a></h2>
-<p>A probability function <span class="math notranslate nohighlight">\(\P\)</span> must satisfy the three axioms below. Recall
+<section id="the-three-axioms-of-probability-kolmogorov-axioms">
+<h2>The Three Axioms of Probability (Kolmogorov Axioms)<a class="headerlink" href="#the-three-axioms-of-probability-kolmogorov-axioms" title="Permalink to this headline">#</a></h2>
+<p>A probability function <span class="math notranslate nohighlight">\(\P\)</span> defined over the probability space <span class="math notranslate nohighlight">\(\pspace\)</span>
+must satisfy the three axioms below. Recall
 that the <strong>probability function</strong> in a well defined <strong>experiment</strong> is a
 function <span class="math notranslate nohighlight">\(\P: \E \to [0, 1]\)</span>. Informally, for any event <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(\P(A)\)</span> is
 defined as the probability of event <span class="math notranslate nohighlight">\(A\)</span> happening.</p>
-<p>This function must satisfy the following:</p>
-<ol class="simple">
-<li><p>First axiom (Non - Negativity Axiom): <span class="math notranslate nohighlight">\(\P(A) \geq 0\)</span> for any event
-<span class="math notranslate nohighlight">\(A \subseteq \S\)</span>.</p></li>
-<li><p>Second Axiom (Normalization Axiom): <span class="math notranslate nohighlight">\(\sum_{i=1}^{n}\P(A_i) = 1\)</span>
-where <span class="math notranslate nohighlight">\(A_i\)</span> are all possible outcomes for <span class="math notranslate nohighlight">\(i = 1, 2,..., n\)</span>.</p></li>
-<li><p>Third Axiom (Additivity Axiom): Given a countable sequence of
-<strong>disjoint events</strong> <span class="math notranslate nohighlight">\(A_1, A_2, ..., A_n,... \subset \S\)</span>, we have</p></li>
-</ol>
+<p>This probability function/law <span class="math notranslate nohighlight">\(\P(A)\)</span> must satisfy the following three axioms:</p>
+<div class="proof axiom admonition" id="axiom:non-negativity">
+<p class="admonition-title"><span class="caption-number">Axiom 1 </span> (Non-Negativity)</p>
+<section class="axiom-content" id="proof-content">
+<p><span class="math notranslate nohighlight">\(\P(A) \geq 0\)</span> for any event <span class="math notranslate nohighlight">\(A \subseteq \S\)</span>.</p>
+</section>
+</div><div class="proof axiom admonition" id="axiom:normalization">
+<p class="admonition-title"><span class="caption-number">Axiom 2 </span> (Normalization)</p>
+<section class="axiom-content" id="proof-content">
+<p><span class="math notranslate nohighlight">\(\sum_{i=1}^{n}\P(A_i) = 1\)</span>
+where <span class="math notranslate nohighlight">\(A_i\)</span> are all possible outcomes for <span class="math notranslate nohighlight">\(i = 1, 2,..., n\)</span>.</p>
+</section>
+</div><div class="proof axiom admonition" id="axiom:additivity">
+<p class="admonition-title"><span class="caption-number">Axiom 3 </span> (Additivity)</p>
+<section class="axiom-content" id="proof-content">
+<p>Given a countable sequence of
+<strong>disjoint events</strong> <span class="math notranslate nohighlight">\(A_1, A_2, ..., A_n,... \subset \S\)</span>, we have</p>
 <div class="math notranslate nohighlight">
 \[
 \P\left(\bigsqcup_{i=1}^{\infty} A_i \right) = \sum_{i=1}^{\infty}\P[A_i]
 \]</div>
 </section>
-<section id="corollary-implications-of-the-probability-axioms">
-<h2>Corollary (Implications of the Probability Axioms)<a class="headerlink" href="#corollary-implications-of-the-probability-axioms" title="Permalink to this headline">#</a></h2>
-<ul class="simple">
-<li><p>Probability of Empty Set: <span class="math notranslate nohighlight">\(\P(\emptyset) = 0\)</span></p></li>
-<li><p>Complements: <span class="math notranslate nohighlight">\(\P(A) = 1 - \P(A^{c})\)</span></p></li>
-</ul>
-<section id="corollary-inclusion-exclusion-unions-of-two-non-disjoint-sets">
-<h3>Corollary (Inclusion-Exclusion - Unions of Two Non-Disjoint Sets)<a class="headerlink" href="#corollary-inclusion-exclusion-unions-of-two-non-disjoint-sets" title="Permalink to this headline">#</a></h3>
+</div></section>
+<section id="corollaries-of-the-axioms">
+<h2>Corollaries of the Axioms<a class="headerlink" href="#corollaries-of-the-axioms" title="Permalink to this headline">#</a></h2>
+<section id="probability-of-the-empty-set">
+<h3>Probability of the Empty Set<a class="headerlink" href="#probability-of-the-empty-set" title="Permalink to this headline">#</a></h3>
+<div class="proof corollary admonition" id="corollary:probability-of-empty-set">
+<p class="admonition-title"><span class="caption-number">Corollary 1 </span> (Probability of Empty Set)</p>
+<section class="corollary-content" id="proof-content">
+<p><span class="math notranslate nohighlight">\(\P(\emptyset) = 0\)</span></p>
+</section>
+</div></section>
+<section id="probability-of-complements">
+<h3>Probability of Complements<a class="headerlink" href="#probability-of-complements" title="Permalink to this headline">#</a></h3>
+<div class="proof corollary admonition" id="corollary:probability-of-complements">
+<p class="admonition-title"><span class="caption-number">Corollary 2 </span> (Probability of Complements)</p>
+<section class="corollary-content" id="proof-content">
+<p><span class="math notranslate nohighlight">\(\P(A) = 1 - \P(A^{c})\)</span></p>
+</section>
+</div></section>
+<section id="inclusion-exclusion-unions-of-two-non-disjoint-sets">
+<h3>Inclusion-Exclusion - Unions of Two Non-Disjoint Sets<a class="headerlink" href="#inclusion-exclusion-unions-of-two-non-disjoint-sets" title="Permalink to this headline">#</a></h3>
+<div class="proof corollary admonition" id="corollary:inclusion-exclusion">
+<p class="admonition-title"><span class="caption-number">Corollary 3 </span> (Inclusion-Exclusion)</p>
+<section class="corollary-content" id="proof-content">
 <div class="math notranslate nohighlight">
 \[
 \P(A \cup B) = \P(A) + \P(B) - \P(A \cap B)
 \]</div>
 </section>
-<section id="corollary-inequality-bounds">
-<h3>Corollary (Inequality Bounds)<a class="headerlink" href="#corollary-inequality-bounds" title="Permalink to this headline">#</a></h3>
-<ul class="simple">
-<li><p>Union Bound: <span class="math notranslate nohighlight">\(\P(A \cup B) \leq \P(A) + P(B)\)</span></p></li>
-<li><p>Monotonicity: If <span class="math notranslate nohighlight">\(A \subset B\)</span>, then <span class="math notranslate nohighlight">\(\P(A) \leq \P(B)\)</span></p></li>
-<li><p>Numeric Bound: It immediately follows that for any event <span class="math notranslate nohighlight">\(A\)</span>,
+</div></section>
+<section id="inequality-bounds">
+<h3>Inequality Bounds<a class="headerlink" href="#inequality-bounds" title="Permalink to this headline">#</a></h3>
+<div class="proof corollary admonition" id="corollary:inequality-bounds">
+<p class="admonition-title"><span class="caption-number">Corollary 4 </span> (Inequality Bounds)</p>
+<section class="corollary-content" id="proof-content">
+<p>a)  Union Bound: <span class="math notranslate nohighlight">\(\P(A \cup B) \leq \P(A) + P(B)\)</span></p>
+<p>b)  Monotonicity: If <span class="math notranslate nohighlight">\(A \subset B\)</span>, then <span class="math notranslate nohighlight">\(\P(A) \leq \P(B)\)</span></p>
+<p>c)  Numeric Bound: It immediately follows that for any event <span class="math notranslate nohighlight">\(A\)</span>,
 <span class="math notranslate nohighlight">\(\P(A) \leq 1\)</span> by Monotonicity and Axiom 2. Because an event <span class="math notranslate nohighlight">\(A\)</span> can
 at most be summed to 1, so any events must be a subset of its
 summation, so the probability of the summation is 1, hence
-<span class="math notranslate nohighlight">\(\P(A) \leq 1\)</span> by Monotonicity.</p></li>
-</ul>
+<span class="math notranslate nohighlight">\(\P(A) \leq 1\)</span> by Monotonicity.</p>
 </section>
-<section id="definition-mutually-exclusive-events">
-<h3>Definition (Mutually Exclusive Events)<a class="headerlink" href="#definition-mutually-exclusive-events" title="Permalink to this headline">#</a></h3>
+</div></section>
+</section>
+<section id="mutually-exclusive-events">
+<h2>Mutually Exclusive Events<a class="headerlink" href="#mutually-exclusive-events" title="Permalink to this headline">#</a></h2>
 <p>In logic and probability theory, two events (or propositions) are
 mutually exclusive or disjoint if they cannot both occur at the same
 time.</p>
@@ -516,9 +565,8 @@ illustrate the idea.</p>
 <p>Also, by <strong>Unions of Two Non-Disjoint Sets</strong>, it is easy to see that
 <span class="math notranslate nohighlight">\(\P(A \cup B) = \P(A) + \P(B)\)</span> since <span class="math notranslate nohighlight">\(\P(A \cap B) = 0\)</span>. For the coin
 toss example, since <span class="math notranslate nohighlight">\(A \cup B\)</span> spans the entire sample space, it is
-intuitive that <span class="math notranslate nohighlight">\(P(A \cup B)\)</span> (the probability of throwing a head OR a
+intuitive that <span class="math notranslate nohighlight">\(P(A \cup B)\)</span> (the probability of throwing a head or a
 tail) is 1.</p>
-</section>
 </section>
 </section>
 
@@ -553,7 +601,7 @@ tail) is 1.</p>
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Probability</p>
+            <p class="prev-next-title">Probability Space</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="0204_conditional_probability.html" title="next page">

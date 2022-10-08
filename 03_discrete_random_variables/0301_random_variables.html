@@ -53,7 +53,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"st": "\\mid", "S": "\\Omega", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "pmf": "p_X", "cdf": "F_X"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"st": "\\mid", "S": "\\Omega", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "pmf": "p_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -138,7 +138,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../02_probability/0202_probability_space.html">
-   Probability
+   Probability Space
   </a>
  </li>
  <li class="toctree-l1">
@@ -444,7 +444,7 @@ title="Print to PDF"
 <section id="definition">
 <h2>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">#</a></h2>
 <div class="proof definition admonition" id="random_variables">
-<p class="admonition-title"><span class="caption-number">Definition 7 </span> (Random Variables)</p>
+<p class="admonition-title"><span class="caption-number">Definition 12 </span> (Random Variables)</p>
 <section class="definition-content" id="proof-content">
 <p>A <strong>random variable</strong> <span class="math notranslate nohighlight">\(X\)</span> is a function defined by the mapping</p>
 <div class="math notranslate nohighlight">
@@ -458,7 +458,7 @@ X: \S &amp;\to \R \\
 <p>We denote the range of <span class="math notranslate nohighlight">\(X\)</span> to be <span class="math notranslate nohighlight">\(x\)</span> and shorthand the notation of <span class="math notranslate nohighlight">\(X(\xi) = x\)</span> to be <span class="math notranslate nohighlight">\(X = x\)</span>.</p>
 </section>
 </div><div class="proof definition admonition" id="pre_image">
-<p class="admonition-title"><span class="caption-number">Definition 8 </span> (Pre-image of a Random Variable)</p>
+<p class="admonition-title"><span class="caption-number">Definition 13 </span> (Pre-image of a Random Variable)</p>
 <section class="definition-content" id="proof-content">
 <p>Given a random variable <span class="math notranslate nohighlight">\(X: \S \to \R\)</span>, define a singleton set <span class="math notranslate nohighlight">\(\{x\} \subset \R\)</span>, then by
 the pre-image definition of a function, we have</p>
@@ -499,7 +499,7 @@ to a number <span class="math notranslate nohighlight">\(x\)</span> in the real 
 outcomes <span class="math notranslate nohighlight">\(\xi_i\)</span> in the domain to 3 distinct numbers <span class="math notranslate nohighlight">\(0\)</span>, <span class="math notranslate nohighlight">\(1\)</span> or <span class="math notranslate nohighlight">\(2\)</span>, which we will see by manually
 enumerating each case below.</p>
 <div class="math notranslate nohighlight" id="equation-eq-outcome-to-number-of-heads">
-<span class="eqno">(1)<a class="headerlink" href="#equation-eq-outcome-to-number-of-heads" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(3)<a class="headerlink" href="#equation-eq-outcome-to-number-of-heads" title="Permalink to this equation">#</a></span>\[
 X(\xi_1) = 2, \quad X(\xi_2) = 1, \quad X(\xi_3) = 1, \quad X(\xi_4) = 0
 \]</div>
 <p>With that, this random variable <span class="math notranslate nohighlight">\(X\)</span> is <strong>completely determined</strong>.</p>
@@ -510,7 +510,7 @@ Here we should recall that the probability law <span class="math notranslate noh
 <span class="math notranslate nohighlight">\(E \in \E\)</span> where <span class="math notranslate nohighlight">\(E\)</span> is a set.</p>
 <p>So we need to map this expression to an event <span class="math notranslate nohighlight">\(E \in \E\)</span>. So you can ask yourself how to establish
 this “mapping” of <span class="math notranslate nohighlight">\(X(\xi) = 1\)</span> to an event in our event space <span class="math notranslate nohighlight">\(\E\)</span>. This seems pretty easy since
-we already know that <span class="math notranslate nohighlight">\(X(\xi) = 1\)</span> has two cases matched in <a class="reference internal" href="#equation-eq-outcome-to-number-of-heads">(1)</a>, namely
+we already know that <span class="math notranslate nohighlight">\(X(\xi) = 1\)</span> has two cases matched in <a class="reference internal" href="#equation-eq-outcome-to-number-of-heads">(3)</a>, namely
 <span class="math notranslate nohighlight">\(X(\xi_2) = 1\)</span> and <span class="math notranslate nohighlight">\(X(\xi_3) = 1\)</span>. So we can simply define the event <span class="math notranslate nohighlight">\(E\)</span> to be
 <span class="math notranslate nohighlight">\(\lset \xi_2, \xi_3 \rset = \{(HT), (TH)\}\)</span>.</p>
 <p>We verify that <span class="math notranslate nohighlight">\(E = \lset \xi_2, \xi_3 \rset\)</span> is indeed an event in <span class="math notranslate nohighlight">\(\E\)</span>:</p>
@@ -523,7 +523,7 @@ we already know that <span class="math notranslate nohighlight">\(X(\xi) = 1\)</
 \[
 E = \lset \xi \in \S \st X(\xi) = x \rset
 \]</div>
-<p>and this coincides with the pre-image of <span class="math notranslate nohighlight">\(x\)</span> in the random variable <span class="math notranslate nohighlight">\(X\)</span> as defined in <a class="reference internal" href="#pre_image">Definition 8</a>.</p>
+<p>and this coincides with the pre-image of <span class="math notranslate nohighlight">\(x\)</span> in the random variable <span class="math notranslate nohighlight">\(X\)</span> as defined in <a class="reference internal" href="#pre_image">Definition 13</a>.</p>
 <p><span class="math notranslate nohighlight">\(\color{red} {\textbf{Consequently}}\)</span>, we have</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}

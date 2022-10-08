@@ -53,7 +53,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"st": "\\mid", "S": "\\Omega", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "pmf": "p_X", "cdf": "F_X"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"st": "\\mid", "S": "\\Omega", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "pmf": "p_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -138,7 +138,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="0202_probability_space.html">
-   Probability
+   Probability Space
   </a>
  </li>
  <li class="toctree-l1">
@@ -376,31 +376,23 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#intuition-independence-intuition-independence-stanley-h-chan-introduction-to-probability-for-data-science-2021-pp-85-88-intuition-independence-intuition-independence-stanley-h-chan-introduction-to-probability-for-data-science-2021-pp-85-88">
-   Intuition (Independence) [^intuition_independence] [^
-   <strong>
-    Stanley H. Chan: Introduction to Probability for Data Science, 2021. (pp. 85-88)
-   </strong>
-   ] {#intuition-independence-intuition_independence-stanley-h-chan-introduction-to-probability-for-data-science-2021-pp-85-88}
+  <a class="reference internal nav-link" href="#intuition-independence">
+   Intuition (Independence)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#definition-equivalent-independence-definition">
-   Definition (Equivalent Independence Definition)
+  <a class="reference internal nav-link" href="#defining-independence-in-terms-of-conditional-probability">
+   Defining Independence in Terms of Conditional Probability
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#definition-disjoint-vs-independence">
-   Definition (Disjoint vs Independence)
+  <a class="reference internal nav-link" href="#disjoint-vs-independence">
+   Disjoint vs Independence
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercise-independence-stanley-h-chan-introduction-to-probability-for-data-science-2021-pp-87-88-exercise-independence-stanley-h-chan-introduction-to-probability-for-data-science-2021-pp-87-88">
-   Exercise (Independence) [^
-   <strong>
-    Stanley H. Chan: Introduction to Probability for Data Science, 2021. (pp. 87-88)
-   </strong>
-   ] {#exercise-independence-stanley-h-chan-introduction-to-probability-for-data-science-2021-pp-87-88}
+  <a class="reference internal nav-link" href="#exercise-independence">
+   Exercise (Independence)
   </a>
  </li>
 </ul>
@@ -428,31 +420,23 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#intuition-independence-intuition-independence-stanley-h-chan-introduction-to-probability-for-data-science-2021-pp-85-88-intuition-independence-intuition-independence-stanley-h-chan-introduction-to-probability-for-data-science-2021-pp-85-88">
-   Intuition (Independence) [^intuition_independence] [^
-   <strong>
-    Stanley H. Chan: Introduction to Probability for Data Science, 2021. (pp. 85-88)
-   </strong>
-   ] {#intuition-independence-intuition_independence-stanley-h-chan-introduction-to-probability-for-data-science-2021-pp-85-88}
+  <a class="reference internal nav-link" href="#intuition-independence">
+   Intuition (Independence)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#definition-equivalent-independence-definition">
-   Definition (Equivalent Independence Definition)
+  <a class="reference internal nav-link" href="#defining-independence-in-terms-of-conditional-probability">
+   Defining Independence in Terms of Conditional Probability
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#definition-disjoint-vs-independence">
-   Definition (Disjoint vs Independence)
+  <a class="reference internal nav-link" href="#disjoint-vs-independence">
+   Disjoint vs Independence
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercise-independence-stanley-h-chan-introduction-to-probability-for-data-science-2021-pp-87-88-exercise-independence-stanley-h-chan-introduction-to-probability-for-data-science-2021-pp-87-88">
-   Exercise (Independence) [^
-   <strong>
-    Stanley H. Chan: Introduction to Probability for Data Science, 2021. (pp. 87-88)
-   </strong>
-   ] {#exercise-independence-stanley-h-chan-introduction-to-probability-for-data-science-2021-pp-87-88}
+  <a class="reference internal nav-link" href="#exercise-independence">
+   Exercise (Independence)
   </a>
  </li>
 </ul>
@@ -469,14 +453,19 @@ title="Print to PDF"
 <h1>Independence<a class="headerlink" href="#independence" title="Permalink to this headline">#</a></h1>
 <section id="definition-independent-events">
 <h2>Definition (Independent Events)<a class="headerlink" href="#definition-independent-events" title="Permalink to this headline">#</a></h2>
-<p>Two events <span class="math notranslate nohighlight">\(A, B \in \E\)</span> are <strong>statiscally independent</strong> if</p>
-<div class="math notranslate nohighlight">
-\[
+<div class="proof definition admonition" id="def:independent-events">
+<p class="admonition-title"><span class="caption-number">Definition 8 </span> (Independent Events)</p>
+<section class="definition-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(\P\)</span> be a probability function defined over the probability space <span class="math notranslate nohighlight">\(\pspace\)</span>.</p>
+<p>Two events <span class="math notranslate nohighlight">\(A, B \in \E\)</span> are <em><strong>statiscally</strong></em> <strong>independent</strong> if</p>
+<div class="math notranslate nohighlight" id="equation-eq-independent-events">
+<span class="eqno">(2)<a class="headerlink" href="#equation-eq-independent-events" title="Permalink to this equation">#</a></span>\[
 \P(A \cap B) = \P(A)P(B)
 \]</div>
 </section>
-<section id="intuition-independence-intuition-independence-stanley-h-chan-introduction-to-probability-for-data-science-2021-pp-85-88-intuition-independence-intuition-independence-stanley-h-chan-introduction-to-probability-for-data-science-2021-pp-85-88">
-<h2>Intuition (Independence) [^intuition_independence] [^<strong>Stanley H. Chan: Introduction to Probability for Data Science, 2021. (pp. 85-88)</strong>] {#intuition-independence-intuition_independence-stanley-h-chan-introduction-to-probability-for-data-science-2021-pp-85-88}<a class="headerlink" href="#intuition-independence-intuition-independence-stanley-h-chan-introduction-to-probability-for-data-science-2021-pp-85-88-intuition-independence-intuition-independence-stanley-h-chan-introduction-to-probability-for-data-science-2021-pp-85-88" title="Permalink to this headline">#</a></h2>
+</div></section>
+<section id="intuition-independence">
+<span id="id1"></span><h2>Intuition (Independence)<a class="headerlink" href="#intuition-independence" title="Permalink to this headline">#</a></h2>
 <p>The formula above is not at all intuitive.</p>
 <p>A more intuitive way to think about it is to think that two events <span class="math notranslate nohighlight">\(A\)</span>
 and <span class="math notranslate nohighlight">\(B\)</span> are <strong>independent</strong> if the occurrence of <span class="math notranslate nohighlight">\(B\)</span> does not affect the
@@ -493,8 +482,11 @@ number of outcomes of the reduced sample space <span class="math notranslate noh
 think of independence as event <span class="math notranslate nohighlight">\(B\)</span> occuring not affecting event <span class="math notranslate nohighlight">\(A\)</span>
 occurring, then it means that the probability of <span class="math notranslate nohighlight">\(A\)</span> occurring is still
 the probability of <span class="math notranslate nohighlight">\(A\)</span> occurring. i.e <span class="math notranslate nohighlight">\(\P(A|B) = \P(A)\)</span></p>
-<p>It follows immediately that
-$<span class="math notranslate nohighlight">\(P(A) = P(A|B) = \dfrac{P(A \cap B)}{P(B)} \Longrightarrow P(A) P(B) = P(A \cap B)\)</span>$</p>
+<p>It follows immediately that</p>
+<div class="math notranslate nohighlight">
+\[
+\P(A) = \P(A ~|~ B) = \dfrac{\P(A \cap B)}{\P(B)} \Longrightarrow \P(A)\P(B) = \P(A \cap B)
+\]</div>
 <figure class="align-default" id="conditional">
 <a class="reference internal image-reference" href="https://storage.googleapis.com/reighns/reighns_ml_projects/docs/probability_and_statistics/02_introduction_to_probability/conditional.png"><img alt="https://storage.googleapis.com/reighns/reighns_ml_projects/docs/probability_and_statistics/02_introduction_to_probability/conditional.png" src="https://storage.googleapis.com/reighns/reighns_ml_projects/docs/probability_and_statistics/02_introduction_to_probability/conditional.png" style="height: 300px;" /></a>
 </figure>
@@ -506,33 +498,43 @@ that <span class="math notranslate nohighlight">\(\P(A ~|~ B) = \P(A)\)</span>, 
 conditionals, <span class="math notranslate nohighlight">\(\P(A ~|~ B) = \dfrac{\P(A \cap B)}{B}\)</span>, so equating
 them we have the nice equation of <span class="math notranslate nohighlight">\(\P(A)\P(B) = \P(A \cap B)\)</span>.</p>
 </div></blockquote>
-<p>[^intuition_independence]: <a class="reference external" href="https://math.stackexchange.com/questions/123192/the-definition-of-independence-is-not-intuitive">The definition of independence is not
-intuitive</a>
-[^**Stanley H. Chan: Introduction to Probability for Data Science,</p>
-<ol class="simple">
-<li><p>(pp. 85-88)**]: <strong>Stanley H. Chan: Introduction to Probability
-for Data Science, 2021. (pp. 85-88)</strong></p></li>
-</ol>
+<p>See chapter 2, section 2.4.2 of <span id="id2">[<a class="reference internal" href="0202_probability_space.html#id4" title="Stanley H. Chan. Introduction to probability for Data Science. Michigan Publishing, 2021.">Chan, 2021</a>]</span> for more details.</p>
 </section>
-<section id="definition-equivalent-independence-definition">
-<h2>Definition (Equivalent Independence Definition)<a class="headerlink" href="#definition-equivalent-independence-definition" title="Permalink to this headline">#</a></h2>
-<p>We have stated this in the previous intuition section. Now we formally
-state it:</p>
-<p>Let <span class="math notranslate nohighlight">\(A\)</span> nad <span class="math notranslate nohighlight">\(B\)</span> be two events such that <span class="math notranslate nohighlight">\(\P(A)\)</span> and <span class="math notranslate nohighlight">\(\P(B)\)</span> are more
-than <span class="math notranslate nohighlight">\(0\)</span>, then <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are <strong>independent</strong> if</p>
+<section id="defining-independence-in-terms-of-conditional-probability">
+<h2>Defining Independence in Terms of Conditional Probability<a class="headerlink" href="#defining-independence-in-terms-of-conditional-probability" title="Permalink to this headline">#</a></h2>
+<p>We formally state the intuition in the previous <a class="reference internal" href="#intuition-independence"><span class="std std-ref">section</span></a> as follows.</p>
+<div class="proof definition admonition" id="def:independence-conditional">
+<p class="admonition-title"><span class="caption-number">Definition 9 </span> (Definition of Independence in Terms of Conditional Probability)</p>
+<section class="definition-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(\P\)</span> be a probability function defined over the probability space <span class="math notranslate nohighlight">\(\pspace\)</span>.</p>
+<p>Let <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> be two events in <span class="math notranslate nohighlight">\(\E\)</span> such that <span class="math notranslate nohighlight">\(\P(A) &gt; 0\)</span> and <span class="math notranslate nohighlight">\(\P(B) &gt; 0\)</span>,
+then <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are <strong>independent</strong> if</p>
 <div class="math notranslate nohighlight">
 \[
-\P(A|B) = \P(A) \quad \P(B|A) = \P(B)
+\P(A|B) = \P(A) \quad \textbf{or} \quad P(B|A) = \P(B)
 \]</div>
 </section>
-<section id="definition-disjoint-vs-independence">
-<h2>Definition (Disjoint vs Independence)<a class="headerlink" href="#definition-disjoint-vs-independence" title="Permalink to this headline">#</a></h2>
-<p>Given two events <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>. The only condition when
-<span class="math notranslate nohighlight">\(\textbf{Disjoint} \iff \textbf{Independence}\)</span> if that if <span class="math notranslate nohighlight">\(\P(A) = 0\)</span> or
+</div></section>
+<section id="disjoint-vs-independence">
+<h2>Disjoint vs Independence<a class="headerlink" href="#disjoint-vs-independence" title="Permalink to this headline">#</a></h2>
+<div class="proof definition admonition" id="def:disjoint">
+<p class="admonition-title"><span class="caption-number">Definition 10 </span> (Disjoint)</p>
+<section class="definition-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(\P\)</span> be a probability function defined over the probability space <span class="math notranslate nohighlight">\(\pspace\)</span>.</p>
+<p>Two events <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are <em><strong>disjoint</strong></em> if <span class="math notranslate nohighlight">\(A \cap B = \emptyset\)</span>.</p>
+</section>
+</div><div class="proof theorem admonition" id="thm:disjoint-vs-independent">
+<p class="admonition-title"><span class="caption-number">Theorem 1 </span> (Disjoint vs Independence)</p>
+<section class="theorem-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(\P\)</span> be a probability function defined over the probability space <span class="math notranslate nohighlight">\(\pspace\)</span>.</p>
+<p>Given two events <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> in <span class="math notranslate nohighlight">\(\E\)</span>. The only condition when
+<span class="math notranslate nohighlight">\(\textbf{Disjoint} \iff \textbf{Independence}\)</span> is if <span class="math notranslate nohighlight">\(\P(A) = 0\)</span> or
 <span class="math notranslate nohighlight">\(\P(B) = 0\)</span>.</p>
 </section>
-<section id="exercise-independence-stanley-h-chan-introduction-to-probability-for-data-science-2021-pp-87-88-exercise-independence-stanley-h-chan-introduction-to-probability-for-data-science-2021-pp-87-88">
-<h2>Exercise (Independence) [^<strong>Stanley H. Chan: Introduction to Probability for Data Science, 2021. (pp. 87-88)</strong>] {#exercise-independence-stanley-h-chan-introduction-to-probability-for-data-science-2021-pp-87-88}<a class="headerlink" href="#exercise-independence-stanley-h-chan-introduction-to-probability-for-data-science-2021-pp-87-88-exercise-independence-stanley-h-chan-introduction-to-probability-for-data-science-2021-pp-87-88" title="Permalink to this headline">#</a></h2>
+</div></section>
+<section id="exercise-independence">
+<h2>Exercise (Independence)<a class="headerlink" href="#exercise-independence" title="Permalink to this headline">#</a></h2>
+<p>In <span id="id3">[<a class="reference internal" href="0202_probability_space.html#id4" title="Stanley H. Chan. Introduction to probability for Data Science. Michigan Publishing, 2021.">Chan, 2021</a>]</span>, chapter 2, section 2.4.2, the author gave an example that is not easy to visualize.</p>
 <p>Consider the experiment of throwing a die twice. One should be clear
 from the context that the outcomes are in the form of a tuple
 <span class="math notranslate nohighlight">\((\textbf{dice_1}, \textbf{dice_2})\)</span> and the sample space is:</p>
@@ -574,17 +576,17 @@ probability of A, they are dependent.</p>
 </div></blockquote>
 <p>I think I cannot understand why the author mentioned about “first die”
 when in event <span class="math notranslate nohighlight">\(A\)</span>, the first die is already a <span class="math notranslate nohighlight">\(3\)</span>.</p>
-<p>One can find more explanation here[^mathstack1] and
-here[^mathstack2].</p>
-<p>[^**Stanley H. Chan: Introduction to Probability for Data Science,</p>
-<ol class="simple">
-<li><p>(pp. 87-88)**]: <strong>Stanley H. Chan: Introduction to Probability
-for Data Science, 2021. (pp. 87-88)</strong> [^mathstack1]: <a class="reference external" href="https://math.stackexchange.com/questions/4403684/intuition-on-independence-of-two-events/">Intuition on
-independence of two
-events</a>
-[^mathstack2]: <a class="reference external" href="https://math.stackexchange.com/questions/3897127/dartboard-paradox-and-understanding-independence">Dartboard paradox and understanding
-independence</a></p></li>
-</ol>
+<p>One can find more explanation here <a class="footnote-reference brackets" href="#mathstack1" id="id4">1</a> and
+here <a class="footnote-reference brackets" href="#mathstack2" id="id5">2</a>.</p>
+<hr class="footnotes docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="mathstack1"><span class="brackets"><a class="fn-backref" href="#id4">1</a></span></dt>
+<dd><p><a class="reference external" href="https://math.stackexchange.com/questions/4403684/intuition-on-independence-of-two-events/">Intuition on independence of two events</a></p>
+</dd>
+<dt class="label" id="mathstack2"><span class="brackets"><a class="fn-backref" href="#id5">2</a></span></dt>
+<dd><p><a class="reference external" href="https://math.stackexchange.com/questions/3897127/dartboard-paradox-and-understanding-independence">Dartboard paradox and understanding independence</a></p>
+</dd>
+</dl>
 </section>
 </section>
 

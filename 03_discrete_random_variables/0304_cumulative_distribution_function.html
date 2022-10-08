@@ -53,7 +53,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"st": "\\mid", "S": "\\Omega", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "pmf": "p_X", "cdf": "F_X"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"st": "\\mid", "S": "\\Omega", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "pmf": "p_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -137,7 +137,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../02_probability/0202_probability_space.html">
-   Probability
+   Probability Space
   </a>
  </li>
  <li class="toctree-l1">
@@ -504,13 +504,13 @@ In particular, in continuous random variables, we do not have an equivalent of P
 <section id="definition">
 <h2>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">#</a></h2>
 <div class="proof definition admonition" id="def_cdf">
-<p class="admonition-title"><span class="caption-number">Definition 13 </span> (Cumulative Distribution Function)</p>
+<p class="admonition-title"><span class="caption-number">Definition 18 </span> (Cumulative Distribution Function)</p>
 <section class="definition-content" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(X\)</span> be a discrete random variable with <span class="math notranslate nohighlight">\(\S = \lset \xi_1, \xi_2, \ldots \rset\)</span> where
 <span class="math notranslate nohighlight">\(\xi_i \in \R\)</span> for all <span class="math notranslate nohighlight">\(i\)</span>. Note that <span class="math notranslate nohighlight">\(X(\xi_i) = x_i\)</span> for all <span class="math notranslate nohighlight">\(i\)</span> where <span class="math notranslate nohighlight">\(x_i\)</span> is the state of <span class="math notranslate nohighlight">\(X\)</span>.</p>
 <p>Then the <strong>cumulative distribution function</strong> <span class="math notranslate nohighlight">\(\cdf\)</span> is defined as</p>
 <div class="math notranslate nohighlight" id="equation-eq-def-cdf">
-<span class="eqno">(3)<a class="headerlink" href="#equation-eq-def-cdf" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(5)<a class="headerlink" href="#equation-eq-def-cdf" title="Permalink to this equation">#</a></span>\[
 \cdf(x_k) \overset{\text{def}}{=} \P \lsq X \leq x_k \rsq = \sum_{\ell=1}^k \P \lsq X = x_{\ell} \rsq = \sum_{\ell=1}^k \pmf(x_{\ell})
 \]</div>
 <p>Since <span class="math notranslate nohighlight">\(\P \lsq X = x_{\ell} \rsq\)</span> is the probability mass function, we can also replace
@@ -528,7 +528,7 @@ the symbol with the <span class="math notranslate nohighlight">\(\pmf\)</span> s
     \frac{1}{4} &amp; \text{if } x = 4 \\
 \end{cases}
 \end{split}\]</div>
-<p>Then by definition <a class="reference internal" href="#def_cdf">Definition 13</a>, we have the CDF of <span class="math notranslate nohighlight">\(X\)</span> to be computed as:</p>
+<p>Then by definition <a class="reference internal" href="#def_cdf">Definition 18</a>, we have the CDF of <span class="math notranslate nohighlight">\(X\)</span> to be computed as:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align}
@@ -585,7 +585,7 @@ the symbol with the <span class="math notranslate nohighlight">\(\pmf\)</span> s
 <section id="properties">
 <h2>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">#</a></h2>
 <div class="proof theorem admonition" id="thm_cdf">
-<p class="admonition-title"><span class="caption-number">Theorem 2 </span> (Properties of CDF)</p>
+<p class="admonition-title"><span class="caption-number">Theorem 4 </span> (Properties of CDF)</p>
 <section class="theorem-content" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(X\)</span> be a discrete random variable with <span class="math notranslate nohighlight">\(\S = \lset \xi_1, \xi_2, \ldots \rset\)</span>
 where <span class="math notranslate nohighlight">\(\xi_i \in \R\)</span> for all <span class="math notranslate nohighlight">\(i\)</span>. Then, the CDF <span class="math notranslate nohighlight">\(\cdf\)</span> of <span class="math notranslate nohighlight">\(X\)</span> satisfies the following properties:</p>
@@ -611,13 +611,13 @@ where <span class="math notranslate nohighlight">\(\xi_i \in \R\)</span> for all
 <section id="pmf-and-cdf-conversion">
 <h2>PMF and CDF Conversion<a class="headerlink" href="#pmf-and-cdf-conversion" title="Permalink to this headline">#</a></h2>
 <div class="proof theorem admonition" id="thm_pmf_cdf">
-<p class="admonition-title"><span class="caption-number">Theorem 3 </span> (PMF and CDF Conversion)</p>
+<p class="admonition-title"><span class="caption-number">Theorem 5 </span> (PMF and CDF Conversion)</p>
 <section class="theorem-content" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(X\)</span> be a discrete random variable with <span class="math notranslate nohighlight">\(\S = \lset \xi_1, \xi_2, \ldots \rset\)</span>
 where <span class="math notranslate nohighlight">\(\xi_i \in \R\)</span> for all <span class="math notranslate nohighlight">\(i\)</span>. Note that <span class="math notranslate nohighlight">\(X(\xi_i) = x_i\)</span> for all <span class="math notranslate nohighlight">\(i\)</span> where <span class="math notranslate nohighlight">\(x_i\)</span> is the state of <span class="math notranslate nohighlight">\(X\)</span>.
 Then, the PMF of <span class="math notranslate nohighlight">\(X\)</span> can be obtained from the CDF by</p>
 <div class="math notranslate nohighlight" id="equation-eq-pmf-cdf-1">
-<span class="eqno">(4)<a class="headerlink" href="#equation-eq-pmf-cdf-1" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(6)<a class="headerlink" href="#equation-eq-pmf-cdf-1" title="Permalink to this equation">#</a></span>\[
 \pmf(x_k) = \cdf(x_k) - \cdf(x_{k-1})
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(X\)</span> has a countable set of states <span class="math notranslate nohighlight">\(\S\)</span>.</p>

@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Probability &#8212; Probability &amp; Statistics</title>
+    <title>Probability Space &#8212; Probability &amp; Statistics</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,7 +53,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"st": "\\mid", "S": "\\Omega", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "pmf": "p_X", "cdf": "F_X"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"st": "\\mid", "S": "\\Omega", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "pmf": "p_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -138,7 +138,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Probability
+   Probability Space
   </a>
  </li>
  <li class="toctree-l1">
@@ -371,64 +371,57 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#probability-space">
-   Probability Space
+  <a class="reference internal nav-link" href="#experiment">
+   Experiment
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#experiment">
-     Experiment
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sample-space-mathbf-omega">
-     Sample Space
-     <span class="math notranslate nohighlight">
-      \(\mathbf{\Omega}\)
-     </span>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#event-e-and-event-space-mathcal-f">
-     Event
-     <span class="math notranslate nohighlight">
-      \(E\)
-     </span>
-     and Event space
-     <span class="math notranslate nohighlight">
-      \(\mathcal{F}\)
-     </span>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#probability-law-and-function-mathbb-p">
-     Probability Law and Function
-     <span class="math notranslate nohighlight">
-      \(\mathbb{P}\)
-     </span>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#probability-law-is-a-measure">
-     Probability Law is a Measure
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#measure-zero-sets">
-     Measure Zero Sets
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example">
-     Example
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-notion-of-experiments-and-defining-the-probability-space">
-     The Notion of Experiments and Defining the Probability Space
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sample-space-mathbf-omega">
+   Sample Space
+   <span class="math notranslate nohighlight">
+    \(\mathbf{\Omega}\)
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#event-e-and-event-space-mathcal-f">
+   Event
+   <span class="math notranslate nohighlight">
+    \(E\)
+   </span>
+   and Event space
+   <span class="math notranslate nohighlight">
+    \(\mathcal{F}\)
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#probability-law-and-function-mathbb-p">
+   Probability Law and Function
+   <span class="math notranslate nohighlight">
+    \(\mathbb{P}\)
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#probability-law-is-a-measure">
+   Probability Law is a Measure
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#measure-zero-sets">
+   Measure Zero Sets
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-of-probability-space">
+   Example of Probability Space
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-notion-of-experiments-and-defining-the-probability-space">
+   The Notion of Experiments and Defining the Probability Space
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#citations">
@@ -444,7 +437,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Probability</h1>
+                <h1>Probability Space</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -455,64 +448,57 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#probability-space">
-   Probability Space
+  <a class="reference internal nav-link" href="#experiment">
+   Experiment
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#experiment">
-     Experiment
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sample-space-mathbf-omega">
-     Sample Space
-     <span class="math notranslate nohighlight">
-      \(\mathbf{\Omega}\)
-     </span>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#event-e-and-event-space-mathcal-f">
-     Event
-     <span class="math notranslate nohighlight">
-      \(E\)
-     </span>
-     and Event space
-     <span class="math notranslate nohighlight">
-      \(\mathcal{F}\)
-     </span>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#probability-law-and-function-mathbb-p">
-     Probability Law and Function
-     <span class="math notranslate nohighlight">
-      \(\mathbb{P}\)
-     </span>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#probability-law-is-a-measure">
-     Probability Law is a Measure
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#measure-zero-sets">
-     Measure Zero Sets
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example">
-     Example
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-notion-of-experiments-and-defining-the-probability-space">
-     The Notion of Experiments and Defining the Probability Space
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sample-space-mathbf-omega">
+   Sample Space
+   <span class="math notranslate nohighlight">
+    \(\mathbf{\Omega}\)
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#event-e-and-event-space-mathcal-f">
+   Event
+   <span class="math notranslate nohighlight">
+    \(E\)
+   </span>
+   and Event space
+   <span class="math notranslate nohighlight">
+    \(\mathcal{F}\)
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#probability-law-and-function-mathbb-p">
+   Probability Law and Function
+   <span class="math notranslate nohighlight">
+    \(\mathbb{P}\)
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#probability-law-is-a-measure">
+   Probability Law is a Measure
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#measure-zero-sets">
+   Measure Zero Sets
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-of-probability-space">
+   Example of Probability Space
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-notion-of-experiments-and-defining-the-probability-space">
+   The Notion of Experiments and Defining the Probability Space
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#citations">
@@ -529,13 +515,11 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="probability">
-<h1>Probability<a class="headerlink" href="#probability" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="probability-space">
+<h1>Probability Space<a class="headerlink" href="#probability-space" title="Permalink to this headline">#</a></h1>
 <p>Most definitions and theorems below are cited from <span id="id1">[<a class="reference internal" href="#id4" title="Stanley H. Chan. Introduction to probability for Data Science. Michigan Publishing, 2021.">Chan, 2021</a>]</span>.</p>
-<section id="probability-space">
-<h2>Probability Space<a class="headerlink" href="#probability-space" title="Permalink to this headline">#</a></h2>
 <section id="experiment">
-<h3>Experiment<a class="headerlink" href="#experiment" title="Permalink to this headline">#</a></h3>
+<h2>Experiment<a class="headerlink" href="#experiment" title="Permalink to this headline">#</a></h2>
 <p>Real-world scenarios often involve chance. We can model such scenarios
 mathematically. For this purpose, we’ll use a mathematical object named
 the <strong>experiment</strong> (probability space), typically denoted
@@ -543,7 +527,7 @@ as an ordered triplet:</p>
 <div class="math notranslate nohighlight">
 \[\text{Experiment} = (\S, \E, \P)\]</div>
 <div class="proof definition admonition" id="experiment">
-<p class="admonition-title"><span class="caption-number">Definition 1 </span> (Experiment)</p>
+<p class="admonition-title"><span class="caption-number">Definition 1 </span> (Experiment/Probability Space)</p>
 <section class="definition-content" id="proof-content">
 <p>An <strong>experiment</strong> is an ordered triplet defined as</p>
 <div class="math notranslate nohighlight">
@@ -558,7 +542,7 @@ as an ordered triplet:</p>
 </div><p>We will go through the notations in the following sections.</p>
 </section>
 <section id="sample-space-mathbf-omega">
-<h3>Sample Space <span class="math notranslate nohighlight">\(\mathbf{\Omega}\)</span><a class="headerlink" href="#sample-space-mathbf-omega" title="Permalink to this headline">#</a></h3>
+<h2>Sample Space <span class="math notranslate nohighlight">\(\mathbf{\Omega}\)</span><a class="headerlink" href="#sample-space-mathbf-omega" title="Permalink to this headline">#</a></h2>
 <div class="proof definition admonition" id="sample_space">
 <p class="admonition-title"><span class="caption-number">Definition 2 </span> (Sample Space <span class="math notranslate nohighlight">\(\mathbf{\Omega}\)</span>)</p>
 <section class="definition-content" id="proof-content">
@@ -568,7 +552,7 @@ We denote <span class="math notranslate nohighlight">\(\xi \in \Omega\)</span> a
 </section>
 </div></section>
 <section id="event-e-and-event-space-mathcal-f">
-<h3>Event <span class="math notranslate nohighlight">\(E\)</span> and Event space <span class="math notranslate nohighlight">\(\mathcal{F}\)</span><a class="headerlink" href="#event-e-and-event-space-mathcal-f" title="Permalink to this headline">#</a></h3>
+<h2>Event <span class="math notranslate nohighlight">\(E\)</span> and Event space <span class="math notranslate nohighlight">\(\mathcal{F}\)</span><a class="headerlink" href="#event-e-and-event-space-mathcal-f" title="Permalink to this headline">#</a></h2>
 <div class="proof definition admonition" id="event">
 <p class="admonition-title"><span class="caption-number">Definition 3 </span> (Event <span class="math notranslate nohighlight">\(E\)</span>)</p>
 <section class="definition-content" id="proof-content">
@@ -581,7 +565,7 @@ We denote <span class="math notranslate nohighlight">\(\xi \in \Omega\)</span> a
 </section>
 </div></section>
 <section id="probability-law-and-function-mathbb-p">
-<h3>Probability Law and Function <span class="math notranslate nohighlight">\(\mathbb{P}\)</span><a class="headerlink" href="#probability-law-and-function-mathbb-p" title="Permalink to this headline">#</a></h3>
+<h2>Probability Law and Function <span class="math notranslate nohighlight">\(\mathbb{P}\)</span><a class="headerlink" href="#probability-law-and-function-mathbb-p" title="Permalink to this headline">#</a></h2>
 <div class="proof definition admonition" id="probability_law">
 <p class="admonition-title"><span class="caption-number">Definition 5 </span> (Probability Law)</p>
 <section class="definition-content" id="proof-content">
@@ -597,12 +581,12 @@ We denote <span class="math notranslate nohighlight">\(\xi \in \Omega\)</span> a
 </section>
 </div></section>
 <section id="probability-law-is-a-measure">
-<h3>Probability Law is a Measure<a class="headerlink" href="#probability-law-is-a-measure" title="Permalink to this headline">#</a></h3>
+<h2>Probability Law is a Measure<a class="headerlink" href="#probability-law-is-a-measure" title="Permalink to this headline">#</a></h2>
 <p>The notion of measure is important for us to understand.</p>
 <p>See chapter 2, section 2.2.3 of <span id="id2">[<a class="reference internal" href="#id4" title="Stanley H. Chan. Introduction to probability for Data Science. Michigan Publishing, 2021.">Chan, 2021</a>]</span> for more details.</p>
 </section>
 <section id="measure-zero-sets">
-<h3>Measure Zero Sets<a class="headerlink" href="#measure-zero-sets" title="Permalink to this headline">#</a></h3>
+<h2>Measure Zero Sets<a class="headerlink" href="#measure-zero-sets" title="Permalink to this headline">#</a></h2>
 <p>This definition here will be more obvious when we visit <strong>continuous
 distributions</strong> where it does not make sense to ask the question of the
 probability of a single point as it will always be zero.</p>
@@ -618,11 +602,11 @@ if for any <span class="math notranslate nohighlight">\(\epsilon &gt; 0\)</span>
 </ul>
 </section>
 </div></section>
-<section id="example">
-<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">#</a></h3>
+<section id="example-of-probability-space">
+<h2>Example of Probability Space<a class="headerlink" href="#example-of-probability-space" title="Permalink to this headline">#</a></h2>
 <p>Real-world scenarios often involve chance. We can model such scenarios
 mathematically. For this purpose, we’ll use a mathematical object named
-the <strong>experiment</strong> <span class="math notranslate nohighlight">\(\textbf{EXP}\)</span> (probability space), typically denoted
+the <strong>experiment</strong> (probability space), typically denoted
 as an ordered triplet:</p>
 <div class="math notranslate nohighlight">
 \[\text{Experiment} = (\S, \E, \P)\]</div>
@@ -671,7 +655,9 @@ that particular event occurring.</p></li>
 </tr>
 </tbody>
 </table>
-<p><strong>Probability (Important!):</strong> If the sample space <span class="math notranslate nohighlight">\(\S\)</span> consists of a
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>If the sample space <span class="math notranslate nohighlight">\(\S\)</span> consists of a
 finite number of equally likely outcomes, the probability of an event
 <span class="math notranslate nohighlight">\(A\)</span>, denoted by <span class="math notranslate nohighlight">\(\P(A)\)</span>, is given by:</p>
 <div class="math notranslate nohighlight">
@@ -679,12 +665,16 @@ finite number of equally likely outcomes, the probability of an event
 \P(A) = \dfrac{n(A)}{n(\S)}
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(n(A)\)</span> denotes the number of outcomes in the event <span class="math notranslate nohighlight">\(A\)</span>. So if
-event <span class="math notranslate nohighlight">\(A\)</span> is the event where you pick a red ball, we consider <span class="math notranslate nohighlight">\(n(A)\)</span> to
-be 6. This will be more formally stated later, but for now, understand
+event <span class="math notranslate nohighlight">\(A\)</span> is the event where you roll a 6, we consider <span class="math notranslate nohighlight">\(n(A)\)</span> to
+be 1 since there <span class="math notranslate nohighlight">\(A = \rset 6 \lset\)</span> implies that there is only one
+outcome. Therefore, <span class="math notranslate nohighlight">\(\P(A) = \frac{1}{6}\)</span> as <span class="math notranslate nohighlight">\(n(\S) = 6\)</span> (6 outcomes
+for a dice roll).
+This will be more formally stated later, but for now, understand
 the probability function as a frequency counter.</p>
+</div>
 </section>
 <section id="the-notion-of-experiments-and-defining-the-probability-space">
-<h3>The Notion of Experiments and Defining the Probability Space<a class="headerlink" href="#the-notion-of-experiments-and-defining-the-probability-space" title="Permalink to this headline">#</a></h3>
+<h2>The Notion of Experiments and Defining the Probability Space<a class="headerlink" href="#the-notion-of-experiments-and-defining-the-probability-space" title="Permalink to this headline">#</a></h2>
 <p>Consider the following example:</p>
 <blockquote>
 <div><p>We have 10 balls, 6 red and 4 black. We also know that 3 of the red
@@ -816,7 +806,6 @@ being <span class="math notranslate nohighlight">\(8,9,10\)</span>.</p>
 example, let <span class="math notranslate nohighlight">\(A\)</span> be the event such that the ball is round, and
 correspondingly, <span class="math notranslate nohighlight">\(A = \{1,2,3,7\}\)</span>. Let <span class="math notranslate nohighlight">\(B\)</span> be the event such that the
 ball is red, and the correspondingly, <span class="math notranslate nohighlight">\(B = \{1,2,3,4,5,6\}\)</span>.</p>
-</section>
 </section>
 <section id="citations">
 <h2>Citations<a class="headerlink" href="#citations" title="Permalink to this headline">#</a></h2>

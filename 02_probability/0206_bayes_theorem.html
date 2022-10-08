@@ -53,7 +53,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"st": "\\mid", "S": "\\Omega", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "pmf": "p_X", "cdf": "F_X"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"st": "\\mid", "S": "\\Omega", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "pmf": "p_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -138,7 +138,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="0202_probability_space.html">
-   Probability
+   Probability Space
   </a>
  </li>
  <li class="toctree-l1">
@@ -371,21 +371,9 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#definition-conditional-probability">
-   Definition (Conditional Probability)
+  <a class="reference internal nav-link" href="#baye-s-theorem">
+   Baye’s Theorem
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#definition-baye-s-theorem">
-   Definition (Baye’s Theorem)
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#intuition-baye-s-theorem">
-     Intuition (Baye’s Theorem)
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#terminology-posterior-and-conditional-probability">
@@ -393,18 +381,13 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#theorem-law-of-total-probability">
-   Theorem (Law of Total Probability)
+  <a class="reference internal nav-link" href="#law-of-total-probability">
+   Law of Total Probability
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#intuition-and-interpretation-law-of-total-probability">
    Intuition and Interpretation (Law of Total Probability)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#corollary-law-of-total-probability">
-   Corollary (Law of Total Probability)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -437,21 +420,9 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#definition-conditional-probability">
-   Definition (Conditional Probability)
+  <a class="reference internal nav-link" href="#baye-s-theorem">
+   Baye’s Theorem
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#definition-baye-s-theorem">
-   Definition (Baye’s Theorem)
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#intuition-baye-s-theorem">
-     Intuition (Baye’s Theorem)
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#terminology-posterior-and-conditional-probability">
@@ -459,18 +430,13 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#theorem-law-of-total-probability">
-   Theorem (Law of Total Probability)
+  <a class="reference internal nav-link" href="#law-of-total-probability">
+   Law of Total Probability
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#intuition-and-interpretation-law-of-total-probability">
    Intuition and Interpretation (Law of Total Probability)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#corollary-law-of-total-probability">
-   Corollary (Law of Total Probability)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -495,40 +461,27 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="baye-s-theorem-and-the-law-of-total-probability">
 <h1>Baye’s Theorem and the Law of Total Probability<a class="headerlink" href="#baye-s-theorem-and-the-law-of-total-probability" title="Permalink to this headline">#</a></h1>
-<section id="definition-conditional-probability">
-<h2>Definition (Conditional Probability)<a class="headerlink" href="#definition-conditional-probability" title="Permalink to this headline">#</a></h2>
-<p>As a refresher, we re-state the definition of conditional probability
-here.</p>
-<p>Let <span class="math notranslate nohighlight">\(\P\)</span> be a probability function and <span class="math notranslate nohighlight">\(A, B \in \E\)</span> be events. Then the
-<strong>conditional probability</strong> of <span class="math notranslate nohighlight">\(A\)</span> given that event <span class="math notranslate nohighlight">\(B\)</span> has occurred is
-denoted</p>
-<div class="math notranslate nohighlight">
-\[
-\P(A|B)
-\]</div>
-<p>and is defined by</p>
-<div class="math notranslate nohighlight">
-\[
-\P(A|B) = \dfrac{\P(A\cap B)}{\P(B)}
-\]</div>
-</section>
-<section id="definition-baye-s-theorem">
-<h2>Definition (Baye’s Theorem)<a class="headerlink" href="#definition-baye-s-theorem" title="Permalink to this headline">#</a></h2>
+<section id="baye-s-theorem">
+<h2>Baye’s Theorem<a class="headerlink" href="#baye-s-theorem" title="Permalink to this headline">#</a></h2>
+<div class="proof definition admonition" id="def:bayes-theorem">
+<p class="admonition-title"><span class="caption-number">Definition 11 </span> (Baye’s Theorem)</p>
+<section class="definition-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(\P\)</span> be a probability function defined over the probability space <span class="math notranslate nohighlight">\(\pspace\)</span>.</p>
 <p>Two events <span class="math notranslate nohighlight">\(A, B \in \E\)</span> such that <span class="math notranslate nohighlight">\(\P(A) &gt; 0\)</span> and <span class="math notranslate nohighlight">\(\P(B) &gt; 0\)</span>, we have</p>
 <div class="math notranslate nohighlight">
 \[
 \P(A|B) = \dfrac{\P(B|A)\P(A)}{\P(B)}
 \]</div>
-<section id="intuition-baye-s-theorem">
-<h3>Intuition (Baye’s Theorem)<a class="headerlink" href="#intuition-baye-s-theorem" title="Permalink to this headline">#</a></h3>
-<p>The observant reader should find it easy that this formula is deduced by
-abusing the fact that <span class="math notranslate nohighlight">\(\P(A \cap B) = \P(B \cap A)\)</span>, and therefore</p>
+</section>
+</div><div class="proof admonition" id="proof">
+<p>Proof. The observant reader should find it easy that this formula is deduced
+due to the fact that <span class="math notranslate nohighlight">\(\P(A \cap B) = \P(B \cap A)\)</span>, and therefore</p>
 <div class="math notranslate nohighlight">
 \[
 \P(A|B) = \dfrac{\P(A\cap B)}{\P(B)} = \dfrac{\P(B \cap A)}{\P(B)} = \dfrac{\P(B ~|~ A)\P(A)}{\P(B)}
 \]</div>
 <p>since <span class="math notranslate nohighlight">\(\P(B ~|~ A) = \dfrac{\P(B \cap A)}{\P(A)}\)</span>.</p>
-</section>
+</div>
 </section>
 <section id="terminology-posterior-and-conditional-probability">
 <h2>Terminology (Posterior and Conditional Probability)<a class="headerlink" href="#terminology-posterior-and-conditional-probability" title="Permalink to this headline">#</a></h2>
@@ -536,8 +489,12 @@ abusing the fact that <span class="math notranslate nohighlight">\(\P(A \cap B) 
 view <span class="math notranslate nohighlight">\(\P(A \cap B)\)</span>. If the context is clear, we may call <span class="math notranslate nohighlight">\(\P(B|A)\)</span> the
 <strong>conditional probability</strong> and <span class="math notranslate nohighlight">\(\P(A|B)\)</span> the <strong>posterior probability</strong>.</p>
 </section>
-<section id="theorem-law-of-total-probability">
-<h2>Theorem (Law of Total Probability)<a class="headerlink" href="#theorem-law-of-total-probability" title="Permalink to this headline">#</a></h2>
+<section id="law-of-total-probability">
+<h2>Law of Total Probability<a class="headerlink" href="#law-of-total-probability" title="Permalink to this headline">#</a></h2>
+<div class="proof theorem admonition" id="thm:law-total-probability">
+<p class="admonition-title"><span class="caption-number">Theorem 2 </span> (Law of Total Probability)</p>
+<section class="theorem-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(\P\)</span> be a probability function defined over the probability space <span class="math notranslate nohighlight">\(\pspace\)</span>.</p>
 <p>Let <span class="math notranslate nohighlight">\(\{A_1, \ldots, A_n\}\)</span> be a <em>partition</em> of the sample space <span class="math notranslate nohighlight">\(\S\)</span>.
 This means that <span class="math notranslate nohighlight">\(A_1, \ldots, A_n\)</span> are <em>disjoint</em> and
 <span class="math notranslate nohighlight">\(\S = A_1 \cup \cdots \cup A_n\)</span>. Then, for any <span class="math notranslate nohighlight">\(B \subseteq \S\)</span>, we have</p>
@@ -546,6 +503,7 @@ This means that <span class="math notranslate nohighlight">\(A_1, \ldots, A_n\)<
 \P(B) = \sum_{i=1}^{n} \P(B|A_i)\P(A_i)
 \]</div>
 </section>
+</div></section>
 <section id="intuition-and-interpretation-law-of-total-probability">
 <h2>Intuition and Interpretation (Law of Total Probability)<a class="headerlink" href="#intuition-and-interpretation-law-of-total-probability" title="Permalink to this headline">#</a></h2>
 <p>The law of total probability can be stated more intuitively as the sum
@@ -559,10 +517,10 @@ all <span class="math notranslate nohighlight">\(A_i\)</span>, if it doesn’t, 
 <p>Now if this intuition is established, we just express
 <span class="math notranslate nohighlight">\(\P(B \cap A_i) = \P(B|A_i)\P(A_i)\)</span> by conditional probability and we
 recovered back the formula for the law of total probability.</p>
-<figure class="align-default" id="law-of-total-probability">
+<figure class="align-default" id="id1">
 <a class="reference internal image-reference" href="https://storage.googleapis.com/reighns/reighns_ml_projects/docs/probability_and_statistics/02_introduction_to_probability/law_of_total_probability.jpg"><img alt="https://storage.googleapis.com/reighns/reighns_ml_projects/docs/probability_and_statistics/02_introduction_to_probability/law_of_total_probability.jpg" src="https://storage.googleapis.com/reighns/reighns_ml_projects/docs/probability_and_statistics/02_introduction_to_probability/law_of_total_probability.jpg" style="height: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Partition of Law of Total Probability.</span><a class="headerlink" href="#law-of-total-probability" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Partition of Law of Total Probability.</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <blockquote>
@@ -575,9 +533,9 @@ just the event <span class="math notranslate nohighlight">\(B\)</span> itself. I
 them anyways since <span class="math notranslate nohighlight">\(P(A_k \cap B) = 0\)</span>. Note the loose usage of the
 index here, <span class="math notranslate nohighlight">\(i\)</span> means overlap, <span class="math notranslate nohighlight">\(k\)</span> means non-overlap.</p>
 </div></blockquote>
-</section>
-<section id="corollary-law-of-total-probability">
-<h2>Corollary (Law of Total Probability)<a class="headerlink" href="#corollary-law-of-total-probability" title="Permalink to this headline">#</a></h2>
+<div class="proof corollary admonition" id="cor:law-total-probability">
+<p class="admonition-title"><span class="caption-number">Corollary 5 </span> (Law of Total Probability (Corollary))</p>
+<section class="corollary-content" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(\{A_1, \ldots, A_n\}\)</span> be a <em>partition</em> of the sample space <span class="math notranslate nohighlight">\(\S\)</span>.
 This means that <span class="math notranslate nohighlight">\(A_1, \ldots, A_n\)</span> are <em>disjoint</em> and
 <span class="math notranslate nohighlight">\(\S = A_1 \cup \cdots \cup A_n\)</span>. Then, for any <span class="math notranslate nohighlight">\(B \subseteq \S\)</span>, we have</p>
@@ -586,6 +544,7 @@ This means that <span class="math notranslate nohighlight">\(A_1, \ldots, A_n\)<
 \P(A_j|B) = \dfrac{\P(B|A_j)\P(A_j)}{\sum_{i=1}^{n}\P(B|A_i)\P(A_i)}
 \]</div>
 </section>
+</div></section>
 <section id="exercise-2-47-exercise-247">
 <h2>Exercise 2.47 {#exercise-247}<a class="headerlink" href="#exercise-2-47-exercise-247" title="Permalink to this headline">#</a></h2>
 <p><strong>Stanley H. Chan: Introduction to Probability for Data Science, 2021.

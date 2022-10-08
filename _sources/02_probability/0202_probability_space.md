@@ -1,10 +1,8 @@
-# Probability
+# Probability Space
 
 Most definitions and theorems below are cited from {cite}`chan_2021`.
 
-## Probability Space
-
-### Experiment
+## Experiment
 
 Real-world scenarios often involve chance. We can model such scenarios
 mathematically. For this purpose, we\'ll use a mathematical object named
@@ -13,7 +11,7 @@ as an ordered triplet:
 
 $$\text{Experiment} = (\S, \E, \P)$$
 
-````{prf:definition} Experiment
+````{prf:definition} Experiment/Probability Space
 :label: experiment
 
 An **experiment** is an ordered triplet defined as
@@ -29,7 +27,7 @@ where:
 
 We will go through the notations in the following sections.
 
-### Sample Space $\mathbf{\Omega}$
+## Sample Space $\mathbf{\Omega}$
 
 ````{prf:definition} Sample Space $\mathbf{\Omega}$
 :label: sample_space
@@ -40,8 +38,7 @@ We denote $\xi \in \Omega$ as an *outcome*.
 Note that a **sample space** can be **uncountable**.
 ````
 
-
-### Event $E$ and Event space $\mathcal{F}$
+## Event $E$ and Event space $\mathcal{F}$
 
 ````{prf:definition} Event $E$
 :label: event
@@ -55,7 +52,7 @@ An **event** $E$ is a subset of the sample space $\Omega$.
 An **event space** $\mathcal{F}$ is the set of all possible events $E$.
 ````
 
-### Probability Law and Function $\mathbb{P}$
+## Probability Law and Function $\mathbb{P}$
 
 ````{prf:definition} Probability Law
 :label: probability_law
@@ -70,16 +67,15 @@ $$
     E &\mapsto \P(E)
 \end{align}
 $$
-
 ````
 
-### Probability Law is a Measure
+## Probability Law is a Measure
 
 The notion of measure is important for us to understand.
 
 See chapter 2, section 2.2.3 of {cite}`chan_2021` for more details.
 
-### Measure Zero Sets
+## Measure Zero Sets
 
 This definition here will be more obvious when we visit **continuous
 distributions** where it does not make sense to ask the question of the
@@ -96,11 +92,11 @@ if for any $\epsilon > 0$,
 - $\sum_{i=1}^{\infty} \P\lsq A_i \rsq < \epsilon$.
 ````
 
-### Example
+## Example of Probability Space
 
 Real-world scenarios often involve chance. We can model such scenarios
 mathematically. For this purpose, we\'ll use a mathematical object named
-the **experiment** $\textbf{EXP}$ (probability space), typically denoted
+the **experiment** (probability space), typically denoted
 as an ordered triplet:
 
 $$\text{Experiment} = (\S, \E, \P)$$
@@ -141,9 +137,10 @@ defined as such:
   - $\P(\{\text{Heads}\}) = \frac{1}{2}$
 ```
 
+````{admonition} Note
+:class: note
 
-
-**Probability (Important!):** If the sample space $\S$ consists of a
+If the sample space $\S$ consists of a
 finite number of equally likely outcomes, the probability of an event
 $A$, denoted by $\P(A)$, is given by:
 
@@ -152,11 +149,15 @@ $$
 $$
 
 where $n(A)$ denotes the number of outcomes in the event $A$. So if
-event $A$ is the event where you pick a red ball, we consider $n(A)$ to
-be 6. This will be more formally stated later, but for now, understand
+event $A$ is the event where you roll a 6, we consider $n(A)$ to
+be 1 since there $A = \rset 6 \lset$ implies that there is only one
+outcome. Therefore, $\P(A) = \frac{1}{6}$ as $n(\S) = 6$ (6 outcomes
+for a dice roll).
+This will be more formally stated later, but for now, understand
 the probability function as a frequency counter.
+````
 
-### The Notion of Experiments and Defining the Probability Space
+## The Notion of Experiments and Defining the Probability Space
 
 Consider the following example:
 
