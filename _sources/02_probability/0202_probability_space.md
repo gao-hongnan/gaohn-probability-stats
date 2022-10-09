@@ -159,6 +159,8 @@ the probability function as a frequency counter.
 
 ## The Notion of Experiments and Defining the Probability Space
 
+### How to define a Sample Space?
+
 Consider the following example:
 
 > We have 10 balls, 6 red and 4 black. We also know that 3 of the red
@@ -227,9 +229,8 @@ overwhelmed.
 One should know that given an experiment, the sample space is entirely
 up to you to define it, as long as it satisfies the below:
 
--   In the sample space, the outcomes $s_1,s_2,...,s_n$ must be
-    \\textbf{mutually exclusive.}
--   The outcomes must be collectively exhaustive\
+-   In the sample space, the outcomes $s_1,s_2,...,s_n$ must be mutually exclusive.
+-   The outcomes must be collectively exhaustive;
 -   The sample space must have the right granularity depending on what
     we are interested in. We must remove irrelevant information from the
     sample space. In other words, we must choose the right abstraction
@@ -255,7 +256,7 @@ The problem is there is no unique outcome in the sample space that
 unique outcome to describe this red and round ball. Hence we have to
 tweak a little.
 
-There are some**suggestions, not compulsory**, however when choosing a
+There are some **suggestions, not compulsory**, however when choosing a
 sample space. First is simplicity. For instance, in the trial of tossing
 a coin, we could have as a sample space
 
@@ -309,6 +310,11 @@ and of course any element of the event space is considered an event. For
 example, let $A$ be the event such that the ball is round, and
 correspondingly, $A = \{1,2,3,7\}$. Let $B$ be the event such that the
 ball is red, and the correspondingly, $B = \{1,2,3,4,5,6\}$.
+
+### What is a Probability Space?
+
+See my brain dump `important.md`.
+
 
 
 ## Citations
