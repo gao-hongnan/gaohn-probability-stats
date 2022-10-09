@@ -20,5 +20,4 @@ A **discrete random variable** $X$ is a random variable[^random_variable] whose 
 a countable set.
 ````
 
-
 [^random_variable]: See {prf:ref}`random_variables` for the definition of a random variable.

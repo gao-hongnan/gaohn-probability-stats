@@ -21,7 +21,7 @@ The PMF is one way to describe the distribution of a discrete random variable. A
 PMF cannot be defined for continuous random variables. The cumulative distribution function (CDF) 
 of a random variable is another method to describe the distribution of random variables.
 The advantage of the CDF is that it can be defined for any kind of random variable (discrete, 
-continuous, and mixed). {cite}`Cumulati3:online`.
+continuous, and mixed) {cite}`probability`.
 
 The take away lesson here is that CDF is another way to describe the distribution of a random variable.
 In particular, in continuous random variables, we do not have an equivalent of PMF, so we use CDF instead.
@@ -149,5 +149,10 @@ $$ (eq:pmf_cdf_1)
 where $X$ has a countable set of states $\S$. 
 ````
 
+## Citations
 
+```{bibliography}
+:style: unsrt
+:filter: docname in docnames
+```
 
