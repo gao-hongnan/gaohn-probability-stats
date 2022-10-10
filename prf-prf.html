@@ -200,6 +200,11 @@ const thebe_selector_output = ".output, .cell_output"
    Cumulative Distribution Function
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_discrete_random_variables/0305_expectation.html">
+   Expectation
+  </a>
+ </li>
 </ul>
 
     </div>
@@ -352,6 +357,7 @@ title="Open an issue"
    <a href="#cap-def_cdf"><strong>def_cdf</strong></a> | 
    <a href="#cap-def_countable_set"><strong>def_countable_set</strong></a> | 
    <a href="#cap-def_discrete_random_variables"><strong>def_discrete_random_variables</strong></a> | 
+   <a href="#cap-def_expectation"><strong>def_expectation</strong></a> | 
    <a href="#cap-def_pmf"><strong>def_pmf</strong></a> | 
    <a href="#cap-def_state_space"><strong>def_state_space</strong></a> | 
    <a href="#cap-definition-0"><strong>definition-0</strong></a> | 
@@ -367,11 +373,17 @@ title="Open an issue"
    <a href="#cap-pre_image"><strong>pre_image</strong></a> | 
    <a href="#cap-probability_law"><strong>probability_law</strong></a> | 
    <a href="#cap-prop:conditional-probability-equalities"><strong>prop:conditional-probability-equalities</strong></a> | 
+   <a href="#cap-prop_expectation_dc_shift"><strong>prop_expectation_dc_shift</strong></a> | 
+   <a href="#cap-prop_expectation_function"><strong>prop_expectation_function</strong></a> | 
+   <a href="#cap-prop_expectation_linearity"><strong>prop_expectation_linearity</strong></a> | 
+   <a href="#cap-prop_expectation_scaling"><strong>prop_expectation_scaling</strong></a> | 
+   <a href="#cap-prop_expectation_stronger_linearity"><strong>prop_expectation_stronger_linearity</strong></a> | 
    <a href="#cap-random_variables"><strong>random_variables</strong></a> | 
    <a href="#cap-sample_space"><strong>sample_space</strong></a> | 
    <a href="#cap-thm:disjoint-vs-independent"><strong>thm:disjoint-vs-independent</strong></a> | 
    <a href="#cap-thm:law-total-probability"><strong>thm:law-total-probability</strong></a> | 
    <a href="#cap-thm_cdf"><strong>thm_cdf</strong></a> | 
+   <a href="#cap-thm_existence_of_expectation"><strong>thm_existence_of_expectation</strong></a> | 
    <a href="#cap-thm_pmf_cdf"><strong>thm_pmf_cdf</strong></a> | 
    <a href="#cap-thm_pmf_normalization"><strong>thm_pmf_normalization</strong></a>
    </div>
@@ -498,6 +510,14 @@ title="Open an issue"
        <a href="03_discrete_random_variables/0302_discrete_random_variables.html#def_discrete_random_variables"><code class="xref">def_discrete_random_variables</code></a> <em>(03_discrete_random_variables/0302_discrete_random_variables)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-def_expectation"><td></td><td>
+       <strong>def_expectation</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="03_discrete_random_variables/0305_expectation.html#def_expectation"><code class="xref">def_expectation</code></a> <em>(03_discrete_random_variables/0305_expectation)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-def_pmf"><td></td><td>
        <strong>def_pmf</strong></td><td></td></tr>
      <tr>
@@ -618,6 +638,46 @@ title="Open an issue"
        <a href="02_probability/0204_conditional_probability.html#prop:conditional-probability-equalities"><code class="xref">prop:conditional-probability-equalities</code></a> <em>(02_probability/0204_conditional_probability)</em></td><td>
        <em>proposition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-prop_expectation_dc_shift"><td></td><td>
+       <strong>prop_expectation_dc_shift</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="03_discrete_random_variables/0305_expectation.html#prop_expectation_dc_shift"><code class="xref">prop_expectation_dc_shift</code></a> <em>(03_discrete_random_variables/0305_expectation)</em></td><td>
+       <em>property</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-prop_expectation_function"><td></td><td>
+       <strong>prop_expectation_function</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="03_discrete_random_variables/0305_expectation.html#prop_expectation_function"><code class="xref">prop_expectation_function</code></a> <em>(03_discrete_random_variables/0305_expectation)</em></td><td>
+       <em>property</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-prop_expectation_linearity"><td></td><td>
+       <strong>prop_expectation_linearity</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="03_discrete_random_variables/0305_expectation.html#prop_expectation_linearity"><code class="xref">prop_expectation_linearity</code></a> <em>(03_discrete_random_variables/0305_expectation)</em></td><td>
+       <em>property</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-prop_expectation_scaling"><td></td><td>
+       <strong>prop_expectation_scaling</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="03_discrete_random_variables/0305_expectation.html#prop_expectation_scaling"><code class="xref">prop_expectation_scaling</code></a> <em>(03_discrete_random_variables/0305_expectation)</em></td><td>
+       <em>property</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-prop_expectation_stronger_linearity"><td></td><td>
+       <strong>prop_expectation_stronger_linearity</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="03_discrete_random_variables/0305_expectation.html#prop_expectation_stronger_linearity"><code class="xref">prop_expectation_stronger_linearity</code></a> <em>(03_discrete_random_variables/0305_expectation)</em></td><td>
+       <em>property</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-random_variables"><td></td><td>
        <strong>random_variables</strong></td><td></td></tr>
      <tr>
@@ -656,6 +716,14 @@ title="Open an issue"
        <td></td>
        <td>
        <a href="03_discrete_random_variables/0304_cumulative_distribution_function.html#thm_cdf"><code class="xref">thm_cdf</code></a> <em>(03_discrete_random_variables/0304_cumulative_distribution_function)</em></td><td>
+       <em>theorem</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-thm_existence_of_expectation"><td></td><td>
+       <strong>thm_existence_of_expectation</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="03_discrete_random_variables/0305_expectation.html#thm_existence_of_expectation"><code class="xref">thm_existence_of_expectation</code></a> <em>(03_discrete_random_variables/0305_expectation)</em></td><td>
        <em>theorem</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-thm_pmf_cdf"><td></td><td>
