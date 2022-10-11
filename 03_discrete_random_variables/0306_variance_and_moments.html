@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Probability Mass Function &#8212; Probability &amp; Statistics</title>
+    <title>Moments and Variance &#8212; Probability &amp; Statistics</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -57,8 +57,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Cumulative Distribution Function" href="0304_cumulative_distribution_function.html" />
-    <link rel="prev" title="Discrete Random Variables" href="0302_discrete_random_variables.html" />
+    <link rel="next" title="Temp" href="../tmp.html" />
+    <link rel="prev" title="Expectation" href="0305_expectation.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -188,8 +188,8 @@ const thebe_selector_output = ".output, .cell_output"
    Discrete Random Variables
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="0303_probability_mass_function.html">
    Probability Mass Function
   </a>
  </li>
@@ -203,8 +203,8 @@ const thebe_selector_output = ".output, .cell_output"
    Expectation
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="0306_variance_and_moments.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Moments and Variance
   </a>
  </li>
@@ -269,6 +269,53 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/gao-hongnan/gaohn-probability-stats/main?urlpath=tree/docs/03_discrete_random_variables/0306_variance_and_moments.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/gao-hongnan/gaohn-probability-stats/blob/main/docs/03_discrete_random_variables/0306_variance_and_moments.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -308,7 +355,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/gao-hongnan/gaohn-probability-stats/issues/new?title=Issue%20on%20page%20%2F03_discrete_random_variables/0303_probability_mass_function.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/gao-hongnan/gaohn-probability-stats/issues/new?title=Issue%20on%20page%20%2F03_discrete_random_variables/0306_variance_and_moments.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -336,7 +383,24 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/03_discrete_random_variables/0303_probability_mass_function.md"
+        <a href="../_sources/03_discrete_random_variables/0306_variance_and_moments.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="../_sources/03_discrete_random_variables/0306_variance_and_moments.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -396,18 +460,28 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#definition">
-   Definition
+  <a class="reference internal nav-link" href="#moments">
+   Moments
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#normalization">
-   Normalization
+  <a class="reference internal nav-link" href="#variance">
+   Variance
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sturges-rule-and-cross-validation">
-   Sturges’ Rule and Cross Validation
+  <a class="reference internal nav-link" href="#standard-deviation">
+   Standard Deviation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#properties-of-moments-and-variance">
+   Properties of Moments and Variance
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#further-readings">
+   Further Readings
   </a>
  </li>
 </ul>
@@ -419,7 +493,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Probability Mass Function</h1>
+                <h1>Moments and Variance</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -430,18 +504,28 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#definition">
-   Definition
+  <a class="reference internal nav-link" href="#moments">
+   Moments
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#normalization">
-   Normalization
+  <a class="reference internal nav-link" href="#variance">
+   Variance
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sturges-rule-and-cross-validation">
-   Sturges’ Rule and Cross Validation
+  <a class="reference internal nav-link" href="#standard-deviation">
+   Standard Deviation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#properties-of-moments-and-variance">
+   Properties of Moments and Variance
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#further-readings">
+   Further Readings
   </a>
  </li>
 </ul>
@@ -454,76 +538,105 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="probability-mass-function">
-<h1>Probability Mass Function<a class="headerlink" href="#probability-mass-function" title="Permalink to this headline">#</a></h1>
-<section id="definition">
-<h2>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">#</a></h2>
-<div class="proof definition admonition" id="def_state_space">
-<p class="admonition-title"><span class="caption-number">Definition 16 </span> (State Space)</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="moments-and-variance">
+<h1>Moments and Variance<a class="headerlink" href="#moments-and-variance" title="Permalink to this headline">#</a></h1>
+<p>Let <span class="math notranslate nohighlight">\(\P\)</span> be a probability function defined over the probability space <span class="math notranslate nohighlight">\(\pspace\)</span>.</p>
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a discrete random variable with <span class="math notranslate nohighlight">\(\S = \lset \xi_1, \xi_2, \ldots \rset\)</span>
+unless otherwise stated.</p>
+<section id="moments">
+<h2>Moments<a class="headerlink" href="#moments" title="Permalink to this headline">#</a></h2>
+<div class="proof definition admonition" id="def_moments">
+<p class="admonition-title"><span class="caption-number">Definition 20 </span> (Moments)</p>
 <section class="definition-content" id="proof-content">
-<p>The set of all possible states of <span class="math notranslate nohighlight">\(X\)</span> is called the <strong>state space</strong> of <span class="math notranslate nohighlight">\(X\)</span> and is denoted as <span class="math notranslate nohighlight">\(X(\S)\)</span>.</p>
-<p>In particular, the state space of a discrete random variable <span class="math notranslate nohighlight">\(X\)</span> is a countable set
-as per <a class="reference internal" href="0302_discrete_random_variables.html#def_discrete_random_variables">Definition 15</a>.</p>
-</section>
-</div><div class="proof example admonition" id="example_state_space_coin_toss">
-<p class="admonition-title"><span class="caption-number">Example 3 </span> (State Space of Coin Toss)</p>
-<section class="example-content" id="proof-content">
-<p>Let us revisit the example in <a class="reference internal" href="0301_random_variables.html#example_random_variable_coin_toss">Example 1</a> and examine the state space of <span class="math notranslate nohighlight">\(X\)</span>.</p>
-<p>The state space of <span class="math notranslate nohighlight">\(X\)</span> is the set of all possible values that <span class="math notranslate nohighlight">\(X\)</span> can take. As enumerated in the example,
-we see that the state space of <span class="math notranslate nohighlight">\(X\)</span> is <span class="math notranslate nohighlight">\(\{0, 1, 2\}\)</span> (i.e. <span class="math notranslate nohighlight">\(X\)</span> takes 3 states 0, 1 and 2).</p>
-</section>
-</div><div class="proof definition admonition" id="def_pmf">
-<p class="admonition-title"><span class="caption-number">Definition 17 </span> (Probability Mass Function)</p>
-<section class="definition-content" id="proof-content">
-<p>The <strong>probability mass function</strong> (PMF) of a random variable <span class="math notranslate nohighlight">\(X\)</span> is a function that maps each state
-<span class="math notranslate nohighlight">\(x\)</span> in the state space <span class="math notranslate nohighlight">\(X(\S)\)</span> to its probability <span class="math notranslate nohighlight">\(\pmf(x) = \P\lsq X = x \rsq\)</span>.</p>
-<p>We denoted the PMF as</p>
+<p>The <strong><span class="math notranslate nohighlight">\(k\)</span>-th moment</strong> of <span class="math notranslate nohighlight">\(X\)</span> is defined as:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align}
-    \pmf: X(\S) &amp;\to [0, 1] \\ 
-    X(\S) \ni x &amp;\mapsto \pmf(x)
-\end{align}
-\end{split}\]</div>
-</section>
-</div><div class="proof example admonition" id="example_pmf_coin_toss">
-<p class="admonition-title"><span class="caption-number">Example 4 </span> (PMF of Coin Toss)</p>
-<section class="example-content" id="proof-content">
-<p>Let us revisit <a class="reference internal" href="0301_random_variables.html#example_random_variable_coin_toss">Example 1</a> on coin toss and compute the PMF of <span class="math notranslate nohighlight">\(X\)</span>.</p>
-<p>Recall the sample space is given by <span class="math notranslate nohighlight">\(\S = \{(HH), (HT), (TH), (TT)\}\)</span> and the state space is given by
-<span class="math notranslate nohighlight">\(X(\S) = \{0, 1, 2\}\)</span> as enumerated in <a class="reference internal" href="#example_state_space_coin_toss">Example 3</a>.</p>
-<p>Thus, our domain of <span class="math notranslate nohighlight">\(\pmf\)</span> is <span class="math notranslate nohighlight">\(X(\S) = \{0, 1, 2\}\)</span> we have 3 mappings to compute:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align}
-    \pmf(0) &amp;= \P\lsq X = 0 \rsq = \P\lsq \lset \xi \in \S \st X(\xi) = 0 \rset \rsq = \P\lsq \{(TT)\} \rsq = \dfrac{1}{4} \\
-    \pmf(1) &amp;= \P\lsq X = 1 \rsq = \P\lsq \lset \xi \in \S \st X(\xi) = 1 \rset \rsq = \P\lsq \{(HT), (TH)\} \rsq = \dfrac{2}{4} \\
-    \pmf(2) &amp;= \P\lsq X = 2 \rsq = \P\lsq \lset \xi \in \S \st X(\xi) = 2 \rset \rsq = \P\lsq \{(HH)\} \rsq = \dfrac{1}{4}
-\end{align}
-\end{split}\]</div>
-<p>Here we have enumerated all the possible states of <span class="math notranslate nohighlight">\(X\)</span> and computed the probability of each state.
-Thus, the PMF of <span class="math notranslate nohighlight">\(X\)</span> is completely determined by the 3 mappings above.</p>
+\[
+\exp \lsq X^k \rsq = \sum_{x \in X(\S)} x^k \cdot \P \lsq X = x \rsq
+\]</div>
+<p>This definition follows from <a class="reference internal" href="0305_expectation.html#prop_expectation_function">Property 1</a> in <a class="reference internal" href="0305_expectation.html"><span class="doc">Expectation</span></a>.</p>
+<p>Essentially, this means that the <span class="math notranslate nohighlight">\(k\)</span>-th moment is the <strong>expectation</strong> of <span class="math notranslate nohighlight">\(X^k\)</span>.</p>
 </section>
 </div></section>
-<section id="normalization">
-<h2>Normalization<a class="headerlink" href="#normalization" title="Permalink to this headline">#</a></h2>
-<div class="proof theorem admonition" id="thm_pmf_normalization">
-<p class="admonition-title"><span class="caption-number">Theorem 3 </span> (Normalization Property of PMF)</p>
-<section class="theorem-content" id="proof-content">
-<p>A PMF should satisfy the following normalization property:</p>
-<div class="math notranslate nohighlight" id="equation-eq-pmf-normalization">
-<span class="eqno">(4)<a class="headerlink" href="#equation-eq-pmf-normalization" title="Permalink to this equation">#</a></span>\[
-\sum_{x \in X(\S)} \pmf(x) = 1
+<section id="variance">
+<h2>Variance<a class="headerlink" href="#variance" title="Permalink to this headline">#</a></h2>
+<div class="proof definition admonition" id="def_variance">
+<p class="admonition-title"><span class="caption-number">Definition 21 </span> (Variance)</p>
+<section class="definition-content" id="proof-content">
+<p>The <strong>variance</strong> of <span class="math notranslate nohighlight">\(X\)</span> is defined as:</p>
+<div class="math notranslate nohighlight" id="equation-eq-var-1">
+<span class="eqno">(7)<a class="headerlink" href="#equation-eq-var-1" title="Permalink to this equation">#</a></span>\[
+\var \lsq X \rsq = \exp \lsq \lpar X - \mu \rpar^2 \rsq
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mu = \exp \lsq X \rsq\)</span> is the <strong>expectation</strong> of <span class="math notranslate nohighlight">\(X\)</span>.</p>
+<p>We denote <span class="math notranslate nohighlight">\(\sigma^2\)</span> as <span class="math notranslate nohighlight">\(\var\)</span> for short-hand notation.</p>
+</section>
+</div><p>We also have an equivalent definition of variance, which is more used in practice.</p>
+<div class="proof definition admonition" id="def_variance_alt">
+<p class="admonition-title"><span class="caption-number">Definition 22 </span> (Variance (Alternative))</p>
+<section class="definition-content" id="proof-content">
+<p>The <strong>variance</strong> of <span class="math notranslate nohighlight">\(X\)</span> is defined as:</p>
+<div class="math notranslate nohighlight" id="equation-eq-var-2">
+<span class="eqno">(8)<a class="headerlink" href="#equation-eq-var-2" title="Permalink to this equation">#</a></span>\[
+\var \lsq X \rsq = \exp \lsq X^2 \rsq - \exp \lsq X \rsq^2
 \]</div>
 </section>
-</div><div class="proof admonition" id="proof">
-<p>Proof. <strong>TODO</strong></p>
-</div>
+</div></section>
+<section id="standard-deviation">
+<h2>Standard Deviation<a class="headerlink" href="#standard-deviation" title="Permalink to this headline">#</a></h2>
+<div class="proof definition admonition" id="def_standard_deviation">
+<p class="admonition-title"><span class="caption-number">Definition 23 </span> (Standard Deviation)</p>
+<section class="definition-content" id="proof-content">
+<p>In the definition of <a class="reference internal" href="#def_variance">Definition 21</a>, we have <span class="math notranslate nohighlight">\(\var \lsq X \rsq\)</span> to have
+a different unit than <span class="math notranslate nohighlight">\(X\)</span>. If <span class="math notranslate nohighlight">\(X\)</span> is measured in meters, then <span class="math notranslate nohighlight">\(\var \lsq X \rsq\)</span>
+is measured in meters squared. To solve this issue, we define a new measure
+called the <strong>standard deviation</strong>, which is the square root of the variance <span id="id1">[<a class="reference internal" href="0304_cumulative_distribution_function.html#id4" title="Statistics and random processes | free textbook | course_2014. 2014. URL: https://www.probabilitycourse.com/."><em>statistics and random processes | free textbook | course_2014</em>, 2014</a>]</span>.</p>
+<div class="math notranslate nohighlight" id="equation-eq-std-1">
+<span class="eqno">(9)<a class="headerlink" href="#equation-eq-std-1" title="Permalink to this equation">#</a></span>\[
+\std \lsq X \rsq = \sqrt{\var \lsq X \rsq}
+\]</div>
 </section>
-<section id="sturges-rule-and-cross-validation">
-<h2>Sturges’ Rule and Cross Validation<a class="headerlink" href="#sturges-rule-and-cross-validation" title="Permalink to this headline">#</a></h2>
-<p>See <a class="reference external" href="https://probability4datascience.com/index.html">Introduction to Probability for Data Science</a>
-section 3.2.5.</p>
+</div></section>
+<section id="properties-of-moments-and-variance">
+<h2>Properties of Moments and Variance<a class="headerlink" href="#properties-of-moments-and-variance" title="Permalink to this headline">#</a></h2>
+<p>The properties of moments and variance are as follows:</p>
+<div class="proof property admonition" id="prop_scaling">
+<p class="admonition-title"><span class="caption-number">Property 6 </span> (Scaling)</p>
+<section class="property-content" id="proof-content">
+<p>For any constant <span class="math notranslate nohighlight">\(c\)</span>, we have:</p>
+<div class="math notranslate nohighlight" id="equation-eq-scaling-1">
+<span class="eqno">(10)<a class="headerlink" href="#equation-eq-scaling-1" title="Permalink to this equation">#</a></span>\[
+\exp \lsq c \cdot X \rsq = c^k \cdot \exp \lsq X \rsq
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(k\)</span> is the order of the moment.</p>
+</section>
+</div><div class="proof property admonition" id="prop_dc_shift">
+<p class="admonition-title"><span class="caption-number">Property 7 </span> (DC Shift)</p>
+<section class="property-content" id="proof-content">
+<p>For any constant <span class="math notranslate nohighlight">\(c\)</span>, we have:</p>
+<div class="math notranslate nohighlight" id="equation-eq-dc-shift-1">
+<span class="eqno">(11)<a class="headerlink" href="#equation-eq-dc-shift-1" title="Permalink to this equation">#</a></span>\[
+\exp \lsq (X + c) \rsq = \exp \lsq X \rsq
+\]</div>
+<p>The intuition is that shifting the random variable by a constant does not change
+the spread of the random variable.</p>
+</section>
+</div><div class="proof property admonition" id="prop_linearity">
+<p class="admonition-title"><span class="caption-number">Property 8 </span> (Linearity)</p>
+<section class="property-content" id="proof-content">
+<p>Combining <a class="reference internal" href="#prop_scaling">Property 6</a> and <a class="reference internal" href="#prop_dc_shift">Property 7</a>, we have:</p>
+<div class="math notranslate nohighlight" id="equation-eq-linearity-1">
+<span class="eqno">(12)<a class="headerlink" href="#equation-eq-linearity-1" title="Permalink to this equation">#</a></span>\[
+\exp \lsq a \cdot X + b \rsq = a^k \cdot \exp \lsq X \rsq
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(k\)</span> is the order of the moment.</p>
+</section>
+</div></section>
+<section id="further-readings">
+<h2>Further Readings<a class="headerlink" href="#further-readings" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.probabilitycourse.com/chapter3/3_2_4_variance.php">Variance</a> of <span id="id2">[<a class="reference internal" href="0304_cumulative_distribution_function.html#id4" title="Statistics and random processes | free textbook | course_2014. 2014. URL: https://www.probabilitycourse.com/."><em>statistics and random processes | free textbook | course_2014</em>, 2014</a>]</span>.</p></li>
+<li><p>Chapter 3.4.4 of Introduction to Probability for Data Science.</p></li>
+</ul>
 </section>
 </section>
 
@@ -554,17 +667,17 @@ section 3.2.5.</p>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="0302_discrete_random_variables.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="0305_expectation.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Discrete Random Variables</p>
+            <p class="prev-next-title">Expectation</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="0304_cumulative_distribution_function.html" title="next page">
+    <a class='right-next' id="next-link" href="../tmp.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Cumulative Distribution Function</p>
+        <p class="prev-next-title">Temp</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

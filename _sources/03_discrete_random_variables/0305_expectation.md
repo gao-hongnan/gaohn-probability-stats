@@ -58,7 +58,7 @@ Let $X$ be a discrete random variable with $\S = \lset \xi_1, \xi_2, \ldots \rse
 
 Then the ***expectation*** of $X$ has the following properties:
 
-```{prf:property} Function
+```{prf:property} The Law of The Unconscious Statistician
 :label: prop_expectation_function
 
 For any function $g$,
@@ -66,6 +66,9 @@ For any function $g$,
 $$
 \exp \lsq g(X) \rsq = \sum_{x \in X(\S)} g(x) \cdot \P \lsq X = x \rsq
 $$
+
+This is not a trivial result, [proof](https://en.wikipedia.org/wiki/Law_of_the_unconscious_statistician)
+can be found here.
 ```
 
 ```{prf:property} Linearity
@@ -108,35 +111,7 @@ $$
 $$
 ```
 
-A very important concept to remember here is that when we apply a function $g$ to a random variable $X$,
-the PMF of the resulting random variable $g(X)$ is the same as the PMF of $X$.
-
-For example consider the example of a dice roll, where $X$ is the random variable representing the outcome of a dice roll.
-
-Then $g(X) = X^2$ is the random variable representing the square of the outcome of a dice roll.
-
-We know the underlying PMF of $X$ is 
-
-$$
-\begin{align}
-\P \lsq X = 1 \rsq &= \frac{1}{6} \\
-\P \lsq X = 2 \rsq &= \frac{1}{6} \\
-\P \lsq X = 3 \rsq &= \frac{1}{6} \\
-\P \lsq X = 4 \rsq &= \frac{1}{6} \\
-\P \lsq X = 5 \rsq &= \frac{1}{6} \\
-\P \lsq X = 6 \rsq &= \frac{1}{6}
-\end{align}
-$$
-
-Let $Y = g(X) = X^2$.
-
-Then you can treat this as a "change of variable" where we now assign the outcomes in the sample space of $X$
-to be all squared, essentially $\S = \lset 1^2, 2^2, 3^2, 4^2, 5^2, 6^2 \rset$.
-
-There is no change in the underlying PMF of $X$, so the PMF of $Y$ is the same as the PMF of $X$.
-
 ## Concept
-
 
 ````{admonition} Concept
 :class: important
@@ -147,4 +122,7 @@ There is no change in the underlying PMF of $X$, so the PMF of $Y$ is the same a
 and is **random**.
 ````
 
-Let $X$ be a discrete random variable that represents the height of a person in the true population.
+## Further Readings
+
+- [Functions of Random Variables](https://www.probabilitycourse.com/chapter3/3_2_3_functions_random_var.php) of {cite}`probability`.
+- Chapter 3.4.3 of Introduction to Probability for Data Science.

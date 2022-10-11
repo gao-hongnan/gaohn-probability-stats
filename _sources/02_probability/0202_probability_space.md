@@ -150,7 +150,7 @@ $$
 
 where $n(A)$ denotes the number of outcomes in the event $A$. So if
 event $A$ is the event where you roll a 6, we consider $n(A)$ to
-be 1 since there $A = \rset 6 \lset$ implies that there is only one
+be 1 since $A = \lset 6 \rset$ implies that there is only one
 outcome. Therefore, $\P(A) = \frac{1}{6}$ as $n(\S) = 6$ (6 outcomes
 for a dice roll).
 This will be more formally stated later, but for now, understand

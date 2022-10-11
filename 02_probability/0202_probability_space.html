@@ -53,7 +53,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"st": "\\mid", "S": "\\Omega", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "exp": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "pmf": "p_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"st": "\\mid", "mod": "\\mid", "S": "\\Omega", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "exp": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "lpar": "\\left(", "rpar": "\\right)", "pmf": "p_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})", "var": "\\operatorname{Var}", "std": "\\operatorname{Std}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -201,6 +201,21 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="../03_discrete_random_variables/0305_expectation.html">
    Expectation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_discrete_random_variables/0306_variance_and_moments.html">
+   Moments and Variance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tmp.html">
+   Temp
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../important.html">
+   Important Brain Dump
   </a>
  </li>
 </ul>
@@ -700,7 +715,7 @@ finite number of equally likely outcomes, the probability of an event
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(n(A)\)</span> denotes the number of outcomes in the event <span class="math notranslate nohighlight">\(A\)</span>. So if
 event <span class="math notranslate nohighlight">\(A\)</span> is the event where you roll a 6, we consider <span class="math notranslate nohighlight">\(n(A)\)</span> to
-be 1 since there <span class="math notranslate nohighlight">\(A = \rset 6 \lset\)</span> implies that there is only one
+be 1 since <span class="math notranslate nohighlight">\(A = \lset 6 \rset\)</span> implies that there is only one
 outcome. Therefore, <span class="math notranslate nohighlight">\(\P(A) = \frac{1}{6}\)</span> as <span class="math notranslate nohighlight">\(n(\S) = 6\)</span> (6 outcomes
 for a dice roll).
 This will be more formally stated later, but for now, understand

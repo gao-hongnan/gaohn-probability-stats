@@ -53,10 +53,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"st": "\\mid", "S": "\\Omega", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "exp": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "pmf": "p_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"st": "\\mid", "mod": "\\mid", "S": "\\Omega", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "exp": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "lpar": "\\left(", "rpar": "\\right)", "pmf": "p_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})", "var": "\\operatorname{Var}", "std": "\\operatorname{Std}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Moments and Variance" href="0306_variance_and_moments.html" />
     <link rel="prev" title="Cumulative Distribution Function" href="0304_cumulative_distribution_function.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -200,6 +201,21 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Expectation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="0306_variance_and_moments.html">
+   Moments and Variance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tmp.html">
+   Temp
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../important.html">
+   Important Brain Dump
   </a>
  </li>
 </ul>
@@ -463,6 +479,11 @@ title="Print to PDF"
    Concept
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#further-readings">
+   Further Readings
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -500,6 +521,11 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#concept">
    Concept
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#further-readings">
+   Further Readings
   </a>
  </li>
 </ul>
@@ -549,13 +575,15 @@ and only if it is <strong>absolutely summable</strong>.</p>
 <p>Let <span class="math notranslate nohighlight">\(X\)</span> be a discrete random variable with <span class="math notranslate nohighlight">\(\S = \lset \xi_1, \xi_2, \ldots \rset\)</span>.</p>
 <p>Then the <em><strong>expectation</strong></em> of <span class="math notranslate nohighlight">\(X\)</span> has the following properties:</p>
 <div class="proof property admonition" id="prop_expectation_function">
-<p class="admonition-title"><span class="caption-number">Property 1 </span> (Function)</p>
+<p class="admonition-title"><span class="caption-number">Property 1 </span> (The Law of The Unconscious Statistician)</p>
 <section class="property-content" id="proof-content">
 <p>For any function <span class="math notranslate nohighlight">\(g\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[
 \exp \lsq g(X) \rsq = \sum_{x \in X(\S)} g(x) \cdot \P \lsq X = x \rsq
 \]</div>
+<p>This is not a trivial result, <a class="reference external" href="https://en.wikipedia.org/wiki/Law_of_the_unconscious_statistician">proof</a>
+can be found here.</p>
 </section>
 </div><div class="proof property admonition" id="prop_expectation_linearity">
 <p class="admonition-title"><span class="caption-number">Property 2 </span> (Linearity)</p>
@@ -593,27 +621,7 @@ and only if it is <strong>absolutely summable</strong>.</p>
 \exp \lsq \sum_{i=1}^n a_i X_i \rsq = \sum_{i=1}^n a_i \cdot \exp \lsq X_i \rsq
 \]</div>
 </section>
-</div><p>A very important concept to remember here is that when we apply a function <span class="math notranslate nohighlight">\(g\)</span> to a random variable <span class="math notranslate nohighlight">\(X\)</span>,
-the PMF of the resulting random variable <span class="math notranslate nohighlight">\(g(X)\)</span> is the same as the PMF of <span class="math notranslate nohighlight">\(X\)</span>.</p>
-<p>For example consider the example of a dice roll, where <span class="math notranslate nohighlight">\(X\)</span> is the random variable representing the outcome of a dice roll.</p>
-<p>Then <span class="math notranslate nohighlight">\(g(X) = X^2\)</span> is the random variable representing the square of the outcome of a dice roll.</p>
-<p>We know the underlying PMF of <span class="math notranslate nohighlight">\(X\)</span> is</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align}
-\P \lsq X = 1 \rsq &amp;= \frac{1}{6} \\
-\P \lsq X = 2 \rsq &amp;= \frac{1}{6} \\
-\P \lsq X = 3 \rsq &amp;= \frac{1}{6} \\
-\P \lsq X = 4 \rsq &amp;= \frac{1}{6} \\
-\P \lsq X = 5 \rsq &amp;= \frac{1}{6} \\
-\P \lsq X = 6 \rsq &amp;= \frac{1}{6}
-\end{align}
-\end{split}\]</div>
-<p>Let <span class="math notranslate nohighlight">\(Y = g(X) = X^2\)</span>.</p>
-<p>Then you can treat this as a “change of variable” where we now assign the outcomes in the sample space of <span class="math notranslate nohighlight">\(X\)</span>
-to be all squared, essentially <span class="math notranslate nohighlight">\(\S = \lset 1^2, 2^2, 3^2, 4^2, 5^2, 6^2 \rset\)</span>.</p>
-<p>There is no change in the underlying PMF of <span class="math notranslate nohighlight">\(X\)</span>, so the PMF of <span class="math notranslate nohighlight">\(Y\)</span> is the same as the PMF of <span class="math notranslate nohighlight">\(X\)</span>.</p>
-</section>
+</div></section>
 <section id="concept">
 <h2>Concept<a class="headerlink" href="#concept" title="Permalink to this headline">#</a></h2>
 <div class="important admonition">
@@ -622,7 +630,13 @@ to be all squared, essentially <span class="math notranslate nohighlight">\(\S =
 <p><strong>Average</strong> is a measure of the average value of a <strong>random sample</strong> from the true population
 and is <strong>random</strong>.</p>
 </div>
-<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a discrete random variable that represents the height of a person in the true population.</p>
+</section>
+<section id="further-readings">
+<h2>Further Readings<a class="headerlink" href="#further-readings" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.probabilitycourse.com/chapter3/3_2_3_functions_random_var.php">Functions of Random Variables</a> of <span id="id1">[<a class="reference internal" href="0304_cumulative_distribution_function.html#id4" title="Statistics and random processes | free textbook | course_2014. 2014. URL: https://www.probabilitycourse.com/."><em>statistics and random processes | free textbook | course_2014</em>, 2014</a>]</span>.</p></li>
+<li><p>Chapter 3.4.3 of Introduction to Probability for Data Science.</p></li>
+</ul>
 </section>
 </section>
 
@@ -659,6 +673,13 @@ and is <strong>random</strong>.</p>
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title">Cumulative Distribution Function</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="0306_variance_and_moments.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Moments and Variance</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>

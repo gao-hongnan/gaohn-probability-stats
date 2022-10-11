@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Introduction &#8212; Probability &amp; Statistics</title>
+    <title>Important Brain Dump &#8212; Probability &amp; Statistics</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,9 +53,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"st": "\\mid", "mod": "\\mid", "S": "\\Omega", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "exp": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "lpar": "\\left(", "rpar": "\\right)", "pmf": "p_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})", "var": "\\operatorname{Var}", "std": "\\operatorname{Std}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Permutations and Combinations" href="01_mathematical_preliminaries/01_combinatorics.html" />
+    <link rel="prev" title="Temp" href="tmp.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -109,8 +111,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
                     Introduction
                 </a>
             </li>
@@ -174,7 +176,7 @@ const thebe_selector_output = ".output, .cell_output"
   Chapter 3. Discrete Random Variables
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="03_discrete_random_variables/0301_random_variables.html">
    Random Variables
@@ -210,8 +212,8 @@ const thebe_selector_output = ".output, .cell_output"
    Temp
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="important.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Important Brain Dump
   </a>
  </li>
@@ -305,7 +307,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/gao-hongnan/gaohn-probability-stats/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/gao-hongnan/gaohn-probability-stats/issues/new?title=Issue%20on%20page%20%2Fimportant.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -333,7 +335,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/intro.md"
+        <a href="_sources/important.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -370,23 +372,104 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-problem">
+   The Problem
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-ticket-model-and-what-is-a-r-v">
+     The ticket model and what is a r.v
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-data-points-are-considered-random-variables">
+     Why data points are considered random variables
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#super-important">
+     Super important
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#empirical-distribution-histogram">
+     Empirical distribution/histogram
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Introduction</h1>
+                <h1>Important Brain Dump</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-problem">
+   The Problem
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-ticket-model-and-what-is-a-r-v">
+     The ticket model and what is a r.v
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-data-points-are-considered-random-variables">
+     Why data points are considered random variables
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#super-important">
+     Super important
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#empirical-distribution-histogram">
+     Empirical distribution/histogram
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -394,16 +477,94 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h1>
-<p>This repository follows closely with the book <a class="reference external" href="https://probability4datascience.com/">Introduction to Probability for Data
-Science</a>.</p>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="important-brain-dump">
+<h1>Important Brain Dump<a class="headerlink" href="#important-brain-dump" title="Permalink to this headline">#</a></h1>
+<p>Some important stuff here which I need to remember and yet to be able to formalize.</p>
+<section id="the-problem">
+<h2>The Problem<a class="headerlink" href="#the-problem" title="Permalink to this headline">#</a></h2>
+<section id="the-ticket-model-and-what-is-a-r-v">
+<h3>The ticket model and what is a r.v<a class="headerlink" href="#the-ticket-model-and-what-is-a-r-v" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://stats.stackexchange.com/questions/50/what-is-meant-by-a-random-variable/54894#54894">https://stats.stackexchange.com/questions/50/what-is-meant-by-a-random-variable/54894#54894</a></p></li>
+<li><p><a class="reference external" href="https://stats.stackexchange.com/questions/68599/distribution-of-correlation-coefficient-between-two-discrete-random-variables-an/68782#68782">https://stats.stackexchange.com/questions/68599/distribution-of-correlation-coefficient-between-two-discrete-random-variables-an/68782#68782</a></p></li>
+<li><p>A true population, say the height of all people in the world. To simplify the problem imagine living in a world of people whose
+height is a whole number ranging from 1-100 cm, ok I know it is absurd but it is just for the sake of the example, since discrete numbers are easier to visualize.
+Also secretly imagine the population is 1000 people with 100 people of each height (important here as we will see later).</p></li>
+<li><p>Imagine a ticket box called the “population box” which has a ticket for each person in the world.</p>
+<ul>
+<li><p>every person in the world write their height on a ticket and put it in the box.</p></li>
+</ul>
+</li>
+<li><p>So note that we can think the population box as our sample space, each ticket is an outcome.</p></li>
+<li><p>Note that it can be the case that more than 1 ticket has the same height, so to be very concise, our population box not a “set”, so not a sample space.</p></li>
+<li><p>Now recall that a random variable is a function that maps outcomes to real numbers.</p></li>
+<li><p>In our case if we treat <span class="math notranslate nohighlight">\(X: \S \to \R\)</span> as a r.v, then it is obvious that the sample space <span class="math notranslate nohighlight">\(\S\)</span> is all from 0 to 100
+and for this case our mapping to <span class="math notranslate nohighlight">\(\R\)</span> is just the identity function, since the height of a person is a real number ( a random variable is a way to assign a numerical code to each possible outcome).
+This aside, what is more important is that we say <span class="math notranslate nohighlight">\(X\)</span> is a r.v. that represents the height of a person (when we pick 1 ticket).
+And the randomness comes from we don’t know which ticket we pick, as it could be any person representing any height.
+But once <strong>it is picked</strong>, the <strong>realization</strong> of the r.v. is the height of the person, say hongnan with height 175 cm.</p></li>
+</ul>
+</section>
+<section id="why-data-points-are-considered-random-variables">
+<h3>Why data points are considered random variables<a class="headerlink" href="#why-data-points-are-considered-random-variables" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>See <a class="reference external" href="https://mathstat.slu.edu/~speegle/_book/SimulationRV.html">https://mathstat.slu.edu/~speegle/_book/SimulationRV.html</a></p></li>
+<li><p>In ml context, Random variables <span class="math notranslate nohighlight">\(X_1, X_2, \ldots X_{???}\)</span> are the data points of the height of people, and the true population space is the set of all possible data points (in our case it is actually 1 million people).</p></li>
+<li><p>I was confused because <span class="math notranslate nohighlight">\(X: \S \to \R\)</span> is a r.v. that represents the height of a person, say if <span class="math notranslate nohighlight">\(100 cm \in \S\)</span>, then <span class="math notranslate nohighlight">\(X(100) = 100 cm\)</span> is the realized outcome.
+Then why do we need to index the data points? Because the mapping of <span class="math notranslate nohighlight">\(X\)</span> is already well defined for any outcome in <span class="math notranslate nohighlight">\(\S\)</span>, so for each person in the world
+we already can represent the single random variable <span class="math notranslate nohighlight">\(X\)</span> that represents the height of that person. So why do we need to index the data points?</p></li>
+<li><p>For example, most cited definition is the iid assumption: random variables <span class="math notranslate nohighlight">\(X_1, X_2, \ldots X_{n}\)</span> are called independent and identically distributed or iid if the variables are mutually independent, and each<br />
+<span class="math notranslate nohighlight">\(X_i\)</span> has the same probability distribution. Say <span class="math notranslate nohighlight">\(n=10\)</span> people. It turns out we should think of it this way, in the true population box, all the tickets (height) of the people
+are <strong>numbered</strong>, and each <span class="math notranslate nohighlight">\(X_i\)</span> is actually remember is a deterministic answer after realization, and therefore the numbering makes sense. We treat each draw of the ticket as a random variable, and the numbering is just a way to index the random variables.</p></li>
+<li><p>Furthermore, we usually take a random sample of size <span class="math notranslate nohighlight">\(n\)</span> from the population box, and treat each draw as a rv.</p></li>
+</ul>
+</section>
+<section id="super-important">
+<h3>Super important<a class="headerlink" href="#super-important" title="Permalink to this headline">#</a></h3>
+<p>Above has a hazy concept, one one hand sample space is a set and therefore should be unique, but on the other hand, if there’s 1000 people
+in the true population, and we treat the population box as the sample space, then the sample space is no longer “unique” since there are
+only 100 distinct heights? However, if we number the tickets, then the sample space is unique, in a way we are playing abuse of notation
+that two different people with the same height 175 cm are two distinct outcomes in the sample space. This is very important to realize!!!</p>
+</section>
+<section id="empirical-distribution-histogram">
+<h3>Empirical distribution/histogram<a class="headerlink" href="#empirical-distribution-histogram" title="Permalink to this headline">#</a></h3>
+<p>To put more concrete example, consider the same experiment above, define the rv <span class="math notranslate nohighlight">\(X\)</span> to be the height of a person,
+then find probability of getting a person with height 175 cm, say <span class="math notranslate nohighlight">\(P(X=175) = ?\)</span>.</p>
+<p>To find this answer, we need to find PMF. Note PMF is ideal means it is deterministic and hinged upon the true population.</p>
+<p>So we secretly know the true PMF of the above distribution is actually simply</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+\P(X=x) = \frac{10}{1000} = \frac{1}{10} \quad \forall x \in \{1, \ldots, 100\}
+\end{align}
+\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\P(X=x) = \begin{cases}
+\frac{1}{10} \text{ if } x=1 \\
+\frac{1}{10} \text{ if } x=2 \\
+\frac{1}{10} \text{ if } x=3 \\
+\vdots \\
+\frac{1}{10} \text{ if } x=100 \\
+\end{cases}
+\end{align}
+\end{split}\]</div>
+<p>since it is equally likely to get any person with height 1-100 cm over 1000 people. Note
+that for each height, we have exactly 10 people.</p>
+<p>Recall the
+example</p>
+<div class="math notranslate nohighlight">
+\[
+\P(A) = \dfrac{n(A)}{n(\S)}
+\]</div>
+<p>and since our <span class="math notranslate nohighlight">\(\S\)</span> is 1000 people.</p>
+<p>Now we randomly pick 10 people from the true population, then we can plot a histogram of the heights of the 10 people, and the histogram
+says 3 people have height 175 cm, 2 people have height 180 cm, and so on. This is the empirical distribution, and it is not the true PMF,
+and in our case we have <span class="math notranslate nohighlight">\(\dfrac{3}{10}\)</span> probability that a person has 175cm <span class="math notranslate nohighlight">\(\P(X=175) = \dfrac{3}{10}\)</span>. But note carefully
+here is <strong>empirical</strong> distribution and is non-deterministic.</p>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -433,12 +594,12 @@ Science</a>.</p>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='right-next' id="next-link" href="01_mathematical_preliminaries/01_combinatorics.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Permutations and Combinations</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+    <a class='left-prev' id="prev-link" href="tmp.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Temp</p>
+        </div>
     </a>
 </div>
             </footer>

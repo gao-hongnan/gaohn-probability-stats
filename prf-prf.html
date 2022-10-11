@@ -205,6 +205,21 @@ const thebe_selector_output = ".output, .cell_output"
    Expectation
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_discrete_random_variables/0306_variance_and_moments.html">
+   Moments and Variance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tmp.html">
+   Temp
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="important.html">
+   Important Brain Dump
+  </a>
+ </li>
 </ul>
 
     </div>
@@ -358,8 +373,12 @@ title="Open an issue"
    <a href="#cap-def_countable_set"><strong>def_countable_set</strong></a> | 
    <a href="#cap-def_discrete_random_variables"><strong>def_discrete_random_variables</strong></a> | 
    <a href="#cap-def_expectation"><strong>def_expectation</strong></a> | 
+   <a href="#cap-def_moments"><strong>def_moments</strong></a> | 
    <a href="#cap-def_pmf"><strong>def_pmf</strong></a> | 
+   <a href="#cap-def_standard_deviation"><strong>def_standard_deviation</strong></a> | 
    <a href="#cap-def_state_space"><strong>def_state_space</strong></a> | 
+   <a href="#cap-def_variance"><strong>def_variance</strong></a> | 
+   <a href="#cap-def_variance_alt"><strong>def_variance_alt</strong></a> | 
    <a href="#cap-definition-0"><strong>definition-0</strong></a> | 
    <a href="#cap-event"><strong>event</strong></a> | 
    <a href="#cap-event_space"><strong>event_space</strong></a> | 
@@ -373,11 +392,14 @@ title="Open an issue"
    <a href="#cap-pre_image"><strong>pre_image</strong></a> | 
    <a href="#cap-probability_law"><strong>probability_law</strong></a> | 
    <a href="#cap-prop:conditional-probability-equalities"><strong>prop:conditional-probability-equalities</strong></a> | 
+   <a href="#cap-prop_dc_shift"><strong>prop_dc_shift</strong></a> | 
    <a href="#cap-prop_expectation_dc_shift"><strong>prop_expectation_dc_shift</strong></a> | 
    <a href="#cap-prop_expectation_function"><strong>prop_expectation_function</strong></a> | 
    <a href="#cap-prop_expectation_linearity"><strong>prop_expectation_linearity</strong></a> | 
    <a href="#cap-prop_expectation_scaling"><strong>prop_expectation_scaling</strong></a> | 
    <a href="#cap-prop_expectation_stronger_linearity"><strong>prop_expectation_stronger_linearity</strong></a> | 
+   <a href="#cap-prop_linearity"><strong>prop_linearity</strong></a> | 
+   <a href="#cap-prop_scaling"><strong>prop_scaling</strong></a> | 
    <a href="#cap-random_variables"><strong>random_variables</strong></a> | 
    <a href="#cap-sample_space"><strong>sample_space</strong></a> | 
    <a href="#cap-thm:disjoint-vs-independent"><strong>thm:disjoint-vs-independent</strong></a> | 
@@ -518,6 +540,14 @@ title="Open an issue"
        <a href="03_discrete_random_variables/0305_expectation.html#def_expectation"><code class="xref">def_expectation</code></a> <em>(03_discrete_random_variables/0305_expectation)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-def_moments"><td></td><td>
+       <strong>def_moments</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="03_discrete_random_variables/0306_variance_and_moments.html#def_moments"><code class="xref">def_moments</code></a> <em>(03_discrete_random_variables/0306_variance_and_moments)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-def_pmf"><td></td><td>
        <strong>def_pmf</strong></td><td></td></tr>
      <tr>
@@ -526,12 +556,36 @@ title="Open an issue"
        <a href="03_discrete_random_variables/0303_probability_mass_function.html#def_pmf"><code class="xref">def_pmf</code></a> <em>(03_discrete_random_variables/0303_probability_mass_function)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-def_standard_deviation"><td></td><td>
+       <strong>def_standard_deviation</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="03_discrete_random_variables/0306_variance_and_moments.html#def_standard_deviation"><code class="xref">def_standard_deviation</code></a> <em>(03_discrete_random_variables/0306_variance_and_moments)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-def_state_space"><td></td><td>
        <strong>def_state_space</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
        <a href="03_discrete_random_variables/0303_probability_mass_function.html#def_state_space"><code class="xref">def_state_space</code></a> <em>(03_discrete_random_variables/0303_probability_mass_function)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-def_variance"><td></td><td>
+       <strong>def_variance</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="03_discrete_random_variables/0306_variance_and_moments.html#def_variance"><code class="xref">def_variance</code></a> <em>(03_discrete_random_variables/0306_variance_and_moments)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-def_variance_alt"><td></td><td>
+       <strong>def_variance_alt</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="03_discrete_random_variables/0306_variance_and_moments.html#def_variance_alt"><code class="xref">def_variance_alt</code></a> <em>(03_discrete_random_variables/0306_variance_and_moments)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-definition-0"><td></td><td>
@@ -638,6 +692,14 @@ title="Open an issue"
        <a href="02_probability/0204_conditional_probability.html#prop:conditional-probability-equalities"><code class="xref">prop:conditional-probability-equalities</code></a> <em>(02_probability/0204_conditional_probability)</em></td><td>
        <em>proposition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-prop_dc_shift"><td></td><td>
+       <strong>prop_dc_shift</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="03_discrete_random_variables/0306_variance_and_moments.html#prop_dc_shift"><code class="xref">prop_dc_shift</code></a> <em>(03_discrete_random_variables/0306_variance_and_moments)</em></td><td>
+       <em>property</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-prop_expectation_dc_shift"><td></td><td>
        <strong>prop_expectation_dc_shift</strong></td><td></td></tr>
      <tr>
@@ -676,6 +738,22 @@ title="Open an issue"
        <td></td>
        <td>
        <a href="03_discrete_random_variables/0305_expectation.html#prop_expectation_stronger_linearity"><code class="xref">prop_expectation_stronger_linearity</code></a> <em>(03_discrete_random_variables/0305_expectation)</em></td><td>
+       <em>property</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-prop_linearity"><td></td><td>
+       <strong>prop_linearity</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="03_discrete_random_variables/0306_variance_and_moments.html#prop_linearity"><code class="xref">prop_linearity</code></a> <em>(03_discrete_random_variables/0306_variance_and_moments)</em></td><td>
+       <em>property</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-prop_scaling"><td></td><td>
+       <strong>prop_scaling</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="03_discrete_random_variables/0306_variance_and_moments.html#prop_scaling"><code class="xref">prop_scaling</code></a> <em>(03_discrete_random_variables/0306_variance_and_moments)</em></td><td>
        <em>property</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-random_variables"><td></td><td>
