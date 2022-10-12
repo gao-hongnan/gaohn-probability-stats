@@ -113,6 +113,25 @@ $$
 $$
 ````
 
+## Probability Measure $\P$
+
+In the chapter {doc}`../content/02_probability/0202_probability_space.md`, we have defined a probability measure $\P$ on a sample space $\S$ as
+
+$$
+\begin{align}
+    \P: \mathcal{F} &\to [0, 1] \\
+    E &\mapsto \P(E)
+\end{align}
+$$
+
+as per {prf:ref}`probability_law`.
+
+The question initially is that $\P \lsq X = x \rsq$ does not seem to take in an event $E$ in $\E$ but an expression
+$X(\xi) = x$ instead. 
+This needs to be emphasized that they are the same, as the expression $X = x$ is
+just an event $E$ in $\E$ (i.e. $X = x = \lset \xi \in \S \st X(\xi) = x \rset$)
+where $\lset \xi \in \S \st X(\xi) = x \rset \in \E$.
+
 ## Variable vs Random Variable
 
 ````{prf:example} Variable vs Random Variable

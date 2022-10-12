@@ -53,7 +53,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"st": "\\mid", "mod": "\\mid", "S": "\\Omega", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "exp": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "lpar": "\\left(", "rpar": "\\right)", "pmf": "p_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})", "var": "\\operatorname{Var}", "std": "\\operatorname{Std}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"st": "\\mid", "mod": "\\mid", "S": "\\Omega", "s": "\\omega", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "exp": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "lpar": "\\left(", "rpar": "\\right)", "pmf": "p_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})", "var": "\\operatorname{Var}", "std": "\\operatorname{Std}", "bern": "\\operatorname{Bernoilli}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -209,8 +209,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../tmp.html">
-   Temp
+  <a class="reference internal" href="0307_discrete_uniform_distribution.html">
+   Discrete Uniform Distribution
   </a>
  </li>
  <li class="toctree-l1">
@@ -406,6 +406,14 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#probability-measure-p">
+   Probability Measure
+   <span class="math notranslate nohighlight">
+    \(\P\)
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#variable-vs-random-variable">
    Variable vs Random Variable
   </a>
@@ -442,6 +450,14 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#examples">
    Examples
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#probability-measure-p">
+   Probability Measure
+   <span class="math notranslate nohighlight">
+    \(\P\)
+   </span>
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -560,6 +576,23 @@ E = \lset \xi \in \S \st X(\xi) = x \rset
 \end{split}\]</div>
 </section>
 </div></section>
+<section id="probability-measure-p">
+<h2>Probability Measure <span class="math notranslate nohighlight">\(\P\)</span><a class="headerlink" href="#probability-measure-p" title="Permalink to this headline">#</a></h2>
+<p>In the chapter <span class="xref std std-doc">../content/02_probability/0202_probability_space.md</span>, we have defined a probability measure <span class="math notranslate nohighlight">\(\P\)</span> on a sample space <span class="math notranslate nohighlight">\(\S\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+    \P: \mathcal{F} &amp;\to [0, 1] \\
+    E &amp;\mapsto \P(E)
+\end{align}
+\end{split}\]</div>
+<p>as per <a class="reference internal" href="../02_probability/0202_probability_space.html#probability_law">Definition 5</a>.</p>
+<p>The question initially is that <span class="math notranslate nohighlight">\(\P \lsq X = x \rsq\)</span> does not seem to take in an event <span class="math notranslate nohighlight">\(E\)</span> in <span class="math notranslate nohighlight">\(\E\)</span> but an expression
+<span class="math notranslate nohighlight">\(X(\xi) = x\)</span> instead.
+This needs to be emphasized that they are the same, as the expression <span class="math notranslate nohighlight">\(X = x\)</span> is
+just an event <span class="math notranslate nohighlight">\(E\)</span> in <span class="math notranslate nohighlight">\(\E\)</span> (i.e. <span class="math notranslate nohighlight">\(X = x = \lset \xi \in \S \st X(\xi) = x \rset\)</span>)
+where <span class="math notranslate nohighlight">\(\lset \xi \in \S \st X(\xi) = x \rset \in \E\)</span>.</p>
+</section>
 <section id="variable-vs-random-variable">
 <h2>Variable vs Random Variable<a class="headerlink" href="#variable-vs-random-variable" title="Permalink to this headline">#</a></h2>
 <div class="proof example admonition" id="example_variable_vs_random_variable">

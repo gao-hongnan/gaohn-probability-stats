@@ -53,11 +53,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"st": "\\mid", "mod": "\\mid", "S": "\\Omega", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "exp": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "lpar": "\\left(", "rpar": "\\right)", "pmf": "p_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})", "var": "\\operatorname{Var}", "std": "\\operatorname{Std}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"st": "\\mid", "mod": "\\mid", "S": "\\Omega", "s": "\\omega", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "exp": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "lpar": "\\left(", "rpar": "\\right)", "pmf": "p_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})", "var": "\\operatorname{Var}", "std": "\\operatorname{Std}", "bern": "\\operatorname{Bernoilli}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Temp" href="tmp.html" />
+    <link rel="prev" title="Discrete Uniform Distribution" href="03_discrete_random_variables/0307_discrete_uniform_distribution.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -208,8 +208,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="tmp.html">
-   Temp
+  <a class="reference internal" href="03_discrete_random_variables/0307_discrete_uniform_distribution.html">
+   Discrete Uniform Distribution
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -268,6 +268,53 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/gao-hongnan/gaohn-probability-stats/main?urlpath=tree/docs/important.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/gao-hongnan/gaohn-probability-stats/blob/main/docs/important.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -335,6 +382,23 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
+        <a href="_sources/important.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
         <a href="_sources/important.md"
    class="headerbtn"
    data-toggle="tooltip"
@@ -395,6 +459,33 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#temp-writings">
+   Temp Writings
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#maximum-variance">
+   Maximum Variance
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#minimum-and-maximum-variance-of-coin-toss">
+     Minimum and Maximum Variance of Coin Toss
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#important-topics">
+   Important Topics
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-empirical-vs-theoretical-distribution-setup">
+   The Empirical vs Theoretical Distribution Setup
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-problem">
    The Problem
   </a>
@@ -441,6 +532,33 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#temp-writings">
+   Temp Writings
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#maximum-variance">
+   Maximum Variance
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#minimum-and-maximum-variance-of-coin-toss">
+     Minimum and Maximum Variance of Coin Toss
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#important-topics">
+   Important Topics
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-empirical-vs-theoretical-distribution-setup">
+   The Empirical vs Theoretical Distribution Setup
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-problem">
    The Problem
   </a>
@@ -480,6 +598,92 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="important-brain-dump">
 <h1>Important Brain Dump<a class="headerlink" href="#important-brain-dump" title="Permalink to this headline">#</a></h1>
 <p>Some important stuff here which I need to remember and yet to be able to formalize.</p>
+<p><strong>Always refer to my example setup.</strong></p>
+<section id="temp-writings">
+<h2>Temp Writings<a class="headerlink" href="#temp-writings" title="Permalink to this headline">#</a></h2>
+<div class="proof definition admonition" id="def:bernoulli">
+<p class="admonition-title"><span class="caption-number">Definition 25 </span> (Bernoulli Distribution)</p>
+<section class="definition-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a <strong>Bernoulli random variable</strong> with parameter <span class="math notranslate nohighlight">\(p\)</span>. Then the
+probability mass function (PMF) of <span class="math notranslate nohighlight">\(X\)</span> is given by</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\P(X=x) = \begin{cases}
+p   &amp;\quad \text{ if } x=1 \\
+1-p &amp;\quad \text{ if } x=0 \\
+0   &amp;\quad \text{ otherwise }
+\end{cases}
+\end{align}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(0 \leq p \leq 1\)</span> is called the Bernoulli parameter.</p>
+<p>Some conventions:</p>
+<ol class="simple">
+<li><p>We denote <span class="math notranslate nohighlight">\(X \sim \bern(p)\)</span> if <span class="math notranslate nohighlight">\(X\)</span> follows a Bernoulli distribution with parameter <span class="math notranslate nohighlight">\(p\)</span>.</p></li>
+<li><p>The states of <span class="math notranslate nohighlight">\(X\)</span> are <span class="math notranslate nohighlight">\(x \in \{0,1\}\)</span>. This means <span class="math notranslate nohighlight">\(X\)</span> only has two (binary) states, 0 and 1.</p></li>
+<li><p>We denote <span class="math notranslate nohighlight">\(1\)</span> as <strong>success</strong> and <span class="math notranslate nohighlight">\(0\)</span> as <strong>failure</strong> and consequently <span class="math notranslate nohighlight">\(p\)</span> as the probability of success
+and <span class="math notranslate nohighlight">\(1-p\)</span> as the probability of failure.</p></li>
+<li><p>Bear in mind that <span class="math notranslate nohighlight">\(X\)</span> is defined over <span class="math notranslate nohighlight">\(\pspace\)</span>, and when we say <span class="math notranslate nohighlight">\(\P \lsq X=x \rsq\)</span>, we are also saying
+<span class="math notranslate nohighlight">\(\P \lsq E \rsq\)</span> where <span class="math notranslate nohighlight">\(E \in \E\)</span>. Imagine a coin toss, <span class="math notranslate nohighlight">\(E\)</span> is the event that the coin lands on heads,
+which translates to <span class="math notranslate nohighlight">\(E = \{X=1\}\)</span>.</p></li>
+</ol>
+</section>
+</div><div class="proof property admonition" id="prop:bernoulli">
+<p class="admonition-title"><span class="caption-number">Property 9 </span> (Expectation of Bernoulli Distribution)</p>
+<section class="property-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(X \sim \bern(p)\)</span> be a Bernoulli random variable with parameter <span class="math notranslate nohighlight">\(p\)</span>. Then the expectation of <span class="math notranslate nohighlight">\(X\)</span> is given by</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+\exp \lsq X \rsq = \sum_{x \in X(\S)} x \cdot \P(X=x) = 1 \cdot p + 0 \cdot (1-p) = p
+\end{align}
+\]</div>
+</section>
+</div><div class="proof property admonition" id="prop:bernoulli_var">
+<p class="admonition-title"><span class="caption-number">Property 10 </span> (Variance of Bernoulli Distribution)</p>
+<section class="property-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(X \sim \bern(p)\)</span> be a Bernoulli random variable with parameter <span class="math notranslate nohighlight">\(p\)</span>. Then the variance of <span class="math notranslate nohighlight">\(X\)</span> is given by</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+\var \lsq X \rsq = \sum_{x \in X(\S)} (x - \exp \lsq X \rsq)^2 \cdot \P(X=x) = (1 - p)^2 \cdot p + (0 - p)^2 \cdot (1-p) = p(1-p)
+\end{align}
+\]</div>
+<p>It can also be shown using the second moment of <span class="math notranslate nohighlight">\(X\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+\var \lsq X \rsq = \exp \lsq X^2 \rsq - \exp \lsq X \rsq^2 = \exp \lsq X^2 \rsq - p^2 = p(1-p)
+\end{align}
+\]</div>
+</section>
+</div></section>
+<section id="maximum-variance">
+<h2>Maximum Variance<a class="headerlink" href="#maximum-variance" title="Permalink to this headline">#</a></h2>
+<section id="minimum-and-maximum-variance-of-coin-toss">
+<h3>Minimum and Maximum Variance of Coin Toss<a class="headerlink" href="#minimum-and-maximum-variance-of-coin-toss" title="Permalink to this headline">#</a></h3>
+<p>This example is taken from <span id="id1">[<a class="reference internal" href="02_probability/0202_probability_space.html#id4" title="Stanley H. Chan. Introduction to probability for Data Science. Michigan Publishing, 2021.">Chan, 2021</a>]</span>, page 140.</p>
+<p>Consider a coin toss, following a Bernoulli distribution. Define <span class="math notranslate nohighlight">\(X \sim \bern(p)\)</span>.</p>
+<p>If we toss the coin <span class="math notranslate nohighlight">\(n\)</span> times, then we ask ourselves what is the minimum and maximum variance of the coin toss.</p>
+<p>Recall in <a class="reference internal" href="03_discrete_random_variables/0306_variance_and_moments.html#def_variance">Definition 21</a> that the variance is basically how much the data deviates from the mean.</p>
+<p>If the coin is biased at <span class="math notranslate nohighlight">\(p=1\)</span>, then the variance is <span class="math notranslate nohighlight">\(0\)</span> because the coin always lands on heads. The
+intuition is that the coin is “deterministic”, and hence there is no variance at all. If the coin
+is biased at <span class="math notranslate nohighlight">\(p=0.9\)</span>, then there is a little variance, because the coin will consistently land on heads
+<span class="math notranslate nohighlight">\(90\%\)</span> of the time. If the coin is biased at <span class="math notranslate nohighlight">\(p=0.5\)</span>, then there is a lot of variance, because the coin
+is fair and has a 50-50 chance of landing on heads or tails. Though fair, the variance is maximum here.</p>
+</section>
+</section>
+<section id="important-topics">
+<h2>Important Topics<a class="headerlink" href="#important-topics" title="Permalink to this headline">#</a></h2>
+<p>See <a class="reference internal" href="03_discrete_random_variables/0307_discrete_uniform_distribution.html"><span class="doc">Discrete Uniform Distribution</span></a> for my whole setup.</p>
+</section>
+<section id="the-empirical-vs-theoretical-distribution-setup">
+<h2>The Empirical vs Theoretical Distribution Setup<a class="headerlink" href="#the-empirical-vs-theoretical-distribution-setup" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://inferentialthinking.com/chapters/intro.html">https://inferentialthinking.com/chapters/intro.html</a></p></li>
+<li><p>See <a class="reference internal" href="03_discrete_random_variables/0307_discrete_uniform_distribution.html"><span class="doc">Discrete Uniform Distribution</span></a> for my whole setup.</p></li>
+</ul>
+</section>
 <section id="the-problem">
 <h2>The Problem<a class="headerlink" href="#the-problem" title="Permalink to this headline">#</a></h2>
 <section id="the-ticket-model-and-what-is-a-r-v">
@@ -594,11 +798,11 @@ here is <strong>empirical</strong> distribution and is non-deterministic.</p>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="tmp.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="03_discrete_random_variables/0307_discrete_uniform_distribution.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Temp</p>
+            <p class="prev-next-title">Discrete Uniform Distribution</p>
         </div>
     </a>
 </div>
