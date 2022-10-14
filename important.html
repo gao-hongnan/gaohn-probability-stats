@@ -57,7 +57,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Discrete Uniform Distribution" href="03_discrete_random_variables/0307_discrete_uniform_distribution.html" />
+    <link rel="prev" title="Independent and Identically Distributed (IID)" href="03_discrete_random_variables/iid.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -210,6 +210,16 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="03_discrete_random_variables/0307_discrete_uniform_distribution.html">
    Discrete Uniform Distribution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_discrete_random_variables/0308_bernoulli_distribution.html">
+   Bernoulli Distribution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_discrete_random_variables/iid.html">
+   Independent and Identically Distributed (IID)
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -464,18 +474,6 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#maximum-variance">
-   Maximum Variance
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#minimum-and-maximum-variance-of-coin-toss">
-     Minimum and Maximum Variance of Coin Toss
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#important-topics">
    Important Topics
   </a>
@@ -537,18 +535,6 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#maximum-variance">
-   Maximum Variance
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#minimum-and-maximum-variance-of-coin-toss">
-     Minimum and Maximum Variance of Coin Toss
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#important-topics">
    Important Topics
   </a>
@@ -601,78 +587,18 @@ title="Print to PDF"
 <p><strong>Always refer to my example setup.</strong></p>
 <section id="temp-writings">
 <h2>Temp Writings<a class="headerlink" href="#temp-writings" title="Permalink to this headline">#</a></h2>
-<div class="proof definition admonition" id="def:bernoulli">
-<p class="admonition-title"><span class="caption-number">Definition 25 </span> (Bernoulli Distribution)</p>
+<div class="proof definition admonition" id="def_binomial">
+<p class="admonition-title"><span class="caption-number">Definition 27 </span> (Binomial Distribution)</p>
 <section class="definition-content" id="proof-content">
-<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a <strong>Bernoulli random variable</strong> with parameter <span class="math notranslate nohighlight">\(p\)</span>. Then the
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a <strong>Binomial random variable</strong> with parameters <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(p\)</span>. Then the
 probability mass function (PMF) of <span class="math notranslate nohighlight">\(X\)</span> is given by</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align}
-\P(X=x) = \begin{cases}
-p   &amp;\quad \text{ if } x=1 \\
-1-p &amp;\quad \text{ if } x=0 \\
-0   &amp;\quad \text{ otherwise }
-\end{cases}
-\end{align}
-\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(0 \leq p \leq 1\)</span> is called the Bernoulli parameter.</p>
-<p>Some conventions:</p>
-<ol class="simple">
-<li><p>We denote <span class="math notranslate nohighlight">\(X \sim \bern(p)\)</span> if <span class="math notranslate nohighlight">\(X\)</span> follows a Bernoulli distribution with parameter <span class="math notranslate nohighlight">\(p\)</span>.</p></li>
-<li><p>The states of <span class="math notranslate nohighlight">\(X\)</span> are <span class="math notranslate nohighlight">\(x \in \{0,1\}\)</span>. This means <span class="math notranslate nohighlight">\(X\)</span> only has two (binary) states, 0 and 1.</p></li>
-<li><p>We denote <span class="math notranslate nohighlight">\(1\)</span> as <strong>success</strong> and <span class="math notranslate nohighlight">\(0\)</span> as <strong>failure</strong> and consequently <span class="math notranslate nohighlight">\(p\)</span> as the probability of success
-and <span class="math notranslate nohighlight">\(1-p\)</span> as the probability of failure.</p></li>
-<li><p>Bear in mind that <span class="math notranslate nohighlight">\(X\)</span> is defined over <span class="math notranslate nohighlight">\(\pspace\)</span>, and when we say <span class="math notranslate nohighlight">\(\P \lsq X=x \rsq\)</span>, we are also saying
-<span class="math notranslate nohighlight">\(\P \lsq E \rsq\)</span> where <span class="math notranslate nohighlight">\(E \in \E\)</span>. Imagine a coin toss, <span class="math notranslate nohighlight">\(E\)</span> is the event that the coin lands on heads,
-which translates to <span class="math notranslate nohighlight">\(E = \{X=1\}\)</span>.</p></li>
-</ol>
-</section>
-</div><div class="proof property admonition" id="prop:bernoulli">
-<p class="admonition-title"><span class="caption-number">Property 9 </span> (Expectation of Bernoulli Distribution)</p>
-<section class="property-content" id="proof-content">
-<p>Let <span class="math notranslate nohighlight">\(X \sim \bern(p)\)</span> be a Bernoulli random variable with parameter <span class="math notranslate nohighlight">\(p\)</span>. Then the expectation of <span class="math notranslate nohighlight">\(X\)</span> is given by</p>
-<div class="math notranslate nohighlight">
 \[
-\begin{align}
-\exp \lsq X \rsq = \sum_{x \in X(\S)} x \cdot \P(X=x) = 1 \cdot p + 0 \cdot (1-p) = p
-\end{align}
+\P \lsq X = k \rsq = \binom{n}{k} p^k (1-p)^{n-k} \qquad \text{for } k = 0, 1, \ldots, n
 \]</div>
-</section>
-</div><div class="proof property admonition" id="prop:bernoulli_var">
-<p class="admonition-title"><span class="caption-number">Property 10 </span> (Variance of Bernoulli Distribution)</p>
-<section class="property-content" id="proof-content">
-<p>Let <span class="math notranslate nohighlight">\(X \sim \bern(p)\)</span> be a Bernoulli random variable with parameter <span class="math notranslate nohighlight">\(p\)</span>. Then the variance of <span class="math notranslate nohighlight">\(X\)</span> is given by</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{align}
-\var \lsq X \rsq = \sum_{x \in X(\S)} (x - \exp \lsq X \rsq)^2 \cdot \P(X=x) = (1 - p)^2 \cdot p + (0 - p)^2 \cdot (1-p) = p(1-p)
-\end{align}
-\]</div>
-<p>It can also be shown using the second moment of <span class="math notranslate nohighlight">\(X\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{align}
-\var \lsq X \rsq = \exp \lsq X^2 \rsq - \exp \lsq X \rsq^2 = \exp \lsq X^2 \rsq - p^2 = p(1-p)
-\end{align}
-\]</div>
+<p>where <span class="math notranslate nohighlight">\(0 \leq p \leq 1\)</span> is called the binomial parameter, and <span class="math notranslate nohighlight">\(n\)</span> is the ***total</p>
 </section>
 </div></section>
-<section id="maximum-variance">
-<h2>Maximum Variance<a class="headerlink" href="#maximum-variance" title="Permalink to this headline">#</a></h2>
-<section id="minimum-and-maximum-variance-of-coin-toss">
-<h3>Minimum and Maximum Variance of Coin Toss<a class="headerlink" href="#minimum-and-maximum-variance-of-coin-toss" title="Permalink to this headline">#</a></h3>
-<p>This example is taken from <span id="id1">[<a class="reference internal" href="02_probability/0202_probability_space.html#id4" title="Stanley H. Chan. Introduction to probability for Data Science. Michigan Publishing, 2021.">Chan, 2021</a>]</span>, page 140.</p>
-<p>Consider a coin toss, following a Bernoulli distribution. Define <span class="math notranslate nohighlight">\(X \sim \bern(p)\)</span>.</p>
-<p>If we toss the coin <span class="math notranslate nohighlight">\(n\)</span> times, then we ask ourselves what is the minimum and maximum variance of the coin toss.</p>
-<p>Recall in <a class="reference internal" href="03_discrete_random_variables/0306_variance_and_moments.html#def_variance">Definition 21</a> that the variance is basically how much the data deviates from the mean.</p>
-<p>If the coin is biased at <span class="math notranslate nohighlight">\(p=1\)</span>, then the variance is <span class="math notranslate nohighlight">\(0\)</span> because the coin always lands on heads. The
-intuition is that the coin is “deterministic”, and hence there is no variance at all. If the coin
-is biased at <span class="math notranslate nohighlight">\(p=0.9\)</span>, then there is a little variance, because the coin will consistently land on heads
-<span class="math notranslate nohighlight">\(90\%\)</span> of the time. If the coin is biased at <span class="math notranslate nohighlight">\(p=0.5\)</span>, then there is a lot of variance, because the coin
-is fair and has a 50-50 chance of landing on heads or tails. Though fair, the variance is maximum here.</p>
-</section>
-</section>
 <section id="important-topics">
 <h2>Important Topics<a class="headerlink" href="#important-topics" title="Permalink to this headline">#</a></h2>
 <p>See <a class="reference internal" href="03_discrete_random_variables/0307_discrete_uniform_distribution.html"><span class="doc">Discrete Uniform Distribution</span></a> for my whole setup.</p>
@@ -798,11 +724,11 @@ here is <strong>empirical</strong> distribution and is non-deterministic.</p>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="03_discrete_random_variables/0307_discrete_uniform_distribution.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="03_discrete_random_variables/iid.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Discrete Uniform Distribution</p>
+            <p class="prev-next-title">Independent and Identically Distributed (IID)</p>
         </div>
     </a>
 </div>

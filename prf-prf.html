@@ -216,6 +216,16 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="03_discrete_random_variables/0308_bernoulli_distribution.html">
+   Bernoulli Distribution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_discrete_random_variables/iid.html">
+   Independent and Identically Distributed (IID)
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="important.html">
    Important Brain Dump
   </a>
@@ -371,10 +381,12 @@ title="Open an issue"
    <a href="#cap-def:disjoint"><strong>def:disjoint</strong></a> | 
    <a href="#cap-def:independence-conditional"><strong>def:independence-conditional</strong></a> | 
    <a href="#cap-def:independent-events"><strong>def:independent-events</strong></a> | 
+   <a href="#cap-def_binomial"><strong>def_binomial</strong></a> | 
    <a href="#cap-def_cdf"><strong>def_cdf</strong></a> | 
    <a href="#cap-def_countable_set"><strong>def_countable_set</strong></a> | 
    <a href="#cap-def_discrete_random_variables"><strong>def_discrete_random_variables</strong></a> | 
    <a href="#cap-def_expectation"><strong>def_expectation</strong></a> | 
+   <a href="#cap-def_iid"><strong>def_iid</strong></a> | 
    <a href="#cap-def_moments"><strong>def_moments</strong></a> | 
    <a href="#cap-def_pmf"><strong>def_pmf</strong></a> | 
    <a href="#cap-def_standard_deviation"><strong>def_standard_deviation</strong></a> | 
@@ -384,6 +396,7 @@ title="Open an issue"
    <a href="#cap-definition-0"><strong>definition-0</strong></a> | 
    <a href="#cap-event"><strong>event</strong></a> | 
    <a href="#cap-event_space"><strong>event_space</strong></a> | 
+   <a href="#cap-ex_iid_1"><strong>ex_iid_1</strong></a> | 
    <a href="#cap-example_cdf"><strong>example_cdf</strong></a> | 
    <a href="#cap-example_pmf_coin_toss"><strong>example_pmf_coin_toss</strong></a> | 
    <a href="#cap-example_random_variable_coin_toss"><strong>example_random_variable_coin_toss</strong></a> | 
@@ -493,7 +506,7 @@ title="Open an issue"
      <tr>
        <td></td>
        <td>
-       <a href="important.html#def:bernoulli"><code class="xref">def:bernoulli</code></a> <em>(important)</em></td><td>
+       <a href="03_discrete_random_variables/0308_bernoulli_distribution.html#def:bernoulli"><code class="xref">def:bernoulli</code></a> <em>(03_discrete_random_variables/0308_bernoulli_distribution)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-def:discrete_uniform"><td></td><td>
@@ -528,6 +541,14 @@ title="Open an issue"
        <a href="02_probability/0205_independence.html#def:independent-events"><code class="xref">def:independent-events</code></a> <em>(02_probability/0205_independence)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-def_binomial"><td></td><td>
+       <strong>def_binomial</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="important.html#def_binomial"><code class="xref">def_binomial</code></a> <em>(important)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-def_cdf"><td></td><td>
        <strong>def_cdf</strong></td><td></td></tr>
      <tr>
@@ -558,6 +579,14 @@ title="Open an issue"
        <td></td>
        <td>
        <a href="03_discrete_random_variables/0305_expectation.html#def_expectation"><code class="xref">def_expectation</code></a> <em>(03_discrete_random_variables/0305_expectation)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-def_iid"><td></td><td>
+       <strong>def_iid</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="03_discrete_random_variables/iid.html#def_iid"><code class="xref">def_iid</code></a> <em>(03_discrete_random_variables/iid)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-def_moments"><td></td><td>
@@ -631,6 +660,14 @@ title="Open an issue"
        <td>
        <a href="02_probability/0202_probability_space.html#event_space"><code class="xref">event_space</code></a> <em>(02_probability/0202_probability_space)</em></td><td>
        <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-ex_iid_1"><td></td><td>
+       <strong>ex_iid_1</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="03_discrete_random_variables/iid.html#ex_iid_1"><code class="xref">ex_iid_1</code></a> <em>(03_discrete_random_variables/iid)</em></td><td>
+       <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-example_cdf"><td></td><td>
        <strong>example_cdf</strong></td><td></td></tr>
@@ -709,7 +746,7 @@ title="Open an issue"
      <tr>
        <td></td>
        <td>
-       <a href="important.html#prop:bernoulli"><code class="xref">prop:bernoulli</code></a> <em>(important)</em></td><td>
+       <a href="03_discrete_random_variables/0308_bernoulli_distribution.html#prop:bernoulli"><code class="xref">prop:bernoulli</code></a> <em>(03_discrete_random_variables/0308_bernoulli_distribution)</em></td><td>
        <em>property</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-prop:bernoulli_var"><td></td><td>
@@ -717,7 +754,7 @@ title="Open an issue"
      <tr>
        <td></td>
        <td>
-       <a href="important.html#prop:bernoulli_var"><code class="xref">prop:bernoulli_var</code></a> <em>(important)</em></td><td>
+       <a href="03_discrete_random_variables/0308_bernoulli_distribution.html#prop:bernoulli_var"><code class="xref">prop:bernoulli_var</code></a> <em>(03_discrete_random_variables/0308_bernoulli_distribution)</em></td><td>
        <em>property</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-prop:conditional-probability-equalities"><td></td><td>

@@ -173,3 +173,4 @@ total number of heads $x$ in an experiment is not fixed. It can be 0, 1 or 2 dep
 5. When we write $\P\lsq X = x \rsq$, we are describing the probability of the random variable $X$
    taking on a ***particular*** state $x$. This is equivalent to $\P \lsq \lset \xi \in \S \st X(\xi) = x \rset \rsq$.
 
+6. Random variables need not be **bijective**, see [here](https://math.stackexchange.com/questions/202540/is-a-random-variable-bijective).

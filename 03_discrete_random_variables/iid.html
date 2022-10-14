@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Random Variables &#8212; Probability &amp; Statistics</title>
+    <title>Independent and Identically Distributed (IID) &#8212; Probability &amp; Statistics</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -57,8 +57,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Discrete Random Variables" href="0302_discrete_random_variables.html" />
-    <link rel="prev" title="Summary" href="../02_probability/summary.html" />
+    <link rel="next" title="Important Brain Dump" href="../important.html" />
+    <link rel="prev" title="Bernoulli Distribution" href="0308_bernoulli_distribution.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -178,8 +178,8 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="0301_random_variables.html">
    Random Variables
   </a>
  </li>
@@ -218,8 +218,8 @@ const thebe_selector_output = ".output, .cell_output"
    Bernoulli Distribution
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="iid.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Independent and Identically Distributed (IID)
   </a>
  </li>
@@ -318,7 +318,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/gao-hongnan/gaohn-probability-stats/issues/new?title=Issue%20on%20page%20%2F03_discrete_random_variables/0301_random_variables.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/gao-hongnan/gaohn-probability-stats/issues/new?title=Issue%20on%20page%20%2F03_discrete_random_variables/iid.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -346,7 +346,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/03_discrete_random_variables/0301_random_variables.md"
+        <a href="../_sources/03_discrete_random_variables/iid.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -414,24 +414,13 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#examples">
    Examples
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#probability-measure-p">
-   Probability Measure
-   <span class="math notranslate nohighlight">
-    \(\P\)
-   </span>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#variable-vs-random-variable">
-   Variable vs Random Variable
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   Summary
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-1">
+     Example 1
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -442,7 +431,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Random Variables</h1>
+                <h1>Independent and Identically Distributed (IID)</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -461,24 +450,13 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#examples">
    Examples
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#probability-measure-p">
-   Probability Measure
-   <span class="math notranslate nohighlight">
-    \(\P\)
-   </span>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#variable-vs-random-variable">
-   Variable vs Random Variable
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   Summary
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-1">
+     Example 1
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -490,153 +468,35 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="random-variables">
-<h1>Random Variables<a class="headerlink" href="#random-variables" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="independent-and-identically-distributed-iid">
+<h1>Independent and Identically Distributed (IID)<a class="headerlink" href="#independent-and-identically-distributed-iid" title="Permalink to this headline">#</a></h1>
 <section id="definition">
 <h2>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">#</a></h2>
-<div class="proof definition admonition" id="random_variables">
-<p class="admonition-title"><span class="caption-number">Definition 12 </span> (Random Variables)</p>
+<div class="proof definition admonition" id="def_iid">
+<p class="admonition-title"><span class="caption-number">Definition 26 </span> (Independent and Identically Distributed (IID))</p>
 <section class="definition-content" id="proof-content">
-<p>A <strong>random variable</strong> <span class="math notranslate nohighlight">\(X\)</span> is a function defined by the mapping</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align}
-X: \S &amp;\to \R \\
-\xi &amp;\mapsto X(\xi)
-\end{align}
-\end{split}\]</div>
-<p>which maps an <em>outcome</em> <span class="math notranslate nohighlight">\(\xi \in \S\)</span> to a real number <span class="math notranslate nohighlight">\(X(\xi) \in \R\)</span>.</p>
-<p>We denote the range of <span class="math notranslate nohighlight">\(X\)</span> to be <span class="math notranslate nohighlight">\(x\)</span> and shorthand the notation of <span class="math notranslate nohighlight">\(X(\xi) = x\)</span> to be <span class="math notranslate nohighlight">\(X = x\)</span>.</p>
-</section>
-</div><div class="proof definition admonition" id="pre_image">
-<p class="admonition-title"><span class="caption-number">Definition 13 </span> (Pre-image of a Random Variable)</p>
-<section class="definition-content" id="proof-content">
-<p>Given a random variable <span class="math notranslate nohighlight">\(X: \S \to \R\)</span>, define a singleton set <span class="math notranslate nohighlight">\(\{x\} \subset \R\)</span>, then by
-the pre-image definition of a function, we have</p>
-<div class="math notranslate nohighlight">
-\[
-X^{-1}(\{x\}) = \lset \xi \in \S \st X(\xi) \in \{x\} \rset
-\]</div>
-<p>which is equivalent to</p>
-<div class="math notranslate nohighlight">
-\[
-X^{-1}(x) \overset{\text{def}}{=} \lset \xi \in \S \st X(\xi) = x \rset
-\]</div>
+<p>Let <span class="math notranslate nohighlight">\(X_1, X_2, \ldots, X_n\)</span> be a sequence of random variables.</p>
+<p>We say that the random variables are *<strong>independent and identically distributed (i.i.d.)</strong> if the following two conditions hold:</p>
+<ol class="simple">
+<li><p>The random variables are independent of each other. That is, <span class="math notranslate nohighlight">\(P(X_i = x_i | X_j = x_j, j \neq i) = P(X_i = x_i)\)</span> for all <span class="math notranslate nohighlight">\(i, j\)</span>.</p></li>
+<li><p>The random variables have the same distribution. That is, <span class="math notranslate nohighlight">\(\P \lsq X_1 = x \rsq = \P \lsq X_2 = x \rsq = \ldots = \P \lsq X_n = x \rsq\)</span> for all <span class="math notranslate nohighlight">\(x\)</span>.</p></li>
+</ol>
 </section>
 </div></section>
 <section id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">#</a></h2>
-<div class="proof example admonition" id="example_random_variable_coin_toss">
-<p class="admonition-title"><span class="caption-number">Example 1 </span> (Coin Toss)</p>
+<section id="example-1">
+<h3>Example 1<a class="headerlink" href="#example-1" title="Permalink to this headline">#</a></h3>
+<div class="proof example admonition" id="ex_iid_1">
+<p class="admonition-title"><span class="caption-number">Example 6 </span> (Example 1)</p>
 <section class="example-content" id="proof-content">
-<p>Consider a fair coin and define an <strong>experiment</strong> of throwing the coin twice.</p>
-<p>Define the <strong>random variable</strong> <span class="math notranslate nohighlight">\(X\)</span> to be the total number of heads in an experiment.
-(i.e if you throw 1 head and 1 tail the total number of heads in this experiment is 1).</p>
-<p>What is the probability of getting 1 head in an experiment, i.e. <span class="math notranslate nohighlight">\(\P \lsq X = 1 \rsq\)</span>?</p>
-<p><strong>Solution</strong></p>
-<p>We define the <strong>sample space</strong> <span class="math notranslate nohighlight">\(\S\)</span> of this experiment to be <span class="math notranslate nohighlight">\(\{(HH), (HT), (TH), (TT)\}\)</span>.</p>
-<p>We enumerate each <strong>outcome</strong> <span class="math notranslate nohighlight">\(\xi_i\)</span> in the <strong>sample space</strong> as</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\xi_1 = HH\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\xi_2 = HT\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\xi_3 = TH\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\xi_4 = TT\)</span></p></li>
-</ul>
-<p><span class="math notranslate nohighlight">\(\color{red} {\textbf{First}}\)</span>, recall that <span class="math notranslate nohighlight">\(X\)</span> is a <em><strong>function</strong></em> that map an outcome <span class="math notranslate nohighlight">\(\xi\)</span> from the <strong>sample space</strong> <span class="math notranslate nohighlight">\(\S\)</span>
-to a number <span class="math notranslate nohighlight">\(x\)</span> in the real space <span class="math notranslate nohighlight">\(\R\)</span>. In this context it means that <span class="math notranslate nohighlight">\(X\)</span> maps one of the four outcomes
-<span class="math notranslate nohighlight">\(\xi_i\)</span> to the total number of heads in the experiment
-(i.e <span class="math notranslate nohighlight">\(X(\cdot) = \textbf{number of heads}\)</span>).</p>
-<p>It is important to note that the codomain of <span class="math notranslate nohighlight">\(X\)</span> is not any arbitrary number. We can only map our 4
-outcomes <span class="math notranslate nohighlight">\(\xi_i\)</span> in the domain to 3 distinct numbers <span class="math notranslate nohighlight">\(0\)</span>, <span class="math notranslate nohighlight">\(1\)</span> or <span class="math notranslate nohighlight">\(2\)</span>, which we will see by manually
-enumerating each case below.</p>
-<div class="math notranslate nohighlight" id="equation-eq-outcome-to-number-of-heads">
-<span class="eqno">(3)<a class="headerlink" href="#equation-eq-outcome-to-number-of-heads" title="Permalink to this equation">#</a></span>\[
-X(\xi_1) = 2, \quad X(\xi_2) = 1, \quad X(\xi_3) = 1, \quad X(\xi_4) = 0
-\]</div>
-<p>With that, this random variable <span class="math notranslate nohighlight">\(X\)</span> is <strong>completely determined</strong>.</p>
-<p><span class="math notranslate nohighlight">\(\color{red} {\textbf{Secondly}}\)</span>, we need to examine carefully what is meant by <span class="math notranslate nohighlight">\(\P[X(\xi) = 1]\)</span>
-since this will answer the question on what is the probability of getting 1 head.</p>
-<p>However, <span class="math notranslate nohighlight">\(X(\xi) = 1\)</span> is an expression and not an event that the probability measure <span class="math notranslate nohighlight">\(\P\)</span> expects.
-Here we should recall that the probability law <span class="math notranslate nohighlight">\(\P(\cdot)\)</span> is always applied to an <strong>event</strong>
-<span class="math notranslate nohighlight">\(E \in \E\)</span> where <span class="math notranslate nohighlight">\(E\)</span> is a set.</p>
-<p>So we need to map this expression to an event <span class="math notranslate nohighlight">\(E \in \E\)</span>. So you can ask yourself how to establish
-this “mapping” of <span class="math notranslate nohighlight">\(X(\xi) = 1\)</span> to an event in our event space <span class="math notranslate nohighlight">\(\E\)</span>. This seems pretty easy since
-we already know that <span class="math notranslate nohighlight">\(X(\xi) = 1\)</span> has two cases matched in <a class="reference internal" href="#equation-eq-outcome-to-number-of-heads">(3)</a>, namely
-<span class="math notranslate nohighlight">\(X(\xi_2) = 1\)</span> and <span class="math notranslate nohighlight">\(X(\xi_3) = 1\)</span>. So we can simply define the event <span class="math notranslate nohighlight">\(E\)</span> to be
-<span class="math notranslate nohighlight">\(\lset \xi_2, \xi_3 \rset = \{(HT), (TH)\}\)</span>.</p>
-<p>We verify that <span class="math notranslate nohighlight">\(E = \lset \xi_2, \xi_3 \rset\)</span> is indeed an event in <span class="math notranslate nohighlight">\(\E\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[
-\E = \{\emptyset, \{\xi_1\}, \{\xi_2\}, \{\xi_3\}, \{\xi_4\}, \{\xi_1\, \xi_2\}, \{\xi_1\, \xi_3\}, \{\xi_1\, \xi_4\}, \{\xi_2\, \xi_3\}, \{\xi_2\, \xi_4\}, \{\xi_3\, \xi_4\}, \S \} 
-\]</div>
-<p>More concretely, given an expression <span class="math notranslate nohighlight">\(X(\xi) = x\)</span>, we construct the event set <span class="math notranslate nohighlight">\(E\)</span> by enumerating all the outcomes <span class="math notranslate nohighlight">\(\xi_i\)</span> in the sample space <span class="math notranslate nohighlight">\(\S\)</span> that satisfy <span class="math notranslate nohighlight">\(X(\xi) = x\)</span>.</p>
-<div class="math notranslate nohighlight">
-\[
-E = \lset \xi \in \S \st X(\xi) = x \rset
-\]</div>
-<p>and this coincides with the pre-image of <span class="math notranslate nohighlight">\(x\)</span> in the random variable <span class="math notranslate nohighlight">\(X\)</span> as defined in <a class="reference internal" href="#pre_image">Definition 13</a>.</p>
-<p><span class="math notranslate nohighlight">\(\color{red} {\textbf{Consequently}}\)</span>, we have</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align}
-    \P[X(\xi) = 1] &amp;= \P[\{(HT), (TH)\}] \\
-                   &amp;= \dfrac{2}{4} \\
-                   &amp;= 0.5
-\end{align}
-\end{split}\]</div>
+<p>The PMF of the height distribution is given by <span class="math notranslate nohighlight">\(\P \lsq X = x \rsq = \frac{1}{10}\)</span> for all <span class="math notranslate nohighlight">\(x \in \{1, \ldots, 10\}\)</span>.</p>
+<p>Then if you draw 100 people from this population/distribution, with replacement, then this is an example of IID random variables.
+This is because with replacement, with each draw, the probability will be the same, and the draws are independent of each other.</p>
 </section>
-</div></section>
-<section id="probability-measure-p">
-<h2>Probability Measure <span class="math notranslate nohighlight">\(\P\)</span><a class="headerlink" href="#probability-measure-p" title="Permalink to this headline">#</a></h2>
-<p>In the chapter <span class="xref std std-doc">../content/02_probability/0202_probability_space.md</span>, we have defined a probability measure <span class="math notranslate nohighlight">\(\P\)</span> on a sample space <span class="math notranslate nohighlight">\(\S\)</span> as</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align}
-    \P: \mathcal{F} &amp;\to [0, 1] \\
-    E &amp;\mapsto \P(E)
-\end{align}
-\end{split}\]</div>
-<p>as per <a class="reference internal" href="../02_probability/0202_probability_space.html#probability_law">Definition 5</a>.</p>
-<p>The question initially is that <span class="math notranslate nohighlight">\(\P \lsq X = x \rsq\)</span> does not seem to take in an event <span class="math notranslate nohighlight">\(E\)</span> in <span class="math notranslate nohighlight">\(\E\)</span> but an expression
-<span class="math notranslate nohighlight">\(X(\xi) = x\)</span> instead.
-This needs to be emphasized that they are the same, as the expression <span class="math notranslate nohighlight">\(X = x\)</span> is
-just an event <span class="math notranslate nohighlight">\(E\)</span> in <span class="math notranslate nohighlight">\(\E\)</span> (i.e. <span class="math notranslate nohighlight">\(X = x = \lset \xi \in \S \st X(\xi) = x \rset\)</span>)
-where <span class="math notranslate nohighlight">\(\lset \xi \in \S \st X(\xi) = x \rset \in \E\)</span>.</p>
+</div><p>Confusion in notation is when you index random variables with <span class="math notranslate nohighlight">\(i\)</span>. See <a class="reference external" href="https://stats.stackexchange.com/questions/200741/let-random-variables-x-1-dots-x-n-be-a-iid-random-sample-from-fx-wha">here</a>
+sometimes <span class="math notranslate nohighlight">\(X_1, X_2, \ldots, X_10\)</span> can mean 10 different people drawn.</p>
 </section>
-<section id="variable-vs-random-variable">
-<h2>Variable vs Random Variable<a class="headerlink" href="#variable-vs-random-variable" title="Permalink to this headline">#</a></h2>
-<div class="proof example admonition" id="example_variable_vs_random_variable">
-<p class="admonition-title"><span class="caption-number">Example 2 </span> (Variable vs Random Variable)</p>
-<section class="example-content" id="proof-content">
-<p>Professor Stanley Chan gave a good example of the difference between a variable and a random variable.</p>
-<p>The main difference is that a variable is <strong>deterministic</strong> while a random variable is <strong>non-deterministic</strong>.</p>
-<p>Consider solving the following equation:</p>
-<div class="math notranslate nohighlight">
-\[
-2X = x
-\]</div>
-<p>Then, if <span class="math notranslate nohighlight">\(x\)</span> is a fixed constant, then <span class="math notranslate nohighlight">\(X = \dfrac{x}{2}\)</span> is a variable.</p>
-<p>However, if <span class="math notranslate nohighlight">\(x\)</span> is not fixed, meaning that it can have multiple states, then <span class="math notranslate nohighlight">\(X\)</span> is a random variable
-since it is not deterministic.</p>
-<p>Tie back to the example in <a class="reference internal" href="#example_random_variable_coin_toss">Example 1</a>, we note that <span class="math notranslate nohighlight">\(X\)</span> is a random variable since the
-total number of heads <span class="math notranslate nohighlight">\(x\)</span> in an experiment is not fixed. It can be 0, 1 or 2 depending on your toss.</p>
-</section>
-</div></section>
-<section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
-<ol class="simple">
-<li><p>A random variable <span class="math notranslate nohighlight">\(X\)</span> is a function that has the sample space <span class="math notranslate nohighlight">\(\S\)</span> as its domain and the real space
-<span class="math notranslate nohighlight">\(\R\)</span> as its codomain.</p></li>
-<li><p><span class="math notranslate nohighlight">\(X(\S)\)</span> is the set of all possible values that <span class="math notranslate nohighlight">\(X\)</span> can take and the mapping is not necessarily
-a bijective function since <span class="math notranslate nohighlight">\(X(\xi)\)</span> can take on the same value for different outcomes <span class="math notranslate nohighlight">\(\xi\)</span>.</p></li>
-<li><p>The elements in <span class="math notranslate nohighlight">\(X(\S)\)</span> are denoted as <span class="math notranslate nohighlight">\(x\)</span> (i.e. <span class="math notranslate nohighlight">\(x \in X(\S)\)</span>).
-They are often called the <strong>states</strong> of <span class="math notranslate nohighlight">\(X\)</span>.</p></li>
-<li><p>It is important to not confused <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(x\)</span>. <span class="math notranslate nohighlight">\(X\)</span> is a function while <span class="math notranslate nohighlight">\(x\)</span> are the
-states of <span class="math notranslate nohighlight">\(X\)</span>.</p></li>
-<li><p>When we write <span class="math notranslate nohighlight">\(\P\lsq X = x \rsq\)</span>, we are describing the probability of the random variable <span class="math notranslate nohighlight">\(X\)</span>
-taking on a <em><strong>particular</strong></em> state <span class="math notranslate nohighlight">\(x\)</span>. This is equivalent to <span class="math notranslate nohighlight">\(\P \lsq \lset \xi \in \S \st X(\xi) = x \rset \rsq\)</span>.</p></li>
-<li><p>Random variables need not be <strong>bijective</strong>, see <a class="reference external" href="https://math.stackexchange.com/questions/202540/is-a-random-variable-bijective">here</a>.</p></li>
-</ol>
 </section>
 </section>
 
@@ -667,17 +527,17 @@ taking on a <em><strong>particular</strong></em> state <span class="math notrans
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../02_probability/summary.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="0308_bernoulli_distribution.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Summary</p>
+            <p class="prev-next-title">Bernoulli Distribution</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="0302_discrete_random_variables.html" title="next page">
+    <a class='right-next' id="next-link" href="../important.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Discrete Random Variables</p>
+        <p class="prev-next-title">Important Brain Dump</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
