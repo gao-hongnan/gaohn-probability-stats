@@ -53,7 +53,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"st": "\\mid", "mod": "\\mid", "S": "\\Omega", "s": "\\omega", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "exp": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "lpar": "\\left(", "rpar": "\\right)", "pmf": "p_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})", "var": "\\operatorname{Var}", "std": "\\operatorname{Std}", "bern": "\\operatorname{Bernoilli}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"st": "\\mid", "mod": "\\mid", "S": "\\Omega", "s": "\\omega", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "exp": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "lpar": "\\left(", "rpar": "\\right)", "pmf": "p_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})", "var": "\\operatorname{Var}", "std": "\\operatorname{Std}", "bern": "\\operatorname{Bernoilli}", "binomial": "\\operatorname{Binomial}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -221,6 +221,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="../03_discrete_random_variables/iid.html">
    Independent and Identically Distributed (IID)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_discrete_random_variables/0309_binomial_distribution.html">
+   Binomial Distribution
   </a>
  </li>
  <li class="toctree-l1">
@@ -533,7 +538,7 @@ that <span class="math notranslate nohighlight">\(\P(A ~|~ B) = \P(A)\)</span>, 
 conditionals, <span class="math notranslate nohighlight">\(\P(A ~|~ B) = \dfrac{\P(A \cap B)}{B}\)</span>, so equating
 them we have the nice equation of <span class="math notranslate nohighlight">\(\P(A)\P(B) = \P(A \cap B)\)</span>.</p>
 </div></blockquote>
-<p>See chapter 2, section 2.4.2 of <span id="id2">[<a class="reference internal" href="../03_discrete_random_variables/0308_bernoulli_distribution.html#id4" title="Stanley H. Chan. Introduction to probability for Data Science. Michigan Publishing, 2021.">Chan, 2021</a>]</span> for more details.</p>
+<p>See chapter 2, section 2.4.2 of <span id="id2">[<a class="reference internal" href="../03_discrete_random_variables/0309_binomial_distribution.html#id3" title="Stanley H. Chan. Introduction to probability for Data Science. Michigan Publishing, 2021.">Chan, 2021</a>]</span> for more details.</p>
 </section>
 <section id="defining-independence-in-terms-of-conditional-probability">
 <h2>Defining Independence in Terms of Conditional Probability<a class="headerlink" href="#defining-independence-in-terms-of-conditional-probability" title="Permalink to this headline">#</a></h2>
@@ -569,7 +574,7 @@ then <span class="math notranslate nohighlight">\(A\)</span> and <span class="ma
 </div></section>
 <section id="exercise-independence">
 <h2>Exercise (Independence)<a class="headerlink" href="#exercise-independence" title="Permalink to this headline">#</a></h2>
-<p>In <span id="id3">[<a class="reference internal" href="../03_discrete_random_variables/0308_bernoulli_distribution.html#id4" title="Stanley H. Chan. Introduction to probability for Data Science. Michigan Publishing, 2021.">Chan, 2021</a>]</span>, chapter 2, section 2.4.2, the author gave an example that is not easy to visualize.</p>
+<p>In <span id="id3">[<a class="reference internal" href="../03_discrete_random_variables/0309_binomial_distribution.html#id3" title="Stanley H. Chan. Introduction to probability for Data Science. Michigan Publishing, 2021.">Chan, 2021</a>]</span>, chapter 2, section 2.4.2, the author gave an example that is not easy to visualize.</p>
 <p>Consider the experiment of throwing a die twice. One should be clear
 from the context that the outcomes are in the form of a tuple
 <span class="math notranslate nohighlight">\((\textbf{dice_1}, \textbf{dice_2})\)</span> and the sample space is:</p>

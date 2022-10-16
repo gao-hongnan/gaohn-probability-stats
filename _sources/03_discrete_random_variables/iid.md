@@ -27,4 +27,4 @@ This is because with replacement, with each draw, the probability will be the sa
 ````
 
 Confusion in notation is when you index random variables with $i$. See [here](https://stats.stackexchange.com/questions/200741/let-random-variables-x-1-dots-x-n-be-a-iid-random-sample-from-fx-wha)
-sometimes $X_1, X_2, \ldots, X_10$ can mean 10 different people drawn.
+sometimes $X_1, X_2, \ldots, X_{10}$ can mean 10 different people drawn and [here](https://stats.stackexchange.com/questions/141416/example-of-sample-x-1-x-2-ldots-x-n?rq=1).

@@ -53,7 +53,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"st": "\\mid", "mod": "\\mid", "S": "\\Omega", "s": "\\omega", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "exp": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "lpar": "\\left(", "rpar": "\\right)", "pmf": "p_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})", "var": "\\operatorname{Var}", "std": "\\operatorname{Std}", "bern": "\\operatorname{Bernoilli}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"st": "\\mid", "mod": "\\mid", "S": "\\Omega", "s": "\\omega", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "exp": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "lpar": "\\left(", "rpar": "\\right)", "pmf": "p_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})", "var": "\\operatorname{Var}", "std": "\\operatorname{Std}", "bern": "\\operatorname{Bernoilli}", "binomial": "\\operatorname{Binomial}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -221,6 +221,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="iid.html">
    Independent and Identically Distributed (IID)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="0309_binomial_distribution.html">
+   Binomial Distribution
   </a>
  </li>
  <li class="toctree-l1">
@@ -458,6 +463,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#assumptions">
+   Assumptions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#expectation-and-variance">
    Expectation and Variance
   </a>
@@ -477,6 +487,16 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#python-examples">
    Python Examples
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bernoulli-sampling">
+   Bernoulli Sampling
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model">
+   Model
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -514,6 +534,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#assumptions">
+   Assumptions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#expectation-and-variance">
    Expectation and Variance
   </a>
@@ -533,6 +558,16 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#python-examples">
    Python Examples
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bernoulli-sampling">
+   Bernoulli Sampling
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model">
+   Model
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -559,8 +594,21 @@ title="Print to PDF"
 <h1>Bernoulli Distribution<a class="headerlink" href="#bernoulli-distribution" title="Permalink to this headline">#</a></h1>
 <section id="definition">
 <h2>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">#</a></h2>
-<div class="proof definition admonition" id="def:bernoulli">
-<p class="admonition-title"><span class="caption-number">Definition 25 </span> (Bernoulli Distribution)</p>
+<div class="proof definition admonition" id="def:bernoulli_trials">
+<p class="admonition-title"><span class="caption-number">Definition 25 </span> (Bernoulli Trials)</p>
+<section class="definition-content" id="proof-content">
+<p>A <strong>Bernoulli trial</strong> is an <strong>experiment</strong> with two possible outcomes: success or failure, often
+denoted as 1 or 0 respectively.</p>
+<p>The three assumptions for Bernoulli trials are:</p>
+<ol class="simple">
+<li><p>Each trial has two possible outcomes: 1 or 0 (success of failure);</p></li>
+<li><p>The probability of success (<span class="math notranslate nohighlight">\(p\)</span>) is constant for each trial and so is the failure (<span class="math notranslate nohighlight">\(1-p\)</span>);</p></li>
+<li><p>Each trial is independent; The outcome of previous trials has no influence on any subsequent trials.</p></li>
+</ol>
+<p>See more <a class="reference external" href="https://www.statisticshowto.com/bernoulli-trials/">here</a>.</p>
+</section>
+</div><div class="proof definition admonition" id="def:bernoulli">
+<p class="admonition-title"><span class="caption-number">Definition 26 </span> (Bernoulli Distribution)</p>
 <section class="definition-content" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(X\)</span> be a <strong>Bernoulli random variable</strong> with parameter <span class="math notranslate nohighlight">\(p\)</span>. Then the
 probability mass function (PMF) of <span class="math notranslate nohighlight">\(X\)</span> is given by</p>
@@ -575,6 +623,7 @@ p   &amp;\quad \text{ if } x=1 \\
 \end{align}
 \end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(0 \leq p \leq 1\)</span> is called the Bernoulli parameter.</p>
+<p>A <strong>Bernoulli distribution is a Bernoulli trial</strong>.</p>
 <p>Some conventions:</p>
 <ol class="simple">
 <li><p>We denote <span class="math notranslate nohighlight">\(X \sim \bern(p)\)</span> if <span class="math notranslate nohighlight">\(X\)</span> follows a Bernoulli distribution with parameter <span class="math notranslate nohighlight">\(p\)</span>.</p></li>
@@ -589,6 +638,15 @@ This will be the main difference when we learn Binomial distribution (i.e. sampl
 </ol>
 </section>
 </div></section>
+<section id="assumptions">
+<h2>Assumptions<a class="headerlink" href="#assumptions" title="Permalink to this headline">#</a></h2>
+<p>The three assumptions for Bernoulli trials are:</p>
+<ol class="simple">
+<li><p>Each trial has two possible outcomes: 1 or 0 (success of failure);</p></li>
+<li><p>The probability of success (<span class="math notranslate nohighlight">\(p\)</span>) is constant for each trial and so is the failure (<span class="math notranslate nohighlight">\(1-p\)</span>);</p></li>
+<li><p>Each trial is independent; The outcome of previous trials has no influence on any subsequent trials.</p></li>
+</ol>
+</section>
 <section id="expectation-and-variance">
 <h2>Expectation and Variance<a class="headerlink" href="#expectation-and-variance" title="Permalink to this headline">#</a></h2>
 <div class="proof property admonition" id="prop:bernoulli">
@@ -625,7 +683,7 @@ This will be the main difference when we learn Binomial distribution (i.e. sampl
 <h2>Maximum Variance<a class="headerlink" href="#maximum-variance" title="Permalink to this headline">#</a></h2>
 <section id="minimum-and-maximum-variance-of-coin-toss">
 <h3>Minimum and Maximum Variance of Coin Toss<a class="headerlink" href="#minimum-and-maximum-variance-of-coin-toss" title="Permalink to this headline">#</a></h3>
-<p>This example is taken from <span id="id1">[<a class="reference internal" href="#id4" title="Stanley H. Chan. Introduction to probability for Data Science. Michigan Publishing, 2021.">Chan, 2021</a>]</span>, page 140.</p>
+<p>This example is taken from <span id="id1">[<a class="reference internal" href="0309_binomial_distribution.html#id3" title="Stanley H. Chan. Introduction to probability for Data Science. Michigan Publishing, 2021.">Chan, 2021</a>]</span>, page 140.</p>
 <p>Consider a coin toss, following a Bernoulli distribution. Define <span class="math notranslate nohighlight">\(X \sim \bern(p)\)</span>.</p>
 <p>If we toss the coin <span class="math notranslate nohighlight">\(n\)</span> times, then we ask ourselves what is the minimum and maximum variance of the coin toss.</p>
 <p>Recall in <a class="reference internal" href="0306_variance_and_moments.html#def_variance">Definition 21</a> that the variance is basically how much the data deviates from the mean.</p>
@@ -677,7 +735,7 @@ is fair and has a 50-50 chance of landing on heads or tails. Though fair, the va
 and found out that the height of a person follows a uniform distribution.</p>
 <p>Now, we cannot model the height as a Bernoulli distribution because if we use the same random variable
 <span class="math notranslate nohighlight">\(X\)</span> being the height of a <strong>randomly</strong> selected person from the <strong>true population</strong>, the
-Bernoulli distribution cannot be constructed because it takes on a binary value by definition!</p>
+Bernoulli distribution cannot be constructed because the state space of the distribution takes on a binary value by definition!</p>
 <p>Our sample space for the height is of <span class="math notranslate nohighlight">\(\{1, 2, \ldots, 10\}\)</span>, and the corresponding state space
 <span class="math notranslate nohighlight">\(X(\S)\)</span> is the same, consisting of 10 values. Bernoulli only allows <span class="math notranslate nohighlight">\(X\)</span> to take on two values/states,
 thus in our case, this condition has failed. However, if you ask a different question in terms
@@ -687,7 +745,8 @@ conditions, one being that the state space has only 2 values (2 outcomes in samp
 other being it is a single trial/experiment.</p>
 <p>We will now use a more interesting setup, disease modelling.</p>
 <p>Let the experiment be a triplet <span class="math notranslate nohighlight">\(\pspace\)</span>, this experiment is the action of <em><strong>randomly selecting</strong></em>
-a person from the true population.</p>
+a person from the true population. This experiment can be denoted as a <strong>Bernoulli trial</strong> if we follow
+the assumptions of it.</p>
 <p>Let us define <span class="math notranslate nohighlight">\(Y\)</span> to be the <em><strong>covid-status</strong></em> of a <em><strong>randomly selected person</strong></em> from the true population.</p>
 <p>Amongst the 1000 people, any person can only have 1 single status/outcome, either he/she has covid, or don’t.
 Thus, this can be treated as a <strong>Bernoulli</strong> distribution.</p>
@@ -708,7 +767,6 @@ We can associate each state
 \P(Y=y) = \begin{cases}
 p   &amp;\quad \text{ if } y=1 \\
 1-p &amp;\quad \text{ if } y=0 \\
-0   &amp;\quad \text{ otherwise }
 \end{cases}
 \end{align}
 \end{split}\]</div>
@@ -767,7 +825,7 @@ An important reminder is that in real world, we often won’t know the true popu
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/0308_bernoulli_distribution_10_0.png" src="../_images/0308_bernoulli_distribution_10_0.png" />
+<img alt="../_images/0308_bernoulli_distribution_11_0.png" src="../_images/0308_bernoulli_distribution_11_0.png" />
 </div>
 </div>
 <p>The true pmf (ideal histogram) gives the answer that out of the true population, <span class="math notranslate nohighlight">\(80\%\)</span> has no covid, and <span class="math notranslate nohighlight">\(20\%\)</span> has covid.</p>
@@ -888,7 +946,7 @@ An important reminder is that in real world, we often won’t know the true popu
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/0308_bernoulli_distribution_14_0.png" src="../_images/0308_bernoulli_distribution_14_0.png" />
+<img alt="../_images/0308_bernoulli_distribution_15_0.png" src="../_images/0308_bernoulli_distribution_15_0.png" />
 </div>
 </div>
 <p>Following code cited from <span id="id2">[<a class="reference internal" href="#id7" title="John M. Shea. Foundations of data science with python. 2021. URL: https://jmshea.github.io/Foundations-of-Data-Science-with-Python/intro.html.">Shea, 2021</a>]</span> for my experimentation!</p>
@@ -929,7 +987,7 @@ An important reminder is that in real world, we often won’t know the true popu
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/0308_bernoulli_distribution_20_0.png" src="../_images/0308_bernoulli_distribution_20_0.png" />
+<img alt="../_images/0308_bernoulli_distribution_21_0.png" src="../_images/0308_bernoulli_distribution_21_0.png" />
 </div>
 </div>
 <p>The CDF also works as expected:</p>
@@ -941,7 +999,7 @@ An important reminder is that in real world, we often won’t know the true popu
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/0308_bernoulli_distribution_22_0.png" src="../_images/0308_bernoulli_distribution_22_0.png" />
+<img alt="../_images/0308_bernoulli_distribution_23_0.png" src="../_images/0308_bernoulli_distribution_23_0.png" />
 </div>
 </div>
 <p>Each <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code> random variables also has the ability to draw random values from the specified distribution (i.e., to get values of the random variable).  The method to do this is called <code class="docutils literal notranslate"><span class="pre">rvs</span></code>. If it is called with no argument, then it generates a single value of that random variable:</p>
@@ -981,7 +1039,7 @@ An important reminder is that in real world, we often won’t know the true popu
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/0308_bernoulli_distribution_28_0.png" src="../_images/0308_bernoulli_distribution_28_0.png" />
+<img alt="../_images/0308_bernoulli_distribution_29_0.png" src="../_images/0308_bernoulli_distribution_29_0.png" />
 </div>
 </div>
 <p>Then the relative frequencies are:</p>
@@ -1001,7 +1059,7 @@ An important reminder is that in real world, we often won’t know the true popu
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;StemContainer object of 3 artists&gt;
 </pre></div>
 </div>
-<img alt="../_images/0308_bernoulli_distribution_30_2.png" src="../_images/0308_bernoulli_distribution_30_2.png" />
+<img alt="../_images/0308_bernoulli_distribution_31_2.png" src="../_images/0308_bernoulli_distribution_31_2.png" />
 </div>
 </div>
 <p>Closer with 10000.</p>
@@ -1015,7 +1073,7 @@ An important reminder is that in real world, we often won’t know the true popu
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/0308_bernoulli_distribution_32_0.png" src="../_images/0308_bernoulli_distribution_32_0.png" />
+<img alt="../_images/0308_bernoulli_distribution_33_0.png" src="../_images/0308_bernoulli_distribution_33_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1034,16 +1092,31 @@ An important reminder is that in real world, we often won’t know the true popu
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;StemContainer object of 3 artists&gt;
 </pre></div>
 </div>
-<img alt="../_images/0308_bernoulli_distribution_33_2.png" src="../_images/0308_bernoulli_distribution_33_2.png" />
+<img alt="../_images/0308_bernoulli_distribution_34_2.png" src="../_images/0308_bernoulli_distribution_34_2.png" />
 </div>
 </div>
+</section>
+<section id="bernoulli-sampling">
+<h2>Bernoulli Sampling<a class="headerlink" href="#bernoulli-sampling" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.statisticshowto.com/bernoulli-trials/">https://www.statisticshowto.com/bernoulli-trials/</a></p></li>
+</ul>
+<p>One way is sample with replacement so samples are independent, but if sample size is large enough, sample without also converges.</p>
+</section>
+<section id="model">
+<h2>Model<a class="headerlink" href="#model" title="Permalink to this headline">#</a></h2>
+<p>The Bernoulli distribution can be used to model the response of a logistic regression model conditionally. For example,
+let <span class="math notranslate nohighlight">\(Y\)</span> be 0 or 1, denoting if a person has covid. The predictors is the height and weight of the person.
+Then <span class="math notranslate nohighlight">\(Y(y=1 | X = x)\)</span> follows a Bernoulli distribution (conditional).</p>
 </section>
 <section id="further-readings">
 <h2>Further Readings<a class="headerlink" href="#further-readings" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
+<li><p><a class="reference external" href="https://www.statisticshowto.com/bernoulli-trials/">https://www.statisticshowto.com/bernoulli-trials/</a></p></li>
 <li><p><a class="reference external" href="https://jmshea.github.io/Foundations-of-Data-Science-with-Python/08-random-variables/important-discrete-rvs.html#bernoulli-random-variable">https://jmshea.github.io/Foundations-of-Data-Science-with-Python/08-random-variables/important-discrete-rvs.html#bernoulli-random-variable</a></p></li>
 <li><p><a class="reference external" href="https://www.probabilitycourse.com/chapter3/3_1_5_special_discrete_distr.php">https://www.probabilitycourse.com/chapter3/3_1_5_special_discrete_distr.php</a></p></li>
 <li><p><a class="reference external" href="https://bcheggeseth.github.io/Stat155Notes/bernoullibinomial-model.html">https://bcheggeseth.github.io/Stat155Notes/bernoullibinomial-model.html</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=bT1p5tJwn_0&amp;list=PLvxOuBpazmsNIHP5cz37oOPZx0JKyNszN&amp;index=3">https://www.youtube.com/watch?v=bT1p5tJwn_0&amp;list=PLvxOuBpazmsNIHP5cz37oOPZx0JKyNszN&amp;index=3</a></p></li>
 </ul>
 </section>
 <section id="citations">

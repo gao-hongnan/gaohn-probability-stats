@@ -53,11 +53,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"st": "\\mid", "mod": "\\mid", "S": "\\Omega", "s": "\\omega", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "exp": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "lpar": "\\left(", "rpar": "\\right)", "pmf": "p_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})", "var": "\\operatorname{Var}", "std": "\\operatorname{Std}", "bern": "\\operatorname{Bernoilli}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"st": "\\mid", "mod": "\\mid", "S": "\\Omega", "s": "\\omega", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "exp": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "lpar": "\\left(", "rpar": "\\right)", "pmf": "p_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})", "var": "\\operatorname{Var}", "std": "\\operatorname{Std}", "bern": "\\operatorname{Bernoilli}", "binomial": "\\operatorname{Binomial}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Independent and Identically Distributed (IID)" href="03_discrete_random_variables/iid.html" />
+    <link rel="prev" title="Binomial Distribution" href="03_discrete_random_variables/0309_binomial_distribution.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -220,6 +220,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="03_discrete_random_variables/iid.html">
    Independent and Identically Distributed (IID)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_discrete_random_variables/0309_binomial_distribution.html">
+   Binomial Distribution
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -474,6 +479,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conditions">
+   Conditions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#important-topics">
    Important Topics
   </a>
@@ -535,6 +545,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conditions">
+   Conditions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#important-topics">
    Important Topics
   </a>
@@ -587,18 +602,10 @@ title="Print to PDF"
 <p><strong>Always refer to my example setup.</strong></p>
 <section id="temp-writings">
 <h2>Temp Writings<a class="headerlink" href="#temp-writings" title="Permalink to this headline">#</a></h2>
-<div class="proof definition admonition" id="def_binomial">
-<p class="admonition-title"><span class="caption-number">Definition 27 </span> (Binomial Distribution)</p>
-<section class="definition-content" id="proof-content">
-<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a <strong>Binomial random variable</strong> with parameters <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(p\)</span>. Then the
-probability mass function (PMF) of <span class="math notranslate nohighlight">\(X\)</span> is given by</p>
-<div class="math notranslate nohighlight">
-\[
-\P \lsq X = k \rsq = \binom{n}{k} p^k (1-p)^{n-k} \qquad \text{for } k = 0, 1, \ldots, n
-\]</div>
-<p>where <span class="math notranslate nohighlight">\(0 \leq p \leq 1\)</span> is called the binomial parameter, and <span class="math notranslate nohighlight">\(n\)</span> is the ***total</p>
 </section>
-</div></section>
+<section id="conditions">
+<h2>Conditions<a class="headerlink" href="#conditions" title="Permalink to this headline">#</a></h2>
+</section>
 <section id="important-topics">
 <h2>Important Topics<a class="headerlink" href="#important-topics" title="Permalink to this headline">#</a></h2>
 <p>See <a class="reference internal" href="03_discrete_random_variables/0307_discrete_uniform_distribution.html"><span class="doc">Discrete Uniform Distribution</span></a> for my whole setup.</p>
@@ -724,11 +731,11 @@ here is <strong>empirical</strong> distribution and is non-deterministic.</p>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="03_discrete_random_variables/iid.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="03_discrete_random_variables/0309_binomial_distribution.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Independent and Identically Distributed (IID)</p>
+            <p class="prev-next-title">Binomial Distribution</p>
         </div>
     </a>
 </div>

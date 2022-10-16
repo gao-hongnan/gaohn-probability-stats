@@ -23,18 +23,10 @@ Some important stuff here which I need to remember and yet to be able to formali
 
 ## Temp Writings
 
-````{prf:definition} Binomial Distribution
-:label: def_binomial
 
-Let $X$ be a **Binomial random variable** with parameters $n$ and $p$. Then the
-probability mass function (PMF) of $X$ is given by
 
-$$
-\P \lsq X = k \rsq = \binom{n}{k} p^k (1-p)^{n-k} \qquad \text{for } k = 0, 1, \ldots, n
-$$
+## Conditions
 
-where $0 \leq p \leq 1$ is called the binomial parameter, and $n$ is the ***total
-````
 
 
 
