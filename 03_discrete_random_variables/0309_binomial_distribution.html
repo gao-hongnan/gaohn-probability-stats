@@ -57,7 +57,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Important Brain Dump" href="../important.html" />
+    <link rel="next" title="Implementation" href="0309_binomial_distribution_implementation.html" />
     <link rel="prev" title="Independent and Identically Distributed (IID)" href="iid.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -208,25 +208,61 @@ const thebe_selector_output = ".output, .cell_output"
    Moments and Variance
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="0307_discrete_uniform_distribution.html">
    Discrete Uniform Distribution
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="0307_discrete_uniform_distribution_implementation.html">
+     Implementation
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="0308_bernoulli_distribution.html">
    Bernoulli Distribution
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="0308_bernoulli_distribution_implementation.html">
+     Implementation
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="iid.html">
    Independent and Identically Distributed (IID)
   </a>
  </li>
- <li class="toctree-l1 current active">
+ <li class="toctree-l1 current active has-children">
   <a class="current reference internal" href="#">
    Binomial Distribution
   </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="0309_binomial_distribution_implementation.html">
+     Implementation
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../important.html">
@@ -284,53 +320,6 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/gao-hongnan/gaohn-probability-stats/main?urlpath=tree/content/03_discrete_random_variables/0309_binomial_distribution.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
-  
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://colab.research.google.com/github/gao-hongnan/gaohn-probability-stats/blob/main/content/03_discrete_random_variables/0309_binomial_distribution.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Colab"
->
-  
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_colab.png">
-  </span>
-<span class="headerbtn__text-container">Colab</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -398,7 +387,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/03_discrete_random_variables/0309_binomial_distribution.ipynb"
+        <a href="../_sources/03_discrete_random_variables/0309_binomial_distribution.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -409,7 +398,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.ipynb</span>
+<span class="headerbtn__text-container">.md</span>
 </a>
 
       </li>
@@ -478,18 +467,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#python-examples">
-   Python Examples
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#further-readings">
-   Further Readings
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#citations">
-   Citations
+  <a class="reference internal nav-link" href="#binomial-distribution-as-a-sum-of-bernoulli-trials">
+   Binomial Distribution as a Sum of Bernoulli Trials
   </a>
  </li>
 </ul>
@@ -532,18 +511,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#python-examples">
-   Python Examples
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#further-readings">
-   Further Readings
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#citations">
-   Citations
+  <a class="reference internal nav-link" href="#binomial-distribution-as-a-sum-of-bernoulli-trials">
+   Binomial Distribution as a Sum of Bernoulli Trials
   </a>
  </li>
 </ul>
@@ -570,7 +539,7 @@ having covid, we ask, if we randomly drawn <span class="math notranslate nohighl
 <p>The distinction is a single random draw vs <span class="math notranslate nohighlight">\(n\)</span> i.i.d. draws.</p>
 <section id="definition">
 <h2>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">#</a></h2>
-<div class="proof definition admonition" id="def:bernoulli_trials">
+<div class="proof definition admonition" id="def:bernoulli_trials_2">
 <p class="admonition-title"><span class="caption-number">Definition 28 </span> (Bernoulli Trials)</p>
 <section class="definition-content" id="proof-content">
 <p>A <strong>Bernoulli trial</strong> is an <strong>experiment</strong> with two possible outcomes: success or failure, often
@@ -604,7 +573,7 @@ because <span class="math notranslate nohighlight">\(X\)</span> can only take on
 </div></section>
 <section id="intuition">
 <h2>Intuition<a class="headerlink" href="#intuition" title="Permalink to this headline">#</a></h2>
-<p><span id="id1">[<a class="reference internal" href="#id3" title="Stanley H. Chan. Introduction to probability for Data Science. Michigan Publishing, 2021.">Chan, 2021</a>]</span> chapter 3.5.2.</p>
+<p><span id="id1">[<a class="reference internal" href="../02_probability/0202_probability_space.html#id4" title="Stanley H. Chan. Introduction to probability for Data Science. Michigan Publishing, 2021.">Chan, 2021</a>]</span> chapter 3.5.2.</p>
 </section>
 <section id="assumptions">
 <h2>Assumptions<a class="headerlink" href="#assumptions" title="Permalink to this headline">#</a></h2>
@@ -617,401 +586,43 @@ because <span class="math notranslate nohighlight">\(X\)</span> can only take on
 </section>
 <section id="expectation-and-variance">
 <h2>Expectation and Variance<a class="headerlink" href="#expectation-and-variance" title="Permalink to this headline">#</a></h2>
-<div class="proof property admonition" id="prop:bernoulli">
-<p class="admonition-title"><span class="caption-number">Property 11 </span> (Expectation of Bernoulli Distribution)</p>
+<div class="proof property admonition" id="prop:bino_exp">
+<p class="admonition-title"><span class="caption-number">Property 11 </span> (Expectation of Binomial Distribution)</p>
 <section class="property-content" id="proof-content">
-<p>Let <span class="math notranslate nohighlight">\(X \sim \bern(p)\)</span> be a Bernoulli random variable with parameter <span class="math notranslate nohighlight">\(p\)</span>. Then the expectation of <span class="math notranslate nohighlight">\(X\)</span> is given by</p>
+<p>Let <span class="math notranslate nohighlight">\(X \sim \binomial(n, p)\)</span> be a Binomial random variable with parameters <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(p\)</span>.
+Then the expectation of <span class="math notranslate nohighlight">\(X\)</span> is given by</p>
 <div class="math notranslate nohighlight">
 \[
 \begin{align}
-\exp \lsq X \rsq = \sum_{x \in X(\S)} x \cdot \P(X=x) = 1 \cdot p + 0 \cdot (1-p) = p
+\exp \lsq X \rsq = np
 \end{align}
 \]</div>
 </section>
-</div><div class="proof property admonition" id="prop:bernoulli_var">
-<p class="admonition-title"><span class="caption-number">Property 12 </span> (Variance of Bernoulli Distribution)</p>
+</div><div class="proof property admonition" id="prop:bino_var">
+<p class="admonition-title"><span class="caption-number">Property 12 </span> (Variance of Binomial Distribution)</p>
 <section class="property-content" id="proof-content">
-<p>Let <span class="math notranslate nohighlight">\(X \sim \bern(p)\)</span> be a Bernoulli random variable with parameter <span class="math notranslate nohighlight">\(p\)</span>. Then the variance of <span class="math notranslate nohighlight">\(X\)</span> is given by</p>
+<p>Let <span class="math notranslate nohighlight">\(X \sim \binomial(n, p)\)</span> be a Binomial random variable with parameters <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(p\)</span>.
+Then the variance of <span class="math notranslate nohighlight">\(X\)</span> is given by</p>
 <div class="math notranslate nohighlight">
 \[
 \begin{align}
-\var \lsq X \rsq = \sum_{x \in X(\S)} (x - \exp \lsq X \rsq)^2 \cdot \P(X=x) = (1 - p)^2 \cdot p + (0 - p)^2 \cdot (1-p) = p(1-p)
-\end{align}
-\]</div>
-<p>It can also be shown using the second moment of <span class="math notranslate nohighlight">\(X\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{align}
-\var \lsq X \rsq = \exp \lsq X^2 \rsq - \exp \lsq X \rsq^2 = \exp \lsq X^2 \rsq - p^2 = p(1-p)
+\var \lsq X \rsq = np(1-p)
 \end{align}
 \]</div>
 </section>
 </div></section>
-<section id="python-examples">
-<h2>Python Examples<a class="headerlink" href="#python-examples" title="Permalink to this headline">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="n">parent_dir</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">parent_dir</span><span class="p">)</span>
-
-<span class="kn">import</span> <span class="nn">random</span>
-<span class="kn">import</span> <span class="nn">warnings</span>
-
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stats</span>
-
-<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">DeprecationWarning</span><span class="p">)</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline
-
-<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">seed_all</span><span class="p">,</span> <span class="n">true_pmf</span><span class="p">,</span> <span class="n">empirical_pmf</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seed_all</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using Seed Number 42
-</pre></div>
-</div>
-</div>
-</div>
-<p>We will use the same setup in <a class="reference internal" href="0308_bernoulli_distribution.html"><span class="doc">Bernoulli Distribution</span></a>.</p>
-<p>Let the true population be defined as a total of <span class="math notranslate nohighlight">\(10000\)</span> people.</p>
-<p>We will use the same disease modelling setup.</p>
-<p>Let the experiment be a triplet <span class="math notranslate nohighlight">\(\pspace\)</span>, this experiment is the action of <em><strong>randomly selecting n people</strong></em>
-from the true population and subsequently finding out if <span class="math notranslate nohighlight">\(k\)</span> of them have covid.
-We also emphasize that the process of selecting <span class="math notranslate nohighlight">\(n\)</span> independent and identically distributed people
-corresponds to selecting <span class="math notranslate nohighlight">\(n\)</span> independent Bernoulli trials, from the same Bernoulli distribution.
-This means if <span class="math notranslate nohighlight">\(Y \sim \bern(p)\)</span> is the Bernoulli random variable denoting the probability
-distribution of whether a person has covid or not, then if we repeat this <span class="math notranslate nohighlight">\(Y\)</span> <span class="math notranslate nohighlight">\(n\)</span> number of
-times independently (drawn with replacement), then we will have a sequence of random variables <span class="math notranslate nohighlight">\(Y_0, Y_1, \ldots, Y_n\)</span>,
-all of which fulfills <strong>i.i.d.</strong> simply because <span class="math notranslate nohighlight">\(Y_i\)</span> comes from the same distribution <span class="math notranslate nohighlight">\(Y\)</span>,
-and independent because we draw each sample randomly with replacement. Note there should be
-no ambiguity that <span class="math notranslate nohighlight">\(Y_i\)</span> are copies of the distribution <span class="math notranslate nohighlight">\(Y\)</span>, and each copy <span class="math notranslate nohighlight">\(Y_i\)</span> corresponds to
-the new random draw. The sum <span class="math notranslate nohighlight">\(Y = Y_0 + Y_1 + \ldots + Y_n\)</span>, denoted as <span class="math notranslate nohighlight">\(Y\)</span> again (with no confusion
-with the <span class="math notranslate nohighlight">\(Y\)</span> defined earlier), has a Binomial distribution with parameter <span class="math notranslate nohighlight">\(p\)</span> from the Bernoulli distribution
-and <span class="math notranslate nohighlight">\(n\)</span> being the number of trials.</p>
-<p>Since our problem finding the number of people (<span class="math notranslate nohighlight">\(k\)</span>) who is covid positive out of <span class="math notranslate nohighlight">\(n\)</span> people,
-we define our <strong>sample space</strong> to be <span class="math notranslate nohighlight">\(\Omega = \{0, 1, \ldots, n\}\)</span>. This is easy to see because
-out of <span class="math notranslate nohighlight">\(n\)</span> people, with success being 1 and failure being 0, then the sum of these <span class="math notranslate nohighlight">\(n\)</span>
-trials can at most be <span class="math notranslate nohighlight">\(n = \underbrace{1 + 1 + \ldots + 1}_{\text{n times}}\)</span>, at its worst,
-it can be just <span class="math notranslate nohighlight">\(0\)</span> times. The former is out of <span class="math notranslate nohighlight">\(n\)</span> people, all <span class="math notranslate nohighlight">\(n\)</span> has covid, the latter being
-out of <span class="math notranslate nohighlight">\(n\)</span> people, none has covid.</p>
-<p>Now suppose I want to answer a few simple questions about the experiment. For example, I want to know</p>
-<ol class="simple">
-<li><p>What is the probability of 2 people out of <span class="math notranslate nohighlight">\(n=10\)</span> people has covid?</p></li>
-<li><p>What is the expected value of the true population?</p></li>
-</ol>
-<p>Since we have defined <span class="math notranslate nohighlight">\(Y\)</span> earlier, the corresponding state space <span class="math notranslate nohighlight">\(Y(\S)\)</span> is <span class="math notranslate nohighlight">\(\{0, 1, \ldots, n\}\)</span>.
-We can associate each state
-<span class="math notranslate nohighlight">\(y \in Y(\S)\)</span> with a probability <span class="math notranslate nohighlight">\(P(Y = y)\)</span>. This is the <em><strong>probability mass function</strong></em> (PMF) of <span class="math notranslate nohighlight">\(Y\)</span>.</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align}
-\P(Y=y) = \begin{cases}
-p_1   &amp;\quad \text{ if } y=0 \\
-p_2   &amp;\quad \text{ if } y=1 \\
-\vdots \\
-p_n   &amp;\quad \text{ if } y=n
-\end{cases}
-\end{align}
-\end{split}\]</div>
-<p>and we seek to find <span class="math notranslate nohighlight">\(p\)</span>, and since we already know the true population with <span class="math notranslate nohighlight">\(p=0.2\)</span>,
-we can plot an ideal histogram to see the distribution of how the covid-status of each person in the true population is distributed.
-An important reminder is that in real world, we often won’t know the true population, and therefore <em><strong>estimating/inferencing</strong></em> the
-<span class="math notranslate nohighlight">\(p\)</span> parameter becomes important. Also, although there are two parameters, we often will have <span class="math notranslate nohighlight">\(n\)</span> fixed and estimate <span class="math notranslate nohighlight">\(p\)</span> <a class="reference external" href="https://en.wikipedia.org/wiki/Binomial_distribution#Estimation_of_parameters">ref</a>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a true population of 1000 people of 200 1s and 800 0s</span>
-<span class="n">true_population</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
-<span class="n">true_population</span><span class="p">[:</span><span class="mi">2000</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>See the plot of PMF for <span class="math notranslate nohighlight">\(p=0.2\)</span> and <span class="math notranslate nohighlight">\(n=10\)</span>.
-This means we are drawing 10 people from the true population
-in i.i.d. fashion, and the true PMF should be something like the below.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="mf">0.2</span>
-<span class="n">n</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="n">rv</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">binom</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">p</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>
-<span class="n">f</span> <span class="o">=</span> <span class="n">rv</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="s1">&#39;bo&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/0309_binomial_distribution_12_0.png" src="../_images/0309_binomial_distribution_12_0.png" />
-</div>
-</div>
-<p>We can verify by hand that the probability is correct, for example
-the probability of <span class="math notranslate nohighlight">\(0\)</span> people have covid out of 10 people is
-like having 10 tails in a row where tails is no covid and heads is covid.</p>
-<p>Then it is like</p>
-<div class="math notranslate nohighlight">
-\[
-\P \lsq \lset T, T, T, T, T, T, T, T, T, T \rset \rsq = 0.8^{10}
-\]</div>
-<p>we know this must be true because we know each <span class="math notranslate nohighlight">\(Y_i\)</span> follows a Bernoulli distribution <span class="math notranslate nohighlight">\(Y_i \sim \bern(p=0.2)\)</span>
-and since these are all independent, by basic probability, then the true probability for this is
-indeed <span class="math notranslate nohighlight">\(\P(Y_i = T)\)</span> multipled by 10 times.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">0.8</span><span class="o">**</span><span class="mi">10</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.10737418240000006
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rv</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.10737418240000006
-</pre></div>
-</div>
-</div>
-</div>
-<p>If we want to find <span class="math notranslate nohighlight">\(\P \lsq Y = 3 \rsq\)</span>, then it is like flipping coin 10 times and get
-3 heads out of 10.</p>
-<p>Which is 120 cases… since <span class="math notranslate nohighlight">\(10\)</span> choose <span class="math notranslate nohighlight">\(3\)</span> is 120 such cases. And for
-each case, the probability is <span class="math notranslate nohighlight">\(0.2^{3} \times 0.8^{7}\)</span>, so the answer is</p>
-<div class="math notranslate nohighlight">
-\[
-\P \lsq Y=3 \rsq = 120 \times 0.2^{3} \times 0.8^{7} = 
-\]</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">120</span> <span class="o">*</span> <span class="p">(</span><span class="mf">0.2</span><span class="o">**</span><span class="mi">3</span> <span class="o">*</span> <span class="mf">0.8</span> <span class="o">**</span> <span class="mi">7</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.2013265920000001
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rv</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.20132659199999992
-</pre></div>
-</div>
-</div>
-</div>
-<p>The true pmf (ideal histogram) gives the answer that out of the true population, if <span class="math notranslate nohighlight">\(n=10\)</span> and <span class="math notranslate nohighlight">\(p=0.2\)</span>,
-the true PMF is realized:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">11</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;PMF for Y=</span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">rv</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PMF for Y=0 is 0.10737418240000006
-PMF for Y=1 is 0.26843545599999996
-PMF for Y=2 is 0.30198988800000004
-PMF for Y=3 is 0.20132659199999992
-PMF for Y=4 is 0.0880803839999999
-PMF for Y=5 is 0.026424115199999983
-PMF for Y=6 is 0.005505024000000005
-PMF for Y=7 is 0.000786432
-PMF for Y=8 is 7.372800000000001e-05
-PMF for Y=9 is 4.095999999999997e-06
-PMF for Y=10 is 1.0240000000000006e-07
-</pre></div>
-</div>
-</div>
-</div>
-<p>We can then draw samples of 100, 500 and 900 to get the relative frequencies, and see if it indeed converges to <span class="math notranslate nohighlight">\(p=0.2\)</span>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample_100</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">true_population</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">sample_500</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">true_population</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">sample_900</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">true_population</span><span class="p">,</span> <span class="mi">900</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">perform_bernoulli_trials</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">p</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Perform n Bernoulli trials with success probability p</span>
-<span class="sd">    and return number of successes. That is to say:</span>
-<span class="sd">    If I toss coin 10 times, and landed head 7 times, then success rate is</span>
-<span class="sd">    70% -&gt; this is what I should return. But note this is binary.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># Initialize number of successes: n_success</span>
-    <span class="n">n_success</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">()</span>
-
-    <span class="c1"># Perform trials</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-        <span class="c1"># Choose random number between zero and one: random_number</span>
-        <span class="n">random_number</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-        <span class="c1"># If less than p, it&#39;s a success so add one to n_success</span>
-        <span class="k">if</span> <span class="n">random_number</span> <span class="o">&lt;</span> <span class="n">p</span><span class="p">:</span>
-            <span class="n">n_success</span> <span class="o">+=</span> <span class="mi">1</span>
-
-    <span class="k">return</span> <span class="n">n_success</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">perform_bernoulli_trials</span><span class="p">(</span><span class="n">population</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">p</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Perform n Bernoulli trials with success probability p</span>
-<span class="sd">    and return number of successes. That is to say:</span>
-<span class="sd">    If I toss coin 10 times, and landed head 7 times, then success rate is</span>
-<span class="sd">    70% -&gt; this is what I should return. But note this is binary.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># Initialize number of successes: n_success</span>
-    <span class="n">n_success</span> <span class="o">=</span> <span class="mi">0</span>
-
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-        <span class="c1"># Choose random number between zero and one: random_number</span>
-        <span class="n">random_number</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">population</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-        <span class="c1"># If less than p, it&#39;s a success so add one to n_success</span>
-        <span class="k">if</span> <span class="n">random_number</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="n">n_success</span> <span class="o">+=</span> <span class="mi">1</span>
-
-    <span class="k">return</span> <span class="n">n_success</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_repeats</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="n">n_covid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">n_repeats</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_repeats</span><span class="p">):</span>
-    <span class="n">n_covid</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">perform_bernoulli_trials</span><span class="p">(</span><span class="n">true_population</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_covid</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0., 3., 3., 3., 2., 2., 3., 2., 2., 1., 5., 3., 1., 6., 3., 2., 3.,
-       2., 2., 4., 2., 1., 2., 0., 7., 3., 3., 0., 2., 2., 1., 3., 2., 3.,
-       1., 2., 1., 2., 1., 1., 1., 2., 2., 3., 3., 2., 3., 2., 1., 2., 3.,
-       2., 1., 2., 2., 1., 0., 2., 3., 1., 2., 3., 1., 2., 0., 2., 1., 3.,
-       0., 2., 0., 3., 1., 1., 2., 1., 3., 2., 0., 4., 0., 3., 0., 2., 5.,
-       2., 2., 3., 5., 3., 1., 1., 1., 2., 5., 2., 4., 1., 1., 2.])
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_covid</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mf">1.5</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span>
-    <span class="n">n_covid</span><span class="p">,</span>
-    <span class="n">bins</span><span class="p">,</span>
-    <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#0504AA&quot;</span><span class="p">,</span>
-    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-    <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
-    <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([0.1 , 0.23, 0.35, 0.23, 0.03, 0.04, 0.01, 0.01]),
- array([-0.5,  0.5,  1.5,  2.5,  3.5,  4.5,  5.5,  6.5,  7.5]),
- &lt;BarContainer object of 8 artists&gt;)
-</pre></div>
-</div>
-<img alt="../_images/0309_binomial_distribution_27_1.png" src="../_images/0309_binomial_distribution_27_1.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_repeats</span> <span class="o">=</span> <span class="mi">10000</span>
-<span class="n">n_covid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">n_repeats</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_repeats</span><span class="p">):</span>
-    <span class="n">n_covid</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">perform_bernoulli_trials</span><span class="p">(</span><span class="n">true_population</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_covid</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mf">1.5</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span>
-    <span class="n">n_covid</span><span class="p">,</span>
-    <span class="n">bins</span><span class="p">,</span>
-    <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#0504AA&quot;</span><span class="p">,</span>
-    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-    <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
-    <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([1.054e-01, 2.742e-01, 3.003e-01, 1.985e-01, 8.790e-02, 2.780e-02,
-        4.700e-03, 1.100e-03, 1.000e-04]),
- array([-0.5,  0.5,  1.5,  2.5,  3.5,  4.5,  5.5,  6.5,  7.5,  8.5]),
- &lt;BarContainer object of 9 artists&gt;)
-</pre></div>
-</div>
-<img alt="../_images/0309_binomial_distribution_29_1.png" src="../_images/0309_binomial_distribution_29_1.png" />
-</div>
-</div>
+<section id="binomial-distribution-as-a-sum-of-bernoulli-trials">
+<h2>Binomial Distribution as a Sum of Bernoulli Trials<a class="headerlink" href="#binomial-distribution-as-a-sum-of-bernoulli-trials" title="Permalink to this headline">#</a></h2>
+<div class="proof definition admonition" id="def:binomial_as_sum_of_bernoulli">
+<p class="admonition-title"><span class="caption-number">Definition 30 </span> (Binomial Distribution as a Sum of Bernoulli Trials)</p>
+<section class="definition-content" id="proof-content">
+<p>Let us define <span class="math notranslate nohighlight">\(X_1, X_2, \ldots, X_n\)</span> to be <span class="math notranslate nohighlight">\(n\)</span> independent Bernoulli trials with parameter <span class="math notranslate nohighlight">\(p\)</span>
+(i.e. <span class="math notranslate nohighlight">\(X_i \sim \bern(p)\)</span>).</p>
+<p>Then the random variable <span class="math notranslate nohighlight">\(X = X_1 + X_2 + \cdots + X_n\)</span> is a Binomial random variable with parameters <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(p\)</span>.</p>
 </section>
-<section id="further-readings">
-<h2>Further Readings<a class="headerlink" href="#further-readings" title="Permalink to this headline">#</a></h2>
-<ul class="simple">
-<li><p><a class="reference external" href="https://www.youtube.com/watch?v=qIzC1-9PwQo&amp;list=PLvxOuBpazmsNIHP5cz37oOPZx0JKyNszN&amp;index=4">https://www.youtube.com/watch?v=qIzC1-9PwQo&amp;list=PLvxOuBpazmsNIHP5cz37oOPZx0JKyNszN&amp;index=4</a></p></li>
-</ul>
-</section>
-<section id="citations">
-<h2>Citations<a class="headerlink" href="#citations" title="Permalink to this headline">#</a></h2>
-<div class="docutils container" id="id2">
-<dl class="citation">
-<dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Stanley H. Chan. <em>Introduction to probability for Data Science</em>. Michigan Publishing, 2021.</p>
-</dd>
-</dl>
+</div></section>
+<div class="toctree-wrapper compound">
 </div>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1048,10 +659,10 @@ PMF for Y=10 is 1.0240000000000006e-07
             <p class="prev-next-title">Independent and Identically Distributed (IID)</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../important.html" title="next page">
+    <a class='right-next' id="next-link" href="0309_binomial_distribution_implementation.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Important Brain Dump</p>
+        <p class="prev-next-title">Implementation</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
