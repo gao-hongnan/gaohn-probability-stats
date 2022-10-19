@@ -53,11 +53,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"st": "\\mid", "mod": "\\mid", "S": "\\Omega", "s": "\\omega", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "exp": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "lpar": "\\left(", "rpar": "\\right)", "pmf": "p_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})", "var": "\\operatorname{Var}", "std": "\\operatorname{Std}", "bern": "\\operatorname{Bernoilli}", "binomial": "\\operatorname{Binomial}", "geometric": "\\operatorname{Geometric}", "poisson": "\\operatorname{Poisson}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"st": "\\mid", "mod": "\\mid", "S": "\\Omega", "s": "\\omega", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "exp": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "lpar": "\\left(", "rpar": "\\right)", "pmf": "p_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})", "var": "\\operatorname{Var}", "std": "\\operatorname{Std}", "bern": "\\operatorname{Bernoilli}", "binomial": "\\operatorname{Binomial}", "geometric": "\\operatorname{Geometric}", "poisson": "\\operatorname{Poisson}", "iid": "\\textbf{i.i.d.}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Geometric Distribution" href="0310_geometric_distribution.html" />
+    <link rel="next" title="Real World Examples" href="0309_binomial_distribution_real_world_examples.html" />
     <link rel="prev" title="Binomial Distribution" href="0309_binomial_distribution.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -260,6 +260,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      Implementation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="0309_binomial_distribution_real_world_examples.html">
+     Real World Examples
     </a>
    </li>
   </ul>
@@ -504,6 +509,21 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-setup">
+   The Setup
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-pmf-ideal-histogram">
+   The PMF (Ideal Histogram
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#empirical-distribution-empirical-histograms">
+   Empirical Distribution (Empirical Histograms)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#further-readings">
    Further Readings
   </a>
@@ -535,6 +555,21 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#utilities">
    Utilities
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-setup">
+   The Setup
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-pmf-ideal-histogram">
+   The PMF (Ideal Histogram
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#empirical-distribution-empirical-histograms">
+   Empirical Distribution (Empirical Histograms)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -595,6 +630,9 @@ title="Print to PDF"
 </div>
 </div>
 </div>
+</section>
+<section id="the-setup">
+<h2>The Setup<a class="headerlink" href="#the-setup" title="Permalink to this headline">#</a></h2>
 <p>We will use the same setup in <a class="reference internal" href="0308_bernoulli_distribution.html"><span class="doc">Bernoulli Distribution</span></a>.</p>
 <p>Let the true population be defined as a total of <span class="math notranslate nohighlight">\(10000\)</span> people.</p>
 <p>We will use the same disease modelling setup.</p>
@@ -639,7 +677,10 @@ p_n   &amp;\quad \text{ if } y=n
 <p>and we seek to find <span class="math notranslate nohighlight">\(p\)</span>, and since we already know the true population with <span class="math notranslate nohighlight">\(p=0.2\)</span>,
 we can plot an ideal histogram to see the distribution of how the covid-status of each person in the true population is distributed.
 An important reminder is that in real world, we often won’t know the true population, and therefore <em><strong>estimating/inferencing</strong></em> the
-<span class="math notranslate nohighlight">\(p\)</span> parameter becomes important. Also, although there are two parameters, we often will have <span class="math notranslate nohighlight">\(n\)</span> fixed and estimate <span class="math notranslate nohighlight">\(p\)</span> <a class="reference external" href="https://en.wikipedia.org/wiki/Binomial_distribution#Estimation_of_parameters">ref</a>.</p>
+<span class="math notranslate nohighlight">\(p\)</span> parameter becomes important. Also, although there are two parameters, we often will have <span class="math notranslate nohighlight">\(n\)</span> fixed and <a class="reference external" href="https://en.wikipedia.org/wiki/Binomial_distribution#Estimation_of_parameters">estimate</a> <span class="math notranslate nohighlight">\(p\)</span>.</p>
+</section>
+<section id="the-pmf-ideal-histogram">
+<h2>The PMF (Ideal Histogram<a class="headerlink" href="#the-pmf-ideal-histogram" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a true population of 1000 people of 200 1s and 800 0s</span>
@@ -656,18 +697,26 @@ in i.i.d. fashion, and the true PMF should be something like the below.</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="mf">0.2</span>
 <span class="n">n</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="n">rv</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">binom</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">p</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>
-<span class="n">f</span> <span class="o">=</span> <span class="n">rv</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="s1">&#39;bo&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">);</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">binom</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">p</span><span class="p">)</span> <span class="c1"># the Y ~ Binomial(n, p)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span> <span class="c1"># the states [0, 1, ..., 10]</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">Y</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="c1"># pmf function</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="s1">&#39;bo&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/0309_binomial_distribution_implementation_7_0.png" src="../_images/0309_binomial_distribution_implementation_7_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1.07374182e-01 2.68435456e-01 3.01989888e-01 2.01326592e-01
+ 8.80803840e-02 2.64241152e-02 5.50502400e-03 7.86432000e-04
+ 7.37280000e-05 4.09600000e-06 1.02400000e-07]
+</pre></div>
+</div>
+<img alt="../_images/0309_binomial_distribution_implementation_9_1.png" src="../_images/0309_binomial_distribution_implementation_9_1.png" />
 </div>
 </div>
+<p>(FIXME): Now I did not use the way in the previous sections because I do not how to plot out this distribution above using the <code class="docutils literal notranslate"><span class="pre">true_population</span></code>.</p>
+<p>But first we must ackowledge this true PMF plotted above is correct.</p>
 <p>We can verify by hand that the probability is correct, for example
 the probability of <span class="math notranslate nohighlight">\(0\)</span> people have covid out of 10 people is
 like having 10 tails in a row where tails is no covid and heads is covid.</p>
@@ -693,7 +742,7 @@ indeed <span class="math notranslate nohighlight">\(\P(Y_i = T)\)</span> multipl
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rv</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Y</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># verified with hand calculation</span>
 </pre></div>
 </div>
 </div>
@@ -709,7 +758,7 @@ indeed <span class="math notranslate nohighlight">\(\P(Y_i = T)\)</span> multipl
 each case, the probability is <span class="math notranslate nohighlight">\(0.2^{3} \times 0.8^{7}\)</span>, so the answer is</p>
 <div class="math notranslate nohighlight">
 \[
-\P \lsq Y=3 \rsq = 120 \times 0.2^{3} \times 0.8^{7} = 
+\P \lsq Y=3 \rsq = 120 \times 0.2^{3} \times 0.8^{7} = 0.2013265920000001
 \]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -725,7 +774,7 @@ each case, the probability is <span class="math notranslate nohighlight">\(0.2^{
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rv</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Y</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -736,11 +785,22 @@ each case, the probability is <span class="math notranslate nohighlight">\(0.2^{
 </div>
 </div>
 <p>The true pmf (ideal histogram) gives the answer that out of the true population, if <span class="math notranslate nohighlight">\(n=10\)</span> and <span class="math notranslate nohighlight">\(p=0.2\)</span>,
-the true PMF is realized:</p>
+the true PMF is realized as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\P(Y=y) = \begin{cases}
+0.107...   &amp;\quad \text{ if } y=0 \\
+0.268...   &amp;\quad \text{ if } y=1 \\
+\vdots \\
+1.02e-07   &amp;\quad \text{ if } y=10
+\end{cases}
+\end{align}
+\end{split}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">11</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;PMF for Y=</span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">rv</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;PMF for Y=</span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">Y</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -760,7 +820,9 @@ PMF for Y=10 is 1.0240000000000006e-07
 </div>
 </div>
 </div>
-<p>We can then draw samples of 100, 500 and 900 to get the relative frequencies, and see if it indeed converges to <span class="math notranslate nohighlight">\(p=0.2\)</span>.</p>
+</section>
+<section id="empirical-distribution-empirical-histograms">
+<h2>Empirical Distribution (Empirical Histograms)<a class="headerlink" href="#empirical-distribution-empirical-histograms" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample_100</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">true_population</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -869,7 +931,7 @@ PMF for Y=10 is 1.0240000000000006e-07
  &lt;BarContainer object of 8 artists&gt;)
 </pre></div>
 </div>
-<img alt="../_images/0309_binomial_distribution_implementation_22_1.png" src="../_images/0309_binomial_distribution_implementation_22_1.png" />
+<img alt="../_images/0309_binomial_distribution_implementation_24_1.png" src="../_images/0309_binomial_distribution_implementation_24_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -904,7 +966,7 @@ PMF for Y=10 is 1.0240000000000006e-07
  &lt;BarContainer object of 9 artists&gt;)
 </pre></div>
 </div>
-<img alt="../_images/0309_binomial_distribution_implementation_24_1.png" src="../_images/0309_binomial_distribution_implementation_24_1.png" />
+<img alt="../_images/0309_binomial_distribution_implementation_26_1.png" src="../_images/0309_binomial_distribution_implementation_26_1.png" />
 </div>
 </div>
 </section>
@@ -912,6 +974,7 @@ PMF for Y=10 is 1.0240000000000006e-07
 <h2>Further Readings<a class="headerlink" href="#further-readings" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.youtube.com/watch?v=qIzC1-9PwQo&amp;list=PLvxOuBpazmsNIHP5cz37oOPZx0JKyNszN&amp;index=4">https://www.youtube.com/watch?v=qIzC1-9PwQo&amp;list=PLvxOuBpazmsNIHP5cz37oOPZx0JKyNszN&amp;index=4</a></p></li>
+<li><p><a class="reference external" href="https://towardsdatascience.com/fun-with-the-binomial-distribution-96a5ecabf65b">https://towardsdatascience.com/fun-with-the-binomial-distribution-96a5ecabf65b</a></p></li>
 </ul>
 </section>
 <section id="citations">
@@ -953,10 +1016,10 @@ PMF for Y=10 is 1.0240000000000006e-07
             <p class="prev-next-title">Binomial Distribution</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="0310_geometric_distribution.html" title="next page">
+    <a class='right-next' id="next-link" href="0309_binomial_distribution_real_world_examples.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Geometric Distribution</p>
+        <p class="prev-next-title">Real World Examples</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
