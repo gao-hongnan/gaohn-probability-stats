@@ -1,0 +1,998 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Calculus &#8212; Probability &amp; Statistics</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/tabs.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"st": "\\mid", "mod": "\\mid", "S": "\\Omega", "s": "\\omega", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "exp": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "lpar": "\\left(", "rpar": "\\right)", "pmf": "p_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})", "var": "\\operatorname{Var}", "std": "\\operatorname{Std}", "bern": "\\operatorname{Bernoulli}", "binomial": "\\operatorname{Binomial}", "geometric": "\\operatorname{Geometric}", "poisson": "\\operatorname{Poisson}", "iid": "\\textbf{i.i.d.}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Exercises" href="exercises.html" />
+    <link rel="prev" title="Permutations and Combinations" href="01_combinatorics.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Probability & Statistics</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Chapter 1. Mathematical Preliminaries
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_combinatorics.html">
+   Permutations and Combinations
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Calculus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="exercises.html">
+   Exercises
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Chapter 2. Probability
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_probability/0202_probability_space.html">
+   Probability Space
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_probability/0203_probability_axioms.html">
+   Probability Axioms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_probability/0204_conditional_probability.html">
+   Conditional Probability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_probability/0205_independence.html">
+   Independence
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_probability/0206_bayes_theorem.html">
+   Baye’s Theorem and the Law of Total Probability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_probability/summary.html">
+   Summary
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Chapter 3. Discrete Random Variables
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_discrete_random_variables/0301_random_variables.html">
+   Random Variables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_discrete_random_variables/0302_discrete_random_variables.html">
+   Discrete Random Variables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_discrete_random_variables/0303_probability_mass_function.html">
+   Probability Mass Function
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_discrete_random_variables/0304_cumulative_distribution_function.html">
+   Cumulative Distribution Function
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_discrete_random_variables/0305_expectation.html">
+   Expectation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_discrete_random_variables/0306_variance_and_moments.html">
+   Moments and Variance
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../03_discrete_random_variables/0307_discrete_uniform_distribution.html">
+   Discrete Uniform Distribution
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03_discrete_random_variables/0307_discrete_uniform_distribution_implementation.html">
+     Implementation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../03_discrete_random_variables/0308_bernoulli_distribution.html">
+   Bernoulli Distribution
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03_discrete_random_variables/0308_bernoulli_distribution_implementation.html">
+     Implementation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_discrete_random_variables/iid.html">
+   Independent and Identically Distributed (IID)
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../03_discrete_random_variables/0309_binomial_distribution.html">
+   Binomial Distribution
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03_discrete_random_variables/0309_binomial_distribution_implementation.html">
+     Implementation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03_discrete_random_variables/0309_binomial_distribution_real_world_examples.html">
+     Real World Examples
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_discrete_random_variables/0310_geometric_distribution.html">
+   Geometric Distribution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_discrete_random_variables/0311_poisson_distribution.html">
+   Poisson Distribution
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Chapter 4. Continuous Random Variables
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_continuous_random_variables/0401_probability_density_function.html">
+   Probability Density Function
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/gao-hongnan/gaohn-probability-stats"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/gao-hongnan/gaohn-probability-stats/issues/new?title=Issue%20on%20page%20%2F01_mathematical_preliminaries/02_calculus.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/01_mathematical_preliminaries/02_calculus.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#integration">
+   Integration
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#intuition">
+     Intuition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-fundamental-theorem-of-calculus">
+     The Fundamental Theorem of Calculus
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#integration-and-probability">
+   Integration and Probability
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#starting-small">
+     Starting Small
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#introducing-infinity">
+     Introducing Infinity
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#summing-to-one">
+     Summing to one
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#doing-it-properly">
+     Doing it properly
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lebesgue-integral">
+     Lebesgue Integral
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#back-to-intuition">
+     Back to Intuition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-note-on-random-variables">
+     A note on Random Variables
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lies">
+     Lies
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#further-readings">
+   Further Readings
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Calculus</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#integration">
+   Integration
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#intuition">
+     Intuition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-fundamental-theorem-of-calculus">
+     The Fundamental Theorem of Calculus
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#integration-and-probability">
+   Integration and Probability
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#starting-small">
+     Starting Small
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#introducing-infinity">
+     Introducing Infinity
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#summing-to-one">
+     Summing to one
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#doing-it-properly">
+     Doing it properly
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lebesgue-integral">
+     Lebesgue Integral
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#back-to-intuition">
+     Back to Intuition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-note-on-random-variables">
+     A note on Random Variables
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lies">
+     Lies
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#further-readings">
+   Further Readings
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="calculus">
+<h1>Calculus<a class="headerlink" href="#calculus" title="Permalink to this headline">#</a></h1>
+<p>See Further Readings for a list of recommended resources if you want to brush up on your calculus.</p>
+<section id="integration">
+<h2>Integration<a class="headerlink" href="#integration" title="Permalink to this headline">#</a></h2>
+<section id="intuition">
+<h3>Intuition<a class="headerlink" href="#intuition" title="Permalink to this headline">#</a></h3>
+<p>An extract from <a class="reference external" href="https://math.stackexchange.com/questions/200393/what-is-dx-in-integration">math.stackexchange.com</a>:</p>
+<p>The motivation behind integration is to find the area under a curve. You do this, schematically, by breaking up the interval <span class="math notranslate nohighlight">\([a, b]\)</span> into little regions of width <span class="math notranslate nohighlight">\(\Delta x\)</span> and adding up the areas of the resulting rectangles. Here’s an illustration from <a class="reference external" href="http://en.wikipedia.org/wiki/Riemann_sum">Wikipedia</a>:</p>
+<p><img alt="Riemann sum illustration" src="http://i.stack.imgur.com/yXK1m.png" /></p>
+<p>Then we want to make an identification along the lines of</p>
+<div class="math notranslate nohighlight">
+\[\sum_x f(x)\Delta x\approx\int_a^b f(x)\,dx,\]</div>
+<p>where we take those rectangle widths to be vanishingly small and refer to them as <span class="math notranslate nohighlight">\(dx\)</span>.</p>
+<p>The symbol used for integration, ∫, is in fact just a stylized “S” for “sum”; The classical definition of the definite integral is
+<span class="math notranslate nohighlight">\(\int_a^b f(x)\,dx=\lim_{\Delta x \to 0} \sum_{x=a}^b f(x)\Delta x\)</span>. The limit of the Riemann sum of f(x) between a and b as the increment of X approaches zero (and thus the number of rectangles approaches infinity).</p>
+</section>
+<section id="the-fundamental-theorem-of-calculus">
+<h3>The Fundamental Theorem of Calculus<a class="headerlink" href="#the-fundamental-theorem-of-calculus" title="Permalink to this headline">#</a></h3>
+<div class="proof theorem admonition" id="fundamental_theorem_of_calculus">
+<p class="admonition-title"><span class="caption-number">Theorem 1 </span> (The Fundamental Theorem of Calculus)</p>
+<section class="theorem-content" id="proof-content">
+<p>The Fundamental Theorem of Calculus states that for any <em><strong>continuous function</strong></em> <span class="math notranslate nohighlight">\(f(x)\)</span> on the closed interval <span class="math notranslate nohighlight">\([a, b]\)</span>.</p>
+<p>Define <span class="math notranslate nohighlight">\(F\)</span> to be a function such that for any <span class="math notranslate nohighlight">\(x \in [a, b]\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+F(x) = \int_a^x f(t) \, dt
+\]</div>
+<p>Then <span class="math notranslate nohighlight">\(F\)</span> is uniformly continuous on <span class="math notranslate nohighlight">\([a, b]\)</span> and and differentiable on the open interval <span class="math notranslate nohighlight">\((a, b)\)</span> and</p>
+<div class="math notranslate nohighlight">
+\[
+F^{'}(x) = f(x) = \frac{d}{dx} \int_a^x f(t) \, dt
+\]</div>
+</section>
+</div><p>for any <span class="math notranslate nohighlight">\(x \in (a, b)\)</span>. <span class="math notranslate nohighlight">\(F\)</span> is called the <em><strong>antiderivative</strong></em> of <span class="math notranslate nohighlight">\(f\)</span>.</p>
+<div class="proof corollary admonition" id="fundamental_theorem_of_calculus_corollary">
+<p class="admonition-title"><span class="caption-number">Corollary 1 </span></p>
+<section class="corollary-content" id="proof-content">
+<p>The fundamental theorem is often employed to compute the definite integral of a function <span class="math notranslate nohighlight">\(f\)</span> for which an antiderivative <span class="math notranslate nohighlight">\(F\)</span> is known.</p>
+<p>Specifically, if <span class="math notranslate nohighlight">\(f\)</span> is a real-valued continuous function on <span class="math notranslate nohighlight">\([a, b]\)</span> and <span class="math notranslate nohighlight">\(F\)</span> is an antiderivative of <span class="math notranslate nohighlight">\(f\)</span> on <span class="math notranslate nohighlight">\([a, b]\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[
+\int_a^b f(x) \, dx = F(b) - F(a)
+\]</div>
+<p>where we assumes that <span class="math notranslate nohighlight">\(F\)</span> is continuous on <span class="math notranslate nohighlight">\([a, b]\)</span>.</p>
+</section>
+</div></section>
+</section>
+<section id="integration-and-probability">
+<h2>Integration and Probability<a class="headerlink" href="#integration-and-probability" title="Permalink to this headline">#</a></h2>
+<p>The post below is fully cited from <a class="reference external" href="https://math.stackexchange.com/questions/916569/whats-an-intuitive-explanation-for-integration">https://math.stackexchange.com/questions/916569/whats-an-intuitive-explanation-for-integration</a>,
+made by user Felix B.</p>
+<p>Integration in probability is often interpreted as “the <strong>expected value</strong>”. To build up our intuition why, let us start with sums.</p>
+<section id="starting-small">
+<h3>Starting Small<a class="headerlink" href="#starting-small" title="Permalink to this headline">#</a></h3>
+<p>Let’s say you play a game of dice where you win 2€ if you roll a 6 and lose 1€ if you roll any other number. Then we want to calculate what you should <em>expect</em> to receive “on average”. Now most people find the practice of multiplying the payoff by its probability and summing over them relatively straightforward. In this case you get</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Expected Payoff} = \frac{1}{6} 2 \text{€} + \frac{5}{6}(-1\text{€}) = -0.5\text{€}
+\]</div>
+<p>Now let us try to formalize this and think about what is happening here. We have a set of possible outcomes <span class="math notranslate nohighlight">\(\Omega=\{1,2,3,4,5,6\}\)</span> where each outcome is equally likely. And we have a mapping <span class="math notranslate nohighlight">\(Y:\Omega \to \mathbb{R}\)</span> which denotes the payoff. I.e.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+Y(\omega) = \begin{cases}
+  2 &amp; \omega = 6,\\
+  -1 &amp; \text{else}
+\end{cases}
+\end{split}\]</div>
+<p>And then the expected payoff is
+$<span class="math notranslate nohighlight">\(
+  \mathbb{E}[Y] = \frac{1}{|\Omega|}\sum_{\omega\in\Omega} Y(\omega) 
+  = \frac{1}{6}(2 + (-1) + ... + (-1)) 
+  = -0.5
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>|\Omega|<span class="math notranslate nohighlight">\( is the number of elements contained in \)</span>\Omega$.</p>
+</section>
+<section id="introducing-infinity">
+<h3>Introducing Infinity<a class="headerlink" href="#introducing-infinity" title="Permalink to this headline">#</a></h3>
+<p>Now this works fine for finite <span class="math notranslate nohighlight">\(\Omega\)</span>, but what if the set of possible
+outcomes is infinite? What if every real number in <span class="math notranslate nohighlight">\([0,1]\)</span> was possible,
+equally likely, and the payoff would look like this?</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+Y: \begin{cases}
+	[0,1] \to \mathbb{R} \\
+	\omega \mapsto \begin{cases}
+		2 &amp; \omega &gt; \frac{5}{6} \\
+		-1 &amp; \omega \le \frac{5}{6}
+	\end{cases}
+\end{cases}
+\end{split}\]</div>
+<p>Intuitively this payoff should have the same expected payoff as the previous
+one. But if we simply try to do the same thing as previously…</p>
+<div class="math notranslate nohighlight">
+\[
+  \mathbb{E}[Y] = \frac{1}{|\Omega|}\sum_{\omega\in\Omega} Y(\omega) 
+  = \frac{1}\infty (\infty - \infty)...
+\]</div>
+<p>Okay so we have to be a bit more clever about this. If we have a look at a
+plot of your payoff <span class="math notranslate nohighlight">\(Y\)</span>,</p>
+<p><a class="reference external" href="http://i.stack.imgur.com/yXK1m.png"><img alt="Payoff Plot" src="http://i.stack.imgur.com/yXK1m.png" /></a></p>
+<p>we might notice that the area under the curve is exactly what we want.</p>
+<div class="math notranslate nohighlight">
+\[
+-1\text{€}\left(\frac{5}{6}-\frac{0}{6}\right) + 2\text{€} \left(\frac{6}{6} - \frac{5}{6} \right) = -0.5\text{€}
+\]</div>
+<p>Now why is this the same? How are our sums related to an area under a curve?</p>
+</section>
+<section id="summing-to-one">
+<h3>Summing to one<a class="headerlink" href="#summing-to-one" title="Permalink to this headline">#</a></h3>
+<p>To understand this it might be useful to consider what the expected value of
+a simpler function is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+	\mathbf{1}: \begin{cases}
+		\Omega \to \mathbb{R}\\
+		\omega \mapsto 1
+	\end{cases}
+\end{split}\]</div>
+<p>In our first example this was</p>
+<div class="math notranslate nohighlight">
+\[
+	\frac{1}{|\Omega|} \sum_{\omega\in\Omega} \mathbf{1}(\omega) = \frac{|\Omega|}{|\Omega|}
+\]</div>
+<p>In our second example this would be</p>
+<div class="math notranslate nohighlight">
+\[
+	\int_{\Omega} 1 d\omega = \int_0^1 1 d\omega
+\]</div>
+<p>Now if we recall how the integral (area under the curve) is calculated we might
+notice that in case of indicator functions, we are <em>weighting</em> the height of
+the indicator function with the size of the interval. And the size of the
+interval is its length.</p>
+<p>Similarly we could move <span class="math notranslate nohighlight">\(\frac{1}{|\Omega|}\)</span> into the sum and view it as the
+<em>weighting</em> of each <span class="math notranslate nohighlight">\(\omega\)</span>. And here is where we have the crucial difference:</p>
+<p>In the first case <em>individual</em> <span class="math notranslate nohighlight">\(\omega\)</span> have a weight (a probability), while
+individual points in an interval have no length/weight/probability. But while
+sets of individual points have no length, an infinite union of points with
+no length/probability can have positive length/probability.</p>
+<p>This is why probability is closely intertwined with <a class="reference external" href="https://en.wikipedia.org/wiki/Measure_(mathematics)">measure theory</a>, where a
+measure is a function assigning sets (e.g. intervals) a weight (e.g. lenght,
+or probability).</p>
+</section>
+<section id="doing-it-properly">
+<h3>Doing it properly<a class="headerlink" href="#doing-it-properly" title="Permalink to this headline">#</a></h3>
+<p>So if we restart our attempt at defining the expected value, we start with a
+probability space <span class="math notranslate nohighlight">\(\Omega\)</span> and a probability measure <span class="math notranslate nohighlight">\(P\)</span> which assigns subsets
+of <span class="math notranslate nohighlight">\(\Omega\)</span> a probability. A <strong>real valued random variable</strong> (e.g. payoff) <span class="math notranslate nohighlight">\(Y\)</span> is a
+function from <span class="math notranslate nohighlight">\(\Omega\)</span> to <span class="math notranslate nohighlight">\(\mathbb{R}\)</span>. And if it only takes a finite number
+of values in <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> (i.e. <span class="math notranslate nohighlight">\(Y(\Omega)\subseteq \mathbb{R}\)</span> is finite),
+then we can calculate the expected value by going through these values, weightening them by the probability of their preimages and summing them.</p>
+<div class="math notranslate nohighlight">
+\[
+	\mathbb{E}[Y] = \sum_{y\in Y(\Omega)} y P[Y^{-1}(\{y\})]
+\]</div>
+<p>To make notation more readable we can define
+$<span class="math notranslate nohighlight">\(
+\begin{aligned}
+	P[Y\in A] &amp;:= P[Y^{-1}(A)] \qquad\text{and} \\
+	P[Y=y]&amp;:=P[Y\in\{y\}]
+\end{aligned}
+\)</span>$</p>
+<p>In our finite example the expected value is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+	\mathbb{E}[Y] &amp;= 2 P(Y=2) + (-1) P(Y=-1)\\
+	&amp;=2 P(Y^{-1}[\{2\}]) +(-1)P(\{1,2,3,4,5\})\\
+	&amp;= 2 \frac16 -1 \frac56 = -0.5
+\end{aligned}
+\end{split}\]</div>
+<p>In our infinite example the expected value is
+$<span class="math notranslate nohighlight">\(
+\begin{aligned}
+	\mathbb{E}[Y] &amp;= 2P(Y=2) + (-1)P(Y=-1)\\
+	&amp;= 2P\left(\left(\frac56, 1\right]\right)
+	- P\left(\left[0, \frac56\right]\right) = \int_0^1 Y d\omega\\
+	&amp;= 2 \frac16 - \frac56 = -0.5
+\end{aligned}
+\)</span>$</p>
+<p>Now it turns out that you can approximate every <span class="math notranslate nohighlight">\(Y\)</span> with infinite image
+<span class="math notranslate nohighlight">\(Y(\Omega)\)</span> with a sequence of mappings <span class="math notranslate nohighlight">\(Y_n\)</span> with finite image. And
+that the limit</p>
+<div class="math notranslate nohighlight">
+\[
+	\int_\Omega Y dP := \lim_n \int_\Omega Y_n dP := \sum_{y\in Y_n(\Omega)} y P(Y=y)
+\]</div>
+<p>is also well defined and independent of the sequence <span class="math notranslate nohighlight">\(Y_n\)</span>.</p>
+</section>
+<section id="lebesgue-integral">
+<h3>Lebesgue Integral<a class="headerlink" href="#lebesgue-integral" title="Permalink to this headline">#</a></h3>
+<p>The integral we defined above is called the <a class="reference external" href="https://en.wikipedia.org/wiki/Lebesgue_integration">Lebesgue Integral</a>. The neat thing
+about it is, that</p>
+<ol class="simple">
+<li><p>Riemann
+integration is a special case of it, if we integrate over the <a class="reference external" href="https://en.wikipedia.org/wiki/Lebesgue_measure">Lebesgue Measure</a>
+<span class="math notranslate nohighlight">\(\lambda\)</span> which assigns intervals <span class="math notranslate nohighlight">\([a,b]\)</span> their length <span class="math notranslate nohighlight">\(\lambda([a,b])=b-a\)</span>.
+$<span class="math notranslate nohighlight">\(\int_{[a,b]} f d\lambda = \int_a^b f(x) dx\)</span>$</p></li>
+<li><p>Sums and series are also a special case using sequences <span class="math notranslate nohighlight">\((a(n),
+n\in\mathbb{N})\)</span> and a “counting measure” <span class="math notranslate nohighlight">\(\mu\)</span> on <span class="math notranslate nohighlight">\(\mathbb{N}\)</span> which assigns a
+set <span class="math notranslate nohighlight">\(A\)</span> its size <span class="math notranslate nohighlight">\(\mu(A) = |A|\)</span>. Then</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\int_{\Omega} a d\mu = \sum_{n\in\mathbb{N}} a(n)
+\]</div>
+<p>The implications are of course for one, that one can often treat integration
+and summation interchangeably. Proving statements for Lebesgue integrals is
+rarely harder than proving them for Riemann integrals and in the first case
+all results also apply to series and sums.</p>
+<p>It also means we can properly deal with “mixed cases” where some individual
+points have positive probability and some points have zero probability on
+their own but sets of them have positive probability.</p>
+<p>My stochastics professor likes to call integration just “infinite summation”
+because in some sense you are just summing over an infinite number of
+elements in a “proper way”.</p>
+<blockquote>
+<div><p>The lebesgue integral also makes certain real functions
+integrable which are not integrable with riemann integration. The function
+<span class="math notranslate nohighlight">\(\mathbf{1}_{\mathbb{Q}}\)</span> is not riemann integrable, but poses no problem
+for lebesgue integration. The reason is, that riemann integration subdivides
+the <span class="math notranslate nohighlight">\(x\)</span>-axis and <span class="math notranslate nohighlight">\(y\)</span>-axis into intervals without consulting the function that is
+supposed to be integrated, while lebesgue integration only subdivides the
+<span class="math notranslate nohighlight">\(y\)</span>-axis and utilizes the preimage information about the function that is supposed to be integrated.</p>
+</div></blockquote>
+</section>
+<section id="back-to-intuition">
+<h3>Back to Intuition<a class="headerlink" href="#back-to-intuition" title="Permalink to this headline">#</a></h3>
+<p>Now the end result might not resemble our intuition about “expected values”
+anymore. We get some of that back with theorems like the <a class="reference external" href="https://en.wikipedia.org/wiki/Law_of_large_numbers">law of
+large numbers</a> which proves that averages</p>
+<div class="math notranslate nohighlight">
+\[\frac{1}{n} \sum_{k=1}^n X_k\]</div>
+<p>of independently, identically distributed random variables converge (in various
+senses) to the theoretically defined expected value <span class="math notranslate nohighlight">\(\mathbb{E}[X]\)</span>.</p>
+</section>
+<section id="a-note-on-random-variables">
+<h3>A note on Random Variables<a class="headerlink" href="#a-note-on-random-variables" title="Permalink to this headline">#</a></h3>
+<p>In our examples above, only the payoff <span class="math notranslate nohighlight">\(Y\)</span> was a random variable (a function
+from the probability space <span class="math notranslate nohighlight">\(\Omega\)</span> to <span class="math notranslate nohighlight">\(\mathbb{R}\)</span>). But since we can compose
+functions by chaining them, nothing would have stopped us from defining the
+possible die faces as a random variable of some unknown probability space
+<span class="math notranslate nohighlight">\(\Omega\)</span>. Since our payoff is just a function of the die faces, their
+composition would also be a function from <span class="math notranslate nohighlight">\(\Omega\)</span>. And it is often convenient
+not to define <span class="math notranslate nohighlight">\(\Omega\)</span> and start with random variables right away, as it allows
+easy extensions of our models without having to redefine our probability space.
+Because we treat the underlying probability space as unknown anyway and only
+work with known <em>windows</em> (random variables) into it. Notice how you could
+not discern the die faces <span class="math notranslate nohighlight">\(\{1,...,5\}\)</span> from payoff <span class="math notranslate nohighlight">\(Y=-1\)</span> alone. So
+random variables can also be viewed as information filters.</p>
+</section>
+<section id="lies">
+<h3>Lies<a class="headerlink" href="#lies" title="Permalink to this headline">#</a></h3>
+<p>While we would like our measures to assign every subset of <span class="math notranslate nohighlight">\(\Omega\)</span> a number,
+this is generally not possible without sacrificing its usefulness.</p>
+<p>If we wanted a measure on <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> which fulfills the following properties</p>
+<ol class="simple">
+<li><p>translation invariance (moving a set about does not change its size)</p></li>
+<li><p>countable summability of disjoint sets</p></li>
+<li><p>positive</p></li>
+<li><p>finite on every bounded set</p></li>
+</ol>
+<p>we are only left with the <span class="math notranslate nohighlight">\(0\)</span> measure (assigning every set measure 0).</p>
+<blockquote>
+<div><p>Proofsketch: Use the axiom of choice to select a representative of every
+equivalence class of the equivalence relation <span class="math notranslate nohighlight">\(x-y\in \mathbb{Q}\)</span> on the set
+<span class="math notranslate nohighlight">\([0,1]\)</span>. This set of representatives is not measurable, because translations
+by rational numbers modulo 1 transforms it into distinct other representation
+sets of the equivalence relation. And since they are disjoint and countable
+we can sum over them and get the measure of the entire interval
+<span class="math notranslate nohighlight">\([0,1]\)</span>. But an infinite sum of equally sized sets can not be finite if they
+are not all <span class="math notranslate nohighlight">\(0\)</span>. Therefore the set <span class="math notranslate nohighlight">\([0,1]\)</span> must have measure 0 and by translation and summation all other sets in <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p>
+</div></blockquote>
+<p>For this reason we have to restrict ourselves to a set of “measurable sets”
+(a sigma Algebra) which is only a subset of the powerset <span class="math notranslate nohighlight">\(\mathcal{P}(\Omega)\)</span>
+of <span class="math notranslate nohighlight">\(\Omega\)</span>. This conundrum also limits the functions we can integrate with
+lebesgue integration to the set of “measurable functions”.</p>
+<p>But all of these things are technicalities distracting from the intuition.</p>
+</section>
+</section>
+<section id="further-readings">
+<h2>Further Readings<a class="headerlink" href="#further-readings" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.khanacademy.org/math/calculus-1">https://www.khanacademy.org/math/calculus-1</a></p></li>
+<li><p><a class="reference external" href="https://tutorial.math.lamar.edu/">https://tutorial.math.lamar.edu/</a></p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./01_mathematical_preliminaries"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="01_combinatorics.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Permutations and Combinations</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="exercises.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Exercises</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Gao Hongnan<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
