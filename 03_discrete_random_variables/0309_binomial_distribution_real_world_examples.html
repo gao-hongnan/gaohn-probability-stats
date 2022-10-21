@@ -53,7 +53,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"st": "\\mid", "mod": "\\mid", "S": "\\Omega", "s": "\\omega", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "exp": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "lpar": "\\left(", "rpar": "\\right)", "pmf": "p_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})", "var": "\\operatorname{Var}", "std": "\\operatorname{Std}", "bern": "\\operatorname{Bernoilli}", "binomial": "\\operatorname{Binomial}", "geometric": "\\operatorname{Geometric}", "poisson": "\\operatorname{Poisson}", "iid": "\\textbf{i.i.d.}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"st": "\\mid", "mod": "\\mid", "S": "\\Omega", "s": "\\omega", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "exp": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "lpar": "\\left(", "rpar": "\\right)", "pmf": "p_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})", "var": "\\operatorname{Var}", "std": "\\operatorname{Std}", "bern": "\\operatorname{Bernoulli}", "binomial": "\\operatorname{Binomial}", "geometric": "\\operatorname{Geometric}", "poisson": "\\operatorname{Poisson}", "iid": "\\textbf{i.i.d.}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -512,6 +512,23 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#call-center-simulation">
    Call Center Simulation
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bernoulli-trials">
+     Bernoulli Trials
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#binomial-distribution">
+     Binomial Distribution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#alternative-way-to-calculate-expected-value-of-revenue-per-day">
+     Alternative way to Calculate Expected Value of Revenue per Day
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#further-readings">
@@ -551,6 +568,23 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#call-center-simulation">
    Call Center Simulation
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bernoulli-trials">
+     Bernoulli Trials
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#binomial-distribution">
+     Binomial Distribution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#alternative-way-to-calculate-expected-value-of-revenue-per-day">
+     Alternative way to Calculate Expected Value of Revenue per Day
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#further-readings">
@@ -613,47 +647,91 @@ title="Print to PDF"
 </section>
 <section id="call-center-simulation">
 <h2>Call Center Simulation<a class="headerlink" href="#call-center-simulation" title="Permalink to this headline">#</a></h2>
-<p>This example is taken from <span id="id1">[<a class="reference internal" href="#id8" title="Tony Yiu. Fun with the binomial distribution - towards data science. Jul 2019. URL: https://towardsdatascience.com/fun-with-the-binomial-distribution-96a5ecabf65b.">Yiu, 2019</a>]</span>, please take a look at this author’s articles, really good!</p>
-<p>Let <span class="math notranslate nohighlight">\(X\)</span> be the <em><strong>success conversion call status</strong></em> of a <em><strong>randomly chosen call made by 1 single employee</strong></em>.</p>
-<p>In other words, let <span class="math notranslate nohighlight">\(X\)</span> be the <em><strong>outcome of a call</strong></em> of a <em><strong>randomly chosen call made by 1 single employee</strong></em> where the outcome is either success or failure in conversion.</p>
+<p>This example is taken from <span id="id1">[<a class="reference internal" href="#id8" title="Tony Yiu. Fun with the binomial distribution - towards data science. Jul 2019. URL: https://towardsdatascience.com/fun-with-the-binomial-distribution-96a5ecabf65b.">Yiu, 2019</a>]</span>, please take a look at this author’s articles, they are really good!</p>
+<p>Imagine that we are data scientists tasked with improving the ROI (Return on Investment) of our company’s call center,
+where employees attempt to cold call potential customers and get them to purchase our product.</p>
+<p>You look at some historical data and find the following:</p>
+<ul class="simple">
+<li><p>The typical call center employee completes on average 50 calls per day.</p></li>
+<li><p>The probability of a conversion (purchase) for each call is <span class="math notranslate nohighlight">\(4\%\)</span>.</p></li>
+<li><p>The average revenue to your company for each conversion is <span class="math notranslate nohighlight">\(90\)</span>.</p></li>
+<li><p>The call center you are analyzing has <span class="math notranslate nohighlight">\(100\)</span> employees.</p></li>
+<li><p>Each employee is paid <span class="math notranslate nohighlight">\(200\)</span> per day of work.</p></li>
+</ul>
+<section id="bernoulli-trials">
+<h3>Bernoulli Trials<a class="headerlink" href="#bernoulli-trials" title="Permalink to this headline">#</a></h3>
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> be the <em><strong>success conversion call status</strong></em> of a <em><strong>call made by 1 single randomly chosen employee</strong></em>.
+In other words, let <span class="math notranslate nohighlight">\(X\)</span> be the <em><strong>outcome of a call</strong></em> made by <em><strong>1 single randomly chosen employee</strong></em>
+where the outcome is either success or failure in conversion.</p>
 <p>Then we can model the <em><strong>probability of success</strong></em> of a call made by a <em><strong>randomly chosen employee</strong></em> as
-a Bernoulli random variable <span class="math notranslate nohighlight">\(X\)</span> with parameter <span class="math notranslate nohighlight">\(p\)</span> where <span class="math notranslate nohighlight">\(p\)</span> is the <em><strong>probability of success</strong></em> of a call made by a <em><strong>randomly chosen employee</strong></em>.
-We define <span class="math notranslate nohighlight">\(p=0.04\)</span> here.</p>
+a Bernoulli random variable <span class="math notranslate nohighlight">\(X\)</span> with parameter <span class="math notranslate nohighlight">\(p\)</span> where <span class="math notranslate nohighlight">\(p\)</span> is the <em><strong>probability of success</strong></em>
+of a call made by that <em><strong>randomly chosen employee</strong></em>.</p>
+<p>We need to follow some assumptions in order to make <span class="math notranslate nohighlight">\(X\)</span> a Bernoulli Trial:</p>
+<ul class="simple">
+<li><p>Each trial has two possible outcomes: 1 or 0 (success of failure);</p>
 <ul>
+<li><p>This means any single employee can only make call that is successful or not.</p></li>
+</ul>
+</li>
+<li><p>The probability of success is constant for each trial, as mentioned,
+the probability of a conversion (purchase) for each call is <span class="math notranslate nohighlight">\(p=0.04\)</span>. We treat is as constant.</p>
+<ul>
+<li><p>This means everytime a call is made by a randomly chosen employee, the success rate is constant at <span class="math notranslate nohighlight">\(p=0.04\)</span>.</p></li>
+</ul>
+</li>
+<li><p>Each trial is independent.</p>
+<ul>
+<li><p>This means that each call made by the randomly chosen employee is independent of the previous calls made.</p></li>
+</ul>
+</li>
+</ul>
+<p>We define the sample space, event space and probability measure below:</p>
+<ul class="simple">
 <li><p>The sample space <span class="math notranslate nohighlight">\(\S = \{0,1\}\)</span> where <span class="math notranslate nohighlight">\(0\)</span> represents <em><strong>failure</strong></em> and <span class="math notranslate nohighlight">\(1\)</span> represents <em><strong>success</strong></em>.</p></li>
 <li><p>The event space <span class="math notranslate nohighlight">\(\E = \{\emptyset, \{0\}, \{1\}, \{0,1\}\}\)</span>.</p></li>
 <li><p>The probability measure <span class="math notranslate nohighlight">\(\P\)</span> is defined as follows:</p>
-<ul class="simple">
+<ul>
 <li><p><span class="math notranslate nohighlight">\(\P(\emptyset) = 0\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\P(\{0\}) = 1-p = 0.96\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\P(\{1\}) = p = 0.04\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\P(\{0,1\}) = 1\)</span></p></li>
 </ul>
 </li>
-<li><p>Thus our random variable <span class="math notranslate nohighlight">\(X\)</span> is just <span class="math notranslate nohighlight">\(X: \S \to \R\)</span> where <span class="math notranslate nohighlight">\(X(\{0\}) = 0\)</span> and <span class="math notranslate nohighlight">\(X(\{1\}) = 1\)</span>,
-or <span class="math notranslate nohighlight">\(X(0) = 0\)</span> and <span class="math notranslate nohighlight">\(X(1) = 1\)</span>.</p></li>
-<li><p>The PMF is fully determined by</p>
+</ul>
+<p>Our random variable <span class="math notranslate nohighlight">\(X: \S \to \R\)</span> can be defined as <span class="math notranslate nohighlight">\(X(\{0\}) = 0\)</span> and <span class="math notranslate nohighlight">\(X(\{1\}) = 1\)</span>,
+or <span class="math notranslate nohighlight">\(X(0) = 0\)</span> and <span class="math notranslate nohighlight">\(X(1) = 1\)</span>. The states of <span class="math notranslate nohighlight">\(X\)</span> are <span class="math notranslate nohighlight">\(\lset 0, 1 \rset\)</span>.</p>
+<p>Consequently, the PMF is fully determined by</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-  \begin{align}
-    f_X(x) = \P(X=x) = \begin{cases}
-        0.96  &amp; \text{if } x = 0 \\
-        0.04  &amp; \text{if } x = 1
-    \end{cases}
-  \end{align}
-  \end{split}\]</div>
-</li>
-<li><p><span class="math notranslate nohighlight">\(X\)</span> is a Bernoulli Trial because we can think of it as 1 single person tossing 1 coin, then the corresponding
-random variable is <strong>Let <span class="math notranslate nohighlight">\(X\)</span> be the outcome of the coin toss made by a random toss by 1 single person.</strong> Therefore,
-it can be made to fit as a Bernoulli Trial if we assume the assumptions.</p></li>
-</ul>
+\begin{align}
+f_X(x) = \P(X=x) = \begin{cases}
+    0.96  &amp; \text{if } x = 0 \\
+    0.04  &amp; \text{if } x = 1
+\end{cases}
+\end{align}
+\end{split}\]</div>
+<p><span class="math notranslate nohighlight">\(X\)</span> is a Bernoulli Trial because we can think of it as 1 single person tossing 1 coin, then the corresponding
+random variable <span class="math notranslate nohighlight">\(X\)</span> is <strong>the outcome of the coin toss made by 1 randomly chosen single person.</strong> Therefore,
+it can be made to fit as a Bernoulli Trial if we assume the assumptions as above.</p>
+</section>
+<section id="binomial-distribution">
+<h3>Binomial Distribution<a class="headerlink" href="#binomial-distribution" title="Permalink to this headline">#</a></h3>
 <p>Now the above details a <em><strong>single call</strong></em> made by a <em><strong>randomly chosen employee</strong></em>, which follows a Bernoulli distribution.
-You can associate this with a <em><strong>single coin toss</strong></em> made by a <em><strong>randomly chosen person</strong></em>, which also follows a Bernoulli distribution.</p>
-<p>Now, a single employee can make multiple calls (a sequence of calls can be <span class="math notranslate nohighlight">\(X_1, X_2, \ldots, X_{50}\)</span>),
-if he/she does <span class="math notranslate nohighlight">\(n\)</span> such calls which are <strong>identically and independently distributed</strong> (i.i.d.),
+You can associate this with a <em><strong>single coin toss</strong></em> made by a <em><strong>randomly chosen person</strong></em>, which also follows a Bernoulli distribution
+(i.e. <span class="math notranslate nohighlight">\(X \sim \bern(0.04)\)</span>).</p>
+<p>Now, a single employee can make multiple calls. For example, in the example above, an employee can make
+50 calls a day. We can define a sequence of calls <span class="math notranslate nohighlight">\(X_1, X_2, \ldots, X_{50}\)</span>.
+One confusion that arise here is what each <span class="math notranslate nohighlight">\(X_i\)</span> mean. In this particular settings,
+it would be reasonable to assume that each <span class="math notranslate nohighlight">\(X_i\)</span> is a copy of <span class="math notranslate nohighlight">\(X\)</span> where <span class="math notranslate nohighlight">\(X\)</span> is <em><strong>the</strong></em> randomly
+chosen person. This means once <span class="math notranslate nohighlight">\(X\)</span> is determined (tagged to the person chosen, say person A), then
+<span class="math notranslate nohighlight">\(X_1, X_2, \ldots, X_{50}\)</span> all refer to this person A’s calls as it does not make sense
+that <span class="math notranslate nohighlight">\(X_i\)</span> correspond to different person. See <a class="reference external" href="https://stats.libretexts.org/Bookshelves/Probability_Theory/Probability_Mathematical_Statistics_and_Stochastic_Processes_(Siegrist)/11%3A_Bernoulli_Trials/11.01%3A_Introduction_to_Bernoulli_Trials">here</a>’s
+example on “Suppose that a student takes a multiple choice test” to see how they phrase it. I think I should
+rephrase the definition of my Bernoulli r.v. just now as the employee is not “random”?</p>
+<p>Since each <span class="math notranslate nohighlight">\(X_i\)</span> is a Bernoulli trial, then  <span class="math notranslate nohighlight">\(n\)</span> such calls are <strong>identically and independently distributed</strong> (i.i.d.),
 then we can define <span class="math notranslate nohighlight">\(Y\)</span> to be the <em><strong>number of successful conversion calls</strong></em>, which now follows a <em><strong>Binomial distribution</strong></em> because
 each call made by the employee is <span class="math notranslate nohighlight">\(\iid\)</span> and follows a Bernoulli distribution with constant parameter <span class="math notranslate nohighlight">\(p\)</span>.</p>
-<p>We can define our <span class="math notranslate nohighlight">\(Y\)</span> as follows since <span class="math notranslate nohighlight">\(n=50\)</span> and <span class="math notranslate nohighlight">\(p=0.04\)</span>:</p>
+<p>Since <span class="math notranslate nohighlight">\(n=50\)</span> and <span class="math notranslate nohighlight">\(p=0.04\)</span>, we can define our <span class="math notranslate nohighlight">\(Y\)</span> as follows:</p>
 <div class="math notranslate nohighlight">
 \[
 Y \sim \binomial(50, 0.04)
@@ -670,7 +748,7 @@ It is just the total number of successful conversion calls made by 1 single empl
 0.2705954031709139   &amp;\quad \text{ if } y=1 \\
 0.27623280740364115 &amp;\quad \text{ if } y=2 \\
 \vdots &amp;\quad \vdots \\
-1.2676506002282307e-70   &amp;\quad \text{ if } y=10 \\
+1.2676506002282307e-70   &amp;\quad \text{ if } y=50 \\
 \end{cases}
 \end{align}
 \end{split}\]</div>
@@ -695,13 +773,13 @@ It is just the total number of successful conversion calls made by 1 single empl
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/0309_binomial_distribution_real_world_examples_8_0.png" src="../_images/0309_binomial_distribution_real_world_examples_8_0.png" />
+<img alt="../_images/0309_binomial_distribution_real_world_examples_9_0.png" src="../_images/0309_binomial_distribution_real_world_examples_9_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">51</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;PMF for Y=</span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">Y</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">y_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">51</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;PMF for Y=</span><span class="si">{</span><span class="n">y_</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">Y</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">y_</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -761,11 +839,71 @@ PMF for Y=50 is 1.2676506002282307e-70
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean</span><span class="p">,</span> <span class="n">var</span> <span class="o">=</span> <span class="n">Y</span><span class="o">.</span><span class="n">stats</span><span class="p">(</span><span class="n">moments</span><span class="o">=</span><span class="s2">&quot;mv&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Expected value: </span><span class="si">{</span><span class="n">mean</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Variance: </span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Expected value: 2.0
+Variance: 1.92
+</pre></div>
+</div>
+</div>
+</div>
+<p>At this very moment, we can already calculate our the total revenue earned per day
+and the corresponding profits per day.</p>
+<p>This is because we can use the expected value <span class="math notranslate nohighlight">\(\P \lsq Y \rsq\)</span>
+to get the average number of successful conversion per day.</p>
+<p>We see that we are making a loss of <span class="math notranslate nohighlight">\(-2000\)</span> a day.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_employees</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">salary_per_employee</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="n">revenue_per_successful_call</span> <span class="o">=</span> <span class="mi">90</span>
+
+<span class="n">expected_total_conversions</span> <span class="o">=</span> <span class="n">mean</span> <span class="o">*</span> <span class="n">num_employees</span>
+<span class="n">expected_total_revenue</span>     <span class="o">=</span> <span class="n">revenue_per_successful_call</span> <span class="o">*</span> <span class="n">expected_total_conversions</span>
+<span class="n">expected_total_profits</span>     <span class="o">=</span> <span class="n">expected_total_revenue</span> <span class="o">-</span> <span class="n">salary_per_employee</span> <span class="o">*</span> <span class="n">num_employees</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Expected Total Conversions Per Day: </span><span class="si">{</span><span class="n">expected_total_conversions</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Expected Total Revenue Per Day: </span><span class="si">{</span><span class="n">expected_total_revenue</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Expected Total Profits Per Day: </span><span class="si">{</span><span class="n">expected_total_profits</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Expected Total Conversions Per Day: 200.0
+Expected Total Revenue Per Day: 18000.0
+Expected Total Profits Per Day: -2000.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>By theory, we know that increasing either <span class="math notranslate nohighlight">\(n\)</span> or <span class="math notranslate nohighlight">\(p\)</span> will increase the expectation
+<span class="math notranslate nohighlight">\(\exp \lsq Y \rsq\)</span> since <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(p\)</span> are both positive. Consequently, increasing both at the same
+time will also guarantee an increase in expectation.</p>
+<p>So the solutions to increase revenue/profits per day are:</p>
+<ul class="simple">
+<li><p>Increase <span class="math notranslate nohighlight">\(n\)</span>, the number of calls performed by 1 single employee;</p></li>
+<li><p>Increase <span class="math notranslate nohighlight">\(p\)</span>, the success rate of a call conversion by 1 single employee through techniques like not hard pressing the customers to buy something;</p></li>
+</ul>
 <p>With this realized state of the theoretical (true) PMF, we can employ <strong>generative/synthesis</strong> method to generate
 samples from this distribution because <strong>we assumed that <span class="math notranslate nohighlight">\(Y\)</span> follows a Binomial distribution prior</strong>.</p>
 <p>So if we have <code class="docutils literal notranslate"><span class="pre">Y.rvs(size</span> <span class="pre">=</span> <span class="pre">10)</span></code>, it simply means generate a sequence 10 random variables <span class="math notranslate nohighlight">\(Y_1, Y_2, \ldots, Y_{10}\)</span> of <span class="math notranslate nohighlight">\(Y\)</span>.</p>
-<p>In this context, we can be unambiguous and say that each random variable <span class="math notranslate nohighlight">\(Y_i\)</span> corresponds to a randomly selected employee from the true population.
-I think to be more precise, <span class="math notranslate nohighlight">\(Y_i\)</span> should be the <em><strong>number of successful conversion calls</strong></em> made by a single randomly selected employee.</p>
+<p>We have</p>
+<div class="math notranslate nohighlight">
+\[
+Y_i \sim \binomial(50, 0.04) \quad i \in \{0, 1, \ldots, 50\}
+\]</div>
+<p>In this context, we can be unambiguous and say that each <span class="math notranslate nohighlight">\(Y_i\)</span> should be the <em><strong>number of successful conversion calls</strong></em> made by a single randomly selected employee.</p>
+<p>To be more precise, each experiment for <span class="math notranslate nohighlight">\(Y_i\)</span> is like a new randomly drawn 50 calls by a random person, so
+each time is a realisation of 50 calls from a randomly selected person. So if you have 100 people you can have 100 <span class="math notranslate nohighlight">\(Y_i\)</span>.
+Note the distinction, in <span class="math notranslate nohighlight">\(X_i\)</span>, this <span class="math notranslate nohighlight">\(X_i\)</span> is bind to a single person (may be wrong here), here each <span class="math notranslate nohighlight">\(Y_i\)</span>
+can be any member from the population.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># generate states from binomial distribution</span>
@@ -779,233 +917,181 @@ I think to be more precise, <span class="math notranslate nohighlight">\(Y_i\)</
 </div>
 </div>
 </div>
-<p>Here is the confusing part, why do we want to churn out 10 such random variables? We do know the true distribution, we know the expected value as well.</p>
-<div class="math notranslate nohighlight">
-\[
-\exp(Y) = np = 50 \times 0.04 = 2
-\]</div>
-<p>and therefore by this the <strong>total revenue</strong> can be</p>
-<div class="math notranslate nohighlight">
-\[
-2 \times 100 = 200
-\]</div>
-<p>per employee. And if you have 100 such employees, then it will be</p>
-<div class="math notranslate nohighlight">
-\[
-200 \times 100 = 20000
-\]</div>
-<p>The expense you spent paying each employee is</p>
-<div class="math notranslate nohighlight">
-\[
-100 \times 200 = 20000
-\]</div>
-<p>so in the long run you do not earn any profits.</p>
-<p>Here you can also define the total revenue as a random variable <span class="math notranslate nohighlight">\(Z = 100Y\)</span>.</p>
-<p>By theory, we know that increasing either <span class="math notranslate nohighlight">\(n\)</span> or <span class="math notranslate nohighlight">\(p\)</span> will increase the expectation
-<span class="math notranslate nohighlight">\(\exp \lsq Y \rsq\)</span> since <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(p\)</span> are both positive. Consequently, increasing both at the same
-time will also guarantee an increase in expectation.</p>
-<p>So the solutions to increase revenue/profits are:</p>
-<ul class="simple">
-<li><p>Increase <span class="math notranslate nohighlight">\(n\)</span>, the number of calls performed by 1 single employee;</p></li>
-<li><p>Increase <span class="math notranslate nohighlight">\(p\)</span>, the success rate of a call conversion by 1 single employee through techniques like not hard pressing the customers to buy something;</p></li>
-</ul>
-<p><strong>Here is his 1000 days simulation</strong></p>
-<p>To be more precise, he defined a new random variable <span class="math notranslate nohighlight">\(Z = 100Y\)</span> means the revenue earned for a random day (any given day).</p>
-<p>So 1000 times simulation.</p>
-<p>But I can also find the expectation lols…</p>
-<div class="math notranslate nohighlight">
-\[
-\exp \lsq Z \rsq = \exp \lsq 100Y \rsq = 100 \exp \lsq Y \rsq = 100 \times 2 = 200
-\]</div>
-<p>Note very carefully the <span class="math notranslate nohighlight">\(100\)</span> refers to the revenue earned per successful call conversion, not referring to <span class="math notranslate nohighlight">\(100\)</span> employees in the previous section (consider changing the numbers so no confusion…)</p>
+<p>If we plot 100 such <span class="math notranslate nohighlight">\(Y_i\)</span>, we form an empirical distribution and compared to the true PMF it has a bit of differences.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Z = Y + Y</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span> <span class="o">+</span> <span class="mf">1.5</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span>
+    <span class="n">Y</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">),</span>
+    <span class="n">bins</span><span class="p">,</span>
+    <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="s2">&quot;bo&quot;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/0309_binomial_distribution_real_world_examples_18_0.png" src="../_images/0309_binomial_distribution_real_world_examples_18_0.png" />
+</div>
+</div>
+<p>When we increase to 10000, the empirical starts to be closer to the true PMF.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span> <span class="o">+</span> <span class="mf">1.5</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span>
+    <span class="n">Y</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">10000</span><span class="p">),</span>
+    <span class="n">bins</span><span class="p">,</span>
+    <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="s2">&quot;bo&quot;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/0309_binomial_distribution_real_world_examples_20_0.png" src="../_images/0309_binomial_distribution_real_world_examples_20_0.png" />
+</div>
+</div>
+</section>
+<section id="alternative-way-to-calculate-expected-value-of-revenue-per-day">
+<h3>Alternative way to Calculate Expected Value of Revenue per Day<a class="headerlink" href="#alternative-way-to-calculate-expected-value-of-revenue-per-day" title="Permalink to this headline">#</a></h3>
+<p>We already know in the long run the company does not earn profits by the law of average (expectation).</p>
+<p>We can also calculate it by defining the total revenue as a random variable <span class="math notranslate nohighlight">\(Z = 90Y\)</span> where <span class="math notranslate nohighlight">\(90\)</span> refers
+to the revenue earned per successful call conversion by an employee.</p>
+<div class="math notranslate nohighlight">
+\[
+\exp \lsq Z \rsq = \exp \lsq 90Y \rsq = 90 \exp \lsq Y \rsq = 90 \times 2 = 180
+\]</div>
+<p>This means on <strong>average</strong>, the company earns revenue of 180 per day per employee. Thus if there’s 100 employees,
+then on <strong>average</strong>, the total revenue per day is <span class="math notranslate nohighlight">\(180 \times 100 = 18000\)</span>, which is the same as we got earlier.</p>
+<p>And if we want to further calculate how much the company loses in 1 year, that will be</p>
+<div class="math notranslate nohighlight">
+\[
+365 \times (18000 - 20000) = 730000
+\]</div>
+<p>assuming everything else constant (no employees left etc).</p>
+<p>We can also simulate 365 days using code below, we define <code class="docutils literal notranslate"><span class="pre">Z</span> <span class="pre">=</span> <span class="pre">90</span> <span class="pre">*</span> <span class="pre">Y.rvs(size</span> <span class="pre">=</span> <span class="pre">100)</span></code>
+to be the random variable <span class="math notranslate nohighlight">\(Z = 90Y\)</span> (as there is no good way to just use <code class="docutils literal notranslate"><span class="pre">Z=90*Y</span></code>).</p>
+<p>At each loop (day), we get a new draw random variable <span class="math notranslate nohighlight">\(Z\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">yearly_revenue</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="mi">365</span><span class="p">)</span>
+<span class="n">yearly_salary_paid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="mi">365</span><span class="p">)</span> <span class="o">*</span> <span class="mi">20000</span>
+
+<span class="k">for</span> <span class="n">each_day</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">365</span><span class="p">):</span>
+    <span class="n">Z</span> <span class="o">=</span> <span class="mi">90</span> <span class="o">*</span> <span class="n">Y</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span> <span class="c1"># 100 employees&#39; revenue [90, 180, 0, ...]</span>
+    <span class="n">daily_revenue</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span>
+    <span class="n">yearly_revenue</span><span class="p">[</span><span class="n">each_day</span><span class="p">]</span> <span class="o">=</span> <span class="n">daily_revenue</span>
+    
+<span class="n">yearly_profits</span> <span class="o">=</span> <span class="n">yearly_revenue</span> <span class="o">-</span>  <span class="n">yearly_salary_paid</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="mf">0.04</span>
-<span class="n">n</span> <span class="o">=</span> <span class="mi">50</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#bins = np.arange(0, yearly_revenue.max() + 1.5) - 0.5</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span>
+    <span class="n">yearly_profits</span><span class="p">,</span>
+    <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+    <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># plt.plot(y, f, &quot;bo&quot;, ms=10)</span>
+<span class="c1"># plt.vlines(y, 0, f, colors=&quot;b&quot;, lw=5, alpha=0.5)</span>
+<span class="c1">#plt.xticks(y)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/0309_binomial_distribution_real_world_examples_25_0.png" src="../_images/0309_binomial_distribution_real_world_examples_25_0.png" />
+</div>
+</div>
+<p>If we increase <span class="math notranslate nohighlight">\(n\)</span> or <span class="math notranslate nohighlight">\(p\)</span>, say just bump out both by a bit to <span class="math notranslate nohighlight">\(n=58\)</span> and <span class="math notranslate nohighlight">\(p=0.06\)</span>, then we have</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="mf">0.06</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">58</span>
 
 <span class="c1"># our random variable Y</span>
 <span class="n">Y</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">binom</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on rv_discrete_frozen in module scipy.stats._distn_infrastructure object:
 
-class rv_discrete_frozen(rv_frozen)
- |  rv_discrete_frozen(dist, *args, **kwds)
- |  
- |  Method resolution order:
- |      rv_discrete_frozen
- |      rv_frozen
- |      builtins.object
- |  
- |  Methods defined here:
- |  
- |  logpmf(self, k)
- |  
- |  pmf(self, k)
- |  
- |  ----------------------------------------------------------------------
- |  Methods inherited from rv_frozen:
- |  
- |  __init__(self, dist, *args, **kwds)
- |      Initialize self.  See help(type(self)) for accurate signature.
- |  
- |  cdf(self, x)
- |  
- |  entropy(self)
- |  
- |  expect(self, func=None, lb=None, ub=None, conditional=False, **kwds)
- |  
- |  interval(self, confidence=None, **kwds)
- |  
- |  isf(self, q)
- |  
- |  logcdf(self, x)
- |  
- |  logsf(self, x)
- |  
- |  mean(self)
- |  
- |  median(self)
- |  
- |  moment(self, order=None, **kwds)
- |  
- |  ppf(self, q)
- |  
- |  rvs(self, size=None, random_state=None)
- |  
- |  sf(self, x)
- |  
- |  stats(self, moments=&#39;mv&#39;)
- |  
- |  std(self)
- |  
- |  support(self)
- |  
- |  var(self)
- |  
- |  ----------------------------------------------------------------------
- |  Data descriptors inherited from rv_frozen:
- |  
- |  __dict__
- |      dictionary for instance variables (if defined)
- |  
- |  __weakref__
- |      list of weak references to the object (if defined)
- |  
- |  random_state
+<span class="n">yearly_revenue</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="mi">365</span><span class="p">)</span>
+<span class="n">yearly_salary_paid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="mi">365</span><span class="p">)</span> <span class="o">*</span> <span class="mi">20000</span>
+
+<span class="k">for</span> <span class="n">each_day</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">365</span><span class="p">):</span>
+    <span class="n">Z</span> <span class="o">=</span> <span class="mi">90</span> <span class="o">*</span> <span class="n">Y</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span> <span class="c1"># 100 employees&#39; revenue [90, 180, 0, ...]</span>
+    <span class="n">daily_revenue</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span>
+    <span class="n">yearly_revenue</span><span class="p">[</span><span class="n">each_day</span><span class="p">]</span> <span class="o">=</span> <span class="n">daily_revenue</span>
+    
+<span class="n">yearly_profits_improved</span> <span class="o">=</span> <span class="n">yearly_revenue</span> <span class="o">-</span>  <span class="n">yearly_salary_paid</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Y</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#bins = np.arange(0, yearly_revenue.max() + 1.5) - 0.5</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span>
+    <span class="n">yearly_profits</span><span class="p">,</span>
+    <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+    <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span>
+    <span class="n">yearly_profits_improved</span><span class="p">,</span>
+    <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+    <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># plt.plot(y, f, &quot;bo&quot;, ms=10)</span>
+<span class="c1"># plt.vlines(y, 0, f, colors=&quot;b&quot;, lw=5, alpha=0.5)</span>
+<span class="c1">#plt.xticks(y)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.317617745567845e-07
-</pre></div>
+<img alt="../_images/0309_binomial_distribution_real_world_examples_28_0.png" src="../_images/0309_binomial_distribution_real_world_examples_28_0.png" />
 </div>
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Y</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 5, 3, 1, 1, 1, 1, 2, 2, 1, 2, 1, 1, 1, 2, 3, 1, 2, 2, 0, 2, 1,
-       0, 4, 5, 3, 1, 0, 3, 2, 0, 2, 0, 4, 1, 2, 1, 2, 2, 1, 5, 3, 4, 4,
-       2, 4, 0, 1, 0, 1, 1, 1, 3, 1, 1, 2, 1, 3, 0, 6, 3, 1, 0, 3, 3, 3,
-       3, 0, 1, 0, 4, 2, 1, 0, 1, 1, 3, 2, 4, 2, 0, 3, 3, 2, 3, 2, 2, 2,
-       0, 0, 0, 2, 1, 2, 4, 1, 2, 3, 1, 0])
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Y</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="c1"># np = 50 x 0.04</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.0
-</pre></div>
-</div>
-</div>
-</div>
-<p>Theoretically, expectation of <span class="math notranslate nohighlight">\(Y\)</span> is <span class="math notranslate nohighlight">\(2\)</span> success. This means,</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">Y</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="n">use_line_collection</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;StemContainer object of 3 artists&gt;
-</pre></div>
-</div>
-<img alt="../_images/0309_binomial_distribution_real_world_examples_26_1.png" src="../_images/0309_binomial_distribution_real_world_examples_26_1.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span> <span class="mf">0.04</span> <span class="c1"># number of iid trials, probability of each trial</span>
-<span class="n">Y</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">binom</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;scipy.stats._distn_infrastructure.rv_discrete_frozen object at 0x7fa317993790&gt;
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># generate states from binomial distribution</span>
-<span class="n">Y</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 1, 4, 3, 2, 4, 3, 1, 4, 2])
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Y</span><span class="o">.</span><span class="n">stats</span><span class="p">(</span><span class="n">moments</span><span class="o">=</span><span class="s1">&#39;mv&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array(2.), array(1.92))
-</pre></div>
-</div>
-</div>
-</div>
+</section>
 </section>
 <section id="further-readings">
 <h2>Further Readings<a class="headerlink" href="#further-readings" title="Permalink to this headline">#</a></h2>
