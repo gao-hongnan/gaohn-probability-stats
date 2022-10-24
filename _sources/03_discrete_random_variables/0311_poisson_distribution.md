@@ -99,4 +99,3 @@ $$
 
 where $\lambda = np$.
 ```
-
