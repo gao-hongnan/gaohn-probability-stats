@@ -8,7 +8,7 @@
 Let $X$ be a **Poisson random variable**. Then the probability mass function (PMF) of $X$ is given by
 
 $$
-\P \lsq X = k \rsq = \frac{\lambda^k e^{-\lambda}}{k!} \qquad \text{for } k = 0, 1, 2, \ldots
+\P \lsq X = k \rsq = e^{-\lambda} \cdot \frac{\lambda^k}{k!} \qquad \text{for } k = 0, 1, 2, \ldots
 $$
 
 where $\lambda > 0$ is called the Poisson parameter.
@@ -20,7 +20,17 @@ X \sim \poisson(\lambda)
 $$
 
 to say that $X$ is drawn from a Poisson distribution with parameter $\lambda$.
+
+Some conventions:
+
+1. The parameter $\alpha$ determines the ***average rate of occurrences over time or space*** {cite}`foundations_of_data_science_with_python_2021`.
+2. $T$ is a length of time/space being considered.
+3. $\lambda = \alpha T$ is the ***average number of occurrences*** over the time/space being considered.
 ```
+
+## Assumptions
+
+https://mathstat.slu.edu/~speegle/_book/discreterandomvariables.html#poissonsection
 
 ## Properties
 
@@ -61,7 +71,7 @@ $$
 Then the approximation is given by
 
 $$
-\binom{n}{k} p^k (1-p)^{n-k} \approx \frac{\lambda^k e^{-\lambda}}{k!} \qquad \text{for } k = 0, 1, 2, \ldots
+\binom{n}{k} p^k (1-p)^{n-k} \approx e^{-\lambda} \cdot \frac{\lambda^k}{k!} !\qquad \text{for } k = 0, 1, 2, \ldots
 $$
 
 where $\lambda = np$.

@@ -115,7 +115,7 @@ $$
 
 ## Probability Measure $\P$
 
-In the chapter {doc}`../content/02_probability/0202_probability_space.md`, we have defined a probability measure $\P$ on a sample space $\S$ as
+In the chapter {doc}`0202_probability_space`, we have defined a probability measure $\P$ on a sample space $\S$ as
 
 $$
 \begin{align}

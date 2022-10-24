@@ -53,11 +53,13 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script>window.MathJax = {"tex": {"macros": {"st": "\\mid", "mod": "\\mid", "S": "\\Omega", "s": "\\omega", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "exp": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "lpar": "\\left(", "rpar": "\\right)", "pmf": "p_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})", "var": "\\operatorname{Var}", "std": "\\operatorname{Std}", "bern": "\\operatorname{Bernoulli}", "binomial": "\\operatorname{Binomial}", "geometric": "\\operatorname{Geometric}", "poisson": "\\operatorname{Poisson}", "iid": "\\textbf{i.i.d.}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Probability Density Function" href="../04_continuous_random_variables/0401_probability_density_function.html" />
+    <link rel="next" title="Implementation" href="0311_poisson_distribution_implementation.html" />
     <link rel="prev" title="Geometric Distribution" href="0310_geometric_distribution.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -279,10 +281,22 @@ const thebe_selector_output = ".output, .cell_output"
    Geometric Distribution
   </a>
  </li>
- <li class="toctree-l1 current active">
+ <li class="toctree-l1 current active has-children">
   <a class="current reference internal" href="#">
    Poisson Distribution
   </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="0311_poisson_distribution_implementation.html">
+     Implementation
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -479,6 +493,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#assumptions">
+   Assumptions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#properties">
    Properties
   </a>
@@ -513,6 +532,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#assumptions">
+   Assumptions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#properties">
    Properties
   </a>
@@ -542,7 +566,7 @@ title="Print to PDF"
 <p>Let <span class="math notranslate nohighlight">\(X\)</span> be a <strong>Poisson random variable</strong>. Then the probability mass function (PMF) of <span class="math notranslate nohighlight">\(X\)</span> is given by</p>
 <div class="math notranslate nohighlight">
 \[
-\P \lsq X = k \rsq = \frac{\lambda^k e^{-\lambda}}{k!} \qquad \text{for } k = 0, 1, 2, \ldots
+\P \lsq X = k \rsq = e^{-\lambda} \cdot \frac{\lambda^k}{k!} \qquad \text{for } k = 0, 1, 2, \ldots
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\lambda &gt; 0\)</span> is called the Poisson parameter.</p>
 <p>We write</p>
@@ -551,8 +575,18 @@ title="Print to PDF"
 X \sim \poisson(\lambda)
 \]</div>
 <p>to say that <span class="math notranslate nohighlight">\(X\)</span> is drawn from a Poisson distribution with parameter <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
+<p>Some conventions:</p>
+<ol class="simple">
+<li><p>The parameter <span class="math notranslate nohighlight">\(\alpha\)</span> determines the <em><strong>average rate of occurrences over time or space</strong></em> <span id="id1">[<a class="reference internal" href="0311_poisson_distribution_implementation.html#id8" title="John M. Shea. Foundations of data science with python. 2021. URL: https://jmshea.github.io/Foundations-of-Data-Science-with-Python/intro.html.">Shea, 2021</a>]</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(T\)</span> is a length of time/space being considered.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\lambda = \alpha T\)</span> is the <em><strong>average number of occurrences</strong></em> over the time/space being considered.</p></li>
+</ol>
 </section>
 </div></section>
+<section id="assumptions">
+<h2>Assumptions<a class="headerlink" href="#assumptions" title="Permalink to this headline">#</a></h2>
+<p><a class="reference external" href="https://mathstat.slu.edu/~speegle/_book/discreterandomvariables.html#poissonsection">https://mathstat.slu.edu/~speegle/_book/discreterandomvariables.html#poissonsection</a></p>
+</section>
 <section id="properties">
 <h2>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">#</a></h2>
 <div class="proof property admonition" id="prop:poi_exp">
@@ -589,11 +623,13 @@ X \sim \binomial(n, p) \qquad \text{with PMF} \qquad \P \lsq X = k \rsq = \binom
 <p>Then the approximation is given by</p>
 <div class="math notranslate nohighlight">
 \[
-\binom{n}{k} p^k (1-p)^{n-k} \approx \frac{\lambda^k e^{-\lambda}}{k!} \qquad \text{for } k = 0, 1, 2, \ldots
+\binom{n}{k} p^k (1-p)^{n-k} \approx e^{-\lambda} \cdot \frac{\lambda^k}{k!} !\qquad \text{for } k = 0, 1, 2, \ldots
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\lambda = np\)</span>.</p>
 </section>
 </div></section>
+<div class="toctree-wrapper compound">
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -630,10 +666,10 @@ X \sim \binomial(n, p) \qquad \text{with PMF} \qquad \P \lsq X = k \rsq = \binom
             <p class="prev-next-title">Geometric Distribution</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../04_continuous_random_variables/0401_probability_density_function.html" title="next page">
+    <a class='right-next' id="next-link" href="0311_poisson_distribution_implementation.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Probability Density Function</p>
+        <p class="prev-next-title">Implementation</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
