@@ -53,8 +53,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script>window.MathJax = {"tex": {"macros": {"st": "\\mid", "mod": "\\mid", "S": "\\Omega", "s": "\\omega", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "exp": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "lpar": "\\left(", "rpar": "\\right)", "pmf": "p_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})", "var": "\\operatorname{Var}", "std": "\\operatorname{Std}", "bern": "\\operatorname{Bernoulli}", "binomial": "\\operatorname{Binomial}", "geometric": "\\operatorname{Geometric}", "poisson": "\\operatorname{Poisson}", "iid": "\\textbf{i.i.d.}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -577,7 +575,7 @@ X \sim \poisson(\lambda)
 <p>to say that <span class="math notranslate nohighlight">\(X\)</span> is drawn from a Poisson distribution with parameter <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
 <p>Some conventions:</p>
 <ol class="simple">
-<li><p>The parameter <span class="math notranslate nohighlight">\(\alpha\)</span> determines the <em><strong>average rate of occurrences over time or space</strong></em> <span id="id1">[<a class="reference internal" href="0311_poisson_distribution_implementation.html#id8" title="John M. Shea. Foundations of data science with python. 2021. URL: https://jmshea.github.io/Foundations-of-Data-Science-with-Python/intro.html.">Shea, 2021</a>]</span>.</p></li>
+<li><p>The parameter <span class="math notranslate nohighlight">\(\alpha\)</span> determines the <em><strong>average rate of occurrences over time or space</strong></em> <span id="id1">[<a class="reference internal" href="0311_poisson_distribution_implementation.html#id7" title="John M. Shea. Foundations of data science with python. 2021. URL: https://jmshea.github.io/Foundations-of-Data-Science-with-Python/intro.html.">Shea, 2021</a>]</span>.</p></li>
 <li><p><span class="math notranslate nohighlight">\(T\)</span> is a length of time/space being considered.</p></li>
 <li><p><span class="math notranslate nohighlight">\(\lambda = \alpha T\)</span> is the <em><strong>average number of occurrences</strong></em> over the time/space being considered.</p></li>
 </ol>
@@ -585,8 +583,33 @@ X \sim \poisson(\lambda)
 </div></section>
 <section id="assumptions">
 <h2>Assumptions<a class="headerlink" href="#assumptions" title="Permalink to this headline">#</a></h2>
-<p><a class="reference external" href="https://mathstat.slu.edu/~speegle/_book/discreterandomvariables.html#poissonsection">https://mathstat.slu.edu/~speegle/_book/discreterandomvariables.html#poissonsection</a></p>
+<p>The Poisson distribution needs to satisfy the following assumptions before it can be used:</p>
+<ol class="simple">
+<li><p>An event can occur zero or more times in an interval of time/space. In other words, <span class="math notranslate nohighlight">\(k\)</span> can be any non-negative integer.</p></li>
+<li><p>Events are independent of each other. In other words, the occurrence of one event does not affect the occurrence of another event.</p></li>
+<li><p>The average rate of occurrence of an event is constant over time/space. In other words, <span class="math notranslate nohighlight">\(\lambda\)</span> is constant and does not change over time/space.</p></li>
+<li><p>Two events cannot occur at the same instance in time/space. In other words, at very small time/space interval <span class="math notranslate nohighlight">\(\Delta t\)</span>, either exactly one event occurs or no event occurs.</p>
+<ol class="simple">
+<li><p>An another way of saying is that this is a <em><strong>linearity assumption</strong></em>, the probability of an event occurring is proportional to the length of the time period. For example, it should be twice as likely for an event to occur in a 2 hour time period than it is for an event to occur in a 1 hour period.</p></li>
+</ol>
+</li>
+</ol>
+<p>See chapter 3.5.4 on section Origin of the Poisson random variable of <span id="id2">[<a class="reference internal" href="../02_probability/0202_probability_space.html#id4" title="Stanley H. Chan. Introduction to probability for Data Science. Michigan Publishing, 2021.">Chan, 2021</a>]</span>.</p>
+<div class="proof example admonition" id="ex:poi">
+<p class="admonition-title"><span class="caption-number">Example 7 </span> (Example)</p>
+<section class="example-content" id="proof-content">
+<p>For example, the Poisson distribution is appropriate for modeling the number of phone calls an
+office would receive during the noon hour, if they know that they average <span class="math notranslate nohighlight">\(4\)</span> calls
+per hour during that time period.</p>
+<ol class="simple">
+<li><p>In the time period of one hour, the number of phone calls can be any non-negative integer. <span class="math notranslate nohighlight">\(4\)</span> just happens to be the average number of phone calls for that observed time period.</p></li>
+<li><p>The occurrence of one phone call does not affect the occurrence of another phone call. Caller A’s phone call does not affect the occurrence of caller B’s phone call in this time period.</p></li>
+<li><p>The average rate of occurrence of a phone call is constant over the time period. The average rate of occurrence of a phone call is <span class="math notranslate nohighlight">\(4\)</span> per hour. This may vary slightly but it is an assumption that we are making.</p></li>
+<li><p>In an one hour time period, <span class="math notranslate nohighlight">\(\P \lsq X = 2 \rsq = \frac{4^2}{2!} \cdot e^{-4} = 0.0183\)</span>. Then if we were to ask
+in a two hour time period, then <span class="math notranslate nohighlight">\(\P \lsq X = 2 \rsq = 2 \cdot 0.0183 = 0.0366\)</span>. This is a linear assumption.</p></li>
+</ol>
 </section>
+</div></section>
 <section id="properties">
 <h2>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">#</a></h2>
 <div class="proof property admonition" id="prop:poi_exp">

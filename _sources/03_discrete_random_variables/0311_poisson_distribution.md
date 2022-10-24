@@ -30,7 +30,30 @@ Some conventions:
 
 ## Assumptions
 
-https://mathstat.slu.edu/~speegle/_book/discreterandomvariables.html#poissonsection
+The Poisson distribution needs to satisfy the following assumptions before it can be used:
+
+1. An event can occur zero or more times in an interval of time/space. In other words, $k$ can be any non-negative integer.
+2. Events are independent of each other. In other words, the occurrence of one event does not affect the occurrence of another event.
+3. The average rate of occurrence of an event is constant over time/space. In other words, $\lambda$ is constant and does not change over time/space.
+4. Two events cannot occur at the same instance in time/space. In other words, at very small time/space interval $\Delta t$, either exactly one event occurs or no event occurs.
+    1. An another way of saying is that this is a ***linearity assumption***, the probability of an event occurring is proportional to the length of the time period. For example, it should be twice as likely for an event to occur in a 2 hour time period than it is for an event to occur in a 1 hour period.
+
+See chapter 3.5.4 on section Origin of the Poisson random variable of {cite}`chan_2021`.
+
+```{prf:example} Example
+:label: ex:poi
+
+For example, the Poisson distribution is appropriate for modeling the number of phone calls an
+office would receive during the noon hour, if they know that they average $4$ calls
+per hour during that time period.
+
+1. In the time period of one hour, the number of phone calls can be any non-negative integer. $4$ just happens to be the average number of phone calls for that observed time period.
+2. The occurrence of one phone call does not affect the occurrence of another phone call. Caller A's phone call does not affect the occurrence of caller B's phone call in this time period.
+3. The average rate of occurrence of a phone call is constant over the time period. The average rate of occurrence of a phone call is $4$ per hour. This may vary slightly but it is an assumption that we are making.
+4. In an one hour time period, $\P \lsq X = 2 \rsq = \frac{4^2}{2!} \cdot e^{-4} = 0.0183$. Then if we were to ask 
+in a two hour time period, then $\P \lsq X = 2 \rsq = 2 \cdot 0.0183 = 0.0366$. This is a linear assumption.
+```
+
 
 ## Properties
 
@@ -76,3 +99,4 @@ $$
 
 where $\lambda = np$.
 ```
+

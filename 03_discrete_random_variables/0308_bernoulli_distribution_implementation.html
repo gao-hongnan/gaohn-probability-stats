@@ -53,8 +53,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script>window.MathJax = {"tex": {"macros": {"st": "\\mid", "mod": "\\mid", "S": "\\Omega", "s": "\\omega", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "exp": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "lpar": "\\left(", "rpar": "\\right)", "pmf": "p_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})", "var": "\\operatorname{Var}", "std": "\\operatorname{Std}", "bern": "\\operatorname{Bernoulli}", "binomial": "\\operatorname{Binomial}", "geometric": "\\operatorname{Geometric}", "poisson": "\\operatorname{Poisson}", "iid": "\\textbf{i.i.d.}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -645,7 +643,7 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="implementation">
 <h1>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">#</a></h1>
-<p>Some code snippets are modified from <span id="id1">[<a class="reference internal" href="0311_poisson_distribution_implementation.html#id8" title="John M. Shea. Foundations of data science with python. 2021. URL: https://jmshea.github.io/Foundations-of-Data-Science-with-Python/intro.html.">Shea, 2021</a>]</span> for my experimentation!</p>
+<p>Some code snippets are modified from <span id="id1">[<a class="reference internal" href="0311_poisson_distribution_implementation.html#id7" title="John M. Shea. Foundations of data science with python. 2021. URL: https://jmshea.github.io/Foundations-of-Data-Science-with-Python/intro.html.">Shea, 2021</a>]</span> for my experimentation!</p>
 <section id="utilities">
 <h2>Utilities<a class="headerlink" href="#utilities" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
@@ -848,7 +846,7 @@ An important reminder is that in real world, we often won’t know the true popu
 <p>We are often given datasets from our stakeholders, be it 100 data points or 900 data points, we will not know if this number is truly
 close to our true population.</p>
 <p>But we want to prove a point, the <em><strong>convergence</strong></em> theory that if you have sufficiently large samples, then your empirical histogram/distribution
-will tend to the true distribution/PMF. See <span id="id2">[<a class="reference internal" href="0311_poisson_distribution_implementation.html#id9" title="Histogram and. Empirical histogram and pmf. Oct 2022. URL: https://stats.stackexchange.com/questions/590792/empirical-histogram-and-pmf.">and, 2022</a>]</span>.</p>
+will tend to the true distribution/PMF. See <span id="id2">[<a class="reference internal" href="#id9" title="Histogram and. Empirical histogram and pmf. Oct 2022. URL: https://stats.stackexchange.com/questions/590792/empirical-histogram-and-pmf.">and, 2022</a>]</span>.</p>
 <p>Let us draw samples of 1000, 5000 and 9000 to get the relative frequencies, and see if it indeed converges to our true distribution:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -987,7 +985,7 @@ will tend to the true distribution/PMF. See <span id="id2">[<a class="reference 
 <p>It is quite clear that as number of samples go up, the empirical histograms become more accurate. This is not surprisingly as intuitively, as your samples become large, your distribution will be more accurate to the true population.</p>
 <p>Okay maybe not so clear as all 3 looks quite close :(</p>
 <p>We can use <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code> as its random variables also has the ability to draw random values from the specified distribution (i.e., to get values of the random variable).</p>
-<p>The method to do this is called <code class="docutils literal notranslate"><span class="pre">rvs</span></code>. If it is called with no argument, then it generates a single value of that random variable <span id="id3">[<a class="reference internal" href="0311_poisson_distribution_implementation.html#id8" title="John M. Shea. Foundations of data science with python. 2021. URL: https://jmshea.github.io/Foundations-of-Data-Science-with-Python/intro.html.">Shea, 2021</a>]</span>.</p>
+<p>The method to do this is called <code class="docutils literal notranslate"><span class="pre">rvs</span></code>. If it is called with no argument, then it generates a single value of that random variable <span id="id3">[<a class="reference internal" href="0311_poisson_distribution_implementation.html#id7" title="John M. Shea. Foundations of data science with python. 2021. URL: https://jmshea.github.io/Foundations-of-Data-Science-with-Python/intro.html.">Shea, 2021</a>]</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Y</span><span class="o">.</span><span class="n">rvs</span><span class="p">()</span> <span class="c1"># 1 sample </span>
