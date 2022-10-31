@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"st": "\\mid", "mod": "\\mid", "S": "\\Omega", "s": "\\omega", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "exp": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "lpar": "\\left(", "rpar": "\\right)", "pmf": "p_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})", "var": "\\operatorname{Var}", "std": "\\operatorname{Std}", "bern": "\\operatorname{Bernoulli}", "binomial": "\\operatorname{Binomial}", "geometric": "\\operatorname{Geometric}", "poisson": "\\operatorname{Poisson}", "iid": "\\textbf{i.i.d.}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"st": "\\mid", "mod": "\\mid", "S": "\\Omega", "s": "\\omega", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "exp": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "lpar": "\\left(", "rpar": "\\right)", "pmf": "p_X", "pdf": "f_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})", "var": "\\operatorname{Var}", "std": "\\operatorname{Std}", "bern": "\\operatorname{Bernoulli}", "binomial": "\\operatorname{Binomial}", "geometric": "\\operatorname{Geometric}", "poisson": "\\operatorname{Poisson}", "iid": "\\textbf{i.i.d.}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -306,8 +306,23 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../04_continuous_random_variables/0401_probability_density_function.html">
+  <a class="reference internal" href="../04_continuous_random_variables/from_discrete_to_continuous.html">
+   Intuition of Continuous Distribution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_continuous_random_variables/0401_continuous_random_variables.html">
+   Continuous Random Variables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_continuous_random_variables/0402_probability_density_function.html">
    Probability Density Function
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_continuous_random_variables/0403_expectation.html">
+   Expectation
   </a>
  </li>
 </ul>
@@ -634,7 +649,7 @@ title="Print to PDF"
 <h1>Expectation<a class="headerlink" href="#expectation" title="Permalink to this headline">#</a></h1>
 <section id="definition">
 <h2>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">#</a></h2>
-<div class="proof definition admonition" id="def_expectation">
+<div class="proof definition admonition" id="def_discrete_expectation">
 <p class="admonition-title"><span class="caption-number">Definition 19 </span> (Expectation)</p>
 <section class="definition-content" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(\P\)</span> be a probability function defined over the probability space <span class="math notranslate nohighlight">\(\pspace\)</span>.</p>
@@ -648,7 +663,7 @@ title="Print to PDF"
 </div></section>
 <section id="existence-of-expectation">
 <h2>Existence of Expectation<a class="headerlink" href="#existence-of-expectation" title="Permalink to this headline">#</a></h2>
-<div class="proof theorem admonition" id="thm_existence_of_expectation">
+<div class="proof theorem admonition" id="thm_existence_of_expectation_discrete">
 <p class="admonition-title"><span class="caption-number">Theorem 7 </span> (Existence of Expectation)</p>
 <section class="theorem-content" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(\P\)</span> be a probability function defined over the probability space <span class="math notranslate nohighlight">\(\pspace\)</span>.</p>
@@ -666,7 +681,7 @@ and only if it is <strong>absolutely summable</strong>.</p>
 <p>Let <span class="math notranslate nohighlight">\(\P\)</span> be a probability function defined over the probability space <span class="math notranslate nohighlight">\(\pspace\)</span>.</p>
 <p>Let <span class="math notranslate nohighlight">\(X\)</span> be a discrete random variable with <span class="math notranslate nohighlight">\(\S = \lset \xi_1, \xi_2, \ldots \rset\)</span>.</p>
 <p>Then the <em><strong>expectation</strong></em> of <span class="math notranslate nohighlight">\(X\)</span> has the following properties:</p>
-<div class="proof property admonition" id="prop_expectation_function">
+<div class="proof property admonition" id="prop_expectation_function_discrete">
 <p class="admonition-title"><span class="caption-number">Property 1 </span> (The Law of The Unconscious Statistician)</p>
 <section class="property-content" id="proof-content">
 <p>For any function <span class="math notranslate nohighlight">\(g\)</span>,</p>
@@ -677,7 +692,7 @@ and only if it is <strong>absolutely summable</strong>.</p>
 <p>This is not a trivial result, <a class="reference external" href="https://en.wikipedia.org/wiki/Law_of_the_unconscious_statistician">proof</a>
 can be found here.</p>
 </section>
-</div><div class="proof property admonition" id="prop_expectation_linearity">
+</div><div class="proof property admonition" id="prop_expectation_linearity_discrete">
 <p class="admonition-title"><span class="caption-number">Property 2 </span> (Linearity)</p>
 <section class="property-content" id="proof-content">
 <p>For any constants <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>,</p>
@@ -686,7 +701,7 @@ can be found here.</p>
 \exp \lsq aX + b \rsq = a \cdot \exp(X) + b
 \]</div>
 </section>
-</div><div class="proof property admonition" id="prop_expectation_scaling">
+</div><div class="proof property admonition" id="prop_expectation_scaling_discrete">
 <p class="admonition-title"><span class="caption-number">Property 3 </span> (Scaling)</p>
 <section class="property-content" id="proof-content">
 <p>For any constant <span class="math notranslate nohighlight">\(c\)</span>,</p>
@@ -695,7 +710,7 @@ can be found here.</p>
 \exp \lsq cX \rsq = c \cdot \exp(X)
 \]</div>
 </section>
-</div><div class="proof property admonition" id="prop_expectation_dc_shift">
+</div><div class="proof property admonition" id="prop_expectation_dc_shift_discrete">
 <p class="admonition-title"><span class="caption-number">Property 4 </span> (DC Shift)</p>
 <section class="property-content" id="proof-content">
 <p>For any constant <span class="math notranslate nohighlight">\(c\)</span>,</p>
@@ -704,7 +719,7 @@ can be found here.</p>
 \exp \lsq X + c \rsq = \exp(X)
 \]</div>
 </section>
-</div><div class="proof property admonition" id="prop_expectation_stronger_linearity">
+</div><div class="proof property admonition" id="prop_expectation_stronger_linearity_discrete">
 <p class="admonition-title"><span class="caption-number">Property 5 </span> (Stronger Linearity)</p>
 <section class="property-content" id="proof-content">
 <p>It follows that for any random variables <span class="math notranslate nohighlight">\(X_1\)</span>, <span class="math notranslate nohighlight">\(X_2\)</span>, …, <span class="math notranslate nohighlight">\(X_n\)</span>,</p>

@@ -308,8 +308,23 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="04_continuous_random_variables/0401_probability_density_function.html">
+  <a class="reference internal" href="04_continuous_random_variables/from_discrete_to_continuous.html">
+   Intuition of Continuous Distribution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_continuous_random_variables/0401_continuous_random_variables.html">
+   Continuous Random Variables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_continuous_random_variables/0402_probability_density_function.html">
    Probability Density Function
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_continuous_random_variables/0403_expectation.html">
+   Expectation
   </a>
  </li>
 </ul>
@@ -453,6 +468,7 @@ title="Open an issue"
    <a href="#cap-axiom:non-negativity"><strong>axiom:non-negativity</strong></a> | 
    <a href="#cap-axiom:normalization"><strong>axiom:normalization</strong></a> | 
    <a href="#cap-cor:law-total-probability"><strong>cor:law-total-probability</strong></a> | 
+   <a href="#cap-cor_continuous_expectation"><strong>cor_continuous_expectation</strong></a> | 
    <a href="#cap-corollary:inclusion-exclusion"><strong>corollary:inclusion-exclusion</strong></a> | 
    <a href="#cap-corollary:inequality-bounds"><strong>corollary:inequality-bounds</strong></a> | 
    <a href="#cap-corollary:probability-of-complements"><strong>corollary:probability-of-complements</strong></a> | 
@@ -470,16 +486,22 @@ title="Open an issue"
    <a href="#cap-def:poi"><strong>def:poi</strong></a> | 
    <a href="#cap-def_binomial"><strong>def_binomial</strong></a> | 
    <a href="#cap-def_cdf"><strong>def_cdf</strong></a> | 
+   <a href="#cap-def_continuous_expectation"><strong>def_continuous_expectation</strong></a> | 
+   <a href="#cap-def_continuous_random_variable"><strong>def_continuous_random_variable</strong></a> | 
    <a href="#cap-def_countable_set"><strong>def_countable_set</strong></a> | 
+   <a href="#cap-def_discrete_expectation"><strong>def_discrete_expectation</strong></a> | 
    <a href="#cap-def_discrete_random_variables"><strong>def_discrete_random_variables</strong></a> | 
-   <a href="#cap-def_expectation"><strong>def_expectation</strong></a> | 
    <a href="#cap-def_iid"><strong>def_iid</strong></a> | 
    <a href="#cap-def_moments"><strong>def_moments</strong></a> | 
    <a href="#cap-def_pmf"><strong>def_pmf</strong></a> | 
+   <a href="#cap-def_probability_density_function"><strong>def_probability_density_function</strong></a> | 
+   <a href="#cap-def_probability_density_function_1d"><strong>def_probability_density_function_1d</strong></a> | 
    <a href="#cap-def_standard_deviation"><strong>def_standard_deviation</strong></a> | 
    <a href="#cap-def_state_space"><strong>def_state_space</strong></a> | 
+   <a href="#cap-def_uncountable_set"><strong>def_uncountable_set</strong></a> | 
    <a href="#cap-def_variance"><strong>def_variance</strong></a> | 
    <a href="#cap-def_variance_alt"><strong>def_variance_alt</strong></a> | 
+   <a href="#cap-def_zero_measure"><strong>def_zero_measure</strong></a> | 
    <a href="#cap-definition-0"><strong>definition-0</strong></a> | 
    <a href="#cap-event"><strong>event</strong></a> | 
    <a href="#cap-event_space"><strong>event_space</strong></a> | 
@@ -507,20 +529,28 @@ title="Open an issue"
    <a href="#cap-prop:poi_exp"><strong>prop:poi_exp</strong></a> | 
    <a href="#cap-prop:poi_var"><strong>prop:poi_var</strong></a> | 
    <a href="#cap-prop_dc_shift"><strong>prop_dc_shift</strong></a> | 
-   <a href="#cap-prop_expectation_dc_shift"><strong>prop_expectation_dc_shift</strong></a> | 
-   <a href="#cap-prop_expectation_function"><strong>prop_expectation_function</strong></a> | 
-   <a href="#cap-prop_expectation_linearity"><strong>prop_expectation_linearity</strong></a> | 
-   <a href="#cap-prop_expectation_scaling"><strong>prop_expectation_scaling</strong></a> | 
-   <a href="#cap-prop_expectation_stronger_linearity"><strong>prop_expectation_stronger_linearity</strong></a> | 
+   <a href="#cap-prop_expectation_dc_shift_continuous"><strong>prop_expectation_dc_shift_continuous</strong></a> | 
+   <a href="#cap-prop_expectation_dc_shift_discrete"><strong>prop_expectation_dc_shift_discrete</strong></a> | 
+   <a href="#cap-prop_expectation_function_continuous"><strong>prop_expectation_function_continuous</strong></a> | 
+   <a href="#cap-prop_expectation_function_discrete"><strong>prop_expectation_function_discrete</strong></a> | 
+   <a href="#cap-prop_expectation_linearity_continuous"><strong>prop_expectation_linearity_continuous</strong></a> | 
+   <a href="#cap-prop_expectation_linearity_discrete"><strong>prop_expectation_linearity_discrete</strong></a> | 
+   <a href="#cap-prop_expectation_scaling_continuous"><strong>prop_expectation_scaling_continuous</strong></a> | 
+   <a href="#cap-prop_expectation_scaling_discrete"><strong>prop_expectation_scaling_discrete</strong></a> | 
+   <a href="#cap-prop_expectation_stronger_linearity_continuous"><strong>prop_expectation_stronger_linearity_continuous</strong></a> | 
+   <a href="#cap-prop_expectation_stronger_linearity_discrete"><strong>prop_expectation_stronger_linearity_discrete</strong></a> | 
    <a href="#cap-prop_linearity"><strong>prop_linearity</strong></a> | 
    <a href="#cap-prop_scaling"><strong>prop_scaling</strong></a> | 
    <a href="#cap-random_variables"><strong>random_variables</strong></a> | 
+   <a href="#cap-rem_open_equals_closed_interval"><strong>rem_open_equals_closed_interval</strong></a> | 
+   <a href="#cap-rem_probability_density_function"><strong>rem_probability_density_function</strong></a> | 
    <a href="#cap-sample_space"><strong>sample_space</strong></a> | 
    <a href="#cap-thm:disjoint-vs-independent"><strong>thm:disjoint-vs-independent</strong></a> | 
    <a href="#cap-thm:law-total-probability"><strong>thm:law-total-probability</strong></a> | 
    <a href="#cap-thm:poi_bin"><strong>thm:poi_bin</strong></a> | 
    <a href="#cap-thm_cdf"><strong>thm_cdf</strong></a> | 
-   <a href="#cap-thm_existence_of_expectation"><strong>thm_existence_of_expectation</strong></a> | 
+   <a href="#cap-thm_existence_of_expectation_continuous"><strong>thm_existence_of_expectation_continuous</strong></a> | 
+   <a href="#cap-thm_existence_of_expectation_discrete"><strong>thm_existence_of_expectation_discrete</strong></a> | 
    <a href="#cap-thm_pmf_cdf"><strong>thm_pmf_cdf</strong></a> | 
    <a href="#cap-thm_pmf_normalization"><strong>thm_pmf_normalization</strong></a>
    </div>
@@ -557,6 +587,14 @@ title="Open an issue"
        <td></td>
        <td>
        <a href="02_probability/0206_bayes_theorem.html#cor:law-total-probability"><code class="xref">cor:law-total-probability</code></a> <em>(02_probability/0206_bayes_theorem)</em></td><td>
+       <em>corollary</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-cor_continuous_expectation"><td></td><td>
+       <strong>cor_continuous_expectation</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="04_continuous_random_variables/0403_expectation.html#cor_continuous_expectation"><code class="xref">cor_continuous_expectation</code></a> <em>(04_continuous_random_variables/0403_expectation)</em></td><td>
        <em>corollary</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-corollary:inclusion-exclusion"><td></td><td>
@@ -695,6 +733,22 @@ title="Open an issue"
        <a href="03_discrete_random_variables/0304_cumulative_distribution_function.html#def_cdf"><code class="xref">def_cdf</code></a> <em>(03_discrete_random_variables/0304_cumulative_distribution_function)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-def_continuous_expectation"><td></td><td>
+       <strong>def_continuous_expectation</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="04_continuous_random_variables/0403_expectation.html#def_continuous_expectation"><code class="xref">def_continuous_expectation</code></a> <em>(04_continuous_random_variables/0403_expectation)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-def_continuous_random_variable"><td></td><td>
+       <strong>def_continuous_random_variable</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="04_continuous_random_variables/0401_continuous_random_variables.html#def_continuous_random_variable"><code class="xref">def_continuous_random_variable</code></a> <em>(04_continuous_random_variables/0401_continuous_random_variables)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-def_countable_set"><td></td><td>
        <strong>def_countable_set</strong></td><td></td></tr>
      <tr>
@@ -703,20 +757,20 @@ title="Open an issue"
        <a href="03_discrete_random_variables/0302_discrete_random_variables.html#def_countable_set"><code class="xref">def_countable_set</code></a> <em>(03_discrete_random_variables/0302_discrete_random_variables)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-def_discrete_expectation"><td></td><td>
+       <strong>def_discrete_expectation</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="03_discrete_random_variables/0305_expectation.html#def_discrete_expectation"><code class="xref">def_discrete_expectation</code></a> <em>(03_discrete_random_variables/0305_expectation)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-def_discrete_random_variables"><td></td><td>
        <strong>def_discrete_random_variables</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
        <a href="03_discrete_random_variables/0302_discrete_random_variables.html#def_discrete_random_variables"><code class="xref">def_discrete_random_variables</code></a> <em>(03_discrete_random_variables/0302_discrete_random_variables)</em></td><td>
-       <em>definition</em></td></tr>
-     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-def_expectation"><td></td><td>
-       <strong>def_expectation</strong></td><td></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="03_discrete_random_variables/0305_expectation.html#def_expectation"><code class="xref">def_expectation</code></a> <em>(03_discrete_random_variables/0305_expectation)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-def_iid"><td></td><td>
@@ -743,6 +797,22 @@ title="Open an issue"
        <a href="03_discrete_random_variables/0303_probability_mass_function.html#def_pmf"><code class="xref">def_pmf</code></a> <em>(03_discrete_random_variables/0303_probability_mass_function)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-def_probability_density_function"><td></td><td>
+       <strong>def_probability_density_function</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="04_continuous_random_variables/0402_probability_density_function.html#def_probability_density_function"><code class="xref">def_probability_density_function</code></a> <em>(04_continuous_random_variables/0402_probability_density_function)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-def_probability_density_function_1d"><td></td><td>
+       <strong>def_probability_density_function_1d</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="04_continuous_random_variables/0402_probability_density_function.html#def_probability_density_function_1d"><code class="xref">def_probability_density_function_1d</code></a> <em>(04_continuous_random_variables/0402_probability_density_function)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-def_standard_deviation"><td></td><td>
        <strong>def_standard_deviation</strong></td><td></td></tr>
      <tr>
@@ -759,6 +829,14 @@ title="Open an issue"
        <a href="03_discrete_random_variables/0303_probability_mass_function.html#def_state_space"><code class="xref">def_state_space</code></a> <em>(03_discrete_random_variables/0303_probability_mass_function)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-def_uncountable_set"><td></td><td>
+       <strong>def_uncountable_set</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="04_continuous_random_variables/0401_continuous_random_variables.html#def_uncountable_set"><code class="xref">def_uncountable_set</code></a> <em>(04_continuous_random_variables/0401_continuous_random_variables)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-def_variance"><td></td><td>
        <strong>def_variance</strong></td><td></td></tr>
      <tr>
@@ -773,6 +851,14 @@ title="Open an issue"
        <td></td>
        <td>
        <a href="03_discrete_random_variables/0306_variance_and_moments.html#def_variance_alt"><code class="xref">def_variance_alt</code></a> <em>(03_discrete_random_variables/0306_variance_and_moments)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-def_zero_measure"><td></td><td>
+       <strong>def_zero_measure</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="04_continuous_random_variables/0402_probability_density_function.html#def_zero_measure"><code class="xref">def_zero_measure</code></a> <em>(04_continuous_random_variables/0402_probability_density_function)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-definition-0"><td></td><td>
@@ -991,44 +1077,84 @@ title="Open an issue"
        <a href="03_discrete_random_variables/0306_variance_and_moments.html#prop_dc_shift"><code class="xref">prop_dc_shift</code></a> <em>(03_discrete_random_variables/0306_variance_and_moments)</em></td><td>
        <em>property</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-prop_expectation_dc_shift"><td></td><td>
-       <strong>prop_expectation_dc_shift</strong></td><td></td></tr>
+     <tr class="cap" id="cap-prop_expectation_dc_shift_continuous"><td></td><td>
+       <strong>prop_expectation_dc_shift_continuous</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="03_discrete_random_variables/0305_expectation.html#prop_expectation_dc_shift"><code class="xref">prop_expectation_dc_shift</code></a> <em>(03_discrete_random_variables/0305_expectation)</em></td><td>
+       <a href="04_continuous_random_variables/0403_expectation.html#prop_expectation_dc_shift_continuous"><code class="xref">prop_expectation_dc_shift_continuous</code></a> <em>(04_continuous_random_variables/0403_expectation)</em></td><td>
        <em>property</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-prop_expectation_function"><td></td><td>
-       <strong>prop_expectation_function</strong></td><td></td></tr>
+     <tr class="cap" id="cap-prop_expectation_dc_shift_discrete"><td></td><td>
+       <strong>prop_expectation_dc_shift_discrete</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="03_discrete_random_variables/0305_expectation.html#prop_expectation_function"><code class="xref">prop_expectation_function</code></a> <em>(03_discrete_random_variables/0305_expectation)</em></td><td>
+       <a href="03_discrete_random_variables/0305_expectation.html#prop_expectation_dc_shift_discrete"><code class="xref">prop_expectation_dc_shift_discrete</code></a> <em>(03_discrete_random_variables/0305_expectation)</em></td><td>
        <em>property</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-prop_expectation_linearity"><td></td><td>
-       <strong>prop_expectation_linearity</strong></td><td></td></tr>
+     <tr class="cap" id="cap-prop_expectation_function_continuous"><td></td><td>
+       <strong>prop_expectation_function_continuous</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="03_discrete_random_variables/0305_expectation.html#prop_expectation_linearity"><code class="xref">prop_expectation_linearity</code></a> <em>(03_discrete_random_variables/0305_expectation)</em></td><td>
+       <a href="04_continuous_random_variables/0403_expectation.html#prop_expectation_function_continuous"><code class="xref">prop_expectation_function_continuous</code></a> <em>(04_continuous_random_variables/0403_expectation)</em></td><td>
        <em>property</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-prop_expectation_scaling"><td></td><td>
-       <strong>prop_expectation_scaling</strong></td><td></td></tr>
+     <tr class="cap" id="cap-prop_expectation_function_discrete"><td></td><td>
+       <strong>prop_expectation_function_discrete</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="03_discrete_random_variables/0305_expectation.html#prop_expectation_scaling"><code class="xref">prop_expectation_scaling</code></a> <em>(03_discrete_random_variables/0305_expectation)</em></td><td>
+       <a href="03_discrete_random_variables/0305_expectation.html#prop_expectation_function_discrete"><code class="xref">prop_expectation_function_discrete</code></a> <em>(03_discrete_random_variables/0305_expectation)</em></td><td>
        <em>property</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-prop_expectation_stronger_linearity"><td></td><td>
-       <strong>prop_expectation_stronger_linearity</strong></td><td></td></tr>
+     <tr class="cap" id="cap-prop_expectation_linearity_continuous"><td></td><td>
+       <strong>prop_expectation_linearity_continuous</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="03_discrete_random_variables/0305_expectation.html#prop_expectation_stronger_linearity"><code class="xref">prop_expectation_stronger_linearity</code></a> <em>(03_discrete_random_variables/0305_expectation)</em></td><td>
+       <a href="04_continuous_random_variables/0403_expectation.html#prop_expectation_linearity_continuous"><code class="xref">prop_expectation_linearity_continuous</code></a> <em>(04_continuous_random_variables/0403_expectation)</em></td><td>
+       <em>property</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-prop_expectation_linearity_discrete"><td></td><td>
+       <strong>prop_expectation_linearity_discrete</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="03_discrete_random_variables/0305_expectation.html#prop_expectation_linearity_discrete"><code class="xref">prop_expectation_linearity_discrete</code></a> <em>(03_discrete_random_variables/0305_expectation)</em></td><td>
+       <em>property</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-prop_expectation_scaling_continuous"><td></td><td>
+       <strong>prop_expectation_scaling_continuous</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="04_continuous_random_variables/0403_expectation.html#prop_expectation_scaling_continuous"><code class="xref">prop_expectation_scaling_continuous</code></a> <em>(04_continuous_random_variables/0403_expectation)</em></td><td>
+       <em>property</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-prop_expectation_scaling_discrete"><td></td><td>
+       <strong>prop_expectation_scaling_discrete</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="03_discrete_random_variables/0305_expectation.html#prop_expectation_scaling_discrete"><code class="xref">prop_expectation_scaling_discrete</code></a> <em>(03_discrete_random_variables/0305_expectation)</em></td><td>
+       <em>property</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-prop_expectation_stronger_linearity_continuous"><td></td><td>
+       <strong>prop_expectation_stronger_linearity_continuous</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="04_continuous_random_variables/0403_expectation.html#prop_expectation_stronger_linearity_continuous"><code class="xref">prop_expectation_stronger_linearity_continuous</code></a> <em>(04_continuous_random_variables/0403_expectation)</em></td><td>
+       <em>property</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-prop_expectation_stronger_linearity_discrete"><td></td><td>
+       <strong>prop_expectation_stronger_linearity_discrete</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="03_discrete_random_variables/0305_expectation.html#prop_expectation_stronger_linearity_discrete"><code class="xref">prop_expectation_stronger_linearity_discrete</code></a> <em>(03_discrete_random_variables/0305_expectation)</em></td><td>
        <em>property</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-prop_linearity"><td></td><td>
@@ -1054,6 +1180,22 @@ title="Open an issue"
        <td>
        <a href="03_discrete_random_variables/0301_random_variables.html#random_variables"><code class="xref">random_variables</code></a> <em>(03_discrete_random_variables/0301_random_variables)</em></td><td>
        <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-rem_open_equals_closed_interval"><td></td><td>
+       <strong>rem_open_equals_closed_interval</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="04_continuous_random_variables/0402_probability_density_function.html#rem_open_equals_closed_interval"><code class="xref">rem_open_equals_closed_interval</code></a> <em>(04_continuous_random_variables/0402_probability_density_function)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-rem_probability_density_function"><td></td><td>
+       <strong>rem_probability_density_function</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="04_continuous_random_variables/0402_probability_density_function.html#rem_probability_density_function"><code class="xref">rem_probability_density_function</code></a> <em>(04_continuous_random_variables/0402_probability_density_function)</em></td><td>
+       <em>remark</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-sample_space"><td></td><td>
        <strong>sample_space</strong></td><td></td></tr>
@@ -1095,12 +1237,20 @@ title="Open an issue"
        <a href="03_discrete_random_variables/0304_cumulative_distribution_function.html#thm_cdf"><code class="xref">thm_cdf</code></a> <em>(03_discrete_random_variables/0304_cumulative_distribution_function)</em></td><td>
        <em>theorem</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-thm_existence_of_expectation"><td></td><td>
-       <strong>thm_existence_of_expectation</strong></td><td></td></tr>
+     <tr class="cap" id="cap-thm_existence_of_expectation_continuous"><td></td><td>
+       <strong>thm_existence_of_expectation_continuous</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="03_discrete_random_variables/0305_expectation.html#thm_existence_of_expectation"><code class="xref">thm_existence_of_expectation</code></a> <em>(03_discrete_random_variables/0305_expectation)</em></td><td>
+       <a href="04_continuous_random_variables/0403_expectation.html#thm_existence_of_expectation_continuous"><code class="xref">thm_existence_of_expectation_continuous</code></a> <em>(04_continuous_random_variables/0403_expectation)</em></td><td>
+       <em>theorem</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-thm_existence_of_expectation_discrete"><td></td><td>
+       <strong>thm_existence_of_expectation_discrete</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="03_discrete_random_variables/0305_expectation.html#thm_existence_of_expectation_discrete"><code class="xref">thm_existence_of_expectation_discrete</code></a> <em>(03_discrete_random_variables/0305_expectation)</em></td><td>
        <em>theorem</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-thm_pmf_cdf"><td></td><td>

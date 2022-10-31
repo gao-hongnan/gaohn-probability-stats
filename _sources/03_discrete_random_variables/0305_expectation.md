@@ -20,7 +20,7 @@ kernelspec:
 ## Definition
 
 ```{prf:definition} Expectation
-:label: def_expectation
+:label: def_discrete_expectation
 
 Let $\P$ be a probability function defined over the probability space $\pspace$.
 
@@ -36,7 +36,7 @@ $$
 ## Existence of Expectation
 
 ```{prf:theorem} Existence of Expectation
-:label: thm_existence_of_expectation
+:label: thm_existence_of_expectation_discrete
 
 Let $\P$ be a probability function defined over the probability space $\pspace$.
 
@@ -59,7 +59,7 @@ Let $X$ be a discrete random variable with $\S = \lset \xi_1, \xi_2, \ldots \rse
 Then the ***expectation*** of $X$ has the following properties:
 
 ```{prf:property} The Law of The Unconscious Statistician
-:label: prop_expectation_function
+:label: prop_expectation_function_discrete
 
 For any function $g$,
 
@@ -72,7 +72,7 @@ can be found here.
 ```
 
 ```{prf:property} Linearity
-:label: prop_expectation_linearity
+:label: prop_expectation_linearity_discrete
 
 For any constants $a$ and $b$, 
 
@@ -82,7 +82,7 @@ $$
 ```
 
 ```{prf:property} Scaling
-:label: prop_expectation_scaling
+:label: prop_expectation_scaling_discrete
 
 For any constant $c$,
 
@@ -92,7 +92,7 @@ $$
 ```
 
 ```{prf:property} DC Shift
-:label: prop_expectation_dc_shift
+:label: prop_expectation_dc_shift_discrete
 
 For any constant $c$,
 
@@ -102,7 +102,7 @@ $$
 ```
 
 ```{prf:property} Stronger Linearity
-:label: prop_expectation_stronger_linearity
+:label: prop_expectation_stronger_linearity_discrete
 
 It follows that for any random variables $X_1$, $X_2$, ..., $X_n$,
 

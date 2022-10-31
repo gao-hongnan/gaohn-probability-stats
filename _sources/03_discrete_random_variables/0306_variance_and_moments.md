@@ -33,7 +33,7 @@ $$
 \exp \lsq X^k \rsq = \sum_{x \in X(\S)} x^k \cdot \P \lsq X = x \rsq
 $$
 
-This definition follows from {prf:ref}`prop_expectation_function` in {doc}`0305_expectation`.
+This definition follows from {prf:ref}`prop_expectation_function_discrete` in {doc}`0305_expectation`.
 
 Essentially, this means that the $k$-th moment is the **expectation** of $X^k$.
 ```

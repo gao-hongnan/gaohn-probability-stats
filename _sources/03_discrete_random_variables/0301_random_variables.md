@@ -115,7 +115,7 @@ $$
 
 ## Probability Measure $\P$
 
-In the chapter {doc}`0202_probability_space`, we have defined a probability measure $\P$ on a sample space $\S$ as
+In the chapter [](../02_probability/0202_probability_space.md), we have defined a probability measure $\P$ on a sample space $\S$ as
 
 $$
 \begin{align}
@@ -174,3 +174,4 @@ total number of heads $x$ in an experiment is not fixed. It can be 0, 1 or 2 dep
    taking on a ***particular*** state $x$. This is equivalent to $\P \lsq \lset \xi \in \S \st X(\xi) = x \rset \rsq$.
 
 6. Random variables need not be **bijective**, see [here](https://math.stackexchange.com/questions/202540/is-a-random-variable-bijective).
+

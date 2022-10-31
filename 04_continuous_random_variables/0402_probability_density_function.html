@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Probability Mass Function &#8212; Probability &amp; Statistics</title>
+    <title>Probability Density Function &#8212; Probability &amp; Statistics</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -59,8 +59,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Cumulative Distribution Function" href="0304_cumulative_distribution_function.html" />
-    <link rel="prev" title="Discrete Random Variables" href="0302_discrete_random_variables.html" />
+    <link rel="next" title="Expectation" href="0403_expectation.html" />
+    <link rel="prev" title="Continuous Random Variables" href="0401_continuous_random_variables.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -184,39 +184,39 @@ const thebe_selector_output = ".output, .cell_output"
   Chapter 3. Discrete Random Variables
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="0301_random_variables.html">
+  <a class="reference internal" href="../03_discrete_random_variables/0301_random_variables.html">
    Random Variables
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="0302_discrete_random_variables.html">
+  <a class="reference internal" href="../03_discrete_random_variables/0302_discrete_random_variables.html">
    Discrete Random Variables
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_discrete_random_variables/0303_probability_mass_function.html">
    Probability Mass Function
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="0304_cumulative_distribution_function.html">
+  <a class="reference internal" href="../03_discrete_random_variables/0304_cumulative_distribution_function.html">
    Cumulative Distribution Function
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="0305_expectation.html">
+  <a class="reference internal" href="../03_discrete_random_variables/0305_expectation.html">
    Expectation
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="0306_variance_and_moments.html">
+  <a class="reference internal" href="../03_discrete_random_variables/0306_variance_and_moments.html">
    Moments and Variance
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="0307_discrete_uniform_distribution.html">
+  <a class="reference internal" href="../03_discrete_random_variables/0307_discrete_uniform_distribution.html">
    Discrete Uniform Distribution
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
@@ -226,14 +226,14 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="0307_discrete_uniform_distribution_implementation.html">
+    <a class="reference internal" href="../03_discrete_random_variables/0307_discrete_uniform_distribution_implementation.html">
      Implementation
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="0308_bernoulli_distribution.html">
+  <a class="reference internal" href="../03_discrete_random_variables/0308_bernoulli_distribution.html">
    Bernoulli Distribution
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
@@ -243,19 +243,19 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="0308_bernoulli_distribution_implementation.html">
+    <a class="reference internal" href="../03_discrete_random_variables/0308_bernoulli_distribution_implementation.html">
      Implementation
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="iid.html">
+  <a class="reference internal" href="../03_discrete_random_variables/iid.html">
    Independent and Identically Distributed (IID)
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="0309_binomial_distribution.html">
+  <a class="reference internal" href="../03_discrete_random_variables/0309_binomial_distribution.html">
    Binomial Distribution
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
@@ -265,24 +265,24 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="0309_binomial_distribution_implementation.html">
+    <a class="reference internal" href="../03_discrete_random_variables/0309_binomial_distribution_implementation.html">
      Implementation
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="0309_binomial_distribution_real_world_examples.html">
+    <a class="reference internal" href="../03_discrete_random_variables/0309_binomial_distribution_real_world_examples.html">
      Real World Examples
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="0310_geometric_distribution.html">
+  <a class="reference internal" href="../03_discrete_random_variables/0310_geometric_distribution.html">
    Geometric Distribution
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="0311_poisson_distribution.html">
+  <a class="reference internal" href="../03_discrete_random_variables/0311_poisson_distribution.html">
    Poisson Distribution
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
@@ -292,7 +292,7 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="0311_poisson_distribution_implementation.html">
+    <a class="reference internal" href="../03_discrete_random_variables/0311_poisson_distribution_implementation.html">
      Implementation
     </a>
    </li>
@@ -304,24 +304,24 @@ const thebe_selector_output = ".output, .cell_output"
   Chapter 4. Continuous Random Variables
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../04_continuous_random_variables/from_discrete_to_continuous.html">
+  <a class="reference internal" href="from_discrete_to_continuous.html">
    Intuition of Continuous Distribution
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../04_continuous_random_variables/0401_continuous_random_variables.html">
+  <a class="reference internal" href="0401_continuous_random_variables.html">
    Continuous Random Variables
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../04_continuous_random_variables/0402_probability_density_function.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Probability Density Function
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../04_continuous_random_variables/0403_expectation.html">
+  <a class="reference internal" href="0403_expectation.html">
    Expectation
   </a>
  </li>
@@ -415,7 +415,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/gao-hongnan/gaohn-probability-stats/issues/new?title=Issue%20on%20page%20%2F03_discrete_random_variables/0303_probability_mass_function.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/gao-hongnan/gaohn-probability-stats/issues/new?title=Issue%20on%20page%20%2F04_continuous_random_variables/0402_probability_density_function.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -443,7 +443,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/03_discrete_random_variables/0303_probability_mass_function.md"
+        <a href="../_sources/04_continuous_random_variables/0402_probability_density_function.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -508,13 +508,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#normalization">
-   Normalization
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sturges-rule-and-cross-validation">
-   Sturges’ Rule and Cross Validation
+  <a class="reference internal nav-link" href="#further-readings">
+   Further Readings
   </a>
  </li>
 </ul>
@@ -526,7 +521,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Probability Mass Function</h1>
+                <h1>Probability Density Function</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -542,13 +537,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#normalization">
-   Normalization
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sturges-rule-and-cross-validation">
-   Sturges’ Rule and Cross Validation
+  <a class="reference internal nav-link" href="#further-readings">
+   Further Readings
   </a>
  </li>
 </ul>
@@ -561,76 +551,94 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="probability-mass-function">
-<h1>Probability Mass Function<a class="headerlink" href="#probability-mass-function" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="probability-density-function">
+<h1>Probability Density Function<a class="headerlink" href="#probability-density-function" title="Permalink to this headline">#</a></h1>
 <section id="definition">
 <h2>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">#</a></h2>
-<div class="proof definition admonition" id="def_state_space">
-<p class="admonition-title"><span class="caption-number">Definition 16 </span> (State Space)</p>
+<p>As mentioned in <a class="reference internal" href="0401_continuous_random_variables.html#def_continuous_random_variable">Definition 34</a>, a continuous random variable <span class="math notranslate nohighlight">\(X\)</span> is defined by its probability density function (PDF) <span class="math notranslate nohighlight">\(f(x)\)</span> or its cumulative distribution function (CDF) <span class="math notranslate nohighlight">\(F(x)\)</span>.</p>
+<div class="proof definition admonition" id="def_probability_density_function">
+<p class="admonition-title"><span class="caption-number">Definition 35 </span> (Probability Density Function)</p>
 <section class="definition-content" id="proof-content">
-<p>The set of all possible states of <span class="math notranslate nohighlight">\(X\)</span> is called the <strong>state space</strong> of <span class="math notranslate nohighlight">\(X\)</span> and is denoted as <span class="math notranslate nohighlight">\(X(\S)\)</span>.</p>
-<p>In particular, the state space of a discrete random variable <span class="math notranslate nohighlight">\(X\)</span> is a countable set
-as per <a class="reference internal" href="0302_discrete_random_variables.html#def_discrete_random_variables">Definition 15</a>.</p>
-</section>
-</div><div class="proof example admonition" id="example_state_space_coin_toss">
-<p class="admonition-title"><span class="caption-number">Example 3 </span> (State Space of Coin Toss)</p>
-<section class="example-content" id="proof-content">
-<p>Let us revisit the example in <a class="reference internal" href="0301_random_variables.html#example_random_variable_coin_toss">Example 1</a> and examine the state space of <span class="math notranslate nohighlight">\(X\)</span>.</p>
-<p>The state space of <span class="math notranslate nohighlight">\(X\)</span> is the set of all possible values that <span class="math notranslate nohighlight">\(X\)</span> can take. As enumerated in the example,
-we see that the state space of <span class="math notranslate nohighlight">\(X\)</span> is <span class="math notranslate nohighlight">\(\{0, 1, 2\}\)</span> (i.e. <span class="math notranslate nohighlight">\(X\)</span> takes 3 states 0, 1 and 2).</p>
-</section>
-</div><div class="proof definition admonition" id="def_pmf">
-<p class="admonition-title"><span class="caption-number">Definition 17 </span> (Probability Mass Function)</p>
-<section class="definition-content" id="proof-content">
-<p>The <strong>probability mass function</strong> (PMF) of a random variable <span class="math notranslate nohighlight">\(X\)</span> is a function that maps each state
-<span class="math notranslate nohighlight">\(x\)</span> in the state space <span class="math notranslate nohighlight">\(X(\S)\)</span> to its probability <span class="math notranslate nohighlight">\(\pmf(x) = \P\lsq X = x \rsq\)</span>.</p>
-<p>We denoted the PMF as</p>
+<p>The <strong>probability density function</strong> (PDF) of a random variable <span class="math notranslate nohighlight">\(X\)</span> is a mapping
+<span class="math notranslate nohighlight">\(f_X(x)\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align}
-    \pmf: X(\S) &amp;\to [0, 1] \\ 
-    X(\S) \ni x &amp;\mapsto \pmf(x)
+    \pdf: X(\S) &amp;\to \R \\ 
+    X(\S) \ni x &amp;\mapsto \pdf(x)
 \end{align}
 \end{split}\]</div>
+<p>which satisfies the following properties <span id="id1">[<a class="reference internal" href="../03_discrete_random_variables/0311_poisson_distribution.html#id5" title="Stanley H. Chan. Introduction to probability for Data Science. Michigan Publishing, 2021.">Chan, 2021</a>]</span>:</p>
+<ul class="simple">
+<li><p><strong>Non-negativity</strong>: <span class="math notranslate nohighlight">\(\pdf(x) \geq 0\)</span> for all <span class="math notranslate nohighlight">\(x \in \S\)</span>.</p></li>
+<li><p><strong>Unity</strong>: <span class="math notranslate nohighlight">\(\int_{\S} \pdf(x) \ dx = 1\)</span>.</p></li>
+<li><p><strong>Measure of a set</strong>: <span class="math notranslate nohighlight">\(\P \lsq \lset x \in A \rset \rsq = \int_A \pdf(x) \ dx\)</span> for all <span class="math notranslate nohighlight">\(A \subseteq \S\)</span>.</p></li>
+</ul>
 </section>
-</div><div class="proof example admonition" id="example_pmf_coin_toss">
-<p class="admonition-title"><span class="caption-number">Example 4 </span> (PMF of Coin Toss)</p>
-<section class="example-content" id="proof-content">
-<p>Let us revisit <a class="reference internal" href="0301_random_variables.html#example_random_variable_coin_toss">Example 1</a> on coin toss and compute the PMF of <span class="math notranslate nohighlight">\(X\)</span>.</p>
-<p>Recall the sample space is given by <span class="math notranslate nohighlight">\(\S = \{(HH), (HT), (TH), (TT)\}\)</span> and the state space is given by
-<span class="math notranslate nohighlight">\(X(\S) = \{0, 1, 2\}\)</span> as enumerated in <a class="reference internal" href="#example_state_space_coin_toss">Example 3</a>.</p>
-<p>Thus, our domain of <span class="math notranslate nohighlight">\(\pmf\)</span> is <span class="math notranslate nohighlight">\(X(\S) = \{0, 1, 2\}\)</span> we have 3 mappings to compute:</p>
+</div><div class="proof remark admonition" id="rem_probability_density_function">
+<p class="admonition-title"><span class="caption-number">Remark 1 </span> (Probability Density Function)</p>
+<section class="remark-content" id="proof-content">
+<p>The probability density function <span class="math notranslate nohighlight">\(f(x)\)</span> of a continuous random variable is similar to
+the probability mass function <span class="math notranslate nohighlight">\(p(x)\)</span> of a discrete random variable, but with two key differences:</p>
+<ol class="simple">
+<li><p>Unlike the PMF <span class="math notranslate nohighlight">\(\pmf(x)\)</span>, the PDF <span class="math notranslate nohighlight">\(\pdf(x)\)</span> <em><strong>is not a probability</strong></em>.
+The PDF <span class="math notranslate nohighlight">\(\pdf(x)\)</span> is a <em><strong>density</strong></em>, which is a <strong>measure</strong> of the probability of a random variable <span class="math notranslate nohighlight">\(X\)</span> taking on a value <span class="math notranslate nohighlight">\(x\)</span>. The higher the density, the more likely it is that <span class="math notranslate nohighlight">\(X\)</span> takes on the value <span class="math notranslate nohighlight">\(x\)</span> (or a value close to <span class="math notranslate nohighlight">\(x\)</span>).</p></li>
+<li><p>This means that the PDF <span class="math notranslate nohighlight">\(\pdf(x)\)</span> is <em><strong>not necessarily bounded</strong></em> and can be <em><strong>greater than 1</strong></em>.</p></li>
+</ol>
+</section>
+</div><p>Notice that the definition of PDF above did not “explicitly” mention the probability of a random variable <span class="math notranslate nohighlight">\(X\)</span>,
+instead it just mentions that the measure of a set to be <span class="math notranslate nohighlight">\(\P \lsq \lset x \in A \rset \rsq = \int_A \pdf(x) \ dx\)</span>.</p>
+<p>The author further mentioned if we are dealing with 1-dimensional data (on the real line), then we can
+then give a more intuitive definition of the PDF.</p>
+<div class="proof definition admonition" id="def_probability_density_function_1d">
+<p class="admonition-title"><span class="caption-number">Definition 36 </span> (Probability Density Function (1-dimensional))</p>
+<section class="definition-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a continuous random variable on the real line <span class="math notranslate nohighlight">\(\R\)</span>. The <strong>probability density function</strong> (PDF) of <span class="math notranslate nohighlight">\(X\)</span> is a mapping <span class="math notranslate nohighlight">\(f_X(x)\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align}
-    \pmf(0) &amp;= \P\lsq X = 0 \rsq = \P\lsq \lset \xi \in \S \st X(\xi) = 0 \rset \rsq = \P\lsq \{(TT)\} \rsq = \dfrac{1}{4} \\
-    \pmf(1) &amp;= \P\lsq X = 1 \rsq = \P\lsq \lset \xi \in \S \st X(\xi) = 1 \rset \rsq = \P\lsq \{(HT), (TH)\} \rsq = \dfrac{2}{4} \\
-    \pmf(2) &amp;= \P\lsq X = 2 \rsq = \P\lsq \lset \xi \in \S \st X(\xi) = 2 \rset \rsq = \P\lsq \{(HH)\} \rsq = \dfrac{1}{4}
+    \pdf: X(\S) &amp;\to \R \\ 
+    X(\S) \ni x &amp;\mapsto \pdf(x)
 \end{align}
 \end{split}\]</div>
-<p>Here we have enumerated all the possible states of <span class="math notranslate nohighlight">\(X\)</span> and computed the probability of each state.
-Thus, the PMF of <span class="math notranslate nohighlight">\(X\)</span> is completely determined by the 3 mappings above.</p>
+<p>that when <em><strong>when integrated over an interval <span class="math notranslate nohighlight">\([a, b] \subseteq \R\)</span></strong></em>, yields
+the probability of observing a value of <span class="math notranslate nohighlight">\(X\)</span> in the interval <span class="math notranslate nohighlight">\([a, b]\)</span> (i.e <span class="math notranslate nohighlight">\(a \leq X \leq b\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[
+\P \lsq a \leq X \leq b \rsq = \int_a^b \pdf(x) \ dx
+\]</div>
+<p>Notice that we have replaced <span class="math notranslate nohighlight">\(\int_{A}\)</span> with <span class="math notranslate nohighlight">\(\int_a^b\)</span> where <span class="math notranslate nohighlight">\(A = [a, b]\)</span>.</p>
 </section>
-</div></section>
-<section id="normalization">
-<h2>Normalization<a class="headerlink" href="#normalization" title="Permalink to this headline">#</a></h2>
-<div class="proof theorem admonition" id="thm_pmf_normalization">
-<p class="admonition-title"><span class="caption-number">Theorem 4 </span> (Normalization Property of PMF)</p>
-<section class="theorem-content" id="proof-content">
-<p>A PMF should satisfy the following normalization property:</p>
-<div class="math notranslate nohighlight" id="equation-eq-pmf-normalization">
-<span class="eqno">(4)<a class="headerlink" href="#equation-eq-pmf-normalization" title="Permalink to this equation">#</a></span>\[
-\sum_{x \in X(\S)} \pmf(x) = 1
+</div><div class="proof definition admonition" id="def_zero_measure">
+<p class="admonition-title"><span class="caption-number">Definition 37 </span> (Zero Measure)</p>
+<section class="definition-content" id="proof-content">
+<p>The probability of a continuous random variable <span class="math notranslate nohighlight">\(X\)</span> taking on a value <span class="math notranslate nohighlight">\(x\)</span> is zero:</p>
+<div class="math notranslate nohighlight">
+\[
+\P \lsq X = x \rsq = 0
 \]</div>
 </section>
-</div><div class="proof admonition" id="proof">
-<p>Proof. <strong>TODO</strong></p>
-</div>
+</div><div class="proof remark admonition" id="rem_open_equals_closed_interval">
+<p class="admonition-title"><span class="caption-number">Remark 2 </span> (Open Equals Closed Interval)</p>
+<section class="remark-content" id="proof-content">
+<p>By <a class="reference internal" href="#def_zero_measure">Definition 37</a>, all isolated points have zero measure
+in the continuous space and therefore the probability of
+an open interval <span class="math notranslate nohighlight">\((a, b)\)</span> is equivalent to the probability of a closed interval <span class="math notranslate nohighlight">\([a, b]\)</span>.</p>
+<p>More concretely, let <span class="math notranslate nohighlight">\(\P \lsq [a, b] \rsq = \P \lsq a \leq X \leq b \rsq\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+    \P \lsq [a, b] \rsq = \P \lsq (a, b) \rsq = \P \lsq (a, b] \rsq = \P \lsq [a, b) \rsq
+\end{align}
+\]</div>
+<p>This may not hold when the PDF of <span class="math notranslate nohighlight">\(\pdf(x)\)</span> has a delta function at <span class="math notranslate nohighlight">\(a\)</span> or <span class="math notranslate nohighlight">\(b\)</span> <span id="id2">[<a class="reference internal" href="../03_discrete_random_variables/0311_poisson_distribution.html#id5" title="Stanley H. Chan. Introduction to probability for Data Science. Michigan Publishing, 2021.">Chan, 2021</a>]</span>.</p>
 </section>
-<section id="sturges-rule-and-cross-validation">
-<h2>Sturges’ Rule and Cross Validation<a class="headerlink" href="#sturges-rule-and-cross-validation" title="Permalink to this headline">#</a></h2>
-<p>See <a class="reference external" href="https://probability4datascience.com/index.html">Introduction to Probability for Data Science</a>
-section 3.2.5.</p>
+</div></section>
+<section id="further-readings">
+<h2>Further Readings<a class="headerlink" href="#further-readings" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Chapter 4.1 of <span id="id3">[<a class="reference internal" href="../03_discrete_random_variables/0311_poisson_distribution.html#id5" title="Stanley H. Chan. Introduction to probability for Data Science. Michigan Publishing, 2021.">Chan, 2021</a>]</span></p></li>
+</ul>
 </section>
 </section>
 
@@ -647,7 +655,7 @@ section 3.2.5.</p>
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./03_discrete_random_variables"
+            path: "./04_continuous_random_variables"
         },
         predefinedOutput: true
     }
@@ -661,17 +669,17 @@ section 3.2.5.</p>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="0302_discrete_random_variables.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="0401_continuous_random_variables.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Discrete Random Variables</p>
+            <p class="prev-next-title">Continuous Random Variables</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="0304_cumulative_distribution_function.html" title="next page">
+    <a class='right-next' id="next-link" href="0403_expectation.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Cumulative Distribution Function</p>
+        <p class="prev-next-title">Expectation</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
