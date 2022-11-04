@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Cumulative Distribution Function &#8212; Probability &amp; Statistics</title>
+    <title>&lt;no title&gt; &#8212; Probability &amp; Statistics</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -55,12 +55,9 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"st": "\\mid", "mod": "\\mid", "S": "\\Omega", "s": "\\omega", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "exp": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "lpar": "\\left(", "rpar": "\\right)", "pmf": "p_X", "pdf": "f_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})", "var": "\\operatorname{Var}", "std": "\\operatorname{Std}", "bern": "\\operatorname{Bernoulli}", "binomial": "\\operatorname{Binomial}", "geometric": "\\operatorname{Geometric}", "poisson": "\\operatorname{Poisson}", "iid": "\\textbf{i.i.d.}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="0406_mean_median_mode.html" />
-    <link rel="prev" title="Moments and Variance" href="0404_moments_and_variance.html" />
+    <link rel="prev" title="Cumulative Distribution Function" href="0405_cumulative_distribution_function.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -304,7 +301,7 @@ const thebe_selector_output = ".output, .cell_output"
   Chapter 4. Continuous Random Variables
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="from_discrete_to_continuous.html">
    Intuition of Continuous Distribution
@@ -330,8 +327,8 @@ const thebe_selector_output = ".output, .cell_output"
    Moments and Variance
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="0405_cumulative_distribution_function.html">
    Cumulative Distribution Function
   </a>
  </li>
@@ -425,7 +422,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/gao-hongnan/gaohn-probability-stats/issues/new?title=Issue%20on%20page%20%2F04_continuous_random_variables/0405_cumulative_distribution_function.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/gao-hongnan/gaohn-probability-stats/issues/new?title=Issue%20on%20page%20%2F04_continuous_random_variables/0406_mean_median_mode.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -453,7 +450,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/04_continuous_random_variables/0405_cumulative_distribution_function.md"
+        <a href="../_sources/04_continuous_random_variables/0406_mean_median_mode.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -511,32 +508,7 @@ title="Print to PDF"
         <i class="fas fa-list"></i> Contents
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#definition">
-   Definition
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#properties-of-cdf">
-   Properties of CDF
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pdf-is-derivative-of-cdf">
-   PDF is Derivative of CDF
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#further-readings">
-   Further Readings
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#citations">
-   Citations
-  </a>
- </li>
+        <ul class="simple visible nav section-nav flex-column">
 </ul>
 
     </nav>
@@ -546,7 +518,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Cumulative Distribution Function</h1>
+                <h1><no title></h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -555,32 +527,7 @@ title="Print to PDF"
                             <h2> Contents </h2>
                         </div>
                         <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#definition">
-   Definition
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#properties-of-cdf">
-   Properties of CDF
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pdf-is-derivative-of-cdf">
-   PDF is Derivative of CDF
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#further-readings">
-   Further Readings
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#citations">
-   Citations
-  </a>
- </li>
+                            <ul class="simple visible nav section-nav flex-column">
 </ul>
 
                         </nav>
@@ -591,126 +538,7 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="cumulative-distribution-function">
-<h1>Cumulative Distribution Function<a class="headerlink" href="#cumulative-distribution-function" title="Permalink to this headline">#</a></h1>
-<section id="definition">
-<h2>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">#</a></h2>
-<div class="proof definition admonition" id="def_continuous_cdf">
-<p class="admonition-title"><span class="caption-number">Definition 42 </span> (Cumulative Distribution Function)</p>
-<section class="definition-content" id="proof-content">
-<p>Let <span class="math notranslate nohighlight">\(\P\)</span> be a probability function defined over the probability space <span class="math notranslate nohighlight">\(\pspace\)</span>.</p>
-<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a continuous random variable with sample space <span class="math notranslate nohighlight">\(\S = \R\)</span> and let <span class="math notranslate nohighlight">\(\pdf\)</span> be its probability density function.</p>
-<p>Then the <strong>cumulative distribution function (CDF)</strong> of <span class="math notranslate nohighlight">\(X\)</span> is defined as:</p>
-<div class="math notranslate nohighlight">
-\[
-\cdf \lpar x \rpar = \P \lsq X \leq x \rsq = \int_{-\infty}^x \pdf \lpar t \rpar \, dt
-\]</div>
-</section>
-</div></section>
-<section id="properties-of-cdf">
-<h2>Properties of CDF<a class="headerlink" href="#properties-of-cdf" title="Permalink to this headline">#</a></h2>
-<div class="proof proposition admonition" id="prop_continuous_discrete_cdf">
-<p class="admonition-title"><span class="caption-number">Proposition 2 </span> (Properties of CDF)</p>
-<section class="proposition-content" id="proof-content">
-<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a random variable (either discrete or continuous), then the CDF <span class="math notranslate nohighlight">\(\cdf\)</span> of <span class="math notranslate nohighlight">\(X\)</span> satisfies the following properties:</p>
-<ol>
-<li><p>The CDF is <strong>non-decreasing</strong>.</p></li>
-<li><p>The CDF is a probability function.</p>
-<div class="math notranslate nohighlight">
-\[
-    0 \leq \cdf(x) \leq 1
-    \]</div>
-<p>In particular, we have the <strong>minimum</strong> of the CDF is 0 and the <strong>maximum</strong> is 1 for
-<span class="math notranslate nohighlight">\(x = -\infty\)</span> and <span class="math notranslate nohighlight">\(x = \infty\)</span> respectively.</p>
-</li>
-</ol>
-</section>
-</div><div class="proof proposition admonition" id="prop_continuous_cdf_interval">
-<p class="admonition-title"><span class="caption-number">Proposition 3 </span> (Probability of an Interval)</p>
-<section class="proposition-content" id="proof-content">
-<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a continuous random variable.</p>
-<p>If the CDF <span class="math notranslate nohighlight">\(\cdf\)</span> of <span class="math notranslate nohighlight">\(X\)</span> is continuous at any <span class="math notranslate nohighlight">\(a \leq x \leq b\)</span>, then
-the probability of an interval <span class="math notranslate nohighlight">\([a, b]\)</span> is given by:</p>
-<div class="math notranslate nohighlight">
-\[
-\P \lsq a \leq X \leq b \rsq = \cdf(b) - \cdf(a)
-\]</div>
-</section>
-</div><div class="proof definition admonition" id="def_continuous_cdf_continuity">
-<p class="admonition-title"><span class="caption-number">Definition 43 </span> (Left and Right Continuity)</p>
-<section class="definition-content" id="proof-content">
-<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a continuous random variable. Then its CDF <span class="math notranslate nohighlight">\(\cdf\)</span> is said to be <span id="id1">[<a class="reference internal" href="#id3" title="Stanley H. Chan. Introduction to probability for Data Science. Michigan Publishing, 2021.">Chan, 2021</a>]</span>:</p>
-<ul class="simple">
-<li><p><strong>left continuous</strong> if <span class="math notranslate nohighlight">\(\cdf\)</span> is continuous at <span class="math notranslate nohighlight">\(x=b\)</span> if <span class="math notranslate nohighlight">\(\cdf(b) = \cdf(b^{-}) = \lim_{h \to 0} \cdf(b-h)\)</span></p></li>
-<li><p><strong>right continuous</strong> if <span class="math notranslate nohighlight">\(\cdf\)</span> is continuous at <span class="math notranslate nohighlight">\(x=b\)</span> if <span class="math notranslate nohighlight">\(\cdf(b) = \cdf(b^{+}) = \lim_{h \to 0} \cdf(b+h)\)</span></p></li>
-<li><p><strong>continuous</strong> if <span class="math notranslate nohighlight">\(\cdf\)</span> is <strong>left continuous</strong> and <strong>right continuous</strong> at <span class="math notranslate nohighlight">\(x=b\)</span>. This means that</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[
-\lim_{h \to 0} \cdf(b-h) = \cdf(b) = \lim_{h \to 0} \cdf(b+h)
-\]</div>
-</section>
-</div><div class="proof theorem admonition" id="thm_cdf_right_continuous">
-<p class="admonition-title"><span class="caption-number">Theorem 10 </span> (CDF is Right Continuous)</p>
-<section class="theorem-content" id="proof-content">
-<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a random variable (either discrete or continuous). Then its CDF <span class="math notranslate nohighlight">\(\cdf\)</span> is always right continuous.</p>
-<div class="math notranslate nohighlight">
-\[
-\cdf(b) = \cdf(b^{+}) = \lim_{h \to 0} \cdf(b+h)
-\]</div>
-</section>
-</div><div class="proof theorem admonition" id="thm_cdf_point">
-<p class="admonition-title"><span class="caption-number">Theorem 11 </span> (Define Probability at a Point)</p>
-<section class="theorem-content" id="proof-content">
-<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a random variable (either discrete or continuous), then <span class="math notranslate nohighlight">\(\P \lsq X = b \rsq\)</span> is given by</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\P \lsq X = b \rsq = \begin{cases}
-    \cdf(b) - \cdf(b^{-}) &amp; \text{if } \cdf \text{ is discontinuous at } b \\
-    0 &amp; \text{otherwise}
-\end{cases}
-\end{split}\]</div>
-</section>
-</div></section>
-<section id="pdf-is-derivative-of-cdf">
-<h2>PDF is Derivative of CDF<a class="headerlink" href="#pdf-is-derivative-of-cdf" title="Permalink to this headline">#</a></h2>
-<p>We have seen how we can convert a PDF <span class="math notranslate nohighlight">\(\pdf\)</span> to a CDF <span class="math notranslate nohighlight">\(\cdf\)</span> by integrating the PDF.
-We now show how to convert a CDF <span class="math notranslate nohighlight">\(\cdf\)</span> to a PDF <span class="math notranslate nohighlight">\(\pdf\)</span> by taking the derivative of the CDF.</p>
-<div class="proof theorem admonition" id="thm_pdf_derivative_cdf">
-<p class="admonition-title"><span class="caption-number">Theorem 12 </span> (PDF is Derivative of CDF)</p>
-<section class="theorem-content" id="proof-content">
-<p>By the <strong>Fundamental Theorem of Calculus</strong> defined in <a class="reference internal" href="../01_mathematical_preliminaries/02_calculus.html#fundamental_theorem_of_calculus">Theorem 1</a>,
-given a cumulative distribution function (CDF) <span class="math notranslate nohighlight">\(\cdf\)</span> of a random variable <span class="math notranslate nohighlight">\(X\)</span>,
-we can find its probability density function (PDF) <span class="math notranslate nohighlight">\(\pdf\)</span> by taking the derivative of the CDF:</p>
-<div class="math notranslate nohighlight">
-\[
-\pdf \lpar x \rpar = \frac{d}{dx} \cdf \lpar x \rpar = \frac{d}{dx} \int_{-\infty}^x \pdf \lpar t \rpar \, dt
-\]</div>
-<p><strong>if</strong> <span class="math notranslate nohighlight">\(\cdf\)</span> is <strong>differentiable</strong> at <span class="math notranslate nohighlight">\(x\)</span>. If <span class="math notranslate nohighlight">\(\cdf\)</span> is not differentiable at <span class="math notranslate nohighlight">\(x=b\)</span>, then</p>
-<div class="math notranslate nohighlight">
-\[
-\pdf(b) = \P \lsq X = b \rsq = \P \lsq X = b \rsq \delta(x-b)
-\]</div>
-</section>
-</div></section>
-<section id="further-readings">
-<h2>Further Readings<a class="headerlink" href="#further-readings" title="Permalink to this headline">#</a></h2>
-<ul class="simple">
-<li><p>Chan, Stanley H. “Chapter 4.3. Cumulative Distribution Function.” In Introduction to Probability for Data Science, 185-196. Ann Arbor, Michigan: Michigan Publishing Services, 2021.</p></li>
-</ul>
-</section>
-<section id="citations">
-<h2>Citations<a class="headerlink" href="#citations" title="Permalink to this headline">#</a></h2>
-<div class="docutils container" id="id2">
-<dl class="citation">
-<dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Stanley H. Chan. <em>Introduction to probability for Data Science</em>. Michigan Publishing, 2021.</p>
-</dd>
-</dl>
-</div>
-</section>
-</section>
-
+  
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
@@ -738,19 +566,12 @@ we can find its probability density function (PDF) <span class="math notranslate
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="0404_moments_and_variance.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="0405_cumulative_distribution_function.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Moments and Variance</p>
+            <p class="prev-next-title">Cumulative Distribution Function</p>
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="0406_mean_median_mode.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">&lt;no title&gt;</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>
