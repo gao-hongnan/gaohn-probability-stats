@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Probability Density Function &#8212; Probability &amp; Statistics</title>
+    <title>Moments and Variance &#8212; Probability &amp; Statistics</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -59,8 +59,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Expectation" href="0403_expectation.html" />
-    <link rel="prev" title="Continuous Random Variables" href="0401_continuous_random_variables.html" />
+    <link rel="next" title="Cumulative Distribution Function" href="0405_cumulative_distribution_function.html" />
+    <link rel="prev" title="Expectation" href="0403_expectation.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -315,8 +315,8 @@ const thebe_selector_output = ".output, .cell_output"
    Continuous Random Variables
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="0402_probability_density_function.html">
    Probability Density Function
   </a>
  </li>
@@ -325,8 +325,8 @@ const thebe_selector_output = ".output, .cell_output"
    Expectation
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="0404_moments_and_variance.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Moments and Variance
   </a>
  </li>
@@ -425,7 +425,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/gao-hongnan/gaohn-probability-stats/issues/new?title=Issue%20on%20page%20%2F04_continuous_random_variables/0402_probability_density_function.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/gao-hongnan/gaohn-probability-stats/issues/new?title=Issue%20on%20page%20%2F04_continuous_random_variables/0404_moments_and_variance.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -453,7 +453,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/04_continuous_random_variables/0402_probability_density_function.md"
+        <a href="../_sources/04_continuous_random_variables/0404_moments_and_variance.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -513,8 +513,18 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#definition">
-   Definition
+  <a class="reference internal nav-link" href="#moments">
+   Moments
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#variance">
+   Variance
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#concept">
+   Concept
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -531,7 +541,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Probability Density Function</h1>
+                <h1>Moments and Variance</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -542,8 +552,18 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#definition">
-   Definition
+  <a class="reference internal nav-link" href="#moments">
+   Moments
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#variance">
+   Variance
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#concept">
+   Concept
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -561,93 +581,71 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="probability-density-function">
-<h1>Probability Density Function<a class="headerlink" href="#probability-density-function" title="Permalink to this headline">#</a></h1>
-<section id="definition">
-<h2>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">#</a></h2>
-<p>As mentioned in <a class="reference internal" href="0401_continuous_random_variables.html#def_continuous_random_variable">Definition 34</a>, a continuous random variable <span class="math notranslate nohighlight">\(X\)</span> is defined by its probability density function (PDF) <span class="math notranslate nohighlight">\(f(x)\)</span> or its cumulative distribution function (CDF) <span class="math notranslate nohighlight">\(F(x)\)</span>.</p>
-<div class="proof definition admonition" id="def_probability_density_function">
-<p class="admonition-title"><span class="caption-number">Definition 35 </span> (Probability Density Function)</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="moments-and-variance">
+<h1>Moments and Variance<a class="headerlink" href="#moments-and-variance" title="Permalink to this headline">#</a></h1>
+<p>The moment and variance of a continuous random variable <span class="math notranslate nohighlight">\(X\)</span> are similar to the moment and
+variance of a discrete random variable in <a class="reference internal" href="../03_discrete_random_variables/0306_moments_and_variance.html"><span class="doc std std-doc">Moments and Variance</span></a>,
+but they are defined using integrals instead of sums.</p>
+<div class="note admonition">
+<p class="admonition-title">Notation</p>
+<p>Let <span class="math notranslate nohighlight">\(\P\)</span> be a probability function defined over the probability space <span class="math notranslate nohighlight">\(\pspace\)</span>.</p>
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a <strong>continuous random variable</strong> with sample space <span class="math notranslate nohighlight">\(\S\)</span> and probability density function <span class="math notranslate nohighlight">\(\pdf\)</span>.</p>
+</div>
+<section id="moments">
+<h2>Moments<a class="headerlink" href="#moments" title="Permalink to this headline">#</a></h2>
+<div class="proof definition admonition" id="def_moments_continuous">
+<p class="admonition-title"><span class="caption-number">Definition 39 </span> (Moments)</p>
 <section class="definition-content" id="proof-content">
-<p>The <strong>probability density function</strong> (PDF) of a random variable <span class="math notranslate nohighlight">\(X\)</span> is a mapping
-<span class="math notranslate nohighlight">\(f_X(x)\)</span></p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align}
-    \pdf: X(\S) &amp;\to \R \\ 
-    X(\S) \ni x &amp;\mapsto \pdf(x)
-\end{align}
-\end{split}\]</div>
-<p>which satisfies the following properties <span id="id1">[<a class="reference internal" href="0405_cumulative_distribution_function.html#id3" title="Stanley H. Chan. Introduction to probability for Data Science. Michigan Publishing, 2021.">Chan, 2021</a>]</span>:</p>
-<ul class="simple">
-<li><p><strong>Non-negativity</strong>: <span class="math notranslate nohighlight">\(\pdf(x) \geq 0\)</span> for all <span class="math notranslate nohighlight">\(x \in \S\)</span>.</p></li>
-<li><p><strong>Unity</strong>: <span class="math notranslate nohighlight">\(\int_{\S} \pdf(x) \ dx = 1\)</span>.</p></li>
-<li><p><strong>Measure of a set</strong>: <span class="math notranslate nohighlight">\(\P \lsq \lset x \in A \rset \rsq = \int_A \pdf(x) \ dx\)</span> for all <span class="math notranslate nohighlight">\(A \subseteq \S\)</span>.</p></li>
-</ul>
-</section>
-</div><div class="proof remark admonition" id="rem_probability_density_function">
-<p class="admonition-title"><span class="caption-number">Remark 1 </span> (Probability Density Function)</p>
-<section class="remark-content" id="proof-content">
-<p>The probability density function <span class="math notranslate nohighlight">\(f(x)\)</span> of a continuous random variable is similar to
-the probability mass function <span class="math notranslate nohighlight">\(p(x)\)</span> of a discrete random variable, but with two key differences:</p>
-<ol class="simple">
-<li><p>Unlike the PMF <span class="math notranslate nohighlight">\(\pmf(x)\)</span>, the PDF <span class="math notranslate nohighlight">\(\pdf(x)\)</span> <em><strong>is not a probability</strong></em>.
-The PDF <span class="math notranslate nohighlight">\(\pdf(x)\)</span> is a <em><strong>density</strong></em>, which is a <strong>measure</strong> of the probability of a random variable <span class="math notranslate nohighlight">\(X\)</span> taking on a value <span class="math notranslate nohighlight">\(x\)</span>. The higher the density, the more likely it is that <span class="math notranslate nohighlight">\(X\)</span> takes on the value <span class="math notranslate nohighlight">\(x\)</span> (or a value close to <span class="math notranslate nohighlight">\(x\)</span>).</p></li>
-<li><p>This means that the PDF <span class="math notranslate nohighlight">\(\pdf(x)\)</span> is <em><strong>not necessarily bounded</strong></em> and can be <em><strong>greater than 1</strong></em>.</p></li>
-</ol>
-</section>
-</div><p>Notice that the definition of PDF above did not “explicitly” mention the probability of a random variable <span class="math notranslate nohighlight">\(X\)</span>,
-instead it just mentions that the measure of a set to be <span class="math notranslate nohighlight">\(\P \lsq \lset x \in A \rset \rsq = \int_A \pdf(x) \ dx\)</span>.</p>
-<p>The author further mentioned if we are dealing with 1-dimensional data (on the real line), then we can
-then give a more intuitive definition of the PDF.</p>
-<div class="proof definition admonition" id="def_probability_density_function_1d">
-<p class="admonition-title"><span class="caption-number">Definition 36 </span> (Probability Density Function (1-dimensional))</p>
-<section class="definition-content" id="proof-content">
-<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a continuous random variable on the real line <span class="math notranslate nohighlight">\(\R\)</span>. The <strong>probability density function</strong> (PDF) of <span class="math notranslate nohighlight">\(X\)</span> is a mapping <span class="math notranslate nohighlight">\(f_X(x)\)</span></p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align}
-    \pdf: X(\S) &amp;\to \R \\ 
-    X(\S) \ni x &amp;\mapsto \pdf(x)
-\end{align}
-\end{split}\]</div>
-<p>that when <em><strong>when integrated over an interval <span class="math notranslate nohighlight">\([a, b] \subseteq \R\)</span></strong></em>, yields
-the probability of observing a value of <span class="math notranslate nohighlight">\(X\)</span> in the interval <span class="math notranslate nohighlight">\([a, b]\)</span> (i.e <span class="math notranslate nohighlight">\(a \leq X \leq b\)</span>):</p>
+<p>The <strong><span class="math notranslate nohighlight">\(k\)</span>-th moment</strong> of <span class="math notranslate nohighlight">\(X\)</span> is defined as:</p>
 <div class="math notranslate nohighlight">
 \[
-\P \lsq a \leq X \leq b \rsq = \int_a^b \pdf(x) \ dx
+\exp \lsq X^k \rsq = \int_{-\infty}^{\infty} x^k \cdot \pdf \lsq x \rsq \, dx
 \]</div>
-<p>Notice that we have replaced <span class="math notranslate nohighlight">\(\int_{A}\)</span> with <span class="math notranslate nohighlight">\(\int_a^b\)</span> where <span class="math notranslate nohighlight">\(A = [a, b]\)</span>.</p>
-</section>
-</div><div class="proof definition admonition" id="def_zero_measure">
-<p class="admonition-title"><span class="caption-number">Definition 37 </span> (Zero Measure)</p>
-<section class="definition-content" id="proof-content">
-<p>The probability of a continuous random variable <span class="math notranslate nohighlight">\(X\)</span> taking on a value <span class="math notranslate nohighlight">\(x\)</span> is zero:</p>
-<div class="math notranslate nohighlight">
-\[
-\P \lsq X = x \rsq = 0
-\]</div>
-</section>
-</div><div class="proof remark admonition" id="rem_open_equals_closed_interval">
-<p class="admonition-title"><span class="caption-number">Remark 2 </span> (Open Equals Closed Interval)</p>
-<section class="remark-content" id="proof-content">
-<p>By <a class="reference internal" href="#def_zero_measure">Definition 37</a>, all isolated points have zero measure
-in the continuous space and therefore the probability of
-an open interval <span class="math notranslate nohighlight">\((a, b)\)</span> is equivalent to the probability of a closed interval <span class="math notranslate nohighlight">\([a, b]\)</span>.</p>
-<p>More concretely, let <span class="math notranslate nohighlight">\(\P \lsq [a, b] \rsq = \P \lsq a \leq X \leq b \rsq\)</span>, then</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{align}
-    \P \lsq [a, b] \rsq = \P \lsq (a, b) \rsq = \P \lsq (a, b] \rsq = \P \lsq [a, b) \rsq
-\end{align}
-\]</div>
-<p>This may not hold when the PDF of <span class="math notranslate nohighlight">\(\pdf(x)\)</span> has a delta function at <span class="math notranslate nohighlight">\(a\)</span> or <span class="math notranslate nohighlight">\(b\)</span> <span id="id2">[<a class="reference internal" href="0405_cumulative_distribution_function.html#id3" title="Stanley H. Chan. Introduction to probability for Data Science. Michigan Publishing, 2021.">Chan, 2021</a>]</span>.</p>
+<p>This definition follows from <a class="reference internal" href="0403_expectation.html#prop_expectation_function_continuous">Property 17</a> in <a class="reference internal" href="0403_expectation.html"><span class="doc">Expectation</span></a>.</p>
+<p>Essentially, this means that the <span class="math notranslate nohighlight">\(k\)</span>-th moment is the <strong>expectation</strong> of <span class="math notranslate nohighlight">\(X^k\)</span>.</p>
 </section>
 </div></section>
+<section id="variance">
+<h2>Variance<a class="headerlink" href="#variance" title="Permalink to this headline">#</a></h2>
+<div class="proof definition admonition" id="def_variance_continuous">
+<p class="admonition-title"><span class="caption-number">Definition 40 </span> (Variance)</p>
+<section class="definition-content" id="proof-content">
+<p>The <strong>variance</strong> of <span class="math notranslate nohighlight">\(X\)</span> is defined as:</p>
+<div class="math notranslate nohighlight" id="equation-eq-var-continuous-1">
+<span class="eqno">(13)<a class="headerlink" href="#equation-eq-var-continuous-1" title="Permalink to this equation">#</a></span>\[
+\var \lsq X \rsq = \exp \lsq \lpar X - \mu \rpar^2 \rsq = \int_{\S} \lpar x - \mu \rpar^2 \pdf \lpar x \rpar \, dx
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mu = \exp \lsq X \rsq\)</span> is the <strong>expectation</strong> of <span class="math notranslate nohighlight">\(X\)</span>.</p>
+</section>
+</div><p>We also have an equivalent definition of variance, which is more used in practice.</p>
+<div class="proof definition admonition" id="def_variance_continuous_alt">
+<p class="admonition-title"><span class="caption-number">Definition 41 </span> (Variance (Alternative))</p>
+<section class="definition-content" id="proof-content">
+<p>The <strong>variance</strong> of <span class="math notranslate nohighlight">\(X\)</span> is defined as:</p>
+<div class="math notranslate nohighlight" id="equation-eq-var-continuous-2">
+<span class="eqno">(14)<a class="headerlink" href="#equation-eq-var-continuous-2" title="Permalink to this equation">#</a></span>\[
+\var \lsq X \rsq = \exp \lsq X^2 \rsq - \exp \lsq X \rsq^2
+\]</div>
+</section>
+</div></section>
+<section id="concept">
+<h2>Concept<a class="headerlink" href="#concept" title="Permalink to this headline">#</a></h2>
+<div class="important admonition">
+<p class="admonition-title">Concept</p>
+<ul class="simple">
+<li><p><strong>Variance</strong> is a measure of how spread out a distribution is. More concretely,
+it is the expectation of the squared deviation from the expectation of the distribution.
+One can think of for every data point in the distribution, how far is each data point from the
+expectation (population mean). The variance is the average of these data points (squared to make it positive).</p></li>
+<li><p><strong>Variance</strong> is <strong>deterministic</strong> and is synonymous with <strong>Population Variance</strong>.</p></li>
+<li><p><strong>Sample Variance</strong> is the variance of a <strong>random sample</strong> from the true population, which is a random variable.</p></li>
+</ul>
+</div>
+</section>
 <section id="further-readings">
 <h2>Further Readings<a class="headerlink" href="#further-readings" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
-<li><p>Chapter 4.1 of <span id="id3">[<a class="reference internal" href="0405_cumulative_distribution_function.html#id3" title="Stanley H. Chan. Introduction to probability for Data Science. Michigan Publishing, 2021.">Chan, 2021</a>]</span></p></li>
+<li><p>Chan, Stanley H. “Chapter 4.2.3. Momenets and variance.” In Introduction to Probability for Data Science, 184-185. Ann Arbor, Michigan: Michigan Publishing Services, 2021.</p></li>
 </ul>
 </section>
 </section>
@@ -679,17 +677,17 @@ an open interval <span class="math notranslate nohighlight">\((a, b)\)</span> is
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="0401_continuous_random_variables.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="0403_expectation.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Continuous Random Variables</p>
+            <p class="prev-next-title">Expectation</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="0403_expectation.html" title="next page">
+    <a class='right-next' id="next-link" href="0405_cumulative_distribution_function.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Expectation</p>
+        <p class="prev-next-title">Cumulative Distribution Function</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

@@ -1,26 +1,13 @@
----
-jupytext:
-  cell_metadata_filter: -all
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.11.5
-mystnb:
-  number_source_lines: true
-kernelspec:
-  display_name: Python 3
-  language: python
-  name: python3
----
-
 # Moments and Variance
+
+```{admonition} Notation
+:class: note
 
 Let $\P$ be a probability function defined over the probability space $\pspace$.
 
 Let $X$ be a discrete random variable with $\S = \lset \xi_1, \xi_2, \ldots \rset$
 unless otherwise stated.
+```
 
 ## Moments
 
@@ -66,7 +53,6 @@ $$
 $$ (eq_var_2)
 ```
 
-
 ## Standard Deviation
 
 ```{prf:definition} Standard Deviation
@@ -75,7 +61,7 @@ $$ (eq_var_2)
 In the definition of {prf:ref}`def_variance`, we have $\var \lsq X \rsq$ to have
 a different unit than $X$. If $X$ is measured in meters, then $\var \lsq X \rsq$
 is measured in meters squared. To solve this issue, we define a new measure
-called the **standard deviation**, which is the square root of the variance {cite}`probability`.
+called the **standard deviation**, which is the square root of the variance {cite}`pishro-nik_2014`.
 
 $$
 \std \lsq X \rsq = \sqrt{\var \lsq X \rsq}
@@ -123,8 +109,22 @@ $$ (eq_linearity_1)
 where $k$ is the order of the moment.
 ```
 
+## Concept
+
+````{admonition} Concept
+:class: important
+
+- **Variance** is a measure of how spread out a distribution is. More concretely,
+it is the expectation of the squared deviation from the expectation of the distribution.
+One can think of for every data point in the distribution, how far is each data point from the
+expectation (population mean). The variance is the average of these data points (squared to make it positive).
+
+- **Variance** is **deterministic** and is synonymous with **Population Variance**.
+- **Sample Variance** is the variance of a **random sample** from the true population, which is a random variable.
+````
+
 ## Further Readings
 
-- [Variance](https://www.probabilitycourse.com/chapter3/3_2_4_variance.php) of {cite}`probability`.
-- Chapter 3.4.4 of Introduction to Probability for Data Science.
+- Pishro-Nik, Hossein. "Chapter 3.2.4. Variance." In Introduction to Probability, Statistics, and Random Processes, 202-206. Kappa Research, 2014. 
+- Chan, Stanley H. "Chapter 3.4.4. Momenets and variance." In Introduction to Probability for Data Science, 133-136. Ann Arbor, Michigan: Michigan Publishing Services, 2021. 
 

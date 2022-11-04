@@ -112,7 +112,6 @@ $$
 $$
 ```
 
-
 ## Maximum Variance 
 
 ### Minimum and Maximum Variance of Coin Toss
@@ -130,3 +129,8 @@ intuition is that the coin is "deterministic", and hence there is no variance at
 is biased at $p=0.9$, then there is a little variance, because the coin will consistently land on heads
 $90\%$ of the time. If the coin is biased at $p=0.5$, then there is a lot of variance, because the coin
 is fair and has a 50-50 chance of landing on heads or tails. Though fair, the variance is maximum here.
+
+
+## Further Readings
+
+- Chan, Stanley H. "Chapter 3.5.1. Bernoulli random variable." In Introduction to Probability for Data Science, 137-142. Ann Arbor, Michigan: Michigan Publishing Services, 2021. 

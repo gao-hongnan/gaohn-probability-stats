@@ -43,3 +43,7 @@ $$
 \var \lsq X \rsq = \exp \lsq X^2 \rsq - \exp \lsq X \rsq^2 = \frac{1-p}{p^2}
 $$
 ```
+
+## Further Readings
+
+- Chan, Stanley H. "Chapter 3.5.3. Geometric random variable." In Introduction to Probability for Data Science, 149-152. Ann Arbor, Michigan: Michigan Publishing Services, 2021. 

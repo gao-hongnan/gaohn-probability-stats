@@ -213,7 +213,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="03_discrete_random_variables/0306_variance_and_moments.html">
+  <a class="reference internal" href="03_discrete_random_variables/0306_moments_and_variance.html">
    Moments and Variance
   </a>
  </li>
@@ -325,6 +325,16 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="04_continuous_random_variables/0403_expectation.html">
    Expectation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_continuous_random_variables/0404_moments_and_variance.html">
+   Moments and Variance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_continuous_random_variables/0405_cumulative_distribution_function.html">
+   Cumulative Distribution Function
   </a>
  </li>
 </ul>
@@ -486,6 +496,8 @@ title="Open an issue"
    <a href="#cap-def:poi"><strong>def:poi</strong></a> | 
    <a href="#cap-def_binomial"><strong>def_binomial</strong></a> | 
    <a href="#cap-def_cdf"><strong>def_cdf</strong></a> | 
+   <a href="#cap-def_continuous_cdf"><strong>def_continuous_cdf</strong></a> | 
+   <a href="#cap-def_continuous_cdf_continuity"><strong>def_continuous_cdf_continuity</strong></a> | 
    <a href="#cap-def_continuous_expectation"><strong>def_continuous_expectation</strong></a> | 
    <a href="#cap-def_continuous_random_variable"><strong>def_continuous_random_variable</strong></a> | 
    <a href="#cap-def_countable_set"><strong>def_countable_set</strong></a> | 
@@ -493,6 +505,7 @@ title="Open an issue"
    <a href="#cap-def_discrete_random_variables"><strong>def_discrete_random_variables</strong></a> | 
    <a href="#cap-def_iid"><strong>def_iid</strong></a> | 
    <a href="#cap-def_moments"><strong>def_moments</strong></a> | 
+   <a href="#cap-def_moments_continuous"><strong>def_moments_continuous</strong></a> | 
    <a href="#cap-def_pmf"><strong>def_pmf</strong></a> | 
    <a href="#cap-def_probability_density_function"><strong>def_probability_density_function</strong></a> | 
    <a href="#cap-def_probability_density_function_1d"><strong>def_probability_density_function_1d</strong></a> | 
@@ -501,6 +514,8 @@ title="Open an issue"
    <a href="#cap-def_uncountable_set"><strong>def_uncountable_set</strong></a> | 
    <a href="#cap-def_variance"><strong>def_variance</strong></a> | 
    <a href="#cap-def_variance_alt"><strong>def_variance_alt</strong></a> | 
+   <a href="#cap-def_variance_continuous"><strong>def_variance_continuous</strong></a> | 
+   <a href="#cap-def_variance_continuous_alt"><strong>def_variance_continuous_alt</strong></a> | 
    <a href="#cap-def_zero_measure"><strong>def_zero_measure</strong></a> | 
    <a href="#cap-definition-0"><strong>definition-0</strong></a> | 
    <a href="#cap-event"><strong>event</strong></a> | 
@@ -528,6 +543,8 @@ title="Open an issue"
    <a href="#cap-prop:geo_var"><strong>prop:geo_var</strong></a> | 
    <a href="#cap-prop:poi_exp"><strong>prop:poi_exp</strong></a> | 
    <a href="#cap-prop:poi_var"><strong>prop:poi_var</strong></a> | 
+   <a href="#cap-prop_continuous_cdf_interval"><strong>prop_continuous_cdf_interval</strong></a> | 
+   <a href="#cap-prop_continuous_discrete_cdf"><strong>prop_continuous_discrete_cdf</strong></a> | 
    <a href="#cap-prop_dc_shift"><strong>prop_dc_shift</strong></a> | 
    <a href="#cap-prop_expectation_dc_shift_continuous"><strong>prop_expectation_dc_shift_continuous</strong></a> | 
    <a href="#cap-prop_expectation_dc_shift_discrete"><strong>prop_expectation_dc_shift_discrete</strong></a> | 
@@ -549,8 +566,11 @@ title="Open an issue"
    <a href="#cap-thm:law-total-probability"><strong>thm:law-total-probability</strong></a> | 
    <a href="#cap-thm:poi_bin"><strong>thm:poi_bin</strong></a> | 
    <a href="#cap-thm_cdf"><strong>thm_cdf</strong></a> | 
+   <a href="#cap-thm_cdf_point"><strong>thm_cdf_point</strong></a> | 
+   <a href="#cap-thm_cdf_right_continuous"><strong>thm_cdf_right_continuous</strong></a> | 
    <a href="#cap-thm_existence_of_expectation_continuous"><strong>thm_existence_of_expectation_continuous</strong></a> | 
    <a href="#cap-thm_existence_of_expectation_discrete"><strong>thm_existence_of_expectation_discrete</strong></a> | 
+   <a href="#cap-thm_pdf_derivative_cdf"><strong>thm_pdf_derivative_cdf</strong></a> | 
    <a href="#cap-thm_pmf_cdf"><strong>thm_pmf_cdf</strong></a> | 
    <a href="#cap-thm_pmf_normalization"><strong>thm_pmf_normalization</strong></a>
    </div>
@@ -733,6 +753,22 @@ title="Open an issue"
        <a href="03_discrete_random_variables/0304_cumulative_distribution_function.html#def_cdf"><code class="xref">def_cdf</code></a> <em>(03_discrete_random_variables/0304_cumulative_distribution_function)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-def_continuous_cdf"><td></td><td>
+       <strong>def_continuous_cdf</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="04_continuous_random_variables/0405_cumulative_distribution_function.html#def_continuous_cdf"><code class="xref">def_continuous_cdf</code></a> <em>(04_continuous_random_variables/0405_cumulative_distribution_function)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-def_continuous_cdf_continuity"><td></td><td>
+       <strong>def_continuous_cdf_continuity</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="04_continuous_random_variables/0405_cumulative_distribution_function.html#def_continuous_cdf_continuity"><code class="xref">def_continuous_cdf_continuity</code></a> <em>(04_continuous_random_variables/0405_cumulative_distribution_function)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-def_continuous_expectation"><td></td><td>
        <strong>def_continuous_expectation</strong></td><td></td></tr>
      <tr>
@@ -786,7 +822,15 @@ title="Open an issue"
      <tr>
        <td></td>
        <td>
-       <a href="03_discrete_random_variables/0306_variance_and_moments.html#def_moments"><code class="xref">def_moments</code></a> <em>(03_discrete_random_variables/0306_variance_and_moments)</em></td><td>
+       <a href="03_discrete_random_variables/0306_moments_and_variance.html#def_moments"><code class="xref">def_moments</code></a> <em>(03_discrete_random_variables/0306_moments_and_variance)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-def_moments_continuous"><td></td><td>
+       <strong>def_moments_continuous</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="04_continuous_random_variables/0404_moments_and_variance.html#def_moments_continuous"><code class="xref">def_moments_continuous</code></a> <em>(04_continuous_random_variables/0404_moments_and_variance)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-def_pmf"><td></td><td>
@@ -818,7 +862,7 @@ title="Open an issue"
      <tr>
        <td></td>
        <td>
-       <a href="03_discrete_random_variables/0306_variance_and_moments.html#def_standard_deviation"><code class="xref">def_standard_deviation</code></a> <em>(03_discrete_random_variables/0306_variance_and_moments)</em></td><td>
+       <a href="03_discrete_random_variables/0306_moments_and_variance.html#def_standard_deviation"><code class="xref">def_standard_deviation</code></a> <em>(03_discrete_random_variables/0306_moments_and_variance)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-def_state_space"><td></td><td>
@@ -842,7 +886,7 @@ title="Open an issue"
      <tr>
        <td></td>
        <td>
-       <a href="03_discrete_random_variables/0306_variance_and_moments.html#def_variance"><code class="xref">def_variance</code></a> <em>(03_discrete_random_variables/0306_variance_and_moments)</em></td><td>
+       <a href="03_discrete_random_variables/0306_moments_and_variance.html#def_variance"><code class="xref">def_variance</code></a> <em>(03_discrete_random_variables/0306_moments_and_variance)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-def_variance_alt"><td></td><td>
@@ -850,7 +894,23 @@ title="Open an issue"
      <tr>
        <td></td>
        <td>
-       <a href="03_discrete_random_variables/0306_variance_and_moments.html#def_variance_alt"><code class="xref">def_variance_alt</code></a> <em>(03_discrete_random_variables/0306_variance_and_moments)</em></td><td>
+       <a href="03_discrete_random_variables/0306_moments_and_variance.html#def_variance_alt"><code class="xref">def_variance_alt</code></a> <em>(03_discrete_random_variables/0306_moments_and_variance)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-def_variance_continuous"><td></td><td>
+       <strong>def_variance_continuous</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="04_continuous_random_variables/0404_moments_and_variance.html#def_variance_continuous"><code class="xref">def_variance_continuous</code></a> <em>(04_continuous_random_variables/0404_moments_and_variance)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-def_variance_continuous_alt"><td></td><td>
+       <strong>def_variance_continuous_alt</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="04_continuous_random_variables/0404_moments_and_variance.html#def_variance_continuous_alt"><code class="xref">def_variance_continuous_alt</code></a> <em>(04_continuous_random_variables/0404_moments_and_variance)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-def_zero_measure"><td></td><td>
@@ -1069,12 +1129,28 @@ title="Open an issue"
        <a href="03_discrete_random_variables/0311_poisson_distribution.html#prop:poi_var"><code class="xref">prop:poi_var</code></a> <em>(03_discrete_random_variables/0311_poisson_distribution)</em></td><td>
        <em>property</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-prop_continuous_cdf_interval"><td></td><td>
+       <strong>prop_continuous_cdf_interval</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="04_continuous_random_variables/0405_cumulative_distribution_function.html#prop_continuous_cdf_interval"><code class="xref">prop_continuous_cdf_interval</code></a> <em>(04_continuous_random_variables/0405_cumulative_distribution_function)</em></td><td>
+       <em>proposition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-prop_continuous_discrete_cdf"><td></td><td>
+       <strong>prop_continuous_discrete_cdf</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="04_continuous_random_variables/0405_cumulative_distribution_function.html#prop_continuous_discrete_cdf"><code class="xref">prop_continuous_discrete_cdf</code></a> <em>(04_continuous_random_variables/0405_cumulative_distribution_function)</em></td><td>
+       <em>proposition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-prop_dc_shift"><td></td><td>
        <strong>prop_dc_shift</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="03_discrete_random_variables/0306_variance_and_moments.html#prop_dc_shift"><code class="xref">prop_dc_shift</code></a> <em>(03_discrete_random_variables/0306_variance_and_moments)</em></td><td>
+       <a href="03_discrete_random_variables/0306_moments_and_variance.html#prop_dc_shift"><code class="xref">prop_dc_shift</code></a> <em>(03_discrete_random_variables/0306_moments_and_variance)</em></td><td>
        <em>property</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-prop_expectation_dc_shift_continuous"><td></td><td>
@@ -1162,7 +1238,7 @@ title="Open an issue"
      <tr>
        <td></td>
        <td>
-       <a href="03_discrete_random_variables/0306_variance_and_moments.html#prop_linearity"><code class="xref">prop_linearity</code></a> <em>(03_discrete_random_variables/0306_variance_and_moments)</em></td><td>
+       <a href="03_discrete_random_variables/0306_moments_and_variance.html#prop_linearity"><code class="xref">prop_linearity</code></a> <em>(03_discrete_random_variables/0306_moments_and_variance)</em></td><td>
        <em>property</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-prop_scaling"><td></td><td>
@@ -1170,7 +1246,7 @@ title="Open an issue"
      <tr>
        <td></td>
        <td>
-       <a href="03_discrete_random_variables/0306_variance_and_moments.html#prop_scaling"><code class="xref">prop_scaling</code></a> <em>(03_discrete_random_variables/0306_variance_and_moments)</em></td><td>
+       <a href="03_discrete_random_variables/0306_moments_and_variance.html#prop_scaling"><code class="xref">prop_scaling</code></a> <em>(03_discrete_random_variables/0306_moments_and_variance)</em></td><td>
        <em>property</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-random_variables"><td></td><td>
@@ -1237,6 +1313,22 @@ title="Open an issue"
        <a href="03_discrete_random_variables/0304_cumulative_distribution_function.html#thm_cdf"><code class="xref">thm_cdf</code></a> <em>(03_discrete_random_variables/0304_cumulative_distribution_function)</em></td><td>
        <em>theorem</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-thm_cdf_point"><td></td><td>
+       <strong>thm_cdf_point</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="04_continuous_random_variables/0405_cumulative_distribution_function.html#thm_cdf_point"><code class="xref">thm_cdf_point</code></a> <em>(04_continuous_random_variables/0405_cumulative_distribution_function)</em></td><td>
+       <em>theorem</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-thm_cdf_right_continuous"><td></td><td>
+       <strong>thm_cdf_right_continuous</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="04_continuous_random_variables/0405_cumulative_distribution_function.html#thm_cdf_right_continuous"><code class="xref">thm_cdf_right_continuous</code></a> <em>(04_continuous_random_variables/0405_cumulative_distribution_function)</em></td><td>
+       <em>theorem</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-thm_existence_of_expectation_continuous"><td></td><td>
        <strong>thm_existence_of_expectation_continuous</strong></td><td></td></tr>
      <tr>
@@ -1251,6 +1343,14 @@ title="Open an issue"
        <td></td>
        <td>
        <a href="03_discrete_random_variables/0305_expectation.html#thm_existence_of_expectation_discrete"><code class="xref">thm_existence_of_expectation_discrete</code></a> <em>(03_discrete_random_variables/0305_expectation)</em></td><td>
+       <em>theorem</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-thm_pdf_derivative_cdf"><td></td><td>
+       <strong>thm_pdf_derivative_cdf</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="04_continuous_random_variables/0405_cumulative_distribution_function.html#thm_pdf_derivative_cdf"><code class="xref">thm_pdf_derivative_cdf</code></a> <em>(04_continuous_random_variables/0405_cumulative_distribution_function)</em></td><td>
        <em>theorem</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-thm_pmf_cdf"><td></td><td>

@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Moments and Variance &#8212; Probability &amp; Statistics</title>
+    <title>Cumulative Distribution Function &#8212; Probability &amp; Statistics</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -59,8 +59,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Discrete Uniform Distribution" href="0307_discrete_uniform_distribution.html" />
-    <link rel="prev" title="Expectation" href="0305_expectation.html" />
+    <link rel="prev" title="Moments and Variance" href="0404_moments_and_variance.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -184,39 +183,39 @@ const thebe_selector_output = ".output, .cell_output"
   Chapter 3. Discrete Random Variables
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="0301_random_variables.html">
+  <a class="reference internal" href="../03_discrete_random_variables/0301_random_variables.html">
    Random Variables
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="0302_discrete_random_variables.html">
+  <a class="reference internal" href="../03_discrete_random_variables/0302_discrete_random_variables.html">
    Discrete Random Variables
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="0303_probability_mass_function.html">
+  <a class="reference internal" href="../03_discrete_random_variables/0303_probability_mass_function.html">
    Probability Mass Function
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="0304_cumulative_distribution_function.html">
+  <a class="reference internal" href="../03_discrete_random_variables/0304_cumulative_distribution_function.html">
    Cumulative Distribution Function
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="0305_expectation.html">
+  <a class="reference internal" href="../03_discrete_random_variables/0305_expectation.html">
    Expectation
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_discrete_random_variables/0306_moments_and_variance.html">
    Moments and Variance
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="0307_discrete_uniform_distribution.html">
+  <a class="reference internal" href="../03_discrete_random_variables/0307_discrete_uniform_distribution.html">
    Discrete Uniform Distribution
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
@@ -226,14 +225,14 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="0307_discrete_uniform_distribution_implementation.html">
+    <a class="reference internal" href="../03_discrete_random_variables/0307_discrete_uniform_distribution_implementation.html">
      Implementation
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="0308_bernoulli_distribution.html">
+  <a class="reference internal" href="../03_discrete_random_variables/0308_bernoulli_distribution.html">
    Bernoulli Distribution
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
@@ -243,19 +242,19 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="0308_bernoulli_distribution_implementation.html">
+    <a class="reference internal" href="../03_discrete_random_variables/0308_bernoulli_distribution_implementation.html">
      Implementation
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="iid.html">
+  <a class="reference internal" href="../03_discrete_random_variables/iid.html">
    Independent and Identically Distributed (IID)
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="0309_binomial_distribution.html">
+  <a class="reference internal" href="../03_discrete_random_variables/0309_binomial_distribution.html">
    Binomial Distribution
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
@@ -265,24 +264,24 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="0309_binomial_distribution_implementation.html">
+    <a class="reference internal" href="../03_discrete_random_variables/0309_binomial_distribution_implementation.html">
      Implementation
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="0309_binomial_distribution_real_world_examples.html">
+    <a class="reference internal" href="../03_discrete_random_variables/0309_binomial_distribution_real_world_examples.html">
      Real World Examples
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="0310_geometric_distribution.html">
+  <a class="reference internal" href="../03_discrete_random_variables/0310_geometric_distribution.html">
    Geometric Distribution
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="0311_poisson_distribution.html">
+  <a class="reference internal" href="../03_discrete_random_variables/0311_poisson_distribution.html">
    Poisson Distribution
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
@@ -292,7 +291,7 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="0311_poisson_distribution_implementation.html">
+    <a class="reference internal" href="../03_discrete_random_variables/0311_poisson_distribution_implementation.html">
      Implementation
     </a>
    </li>
@@ -304,25 +303,35 @@ const thebe_selector_output = ".output, .cell_output"
   Chapter 4. Continuous Random Variables
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../04_continuous_random_variables/from_discrete_to_continuous.html">
+  <a class="reference internal" href="from_discrete_to_continuous.html">
    Intuition of Continuous Distribution
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../04_continuous_random_variables/0401_continuous_random_variables.html">
+  <a class="reference internal" href="0401_continuous_random_variables.html">
    Continuous Random Variables
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../04_continuous_random_variables/0402_probability_density_function.html">
+  <a class="reference internal" href="0402_probability_density_function.html">
    Probability Density Function
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../04_continuous_random_variables/0403_expectation.html">
+  <a class="reference internal" href="0403_expectation.html">
    Expectation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="0404_moments_and_variance.html">
+   Moments and Variance
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Cumulative Distribution Function
   </a>
  </li>
 </ul>
@@ -376,53 +385,6 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/gao-hongnan/gaohn-probability-stats/main?urlpath=tree/content/03_discrete_random_variables/0306_variance_and_moments.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
-  
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://colab.research.google.com/github/gao-hongnan/gaohn-probability-stats/blob/main/content/03_discrete_random_variables/0306_variance_and_moments.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Colab"
->
-  
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_colab.png">
-  </span>
-<span class="headerbtn__text-container">Colab</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -462,7 +424,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/gao-hongnan/gaohn-probability-stats/issues/new?title=Issue%20on%20page%20%2F03_discrete_random_variables/0306_variance_and_moments.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/gao-hongnan/gaohn-probability-stats/issues/new?title=Issue%20on%20page%20%2F04_continuous_random_variables/0405_cumulative_distribution_function.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -490,24 +452,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/03_discrete_random_variables/0306_variance_and_moments.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download notebook file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-code"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="../_sources/03_discrete_random_variables/0306_variance_and_moments.md"
+        <a href="../_sources/04_continuous_random_variables/0405_cumulative_distribution_function.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -567,28 +512,28 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#moments">
-   Moments
+  <a class="reference internal nav-link" href="#definition">
+   Definition
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#variance">
-   Variance
+  <a class="reference internal nav-link" href="#properties-of-cdf">
+   Properties of CDF
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#standard-deviation">
-   Standard Deviation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#properties-of-moments-and-variance">
-   Properties of Moments and Variance
+  <a class="reference internal nav-link" href="#pdf-is-derivative-of-cdf">
+   PDF is Derivative of CDF
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#further-readings">
    Further Readings
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#citations">
+   Citations
   </a>
  </li>
 </ul>
@@ -600,7 +545,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Moments and Variance</h1>
+                <h1>Cumulative Distribution Function</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -611,28 +556,28 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#moments">
-   Moments
+  <a class="reference internal nav-link" href="#definition">
+   Definition
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#variance">
-   Variance
+  <a class="reference internal nav-link" href="#properties-of-cdf">
+   Properties of CDF
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#standard-deviation">
-   Standard Deviation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#properties-of-moments-and-variance">
-   Properties of Moments and Variance
+  <a class="reference internal nav-link" href="#pdf-is-derivative-of-cdf">
+   PDF is Derivative of CDF
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#further-readings">
    Further Readings
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#citations">
+   Citations
   </a>
  </li>
 </ul>
@@ -645,105 +590,123 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="moments-and-variance">
-<h1>Moments and Variance<a class="headerlink" href="#moments-and-variance" title="Permalink to this headline">#</a></h1>
-<p>Let <span class="math notranslate nohighlight">\(\P\)</span> be a probability function defined over the probability space <span class="math notranslate nohighlight">\(\pspace\)</span>.</p>
-<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a discrete random variable with <span class="math notranslate nohighlight">\(\S = \lset \xi_1, \xi_2, \ldots \rset\)</span>
-unless otherwise stated.</p>
-<section id="moments">
-<h2>Moments<a class="headerlink" href="#moments" title="Permalink to this headline">#</a></h2>
-<div class="proof definition admonition" id="def_moments">
-<p class="admonition-title"><span class="caption-number">Definition 20 </span> (Moments)</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="cumulative-distribution-function">
+<h1>Cumulative Distribution Function<a class="headerlink" href="#cumulative-distribution-function" title="Permalink to this headline">#</a></h1>
+<section id="definition">
+<h2>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">#</a></h2>
+<div class="proof definition admonition" id="def_continuous_cdf">
+<p class="admonition-title"><span class="caption-number">Definition 42 </span> (Cumulative Distribution Function)</p>
 <section class="definition-content" id="proof-content">
-<p>The <strong><span class="math notranslate nohighlight">\(k\)</span>-th moment</strong> of <span class="math notranslate nohighlight">\(X\)</span> is defined as:</p>
+<p>Let <span class="math notranslate nohighlight">\(\P\)</span> be a probability function defined over the probability space <span class="math notranslate nohighlight">\(\pspace\)</span>.</p>
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a continuous random variable with sample space <span class="math notranslate nohighlight">\(\S = \R\)</span> and let <span class="math notranslate nohighlight">\(\pdf\)</span> be its probability density function.</p>
+<p>Then the <strong>cumulative distribution function (CDF)</strong> of <span class="math notranslate nohighlight">\(X\)</span> is defined as:</p>
 <div class="math notranslate nohighlight">
 \[
-\exp \lsq X^k \rsq = \sum_{x \in X(\S)} x^k \cdot \P \lsq X = x \rsq
-\]</div>
-<p>This definition follows from <a class="reference internal" href="0305_expectation.html#prop_expectation_function_discrete">Property 1</a> in <a class="reference internal" href="0305_expectation.html"><span class="doc">Expectation</span></a>.</p>
-<p>Essentially, this means that the <span class="math notranslate nohighlight">\(k\)</span>-th moment is the <strong>expectation</strong> of <span class="math notranslate nohighlight">\(X^k\)</span>.</p>
-</section>
-</div></section>
-<section id="variance">
-<h2>Variance<a class="headerlink" href="#variance" title="Permalink to this headline">#</a></h2>
-<div class="proof definition admonition" id="def_variance">
-<p class="admonition-title"><span class="caption-number">Definition 21 </span> (Variance)</p>
-<section class="definition-content" id="proof-content">
-<p>The <strong>variance</strong> of <span class="math notranslate nohighlight">\(X\)</span> is defined as:</p>
-<div class="math notranslate nohighlight" id="equation-eq-var-1">
-<span class="eqno">(7)<a class="headerlink" href="#equation-eq-var-1" title="Permalink to this equation">#</a></span>\[
-\var \lsq X \rsq = \exp \lsq \lpar X - \mu \rpar^2 \rsq
-\]</div>
-<p>where <span class="math notranslate nohighlight">\(\mu = \exp \lsq X \rsq\)</span> is the <strong>expectation</strong> of <span class="math notranslate nohighlight">\(X\)</span>.</p>
-<p>We denote <span class="math notranslate nohighlight">\(\sigma^2\)</span> as <span class="math notranslate nohighlight">\(\var\)</span> for short-hand notation.</p>
-</section>
-</div><p>We also have an equivalent definition of variance, which is more used in practice.</p>
-<div class="proof definition admonition" id="def_variance_alt">
-<p class="admonition-title"><span class="caption-number">Definition 22 </span> (Variance (Alternative))</p>
-<section class="definition-content" id="proof-content">
-<p>The <strong>variance</strong> of <span class="math notranslate nohighlight">\(X\)</span> is defined as:</p>
-<div class="math notranslate nohighlight" id="equation-eq-var-2">
-<span class="eqno">(8)<a class="headerlink" href="#equation-eq-var-2" title="Permalink to this equation">#</a></span>\[
-\var \lsq X \rsq = \exp \lsq X^2 \rsq - \exp \lsq X \rsq^2
+\cdf \lpar x \rpar = \P \lsq X \leq x \rsq = \int_{-\infty}^x \pdf \lpar t \rpar \, dt
 \]</div>
 </section>
 </div></section>
-<section id="standard-deviation">
-<h2>Standard Deviation<a class="headerlink" href="#standard-deviation" title="Permalink to this headline">#</a></h2>
-<div class="proof definition admonition" id="def_standard_deviation">
-<p class="admonition-title"><span class="caption-number">Definition 23 </span> (Standard Deviation)</p>
-<section class="definition-content" id="proof-content">
-<p>In the definition of <a class="reference internal" href="#def_variance">Definition 21</a>, we have <span class="math notranslate nohighlight">\(\var \lsq X \rsq\)</span> to have
-a different unit than <span class="math notranslate nohighlight">\(X\)</span>. If <span class="math notranslate nohighlight">\(X\)</span> is measured in meters, then <span class="math notranslate nohighlight">\(\var \lsq X \rsq\)</span>
-is measured in meters squared. To solve this issue, we define a new measure
-called the <strong>standard deviation</strong>, which is the square root of the variance <span id="id1">[<a class="reference internal" href="0304_cumulative_distribution_function.html#id4" title="Statistics and random processes | free textbook | course_2014. 2014. URL: https://www.probabilitycourse.com/."><em>statistics and random processes | free textbook | course_2014</em>, 2014</a>]</span>.</p>
-<div class="math notranslate nohighlight" id="equation-eq-std-1">
-<span class="eqno">(9)<a class="headerlink" href="#equation-eq-std-1" title="Permalink to this equation">#</a></span>\[
-\std \lsq X \rsq = \sqrt{\var \lsq X \rsq}
+<section id="properties-of-cdf">
+<h2>Properties of CDF<a class="headerlink" href="#properties-of-cdf" title="Permalink to this headline">#</a></h2>
+<div class="proof proposition admonition" id="prop_continuous_discrete_cdf">
+<p class="admonition-title"><span class="caption-number">Proposition 2 </span> (Properties of CDF)</p>
+<section class="proposition-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a random variable (either discrete or continuous), then the CDF <span class="math notranslate nohighlight">\(\cdf\)</span> of <span class="math notranslate nohighlight">\(X\)</span> satisfies the following properties:</p>
+<ol>
+<li><p>The CDF is <strong>non-decreasing</strong>.</p></li>
+<li><p>The CDF is a probability function.</p>
+<div class="math notranslate nohighlight">
+\[
+    0 \leq \cdf(x) \leq 1
+    \]</div>
+<p>In particular, we have the <strong>minimum</strong> of the CDF is 0 and the <strong>maximum</strong> is 1 for
+<span class="math notranslate nohighlight">\(x = -\infty\)</span> and <span class="math notranslate nohighlight">\(x = \infty\)</span> respectively.</p>
+</li>
+</ol>
+</section>
+</div><div class="proof proposition admonition" id="prop_continuous_cdf_interval">
+<p class="admonition-title"><span class="caption-number">Proposition 3 </span> (Probability of an Interval)</p>
+<section class="proposition-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a continuous random variable.</p>
+<p>If the CDF <span class="math notranslate nohighlight">\(\cdf\)</span> of <span class="math notranslate nohighlight">\(X\)</span> is continuous at any <span class="math notranslate nohighlight">\(a \leq x \leq b\)</span>, then
+the probability of an interval <span class="math notranslate nohighlight">\([a, b]\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+\P \lsq a \leq X \leq b \rsq = \cdf(b) - \cdf(a)
 \]</div>
+</section>
+</div><div class="proof definition admonition" id="def_continuous_cdf_continuity">
+<p class="admonition-title"><span class="caption-number">Definition 43 </span> (Left and Right Continuity)</p>
+<section class="definition-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a continuous random variable. Then its CDF <span class="math notranslate nohighlight">\(\cdf\)</span> is said to be <span id="id1">[<a class="reference internal" href="#id3" title="Stanley H. Chan. Introduction to probability for Data Science. Michigan Publishing, 2021.">Chan, 2021</a>]</span>:</p>
+<ul class="simple">
+<li><p><strong>left continuous</strong> if <span class="math notranslate nohighlight">\(\cdf\)</span> is continuous at <span class="math notranslate nohighlight">\(x=b\)</span> if <span class="math notranslate nohighlight">\(\cdf(b) = \cdf(b^{-}) = \lim_{h \to 0} \cdf(b-h)\)</span></p></li>
+<li><p><strong>right continuous</strong> if <span class="math notranslate nohighlight">\(\cdf\)</span> is continuous at <span class="math notranslate nohighlight">\(x=b\)</span> if <span class="math notranslate nohighlight">\(\cdf(b) = \cdf(b^{+}) = \lim_{h \to 0} \cdf(b+h)\)</span></p></li>
+<li><p><strong>continuous</strong> if <span class="math notranslate nohighlight">\(\cdf\)</span> is <strong>left continuous</strong> and <strong>right continuous</strong> at <span class="math notranslate nohighlight">\(x=b\)</span>. This means that</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\lim_{h \to 0} \cdf(b-h) = \cdf(b) = \lim_{h \to 0} \cdf(b+h)
+\]</div>
+</section>
+</div><div class="proof theorem admonition" id="thm_cdf_right_continuous">
+<p class="admonition-title"><span class="caption-number">Theorem 10 </span> (CDF is Right Continuous)</p>
+<section class="theorem-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a random variable (either discrete or continuous). Then its CDF <span class="math notranslate nohighlight">\(\cdf\)</span> is always right continuous.</p>
+<div class="math notranslate nohighlight">
+\[
+\cdf(b) = \cdf(b^{+}) = \lim_{h \to 0} \cdf(b+h)
+\]</div>
+</section>
+</div><div class="proof theorem admonition" id="thm_cdf_point">
+<p class="admonition-title"><span class="caption-number">Theorem 11 </span> (Define Probability at a Point)</p>
+<section class="theorem-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a random variable (either discrete or continuous), then <span class="math notranslate nohighlight">\(\P \lsq X = b \rsq\)</span> is given by</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\P \lsq X = b \rsq = \begin{cases}
+    \cdf(b) - \cdf(b^{-}) &amp; \text{if } \cdf \text{ is discontinuous at } b \\
+    0 &amp; \text{otherwise}
+\end{cases}
+\end{split}\]</div>
 </section>
 </div></section>
-<section id="properties-of-moments-and-variance">
-<h2>Properties of Moments and Variance<a class="headerlink" href="#properties-of-moments-and-variance" title="Permalink to this headline">#</a></h2>
-<p>The properties of moments and variance are as follows:</p>
-<div class="proof property admonition" id="prop_scaling">
-<p class="admonition-title"><span class="caption-number">Property 6 </span> (Scaling)</p>
-<section class="property-content" id="proof-content">
-<p>For any constant <span class="math notranslate nohighlight">\(c\)</span>, we have:</p>
-<div class="math notranslate nohighlight" id="equation-eq-scaling-1">
-<span class="eqno">(10)<a class="headerlink" href="#equation-eq-scaling-1" title="Permalink to this equation">#</a></span>\[
-\exp \lsq c \cdot X \rsq = c^k \cdot \exp \lsq X \rsq
+<section id="pdf-is-derivative-of-cdf">
+<h2>PDF is Derivative of CDF<a class="headerlink" href="#pdf-is-derivative-of-cdf" title="Permalink to this headline">#</a></h2>
+<p>We have seen how we can convert a PDF <span class="math notranslate nohighlight">\(\pdf\)</span> to a CDF <span class="math notranslate nohighlight">\(\cdf\)</span> by integrating the PDF.
+We now show how to convert a CDF <span class="math notranslate nohighlight">\(\cdf\)</span> to a PDF <span class="math notranslate nohighlight">\(\pdf\)</span> by taking the derivative of the CDF.</p>
+<div class="proof theorem admonition" id="thm_pdf_derivative_cdf">
+<p class="admonition-title"><span class="caption-number">Theorem 12 </span> (PDF is Derivative of CDF)</p>
+<section class="theorem-content" id="proof-content">
+<p>By the <strong>Fundamental Theorem of Calculus</strong> defined in <a class="reference internal" href="../01_mathematical_preliminaries/02_calculus.html#fundamental_theorem_of_calculus">Theorem 1</a>,
+given a cumulative distribution function (CDF) <span class="math notranslate nohighlight">\(\cdf\)</span> of a random variable <span class="math notranslate nohighlight">\(X\)</span>,
+we can find its probability density function (PDF) <span class="math notranslate nohighlight">\(\pdf\)</span> by taking the derivative of the CDF:</p>
+<div class="math notranslate nohighlight">
+\[
+\pdf \lpar x \rpar = \frac{d}{dx} \cdf \lpar x \rpar = \frac{d}{dx} \int_{-\infty}^x \pdf \lpar t \rpar \, dt
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(k\)</span> is the order of the moment.</p>
-</section>
-</div><div class="proof property admonition" id="prop_dc_shift">
-<p class="admonition-title"><span class="caption-number">Property 7 </span> (DC Shift)</p>
-<section class="property-content" id="proof-content">
-<p>For any constant <span class="math notranslate nohighlight">\(c\)</span>, we have:</p>
-<div class="math notranslate nohighlight" id="equation-eq-dc-shift-1">
-<span class="eqno">(11)<a class="headerlink" href="#equation-eq-dc-shift-1" title="Permalink to this equation">#</a></span>\[
-\exp \lsq (X + c) \rsq = \exp \lsq X \rsq
+<p><strong>if</strong> <span class="math notranslate nohighlight">\(\cdf\)</span> is <strong>differentiable</strong> at <span class="math notranslate nohighlight">\(x\)</span>. If <span class="math notranslate nohighlight">\(\cdf\)</span> is not differentiable at <span class="math notranslate nohighlight">\(x=b\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[
+\pdf(b) = \P \lsq X = b \rsq = \P \lsq X = b \rsq \delta(x-b)
 \]</div>
-<p>The intuition is that shifting the random variable by a constant does not change
-the spread of the random variable.</p>
-</section>
-</div><div class="proof property admonition" id="prop_linearity">
-<p class="admonition-title"><span class="caption-number">Property 8 </span> (Linearity)</p>
-<section class="property-content" id="proof-content">
-<p>Combining <a class="reference internal" href="#prop_scaling">Property 6</a> and <a class="reference internal" href="#prop_dc_shift">Property 7</a>, we have:</p>
-<div class="math notranslate nohighlight" id="equation-eq-linearity-1">
-<span class="eqno">(12)<a class="headerlink" href="#equation-eq-linearity-1" title="Permalink to this equation">#</a></span>\[
-\exp \lsq a \cdot X + b \rsq = a^k \cdot \exp \lsq X \rsq
-\]</div>
-<p>where <span class="math notranslate nohighlight">\(k\)</span> is the order of the moment.</p>
 </section>
 </div></section>
 <section id="further-readings">
 <h2>Further Readings<a class="headerlink" href="#further-readings" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="https://www.probabilitycourse.com/chapter3/3_2_4_variance.php">Variance</a> of <span id="id2">[<a class="reference internal" href="0304_cumulative_distribution_function.html#id4" title="Statistics and random processes | free textbook | course_2014. 2014. URL: https://www.probabilitycourse.com/."><em>statistics and random processes | free textbook | course_2014</em>, 2014</a>]</span>.</p></li>
-<li><p>Chapter 3.4.4 of Introduction to Probability for Data Science.</p></li>
+<li><p>Chan, Stanley H. “Chapter 4.3. Cumulative Distribution Function.” In Introduction to Probability for Data Science, 185-196. Ann Arbor, Michigan: Michigan Publishing Services, 2021.</p></li>
 </ul>
+</section>
+<section id="citations">
+<h2>Citations<a class="headerlink" href="#citations" title="Permalink to this headline">#</a></h2>
+<div class="docutils container" id="id2">
+<dl class="citation">
+<dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Stanley H. Chan. <em>Introduction to probability for Data Science</em>. Michigan Publishing, 2021.</p>
+</dd>
+</dl>
+</div>
 </section>
 </section>
 
@@ -760,7 +723,7 @@ the spread of the random variable.</p>
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./03_discrete_random_variables"
+            path: "./04_continuous_random_variables"
         },
         predefinedOutput: true
     }
@@ -774,19 +737,12 @@ the spread of the random variable.</p>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="0305_expectation.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="0404_moments_and_variance.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Expectation</p>
+            <p class="prev-next-title">Moments and Variance</p>
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="0307_discrete_uniform_distribution.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Discrete Uniform Distribution</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>

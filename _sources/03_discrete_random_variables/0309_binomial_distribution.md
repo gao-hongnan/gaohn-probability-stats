@@ -53,7 +53,7 @@ because $X$ can only take on $n$ states (outcomes).
 
 ## Intuition
 
-{cite}`chan_2021` chapter 3.5.2.
+See Chan, Stanley H. "Chapter 3.5.2. Binomial random variable." In Introduction to Probability for Data Science, 143-149. Ann Arbor, Michigan: Michigan Publishing Services, 2021. 
 
 ## Assumptions
 
@@ -102,3 +102,7 @@ Let us define $X_1, X_2, \ldots, X_n$ to be $n$ independent Bernoulli trials wit
 
 Then the random variable $X = X_1 + X_2 + \cdots + X_n$ is a Binomial random variable with parameters $n$ and $p$.
 ```
+
+## Further Readings
+
+- Chan, Stanley H. "Chapter 3.5.2. Binomial random variable." In Introduction to Probability for Data Science, 143-149. Ann Arbor, Michigan: Michigan Publishing Services, 2021. 

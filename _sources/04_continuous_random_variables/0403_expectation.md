@@ -107,14 +107,21 @@ $$
 $$
 ```
 
-
 ## Concept
 
 ````{admonition} Concept
 :class: important
 
-**Expectation** is a measure of the average value of a random variable and is **deterministic**.
+- **Expectation** is a measure of the mean value of a random variable and is **deterministic**. It
+is also synonymous with the **population mean**.
 
-**Average** is a measure of the average value of a **random sample** from the true population
+- **Average** is a measure of the average value of a **random sample** from the true population
 and is **random**.
+
+- **Average** of a random sample is a random variable and as sample size increases, the **average** of a random sample converges to the **population mean**.
 ````
+
+## Further Readings
+
+- Chan, Stanley H. "Chapter 4.2. Expectation, Moment, and Variance." In Introduction to Probability for Data Science, 180–184. Ann Arbor, Michigan: Michigan Publishing Services, 2021. 
+

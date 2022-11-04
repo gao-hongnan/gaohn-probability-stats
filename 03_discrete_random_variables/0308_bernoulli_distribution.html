@@ -211,7 +211,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="0306_variance_and_moments.html">
+  <a class="reference internal" href="0306_moments_and_variance.html">
    Moments and Variance
   </a>
  </li>
@@ -323,6 +323,16 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="../04_continuous_random_variables/0403_expectation.html">
    Expectation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_continuous_random_variables/0404_moments_and_variance.html">
+   Moments and Variance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_continuous_random_variables/0405_cumulative_distribution_function.html">
+   Cumulative Distribution Function
   </a>
  </li>
 </ul>
@@ -529,6 +539,11 @@ title="Print to PDF"
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#further-readings">
+   Further Readings
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -574,6 +589,11 @@ title="Print to PDF"
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#further-readings">
+   Further Readings
+  </a>
  </li>
 </ul>
 
@@ -694,16 +714,22 @@ This will be the main difference when we learn Binomial distribution (i.e. sampl
 <h2>Maximum Variance<a class="headerlink" href="#maximum-variance" title="Permalink to this headline">#</a></h2>
 <section id="minimum-and-maximum-variance-of-coin-toss">
 <h3>Minimum and Maximum Variance of Coin Toss<a class="headerlink" href="#minimum-and-maximum-variance-of-coin-toss" title="Permalink to this headline">#</a></h3>
-<p>This example is taken from <span id="id1">[<a class="reference internal" href="0311_poisson_distribution.html#id5" title="Stanley H. Chan. Introduction to probability for Data Science. Michigan Publishing, 2021.">Chan, 2021</a>]</span>, page 140.</p>
+<p>This example is taken from <span id="id1">[<a class="reference internal" href="../04_continuous_random_variables/0405_cumulative_distribution_function.html#id3" title="Stanley H. Chan. Introduction to probability for Data Science. Michigan Publishing, 2021.">Chan, 2021</a>]</span>, page 140.</p>
 <p>Consider a coin toss, following a Bernoulli distribution. Define <span class="math notranslate nohighlight">\(X \sim \bern(p)\)</span>.</p>
 <p>If we toss the coin <span class="math notranslate nohighlight">\(n\)</span> times, then we ask ourselves what is the minimum and maximum variance of the coin toss.</p>
-<p>Recall in <a class="reference internal" href="0306_variance_and_moments.html#def_variance">Definition 21</a> that the variance is basically how much the data deviates from the mean.</p>
+<p>Recall in <a class="reference internal" href="0306_moments_and_variance.html#def_variance">Definition 21</a> that the variance is basically how much the data deviates from the mean.</p>
 <p>If the coin is biased at <span class="math notranslate nohighlight">\(p=1\)</span>, then the variance is <span class="math notranslate nohighlight">\(0\)</span> because the coin always lands on heads. The
 intuition is that the coin is “deterministic”, and hence there is no variance at all. If the coin
 is biased at <span class="math notranslate nohighlight">\(p=0.9\)</span>, then there is a little variance, because the coin will consistently land on heads
 <span class="math notranslate nohighlight">\(90\%\)</span> of the time. If the coin is biased at <span class="math notranslate nohighlight">\(p=0.5\)</span>, then there is a lot of variance, because the coin
 is fair and has a 50-50 chance of landing on heads or tails. Though fair, the variance is maximum here.</p>
 </section>
+</section>
+<section id="further-readings">
+<h2>Further Readings<a class="headerlink" href="#further-readings" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Chan, Stanley H. “Chapter 3.5.1. Bernoulli random variable.” In Introduction to Probability for Data Science, 137-142. Ann Arbor, Michigan: Michigan Publishing Services, 2021.</p></li>
+</ul>
 </section>
 <div class="toctree-wrapper compound">
 </div>

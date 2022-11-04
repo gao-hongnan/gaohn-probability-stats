@@ -1,20 +1,3 @@
----
-jupytext:
-  cell_metadata_filter: -all
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.11.5
-mystnb:
-  number_source_lines: true
-kernelspec:
-  display_name: Python 3
-  language: python
-  name: python3
----
-
 # Expectation
 
 ## Definition
@@ -116,13 +99,16 @@ $$
 ````{admonition} Concept
 :class: important
 
-**Expectation** is a measure of the average value of a random variable and is **deterministic**.
+- **Expectation** is a measure of the mean value of a random variable and is **deterministic**. It
+is also synonymous with the **population mean**.
 
-**Average** is a measure of the average value of a **random sample** from the true population
+- **Average** is a measure of the average value of a **random sample** from the true population
 and is **random**.
+
+- **Average** of a random sample is a random variable and as sample size increases, the **average** of a random sample converges to the **population mean**.
 ````
 
 ## Further Readings
 
-- [Functions of Random Variables](https://www.probabilitycourse.com/chapter3/3_2_3_functions_random_var.php) of {cite}`probability`.
-- Chapter 3.4.3 of Introduction to Probability for Data Science.
+- Pishro-Nik, Hossein. "Chapter 3.2.3. Functions of Random Variables." In Introduction to Probability, Statistics, and Random Processes, 199–201. Kappa Research, 2014. 
+- Chan, Stanley H. "Chapter 3.4. Expectation." In Introduction to Probability for Data Science, 125-133. Ann Arbor, Michigan: Michigan Publishing Services, 2021. 
