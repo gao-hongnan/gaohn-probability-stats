@@ -112,10 +112,3 @@ $$
 ## Further Readings
 
 - Chan, Stanley H. "Chapter 4.3. Cumulative Distribution Function." In Introduction to Probability for Data Science, 185-196. Ann Arbor, Michigan: Michigan Publishing Services, 2021. 
-
-## Citations
-
-```{bibliography}
-:style: unsrt
-:filter: docname in docnames
-```

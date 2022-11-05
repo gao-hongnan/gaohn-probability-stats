@@ -148,11 +148,3 @@ $$ (eq:pmf_cdf_1)
 
 where $X$ has a countable set of states $\S$. 
 ````
-
-## Citations
-
-```{bibliography}
-:style: unsrt
-:filter: docname in docnames
-```
-

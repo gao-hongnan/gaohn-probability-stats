@@ -341,6 +341,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  References
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../bibliography/bibliography.html">
+   Bibliography
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav></div>
@@ -542,11 +554,6 @@ title="Print to PDF"
    Further Readings
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#citations">
-   Citations
-  </a>
- </li>
 </ul>
 
     </nav>
@@ -591,11 +598,6 @@ title="Print to PDF"
    Further Readings
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#citations">
-   Citations
-  </a>
- </li>
 </ul>
 
                         </nav>
@@ -627,7 +629,7 @@ X \sim \poisson(\lambda)
 <p>to say that <span class="math notranslate nohighlight">\(X\)</span> is drawn from a Poisson distribution with parameter <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
 <p>Some conventions:</p>
 <ol class="simple">
-<li><p>The parameter <span class="math notranslate nohighlight">\(\alpha\)</span> determines the <em><strong>average rate of occurrences over time or space</strong></em> <span id="id1">[<a class="reference internal" href="0311_poisson_distribution_implementation.html#id7" title="John M. Shea. Foundations of data science with python. 2021. URL: https://jmshea.github.io/Foundations-of-Data-Science-with-Python/intro.html.">Shea, 2021</a>]</span>.</p></li>
+<li><p>The parameter <span class="math notranslate nohighlight">\(\alpha\)</span> determines the <em><strong>average rate of occurrences over time or space</strong></em> <span id="id1">[<a class="reference internal" href="../bibliography/bibliography.html#id5" title="John M. Shea. Foundations of data science with python. 2021. URL: https://jmshea.github.io/Foundations-of-Data-Science-with-Python/intro.html.">Shea, 2021</a>]</span>.</p></li>
 <li><p><span class="math notranslate nohighlight">\(T\)</span> is a length of time/space being considered.</p></li>
 <li><p><span class="math notranslate nohighlight">\(\lambda = \alpha T\)</span> is the <em><strong>average number of occurrences</strong></em> over the time/space being considered.</p></li>
 </ol>
@@ -644,7 +646,7 @@ X \sim \poisson(\lambda)
 <li><p>An another way of saying is that this is a <em><strong>linearity assumption</strong></em>, the probability of an event occurring is proportional to the length of the time period. For example, it should be twice as likely for an event to occur in a 2 hour time period than it is for an event to occur in a 1 hour period.</p></li>
 <li><p>The value of <span class="math notranslate nohighlight">\(\lambda\)</span> is proportional to the length of the time period.</p></li>
 </ol>
-<p>See chapter 3.5.4 on section Origin of the Poisson random variable of <span id="id2">[<a class="reference internal" href="../04_continuous_random_variables/0405_cumulative_distribution_function.html#id3" title="Stanley H. Chan. Introduction to probability for Data Science. Michigan Publishing, 2021.">Chan, 2021</a>]</span>.</p>
+<p>See chapter 3.5.4 on section Origin of the Poisson random variable of <span id="id2">[<a class="reference internal" href="../bibliography/bibliography.html#id2" title="Stanley H. Chan. Introduction to probability for Data Science. Michigan Publishing, 2021.">Chan, 2021</a>]</span>.</p>
 <div class="proof example admonition" id="ex:poi">
 <p class="admonition-title"><span class="caption-number">Example 7 </span> (Example)</p>
 <section class="example-content" id="proof-content">
@@ -666,7 +668,7 @@ in a two hour time period, then <span class="math notranslate nohighlight">\(\P 
 <section class="example-content" id="proof-content">
 <p>The number of students who arrive at the student union per minute will likely not follow a Poisson distribution,
 because the rate is not constant (low rate during class time, high rate between class times)
-and the arrivals of individual students are not independent (students tend to come in groups) <span id="id3">[<a class="reference internal" href="#id11" title="Wiki. Poisson distribution. Oct 2022. URL: https://en.wikipedia.org/wiki/Poisson_distribution.">Wiki, 2022</a>]</span>.</p>
+and the arrivals of individual students are not independent (students tend to come in groups) <span id="id3">[<a class="reference internal" href="../bibliography/bibliography.html#id8" title="Wiki. Poisson distribution. Oct 2022. URL: https://en.wikipedia.org/wiki/Poisson_distribution.">Wiki, 2022</a>]</span>.</p>
 </section>
 </div></section>
 <section id="properties">
@@ -716,22 +718,6 @@ X \sim \binomial(n, p) \qquad \text{with PMF} \qquad \P \lsq X = k \rsq = \binom
 <ul class="simple">
 <li><p>Chan, Stanley H. “Chapter 3.5.4. Poisson random variable.” In Introduction to Probability for Data Science, 152-164. Ann Arbor, Michigan: Michigan Publishing Services, 2021.</p></li>
 </ul>
-</section>
-<section id="citations">
-<h2>Citations<a class="headerlink" href="#citations" title="Permalink to this headline">#</a></h2>
-<div class="docutils container" id="id4">
-<dl class="citation">
-<dt class="label" id="id5"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
-<dd><p>Stanley H. Chan. <em>Introduction to probability for Data Science</em>. Michigan Publishing, 2021.</p>
-</dd>
-<dt class="label" id="id8"><span class="brackets"><a class="fn-backref" href="#id1">2</a></span></dt>
-<dd><p>John M. Shea. Foundations of data science with python. 2021. URL: <a class="reference external" href="https://jmshea.github.io/Foundations-of-Data-Science-with-Python/intro.html">https://jmshea.github.io/Foundations-of-Data-Science-with-Python/intro.html</a>.</p>
-</dd>
-<dt class="label" id="id11"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
-<dd><p>Wiki. Poisson distribution. Oct 2022. URL: <a class="reference external" href="https://en.wikipedia.org/wiki/Poisson_distribution">https://en.wikipedia.org/wiki/Poisson_distribution</a>.</p>
-</dd>
-</dl>
-</div>
 </section>
 <div class="toctree-wrapper compound">
 </div>

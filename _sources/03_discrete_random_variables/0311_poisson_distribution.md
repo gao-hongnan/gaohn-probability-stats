@@ -115,11 +115,3 @@ Many times, Poisson PMF is much easier to compute than its Binomial counterpart.
 ## Further Readings
 
 - Chan, Stanley H. "Chapter 3.5.4. Poisson random variable." In Introduction to Probability for Data Science, 152-164. Ann Arbor, Michigan: Michigan Publishing Services, 2021. 
-
-
-## Citations
-
-```{bibliography}
-:style: unsrt
-:filter: docname in docnames
-```

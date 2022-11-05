@@ -314,12 +314,3 @@ ball is red, and the correspondingly, $B = \{1,2,3,4,5,6\}$.
 ### What is a Probability Space?
 
 See my brain dump `important.md`.
-
-
-
-## Citations
-
-```{bibliography}
-:style: unsrt
-:filter: docname in docnames
-```

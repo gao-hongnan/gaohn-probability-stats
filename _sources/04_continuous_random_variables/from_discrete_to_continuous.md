@@ -61,9 +61,3 @@ Let's define a thought experiment.
 
 first show why cannot be 0 wrong idea
 
-## Citations
-
-```{bibliography}
-:style: unsrt
-:filter: docname in docnames
-```
