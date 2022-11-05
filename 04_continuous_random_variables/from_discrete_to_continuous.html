@@ -59,7 +59,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Continuous Random Variables" href="0401_continuous_random_variables.html" />
+    <link rel="next" title="Discrete to Continuous" href="from_discrete_to_continuous_notebook.html" />
     <link rel="prev" title="Implementation" href="../03_discrete_random_variables/0311_poisson_distribution_implementation.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -311,6 +311,11 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="from_discrete_to_continuous_notebook.html">
+   Discrete to Continuous
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="0401_continuous_random_variables.html">
    Continuous Random Variables
   </a>
@@ -534,6 +539,11 @@ title="Print to PDF"
    Calculus
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#further-readings">
+   Further Readings
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -558,6 +568,11 @@ title="Print to PDF"
    Calculus
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#further-readings">
+   Further Readings
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -573,7 +588,7 @@ title="Print to PDF"
 <section id="calculus">
 <h2>Calculus<a class="headerlink" href="#calculus" title="Permalink to this headline">#</a></h2>
 <p>The following content is adapted from <span id="id1">[<a class="reference internal" href="../bibliography/bibliography.html#id9" title="Bloom Orloff. Reading 5b: continuous random variables. https://ocw.mit.edu/courses/18-05-introduction-to-probability-and-statistics-spring-2014/1f88c7c765d2532fd57d8ee719a751b3_MIT18_05S14_Reading5b.pdf. (Accessed on 10/28/2022).">Orloff, n.d.</a>]</span>.</p>
-<p>Conceptually, one should know that the two views of a definite integral</p>
+<p>Conceptually, one should know that the two views of a definite integral:</p>
 <ol class="simple">
 <li><p>The area under the curve given by <span class="math notranslate nohighlight">\(\int_a^b f(x) dx = \text{area under the curve } f(x) \text{ between } a \text{ and } b\)</span>;</p></li>
 <li><p>The limit of the sum of the areas of rectangles of width <span class="math notranslate nohighlight">\(\Delta x\)</span> and height <span class="math notranslate nohighlight">\(f(x)\)</span>, where the rectangles are placed next to each other, starting from <span class="math notranslate nohighlight">\(x=a\)</span> and ending at <span class="math notranslate nohighlight">\(x=b\)</span>. Essentially, this means <span class="math notranslate nohighlight">\(\int_a^b f(x) dx = \lim_{n \to \infty} \sum_{i=1}^n f(x_i) \Delta x\)</span> where <span class="math notranslate nohighlight">\(\Delta x = \frac{b-a}{n}\)</span> and <span class="math notranslate nohighlight">\(x_i = a + i \Delta x\)</span>.</p></li>
@@ -619,6 +634,42 @@ THE PDF IS THE PROBABILITY PER SAY METER AROUND THAT POINT. SO EVEN THO THE POIN
 0.1, BUT WHEN YOU CALCULATE f(0.1) = 10, IT MEANS THAT AROUND THAT POINT IT IS 10 PROBABILITY PER METER.</p>
 <p>Let’s define a thought experiment.</p>
 <p>first show why cannot be 0 wrong idea</p>
+<p><a class="reference internal" href="#baby-frequency-1"><span class="std std-numref">Table 1</span></a></p>
+<table class="table" id="baby-frequency-1">
+<caption><span class="caption-number">Table 1 </span><span class="caption-text">Baby Frequency Table, binned by 1 kg</span><a class="headerlink" href="#baby-frequency-1" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(x\)</span>, Mass (kg)</p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(5 \leq x &lt; 6\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(6 \leq x &lt; 7\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(7 \leq x &lt; 8\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(8 \leq x &lt; 9\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(9 \leq x \leq 10\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Frequency</strong>, <span class="math notranslate nohighlight">\(f\)</span></p></td>
+<td><p>20</p></td>
+<td><p>48</p></td>
+<td><p>80</p></td>
+<td><p>36</p></td>
+<td><p>16</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="further-readings">
+<h2>Further Readings<a class="headerlink" href="#further-readings" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Chan, Stanley H. “Chapter 4.1. Probability Density Function.” In Introduction to Probability for Data Science, 172-180. Ann Arbor, Michigan: Michigan Publishing Services, 2021.</p></li>
+</ul>
 </section>
 </section>
 
@@ -656,10 +707,10 @@ THE PDF IS THE PROBABILITY PER SAY METER AROUND THAT POINT. SO EVEN THO THE POIN
             <p class="prev-next-title">Implementation</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="0401_continuous_random_variables.html" title="next page">
+    <a class='right-next' id="next-link" href="from_discrete_to_continuous_notebook.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Continuous Random Variables</p>
+        <p class="prev-next-title">Discrete to Continuous</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

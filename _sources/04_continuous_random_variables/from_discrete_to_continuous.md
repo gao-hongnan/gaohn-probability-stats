@@ -4,7 +4,7 @@
 
 The following content is adapted from {cite}`continous_random_variables_mit_1805`.
 
-Conceptually, one should know that the two views of a definite integral
+Conceptually, one should know that the two views of a definite integral:
 
 1. The area under the curve given by $\int_a^b f(x) dx = \text{area under the curve } f(x) \text{ between } a \text{ and } b$;
 2. The limit of the sum of the areas of rectangles of width $\Delta x$ and height $f(x)$, where the rectangles are placed next to each other, starting from $x=a$ and ending at $x=b$. Essentially, this means $\int_a^b f(x) dx = \lim_{n \to \infty} \sum_{i=1}^n f(x_i) \Delta x$ where $\Delta x = \frac{b-a}{n}$ and $x_i = a + i \Delta x$.
@@ -61,3 +61,28 @@ Let's define a thought experiment.
 
 first show why cannot be 0 wrong idea
 
+
+{numref}`baby_frequency_1`
+
+```{list-table} Baby Frequency Table, binned by 1 kg
+:header-rows: 1
+:name: baby_frequency_1
+
+* - $x$, Mass (kg)
+  - $5 \leq x < 6$
+  - $6 \leq x < 7$
+  - $7 \leq x < 8$
+  - $8 \leq x < 9$
+  - $9 \leq x \leq 10$
+* - **Frequency**, $f$
+  - 20
+  - 48
+  - 80
+  - 36
+  - 16
+```
+
+
+## Further Readings
+
+- Chan, Stanley H. "Chapter 4.1. Probability Density Function." In Introduction to Probability for Data Science, 172-180. Ann Arbor, Michigan: Michigan Publishing Services, 2021. 
