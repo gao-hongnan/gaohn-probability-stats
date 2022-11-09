@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Expectation &#8212; Probability &amp; Statistics</title>
+    <title>Continuous Uniform Distribution &#8212; Probability &amp; Statistics</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -59,8 +59,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Moments and Variance" href="0404_moments_and_variance.html" />
-    <link rel="prev" title="Probability Density Function" href="0402_probability_density_function.html" />
+    <link rel="next" title="Bibliography" href="../bibliography/bibliography.html" />
+    <link rel="prev" title="Mean, Median and Mode" href="0406_mean_median_mode.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -330,8 +330,8 @@ const thebe_selector_output = ".output, .cell_output"
    Probability Density Function
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="0403_expectation.html">
    Expectation
   </a>
  </li>
@@ -350,8 +350,8 @@ const thebe_selector_output = ".output, .cell_output"
    Mean, Median and Mode
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="0407_continuous_uniform_distribution.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Continuous Uniform Distribution
   </a>
  </li>
@@ -418,6 +418,53 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/gao-hongnan/gaohn-probability-stats/main?urlpath=tree/content/04_continuous_random_variables/0407_continuous_uniform_distribution.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/gao-hongnan/gaohn-probability-stats/blob/main/content/04_continuous_random_variables/0407_continuous_uniform_distribution.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -457,7 +504,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/gao-hongnan/gaohn-probability-stats/issues/new?title=Issue%20on%20page%20%2F04_continuous_random_variables/0403_expectation.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/gao-hongnan/gaohn-probability-stats/issues/new?title=Issue%20on%20page%20%2F04_continuous_random_variables/0407_continuous_uniform_distribution.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -485,7 +532,24 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/04_continuous_random_variables/0403_expectation.md"
+        <a href="../_sources/04_continuous_random_variables/0407_continuous_uniform_distribution.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="../_sources/04_continuous_random_variables/0407_continuous_uniform_distribution.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -550,23 +614,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#existence-of-expectation">
-   Existence of Expectation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#properties-of-expectation">
-   Properties of Expectation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#concept">
-   Concept
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#further-readings">
-   Further Readings
+  <a class="reference internal nav-link" href="#expectation-and-variance">
+   Expectation and Variance
   </a>
  </li>
 </ul>
@@ -578,7 +627,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Expectation</h1>
+                <h1>Continuous Uniform Distribution</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -594,23 +643,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#existence-of-expectation">
-   Existence of Expectation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#properties-of-expectation">
-   Properties of Expectation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#concept">
-   Concept
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#further-readings">
-   Further Readings
+  <a class="reference internal nav-link" href="#expectation-and-variance">
+   Expectation and Variance
   </a>
  </li>
 </ul>
@@ -623,120 +657,116 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="expectation">
-<h1>Expectation<a class="headerlink" href="#expectation" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="continuous-uniform-distribution">
+<h1>Continuous Uniform Distribution<a class="headerlink" href="#continuous-uniform-distribution" title="Permalink to this headline">#</a></h1>
 <section id="definition">
 <h2>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">#</a></h2>
-<div class="proof definition admonition" id="def_continuous_expectation">
-<p class="admonition-title"><span class="caption-number">Definition 38 </span> (Expectation)</p>
+<div class="proof definition admonition" id="def_continuous_uniform_distribution_pdf">
+<p class="admonition-title"><span class="caption-number">Definition 44 </span> (Continuous Uniform Distribution (PDF))</p>
 <section class="definition-content" id="proof-content">
-<p>Let <span class="math notranslate nohighlight">\(\P\)</span> be a probability function defined over the probability space <span class="math notranslate nohighlight">\(\pspace\)</span>.</p>
-<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a continuous random variable with sample space <span class="math notranslate nohighlight">\(\S\)</span>
-and let <span class="math notranslate nohighlight">\(\pdf\)</span> be its probability density function.</p>
-<p>Then the <strong>expectation</strong> of <span class="math notranslate nohighlight">\(X\)</span> is defined as:</p>
-<div class="math notranslate nohighlight">
-\[
-\exp \lsq X \rsq = \int_{\S} x \cdot \pdf(x) \, dx
-\]</div>
+<p><span class="math notranslate nohighlight">\(X\)</span> is a continuous random variable with a <strong>continuous uniform distribution</strong> if the
+probability density function is given by:</p>
+<div class="math notranslate nohighlight" id="equation-eq-def-continuous-uniform-distribution">
+<span class="eqno">(15)<a class="headerlink" href="#equation-eq-def-continuous-uniform-distribution" title="Permalink to this equation">#</a></span>\[\begin{split}
+\pdf(x) = \begin{cases}
+    \frac{1}{b-a} &amp; \text{if } a \leq x \leq b \\
+    0 &amp; \text{otherwise}
+\end{cases}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\([a,b]\)</span> is the interval on which <span class="math notranslate nohighlight">\(X\)</span> is defined.</p>
+<p>Some conventions:</p>
+<ol class="simple">
+<li><p>We write <span class="math notranslate nohighlight">\(X \sim \text{Uniform}(a,b)\)</span> to indicate that <span class="math notranslate nohighlight">\(X\)</span> has a continuous uniform distribution on <span class="math notranslate nohighlight">\([a,b]\)</span>.</p></li>
+</ol>
 </section>
-</div></section>
-<section id="existence-of-expectation">
-<h2>Existence of Expectation<a class="headerlink" href="#existence-of-expectation" title="Permalink to this headline">#</a></h2>
-<p>As seen in the discrete counterpart in <a class="reference internal" href="../03_discrete_random_variables/0305_expectation.html"><span class="doc std std-doc">Expectation</span></a>,
-we have a similar result for continuous random variables.</p>
-<div class="proof theorem admonition" id="thm_existence_of_expectation_continuous">
-<p class="admonition-title"><span class="caption-number">Theorem 9 </span> (Existence of Expectation)</p>
-<section class="theorem-content" id="proof-content">
-<p>A continuous random variable <span class="math notranslate nohighlight">\(X\)</span> with sample space <span class="math notranslate nohighlight">\(\S\)</span> has an <strong>expectation</strong> if
-and only if it is <a class="reference external" href="https://en.wikipedia.org/wiki/Absolutely_integrable_function"><strong>absolutely integrable</strong></a>.</p>
-<p>That is,</p>
-<div class="math notranslate nohighlight">
-\[
-\exp \lsq \lvert X \rvert \rsq \overset{\text{def}}{=} \int_{\S} \lvert x \rvert \cdot \pdf(x) \, dx &lt; \infty
-\]</div>
+</div><div class="proof definition admonition" id="def_continuous_uniform_distribution_cdf">
+<p class="admonition-title"><span class="caption-number">Definition 45 </span> (Continuous Uniform Distribution (CDF))</p>
+<section class="definition-content" id="proof-content">
+<p>If <span class="math notranslate nohighlight">\(X\)</span> is a continuous random variable with a continuous uniform distribution on <span class="math notranslate nohighlight">\([a,b]\)</span>, then the CDF is given by
+integrating the PDF defined in <a class="reference internal" href="#def_continuous_uniform_distribution_pdf">Definition 44</a>:</p>
+<div class="math notranslate nohighlight" id="equation-eq-def-continuous-uniform-distribution-cdf">
+<span class="eqno">(16)<a class="headerlink" href="#equation-eq-def-continuous-uniform-distribution-cdf" title="Permalink to this equation">#</a></span>\[\begin{split}
+\cdf(x) = \begin{cases}
+    0 &amp; \text{if } x &lt; a \\
+    \frac{x-a}{b-a} &amp; \text{if } a \leq x \leq b \\
+    1 &amp; \text{if } x &gt; b
+\end{cases}
+\end{split}\]</div>
 </section>
-</div><div class="proof corollary admonition" id="cor_continuous_expectation">
-<p class="admonition-title"><span class="caption-number">Corollary 7 </span></p>
-<section class="corollary-content" id="proof-content">
-<p>For any continuous random variable <span class="math notranslate nohighlight">\(X\)</span> with sample space <span class="math notranslate nohighlight">\(\S\)</span> and probability density function <span class="math notranslate nohighlight">\(\pdf\)</span>,</p>
-<div class="math notranslate nohighlight">
-\[
-\lvert \exp \lsq X \rsq \rvert \leq \exp \lsq \lvert X \rvert \rsq
-\]</div>
-</section>
-</div></section>
-<section id="properties-of-expectation">
-<h2>Properties of Expectation<a class="headerlink" href="#properties-of-expectation" title="Permalink to this headline">#</a></h2>
-<p>Almost all properties of the discrete counterpart in <a class="reference internal" href="../03_discrete_random_variables/0305_expectation.html"><span class="doc std std-doc">Expectation</span></a>
-holds here.</p>
-<p>Let <span class="math notranslate nohighlight">\(\P\)</span> be a probability function defined over the probability space <span class="math notranslate nohighlight">\(\pspace\)</span>.</p>
-<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a continous random variable with sample space <span class="math notranslate nohighlight">\(\S\)</span> and probability density function <span class="math notranslate nohighlight">\(\pdf\)</span>.</p>
-<p>Then the <em><strong>expectation</strong></em> of <span class="math notranslate nohighlight">\(X\)</span> has the following properties:</p>
-<div class="proof property admonition" id="prop_expectation_function_continuous">
-<p class="admonition-title"><span class="caption-number">Property 17 </span> (The Law of The Unconscious Statistician)</p>
-<section class="property-content" id="proof-content">
-<p>For any function <span class="math notranslate nohighlight">\(g: \S \to \R\)</span>,</p>
-<div class="math notranslate nohighlight">
-\[
-\exp \lsq g(X) \rsq = \int_{\S} g(x) \cdot \pdf(x) \, dx
-\]</div>
-</section>
-</div><div class="proof property admonition" id="prop_expectation_linearity_continuous">
-<p class="admonition-title"><span class="caption-number">Property 18 </span> (Linearity)</p>
-<section class="property-content" id="proof-content">
-<p>For any constants <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>,</p>
-<div class="math notranslate nohighlight">
-\[
-\exp \lsq aX + b \rsq = a \cdot \exp(X) + b
-\]</div>
-</section>
-</div><div class="proof property admonition" id="prop_expectation_scaling_continuous">
-<p class="admonition-title"><span class="caption-number">Property 19 </span> (Scaling)</p>
-<section class="property-content" id="proof-content">
-<p>For any constant <span class="math notranslate nohighlight">\(c\)</span>,</p>
-<div class="math notranslate nohighlight">
-\[
-\exp \lsq cX \rsq = c \cdot \exp(X)
-\]</div>
-</section>
-</div><div class="proof property admonition" id="prop_expectation_dc_shift_continuous">
-<p class="admonition-title"><span class="caption-number">Property 20 </span> (DC Shift)</p>
-<section class="property-content" id="proof-content">
-<p>For any constant <span class="math notranslate nohighlight">\(c\)</span>,</p>
-<div class="math notranslate nohighlight">
-\[
-\exp \lsq X + c \rsq = \exp(X)
-\]</div>
-</section>
-</div><div class="proof property admonition" id="prop_expectation_stronger_linearity_continuous">
-<p class="admonition-title"><span class="caption-number">Property 21 </span> (Stronger Linearity)</p>
-<section class="property-content" id="proof-content">
-<p>It follows that for any random variables <span class="math notranslate nohighlight">\(X_1\)</span>, <span class="math notranslate nohighlight">\(X_2\)</span>, …, <span class="math notranslate nohighlight">\(X_n\)</span>,</p>
-<div class="math notranslate nohighlight">
-\[
-\exp \lsq \sum_{i=1}^n a_i X_i \rsq = \sum_{i=1}^n a_i \cdot \exp \lsq X_i \rsq
-\]</div>
-</section>
-</div></section>
-<section id="concept">
-<h2>Concept<a class="headerlink" href="#concept" title="Permalink to this headline">#</a></h2>
-<div class="important admonition">
-<p class="admonition-title">Concept</p>
-<ul class="simple">
-<li><p><strong>Expectation</strong> is a measure of the mean value of a random variable and is <strong>deterministic</strong>. It
-is also synonymous with the <strong>population mean</strong>.</p></li>
-<li><p><strong>Average</strong> is a measure of the average value of a <strong>random sample</strong> from the true population
-and is <strong>random</strong>.</p></li>
-<li><p><strong>Average</strong> of a random sample is a random variable and as sample size increases, the <strong>average</strong> of a random sample converges to the <strong>population mean</strong>.</p></li>
-</ul>
+</div><div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+<span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">5000</span><span class="p">)</span> <span class="c1"># random variable realizations</span>
+<span class="n">U1</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">)</span> 
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">U1</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="s2">&quot;r-&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Uniform[0.2, 0.8]&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;PDF of Uniform[0.2, 0.8]&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;pdf(x)&quot;</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">U1</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="s2">&quot;r-&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Uniform[0.2, 0.8]&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;CDF of Uniform[0.2, 0.8]&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;cdf(x)&quot;</span><span class="p">)</span>
+
+<span class="n">U2</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">U2</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="s2">&quot;r-&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Uniform[2, 8]&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;PDF of Uniform[2, 8]&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;pdf(x)&quot;</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">U2</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="s2">&quot;r-&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Uniform[2, 8]&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;CDF of Uniform[2, 8]&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;cdf(x)&quot;</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/0407_continuous_uniform_distribution_1_0.png" src="../_images/0407_continuous_uniform_distribution_1_0.png" />
+</div>
 </div>
 </section>
-<section id="further-readings">
-<h2>Further Readings<a class="headerlink" href="#further-readings" title="Permalink to this headline">#</a></h2>
-<ul class="simple">
-<li><p>Chan, Stanley H. “Chapter 4.2. Expectation, Moment, and Variance.” In Introduction to Probability for Data Science, 180–184. Ann Arbor, Michigan: Michigan Publishing Services, 2021.</p></li>
-</ul>
+<section id="expectation-and-variance">
+<h2>Expectation and Variance<a class="headerlink" href="#expectation-and-variance" title="Permalink to this headline">#</a></h2>
+<div class="proof theorem admonition" id="thm_continuous_uniform_distribution">
+<p class="admonition-title"><span class="caption-number">Theorem 13 </span> (Expectation and Variance of Continuous Uniform Distribution)</p>
+<section class="theorem-content" id="proof-content">
+<p>If <span class="math notranslate nohighlight">\(X\)</span> is a continuous random variable with a continuous uniform distribution on <span class="math notranslate nohighlight">\([a,b]\)</span>, then</p>
+<div class="math notranslate nohighlight" id="equation-eq-thm-continuous-uniform-distribution">
+<span class="eqno">(17)<a class="headerlink" href="#equation-eq-thm-continuous-uniform-distribution" title="Permalink to this equation">#</a></span>\[
+\exp \lsq X \rsq = \frac{a+b}{2} \qquad \text{and} \qquad \var \lsq X \rsq = \frac{(b-a)^2}{12}
+\]</div>
 </section>
+</div><div class="proof remark admonition" id="rmk_continuous_uniform_distribution">
+<p class="admonition-title"><span class="caption-number">Remark 3 </span> (Intuition for Expectation and Variance of Continuous Uniform Distribution)</p>
+<section class="remark-content" id="proof-content">
+<p>The expectation of a continuous uniform distribution is the midpoint of the interval on which the random variable is defined.</p>
+<p>This should not be surprising, since the probability density function is constant over the interval, and the probability of any point in the interval is the same.</p>
+<p>Let’s say we have <span class="math notranslate nohighlight">\(X \sim \text{Uniform}(0, 10)\)</span>, then <span class="math notranslate nohighlight">\(\exp \lsq X \rsq = 5\)</span>.</p>
+</section>
+</div></section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -766,17 +796,17 @@ and is <strong>random</strong>.</p></li>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="0402_probability_density_function.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="0406_mean_median_mode.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Probability Density Function</p>
+            <p class="prev-next-title">Mean, Median and Mode</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="0404_moments_and_variance.html" title="next page">
+    <a class='right-next' id="next-link" href="../bibliography/bibliography.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Moments and Variance</p>
+        <p class="prev-next-title">Bibliography</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

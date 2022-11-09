@@ -95,4 +95,4 @@ This may not hold when the PDF of $\pdf(x)$ has a delta function at $a$ or $b$ {
 
 ## Further Readings
 
-- Chapter 4.1 of {cite}`chan_2021`
+- Chan, Stanley H. "Chapter 4.1. Probability Density Function." In Introduction to Probability for Data Science, 172-180. Ann Arbor, Michigan: Michigan Publishing Services, 2021. 
