@@ -36,7 +36,7 @@ where $[a,b]$ is the interval on which $X$ is defined.
 
 Some conventions:
 
-1. We write $X \sim \text{Uniform}(a,b)$ to indicate that $X$ has a continuous uniform distribution on $[a,b]$.
+1. We write $X \sim \uniform(a,b)$ to indicate that $X$ has a continuous uniform distribution on $[a,b]$.
 ```
 
 ```{prf:definition} Continuous Uniform Distribution (CDF)
@@ -54,6 +54,7 @@ $$
 $$ (eq:def_continuous_uniform_distribution_cdf)
 ```
 
+The PDF and CDF of two continuous uniform distributions are shown below.
 
 ```{code-cell} ipython3
 :tags: [hide-input]
@@ -104,6 +105,27 @@ axes[1, 1].set_ylabel("cdf(x)")
 plt.show()
 ```
 
+```{code-cell} ipython3
+:tags: [hide-input]
+import sys
+from pathlib import Path
+parent_dir = str(Path().resolve().parent)
+sys.path.append(parent_dir)
+
+import numpy as np
+import scipy.stats as stats
+
+from utils import seed_all, plot_continuous_pdf_and_cdf
+seed_all()
+
+# x = np.linspace(-1, 9, 5000) # random variable realizations
+U1 = stats.uniform(0.2, 0.8) 
+U2 = stats.uniform(2, 6)
+
+plot_continuous_pdf_and_cdf(U1, -1, 9, title="Uniform$([0.2, 0.8])$", xlim=(-0.1, 1.3), ylim=(0, 2))
+plot_continuous_pdf_and_cdf(U2, -1, 10, title="Uniform$([2, 6])$", xlim=(-1, 10), ylim=(0, 1.1))
+```
+
 ## Expectation and Variance
 
 ```{prf:theorem} Expectation and Variance of Continuous Uniform Distribution
@@ -125,3 +147,7 @@ This should not be surprising, since the probability density function is constan
 
 Let's say we have $X \sim \text{Uniform}(0, 10)$, then $\exp \lsq X \rsq = 5$.
 ```
+
+## Further Readings
+
+- Chan, Stanley H. "Chapter 4.5. Uniform and Exponential Random Variables." In Introduction to Probability for Data Science, 201-205. Ann Arbor, Michigan: Michigan Publishing Services, 2021. 

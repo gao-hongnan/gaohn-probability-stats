@@ -357,6 +357,11 @@ const thebe_selector_output = ".output, .cell_output"
    Continuous Uniform Distribution
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_continuous_random_variables/0408_exponential_distribution.html">
+   Exponential Distribution
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -537,6 +542,8 @@ title="Open an issue"
    <a href="#cap-def_countable_set"><strong>def_countable_set</strong></a> | 
    <a href="#cap-def_discrete_expectation"><strong>def_discrete_expectation</strong></a> | 
    <a href="#cap-def_discrete_random_variables"><strong>def_discrete_random_variables</strong></a> | 
+   <a href="#cap-def_exponential_distribution_cdf"><strong>def_exponential_distribution_cdf</strong></a> | 
+   <a href="#cap-def_exponential_distribution_pdf"><strong>def_exponential_distribution_pdf</strong></a> | 
    <a href="#cap-def_iid"><strong>def_iid</strong></a> | 
    <a href="#cap-def_moments"><strong>def_moments</strong></a> | 
    <a href="#cap-def_moments_continuous"><strong>def_moments_continuous</strong></a> | 
@@ -593,6 +600,7 @@ title="Open an issue"
    <a href="#cap-prop_linearity"><strong>prop_linearity</strong></a> | 
    <a href="#cap-prop_scaling"><strong>prop_scaling</strong></a> | 
    <a href="#cap-random_variables"><strong>random_variables</strong></a> | 
+   <a href="#cap-rem_exponential_distribution_pdf"><strong>rem_exponential_distribution_pdf</strong></a> | 
    <a href="#cap-rem_open_equals_closed_interval"><strong>rem_open_equals_closed_interval</strong></a> | 
    <a href="#cap-rem_probability_density_function"><strong>rem_probability_density_function</strong></a> | 
    <a href="#cap-rmk_continuous_uniform_distribution"><strong>rmk_continuous_uniform_distribution</strong></a> | 
@@ -606,6 +614,7 @@ title="Open an issue"
    <a href="#cap-thm_continuous_uniform_distribution"><strong>thm_continuous_uniform_distribution</strong></a> | 
    <a href="#cap-thm_existence_of_expectation_continuous"><strong>thm_existence_of_expectation_continuous</strong></a> | 
    <a href="#cap-thm_existence_of_expectation_discrete"><strong>thm_existence_of_expectation_discrete</strong></a> | 
+   <a href="#cap-thm_exponential_distribution_expectation_variance"><strong>thm_exponential_distribution_expectation_variance</strong></a> | 
    <a href="#cap-thm_pdf_derivative_cdf"><strong>thm_pdf_derivative_cdf</strong></a> | 
    <a href="#cap-thm_pmf_cdf"><strong>thm_pmf_cdf</strong></a> | 
    <a href="#cap-thm_pmf_normalization"><strong>thm_pmf_normalization</strong></a>
@@ -859,6 +868,22 @@ title="Open an issue"
        <td></td>
        <td>
        <a href="03_discrete_random_variables/0302_discrete_random_variables.html#def_discrete_random_variables"><code class="xref">def_discrete_random_variables</code></a> <em>(03_discrete_random_variables/0302_discrete_random_variables)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-def_exponential_distribution_cdf"><td></td><td>
+       <strong>def_exponential_distribution_cdf</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="04_continuous_random_variables/0408_exponential_distribution.html#def_exponential_distribution_cdf"><code class="xref">def_exponential_distribution_cdf</code></a> <em>(04_continuous_random_variables/0408_exponential_distribution)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-def_exponential_distribution_pdf"><td></td><td>
+       <strong>def_exponential_distribution_pdf</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="04_continuous_random_variables/0408_exponential_distribution.html#def_exponential_distribution_pdf"><code class="xref">def_exponential_distribution_pdf</code></a> <em>(04_continuous_random_variables/0408_exponential_distribution)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-def_iid"><td></td><td>
@@ -1309,6 +1334,14 @@ title="Open an issue"
        <a href="03_discrete_random_variables/0301_random_variables.html#random_variables"><code class="xref">random_variables</code></a> <em>(03_discrete_random_variables/0301_random_variables)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-rem_exponential_distribution_pdf"><td></td><td>
+       <strong>rem_exponential_distribution_pdf</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="04_continuous_random_variables/0408_exponential_distribution.html#rem_exponential_distribution_pdf"><code class="xref">rem_exponential_distribution_pdf</code></a> <em>(04_continuous_random_variables/0408_exponential_distribution)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-rem_open_equals_closed_interval"><td></td><td>
        <strong>rem_open_equals_closed_interval</strong></td><td></td></tr>
      <tr>
@@ -1411,6 +1444,14 @@ title="Open an issue"
        <td></td>
        <td>
        <a href="03_discrete_random_variables/0305_expectation.html#thm_existence_of_expectation_discrete"><code class="xref">thm_existence_of_expectation_discrete</code></a> <em>(03_discrete_random_variables/0305_expectation)</em></td><td>
+       <em>theorem</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-thm_exponential_distribution_expectation_variance"><td></td><td>
+       <strong>thm_exponential_distribution_expectation_variance</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="04_continuous_random_variables/0408_exponential_distribution.html#thm_exponential_distribution_expectation_variance"><code class="xref">thm_exponential_distribution_expectation_variance</code></a> <em>(04_continuous_random_variables/0408_exponential_distribution)</em></td><td>
        <em>theorem</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-thm_pdf_derivative_cdf"><td></td><td>
