@@ -314,12 +314,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="04_continuous_random_variables/from_discrete_to_continuous.html">
-   Intuition of Continuous Distribution
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="04_continuous_random_variables/from_discrete_to_continuous_notebook.html">
-   Discrete to Continuous
+   From Discrete to Continuous
   </a>
  </li>
  <li class="toctree-l1">
@@ -360,6 +355,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="04_continuous_random_variables/0408_exponential_distribution.html">
    Exponential Distribution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_continuous_random_variables/0409_gaussian_distribution.html">
+   Gaussian Distribution
   </a>
  </li>
 </ul>
@@ -544,6 +544,8 @@ title="Open an issue"
    <a href="#cap-def_discrete_random_variables"><strong>def_discrete_random_variables</strong></a> | 
    <a href="#cap-def_exponential_distribution_cdf"><strong>def_exponential_distribution_cdf</strong></a> | 
    <a href="#cap-def_exponential_distribution_pdf"><strong>def_exponential_distribution_pdf</strong></a> | 
+   <a href="#cap-def_gaussian_distribution_cdf"><strong>def_gaussian_distribution_cdf</strong></a> | 
+   <a href="#cap-def_gaussian_distribution_pdf"><strong>def_gaussian_distribution_pdf</strong></a> | 
    <a href="#cap-def_iid"><strong>def_iid</strong></a> | 
    <a href="#cap-def_moments"><strong>def_moments</strong></a> | 
    <a href="#cap-def_moments_continuous"><strong>def_moments_continuous</strong></a> | 
@@ -604,7 +606,9 @@ title="Open an issue"
    <a href="#cap-rem_open_equals_closed_interval"><strong>rem_open_equals_closed_interval</strong></a> | 
    <a href="#cap-rem_probability_density_function"><strong>rem_probability_density_function</strong></a> | 
    <a href="#cap-rmk_continuous_uniform_distribution"><strong>rmk_continuous_uniform_distribution</strong></a> | 
+   <a href="#cap-rmk_gaussian_distribution_pdf"><strong>rmk_gaussian_distribution_pdf</strong></a> | 
    <a href="#cap-sample_space"><strong>sample_space</strong></a> | 
+   <a href="#cap-theorem-3"><strong>theorem-3</strong></a> | 
    <a href="#cap-thm:disjoint-vs-independent"><strong>thm:disjoint-vs-independent</strong></a> | 
    <a href="#cap-thm:law-total-probability"><strong>thm:law-total-probability</strong></a> | 
    <a href="#cap-thm:poi_bin"><strong>thm:poi_bin</strong></a> | 
@@ -884,6 +888,22 @@ title="Open an issue"
        <td></td>
        <td>
        <a href="04_continuous_random_variables/0408_exponential_distribution.html#def_exponential_distribution_pdf"><code class="xref">def_exponential_distribution_pdf</code></a> <em>(04_continuous_random_variables/0408_exponential_distribution)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-def_gaussian_distribution_cdf"><td></td><td>
+       <strong>def_gaussian_distribution_cdf</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="04_continuous_random_variables/0409_gaussian_distribution.html#def_gaussian_distribution_cdf"><code class="xref">def_gaussian_distribution_cdf</code></a> <em>(04_continuous_random_variables/0409_gaussian_distribution)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-def_gaussian_distribution_pdf"><td></td><td>
+       <strong>def_gaussian_distribution_pdf</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="04_continuous_random_variables/0409_gaussian_distribution.html#def_gaussian_distribution_pdf"><code class="xref">def_gaussian_distribution_pdf</code></a> <em>(04_continuous_random_variables/0409_gaussian_distribution)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-def_iid"><td></td><td>
@@ -1366,6 +1386,14 @@ title="Open an issue"
        <a href="04_continuous_random_variables/0407_continuous_uniform_distribution.html#rmk_continuous_uniform_distribution"><code class="xref">rmk_continuous_uniform_distribution</code></a> <em>(04_continuous_random_variables/0407_continuous_uniform_distribution)</em></td><td>
        <em>remark</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-rmk_gaussian_distribution_pdf"><td></td><td>
+       <strong>rmk_gaussian_distribution_pdf</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="04_continuous_random_variables/0409_gaussian_distribution.html#rmk_gaussian_distribution_pdf"><code class="xref">rmk_gaussian_distribution_pdf</code></a> <em>(04_continuous_random_variables/0409_gaussian_distribution)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-sample_space"><td></td><td>
        <strong>sample_space</strong></td><td></td></tr>
      <tr>
@@ -1373,6 +1401,14 @@ title="Open an issue"
        <td>
        <a href="02_probability/0202_probability_space.html#sample_space"><code class="xref">sample_space</code></a> <em>(02_probability/0202_probability_space)</em></td><td>
        <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-theorem-3"><td></td><td>
+       <strong>theorem-3</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="04_continuous_random_variables/0409_gaussian_distribution.html#theorem-3"><code class="xref">theorem-3</code></a> <em>(04_continuous_random_variables/0409_gaussian_distribution)</em></td><td>
+       <em>theorem</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-thm:disjoint-vs-independent"><td></td><td>
        <strong>thm:disjoint-vs-independent</strong></td><td></td></tr>

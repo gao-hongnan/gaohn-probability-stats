@@ -151,3 +151,4 @@ Let's say we have $X \sim \text{Uniform}(0, 10)$, then $\expectation \lsq X \rsq
 ## Further Readings
 
 - Chan, Stanley H. "Chapter 4.5. Uniform and Exponential Random Variables." In Introduction to Probability for Data Science, 201-205. Ann Arbor, Michigan: Michigan Publishing Services, 2021. 
+- Pishro-Nik, Hossein. "Chapter 4.2.1. Uniform Distribution" In Introduction to Probability, Statistics, and Random Processes, 248-248. Kappa Research, 2014. 

@@ -106,3 +106,4 @@ Further readings is a must since Professor Chan give many intuition on how Expon
 He also showed how Exponential distribution is derived from the Poisson distribution.
 
 - Chan, Stanley H. "Chapter 4.5. Uniform and Exponential Random Variables." In Introduction to Probability for Data Science, 205-211. Ann Arbor, Michigan: Michigan Publishing Services, 2021. 
+- Pishro-Nik, Hossein. "Chapter 4.2.2. Exponential Distribution" In Introduction to Probability, Statistics, and Random Processes, 249-252. Kappa Research, 2014. 

@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Intuition of Continuous Distribution &#8212; Probability &amp; Statistics</title>
+    <title>From Discrete to Continuous &#8212; Probability &amp; Statistics</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -59,7 +59,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Discrete to Continuous" href="from_discrete_to_continuous_notebook.html" />
+    <link rel="next" title="Continuous Random Variables" href="0401_continuous_random_variables.html" />
     <link rel="prev" title="Problems and Solutions" href="../03_discrete_random_variables/problems_and_solutions.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -312,12 +312,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Intuition of Continuous Distribution
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="from_discrete_to_continuous_notebook.html">
-   Discrete to Continuous
+   From Discrete to Continuous
   </a>
  </li>
  <li class="toctree-l1">
@@ -358,6 +353,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="0408_exponential_distribution.html">
    Exponential Distribution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="0409_gaussian_distribution.html">
+   Gaussian Distribution
   </a>
  </li>
 </ul>
@@ -423,6 +423,53 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/gao-hongnan/gaohn-probability-stats/main?urlpath=tree/content/04_continuous_random_variables/from_discrete_to_continuous.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/gao-hongnan/gaohn-probability-stats/blob/main/content/04_continuous_random_variables/from_discrete_to_continuous.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -490,6 +537,23 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
+        <a href="../_sources/04_continuous_random_variables/from_discrete_to_continuous.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
         <a href="../_sources/04_continuous_random_variables/from_discrete_to_continuous.md"
    class="headerbtn"
    data-toggle="tooltip"
@@ -555,6 +619,33 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#probability-density-function">
+   Probability Density Function
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pdf-is-not-probability">
+     PDF is not Probability
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#probability-at-a-point-is-zero">
+     Probability at a Point is Zero
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#probability-at-a-point-in-a-small-neighborhood">
+     Probability at a Point in a Small Neighborhood
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-walkthrough">
+     Example Walkthrough
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#further-readings">
    Further Readings
   </a>
@@ -568,7 +659,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Intuition of Continuous Distribution</h1>
+                <h1>From Discrete to Continuous</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -582,6 +673,33 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#calculus">
    Calculus
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#probability-density-function">
+   Probability Density Function
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pdf-is-not-probability">
+     PDF is not Probability
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#probability-at-a-point-is-zero">
+     Probability at a Point is Zero
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#probability-at-a-point-in-a-small-neighborhood">
+     Probability at a Point in a Small Neighborhood
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-walkthrough">
+     Example Walkthrough
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#further-readings">
@@ -598,8 +716,15 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="intuition-of-continuous-distribution">
-<h1>Intuition of Continuous Distribution<a class="headerlink" href="#intuition-of-continuous-distribution" title="Permalink to this headline">#</a></h1>
+  <div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using Seed Number 1992
+</pre></div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="from-discrete-to-continuous">
+<h1>From Discrete to Continuous<a class="headerlink" href="#from-discrete-to-continuous" title="Permalink to this headline">#</a></h1>
 <section id="calculus">
 <h2>Calculus<a class="headerlink" href="#calculus" title="Permalink to this headline">#</a></h2>
 <p>The following content is adapted from <span id="id1">[<a class="reference internal" href="../bibliography/bibliography.html#id9" title="Bloom Orloff. Reading 5b: continuous random variables. https://ocw.mit.edu/courses/18-05-introduction-to-probability-and-statistics-spring-2014/1f88c7c765d2532fd57d8ee719a751b3_MIT18_05S14_Reading5b.pdf. (Accessed on 10/28/2022).">Orloff, n.d.</a>]</span>.</p>
@@ -626,32 +751,70 @@ title="Print to PDF"
 comes primarily from its interpretation as “sum” and to a much lesser extent from
 its interpretation as “area”.</p>
 </div>
-<ul class="simple">
-<li><p>unit length</p></li>
-<li><p>pdf &gt; 1</p></li>
-<li><p>P(X=x) = 0
-realize</p></li>
-</ul>
-<ol class="simple">
-<li><p>The author emphasized what is the meaning of the PDF of <span class="math notranslate nohighlight">\(X\)</span> at a point <span class="math notranslate nohighlight">\(x\)</span>.
-That can be interpreted as the small rectangle area within a small interval.
-He mentioned for each <span class="math notranslate nohighlight">\(x\)</span>, the value <span class="math notranslate nohighlight">\(\pdf(x)\)</span> is the probability per unit length. Which
-is easier to interpret, like if the PDF is 2, then it means it is 2 probability per unit length.
-This means it is 2 per hour for example, then it must mean the hour is compesentated.
-so it means 0.2 per 1/10 hour.</p></li>
-<li><p>So dont confused if u ask why <span class="math notranslate nohighlight">\(P(1&lt; X&lt; 2)\)</span> this is diff from the PDF at a point meaning?</p></li>
-<li><p>It means how much probability is concentrated per unit length (d𝒙) near 𝒙, or how dense the probability is near 𝒙.</p></li>
-</ol>
-<p>IT MEANS IT IS THE PROBABILITY PER FOOT AROUND A SUPER SMALL NEIGHBOURHOOD AROUND  x.
-IT DOES NOT MEAN A BIG RANGE. THIS IS JUST ANSWERING THE EXACT QN ON WHAT PDF AT X = x MEANS.
-AND THEREFORE WHY THE HIGHER THE f(x) THE MORE PROBABILITY IS CONCENTRATED AROUND X. IT IS BECAUSE
-THE PDF IS THE PROBABILITY PER SAY METER AROUND THAT POINT. SO EVEN THO THE POINT IS A DECIMAL SAY
-0.1, BUT WHEN YOU CALCULATE f(0.1) = 10, IT MEANS THAT AROUND THAT POINT IT IS 10 PROBABILITY PER METER.</p>
-<p>Let’s define a thought experiment.</p>
-<p>first show why cannot be 0 wrong idea</p>
-<p><a class="reference internal" href="#baby-frequency-1"><span class="std std-numref">Table 1</span></a></p>
+</section>
+<section id="probability-density-function">
+<h2>Probability Density Function<a class="headerlink" href="#probability-density-function" title="Permalink to this headline">#</a></h2>
+<section id="pdf-is-not-probability">
+<h3>PDF is not Probability<a class="headerlink" href="#pdf-is-not-probability" title="Permalink to this headline">#</a></h3>
+<p>Let’s say a well know Expoential distribution with rate parameter <span class="math notranslate nohighlight">\(\lambda_1 = 0.5\)</span> and
+<span class="math notranslate nohighlight">\(\lambda_2 = 2\)</span> respectively, then their PDF is as follows.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/from_discrete_to_continuous_2_0.png" src="../_images/from_discrete_to_continuous_2_0.png" />
+<img alt="../_images/from_discrete_to_continuous_2_1.png" src="../_images/from_discrete_to_continuous_2_1.png" />
+</div>
+</div>
+<p>Notice immediately that for the <span class="math notranslate nohighlight">\(\lambda_2 = 2\)</span>, the PDF starts off at <span class="math notranslate nohighlight">\(2\)</span>. This already tells
+you that PDF is not probability, as it is more than <span class="math notranslate nohighlight">\(1\)</span>.</p>
+<p>One might wonder why you cannot define the probability of a continuous random variable
+as the sum like their discrete counterparts. Like, if the domain/sample space is
+from <span class="math notranslate nohighlight">\([0, 10]\)</span>, why don’t we just sum up the probability of all the points in the domain?</p>
+<p>The simple answer is that the domain is infinite, and therefore the sum is infinite. Henceforth,
+in continuous distribution, the probability at a point is defined to be <span class="math notranslate nohighlight">\(0\)</span>.</p>
+</section>
+<section id="probability-at-a-point-is-zero">
+<h3>Probability at a Point is Zero<a class="headerlink" href="#probability-at-a-point-is-zero" title="Permalink to this headline">#</a></h3>
+<p>Let’s give an informal proof.</p>
+<p>Assume that the probability at a point <span class="math notranslate nohighlight">\(x_i\)</span> is given by <span class="math notranslate nohighlight">\(\P \lsq X = x_i \rsq = p_i(x)\)</span>, then
+the probability of the entire domain is given by <span class="math notranslate nohighlight">\(\sum_{i=1}^n p_i(x) = \infty\)</span>, a
+contradiction because by the Probability Axiom <a class="reference internal" href="../02_probability/0203_probability_axioms.html#axiom:normalization">Axiom 2</a>.
+is <span class="math notranslate nohighlight">\(1\)</span>.</p>
+<p>This does not help build up intuition, because if we use the “summing” idea to approach
+the problem, we will be stuck because one cannot convince oneself that the sum is infinite,
+and not <span class="math notranslate nohighlight">\(1\)</span>.</p>
+<p>The misconception is that we need to use the idea of “summing” in terms of integration.</p>
+</section>
+<section id="probability-at-a-point-in-a-small-neighborhood">
+<h3>Probability at a Point in a Small Neighborhood<a class="headerlink" href="#probability-at-a-point-in-a-small-neighborhood" title="Permalink to this headline">#</a></h3>
+<p>As <a class="reference external" href="https://towardsdatascience.com/pdf-is-not-a-probability-5a4b8a5d9531">Aerin Kim</a>
+intuitively pointed out, the probability of a point is not <span class="math notranslate nohighlight">\(0\)</span>, but rather <span class="math notranslate nohighlight">\(0\)</span> in the limit.</p>
+<p>So, if we take a small enough neighborhood around <span class="math notranslate nohighlight">\(x\)</span>, say the interval <span class="math notranslate nohighlight">\([x, x+\Delta x]\)</span>,
+or equivalently, <span class="math notranslate nohighlight">\([x, x + dx]\)</span> or <span class="math notranslate nohighlight">\([x, x + \delta]\)</span>,
+then the probability of the point <span class="math notranslate nohighlight">\(x\)</span> can be approximated by the area under the curve
+in that interval.</p>
+<p>Therefore, if <span class="math notranslate nohighlight">\(\Delta x\)</span> is small enough, then we can approximately say that
+<span class="math notranslate nohighlight">\(\P \lsq X = x \rsq\)</span> is the area under the curve between <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(x + \Delta x\)</span>.</p>
+<p>She further mentioned that the probability density at a point <span class="math notranslate nohighlight">\(x\)</span> signifies
+how dense the probability is around <span class="math notranslate nohighlight">\(x\)</span> in the small neighborhood.</p>
+<div class="warning admonition">
+<p class="admonition-title">Warning</p>
+<p>In this section, we are talking about the probability density at a point, and try to
+interpret it as the area under the curve in a small neighborhood. We have not formalized
+the idea with integration, which we will do so in the next section.</p>
+</div>
+</section>
+<section id="example-walkthrough">
+<h3>Example Walkthrough<a class="headerlink" href="#example-walkthrough" title="Permalink to this headline">#</a></h3>
+<p>This example below is modified from a problem set in Singapore’s Junior College notes.</p>
+<p>The masses of 200 six-month-old babies are collected. To visualise the distribution of the
+mass of a six-month old baby (which is a continuous random variable), let us for a moment
+treat this 200 data points as the probability distribution<a class="footnote-reference brackets" href="#empirical" id="id4">1</a> of all the babies’
+masses.</p>
+<p>Then, we can say that <span class="math notranslate nohighlight">\(X\)</span> is a random variable that represents the mass of a (randomly drawn) baby.</p>
+<p>We can then group the data into 5 classes with a class width of 1 kg each. The frequency table and the histogram
+corresponding to the data <a class="reference internal" href="#baby-frequency-1"><span class="std std-ref">Baby Mass Frequency Table</span></a> are shown below.</p>
 <table class="table" id="baby-frequency-1">
-<caption><span class="caption-number">Table 1 </span><span class="caption-text">Baby Frequency Table, binned by 1 kg</span><a class="headerlink" href="#baby-frequency-1" title="Permalink to this table">#</a></caption>
+<caption><span class="caption-number">Table 1 </span><span class="caption-text">Baby Mass Frequency Table</span><a class="headerlink" href="#baby-frequency-1" title="Permalink to this table">#</a></caption>
 <colgroup>
 <col style="width: 17%" />
 <col style="width: 17%" />
@@ -670,7 +833,7 @@ THE PDF IS THE PROBABILITY PER SAY METER AROUND THAT POINT. SO EVEN THO THE POIN
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>Frequency</strong>, <span class="math notranslate nohighlight">\(f\)</span></p></td>
+<tr class="row-even"><td><p>Frequency, <span class="math notranslate nohighlight">\(f\)</span></p></td>
 <td><p>20</p></td>
 <td><p>48</p></td>
 <td><p>80</p></td>
@@ -679,12 +842,245 @@ THE PDF IS THE PROBABILITY PER SAY METER AROUND THAT POINT. SO EVEN THO THE POIN
 </tr>
 </tbody>
 </table>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># generated bins of data from 5-10</span>
+<span class="n">bin_56</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">bin_67</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">48</span><span class="p">)</span>
+<span class="n">bin_78</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">80</span><span class="p">)</span>
+<span class="n">bin_89</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">36</span><span class="p">)</span>
+<span class="n">bin_910</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
+<span class="n">population</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">bin_56</span><span class="p">,</span> <span class="n">bin_67</span><span class="p">,</span> <span class="n">bin_78</span><span class="p">,</span> <span class="n">bin_89</span><span class="p">,</span> <span class="n">bin_910</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we plot out their histograms with bin size of 1, from 5-10 inclusive, we recover
+the following histogram.</p>
+<p>In the frequency histogram on the left, we can say that,</p>
+<ul class="simple">
+<li><p>20 babies with mass between 5 and 6;</p></li>
+<li><p>48 babies with mass between 6 and 7;</p></li>
+<li><p>80 babies with mass between 7 and 8;</p></li>
+<li><p>36 babies with mass between 8 and 9;</p></li>
+<li><p>16 babies with mass between 9 and 10.</p></li>
+</ul>
+<p>In the relative frequency in the middle, we can say that,</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\frac{20}{200} = 0.1\)</span> babies with mass between 5 and 6;</p></li>
+<li><p><span class="math notranslate nohighlight">\(\frac{48}{200} = 0.24\)</span> babies with mass between 6 and 7;</p></li>
+<li><p><span class="math notranslate nohighlight">\(\frac{80}{200} = 0.4\)</span> babies with mass between 7 and 8;</p></li>
+<li><p><span class="math notranslate nohighlight">\(\frac{36}{200} = 0.18\)</span> babies with mass between 8 and 9;</p></li>
+<li><p><span class="math notranslate nohighlight">\(\frac{16}{200} = 0.08\)</span> babies with mass between 9 and 10.</p></li>
+</ul>
+<p>In the density histogram on the right, we first define the density histogram
+so that the area of each rectangle in the histogram is equal to the relative frequency.
+In other words, the width <span class="math notranslate nohighlight">\(w\)</span> (interval) of each bin multiply by the height <span class="math notranslate nohighlight">\(h\)</span> (density)
+gives the area of the rectangle, and consequently the relative frequency of the bin.
+So to recover the density value <span class="math notranslate nohighlight">\(h\)</span>, we divide the relative frequency by the width <span class="math notranslate nohighlight">\(w\)</span>.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\frac{20}{200} / 1 = 0.1\)</span> babies with mass between 5 and 6;</p></li>
+<li><p><span class="math notranslate nohighlight">\(\frac{48}{200} / 1 = 0.24\)</span> babies with mass between 6 and 7;</p></li>
+<li><p><span class="math notranslate nohighlight">\(\frac{80}{200} / 1 = 0.4\)</span> babies with mass between 7 and 8;</p></li>
+<li><p><span class="math notranslate nohighlight">\(\frac{36}{200} / 1 = 0.18\)</span> babies with mass between 8 and 9;</p></li>
+<li><p><span class="math notranslate nohighlight">\(\frac{16}{200} / 1 = 0.08\)</span> babies with mass between 9 and 10.</p></li>
+</ul>
+<p>In this case the density histogram is the same as the relative frequency histogram, which
+is not the case in general (we will see later).</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_histogram</span><span class="p">(</span><span class="n">population</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">bins</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">show_labels</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">save</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Plots histogram of population data for baby mass in kg.&quot;&quot;&quot;</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+    <span class="n">values</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">bars</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span>
+        <span class="n">population</span><span class="p">,</span>
+        <span class="n">density</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span>
+        <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#0504AA&quot;</span><span class="p">,</span>
+        <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
+        <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">bar_label</span><span class="p">(</span><span class="n">bars</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;navy&quot;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Mass (kg)&quot;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Frequencies&quot;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Frequencies of Baby Mass.&quot;</span><span class="p">)</span>
+
+    <span class="n">values</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">bars</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span>
+        <span class="n">population</span><span class="p">,</span>
+        <span class="n">density</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span>
+        <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#0504AA&quot;</span><span class="p">,</span>
+        <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
+        <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">weights</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">population</span><span class="p">)</span>
+        <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">population</span><span class="p">),</span>  <span class="c1"># this allows matplotlib to show as relative frequency</span>
+    <span class="p">)</span>
+
+    <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">bar_label</span><span class="p">(</span><span class="n">bars</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;navy&quot;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Mass (kg)&quot;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Relative Frequencies&quot;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Relative Frequencies of Baby Mass.&quot;</span><span class="p">)</span>
+
+    <span class="n">values</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">bars</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span>
+        <span class="n">population</span><span class="p">,</span>
+        <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span>
+        <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#0504AA&quot;</span><span class="p">,</span>
+        <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
+        <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">bar_label</span><span class="p">(</span><span class="n">bars</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;navy&quot;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Mass (kg)&quot;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Density&quot;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Density Histogram of Baby Mass.&quot;</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">save</span><span class="p">:</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;plot.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bin_interval</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">bin_start</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">bin_end</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">+</span> <span class="n">bin_interval</span>
+
+<span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">bin_start</span><span class="p">,</span> <span class="n">bin_end</span><span class="p">,</span> <span class="n">bin_interval</span><span class="p">)</span>
+<span class="n">plot_histogram</span><span class="p">(</span><span class="n">population</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/from_discrete_to_continuous_7_0.png" src="../_images/from_discrete_to_continuous_7_0.png" />
+</div>
+</div>
+<p>We try to link back how a density histogram can connect to PDF and its integral. Let <span class="math notranslate nohighlight">\(X\)</span> be the continuous random variable defined earlier.</p>
+<ol class="simple">
+<li><p>The area under a density histogram is 1, this follows because the relative histogram must add to 1.</p></li>
+<li><p>The area represents how dense the population is at that particular interval/bin. The larger the area, the denser the population is (think density).</p></li>
+<li><p>For each interval/bin, the area inside that rectangle is simply the relative frequency (i.e. <span class="math notranslate nohighlight">\(\text{width of interval} \times \text{density}\)</span>).</p></li>
+<li><p>Therefore, we can think of it this way, the area inside each interval/bin is the probability of <span class="math notranslate nohighlight">\(X\)</span> being in that interval.</p></li>
+<li><p>Consequently, we can define <span class="math notranslate nohighlight">\(\mathbb{P} [a &lt; X \leq b]\)</span> to be the area inside the interval between point a and b, i.e. <span class="math notranslate nohighlight">\(\mathbb{P} [a &lt; X \leq b] = (b-a) \times \text{density}\)</span></p></li>
+</ol>
+<p>Note we defined this without the usage of integrals.</p>
+<p>Now this definition seems quite coarse because we are only restricted with a fixed interval, i.e. bins 5-10 with only 1 width, and
+we can only find cases for these discretized bins.</p>
+<p>What if we want to find <span class="math notranslate nohighlight">\(\mathbb{P}[5 &lt; X &lt; 5.25]\)</span>? Well, we can discretize our bins further to have 0.25 intervals (width)!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bin_interval</span> <span class="o">=</span> <span class="mf">0.25</span>
+<span class="n">bin_start</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">bin_end</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">+</span> <span class="n">bin_interval</span>
+
+<span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">bin_start</span><span class="p">,</span> <span class="n">bin_end</span><span class="p">,</span> <span class="n">bin_interval</span><span class="p">)</span>
+<span class="n">plot_histogram</span><span class="p">(</span><span class="n">population</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/from_discrete_to_continuous_9_0.png" src="../_images/from_discrete_to_continuous_9_0.png" />
+</div>
+</div>
+<p>Before we move on, we take note that in the relative frequency diagram, the y-labels must sum to 1, but this
+will not be true here in the density diagram. Recall relative frequency is density multiplied by bin width (i.e. in
+the bin 5 to 5.25, we have <span class="math notranslate nohighlight">\(0.06 \times 0.25 = 0.015\)</span>.</p>
+<p>Now the problem is that all the bins are discretized, and hence does not fit the definition of continuous, we can keep ask for a smaller interval on the real line
+(i.e. what is <span class="math notranslate nohighlight">\(\mathbb{P}[5.00000001 &lt; X \leq 5.00000002]\)</span>). Then we have to keep shrink the bin width to recover the area of the rectangle in order to
+recover the relative frequency (probability).</p>
+<p>Define the number of bins to be <span class="math notranslate nohighlight">\(k\)</span>, and the width of a bin to be <span class="math notranslate nohighlight">\(\frac{5}{k}\)</span> where <span class="math notranslate nohighlight">\(5\)</span> is <span class="math notranslate nohighlight">\(10 - 5\)</span>,
+then we can solve this problem by letting <span class="math notranslate nohighlight">\(k \to \infty\)</span>, this will eventually smooth out the whole
+histogram into infinitely number of bins and recover a smooth function <span class="math notranslate nohighlight">\(f\)</span>, which turns out to be our PDF.</p>
+<p>We can simply use <code class="docutils literal notranslate"><span class="pre">seaborn</span></code> to plot both a histogram and kde (with its distribution smoothed).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># for the same 20 bins</span>
+<span class="n">bin_interval</span> <span class="o">=</span> <span class="mf">0.25</span>
+<span class="n">bin_start</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">bin_end</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">+</span> <span class="n">bin_interval</span>
+
+<span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">bin_start</span><span class="p">,</span> <span class="n">bin_end</span><span class="p">,</span> <span class="n">bin_interval</span><span class="p">)</span>  <span class="c1"># 20 bins</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span>
+    <span class="n">population</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#0504AA&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span>
+<span class="p">)</span>
+<span class="c1"># plt.savefig(&quot;sns_plot.png&quot;, dpi=300)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: ylabel=&#39;Count&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/from_discrete_to_continuous_11_1.png" src="../_images/from_discrete_to_continuous_11_1.png" />
+</div>
+</div>
+<p>We now ask, what exactly does PDF mean at a point <span class="math notranslate nohighlight">\(x\)</span> mean, in other words, if <span class="math notranslate nohighlight">\(f_X(x)\)</span> is not the probability, then
+what is it? We established that the probability at a point <span class="math notranslate nohighlight">\(x\)</span> is <span class="math notranslate nohighlight">\(0\)</span>, because integrating over a point (line) gives 0 (also can prove by contradiction
+by summing up infinite number of bins).</p>
+<p>But to me it does not make sense if this number has no meaning. The textbook says that <span class="math notranslate nohighlight">\(f_X\)</span> at a point
+<span class="math notranslate nohighlight">\(x\)</span> is the “probability mass per unit length<a class="footnote-reference brackets" href="#unit-length" id="id5">2</a> around <span class="math notranslate nohighlight">\(x\)</span> within a small neighbourhood <span class="math notranslate nohighlight">\(\delta\)</span>”.</p>
+<p>This means that if we define an infinitesimally small interva epsilon <span class="math notranslate nohighlight">\(\delta\)</span> around <span class="math notranslate nohighlight">\(x\)</span> (here we would just use <span class="math notranslate nohighlight">\(x^{+}\)</span>) to <span class="math notranslate nohighlight">\(x\)</span>,
+we have an interval <span class="math notranslate nohighlight">\((x, x+\delta]\)</span>. We then ask ourselves the probability between
+this interval, which is <span class="math notranslate nohighlight">\(\mathbb{P}[x &lt; X \leq x + \delta]\)</span>.</p>
+<p>Now recall we have showed earlier that we can approximately interpret integration as sums, and this is now connected to the histograms
+we plotted. If the interval/bin width is very small, then we can say that the probability of this interval is
+<span class="math notranslate nohighlight">\(\mathbb{P}[x &lt; X \leq x + \delta] \approx \delta f_X(x)\)</span>. Note carefully that the interval must be small,
+if not the “area” won’t be close to the probability as seen in <a class="reference internal" href="#mit1805-integration-modified"><span class="std std-numref">Fig. 5</span></a>.</p>
+<p>Rearranging will get me:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{P}[x &lt; X \leq x + \delta] \approx \delta f_X(x) \implies f_X(x) \approx \dfrac{\mathbb{P}[x &lt; X \leq x + \delta]}{\delta}
+\]</div>
+<p>Then we can see that the PDF at a point <span class="math notranslate nohighlight">\(x\)</span> is the <strong>probability</strong> per <strong>delta</strong>, which translates to the probability mass per unit length around <span class="math notranslate nohighlight">\(x\)</span>
+within the small neighbourhood <span class="math notranslate nohighlight">\(\delta\)</span>. One can think of it as how densely packed <span class="math notranslate nohighlight">\(f_X\)</span> is around the point <span class="math notranslate nohighlight">\(x\)</span>, if
+<span class="math notranslate nohighlight">\(f_X(x)\)</span> turns out to be larger than the rest, this means that the probability of occurring at that point (and its neighbourhood)
+is larger than the rest. More concretely, for the same interval length <span class="math notranslate nohighlight">\(\delta\)</span>, a larger <span class="math notranslate nohighlight">\(f_X\)</span> means the probability is higher.</p>
+<p>Furthermore, the probability density function can be greater than 1, as long as it obeys that the area under the curve is 1.</p>
+<p>Note that the above did not mention about the definition of <span class="math notranslate nohighlight">\(f_X\)</span> in terms of integrals, we complete the intuiton as follows:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{P}(x \le X \le x+\delta) = \int_x^{x+\delta} f_X(x) \, dx \approx \delta f_X(x) \approx dx f_X(x)
+\]</div>
+<figure class="align-default" id="mit1805-integration-modified">
+<img alt="../_images/mit1805_integration_modified.png" src="../_images/mit1805_integration_modified.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Notice that in the last interval, the interval is too large and therefore the approximation is not good. The one
+shaded with red is the actual area under the curve between the interval <span class="math notranslate nohighlight">\([x_{n-1}, x_{n}\)</span> where as the
+rectangle area (includes the green line) will over approximate.</span><a class="headerlink" href="#mit1805-integration-modified" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
 </section>
 <section id="further-readings">
 <h2>Further Readings<a class="headerlink" href="#further-readings" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
+<li><p><a class="reference external" href="https://stats.stackexchange.com/questions/594743/is-my-interpretation-of-probability-density-function-correct">Is my interpretation of Probability Density Function correct?</a></p></li>
 <li><p>Chan, Stanley H. “Chapter 4.1. Probability Density Function.” In Introduction to Probability for Data Science, 172-180. Ann Arbor, Michigan: Michigan Publishing Services, 2021.</p></li>
+<li><p>Pishro-Nik, Hossein. “Chapter 4.1.1. Probability Density Function (PDF)” In Introduction to Probability, Statistics, and Random Processes, 226-230. Kappa Research, 2014.</p></li>
+<li><p><a class="reference external" href="https://towardsdatascience.com/pdf-is-not-a-probability-5a4b8a5d9531">Aerin Kim’s Article</a></p></li>
+<li><p><a class="reference external" href="https://math.stackexchange.com/questions/4325018/would-it-be-accurate-to-describe-a-pdf-as-a-probability-mass-per-unit-length">Would it be accurate to describe a PDF as a probability mass per unit length?</a></p></li>
+<li><p><a class="reference external" href="https://stats.stackexchange.com/questions/4220/can-a-probability-distribution-value-exceeding-1-be-ok">Can a probability distribution value exceeding 1 be OK?</a></p></li>
+<li><p><a class="reference external" href="https://www.stat.cmu.edu/~cshalizi/36-220/lecture-7.pdf">CMU Stats Lecture</a></p></li>
+<li><p><a class="reference external" href="https://stats.stackexchange.com/questions/133369/the-total-area-underneath-a-probability-density-function-is-1-relative-to-wh">“The total area underneath a probability density function is 1” - relative to what?</a></p></li>
 </ul>
+<hr class="footnotes docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="empirical"><span class="brackets"><a class="fn-backref" href="#id4">1</a></span></dt>
+<dd><p>Even though this is the empirical distribution (observed, collected data) from
+the true population (PDF), we will assume that these 200 data points is our true population
+since I am trying to understand PDF.</p>
+</dd>
+<dt class="label" id="unit-length"><span class="brackets"><a class="fn-backref" href="#id5">2</a></span></dt>
+<dd><p>This means per 1 unit.</p>
+</dd>
+</dl>
 </section>
 </section>
 
@@ -722,10 +1118,10 @@ THE PDF IS THE PROBABILITY PER SAY METER AROUND THAT POINT. SO EVEN THO THE POIN
             <p class="prev-next-title">Problems and Solutions</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="from_discrete_to_continuous_notebook.html" title="next page">
+    <a class='right-next' id="next-link" href="0401_continuous_random_variables.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Discrete to Continuous</p>
+        <p class="prev-next-title">Continuous Random Variables</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

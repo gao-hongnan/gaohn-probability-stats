@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Permutations and Combinations &#8212; Probability &amp; Statistics</title>
+    <title>Gaussian Distribution &#8212; Probability &amp; Statistics</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -59,8 +59,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Calculus" href="02_calculus.html" />
-    <link rel="prev" title="Introduction" href="../intro.html" />
+    <link rel="next" title="Bibliography" href="../bibliography/bibliography.html" />
+    <link rel="prev" title="Exponential Distribution" href="0408_exponential_distribution.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -125,19 +125,19 @@ const thebe_selector_output = ".output, .cell_output"
   Chapter 1. Mathematical Preliminaries
  </span>
 </p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_mathematical_preliminaries/01_combinatorics.html">
    Permutations and Combinations
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="02_calculus.html">
+  <a class="reference internal" href="../01_mathematical_preliminaries/02_calculus.html">
    Calculus
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="exercises.html">
+  <a class="reference internal" href="../01_mathematical_preliminaries/exercises.html">
    Exercises
   </a>
  </li>
@@ -309,54 +309,54 @@ const thebe_selector_output = ".output, .cell_output"
   Chapter 4. Continuous Random Variables
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../04_continuous_random_variables/from_discrete_to_continuous.html">
+  <a class="reference internal" href="from_discrete_to_continuous.html">
    From Discrete to Continuous
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../04_continuous_random_variables/0401_continuous_random_variables.html">
+  <a class="reference internal" href="0401_continuous_random_variables.html">
    Continuous Random Variables
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../04_continuous_random_variables/0402_probability_density_function.html">
+  <a class="reference internal" href="0402_probability_density_function.html">
    Probability Density Function
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../04_continuous_random_variables/0403_expectation.html">
+  <a class="reference internal" href="0403_expectation.html">
    Expectation
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../04_continuous_random_variables/0404_moments_and_variance.html">
+  <a class="reference internal" href="0404_moments_and_variance.html">
    Moments and Variance
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../04_continuous_random_variables/0405_cumulative_distribution_function.html">
+  <a class="reference internal" href="0405_cumulative_distribution_function.html">
    Cumulative Distribution Function
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../04_continuous_random_variables/0406_mean_median_mode.html">
+  <a class="reference internal" href="0406_mean_median_mode.html">
    Mean, Median and Mode
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../04_continuous_random_variables/0407_continuous_uniform_distribution.html">
+  <a class="reference internal" href="0407_continuous_uniform_distribution.html">
    Continuous Uniform Distribution
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../04_continuous_random_variables/0408_exponential_distribution.html">
+  <a class="reference internal" href="0408_exponential_distribution.html">
    Exponential Distribution
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../04_continuous_random_variables/0409_gaussian_distribution.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Gaussian Distribution
   </a>
  </li>
@@ -423,6 +423,53 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/gao-hongnan/gaohn-probability-stats/main?urlpath=tree/content/04_continuous_random_variables/0409_gaussian_distribution.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/gao-hongnan/gaohn-probability-stats/blob/main/content/04_continuous_random_variables/0409_gaussian_distribution.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -462,7 +509,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/gao-hongnan/gaohn-probability-stats/issues/new?title=Issue%20on%20page%20%2F01_mathematical_preliminaries/01_combinatorics.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/gao-hongnan/gaohn-probability-stats/issues/new?title=Issue%20on%20page%20%2F04_continuous_random_variables/0409_gaussian_distribution.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -490,7 +537,24 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/01_mathematical_preliminaries/01_combinatorics.md"
+        <a href="../_sources/04_continuous_random_variables/0409_gaussian_distribution.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="../_sources/04_continuous_random_variables/0409_gaussian_distribution.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -550,18 +614,18 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-counting-principles">
-   The Counting Principles
+  <a class="reference internal nav-link" href="#definition">
+   Definition
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-multiplication-principle-mp">
-   The Multiplication Principle (MP)
+  <a class="reference internal nav-link" href="#expectation-and-variance">
+   Expectation and Variance
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#why-do-you-multiply-probabilities">
-   Why do you multiply probabilities?
+  <a class="reference internal nav-link" href="#further-readings">
+   Further Readings
   </a>
  </li>
 </ul>
@@ -573,7 +637,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Permutations and Combinations</h1>
+                <h1>Gaussian Distribution</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -584,18 +648,18 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-counting-principles">
-   The Counting Principles
+  <a class="reference internal nav-link" href="#definition">
+   Definition
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-multiplication-principle-mp">
-   The Multiplication Principle (MP)
+  <a class="reference internal nav-link" href="#expectation-and-variance">
+   Expectation and Variance
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#why-do-you-multiply-probabilities">
-   Why do you multiply probabilities?
+  <a class="reference internal nav-link" href="#further-readings">
+   Further Readings
   </a>
  </li>
 </ul>
@@ -608,33 +672,132 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="permutations-and-combinations">
-<h1>Permutations and Combinations<a class="headerlink" href="#permutations-and-combinations" title="Permalink to this headline">#</a></h1>
-<section id="the-counting-principles">
-<h2>The Counting Principles<a class="headerlink" href="#the-counting-principles" title="Permalink to this headline">#</a></h2>
-<p>To fill in by referring to Choo Yan Min’s book on Counting Principles.</p>
-</section>
-<section id="the-multiplication-principle-mp">
-<h2>The Multiplication Principle (MP)<a class="headerlink" href="#the-multiplication-principle-mp" title="Permalink to this headline">#</a></h2>
-<p>We start off with a simple example. Let us assume we have to choose lunch and dinner on an airplane. We were offered 2 choices in lunch menu and 3 choices in dinner menu which we denote <span class="math notranslate nohighlight">\(l_1, l_2\)</span> and <span class="math notranslate nohighlight">\(d_1, d_2, d_3\)</span> respectively.</p>
-<p>We claim that there are a total of <span class="math notranslate nohighlight">\(2 \times 3 = 6\)</span> choices. We first convince ourselves this is true by enumerating manually:</p>
-<div class="math notranslate nohighlight">
-\[
-\left|\left\{(l_1, d_1), (l_1, d_2), (l_1, d_3), (l_2, d_1), (l_2, d_2), (l_2, d_3)\right\}\right| = 6
+  <section class="tex2jax_ignore mathjax_ignore" id="gaussian-distribution">
+<h1>Gaussian Distribution<a class="headerlink" href="#gaussian-distribution" title="Permalink to this headline">#</a></h1>
+<p>Perhaps the most important distribution is the Gaussian Distribution, also known as the Normal Distribution.</p>
+<section id="definition">
+<h2>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">#</a></h2>
+<div class="proof definition admonition" id="def_gaussian_distribution_pdf">
+<p class="admonition-title"><span class="caption-number">Definition 48 </span> (Gaussian Distribution (PDF))</p>
+<section class="definition-content" id="proof-content">
+<p><span class="math notranslate nohighlight">\(X\)</span> is a continuous random variable with a <strong>Gaussian distribution</strong> if the probability density function is given by:</p>
+<div class="math notranslate nohighlight" id="equation-eq-def-gaussian-distribution">
+<span class="eqno">(21)<a class="headerlink" href="#equation-eq-def-gaussian-distribution" title="Permalink to this equation">#</a></span>\[
+\pdf(x) = \frac{1}{\sqrt{2 \pi \sigma^2}} \e \left\{-\frac{(x - \mu)^2}{2 \sigma^2}\right\}
 \]</div>
-<p>Recall <strong>Multiplication</strong> is nothing but <strong>Addition</strong>, and <span class="math notranslate nohighlight">\(2 \times 3\)</span> can be understood as <span class="math notranslate nohighlight">\(3 + 3\)</span>, where we can understood it as if we choose <span class="math notranslate nohighlight">\(l_1\)</span> and fix it as it is, how many choices can we have for dinner, the answer is 3 choices and therefore we have a total of <span class="math notranslate nohighlight">\(3 + 3\)</span> since we have 2 lunch choices, so we add twice. The same can be said if we see <span class="math notranslate nohighlight">\(2 \times 3\)</span> as <span class="math notranslate nohighlight">\(2 + 2 + 2\)</span>, as we can fix dinner as <span class="math notranslate nohighlight">\(d_1\)</span> and ask, how many choices do we have now? The answer is 2, and we see that there are 3 dinner, so add them thrice.</p>
+<p>where <span class="math notranslate nohighlight">\(\mu\)</span> is the mean and <span class="math notranslate nohighlight">\(\sigma^2\)</span> is the variance and are parameters of the distribution.</p>
+<p>Some conventions:</p>
+<ol class="simple">
+<li><p>We write <span class="math notranslate nohighlight">\(X \sim \gaussian(\mu, \sigma^2)\)</span> to indicate that <span class="math notranslate nohighlight">\(X\)</span> has a Gaussian distribution with mean <span class="math notranslate nohighlight">\(\mu\)</span> and variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>.</p></li>
+<li><p>We sometimes denote <span class="math notranslate nohighlight">\(\gaussian\)</span> as <span class="math notranslate nohighlight">\(\normal\)</span> or <span class="math notranslate nohighlight">\(\gaussiansymbol\)</span>.</p></li>
+</ol>
 </section>
-<section id="why-do-you-multiply-probabilities">
-<h2>Why do you multiply probabilities?<a class="headerlink" href="#why-do-you-multiply-probabilities" title="Permalink to this headline">#</a></h2>
-<p>Also appear in Chapter 2 summary.</p>
-<p>Consider rolling a dice twice, what is the probability that you roll a 5 and 6 respectively.</p>
-<p>We all know the answer is <span class="math notranslate nohighlight">\(\dfrac{1}{6} \times \dfrac{1}{6} = \dfrac{1}{36}\)</span>. But why?</p>
-<p>This can be first understood that our denominator is the total outcomes in our sample space <span class="math notranslate nohighlight">\(\S\)</span>. This is <span class="math notranslate nohighlight">\(36\)</span>, why? By our counting principle on multiplication, we know that if we have <span class="math notranslate nohighlight">\(6\)</span> choices in roll <span class="math notranslate nohighlight">\(1\)</span> and <span class="math notranslate nohighlight">\(6\)</span> choices in roll 2, then the cross-product is <span class="math notranslate nohighlight">\(6 \times 6 = 36\)</span> total choices. One can enumerate <span class="math notranslate nohighlight">\(\{(1,1), (1,2), \ldots, (6,6)\}\)</span> to see why.</p>
-<p>Now the numerator is also related to the counting principle of multiplication as well! In roll 1, rolling a 5 is 1 choice, rolling a 6 next is 1 choice, so total there is a only one combination choice <span class="math notranslate nohighlight">\(1 \times 1\)</span>!</p>
-<p>Now if we reframe the problem to what is the probability that you roll a 1, 2 or 3 in the first roll and 2 or 3 in the second roll. Then of course our denominator don’t change as <span class="math notranslate nohighlight">\(36\)</span>, but our numerator changes, since in roll 1 we have 3 choices, and roll 2 have 2 choices, by the multiplicative principle we have a total of <span class="math notranslate nohighlight">\(3 \times 2 = 6\)</span> choices, and so our probability is <span class="math notranslate nohighlight">\(\dfrac{6}{36}\)</span> now. You can verify that there are indeed <span class="math notranslate nohighlight">\(6\)</span> choices manually.</p>
-<blockquote>
-<div><p><strong>Now the most important part is we can use this if both events are independent! If not we need to be careful!</strong>.</p>
-</div></blockquote>
+</div><div class="proof definition admonition" id="def_gaussian_distribution_cdf">
+<p class="admonition-title"><span class="caption-number">Definition 49 </span> (Gaussian Distribution (CDF))</p>
+<section class="definition-content" id="proof-content">
+<p>There is no closed form for the CDF of the Gaussian distribution.
+But we will see that it is easy to compute the CDF of the Gaussian distribution
+using the CDF of the standard normal distribution later.</p>
+<p>Therefore, the CDF of the Gaussian distribution is given by:</p>
+<div class="math notranslate nohighlight" id="equation-eq-def-gaussian-distribution-cdf">
+<span class="eqno">(22)<a class="headerlink" href="#equation-eq-def-gaussian-distribution-cdf" title="Permalink to this equation">#</a></span>\[
+\cdf(x) = \int_{-\infty}^x \pdf(x) \, \mathrm{d}x
+\]</div>
+<p>Yes, you have to integrate the PDF to get the CDF but there is no “general” solution.</p>
+</section>
+</div><p>The PDF of the Gaussian distribution is shown below. The code is referenced and modified
+from <span id="id1">[<a class="reference internal" href="../bibliography/bibliography.html#id5" title="John M. Shea. Foundations of data science with python. 2021. URL: https://jmshea.github.io/Foundations-of-Data-Science-with-Python/intro.html.">Shea, 2021</a>]</span>.</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stats</span>
+
+<span class="n">mean_1</span><span class="p">,</span> <span class="n">mean_2</span><span class="p">,</span> <span class="n">mean_3</span><span class="p">,</span> <span class="n">mean_4</span><span class="p">,</span> <span class="n">mean_5</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mi">3</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="n">all_params</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="n">mean_1</span><span class="p">,</span> <span class="n">sigma</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">mean_2</span><span class="p">,</span> <span class="n">sigma</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">mean_3</span><span class="p">,</span> <span class="n">sigma</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">mean_4</span><span class="p">,</span> <span class="n">sigma</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">mean_5</span><span class="p">,</span> <span class="n">sigma</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="k">for</span> <span class="n">params</span> <span class="ow">in</span> <span class="n">all_params</span><span class="p">:</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Normal(</span><span class="si">{</span><span class="n">N</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">}</span><span class="s2">, $\sigma=$</span><span class="si">{</span><span class="n">N</span><span class="o">.</span><span class="n">std</span><span class="p">()</span> <span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">)&quot;</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">N</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">})</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Fixing $\sigma$ = 1, and varying $\mu$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">mean</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">sigma_1</span><span class="p">,</span> <span class="n">sigma_2</span><span class="p">,</span> <span class="n">sigma_3</span><span class="p">,</span> <span class="n">sigma_4</span><span class="p">,</span> <span class="n">sigma_5</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="n">all_params</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">sigma_1</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">sigma_2</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">sigma_3</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">sigma_4</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">sigma_5</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="k">for</span> <span class="n">params</span> <span class="ow">in</span> <span class="n">all_params</span><span class="p">:</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Normal(</span><span class="si">{</span><span class="n">N</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">}</span><span class="s2">, $\sigma=$</span><span class="si">{</span><span class="n">N</span><span class="o">.</span><span class="n">std</span><span class="p">()</span> <span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">)&quot;</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">N</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">})</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Fixing $\mu$ = 0, and varying $\sigma$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/0409_gaussian_distribution_1_0.png" src="../_images/0409_gaussian_distribution_1_0.png" />
+<img alt="../_images/0409_gaussian_distribution_1_1.png" src="../_images/0409_gaussian_distribution_1_1.png" />
+</div>
+</div>
+<div class="proof remark admonition" id="rmk_gaussian_distribution_pdf">
+<p class="admonition-title"><span class="caption-number">Remark 5 </span> (Gaussian Distribution (PDF))</p>
+<section class="remark-content" id="proof-content">
+<p>Note in the plots above, the PDF of the Gaussian distribution is symmetric about the mean <span class="math notranslate nohighlight">\(\mu\)</span>, and
+given a small enough <span class="math notranslate nohighlight">\(\sigma\)</span>, the PDF can be greater than 1, as long as the area under the curve is 1.</p>
+<p>Note that the PDF curve moves left and right as <span class="math notranslate nohighlight">\(\mu\)</span> increases and decreases, respectively.
+Similarly, the PDF curve gets narrower and wider as <span class="math notranslate nohighlight">\(\sigma\)</span> increases and decreases, respectively.</p>
+</section>
+</div></section>
+<section id="expectation-and-variance">
+<h2>Expectation and Variance<a class="headerlink" href="#expectation-and-variance" title="Permalink to this headline">#</a></h2>
+<div class="proof theorem admonition" id="theorem-3">
+<p class="admonition-title"><span class="caption-number">Theorem 15 </span> (Expectation and Variance of the Gaussian Distribution)</p>
+<section class="theorem-content" id="proof-content">
+<p>The observant reader may notice that the mean and variance of the Gaussian distribution are parameters of the distribution.
+However, this is not proven previously.</p>
+<p>If <span class="math notranslate nohighlight">\(X\)</span> is a continuous random variable with an gaussian distribution with mean <span class="math notranslate nohighlight">\(\mu\)</span> and variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>, then the
+expectation and variance of <span class="math notranslate nohighlight">\(X\)</span> are given by:</p>
+<div class="math notranslate nohighlight" id="equation-eq-gaussian-distribution-expectation-variance">
+<span class="eqno">(23)<a class="headerlink" href="#equation-eq-gaussian-distribution-expectation-variance" title="Permalink to this equation">#</a></span>\[
+\expectation \lsq X \rsq = \mu \qquad \text{and} \qquad \variance \lsq X \rsq = \sigma^2
+\]</div>
+</section>
+</div></section>
+<section id="further-readings">
+<h2>Further Readings<a class="headerlink" href="#further-readings" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Chan, Stanley H. “Chapter 4.6. Gaussian Random Variables.” In Introduction to Probability for Data Science, 211-223. Ann Arbor, Michigan: Michigan Publishing Services, 2021.</p></li>
+<li><p>Pishro-Nik, Hossein. “Chapter 4.2.3. Normal (Gaussian) Distribution” In Introduction to Probability, Statistics, and Random Processes, 253-260. Kappa Research, 2014.</p></li>
+</ul>
 </section>
 </section>
 
@@ -651,7 +814,7 @@ title="Print to PDF"
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./01_mathematical_preliminaries"
+            path: "./04_continuous_random_variables"
         },
         predefinedOutput: true
     }
@@ -665,17 +828,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../intro.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="0408_exponential_distribution.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Introduction</p>
+            <p class="prev-next-title">Exponential Distribution</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="02_calculus.html" title="next page">
+    <a class='right-next' id="next-link" href="../bibliography/bibliography.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Calculus</p>
+        <p class="prev-next-title">Bibliography</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
