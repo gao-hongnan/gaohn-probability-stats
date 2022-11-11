@@ -134,7 +134,7 @@ plot_continuous_pdf_and_cdf(U2, -1, 10, title="Uniform$([2, 6])$", xlim=(-1, 10)
 If $X$ is a continuous random variable with a continuous uniform distribution on $[a,b]$, then
 
 $$
-\exp \lsq X \rsq = \frac{a+b}{2} \qquad \text{and} \qquad \var \lsq X \rsq = \frac{(b-a)^2}{12}
+\expectation \lsq X \rsq = \frac{a+b}{2} \qquad \text{and} \qquad \var \lsq X \rsq = \frac{(b-a)^2}{12}
 $$ (eq:thm_continuous_uniform_distribution)
 ```
 
@@ -145,7 +145,7 @@ The expectation of a continuous uniform distribution is the midpoint of the inte
 
 This should not be surprising, since the probability density function is constant over the interval, and the probability of any point in the interval is the same.
 
-Let's say we have $X \sim \text{Uniform}(0, 10)$, then $\exp \lsq X \rsq = 5$.
+Let's say we have $X \sim \text{Uniform}(0, 10)$, then $\expectation \lsq X \rsq = 5$.
 ```
 
 ## Further Readings

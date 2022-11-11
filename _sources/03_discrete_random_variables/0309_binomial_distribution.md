@@ -74,7 +74,7 @@ Then the expectation of $X$ is given by
 
 $$
 \begin{align}
-\exp \lsq X \rsq = np
+\expectation \lsq X \rsq = np
 \end{align}
 $$
 ```

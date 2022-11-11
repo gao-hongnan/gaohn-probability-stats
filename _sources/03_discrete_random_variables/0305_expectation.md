@@ -12,7 +12,7 @@ Let $X$ be a discrete random variable with $\S = \lset \xi_1, \xi_2, \ldots \rse
 Then the **expectation** of $X$ is defined as:
 
 $$
-\exp(X) = \sum_{x \in X(\S)} x \cdot \P \lsq X = x \rsq
+\expectation(X) = \sum_{x \in X(\S)} x \cdot \P \lsq X = x \rsq
 $$
 ```
 
@@ -29,7 +29,7 @@ and only if it is **absolutely summable**.
 That is, 
 
 $$
-\exp \lsq \lvert X \rvert \rsq \overset{\text{def}}{=} \sum_{x \in X(\S)} \lvert x \rvert \cdot \P \lsq X = x \rsq < \infty
+\expectation \lsq \lvert X \rvert \rsq \overset{\text{def}}{=} \sum_{x \in X(\S)} \lvert x \rvert \cdot \P \lsq X = x \rsq < \infty
 $$
 ```
 
@@ -47,7 +47,7 @@ Then the ***expectation*** of $X$ has the following properties:
 For any function $g$,
 
 $$
-\exp \lsq g(X) \rsq = \sum_{x \in X(\S)} g(x) \cdot \P \lsq X = x \rsq
+\expectation \lsq g(X) \rsq = \sum_{x \in X(\S)} g(x) \cdot \P \lsq X = x \rsq
 $$
 
 This is not a trivial result, [proof](https://en.wikipedia.org/wiki/Law_of_the_unconscious_statistician)
@@ -60,7 +60,7 @@ can be found here.
 For any constants $a$ and $b$, 
 
 $$
-\exp \lsq aX + b \rsq = a \cdot \exp(X) + b
+\expectation \lsq aX + b \rsq = a \cdot \expectation(X) + b
 $$
 ```
 
@@ -70,7 +70,7 @@ $$
 For any constant $c$,
 
 $$
-\exp \lsq cX \rsq = c \cdot \exp(X)
+\expectation \lsq cX \rsq = c \cdot \expectation(X)
 $$
 ```
 
@@ -80,7 +80,7 @@ $$
 For any constant $c$,
 
 $$
-\exp \lsq X + c \rsq = \exp(X)
+\expectation \lsq X + c \rsq = \expectation(X)
 $$
 ```
 
@@ -90,7 +90,7 @@ $$
 It follows that for any random variables $X_1$, $X_2$, ..., $X_n$,
 
 $$
-\exp \lsq \sum_{i=1}^n a_i X_i \rsq = \sum_{i=1}^n a_i \cdot \exp \lsq X_i \rsq
+\expectation \lsq \sum_{i=1}^n a_i X_i \rsq = \sum_{i=1}^n a_i \cdot \expectation \lsq X_i \rsq
 $$
 ```
 

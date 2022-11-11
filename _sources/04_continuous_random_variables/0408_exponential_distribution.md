@@ -96,10 +96,13 @@ plot_continuous_pdf_and_cdf(X2, 0, 10, title="Exponential$(\lambda = 2)$")
 If $X$ is a continuous random variable with an exponential distribution with rate parameter $\lambda$, then the expectation and variance are given by:
 
 $$
-\exp \lsq X \rsq = \frac{1}{\lambda} \qquad \text{and} \qquad \var \lsq X \rsq = \frac{1}{\lambda^2}
+\expectation \lsq X \rsq = \frac{1}{\lambda} \qquad \text{and} \qquad \var \lsq X \rsq = \frac{1}{\lambda^2}
 $$ (eq:thm_exponential_distribution_expectation_variance)
 ```
 
 ## Further Readings
+
+Further readings is a must since Professor Chan give many intuition on how Exponential distribution is used in real life.
+He also showed how Exponential distribution is derived from the Poisson distribution.
 
 - Chan, Stanley H. "Chapter 4.5. Uniform and Exponential Random Variables." In Introduction to Probability for Data Science, 205-211. Ann Arbor, Michigan: Michigan Publishing Services, 2021. 

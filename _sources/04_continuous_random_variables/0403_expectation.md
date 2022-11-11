@@ -13,7 +13,7 @@ and let $\pdf$ be its probability density function.
 Then the **expectation** of $X$ is defined as:
 
 $$
-\exp \lsq X \rsq = \int_{\S} x \cdot \pdf(x) \, dx
+\expectation \lsq X \rsq = \int_{\S} x \cdot \pdf(x) \, dx
 $$
 ```
 
@@ -31,7 +31,7 @@ and only if it is [**absolutely integrable**](https://en.wikipedia.org/wiki/Abso
 That is, 
 
 $$
-\exp \lsq \lvert X \rvert \rsq \overset{\text{def}}{=} \int_{\S} \lvert x \rvert \cdot \pdf(x) \, dx < \infty
+\expectation \lsq \lvert X \rvert \rsq \overset{\text{def}}{=} \int_{\S} \lvert x \rvert \cdot \pdf(x) \, dx < \infty
 $$
 ```
 
@@ -41,7 +41,7 @@ $$
 For any continuous random variable $X$ with sample space $\S$ and probability density function $\pdf$,
 
 $$
-\lvert \exp \lsq X \rsq \rvert \leq \exp \lsq \lvert X \rvert \rsq
+\lvert \expectation \lsq X \rsq \rvert \leq \expectation \lsq \lvert X \rvert \rsq
 $$
 ```
 
@@ -63,7 +63,7 @@ Then the ***expectation*** of $X$ has the following properties:
 For any function $g: \S \to \R$, 
 
 $$
-\exp \lsq g(X) \rsq = \int_{\S} g(x) \cdot \pdf(x) \, dx
+\expectation \lsq g(X) \rsq = \int_{\S} g(x) \cdot \pdf(x) \, dx
 $$
 ```
 
@@ -73,7 +73,7 @@ $$
 For any constants $a$ and $b$, 
 
 $$
-\exp \lsq aX + b \rsq = a \cdot \exp(X) + b
+\expectation \lsq aX + b \rsq = a \cdot \expectation(X) + b
 $$
 ```
 
@@ -83,7 +83,7 @@ $$
 For any constant $c$,
 
 $$
-\exp \lsq cX \rsq = c \cdot \exp(X)
+\expectation \lsq cX \rsq = c \cdot \expectation(X)
 $$
 ```
 
@@ -93,7 +93,7 @@ $$
 For any constant $c$,
 
 $$
-\exp \lsq X + c \rsq = \exp(X)
+\expectation \lsq X + c \rsq = \expectation(X)
 $$
 ```
 
@@ -103,7 +103,7 @@ $$
 It follows that for any random variables $X_1$, $X_2$, ..., $X_n$,
 
 $$
-\exp \lsq \sum_{i=1}^n a_i X_i \rsq = \sum_{i=1}^n a_i \cdot \exp \lsq X_i \rsq
+\expectation \lsq \sum_{i=1}^n a_i X_i \rsq = \sum_{i=1}^n a_i \cdot \expectation \lsq X_i \rsq
 $$
 ```
 

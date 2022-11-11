@@ -30,7 +30,7 @@ to say that $X$ is drawn from a geometric distribution with parameter $p$.
 Let $X \sim \geometric(p)$ be a Geometric random variable with parameter $p$. Then the expectation of $X$ is given by
 
 $$
-\exp \lsq X \rsq = \sum_{k=1}^{\infty} k \cdot \P \lsq X = k \rsq = \frac{1}{p}
+\expectation \lsq X \rsq = \sum_{k=1}^{\infty} k \cdot \P \lsq X = k \rsq = \frac{1}{p}
 $$
 ```
 
@@ -40,7 +40,7 @@ $$
 Let $X \sim \geometric(p)$ be a Geometric random variable with parameter $p$. Then the variance of $X$ is given by
 
 $$
-\var \lsq X \rsq = \exp \lsq X^2 \rsq - \exp \lsq X \rsq^2 = \frac{1-p}{p^2}
+\var \lsq X \rsq = \expectation \lsq X^2 \rsq - \expectation \lsq X \rsq^2 = \frac{1-p}{p^2}
 $$
 ```
 

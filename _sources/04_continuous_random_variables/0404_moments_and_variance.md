@@ -20,7 +20,7 @@ Let $X$ be a **continuous random variable** with sample space $\S$ and probabili
 The **$k$-th moment** of $X$ is defined as:
 
 $$
-\exp \lsq X^k \rsq = \int_{-\infty}^{\infty} x^k \cdot \pdf \lsq x \rsq \, dx
+\expectation \lsq X^k \rsq = \int_{-\infty}^{\infty} x^k \cdot \pdf \lsq x \rsq \, dx
 $$
 
 This definition follows from {prf:ref}`prop_expectation_function_continuous` in {doc}`0403_expectation`.
@@ -36,10 +36,10 @@ Essentially, this means that the $k$-th moment is the **expectation** of $X^k$.
 The **variance** of $X$ is defined as:
 
 $$
-\var \lsq X \rsq = \exp \lsq \lpar X - \mu \rpar^2 \rsq = \int_{\S} \lpar x - \mu \rpar^2 \pdf \lpar x \rpar \, dx
+\var \lsq X \rsq = \expectation \lsq \lpar X - \mu \rpar^2 \rsq = \int_{\S} \lpar x - \mu \rpar^2 \pdf \lpar x \rpar \, dx
 $$ (eq_var_continuous_1)
 
-where $\mu = \exp \lsq X \rsq$ is the **expectation** of $X$.
+where $\mu = \expectation \lsq X \rsq$ is the **expectation** of $X$.
 ```
 
 We also have an equivalent definition of variance, which is more used in practice.
@@ -50,7 +50,7 @@ We also have an equivalent definition of variance, which is more used in practic
 The **variance** of $X$ is defined as:
 
 $$
-\var \lsq X \rsq = \exp \lsq X^2 \rsq - \exp \lsq X \rsq^2
+\var \lsq X \rsq = \expectation \lsq X^2 \rsq - \expectation \lsq X \rsq^2
 $$ (eq_var_continuous_2)
 ```
 

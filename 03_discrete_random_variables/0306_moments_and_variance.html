@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"st": "\\mid", "mod": "\\mid", "S": "\\Omega", "s": "\\omega", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "exp": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "lpar": "\\left(", "rpar": "\\right)", "pmf": "p_X", "pdf": "f_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})", "var": "\\operatorname{Var}", "std": "\\operatorname{Std}", "bern": "\\operatorname{Bernoulli}", "binomial": "\\operatorname{Binomial}", "geometric": "\\operatorname{Geometric}", "poisson": "\\operatorname{Poisson}", "uniform": "\\operatorname{Uniform}", "normal": "\\operatorname{Normal}", "exponential": "\\operatorname{Exponential}", "iid": "\\textbf{i.i.d.}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"st": "\\mid", "mod": "\\mid", "S": "\\Omega", "s": "\\omega", "e": "\\exp", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "expectation": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "lpar": "\\left(", "rpar": "\\right)", "pmf": "p_X", "pdf": "f_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})", "var": "\\operatorname{Var}", "std": "\\operatorname{Std}", "bern": "\\operatorname{Bernoulli}", "binomial": "\\operatorname{Binomial}", "geometric": "\\operatorname{Geometric}", "poisson": "\\operatorname{Poisson}", "uniform": "\\operatorname{Uniform}", "normal": "\\operatorname{Normal}", "gaussian": "\\operatorname{Gaussian}", "gaussiansymbol": "\\mathcal{N}", "exponential": "\\operatorname{Exponential}", "iid": "\\textbf{i.i.d.}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -654,7 +654,7 @@ unless otherwise stated.</p>
 <p>The <strong><span class="math notranslate nohighlight">\(k\)</span>-th moment</strong> of <span class="math notranslate nohighlight">\(X\)</span> is defined as:</p>
 <div class="math notranslate nohighlight">
 \[
-\exp \lsq X^k \rsq = \sum_{x \in X(\S)} x^k \cdot \P \lsq X = x \rsq
+\expectation \lsq X^k \rsq = \sum_{x \in X(\S)} x^k \cdot \P \lsq X = x \rsq
 \]</div>
 <p>This definition follows from <a class="reference internal" href="0305_expectation.html#prop_expectation_function_discrete">Property 1</a> in <a class="reference internal" href="0305_expectation.html"><span class="doc">Expectation</span></a>.</p>
 <p>Essentially, this means that the <span class="math notranslate nohighlight">\(k\)</span>-th moment is the <strong>expectation</strong> of <span class="math notranslate nohighlight">\(X^k\)</span>.</p>
@@ -668,9 +668,9 @@ unless otherwise stated.</p>
 <p>The <strong>variance</strong> of <span class="math notranslate nohighlight">\(X\)</span> is defined as:</p>
 <div class="math notranslate nohighlight" id="equation-eq-var-1">
 <span class="eqno">(7)<a class="headerlink" href="#equation-eq-var-1" title="Permalink to this equation">#</a></span>\[
-\var \lsq X \rsq = \exp \lsq \lpar X - \mu \rpar^2 \rsq
+\var \lsq X \rsq = \expectation \lsq \lpar X - \mu \rpar^2 \rsq
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(\mu = \exp \lsq X \rsq\)</span> is the <strong>expectation</strong> of <span class="math notranslate nohighlight">\(X\)</span>.</p>
+<p>where <span class="math notranslate nohighlight">\(\mu = \expectation \lsq X \rsq\)</span> is the <strong>expectation</strong> of <span class="math notranslate nohighlight">\(X\)</span>.</p>
 <p>We denote <span class="math notranslate nohighlight">\(\sigma^2\)</span> as <span class="math notranslate nohighlight">\(\var\)</span> for short-hand notation.</p>
 </section>
 </div><p>We also have an equivalent definition of variance, which is more used in practice.</p>
@@ -680,7 +680,7 @@ unless otherwise stated.</p>
 <p>The <strong>variance</strong> of <span class="math notranslate nohighlight">\(X\)</span> is defined as:</p>
 <div class="math notranslate nohighlight" id="equation-eq-var-2">
 <span class="eqno">(8)<a class="headerlink" href="#equation-eq-var-2" title="Permalink to this equation">#</a></span>\[
-\var \lsq X \rsq = \exp \lsq X^2 \rsq - \exp \lsq X \rsq^2
+\var \lsq X \rsq = \expectation \lsq X^2 \rsq - \expectation \lsq X \rsq^2
 \]</div>
 </section>
 </div></section>
@@ -708,7 +708,7 @@ called the <strong>standard deviation</strong>, which is the square root of the 
 <p>For any constant <span class="math notranslate nohighlight">\(c\)</span>, we have:</p>
 <div class="math notranslate nohighlight" id="equation-eq-scaling-1">
 <span class="eqno">(10)<a class="headerlink" href="#equation-eq-scaling-1" title="Permalink to this equation">#</a></span>\[
-\exp \lsq c \cdot X \rsq = c^k \cdot \exp \lsq X \rsq
+\expectation \lsq c \cdot X \rsq = c^k \cdot \expectation \lsq X \rsq
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(k\)</span> is the order of the moment.</p>
 </section>
@@ -718,7 +718,7 @@ called the <strong>standard deviation</strong>, which is the square root of the 
 <p>For any constant <span class="math notranslate nohighlight">\(c\)</span>, we have:</p>
 <div class="math notranslate nohighlight" id="equation-eq-dc-shift-1">
 <span class="eqno">(11)<a class="headerlink" href="#equation-eq-dc-shift-1" title="Permalink to this equation">#</a></span>\[
-\exp \lsq (X + c) \rsq = \exp \lsq X \rsq
+\expectation \lsq (X + c) \rsq = \expectation \lsq X \rsq
 \]</div>
 <p>The intuition is that shifting the random variable by a constant does not change
 the spread of the random variable.</p>
@@ -729,7 +729,7 @@ the spread of the random variable.</p>
 <p>Combining <a class="reference internal" href="#prop_scaling">Property 6</a> and <a class="reference internal" href="#prop_dc_shift">Property 7</a>, we have:</p>
 <div class="math notranslate nohighlight" id="equation-eq-linearity-1">
 <span class="eqno">(12)<a class="headerlink" href="#equation-eq-linearity-1" title="Permalink to this equation">#</a></span>\[
-\exp \lsq a \cdot X + b \rsq = a^k \cdot \exp \lsq X \rsq
+\expectation \lsq a \cdot X + b \rsq = a^k \cdot \expectation \lsq X \rsq
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(k\)</span> is the order of the moment.</p>
 </section>

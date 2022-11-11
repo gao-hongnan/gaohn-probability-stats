@@ -69,7 +69,7 @@ Let $X \sim \bern(p)$ be a Bernoulli random variable with parameter $p$. Then th
 
 $$
 \begin{align}
-\exp \lsq X \rsq = p
+\expectation \lsq X \rsq = p
 \end{align}
 $$
 ```
@@ -99,7 +99,7 @@ The proof is as follows
 
 $$
 \begin{align}
-\var \lsq X \rsq = \sum_{x \in X(\S)} (x - \exp \lsq X \rsq)^2 \cdot \P(X=x) = (1 - p)^2 \cdot p + (0 - p)^2 \cdot (1-p) = p(1-p)
+\var \lsq X \rsq = \sum_{x \in X(\S)} (x - \expectation \lsq X \rsq)^2 \cdot \P(X=x) = (1 - p)^2 \cdot p + (0 - p)^2 \cdot (1-p) = p(1-p)
 \end{align}
 $$
 
@@ -107,7 +107,7 @@ It can also be shown using the second moment of $X$:
 
 $$
 \begin{align}
-\var \lsq X \rsq = \exp \lsq X^2 \rsq - \exp \lsq X \rsq^2 = \exp \lsq X^2 \rsq - p^2 = p(1-p)
+\var \lsq X \rsq = \expectation \lsq X^2 \rsq - \expectation \lsq X \rsq^2 = \expectation \lsq X^2 \rsq - p^2 = p(1-p)
 \end{align}
 $$
 ```

@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"st": "\\mid", "mod": "\\mid", "S": "\\Omega", "s": "\\omega", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "exp": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "lpar": "\\left(", "rpar": "\\right)", "pmf": "p_X", "pdf": "f_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})", "var": "\\operatorname{Var}", "std": "\\operatorname{Std}", "bern": "\\operatorname{Bernoulli}", "binomial": "\\operatorname{Binomial}", "geometric": "\\operatorname{Geometric}", "poisson": "\\operatorname{Poisson}", "uniform": "\\operatorname{Uniform}", "normal": "\\operatorname{Normal}", "exponential": "\\operatorname{Exponential}", "iid": "\\textbf{i.i.d.}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"st": "\\mid", "mod": "\\mid", "S": "\\Omega", "s": "\\omega", "e": "\\exp", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "expectation": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "lpar": "\\left(", "rpar": "\\right)", "pmf": "p_X", "pdf": "f_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})", "var": "\\operatorname{Var}", "std": "\\operatorname{Std}", "bern": "\\operatorname{Bernoulli}", "binomial": "\\operatorname{Binomial}", "geometric": "\\operatorname{Geometric}", "poisson": "\\operatorname{Poisson}", "uniform": "\\operatorname{Uniform}", "normal": "\\operatorname{Normal}", "gaussian": "\\operatorname{Gaussian}", "gaussiansymbol": "\\mathcal{N}", "exponential": "\\operatorname{Exponential}", "iid": "\\textbf{i.i.d.}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -640,7 +640,7 @@ title="Print to PDF"
 <p>Then the <strong>expectation</strong> of <span class="math notranslate nohighlight">\(X\)</span> is defined as:</p>
 <div class="math notranslate nohighlight">
 \[
-\exp(X) = \sum_{x \in X(\S)} x \cdot \P \lsq X = x \rsq
+\expectation(X) = \sum_{x \in X(\S)} x \cdot \P \lsq X = x \rsq
 \]</div>
 </section>
 </div></section>
@@ -655,7 +655,7 @@ and only if it is <strong>absolutely summable</strong>.</p>
 <p>That is,</p>
 <div class="math notranslate nohighlight">
 \[
-\exp \lsq \lvert X \rvert \rsq \overset{\text{def}}{=} \sum_{x \in X(\S)} \lvert x \rvert \cdot \P \lsq X = x \rsq &lt; \infty
+\expectation \lsq \lvert X \rvert \rsq \overset{\text{def}}{=} \sum_{x \in X(\S)} \lvert x \rvert \cdot \P \lsq X = x \rsq &lt; \infty
 \]</div>
 </section>
 </div></section>
@@ -670,7 +670,7 @@ and only if it is <strong>absolutely summable</strong>.</p>
 <p>For any function <span class="math notranslate nohighlight">\(g\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[
-\exp \lsq g(X) \rsq = \sum_{x \in X(\S)} g(x) \cdot \P \lsq X = x \rsq
+\expectation \lsq g(X) \rsq = \sum_{x \in X(\S)} g(x) \cdot \P \lsq X = x \rsq
 \]</div>
 <p>This is not a trivial result, <a class="reference external" href="https://en.wikipedia.org/wiki/Law_of_the_unconscious_statistician">proof</a>
 can be found here.</p>
@@ -681,7 +681,7 @@ can be found here.</p>
 <p>For any constants <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[
-\exp \lsq aX + b \rsq = a \cdot \exp(X) + b
+\expectation \lsq aX + b \rsq = a \cdot \expectation(X) + b
 \]</div>
 </section>
 </div><div class="proof property admonition" id="prop_expectation_scaling_discrete">
@@ -690,7 +690,7 @@ can be found here.</p>
 <p>For any constant <span class="math notranslate nohighlight">\(c\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[
-\exp \lsq cX \rsq = c \cdot \exp(X)
+\expectation \lsq cX \rsq = c \cdot \expectation(X)
 \]</div>
 </section>
 </div><div class="proof property admonition" id="prop_expectation_dc_shift_discrete">
@@ -699,7 +699,7 @@ can be found here.</p>
 <p>For any constant <span class="math notranslate nohighlight">\(c\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[
-\exp \lsq X + c \rsq = \exp(X)
+\expectation \lsq X + c \rsq = \expectation(X)
 \]</div>
 </section>
 </div><div class="proof property admonition" id="prop_expectation_stronger_linearity_discrete">
@@ -708,7 +708,7 @@ can be found here.</p>
 <p>It follows that for any random variables <span class="math notranslate nohighlight">\(X_1\)</span>, <span class="math notranslate nohighlight">\(X_2\)</span>, …, <span class="math notranslate nohighlight">\(X_n\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[
-\exp \lsq \sum_{i=1}^n a_i X_i \rsq = \sum_{i=1}^n a_i \cdot \exp \lsq X_i \rsq
+\expectation \lsq \sum_{i=1}^n a_i X_i \rsq = \sum_{i=1}^n a_i \cdot \expectation \lsq X_i \rsq
 \]</div>
 </section>
 </div></section>

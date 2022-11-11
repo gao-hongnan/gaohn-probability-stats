@@ -17,7 +17,7 @@ unless otherwise stated.
 The **$k$-th moment** of $X$ is defined as:
 
 $$
-\exp \lsq X^k \rsq = \sum_{x \in X(\S)} x^k \cdot \P \lsq X = x \rsq
+\expectation \lsq X^k \rsq = \sum_{x \in X(\S)} x^k \cdot \P \lsq X = x \rsq
 $$
 
 This definition follows from {prf:ref}`prop_expectation_function_discrete` in {doc}`0305_expectation`.
@@ -33,10 +33,10 @@ Essentially, this means that the $k$-th moment is the **expectation** of $X^k$.
 The **variance** of $X$ is defined as:
 
 $$
-\var \lsq X \rsq = \exp \lsq \lpar X - \mu \rpar^2 \rsq
+\var \lsq X \rsq = \expectation \lsq \lpar X - \mu \rpar^2 \rsq
 $$ (eq_var_1)
 
-where $\mu = \exp \lsq X \rsq$ is the **expectation** of $X$.
+where $\mu = \expectation \lsq X \rsq$ is the **expectation** of $X$.
 
 We denote $\sigma^2$ as $\var$ for short-hand notation.
 ```
@@ -49,7 +49,7 @@ We also have an equivalent definition of variance, which is more used in practic
 The **variance** of $X$ is defined as:
 
 $$
-\var \lsq X \rsq = \exp \lsq X^2 \rsq - \exp \lsq X \rsq^2
+\var \lsq X \rsq = \expectation \lsq X^2 \rsq - \expectation \lsq X \rsq^2
 $$ (eq_var_2)
 ```
 
@@ -78,7 +78,7 @@ The properties of moments and variance are as follows:
 For any constant $c$, we have:
 
 $$
-\exp \lsq c \cdot X \rsq = c^k \cdot \exp \lsq X \rsq
+\expectation \lsq c \cdot X \rsq = c^k \cdot \expectation \lsq X \rsq
 $$ (eq_scaling_1)
 
 where $k$ is the order of the moment.
@@ -90,7 +90,7 @@ where $k$ is the order of the moment.
 For any constant $c$, we have:
 
 $$
-\exp \lsq (X + c) \rsq = \exp \lsq X \rsq
+\expectation \lsq (X + c) \rsq = \expectation \lsq X \rsq
 $$ (eq_dc_shift_1)
 
 The intuition is that shifting the random variable by a constant does not change
@@ -103,7 +103,7 @@ the spread of the random variable.
 Combining {prf:ref}`prop_scaling` and {prf:ref}`prop_dc_shift`, we have:
 
 $$
-\exp \lsq a \cdot X + b \rsq = a^k \cdot \exp \lsq X \rsq
+\expectation \lsq a \cdot X + b \rsq = a^k \cdot \expectation \lsq X \rsq
 $$ (eq_linearity_1)
 
 where $k$ is the order of the moment.
