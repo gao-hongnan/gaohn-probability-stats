@@ -389,11 +389,15 @@ rectangle area (includes the green line) will over approximate.
 
 ## Further Readings
 
-- [Is my interpretation of Probability Density Function correct?](https://stats.stackexchange.com/questions/594743/is-my-interpretation-of-probability-density-function-correct)
 - Chan, Stanley H. "Chapter 4.1. Probability Density Function." In Introduction to Probability for Data Science, 172-180. Ann Arbor, Michigan: Michigan Publishing Services, 2021. 
 - Pishro-Nik, Hossein. "Chapter 4.1.1. Probability Density Function (PDF)" In Introduction to Probability, Statistics, and Random Processes, 226-230. Kappa Research, 2014. 
+- [Intuition of PDF](https://mathinsight.org/probability_density_function_idea)
+- [Stanford CS70](https://stanford.edu/~dntse/classes/cs70_fall09/note18_fall09.pdf)
+- [PSU STAT 414](https://online.stat.psu.edu/stat414/lesson/14/14.1)
+- [CMU Stats Lecture](https://www.stat.cmu.edu/~cshalizi/36-220/lecture-7.pdf)
+- [MIT 18.05 Continuous Random Variables](https://ocw.mit.edu/courses/18-05-introduction-to-probability-and-statistics-spring-2014/1f88c7c765d2532fd57d8ee719a751b3_MIT18_05S14_Reading5b.pdf)
 - [Aerin Kim's Article](https://towardsdatascience.com/pdf-is-not-a-probability-5a4b8a5d9531)
+- [Is my interpretation of Probability Density Function correct?](https://stats.stackexchange.com/questions/594743/is-my-interpretation-of-probability-density-function-correct)
 - [Would it be accurate to describe a PDF as a probability mass per unit length?](https://math.stackexchange.com/questions/4325018/would-it-be-accurate-to-describe-a-pdf-as-a-probability-mass-per-unit-length)
 - [Can a probability distribution value exceeding 1 be OK?](https://stats.stackexchange.com/questions/4220/can-a-probability-distribution-value-exceeding-1-be-ok)
-- [CMU Stats Lecture](https://www.stat.cmu.edu/~cshalizi/36-220/lecture-7.pdf)
 - ["The total area underneath a probability density function is 1" - relative to what?](https://stats.stackexchange.com/questions/133369/the-total-area-underneath-a-probability-density-function-is-1-relative-to-wh)

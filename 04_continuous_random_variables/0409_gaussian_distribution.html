@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"st": "\\mid", "mod": "\\mid", "S": "\\Omega", "s": "\\omega", "e": "\\exp", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "expectation": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "lpar": "\\left(", "rpar": "\\right)", "pmf": "p_X", "pdf": "f_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})", "var": "\\operatorname{Var}", "std": "\\operatorname{Std}", "bern": "\\operatorname{Bernoulli}", "binomial": "\\operatorname{Binomial}", "geometric": "\\operatorname{Geometric}", "poisson": "\\operatorname{Poisson}", "uniform": "\\operatorname{Uniform}", "normal": "\\operatorname{Normal}", "gaussian": "\\operatorname{Gaussian}", "gaussiansymbol": "\\mathcal{N}", "exponential": "\\operatorname{Exponential}", "iid": "\\textbf{i.i.d.}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"defeq": "\\overset{\\text{def}}{=}", "st": "\\mid", "mod": "\\mid", "S": "\\Omega", "s": "\\omega", "e": "\\exp", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "expectation": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "lpar": "\\left(", "rpar": "\\right)", "lcurl": "\\left\\{", "rcurl": "\\right\\}", "pmf": "p_X", "pdf": "f_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})", "var": "\\operatorname{Var}", "std": "\\operatorname{Std}", "bern": "\\operatorname{Bernoulli}", "binomial": "\\operatorname{Binomial}", "geometric": "\\operatorname{Geometric}", "poisson": "\\operatorname{Poisson}", "uniform": "\\operatorname{Uniform}", "normal": "\\operatorname{Normal}", "gaussian": "\\operatorname{Gaussian}", "gaussiansymbol": "\\mathcal{N}", "exponential": "\\operatorname{Exponential}", "iid": "\\textbf{i.i.d.}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -299,7 +299,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../03_discrete_random_variables/problems_and_solutions.html">
+  <a class="reference internal" href="../03_discrete_random_variables/03_problems_and_solutions.html">
    Problems and Solutions
   </a>
  </li>
@@ -614,14 +614,48 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#definition">
-   Definition
+  <a class="reference internal nav-link" href="#general-gaussian-distribution">
+   General Gaussian Distribution
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#definition">
+     Definition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#expectation-and-variance">
+     Expectation and Variance
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#expectation-and-variance">
-   Expectation and Variance
+  <a class="reference internal nav-link" href="#standard-gaussian-distribution">
+   Standard Gaussian Distribution
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#motivation">
+     Motivation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Definition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#error-function">
+     Error Function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cdf-of-arbitrary-gaussian-distribution">
+     CDF of Arbitrary Gaussian Distribution
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#further-readings">
@@ -648,14 +682,48 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#definition">
-   Definition
+  <a class="reference internal nav-link" href="#general-gaussian-distribution">
+   General Gaussian Distribution
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#definition">
+     Definition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#expectation-and-variance">
+     Expectation and Variance
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#expectation-and-variance">
-   Expectation and Variance
+  <a class="reference internal nav-link" href="#standard-gaussian-distribution">
+   Standard Gaussian Distribution
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#motivation">
+     Motivation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Definition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#error-function">
+     Error Function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cdf-of-arbitrary-gaussian-distribution">
+     CDF of Arbitrary Gaussian Distribution
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#further-readings">
@@ -675,15 +743,17 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="gaussian-distribution">
 <h1>Gaussian Distribution<a class="headerlink" href="#gaussian-distribution" title="Permalink to this headline">#</a></h1>
 <p>Perhaps the most important distribution is the Gaussian Distribution, also known as the Normal Distribution.</p>
+<section id="general-gaussian-distribution">
+<h2>General Gaussian Distribution<a class="headerlink" href="#general-gaussian-distribution" title="Permalink to this headline">#</a></h2>
 <section id="definition">
-<h2>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">#</a></h2>
+<h3>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">#</a></h3>
 <div class="proof definition admonition" id="def_gaussian_distribution_pdf">
 <p class="admonition-title"><span class="caption-number">Definition 48 </span> (Gaussian Distribution (PDF))</p>
 <section class="definition-content" id="proof-content">
 <p><span class="math notranslate nohighlight">\(X\)</span> is a continuous random variable with a <strong>Gaussian distribution</strong> if the probability density function is given by:</p>
 <div class="math notranslate nohighlight" id="equation-eq-def-gaussian-distribution">
 <span class="eqno">(21)<a class="headerlink" href="#equation-eq-def-gaussian-distribution" title="Permalink to this equation">#</a></span>\[
-\pdf(x) = \frac{1}{\sqrt{2 \pi \sigma^2}} \e \left\{-\frac{(x - \mu)^2}{2 \sigma^2}\right\}
+\pdf(x) = \frac{1}{\sqrt{2 \pi \sigma^2}} \e \lcurl -\frac{(x - \mu)^2}{2 \sigma^2} \rcurl
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\mu\)</span> is the mean and <span class="math notranslate nohighlight">\(\sigma^2\)</span> is the variance and are parameters of the distribution.</p>
 <p>Some conventions:</p>
@@ -778,7 +848,7 @@ Similarly, the PDF curve gets narrower and wider as <span class="math notranslat
 </section>
 </div></section>
 <section id="expectation-and-variance">
-<h2>Expectation and Variance<a class="headerlink" href="#expectation-and-variance" title="Permalink to this headline">#</a></h2>
+<h3>Expectation and Variance<a class="headerlink" href="#expectation-and-variance" title="Permalink to this headline">#</a></h3>
 <div class="proof theorem admonition" id="theorem-3">
 <p class="admonition-title"><span class="caption-number">Theorem 15 </span> (Expectation and Variance of the Gaussian Distribution)</p>
 <section class="theorem-content" id="proof-content">
@@ -788,10 +858,161 @@ However, this is not proven previously.</p>
 expectation and variance of <span class="math notranslate nohighlight">\(X\)</span> are given by:</p>
 <div class="math notranslate nohighlight" id="equation-eq-gaussian-distribution-expectation-variance">
 <span class="eqno">(23)<a class="headerlink" href="#equation-eq-gaussian-distribution-expectation-variance" title="Permalink to this equation">#</a></span>\[
-\expectation \lsq X \rsq = \mu \qquad \text{and} \qquad \variance \lsq X \rsq = \sigma^2
+\expectation \lsq X \rsq = \mu \qquad \text{and} \qquad \var \lsq X \rsq = \sigma^2
 \]</div>
 </section>
 </div></section>
+</section>
+<section id="standard-gaussian-distribution">
+<h2>Standard Gaussian Distribution<a class="headerlink" href="#standard-gaussian-distribution" title="Permalink to this headline">#</a></h2>
+<section id="motivation">
+<h3>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">#</a></h3>
+<p>In continuous distributions, we are often asked to evaluate the probability of an interval <span class="math notranslate nohighlight">\([a, b]\)</span>.
+For example, if <span class="math notranslate nohighlight">\(X \sim \gaussian(\mu, \sigma^2)\)</span>, what is the probability that <span class="math notranslate nohighlight">\(X\)</span> is between <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>?
+If we use PDF to compute the probability, we will have to integrate the PDF over the interval <span class="math notranslate nohighlight">\([a, b]\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+\P \lsq a \leq X \leq b \rsq = \int_a^b \pdf(x) \, \mathrm{d}x
+\]</div>
+<p>We have seen that there is no closed form solution for this integral.</p>
+<p>Furthermore, in practice, we use the CDF to compute the probability of an interval.</p>
+<div class="math notranslate nohighlight">
+\[
+\P \lsq a \leq X \leq b \rsq = \cdf(b) - \cdf(a)
+\]</div>
+<p>However, we have also seen that there is no closed form solution for the CDF of the Gaussian distribution since
+the CDF is an integral of the PDF.</p>
+<p>This prompted the existence of the <strong>standard normal distribution</strong>.</p>
+</section>
+<section id="id2">
+<h3>Definition<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
+<div class="proof definition admonition" id="def_standard_gaussian_distribution">
+<p class="admonition-title"><span class="caption-number">Definition 50 </span> (Standard Gaussian Distribution)</p>
+<section class="definition-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a continuous random variable with a Gaussian distribution with mean <span class="math notranslate nohighlight">\(\mu\)</span> and variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>.
+Then <span class="math notranslate nohighlight">\(X\)</span> is said to be a <strong>Standard Gaussian</strong> if it has a Gaussian distribution with mean 0 and variance 1.</p>
+<div class="math notranslate nohighlight" id="equation-eq-def-standard-normal-distribution-pdf">
+<span class="eqno">(24)<a class="headerlink" href="#equation-eq-def-standard-normal-distribution-pdf" title="Permalink to this equation">#</a></span>\[
+\pdf(x) = \frac{1}{\sqrt{2 \pi}} \exp \lcurl -\frac{x^2}{2} \rcurl
+\]</div>
+<p>In notations, it is <span class="math notranslate nohighlight">\(X \sim \gaussiansymbol(0, 1)\)</span>, with <span class="math notranslate nohighlight">\(\mu = 0\)</span> and <span class="math notranslate nohighlight">\(\sigma^2 = 1\)</span>.</p>
+</section>
+</div><div class="proof definition admonition" id="def_standard_normal_distribution_cdf">
+<p class="admonition-title"><span class="caption-number">Definition 51 </span> (Standard Normal Distribution (CDF))</p>
+<section class="definition-content" id="proof-content">
+<p>The CDF of the <strong>Standard Gaussian</strong> is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+\Phi(x) \defeq \cdf(x) = \frac{1}{\sqrt{2 \pi}} \int_{-\infty}^x \exp \lcurl -\frac{t^2}{2} \rcurl \, \mathrm{d}t
+\]</div>
+<p>Take note of the <span class="math notranslate nohighlight">\(\Phi\)</span> notation, which is the standard notation for the CDF of the Standard Gaussian.</p>
+</section>
+</div><div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="n">parent_dir</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">parent_dir</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stats</span>
+
+<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">seed_all</span><span class="p">,</span> <span class="n">plot_continuous_pdf_and_cdf</span>
+<span class="n">seed_all</span><span class="p">()</span>
+
+<span class="c1"># x = np.linspace(0, 10, 5000)</span>
+<span class="n">mean</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
+
+<span class="n">plot_continuous_pdf_and_cdf</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Normal Distribution $\mu=0, \sigma=1$&quot;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using Seed Number 1992
+</pre></div>
+</div>
+<img alt="../_images/0409_gaussian_distribution_3_1.png" src="../_images/0409_gaussian_distribution_3_1.png" />
+</div>
+</div>
+</section>
+<section id="error-function">
+<h3>Error Function<a class="headerlink" href="#error-function" title="Permalink to this headline">#</a></h3>
+<div class="proof definition admonition" id="def_error_function">
+<p class="admonition-title"><span class="caption-number">Definition 52 </span> (Error Function)</p>
+<section class="definition-content" id="proof-content">
+<p>The <strong>error function</strong> is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{erf}(x) \defeq \frac{2}{\sqrt{\pi}} \int_0^x \exp \lcurl -t^2 \rcurl \, \mathrm{d}t
+\]</div>
+<p>The connection of the error function to the CDF of the Standard Gaussian is given by:</p>
+<div class="math notranslate nohighlight" id="equation-eq-standard-gaussian-cdf-error-function">
+<span class="eqno">(25)<a class="headerlink" href="#equation-eq-standard-gaussian-cdf-error-function" title="Permalink to this equation">#</a></span>\[
+\Phi(x) = \frac{1}{2} \left( 1 + \text{erf} \lcurl \frac{x}{\sqrt{2}} \rcurl \right) \qquad \text{and} \qquad \text{erf}(x) = 2 \Phi(x\sqrt{2}) - 1
+\]</div>
+</section>
+</div></section>
+<section id="cdf-of-arbitrary-gaussian-distribution">
+<h3>CDF of Arbitrary Gaussian Distribution<a class="headerlink" href="#cdf-of-arbitrary-gaussian-distribution" title="Permalink to this headline">#</a></h3>
+<div class="proof theorem admonition" id="thm_cdf_arbitrary_gaussian_distribution">
+<p class="admonition-title"><span class="caption-number">Theorem 16 </span> (CDF of Arbitrary Gaussian Distribution)</p>
+<section class="theorem-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a continuous random variable with a Gaussian distribution with mean <span class="math notranslate nohighlight">\(\mu\)</span> and variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>.
+Then we can convert the CDF of <span class="math notranslate nohighlight">\(X\)</span> to the CDF of the Standard Gaussian by:</p>
+<div class="math notranslate nohighlight" id="equation-eq-cdf-arbitrary-gaussian-distribution">
+<span class="eqno">(26)<a class="headerlink" href="#equation-eq-cdf-arbitrary-gaussian-distribution" title="Permalink to this equation">#</a></span>\[
+\cdf(x) = \Phi \lpar \frac{x - \mu}{\sigma} \rpar
+\]</div>
+</section>
+</div><div class="proof admonition" id="proof">
+<p>Proof. CDF of Arbitrary Gaussian Distribution
+The definition of a Gaussian distribution is given by:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\cdf(x) &amp;= \P \lsq X \leq x \rsq \\
+        &amp;= \int_{-\infty}^x \pdf(t) \, \mathrm{d}t \\
+        &amp;= \int_{-\infty}^x \frac{1}{\sqrt{2 \pi \sigma^2}} \exp \lcurl -\frac{(t - \mu)^2}{2 \sigma^2} \rcurl \, \mathrm{d}t \\
+\end{aligned}
+\end{split}\]</div>
+<p>We can use the (integration by) substitution <span class="math notranslate nohighlight">\(u = \frac{t - \mu}{\sigma}\)</span> to get <span id="id3">[<a class="reference internal" href="../bibliography/bibliography.html#id2" title="Stanley H. Chan. Introduction to probability for Data Science. Michigan Publishing, 2021.">Chan, 2021</a>]</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\int_{-\infty}^x \frac{1}{\sqrt{2 \pi \sigma^2}} \exp \lcurl -\frac{(t - \mu)^2}{2 \sigma^2} \rcurl \, \mathrm{d}t &amp;= \int_{-\infty}^{\frac{x - \mu}{\sigma}} \frac{1}{\sqrt{2 \pi}} \exp \lcurl -\frac{u^2}{2} \rcurl \, \mathrm{d}u \\
+&amp;= \Phi \lpar \frac{x - \mu}{\sigma} \rpar
+\end{aligned}
+\end{split}\]</div>
+</div>
+<div class="proof corollary admonition" id="cor_probability_interval">
+<p class="admonition-title"><span class="caption-number">Corollary 8 </span> (Probability of an Interval)</p>
+<section class="corollary-content" id="proof-content">
+<p>As a consequence of <a class="reference internal" href="#thm_cdf_arbitrary_gaussian_distribution">Theorem 16</a>, we can compute
+the probability of an interval for an arbitrary Gaussian distribution. This
+solves our problem of computing the probability of an interval for a Gaussian Distribution earlier.</p>
+<div class="math notranslate nohighlight" id="equation-eq-probability-interval">
+<span class="eqno">(27)<a class="headerlink" href="#equation-eq-probability-interval" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+\P \lsq a \leq X \leq b \rsq &amp;= \cdf(b) - \cdf(a) \\
+                             &amp;= \P \lsq X \leq b \rsq - \P \lsq X \leq a \rsq \\
+                             &amp;= \Phi \lpar \frac{b - \mu}{\sigma} \rpar - \Phi \lpar \frac{a - \mu}{\sigma} \rpar
+\end{aligned}
+\end{split}\]</div>
+</section>
+</div><div class="proof corollary admonition" id="cor_standard_gaussian">
+<p class="admonition-title"><span class="caption-number">Corollary 9 </span> (Corollary of Standard Gaussian)</p>
+<section class="corollary-content" id="proof-content">
+<p>As a consequence of <a class="reference internal" href="#thm_cdf_arbitrary_gaussian_distribution">Theorem 16</a>, we have
+the following corollaries <span id="id4">[<a class="reference internal" href="../bibliography/bibliography.html#id2" title="Stanley H. Chan. Introduction to probability for Data Science. Michigan Publishing, 2021.">Chan, 2021</a>]</span>:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\Phi(y) = 1 - \Phi(-y)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\P \lsq X \geq b \rsq = 1 - \Phi \lpar \frac{b - \mu}{\sigma} \rpar\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\P \lvert X \rvert \geq b = 1 - \Phi \lpar \frac{b - \mu}{\sigma} \rpar + \Phi \lpar \frac{-b - \mu}{\sigma} \rpar\)</span></p></li>
+</ul>
+</section>
+</div></section>
+</section>
 <section id="further-readings">
 <h2>Further Readings<a class="headerlink" href="#further-readings" title="Permalink to this headline">#</a></h2>
 <ul class="simple">

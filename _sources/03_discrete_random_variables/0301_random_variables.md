@@ -32,7 +32,7 @@ $$
 which is equivalent to
 
 $$
-X^{-1}(x) \overset{\text{def}}{=} \lset \xi \in \S \st X(\xi) = x \rset
+X^{-1}(x) \defeq \lset \xi \in \S \st X(\xi) = x \rset
 $$
 ````
 

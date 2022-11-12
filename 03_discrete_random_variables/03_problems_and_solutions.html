@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"st": "\\mid", "mod": "\\mid", "S": "\\Omega", "s": "\\omega", "e": "\\exp", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "expectation": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "lpar": "\\left(", "rpar": "\\right)", "pmf": "p_X", "pdf": "f_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})", "var": "\\operatorname{Var}", "std": "\\operatorname{Std}", "bern": "\\operatorname{Bernoulli}", "binomial": "\\operatorname{Binomial}", "geometric": "\\operatorname{Geometric}", "poisson": "\\operatorname{Poisson}", "uniform": "\\operatorname{Uniform}", "normal": "\\operatorname{Normal}", "gaussian": "\\operatorname{Gaussian}", "gaussiansymbol": "\\mathcal{N}", "exponential": "\\operatorname{Exponential}", "iid": "\\textbf{i.i.d.}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"defeq": "\\overset{\\text{def}}{=}", "st": "\\mid", "mod": "\\mid", "S": "\\Omega", "s": "\\omega", "e": "\\exp", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "expectation": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "lpar": "\\left(", "rpar": "\\right)", "lcurl": "\\left\\{", "rcurl": "\\right\\}", "pmf": "p_X", "pdf": "f_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})", "var": "\\operatorname{Var}", "std": "\\operatorname{Std}", "bern": "\\operatorname{Bernoulli}", "binomial": "\\operatorname{Binomial}", "geometric": "\\operatorname{Geometric}", "poisson": "\\operatorname{Poisson}", "uniform": "\\operatorname{Uniform}", "normal": "\\operatorname{Normal}", "gaussian": "\\operatorname{Gaussian}", "gaussiansymbol": "\\mathcal{N}", "exponential": "\\operatorname{Exponential}", "iid": "\\textbf{i.i.d.}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -462,7 +462,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/gao-hongnan/gaohn-probability-stats/issues/new?title=Issue%20on%20page%20%2F03_discrete_random_variables/problems_and_solutions.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/gao-hongnan/gaohn-probability-stats/issues/new?title=Issue%20on%20page%20%2F03_discrete_random_variables/03_problems_and_solutions.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -490,7 +490,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/03_discrete_random_variables/problems_and_solutions.md"
+        <a href="../_sources/03_discrete_random_variables/03_problems_and_solutions.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -602,6 +602,27 @@ Poisson distribution with an average of <span class="math notranslate nohighligh
 interval of length one hour is selected on the chosen day.
 It is observed that I did not receive any emails in that interval.
 What is the probability that the chosen day is a weekday?</p>
+<p>a) Let <span class="math notranslate nohighlight">\(X\)</span> be the number of emails received on a weekend, in a time interval of length <span class="math notranslate nohighlight">\(1\)</span> minute.
+Then <span class="math notranslate nohighlight">\(X \sim \text{Poisson}(\frac{1}{30})\)</span> has a Poisson distribution with parameter <span class="math notranslate nohighlight">\(\lambda = \frac{1}{30}\)</span>.</p>
+<p>In Poisson’s <a class="reference internal" href="0311_poisson_distribution.html#poisson-assumptions"><span class="std std-ref">Assumptions</span></a>, we noted that the <strong>linearity assumption</strong> states
+that the probability of an event occurring is proportional to the length of the time period.
+As a consequence, the value of <span class="math notranslate nohighlight">\(\lambda\)</span> is proportional to the length of the time period.</p>
+<p>And since the problem asked for a time period of length <span class="math notranslate nohighlight">\(4\)</span> hours, we have that the
+<span class="math notranslate nohighlight">\(\lambda\)</span> is now,</p>
+<div class="math notranslate nohighlight">
+\[
+\lambda = 60 \times 4 \times \frac{1}{30} = 8
+\]</div>
+<p>This should be intuitive because <span class="math notranslate nohighlight">\(\lambda\)</span> is the average number of occurences of an event in a time period <span class="math notranslate nohighlight">\(T\)</span>.
+Thus, if in <span class="math notranslate nohighlight">\(1\)</span> minute, there is <span class="math notranslate nohighlight">\(\frac{1}{30}\)</span> email, then in <span class="math notranslate nohighlight">\(240\)</span> minutes (4 hours), there should be <span class="math notranslate nohighlight">\(8\)</span> emails.</p>
+<p>We can rephrase our initial statement as follows:</p>
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> be the number of emails received on a weekend, in a time interval of length <span class="math notranslate nohighlight">\(4\)</span> hours.
+Then <span class="math notranslate nohighlight">\(X \sim \text{Poisson}(8)\)</span> has a Poisson distribution with parameter <span class="math notranslate nohighlight">\(\lambda = 8\)</span>.</p>
+<p>Subsequently, the probability of getting no emails in a time interval of length <span class="math notranslate nohighlight">\(4\)</span> hours is given by</p>
+<div class="math notranslate nohighlight">
+\[
+\P \lsq X = 0 \rsq = \frac{e^{-8} 8^0}{0!} = e^{-8} \approx 3.4 \times 10^{-4}
+\]</div>
 </section>
 </section>
 

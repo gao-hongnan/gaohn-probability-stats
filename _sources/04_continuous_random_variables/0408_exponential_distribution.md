@@ -78,7 +78,7 @@ import scipy.stats as stats
 from utils import seed_all, plot_continuous_pdf_and_cdf
 seed_all()
 
-# x = np.linspace(0, 10, 1000)
+# x = np.linspace(0, 10, 5000)
 lambda_1, lambda_2 = 0.5, 2
 scale_1, scale_2 = 1 / lambda_1, 1 / lambda_2
 X1 = stats.expon(scale=scale_1)

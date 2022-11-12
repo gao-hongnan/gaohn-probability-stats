@@ -19,7 +19,9 @@ kernelspec:
 
 Perhaps the most important distribution is the Gaussian Distribution, also known as the Normal Distribution.
 
-## Definition
+## General Gaussian Distribution
+
+### Definition
 
 ```{prf:definition} Gaussian Distribution (PDF)
 :label: def_gaussian_distribution_pdf
@@ -27,7 +29,7 @@ Perhaps the most important distribution is the Gaussian Distribution, also known
 $X$ is a continuous random variable with a **Gaussian distribution** if the probability density function is given by:
 
 $$
-\pdf(x) = \frac{1}{\sqrt{2 \pi \sigma^2}} \e \left\{-\frac{(x - \mu)^2}{2 \sigma^2}\right\}
+\pdf(x) = \frac{1}{\sqrt{2 \pi \sigma^2}} \e \lcurl -\frac{(x - \mu)^2}{2 \sigma^2} \rcurl
 $$ (eq:def_gaussian_distribution)
 
 where $\mu$ is the mean and $\sigma^2$ is the variance and are parameters of the distribution.
@@ -121,7 +123,7 @@ Note that the PDF curve moves left and right as $\mu$ increases and decreases, r
 Similarly, the PDF curve gets narrower and wider as $\sigma$ increases and decreases, respectively.
 ```
 
-## Expectation and Variance
+### Expectation and Variance
 
 ```{prf:theorem} Expectation and Variance of the Gaussian Distribution
 
@@ -132,11 +134,160 @@ If $X$ is a continuous random variable with an gaussian distribution with mean $
 expectation and variance of $X$ are given by:
 
 $$
-\expectation \lsq X \rsq = \mu \qquad \text{and} \qquad \variance \lsq X \rsq = \sigma^2
+\expectation \lsq X \rsq = \mu \qquad \text{and} \qquad \var \lsq X \rsq = \sigma^2
 $$ (eq:gaussian_distribution_expectation_variance)
 ```
 
+## Standard Gaussian Distribution
 
+### Motivation
+
+In continuous distributions, we are often asked to evaluate the probability of an interval $[a, b]$.
+For example, if $X \sim \gaussian(\mu, \sigma^2)$, what is the probability that $X$ is between $a$ and $b$?
+If we use PDF to compute the probability, we will have to integrate the PDF over the interval $[a, b]$.
+
+$$
+\P \lsq a \leq X \leq b \rsq = \int_a^b \pdf(x) \, \mathrm{d}x
+$$ 
+
+We have seen that there is no closed form solution for this integral. 
+
+Furthermore, in practice, we use the CDF to compute the probability of an interval.
+
+$$
+\P \lsq a \leq X \leq b \rsq = \cdf(b) - \cdf(a)
+$$
+
+However, we have also seen that there is no closed form solution for the CDF of the Gaussian distribution since
+the CDF is an integral of the PDF.
+
+This prompted the existence of the **standard normal distribution**.
+
+### Definition
+
+```{prf:definition} Standard Gaussian Distribution
+:label: def_standard_gaussian_distribution
+
+Let $X$ be a continuous random variable with a Gaussian distribution with mean $\mu$ and variance $\sigma^2$.
+Then $X$ is said to be a **Standard Gaussian** if it has a Gaussian distribution with mean 0 and variance 1.
+
+$$
+\pdf(x) = \frac{1}{\sqrt{2 \pi}} \exp \lcurl -\frac{x^2}{2} \rcurl
+$$ (eq:def_standard_normal_distribution_pdf)
+
+In notations, it is $X \sim \gaussiansymbol(0, 1)$, with $\mu = 0$ and $\sigma^2 = 1$.
+```
+
+```{prf:definition} Standard Normal Distribution (CDF)
+:label: def_standard_normal_distribution_cdf
+
+The CDF of the **Standard Gaussian** is given by:
+
+$$
+\Phi(x) \defeq \cdf(x) = \frac{1}{\sqrt{2 \pi}} \int_{-\infty}^x \exp \lcurl -\frac{t^2}{2} \rcurl \, \mathrm{d}t
+$$
+
+Take note of the $\Phi$ notation, which is the standard notation for the CDF of the Standard Gaussian.
+```
+
+```{code-cell} ipython3
+:tags: [hide-input]
+import sys
+from pathlib import Path
+parent_dir = str(Path().resolve().parent)
+sys.path.append(parent_dir)
+
+import numpy as np
+import scipy.stats as stats
+
+from utils import seed_all, plot_continuous_pdf_and_cdf
+seed_all()
+
+# x = np.linspace(0, 10, 5000)
+mean, sigma = 0, 1
+X = stats.norm(mean, sigma)
+
+plot_continuous_pdf_and_cdf(X, -5, 5, title="Normal Distribution $\mu=0, \sigma=1$", figsize=(15, 5))
+```
+
+### Error Function
+
+```{prf:definition} Error Function
+:label: def_error_function
+
+The **error function** is defined as:
+
+$$
+\text{erf}(x) \defeq \frac{2}{\sqrt{\pi}} \int_0^x \exp \lcurl -t^2 \rcurl \, \mathrm{d}t
+$$
+
+The connection of the error function to the CDF of the Standard Gaussian is given by:
+
+$$
+\Phi(x) = \frac{1}{2} \left( 1 + \text{erf} \lcurl \frac{x}{\sqrt{2}} \rcurl \right) \qquad \text{and} \qquad \text{erf}(x) = 2 \Phi(x\sqrt{2}) - 1
+$$ (eq:standard_gaussian_cdf_error_function)
+```
+
+### CDF of Arbitrary Gaussian Distribution
+
+```{prf:theorem} CDF of Arbitrary Gaussian Distribution
+:label: thm_cdf_arbitrary_gaussian_distribution
+
+Let $X$ be a continuous random variable with a Gaussian distribution with mean $\mu$ and variance $\sigma^2$.
+Then we can convert the CDF of $X$ to the CDF of the Standard Gaussian by:
+
+$$
+\cdf(x) = \Phi \lpar \frac{x - \mu}{\sigma} \rpar
+$$ (eq:cdf_arbitrary_gaussian_distribution)
+```
+
+```{prf:proof} CDF of Arbitrary Gaussian Distribution
+The definition of a Gaussian distribution is given by:
+
+$$
+\begin{aligned}
+\cdf(x) &= \P \lsq X \leq x \rsq \\
+        &= \int_{-\infty}^x \pdf(t) \, \mathrm{d}t \\
+        &= \int_{-\infty}^x \frac{1}{\sqrt{2 \pi \sigma^2}} \exp \lcurl -\frac{(t - \mu)^2}{2 \sigma^2} \rcurl \, \mathrm{d}t \\
+\end{aligned}
+$$
+
+We can use the (integration by) substitution $u = \frac{t - \mu}{\sigma}$ to get {cite}`chan_2021`:
+
+$$
+\begin{aligned}
+\int_{-\infty}^x \frac{1}{\sqrt{2 \pi \sigma^2}} \exp \lcurl -\frac{(t - \mu)^2}{2 \sigma^2} \rcurl \, \mathrm{d}t &= \int_{-\infty}^{\frac{x - \mu}{\sigma}} \frac{1}{\sqrt{2 \pi}} \exp \lcurl -\frac{u^2}{2} \rcurl \, \mathrm{d}u \\
+&= \Phi \lpar \frac{x - \mu}{\sigma} \rpar
+\end{aligned}
+$$
+```
+
+```{prf:corollary} Probability of an Interval
+:label: cor_probability_interval
+
+As a consequence of {prf:ref}`thm_cdf_arbitrary_gaussian_distribution`, we can compute
+the probability of an interval for an arbitrary Gaussian distribution. This
+solves our problem of computing the probability of an interval for a Gaussian Distribution earlier.
+
+$$
+\begin{aligned}
+\P \lsq a \leq X \leq b \rsq &= \cdf(b) - \cdf(a) \\
+                             &= \P \lsq X \leq b \rsq - \P \lsq X \leq a \rsq \\
+                             &= \Phi \lpar \frac{b - \mu}{\sigma} \rpar - \Phi \lpar \frac{a - \mu}{\sigma} \rpar
+\end{aligned}
+$$ (eq:probability_interval)
+```
+
+```{prf:corollary} Corollary of Standard Gaussian
+:label: cor_standard_gaussian
+
+As a consequence of {prf:ref}`thm_cdf_arbitrary_gaussian_distribution`, we have 
+the following corollaries {cite}`chan_2021`:
+
+- $\Phi(y) = 1 - \Phi(-y)$
+- $\P \lsq X \geq b \rsq = 1 - \Phi \lpar \frac{b - \mu}{\sigma} \rpar$
+- $\P \lvert X \rvert \geq b = 1 - \Phi \lpar \frac{b - \mu}{\sigma} \rpar + \Phi \lpar \frac{-b - \mu}{\sigma} \rpar$
+```
 
 
 ## Further Readings

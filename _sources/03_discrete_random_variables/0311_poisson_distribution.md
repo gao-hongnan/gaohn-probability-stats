@@ -28,6 +28,7 @@ Some conventions:
 3. $\lambda = \alpha T$ is the ***average number of occurrences*** over the time/space being considered.
 ```
 
+(poisson_assumptions)=
 ## Assumptions
 
 The Poisson distribution needs to satisfy the following assumptions before it can be used:
@@ -36,7 +37,7 @@ The Poisson distribution needs to satisfy the following assumptions before it ca
 2. Events are independent of each other. In other words, the occurrence of one event does not affect the occurrence of another event.
 3. The average rate of occurrence of an event is constant over time/space. In other words, $\lambda$ is constant and does not change over time/space.
 4. Two events cannot occur at the same instance in time/space. In other words, at very small time/space interval $\Delta t$, either exactly one event occurs or no event occurs.
-5. An another way of saying is that this is a ***linearity assumption***, the probability of an event occurring is proportional to the length of the time period. For example, it should be twice as likely for an event to occur in a 2 hour time period than it is for an event to occur in a 1 hour period.
+5. The ***linearity assumption***, the probability of an event occurring is proportional to the length of the time period. For example, it should be twice as likely for an event to occur in a 2 hour time period than it is for an event to occur in a 1 hour period.
 6. The value of $\lambda$ is proportional to the length of the time period. 
 
 See chapter 3.5.4 on section Origin of the Poisson random variable of {cite}`chan_2021`.
