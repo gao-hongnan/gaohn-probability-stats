@@ -37,10 +37,15 @@ The Poisson distribution needs to satisfy the following assumptions before it ca
 2. Events are independent of each other. In other words, the occurrence of one event does not affect the occurrence of another event.
 3. The average rate of occurrence of an event is constant over time/space. In other words, $\lambda$ is constant and does not change over time/space.
 4. Two events cannot occur at the same instance in time/space. In other words, at very small time/space interval $\Delta t$, either exactly one event occurs or no event occurs.
-5. The ***linearity assumption***, the probability of an event occurring is proportional to the length of the time period. For example, it should be twice as likely for an event to occur in a 2 hour time period than it is for an event to occur in a 1 hour period.
+5. The ***linearity assumption***, the probability of an event occurring is proportional to the length of the time period. For example, it should be twice as likely for an event to occur in a 2 hour time period than it is for an event to occur in a 1 hour period[^linearity_assumption].
 6. The value of $\lambda$ is proportional to the length of the time period. 
 
+
+```{admonition} Where did these Assumptions come from?
+:class: tip
+
 See chapter 3.5.4 on section Origin of the Poisson random variable of {cite}`chan_2021`.
+```
 
 ```{prf:example} Example
 :label: ex:poi
@@ -88,6 +93,15 @@ $$
 $$
 ```
 
+```{prf:property} Sum of Independent Poisson Random Variables
+:label: prop_sum_poi
+
+Let $X_1, X_2, \ldots, X_n$ be independent Poisson random variables with parameter $\lambda_i$ 
+for $i \in \lset 1, 2, \ldots n \rset. Then the sum of these $n$ random variables 
+is also a Poisson random variable with parameter $\lambda = \sum_{i=1}^n \lambda_i$.
+```
+
+
 ## Poisson Approximation to Binomial Distribution
 
 ```{prf:theorem} Poisson Approximation to Binomial Distribution
@@ -116,3 +130,5 @@ Many times, Poisson PMF is much easier to compute than its Binomial counterpart.
 ## Further Readings
 
 - Chan, Stanley H. "Chapter 3.5.4. Poisson random variable." In Introduction to Probability for Data Science, 152-164. Ann Arbor, Michigan: Michigan Publishing Services, 2021. 
+
+[^linearity_assumption]: Be careful, this only holds in a small time interval, i.e. $\P \lsq X(t + \Delta t) - X(t) = 1 \rsq = \lambda \Delta t$ for sufficiently small $\Delta t$ {cite}`chan_2021`.

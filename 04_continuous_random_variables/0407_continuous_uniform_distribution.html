@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"defeq": "\\overset{\\text{def}}{=}", "st": "\\mid", "mod": "\\mid", "S": "\\Omega", "s": "\\omega", "e": "\\exp", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "expectation": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "lpar": "\\left(", "rpar": "\\right)", "lcurl": "\\left\\{", "rcurl": "\\right\\}", "pmf": "p_X", "pdf": "f_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})", "var": "\\operatorname{Var}", "std": "\\operatorname{Std}", "bern": "\\operatorname{Bernoulli}", "binomial": "\\operatorname{Binomial}", "geometric": "\\operatorname{Geometric}", "poisson": "\\operatorname{Poisson}", "uniform": "\\operatorname{Uniform}", "normal": "\\operatorname{Normal}", "gaussian": "\\operatorname{Gaussian}", "gaussiansymbol": "\\mathcal{N}", "exponential": "\\operatorname{Exponential}", "iid": "\\textbf{i.i.d.}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"defeq": "\\overset{\\text{def}}{=}", "defa": "\\overset{\\text{(a)}}{=}", "defb": "\\overset{\\text{(b)}}{=}", "st": "\\mid", "mod": "\\mid", "S": "\\Omega", "s": "\\omega", "e": "\\exp", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "expectation": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "lpar": "\\left(", "rpar": "\\right)", "lcurl": "\\left\\{", "rcurl": "\\right\\}", "pmf": "p_X", "pdf": "f_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})", "var": "\\operatorname{Var}", "std": "\\operatorname{Std}", "bern": "\\operatorname{Bernoulli}", "binomial": "\\operatorname{Binomial}", "geometric": "\\operatorname{Geometric}", "poisson": "\\operatorname{Poisson}", "uniform": "\\operatorname{Uniform}", "normal": "\\operatorname{Normal}", "gaussian": "\\operatorname{Gaussian}", "gaussiansymbol": "\\mathcal{N}", "exponential": "\\operatorname{Exponential}", "iid": "\\textbf{i.i.d.}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -682,7 +682,7 @@ title="Print to PDF"
 <p><span class="math notranslate nohighlight">\(X\)</span> is a continuous random variable with a <strong>continuous uniform distribution</strong> if the
 probability density function is given by:</p>
 <div class="math notranslate nohighlight" id="equation-eq-def-continuous-uniform-distribution">
-<span class="eqno">(15)<a class="headerlink" href="#equation-eq-def-continuous-uniform-distribution" title="Permalink to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(16)<a class="headerlink" href="#equation-eq-def-continuous-uniform-distribution" title="Permalink to this equation">#</a></span>\[\begin{split}
 \pdf(x) = \begin{cases}
     \frac{1}{b-a} &amp; \text{if } a \leq x \leq b \\
     0 &amp; \text{otherwise}
@@ -700,7 +700,7 @@ probability density function is given by:</p>
 <p>If <span class="math notranslate nohighlight">\(X\)</span> is a continuous random variable with a continuous uniform distribution on <span class="math notranslate nohighlight">\([a,b]\)</span>, then the CDF is given by
 integrating the PDF defined in <a class="reference internal" href="#def_continuous_uniform_distribution_pdf">Definition 44</a>:</p>
 <div class="math notranslate nohighlight" id="equation-eq-def-continuous-uniform-distribution-cdf">
-<span class="eqno">(16)<a class="headerlink" href="#equation-eq-def-continuous-uniform-distribution-cdf" title="Permalink to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(17)<a class="headerlink" href="#equation-eq-def-continuous-uniform-distribution-cdf" title="Permalink to this equation">#</a></span>\[\begin{split}
 \cdf(x) = \begin{cases}
     0 &amp; \text{if } x &lt; a \\
     \frac{x-a}{b-a} &amp; \text{if } a \leq x \leq b \\
@@ -801,7 +801,7 @@ integrating the PDF defined in <a class="reference internal" href="#def_continuo
 <section class="theorem-content" id="proof-content">
 <p>If <span class="math notranslate nohighlight">\(X\)</span> is a continuous random variable with a continuous uniform distribution on <span class="math notranslate nohighlight">\([a,b]\)</span>, then</p>
 <div class="math notranslate nohighlight" id="equation-eq-thm-continuous-uniform-distribution">
-<span class="eqno">(17)<a class="headerlink" href="#equation-eq-thm-continuous-uniform-distribution" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(18)<a class="headerlink" href="#equation-eq-thm-continuous-uniform-distribution" title="Permalink to this equation">#</a></span>\[
 \expectation \lsq X \rsq = \frac{a+b}{2} \qquad \text{and} \qquad \var \lsq X \rsq = \frac{(b-a)^2}{12}
 \]</div>
 </section>

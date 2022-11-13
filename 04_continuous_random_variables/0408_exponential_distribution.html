@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"defeq": "\\overset{\\text{def}}{=}", "st": "\\mid", "mod": "\\mid", "S": "\\Omega", "s": "\\omega", "e": "\\exp", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "expectation": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "lpar": "\\left(", "rpar": "\\right)", "lcurl": "\\left\\{", "rcurl": "\\right\\}", "pmf": "p_X", "pdf": "f_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})", "var": "\\operatorname{Var}", "std": "\\operatorname{Std}", "bern": "\\operatorname{Bernoulli}", "binomial": "\\operatorname{Binomial}", "geometric": "\\operatorname{Geometric}", "poisson": "\\operatorname{Poisson}", "uniform": "\\operatorname{Uniform}", "normal": "\\operatorname{Normal}", "gaussian": "\\operatorname{Gaussian}", "gaussiansymbol": "\\mathcal{N}", "exponential": "\\operatorname{Exponential}", "iid": "\\textbf{i.i.d.}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"defeq": "\\overset{\\text{def}}{=}", "defa": "\\overset{\\text{(a)}}{=}", "defb": "\\overset{\\text{(b)}}{=}", "st": "\\mid", "mod": "\\mid", "S": "\\Omega", "s": "\\omega", "e": "\\exp", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "expectation": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "lpar": "\\left(", "rpar": "\\right)", "lcurl": "\\left\\{", "rcurl": "\\right\\}", "pmf": "p_X", "pdf": "f_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})", "var": "\\operatorname{Var}", "std": "\\operatorname{Std}", "bern": "\\operatorname{Bernoulli}", "binomial": "\\operatorname{Binomial}", "geometric": "\\operatorname{Geometric}", "poisson": "\\operatorname{Poisson}", "uniform": "\\operatorname{Uniform}", "normal": "\\operatorname{Normal}", "gaussian": "\\operatorname{Gaussian}", "gaussiansymbol": "\\mathcal{N}", "exponential": "\\operatorname{Exponential}", "iid": "\\textbf{i.i.d.}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -681,7 +681,7 @@ title="Print to PDF"
 <section class="definition-content" id="proof-content">
 <p><span class="math notranslate nohighlight">\(X\)</span> is a continuous random variable with an <strong>exponential distribution</strong> if the probability density function is given by:</p>
 <div class="math notranslate nohighlight" id="equation-eq-def-exponential-distribution">
-<span class="eqno">(18)<a class="headerlink" href="#equation-eq-def-exponential-distribution" title="Permalink to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(19)<a class="headerlink" href="#equation-eq-def-exponential-distribution" title="Permalink to this equation">#</a></span>\[\begin{split}
 \pdf(x) = \begin{cases}
     \lambda e^{-\lambda x} &amp; \text{if } x \geq 0 \\
     0 &amp; \text{otherwise}
@@ -708,7 +708,7 @@ title="Print to PDF"
 <section class="definition-content" id="proof-content">
 <p>If <span class="math notranslate nohighlight">\(X\)</span> is a continuous random variable with an exponential distribution with rate parameter <span class="math notranslate nohighlight">\(\lambda\)</span>, then the CDF is given by integrating the PDF defined in <a class="reference internal" href="#def_exponential_distribution_pdf">Definition 46</a>:</p>
 <div class="math notranslate nohighlight" id="equation-eq-def-exponential-distribution-cdf">
-<span class="eqno">(19)<a class="headerlink" href="#equation-eq-def-exponential-distribution-cdf" title="Permalink to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(20)<a class="headerlink" href="#equation-eq-def-exponential-distribution-cdf" title="Permalink to this equation">#</a></span>\[\begin{split}
 \cdf(x) = \begin{cases}
     0 &amp; \text{if } x &lt; 0 \\
     1 - e^{-\lambda x} &amp; \text{if } x \geq 0
@@ -756,7 +756,7 @@ title="Print to PDF"
 <section class="theorem-content" id="proof-content">
 <p>If <span class="math notranslate nohighlight">\(X\)</span> is a continuous random variable with an exponential distribution with rate parameter <span class="math notranslate nohighlight">\(\lambda\)</span>, then the expectation and variance are given by:</p>
 <div class="math notranslate nohighlight" id="equation-eq-thm-exponential-distribution-expectation-variance">
-<span class="eqno">(20)<a class="headerlink" href="#equation-eq-thm-exponential-distribution-expectation-variance" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(21)<a class="headerlink" href="#equation-eq-thm-exponential-distribution-expectation-variance" title="Permalink to this equation">#</a></span>\[
 \expectation \lsq X \rsq = \frac{1}{\lambda} \qquad \text{and} \qquad \var \lsq X \rsq = \frac{1}{\lambda^2}
 \]</div>
 </section>

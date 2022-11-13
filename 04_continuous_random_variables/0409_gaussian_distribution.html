@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"defeq": "\\overset{\\text{def}}{=}", "st": "\\mid", "mod": "\\mid", "S": "\\Omega", "s": "\\omega", "e": "\\exp", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "expectation": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "lpar": "\\left(", "rpar": "\\right)", "lcurl": "\\left\\{", "rcurl": "\\right\\}", "pmf": "p_X", "pdf": "f_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})", "var": "\\operatorname{Var}", "std": "\\operatorname{Std}", "bern": "\\operatorname{Bernoulli}", "binomial": "\\operatorname{Binomial}", "geometric": "\\operatorname{Geometric}", "poisson": "\\operatorname{Poisson}", "uniform": "\\operatorname{Uniform}", "normal": "\\operatorname{Normal}", "gaussian": "\\operatorname{Gaussian}", "gaussiansymbol": "\\mathcal{N}", "exponential": "\\operatorname{Exponential}", "iid": "\\textbf{i.i.d.}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"defeq": "\\overset{\\text{def}}{=}", "defa": "\\overset{\\text{(a)}}{=}", "defb": "\\overset{\\text{(b)}}{=}", "st": "\\mid", "mod": "\\mid", "S": "\\Omega", "s": "\\omega", "e": "\\exp", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "expectation": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "lpar": "\\left(", "rpar": "\\right)", "lcurl": "\\left\\{", "rcurl": "\\right\\}", "pmf": "p_X", "pdf": "f_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})", "var": "\\operatorname{Var}", "std": "\\operatorname{Std}", "bern": "\\operatorname{Bernoulli}", "binomial": "\\operatorname{Binomial}", "geometric": "\\operatorname{Geometric}", "poisson": "\\operatorname{Poisson}", "uniform": "\\operatorname{Uniform}", "normal": "\\operatorname{Normal}", "gaussian": "\\operatorname{Gaussian}", "gaussiansymbol": "\\mathcal{N}", "exponential": "\\operatorname{Exponential}", "iid": "\\textbf{i.i.d.}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -752,7 +752,7 @@ title="Print to PDF"
 <section class="definition-content" id="proof-content">
 <p><span class="math notranslate nohighlight">\(X\)</span> is a continuous random variable with a <strong>Gaussian distribution</strong> if the probability density function is given by:</p>
 <div class="math notranslate nohighlight" id="equation-eq-def-gaussian-distribution">
-<span class="eqno">(21)<a class="headerlink" href="#equation-eq-def-gaussian-distribution" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(22)<a class="headerlink" href="#equation-eq-def-gaussian-distribution" title="Permalink to this equation">#</a></span>\[
 \pdf(x) = \frac{1}{\sqrt{2 \pi \sigma^2}} \e \lcurl -\frac{(x - \mu)^2}{2 \sigma^2} \rcurl
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\mu\)</span> is the mean and <span class="math notranslate nohighlight">\(\sigma^2\)</span> is the variance and are parameters of the distribution.</p>
@@ -770,7 +770,7 @@ But we will see that it is easy to compute the CDF of the Gaussian distribution
 using the CDF of the standard normal distribution later.</p>
 <p>Therefore, the CDF of the Gaussian distribution is given by:</p>
 <div class="math notranslate nohighlight" id="equation-eq-def-gaussian-distribution-cdf">
-<span class="eqno">(22)<a class="headerlink" href="#equation-eq-def-gaussian-distribution-cdf" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(23)<a class="headerlink" href="#equation-eq-def-gaussian-distribution-cdf" title="Permalink to this equation">#</a></span>\[
 \cdf(x) = \int_{-\infty}^x \pdf(x) \, \mathrm{d}x
 \]</div>
 <p>Yes, you have to integrate the PDF to get the CDF but there is no “general” solution.</p>
@@ -857,7 +857,7 @@ However, this is not proven previously.</p>
 <p>If <span class="math notranslate nohighlight">\(X\)</span> is a continuous random variable with an gaussian distribution with mean <span class="math notranslate nohighlight">\(\mu\)</span> and variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>, then the
 expectation and variance of <span class="math notranslate nohighlight">\(X\)</span> are given by:</p>
 <div class="math notranslate nohighlight" id="equation-eq-gaussian-distribution-expectation-variance">
-<span class="eqno">(23)<a class="headerlink" href="#equation-eq-gaussian-distribution-expectation-variance" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(24)<a class="headerlink" href="#equation-eq-gaussian-distribution-expectation-variance" title="Permalink to this equation">#</a></span>\[
 \expectation \lsq X \rsq = \mu \qquad \text{and} \qquad \var \lsq X \rsq = \sigma^2
 \]</div>
 </section>
@@ -892,7 +892,7 @@ the CDF is an integral of the PDF.</p>
 <p>Let <span class="math notranslate nohighlight">\(X\)</span> be a continuous random variable with a Gaussian distribution with mean <span class="math notranslate nohighlight">\(\mu\)</span> and variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>.
 Then <span class="math notranslate nohighlight">\(X\)</span> is said to be a <strong>Standard Gaussian</strong> if it has a Gaussian distribution with mean 0 and variance 1.</p>
 <div class="math notranslate nohighlight" id="equation-eq-def-standard-normal-distribution-pdf">
-<span class="eqno">(24)<a class="headerlink" href="#equation-eq-def-standard-normal-distribution-pdf" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(25)<a class="headerlink" href="#equation-eq-def-standard-normal-distribution-pdf" title="Permalink to this equation">#</a></span>\[
 \pdf(x) = \frac{1}{\sqrt{2 \pi}} \exp \lcurl -\frac{x^2}{2} \rcurl
 \]</div>
 <p>In notations, it is <span class="math notranslate nohighlight">\(X \sim \gaussiansymbol(0, 1)\)</span>, with <span class="math notranslate nohighlight">\(\mu = 0\)</span> and <span class="math notranslate nohighlight">\(\sigma^2 = 1\)</span>.</p>
@@ -948,7 +948,7 @@ Then <span class="math notranslate nohighlight">\(X\)</span> is said to be a <st
 \]</div>
 <p>The connection of the error function to the CDF of the Standard Gaussian is given by:</p>
 <div class="math notranslate nohighlight" id="equation-eq-standard-gaussian-cdf-error-function">
-<span class="eqno">(25)<a class="headerlink" href="#equation-eq-standard-gaussian-cdf-error-function" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(26)<a class="headerlink" href="#equation-eq-standard-gaussian-cdf-error-function" title="Permalink to this equation">#</a></span>\[
 \Phi(x) = \frac{1}{2} \left( 1 + \text{erf} \lcurl \frac{x}{\sqrt{2}} \rcurl \right) \qquad \text{and} \qquad \text{erf}(x) = 2 \Phi(x\sqrt{2}) - 1
 \]</div>
 </section>
@@ -961,7 +961,7 @@ Then <span class="math notranslate nohighlight">\(X\)</span> is said to be a <st
 <p>Let <span class="math notranslate nohighlight">\(X\)</span> be a continuous random variable with a Gaussian distribution with mean <span class="math notranslate nohighlight">\(\mu\)</span> and variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>.
 Then we can convert the CDF of <span class="math notranslate nohighlight">\(X\)</span> to the CDF of the Standard Gaussian by:</p>
 <div class="math notranslate nohighlight" id="equation-eq-cdf-arbitrary-gaussian-distribution">
-<span class="eqno">(26)<a class="headerlink" href="#equation-eq-cdf-arbitrary-gaussian-distribution" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(27)<a class="headerlink" href="#equation-eq-cdf-arbitrary-gaussian-distribution" title="Permalink to this equation">#</a></span>\[
 \cdf(x) = \Phi \lpar \frac{x - \mu}{\sigma} \rpar
 \]</div>
 </section>
@@ -992,7 +992,7 @@ The definition of a Gaussian distribution is given by:</p>
 the probability of an interval for an arbitrary Gaussian distribution. This
 solves our problem of computing the probability of an interval for a Gaussian Distribution earlier.</p>
 <div class="math notranslate nohighlight" id="equation-eq-probability-interval">
-<span class="eqno">(27)<a class="headerlink" href="#equation-eq-probability-interval" title="Permalink to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(28)<a class="headerlink" href="#equation-eq-probability-interval" title="Permalink to this equation">#</a></span>\[\begin{split}
 \begin{aligned}
 \P \lsq a \leq X \leq b \rsq &amp;= \cdf(b) - \cdf(a) \\
                              &amp;= \P \lsq X \leq b \rsq - \P \lsq X \leq a \rsq \\

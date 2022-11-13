@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"defeq": "\\overset{\\text{def}}{=}", "st": "\\mid", "mod": "\\mid", "S": "\\Omega", "s": "\\omega", "e": "\\exp", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "expectation": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "lpar": "\\left(", "rpar": "\\right)", "lcurl": "\\left\\{", "rcurl": "\\right\\}", "pmf": "p_X", "pdf": "f_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})", "var": "\\operatorname{Var}", "std": "\\operatorname{Std}", "bern": "\\operatorname{Bernoulli}", "binomial": "\\operatorname{Binomial}", "geometric": "\\operatorname{Geometric}", "poisson": "\\operatorname{Poisson}", "uniform": "\\operatorname{Uniform}", "normal": "\\operatorname{Normal}", "gaussian": "\\operatorname{Gaussian}", "gaussiansymbol": "\\mathcal{N}", "exponential": "\\operatorname{Exponential}", "iid": "\\textbf{i.i.d.}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"defeq": "\\overset{\\text{def}}{=}", "defa": "\\overset{\\text{(a)}}{=}", "defb": "\\overset{\\text{(b)}}{=}", "st": "\\mid", "mod": "\\mid", "S": "\\Omega", "s": "\\omega", "e": "\\exp", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "expectation": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "lpar": "\\left(", "rpar": "\\right)", "lcurl": "\\left\\{", "rcurl": "\\right\\}", "pmf": "p_X", "pdf": "f_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})", "var": "\\operatorname{Var}", "std": "\\operatorname{Std}", "bern": "\\operatorname{Bernoulli}", "binomial": "\\operatorname{Binomial}", "geometric": "\\operatorname{Geometric}", "poisson": "\\operatorname{Poisson}", "uniform": "\\operatorname{Uniform}", "normal": "\\operatorname{Normal}", "gaussian": "\\operatorname{Gaussian}", "gaussiansymbol": "\\mathcal{N}", "exponential": "\\operatorname{Exponential}", "iid": "\\textbf{i.i.d.}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -678,7 +678,7 @@ holds here.</p>
 <p>Let <span class="math notranslate nohighlight">\(X\)</span> be a continous random variable with sample space <span class="math notranslate nohighlight">\(\S\)</span> and probability density function <span class="math notranslate nohighlight">\(\pdf\)</span>.</p>
 <p>Then the <em><strong>expectation</strong></em> of <span class="math notranslate nohighlight">\(X\)</span> has the following properties:</p>
 <div class="proof property admonition" id="prop_expectation_function_continuous">
-<p class="admonition-title"><span class="caption-number">Property 17 </span> (The Law of The Unconscious Statistician)</p>
+<p class="admonition-title"><span class="caption-number">Property 18 </span> (The Law of The Unconscious Statistician)</p>
 <section class="property-content" id="proof-content">
 <p>For any function <span class="math notranslate nohighlight">\(g: \S \to \R\)</span>,</p>
 <div class="math notranslate nohighlight">
@@ -687,7 +687,7 @@ holds here.</p>
 \]</div>
 </section>
 </div><div class="proof property admonition" id="prop_expectation_linearity_continuous">
-<p class="admonition-title"><span class="caption-number">Property 18 </span> (Linearity)</p>
+<p class="admonition-title"><span class="caption-number">Property 19 </span> (Linearity)</p>
 <section class="property-content" id="proof-content">
 <p>For any constants <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>,</p>
 <div class="math notranslate nohighlight">
@@ -696,7 +696,7 @@ holds here.</p>
 \]</div>
 </section>
 </div><div class="proof property admonition" id="prop_expectation_scaling_continuous">
-<p class="admonition-title"><span class="caption-number">Property 19 </span> (Scaling)</p>
+<p class="admonition-title"><span class="caption-number">Property 20 </span> (Scaling)</p>
 <section class="property-content" id="proof-content">
 <p>For any constant <span class="math notranslate nohighlight">\(c\)</span>,</p>
 <div class="math notranslate nohighlight">
@@ -705,7 +705,7 @@ holds here.</p>
 \]</div>
 </section>
 </div><div class="proof property admonition" id="prop_expectation_dc_shift_continuous">
-<p class="admonition-title"><span class="caption-number">Property 20 </span> (DC Shift)</p>
+<p class="admonition-title"><span class="caption-number">Property 21 </span> (DC Shift)</p>
 <section class="property-content" id="proof-content">
 <p>For any constant <span class="math notranslate nohighlight">\(c\)</span>,</p>
 <div class="math notranslate nohighlight">
@@ -714,7 +714,7 @@ holds here.</p>
 \]</div>
 </section>
 </div><div class="proof property admonition" id="prop_expectation_stronger_linearity_continuous">
-<p class="admonition-title"><span class="caption-number">Property 21 </span> (Stronger Linearity)</p>
+<p class="admonition-title"><span class="caption-number">Property 22 </span> (Stronger Linearity)</p>
 <section class="property-content" id="proof-content">
 <p>It follows that for any random variables <span class="math notranslate nohighlight">\(X_1\)</span>, <span class="math notranslate nohighlight">\(X_2\)</span>, …, <span class="math notranslate nohighlight">\(X_n\)</span>,</p>
 <div class="math notranslate nohighlight">

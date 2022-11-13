@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"defeq": "\\overset{\\text{def}}{=}", "st": "\\mid", "mod": "\\mid", "S": "\\Omega", "s": "\\omega", "e": "\\exp", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "expectation": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "lpar": "\\left(", "rpar": "\\right)", "lcurl": "\\left\\{", "rcurl": "\\right\\}", "pmf": "p_X", "pdf": "f_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})", "var": "\\operatorname{Var}", "std": "\\operatorname{Std}", "bern": "\\operatorname{Bernoulli}", "binomial": "\\operatorname{Binomial}", "geometric": "\\operatorname{Geometric}", "poisson": "\\operatorname{Poisson}", "uniform": "\\operatorname{Uniform}", "normal": "\\operatorname{Normal}", "gaussian": "\\operatorname{Gaussian}", "gaussiansymbol": "\\mathcal{N}", "exponential": "\\operatorname{Exponential}", "iid": "\\textbf{i.i.d.}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"defeq": "\\overset{\\text{def}}{=}", "defa": "\\overset{\\text{(a)}}{=}", "defb": "\\overset{\\text{(b)}}{=}", "st": "\\mid", "mod": "\\mid", "S": "\\Omega", "s": "\\omega", "e": "\\exp", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "expectation": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "lpar": "\\left(", "rpar": "\\right)", "lcurl": "\\left\\{", "rcurl": "\\right\\}", "pmf": "p_X", "pdf": "f_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})", "var": "\\operatorname{Var}", "std": "\\operatorname{Std}", "bern": "\\operatorname{Bernoulli}", "binomial": "\\operatorname{Binomial}", "geometric": "\\operatorname{Geometric}", "poisson": "\\operatorname{Poisson}", "uniform": "\\operatorname{Uniform}", "normal": "\\operatorname{Normal}", "gaussian": "\\operatorname{Gaussian}", "gaussiansymbol": "\\mathcal{N}", "exponential": "\\operatorname{Exponential}", "iid": "\\textbf{i.i.d.}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -604,7 +604,7 @@ It is observed that I did not receive any emails in that interval.
 What is the probability that the chosen day is a weekday?</p>
 <p>a) Let <span class="math notranslate nohighlight">\(X\)</span> be the number of emails received on a weekend, in a time interval of length <span class="math notranslate nohighlight">\(1\)</span> minute.
 Then <span class="math notranslate nohighlight">\(X \sim \text{Poisson}(\frac{1}{30})\)</span> has a Poisson distribution with parameter <span class="math notranslate nohighlight">\(\lambda = \frac{1}{30}\)</span>.</p>
-<p>In Poisson’s <a class="reference internal" href="0311_poisson_distribution.html#poisson-assumptions"><span class="std std-ref">Assumptions</span></a>, we noted that the <strong>linearity assumption</strong> states
+<p>In Poisson’s <a class="reference internal" href="0311_poisson_distribution.html#poisson-assumptions"><span class="std std-ref">Assumptions</span></a>, the <strong>linearity assumption</strong> states
 that the probability of an event occurring is proportional to the length of the time period.
 As a consequence, the value of <span class="math notranslate nohighlight">\(\lambda\)</span> is proportional to the length of the time period.</p>
 <p>And since the problem asked for a time period of length <span class="math notranslate nohighlight">\(4\)</span> hours, we have that the
@@ -622,6 +622,58 @@ Then <span class="math notranslate nohighlight">\(X \sim \text{Poisson}(8)\)</sp
 <div class="math notranslate nohighlight">
 \[
 \P \lsq X = 0 \rsq = \frac{e^{-8} 8^0}{0!} = e^{-8} \approx 3.4 \times 10^{-4}
+\]</div>
+<p>b) Let <span class="math notranslate nohighlight">\(X\)</span> be the number of emails received on a weekday, in a time interval of length <span class="math notranslate nohighlight">\(1\)</span> hour, and
+<span class="math notranslate nohighlight">\(X \sim \poisson \lpar 60 \times \frac{1}{6} \rpar = \poisson(10)\)</span>.</p>
+<p>Let <span class="math notranslate nohighlight">\(Y\)</span> be the number of emails received on a weekend, in a time interval of length <span class="math notranslate nohighlight">\(1\)</span> hour, and
+<span class="math notranslate nohighlight">\(Y \sim \poisson \lpar 60 \times \frac{1}{30} \rpar = \poisson(2)\)</span>.</p>
+<p>Let <span class="math notranslate nohighlight">\(Z\)</span> be the disjoint union of <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>, and <span class="math notranslate nohighlight">\(Z = X \sqcup Y\)</span>. <span class="math notranslate nohighlight">\(Z\)</span> is also a random variable
+with a Poisson distribution <span class="math notranslate nohighlight">\(Z \sim \poisson(12)\)</span>. This is a consequence of the the <strong>additivity property</strong>
+in Poisson’s <a class="reference internal" href="0311_poisson_distribution.html#prop_sum_poi">Property 17</a>.</p>
+<p>Let <span class="math notranslate nohighlight">\(W\)</span> be a random chosen day in a week, and <span class="math notranslate nohighlight">\(W\)</span> is a random variable with a Uniform distribution
+<span class="math notranslate nohighlight">\(W \sim \uniform \lpar 1, 7 \rpar\)</span>.</p>
+<p>Now we can further decompose <span class="math notranslate nohighlight">\(W\)</span> to <span class="math notranslate nohighlight">\(W = W_1 \sqcup W_2\)</span>, where <span class="math notranslate nohighlight">\(W_1\)</span> is the random variable that
+indicates whether the chosen day is a weekday, and <span class="math notranslate nohighlight">\(W_2\)</span> is the random variable that indicates whether
+the chosen day is a weekend. Note in particular that, <span class="math notranslate nohighlight">\(W\)</span> is a random variable, a function
+<span class="math notranslate nohighlight">\(W: \S \to \R\)</span>, where <span class="math notranslate nohighlight">\(\S\)</span> is the sample space, and <span class="math notranslate nohighlight">\(\R\)</span> is the range of <span class="math notranslate nohighlight">\(W\)</span>, as indicated
+in <a class="reference internal" href="0301_random_variables.html#random_variables">Definition 12</a>.</p>
+<p>The sample space <span class="math notranslate nohighlight">\(\S\)</span> is just the set of days in a week,
+where we denote as <span class="math notranslate nohighlight">\(\S = \lset 1, 2, 3, 4, 5, 6, 7 \rset\)</span>.</p>
+<p>Similarly, <span class="math notranslate nohighlight">\(Z\)</span> has a sample space that can be understood as the disjoint union of the sample spaces
+of <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>. This is important as we want to invoke the Law of Total Probability.</p>
+<p>Now we can formulate the problem as follows:</p>
+<div class="math notranslate nohighlight">
+\[
+\P \lsq W_1 \lvert Z = 0 \rsq
+\]</div>
+<p>which means what is the probability of a chosen day is a weekday given that I did not receive any emails
+in the time interval of <span class="math notranslate nohighlight">\(1\)</span> hour of a random chosen week.</p>
+<p>By Bayes’ Theorem (<a class="reference internal" href="../02_probability/0206_bayes_theorem.html#def:bayes-theorem">Definition 11</a>), we have that</p>
+<div class="math notranslate nohighlight" id="equation-eq-prob-w1-given-z0">
+<span class="eqno">(13)<a class="headerlink" href="#equation-eq-prob-w1-given-z0" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+\P \lsq W_1 \lvert Z = 0 \rsq &amp;\defa \dfrac{\P \lsq Z = 0 \lvert W_1 \rsq \P \lsq W_1 \rsq}{\P \lsq Z = 0 \rsq} \\
+       &amp;\defb \dfrac{e^{-10} \cdot \frac{5}{7}}{\P \lsq Z = 0 \rsq} \\
+\end{aligned}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\defb\)</span>’s <span class="math notranslate nohighlight">\(e^{-10}\)</span> is derived from the Poisson formula when <span class="math notranslate nohighlight">\(\lambda = 10\)</span>, because
+<span class="math notranslate nohighlight">\(\P \lsq Z = 0 \lvert W_1 \rsq = \P \lsq X = 0 \rsq = e^{-10}\)</span> since conditional probability shrinked
+the sample space of <span class="math notranslate nohighlight">\(Z\)</span> to <span class="math notranslate nohighlight">\(X\)</span>; the <span class="math notranslate nohighlight">\(\frac{5}{7}\)</span> is just the probability of a chosen day is a weekday.</p>
+<p>The denominator <span class="math notranslate nohighlight">\(\P \lsq Z = 0 \rsq\)</span> is the probability of not receiving any emails in a time interval of length <span class="math notranslate nohighlight">\(1\)</span> hour
+of a random chosen week. This is not straightforward and we have to use the Law of Total Probability (<a class="reference internal" href="../02_probability/0206_bayes_theorem.html#thm:law-total-probability">Theorem 3</a>).
+That is,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\P \lsq Z = 0 \rsq &amp;= \P \lsq Z = 0 \lvert W_1 \rsq \P \lsq W_1 \rsq + \P \lsq Z = 0 \lvert W_2 \rsq \P \lsq W_2 \rsq \\
+&amp;= \P \lsq X = 0 \rsq \P \lsq W_1 \rsq + \P \lsq Y = 0 \rsq \P \lsq W_2 \rsq \\
+&amp;= e^{-10} \cdot \frac{5}{7} + e^{-2} \cdot \frac{2}{7} \\
+\end{aligned}
+\end{split}\]</div>
+<p>With this, we have solved the problem,</p>
+<div class="math notranslate nohighlight">
+\[
+\P \lsq W_1 \lvert Z = 0 \rsq = \dfrac{e^{-10} \cdot \frac{5}{7}}{e^{-10} \cdot \frac{5}{7} + e^{-2} \cdot \frac{2}{7}}
 \]</div>
 </section>
 </section>
