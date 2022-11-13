@@ -294,3 +294,4 @@ the following corollaries {cite}`chan_2021`:
 
 - Chan, Stanley H. "Chapter 4.6. Gaussian Random Variables." In Introduction to Probability for Data Science, 211-223. Ann Arbor, Michigan: Michigan Publishing Services, 2021. 
 - Pishro-Nik, Hossein. "Chapter 4.2.3. Normal (Gaussian) Distribution" In Introduction to Probability, Statistics, and Random Processes, 253-260. Kappa Research, 2014. 
+- https://jmshea.github.io/Foundations-of-Data-Science-with-Python/08-random-variables/important-continuous-rvs.html#normal-gaussian-random-variable
