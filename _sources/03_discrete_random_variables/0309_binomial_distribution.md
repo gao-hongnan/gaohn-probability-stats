@@ -77,6 +77,7 @@ parent_dir = str(Path().resolve().parent)
 sys.path.append(parent_dir)
 
 from utils import plot_multiple_binomial_pmf
+
 %matplotlib inline
 import matplotlib_inline
 matplotlib_inline.backend_inline.set_matplotlib_formats('svg')
