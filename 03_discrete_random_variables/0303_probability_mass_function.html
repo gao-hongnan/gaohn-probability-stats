@@ -365,10 +365,15 @@ const thebe_selector_output = ".output, .cell_output"
    Skewness and Kurtosis
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_continuous_random_variables/0411_convolve_and_sum_of_random_variables.html">
+   Convolution and Sum of Random Variables
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  References
+  References and Resources
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -625,11 +630,19 @@ title="Print to PDF"
 as per <a class="reference internal" href="0302_discrete_random_variables.html#def_discrete_random_variables">Definition 15</a>.</p>
 </section>
 </div><div class="proof example admonition" id="example_state_space_coin_toss">
-<p class="admonition-title"><span class="caption-number">Example 3 </span> (State Space of Coin Toss)</p>
+<p class="admonition-title"><span class="caption-number">Example 4 </span> (State Space of Coin Toss)</p>
 <section class="example-content" id="proof-content">
 <p>Let us revisit the example in <a class="reference internal" href="0301_random_variables.html#example_random_variable_coin_toss">Example 1</a> and examine the state space of <span class="math notranslate nohighlight">\(X\)</span>.</p>
 <p>The state space of <span class="math notranslate nohighlight">\(X\)</span> is the set of all possible values that <span class="math notranslate nohighlight">\(X\)</span> can take. As enumerated in the example,
 we see that the state space of <span class="math notranslate nohighlight">\(X\)</span> is <span class="math notranslate nohighlight">\(\{0, 1, 2\}\)</span> (i.e. <span class="math notranslate nohighlight">\(X\)</span> takes 3 states 0, 1 and 2).</p>
+</section>
+</div><div class="proof example admonition" id="example_state_space_dice_roll">
+<p class="admonition-title"><span class="caption-number">Example 5 </span> (State Space of Dice Roll)</p>
+<section class="example-content" id="proof-content">
+<p>Let us revisit the example in <a class="reference internal" href="0301_random_variables.html#example_random_variable_dice_roll">Example 2</a> and examine the state space of <span class="math notranslate nohighlight">\(X\)</span>.</p>
+<p>The state space of <span class="math notranslate nohighlight">\(X\)</span> is the set of all possible values that <span class="math notranslate nohighlight">\(X\)</span> can take. As enumerated in the example,
+we see that the state space of <span class="math notranslate nohighlight">\(X\)</span> is <span class="math notranslate nohighlight">\(\{1, 2, 3, 4, 5, 6\}\)</span> (i.e. <span class="math notranslate nohighlight">\(X\)</span> takes 6 states 1, 2, 3, 4, 5 and 6).</p>
+<p>For two dice rolls, the state space is <span class="math notranslate nohighlight">\(\{(1, 1), (1, 2), \ldots, (6, 6)\}\)</span> where each state is a tuple of two dice rolls.</p>
 </section>
 </div><div class="proof definition admonition" id="def_pmf">
 <p class="admonition-title"><span class="caption-number">Definition 17 </span> (Probability Mass Function)</p>
@@ -646,11 +659,11 @@ we see that the state space of <span class="math notranslate nohighlight">\(X\)<
 \end{split}\]</div>
 </section>
 </div><div class="proof example admonition" id="example_pmf_coin_toss">
-<p class="admonition-title"><span class="caption-number">Example 4 </span> (PMF of Coin Toss)</p>
+<p class="admonition-title"><span class="caption-number">Example 6 </span> (PMF of Coin Toss)</p>
 <section class="example-content" id="proof-content">
 <p>Let us revisit <a class="reference internal" href="0301_random_variables.html#example_random_variable_coin_toss">Example 1</a> on coin toss and compute the PMF of <span class="math notranslate nohighlight">\(X\)</span>.</p>
 <p>Recall the sample space is given by <span class="math notranslate nohighlight">\(\S = \{(HH), (HT), (TH), (TT)\}\)</span> and the state space is given by
-<span class="math notranslate nohighlight">\(X(\S) = \{0, 1, 2\}\)</span> as enumerated in <a class="reference internal" href="#example_state_space_coin_toss">Example 3</a>.</p>
+<span class="math notranslate nohighlight">\(X(\S) = \{0, 1, 2\}\)</span> as enumerated in <a class="reference internal" href="#example_state_space_coin_toss">Example 4</a>.</p>
 <p>Thus, our domain of <span class="math notranslate nohighlight">\(\pmf\)</span> is <span class="math notranslate nohighlight">\(X(\S) = \{0, 1, 2\}\)</span> we have 3 mappings to compute:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -662,6 +675,23 @@ we see that the state space of <span class="math notranslate nohighlight">\(X\)<
 \end{split}\]</div>
 <p>Here we have enumerated all the possible states of <span class="math notranslate nohighlight">\(X\)</span> and computed the probability of each state.
 Thus, the PMF of <span class="math notranslate nohighlight">\(X\)</span> is completely determined by the 3 mappings above.</p>
+</section>
+</div><div class="proof example admonition" id="example_pmf_two_dice_rolls">
+<p class="admonition-title"><span class="caption-number">Example 7 </span> (PMF of Two Dice Rolls)</p>
+<section class="example-content" id="proof-content">
+<p>Let us revisit <a class="reference internal" href="0301_random_variables.html#example_random_variable_dice_roll">Example 2</a> on two dice rolls and compute the PMF of <span class="math notranslate nohighlight">\(X\)</span>.</p>
+<p>Recall the sample space is given by <span class="math notranslate nohighlight">\(\S = \lset (1, 1), (1, 2), \ldots, (6, 6) \rset\)</span> and the state space is given by
+<span class="math notranslate nohighlight">\(X(\S) = \lset (1, 1), (1, 2), \ldots, (6, 6) \rset\)</span> as enumerated in <a class="reference internal" href="#example_state_space_dice_roll">Example 5</a>.</p>
+<p>Thus, our domain of <span class="math notranslate nohighlight">\(\pmf\)</span> is <span class="math notranslate nohighlight">\(X(\S) = \lset (1, 1), (1, 2), \ldots, (6, 6) \rset\)</span> we have 36 states to compute:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+    \pmf((1, 1)) &amp;= \P\lsq X = (1, 1) \rsq = \P\lsq \lset \xi \in \S \st X(\xi) = (1, 1) \rset \rsq = \P\lsq \{(1, 1)\} \rsq = \dfrac{1}{36} \\
+    \pmf((1, 2)) &amp;= \P\lsq X = (1, 2) \rsq = \P\lsq \lset \xi \in \S \st X(\xi) = (1, 2) \rset \rsq = \P\lsq \{(1, 2)\} \rsq = \dfrac{1}{36} \\
+    \vdots \\
+    \pmf((6, 6)) &amp;= \P\lsq X = (6, 6) \rsq = \P\lsq \lset \xi \in \S \st X(\xi) = (6, 6) \rset \rsq = \P\lsq \{(6, 6)\} \rsq = \dfrac{1}{36}
+\end{align}
+\end{split}\]</div>
 </section>
 </div></section>
 <section id="normalization">

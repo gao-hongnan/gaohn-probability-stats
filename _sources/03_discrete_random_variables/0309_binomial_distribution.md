@@ -1,3 +1,20 @@
+---
+jupytext:
+  cell_metadata_filter: -all
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.11.5
+mystnb:
+  number_source_lines: true
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
+
 # Binomial Distribution
 
 In the previous chapter on Bernoulli, we say that given a true population,
@@ -50,6 +67,22 @@ Some conventions:
 because $X$ can only take on $n$ states (outcomes).
 3. Binomial distribution is defined by two parameters $n$ and $p$.
 ````
+
+```{code-cell} ipython3
+:tags: [hide-input]
+
+import sys
+from pathlib import Path
+parent_dir = str(Path().resolve().parent)
+sys.path.append(parent_dir)
+
+from utils import plot_multiple_binomial_pmf
+%matplotlib inline
+import matplotlib_inline
+matplotlib_inline.backend_inline.set_matplotlib_formats('svg')
+
+plot_multiple_binomial_pmf()
+```
 
 ## Intuition
 

@@ -113,9 +113,33 @@ $$
 $$
 ````
 
+```{prf:example} Dice Roll
+:label: example_random_variable_dice_roll
+
+Consider a fair dice and define an **experiment** of rolling the dice once.
+
+The sample space is then 
+
+$$
+\S = \lset 1, 2, 3, 4, 5, 6 \rset
+$$
+
+If we roll two fair dice, then the sample space is
+
+$$
+\S = \lset (1, 1), (1, 2), \ldots, (6, 6) \rset
+$$
+
+So the probability of rolling say $(1, 2)$ is,
+
+$$
+\P[\{(1, 2)\}] = \dfrac{1}{36}
+$$
+```
+
 ## Probability Measure $\P$
 
-In the chapter [](../02_probability/0202_probability_space.md), we have defined a probability measure $\P$ on a sample space $\S$ as
+In the chapter on [](../02_probability/0202_probability_space.md), we have defined a probability measure $\P$ on a sample space $\S$ as
 
 $$
 \begin{align}
@@ -124,12 +148,12 @@ $$
 \end{align}
 $$
 
-as per {prf:ref}`probability_law`.
+as per Probability Law ({prf:ref}`probability_law`).
 
 The question initially is that $\P \lsq X = x \rsq$ does not seem to take in an event $E$ in $\E$ but an expression
 $X(\xi) = x$ instead. 
 This needs to be emphasized that they are the same, as the expression $X = x$ is
-just an event $E$ in $\E$ (i.e. $X = x = \lset \xi \in \S \st X(\xi) = x \rset$)
+just an event $E$ in $\E$ (i.e. $X = x$ evaluates to $\lset \xi \in \S \st X(\xi) = x \rset$)
 where $\lset \xi \in \S \st X(\xi) = x \rset \in \E$.
 
 ## Variable vs Random Variable

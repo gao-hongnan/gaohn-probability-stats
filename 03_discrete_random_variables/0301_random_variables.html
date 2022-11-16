@@ -365,10 +365,15 @@ const thebe_selector_output = ".output, .cell_output"
    Skewness and Kurtosis
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_continuous_random_variables/0411_convolve_and_sum_of_random_variables.html">
+   Convolution and Sum of Random Variables
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  References
+  References and Resources
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -734,10 +739,30 @@ E = \lset \xi \in \S \st X(\xi) = x \rset
 \end{align}
 \end{split}\]</div>
 </section>
+</div><div class="proof example admonition" id="example_random_variable_dice_roll">
+<p class="admonition-title"><span class="caption-number">Example 2 </span> (Dice Roll)</p>
+<section class="example-content" id="proof-content">
+<p>Consider a fair dice and define an <strong>experiment</strong> of rolling the dice once.</p>
+<p>The sample space is then</p>
+<div class="math notranslate nohighlight">
+\[
+\S = \lset 1, 2, 3, 4, 5, 6 \rset
+\]</div>
+<p>If we roll two fair dice, then the sample space is</p>
+<div class="math notranslate nohighlight">
+\[
+\S = \lset (1, 1), (1, 2), \ldots, (6, 6) \rset
+\]</div>
+<p>So the probability of rolling say <span class="math notranslate nohighlight">\((1, 2)\)</span> is,</p>
+<div class="math notranslate nohighlight">
+\[
+\P[\{(1, 2)\}] = \dfrac{1}{36}
+\]</div>
+</section>
 </div></section>
 <section id="probability-measure-p">
 <h2>Probability Measure <span class="math notranslate nohighlight">\(\P\)</span><a class="headerlink" href="#probability-measure-p" title="Permalink to this headline">#</a></h2>
-<p>In the chapter <a class="reference internal" href="../02_probability/0202_probability_space.html"><span class="doc std std-doc">Probability Space</span></a>, we have defined a probability measure <span class="math notranslate nohighlight">\(\P\)</span> on a sample space <span class="math notranslate nohighlight">\(\S\)</span> as</p>
+<p>In the chapter on <a class="reference internal" href="../02_probability/0202_probability_space.html"><span class="doc std std-doc">Probability Space</span></a>, we have defined a probability measure <span class="math notranslate nohighlight">\(\P\)</span> on a sample space <span class="math notranslate nohighlight">\(\S\)</span> as</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align}
@@ -745,17 +770,17 @@ E = \lset \xi \in \S \st X(\xi) = x \rset
     E &amp;\mapsto \P(E)
 \end{align}
 \end{split}\]</div>
-<p>as per <a class="reference internal" href="../02_probability/0202_probability_space.html#probability_law">Definition 5</a>.</p>
+<p>as per Probability Law (<a class="reference internal" href="../02_probability/0202_probability_space.html#probability_law">Definition 5</a>).</p>
 <p>The question initially is that <span class="math notranslate nohighlight">\(\P \lsq X = x \rsq\)</span> does not seem to take in an event <span class="math notranslate nohighlight">\(E\)</span> in <span class="math notranslate nohighlight">\(\E\)</span> but an expression
 <span class="math notranslate nohighlight">\(X(\xi) = x\)</span> instead.
 This needs to be emphasized that they are the same, as the expression <span class="math notranslate nohighlight">\(X = x\)</span> is
-just an event <span class="math notranslate nohighlight">\(E\)</span> in <span class="math notranslate nohighlight">\(\E\)</span> (i.e. <span class="math notranslate nohighlight">\(X = x = \lset \xi \in \S \st X(\xi) = x \rset\)</span>)
+just an event <span class="math notranslate nohighlight">\(E\)</span> in <span class="math notranslate nohighlight">\(\E\)</span> (i.e. <span class="math notranslate nohighlight">\(X = x\)</span> evaluates to <span class="math notranslate nohighlight">\(\lset \xi \in \S \st X(\xi) = x \rset\)</span>)
 where <span class="math notranslate nohighlight">\(\lset \xi \in \S \st X(\xi) = x \rset \in \E\)</span>.</p>
 </section>
 <section id="variable-vs-random-variable">
 <h2>Variable vs Random Variable<a class="headerlink" href="#variable-vs-random-variable" title="Permalink to this headline">#</a></h2>
 <div class="proof example admonition" id="example_variable_vs_random_variable">
-<p class="admonition-title"><span class="caption-number">Example 2 </span> (Variable vs Random Variable)</p>
+<p class="admonition-title"><span class="caption-number">Example 3 </span> (Variable vs Random Variable)</p>
 <section class="example-content" id="proof-content">
 <p>Professor Stanley Chan gave a good example of the difference between a variable and a random variable.</p>
 <p>The main difference is that a variable is <strong>deterministic</strong> while a random variable is <strong>non-deterministic</strong>.</p>
