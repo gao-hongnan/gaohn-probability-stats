@@ -76,13 +76,17 @@ from pathlib import Path
 parent_dir = str(Path().resolve().parent)
 sys.path.append(parent_dir)
 
-from utils import plot_multiple_binomial_pmf
-
+import matplotlib.pyplot as plt
 %matplotlib inline
 import matplotlib_inline
 matplotlib_inline.backend_inline.set_matplotlib_formats('svg')
 
-plot_multiple_binomial_pmf()
+from plot import plot_binomial_pmfs
+
+_fig, axes = plt.subplots(2, 1, figsize=(10, 10))
+plot_binomial_pmfs(ns=[60, 60, 60], ps=[0.1, 0.5, 0.9], ax=axes[0])
+plot_binomial_pmfs(ns=[5, 50, 100], ps=[0.5, 0.5, 0.5], ax=axes[1])
+plt.show()
 ```
 
 ## Intuition
