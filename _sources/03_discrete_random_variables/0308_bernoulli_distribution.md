@@ -1,6 +1,36 @@
+---
+jupytext:
+  cell_metadata_filter: -all
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.11.5
+mystnb:
+  number_source_lines: true
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
+
+```{code-cell} ipython3
+:tags: [remove-input]
+import sys
+from pathlib import Path
+parent_dir = str(Path().resolve().parent)
+sys.path.append(parent_dir)
+
+import matplotlib.pyplot as plt
+%matplotlib inline
+import matplotlib_inline
+matplotlib_inline.backend_inline.set_matplotlib_formats('svg')
+```
+
 # Bernoulli Distribution
 
-## Definition
+## PMF and CDF of Bernoulli Distribution
 
 ```{prf:definition} Bernoulli Trials
 :label: def:bernoulli_trials_1
@@ -17,8 +47,8 @@ The three assumptions for Bernoulli trials are:
 See more [here](https://www.statisticshowto.com/bernoulli-trials/).
 ```
 
-```{prf:definition} Bernoulli Distribution
-:label: def:bernoulli
+```{prf:definition} Bernoulli Distribution (PMF)
+:label: def_bernoulli_distribution_pmf
 
 Let $X$ be a **Bernoulli random variable** with parameter $p$. Then the 
 probability mass function (PMF) of $X$ is given by 
@@ -50,6 +80,36 @@ which translates to $E = \{X=1\}$.
 This will be the main difference when we learn Binomial distribution (i.e. sampling 1 guy vs sampling n guys).
 ```
 
+```{prf:definition} Bernoulli Distribution (CDF)
+:label: def_bernoulli_distribution_cdf
+
+Let $X$ be a **Bernoulli random variable** with parameter $p$. Then the
+cumulative distribution function (CDF) of $X$ is given by
+
+$$
+\begin{align}
+\cdf(x) = \begin{cases}
+0   &\quad \text{ if } x < 0 \\
+1-p &\quad \text{ if } 0 \leq x < 1 \\
+1   &\quad \text{ if } x \geq 1
+\end{cases}
+\end{align}
+$$
+
+where $0 \leq p \leq 1$ is called the Bernoulli parameter.
+```
+
+The PMF and CDF plots are shown below.
+
+```{code-cell} ipython3
+:tags: [hide-input]
+from plot import plot_bernoulli_pmf
+
+_fig, axes = plt.subplots(1,2, figsize=(8.4, 4.8), dpi=300)
+plot_bernoulli_pmf(p=0.2, ax=axes[0])
+plot_bernoulli_pmf(p=0.8, ax=axes[1])
+plt.show()
+```
 
 ## Assumptions
 

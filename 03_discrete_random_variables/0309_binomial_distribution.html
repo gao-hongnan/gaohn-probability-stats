@@ -641,13 +641,8 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#definition">
-   Definition
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#intuition">
-   Intuition
+  <a class="reference internal nav-link" href="#pmf-and-cdf-of-binomial-distribution">
+   PMF and CDF of Binomial Distribution
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -690,13 +685,8 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#definition">
-   Definition
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#intuition">
-   Intuition
+  <a class="reference internal nav-link" href="#pmf-and-cdf-of-binomial-distribution">
+   PMF and CDF of Binomial Distribution
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -729,7 +719,9 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="binomial-distribution">
+  <div class="cell tag_remove-input docutils container">
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="binomial-distribution">
 <h1>Binomial Distribution<a class="headerlink" href="#binomial-distribution" title="Permalink to this headline">#</a></h1>
 <p>In the previous chapter on Bernoulli, we say that given a true population,
 what is the probability of a randomly drawn person has covid? This probability
@@ -741,10 +733,10 @@ what’s the number of successes in <span class="math notranslate nohighlight">\
 having covid, we ask, if we randomly drawn <span class="math notranslate nohighlight">\(n\)</span> people independently, what is the probability of exactly
 <span class="math notranslate nohighlight">\(k &lt;= n\)</span> people having covid?</p>
 <p>The distinction is a single random draw vs <span class="math notranslate nohighlight">\(n\)</span> i.i.d. draws.</p>
-<section id="definition">
-<h2>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">#</a></h2>
+<section id="pmf-and-cdf-of-binomial-distribution">
+<h2>PMF and CDF of Binomial Distribution<a class="headerlink" href="#pmf-and-cdf-of-binomial-distribution" title="Permalink to this headline">#</a></h2>
 <div class="proof definition admonition" id="def:bernoulli_trials_2">
-<p class="admonition-title"><span class="caption-number">Definition 28 </span> (Bernoulli Trials)</p>
+<p class="admonition-title"><span class="caption-number">Definition 29 </span> (Bernoulli Trials)</p>
 <section class="definition-content" id="proof-content">
 <p>A <strong>Bernoulli trial</strong> is an <strong>experiment</strong> with two possible outcomes: success or failure, often
 denoted as 1 or 0 respectively.</p>
@@ -756,8 +748,8 @@ denoted as 1 or 0 respectively.</p>
 </ol>
 <p>See more <a class="reference external" href="https://www.statisticshowto.com/bernoulli-trials/">here</a>.</p>
 </section>
-</div><div class="proof definition admonition" id="def_binomial">
-<p class="admonition-title"><span class="caption-number">Definition 29 </span> (Binomial Distribution)</p>
+</div><div class="proof definition admonition" id="def_binomial_distribution_pmf">
+<p class="admonition-title"><span class="caption-number">Definition 30 </span> (Binomial Distribution (PMF))</p>
 <section class="definition-content" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(X\)</span> be a <strong>Binomial random variable</strong> with parameters <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(p\)</span>. Then the
 probability mass function (PMF) of <span class="math notranslate nohighlight">\(X\)</span> is given by</p>
@@ -774,19 +766,26 @@ because <span class="math notranslate nohighlight">\(X\)</span> can only take on
 <li><p>Binomial distribution is defined by two parameters <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(p\)</span>.</p></li>
 </ol>
 </section>
-</div><div class="cell tag_hide-input docutils container">
+</div><div class="proof definition admonition" id="def:state_space_binomial">
+<p class="admonition-title"><span class="caption-number">Definition 31 </span> (The State Space of Binomial Distribution)</p>
+<section class="definition-content" id="proof-content">
+<p>The state space of a binomial random variable <span class="math notranslate nohighlight">\(X\)</span> is <span class="math notranslate nohighlight">\(\{0, 1, \ldots, n\}\)</span>.</p>
+</section>
+</div><div class="proof definition admonition" id="def_binomial_distribution_cdf">
+<p class="admonition-title"><span class="caption-number">Definition 32 </span> (Binomial Distribution (CDF))</p>
+<section class="definition-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a <strong>Binomial random variable</strong> with parameters <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(p\)</span>. Then the
+cumulative distribution function (CDF) of <span class="math notranslate nohighlight">\(X\)</span> is given by</p>
+<div class="math notranslate nohighlight">
+\[
+\cdf(k) = \P \lsq X \leq k \rsq = \sum_{\ell=0}^k \binom{n}{i} p^{\ell} (1-p)^{n-\ell}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(0 \leq p \leq 1\)</span> is called the binomial parameter, and <span class="math notranslate nohighlight">\(n\)</span> is the <em><strong>total number of trials</strong></em>.</p>
+</section>
+</div><p>The PMF and CDF plots are shown below.</p>
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="n">parent_dir</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">parent_dir</span><span class="p">)</span>
-
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">import</span> <span class="nn">matplotlib_inline</span>
-<span class="n">matplotlib_inline</span><span class="o">.</span><span class="n">backend_inline</span><span class="o">.</span><span class="n">set_matplotlib_formats</span><span class="p">(</span><span class="s1">&#39;svg&#39;</span><span class="p">)</span>
-
-<span class="kn">from</span> <span class="nn">plot</span> <span class="kn">import</span> <span class="n">plot_binomial_pmfs</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">plot</span> <span class="kn">import</span> <span class="n">plot_binomial_pmfs</span>
 
 <span class="n">_fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 <span class="n">plot_binomial_pmfs</span><span class="p">(</span><span class="n">ns</span><span class="o">=</span><span class="p">[</span><span class="mi">60</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">60</span><span class="p">],</span> <span class="n">ps</span><span class="o">=</span><span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -799,12 +798,8 @@ because <span class="math notranslate nohighlight">\(X\)</span> can only take on
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using Seed Number 42
 </pre></div>
 </div>
-<img alt="../_images/0309_binomial_distribution_1_1.svg" src="../_images/0309_binomial_distribution_1_1.svg" /></div>
+<img alt="../_images/0309_binomial_distribution_2_1.svg" src="../_images/0309_binomial_distribution_2_1.svg" /></div>
 </div>
-</section>
-<section id="intuition">
-<h2>Intuition<a class="headerlink" href="#intuition" title="Permalink to this headline">#</a></h2>
-<p>See Chan, Stanley H. “Chapter 3.5.2. Binomial random variable.” In Introduction to Probability for Data Science, 143-149. Ann Arbor, Michigan: Michigan Publishing Services, 2021.</p>
 </section>
 <section id="assumptions">
 <h2>Assumptions<a class="headerlink" href="#assumptions" title="Permalink to this headline">#</a></h2>
@@ -845,7 +840,7 @@ Then the variance of <span class="math notranslate nohighlight">\(X\)</span> is 
 <section id="binomial-distribution-as-a-sum-of-bernoulli-trials">
 <h2>Binomial Distribution as a Sum of Bernoulli Trials<a class="headerlink" href="#binomial-distribution-as-a-sum-of-bernoulli-trials" title="Permalink to this headline">#</a></h2>
 <div class="proof definition admonition" id="def:binomial_as_sum_of_bernoulli">
-<p class="admonition-title"><span class="caption-number">Definition 30 </span> (Binomial Distribution as a Sum of Bernoulli Trials)</p>
+<p class="admonition-title"><span class="caption-number">Definition 33 </span> (Binomial Distribution as a Sum of Bernoulli Trials)</p>
 <section class="definition-content" id="proof-content">
 <p>Let us define <span class="math notranslate nohighlight">\(X_1, X_2, \ldots, X_n\)</span> to be <span class="math notranslate nohighlight">\(n\)</span> independent Bernoulli trials with parameter <span class="math notranslate nohighlight">\(p\)</span>
 (i.e. <span class="math notranslate nohighlight">\(X_i \sim \bern(p)\)</span>).</p>

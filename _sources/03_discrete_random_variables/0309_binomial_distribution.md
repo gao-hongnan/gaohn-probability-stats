@@ -15,6 +15,19 @@ kernelspec:
   name: python3
 ---
 
+```{code-cell} ipython3
+:tags: [remove-input]
+import sys
+from pathlib import Path
+parent_dir = str(Path().resolve().parent)
+sys.path.append(parent_dir)
+
+import matplotlib.pyplot as plt
+%matplotlib inline
+import matplotlib_inline
+matplotlib_inline.backend_inline.set_matplotlib_formats('svg')
+```
+
 # Binomial Distribution
 
 In the previous chapter on Bernoulli, we say that given a true population,
@@ -31,7 +44,7 @@ $k <= n$ people having covid?
 
 The distinction is a single random draw vs $n$ i.i.d. draws.
 
-## Definition
+## PMF and CDF of Binomial Distribution
 
 ```{prf:definition} Bernoulli Trials
 :label: def:bernoulli_trials_2
@@ -48,8 +61,8 @@ The three assumptions for Bernoulli trials are:
 See more [here](https://www.statisticshowto.com/bernoulli-trials/).
 ```
 
-````{prf:definition} Binomial Distribution
-:label: def_binomial
+````{prf:definition} Binomial Distribution (PMF)
+:label: def_binomial_distribution_pmf
 
 Let $X$ be a **Binomial random variable** with parameters $n$ and $p$. Then the
 probability mass function (PMF) of $X$ is given by
@@ -68,19 +81,29 @@ because $X$ can only take on $n$ states (outcomes).
 3. Binomial distribution is defined by two parameters $n$ and $p$.
 ````
 
+```{prf:definition} The State Space of Binomial Distribution
+:label: def:state_space_binomial
+
+The state space of a binomial random variable $X$ is $\{0, 1, \ldots, n\}$.
+```
+
+```{prf:definition} Binomial Distribution (CDF)
+:label: def_binomial_distribution_cdf
+
+Let $X$ be a **Binomial random variable** with parameters $n$ and $p$. Then the
+cumulative distribution function (CDF) of $X$ is given by
+
+$$
+\cdf(k) = \P \lsq X \leq k \rsq = \sum_{\ell=0}^k \binom{n}{i} p^{\ell} (1-p)^{n-\ell}
+$$
+
+where $0 \leq p \leq 1$ is called the binomial parameter, and $n$ is the ***total number of trials***.
+```
+
+The PMF and CDF plots are shown below.
+
 ```{code-cell} ipython3
 :tags: [hide-input]
-
-import sys
-from pathlib import Path
-parent_dir = str(Path().resolve().parent)
-sys.path.append(parent_dir)
-
-import matplotlib.pyplot as plt
-%matplotlib inline
-import matplotlib_inline
-matplotlib_inline.backend_inline.set_matplotlib_formats('svg')
-
 from plot import plot_binomial_pmfs
 
 _fig, axes = plt.subplots(2, 1, figsize=(10, 10))
@@ -88,10 +111,6 @@ plot_binomial_pmfs(ns=[60, 60, 60], ps=[0.1, 0.5, 0.9], ax=axes[0])
 plot_binomial_pmfs(ns=[5, 50, 100], ps=[0.5, 0.5, 0.5], ax=axes[1])
 plt.show()
 ```
-
-## Intuition
-
-See Chan, Stanley H. "Chapter 3.5.2. Binomial random variable." In Introduction to Probability for Data Science, 143-149. Ann Arbor, Michigan: Michigan Publishing Services, 2021. 
 
 ## Assumptions
 
