@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"defeq": "\\overset{\\text{def}}{=}", "defa": "\\overset{\\text{(a)}}{=}", "defb": "\\overset{\\text{(b)}}{=}", "st": "\\mid", "mod": "\\mid", "S": "\\Omega", "s": "\\omega", "e": "\\exp", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "expectation": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "lpar": "\\left(", "rpar": "\\right)", "lcurl": "\\left\\{", "rcurl": "\\right\\}", "pmf": "p_X", "pdf": "f_X", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})", "var": "\\operatorname{Var}", "std": "\\operatorname{Std}", "bern": "\\operatorname{Bernoulli}", "binomial": "\\operatorname{Binomial}", "geometric": "\\operatorname{Geometric}", "poisson": "\\operatorname{Poisson}", "uniform": "\\operatorname{Uniform}", "normal": "\\operatorname{Normal}", "gaussian": "\\operatorname{Gaussian}", "gaussiansymbol": "\\mathcal{N}", "exponential": "\\operatorname{Exponential}", "iid": "\\textbf{i.i.d.}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"defeq": "\\overset{\\text{def}}{=}", "defa": "\\overset{\\text{(a)}}{=}", "defb": "\\overset{\\text{(b)}}{=}", "st": "\\mid", "mod": "\\mid", "S": "\\Omega", "s": "\\omega", "e": "\\exp", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "expectation": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "lpar": "\\left(", "rpar": "\\right)", "lcurl": "\\left\\{", "rcurl": "\\right\\}", "pmf": "p_X", "pdf": "f_X", "pdftwo": "f_{X,Y}", "pdfjoint": "f_{\\mathbf{X}}", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})", "var": "\\operatorname{Var}", "std": "\\operatorname{Std}", "bern": "\\operatorname{Bernoulli}", "binomial": "\\operatorname{Binomial}", "geometric": "\\operatorname{Geometric}", "poisson": "\\operatorname{Poisson}", "uniform": "\\operatorname{Uniform}", "normal": "\\operatorname{Normal}", "gaussian": "\\operatorname{Gaussian}", "gaussiansymbol": "\\mathcal{N}", "exponential": "\\operatorname{Exponential}", "iid": "\\textbf{i.i.d.}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -373,6 +373,18 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
+  Chapter 5. Joint Distributions
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05_joint_distributions/braindump.html">
+   Brain Dump
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
   References and Resources
  </span>
 </p>
@@ -581,6 +593,11 @@ title="Print to PDF"
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#further-readings">
+   Further Readings
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -617,6 +634,11 @@ title="Print to PDF"
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#further-readings">
+   Further Readings
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -637,8 +659,8 @@ title="Print to PDF"
 <p>Let <span class="math notranslate nohighlight">\(X_1, X_2, \ldots, X_n\)</span> be a sequence of random variables.</p>
 <p>We say that the random variables are *<strong>independent and identically distributed (i.i.d.)</strong> if the following two conditions hold:</p>
 <ol class="simple">
-<li><p>The random variables are independent of each other. That is, <span class="math notranslate nohighlight">\(P(X_i = x_i | X_j = x_j, j \neq i) = P(X_i = x_i)\)</span> for all <span class="math notranslate nohighlight">\(i, j\)</span>.</p></li>
-<li><p>The random variables have the same distribution. That is, <span class="math notranslate nohighlight">\(\P \lsq X_1 = x \rsq = \P \lsq X_2 = x \rsq = \ldots = \P \lsq X_n = x \rsq\)</span> for all <span class="math notranslate nohighlight">\(x\)</span>.</p></li>
+<li><p>The random variables are <strong>independent</strong> of each other. That is, <span class="math notranslate nohighlight">\(P(X_i = x_i | X_j = x_j, j \neq i) = P(X_i = x_i)\)</span> for all <span class="math notranslate nohighlight">\(i, j\)</span>.</p></li>
+<li><p>The random variables have the <strong>same distribution</strong>. That is, <span class="math notranslate nohighlight">\(\P \lsq X_1 = x \rsq = \P \lsq X_2 = x \rsq = \ldots = \P \lsq X_n = x \rsq\)</span> for all <span class="math notranslate nohighlight">\(x\)</span>.</p></li>
 </ol>
 </section>
 </div></section>
@@ -649,13 +671,23 @@ title="Print to PDF"
 <div class="proof example admonition" id="ex_iid_1">
 <p class="admonition-title"><span class="caption-number">Example 9 </span> (Example 1)</p>
 <section class="example-content" id="proof-content">
-<p>The PMF of the height distribution is given by <span class="math notranslate nohighlight">\(\P \lsq X = x \rsq = \frac{1}{10}\)</span> for all <span class="math notranslate nohighlight">\(x \in \{1, \ldots, 10\}\)</span>.</p>
+<p>The PMF of the height distribution is given by <span class="math notranslate nohighlight">\(\P \lsq X = x \rsq = \frac{1}{10}\)</span> for all <span class="math notranslate nohighlight">\(x \in \{1, \ldots, 10\}\)</span>.
+In other words, <span class="math notranslate nohighlight">\(X \sim \uniform(1, 10)\)</span>.</p>
 <p>Then if you draw 100 people from this population/distribution, with replacement, then this is an example of IID random variables.
-This is because with replacement, with each draw, the probability will be the same, and the draws are independent of each other.</p>
+This is because with replacement, with each draw, the probability will be the same
+(all draws will follow <span class="math notranslate nohighlight">\(\uniform(1, 10)\)</span>), and the draws are independent of each other.</p>
 </section>
 </div><p>Confusion in notation is when you index random variables with <span class="math notranslate nohighlight">\(i\)</span>. See <a class="reference external" href="https://stats.stackexchange.com/questions/200741/let-random-variables-x-1-dots-x-n-be-a-iid-random-sample-from-fx-wha">here</a>
 sometimes <span class="math notranslate nohighlight">\(X_1, X_2, \ldots, X_{10}\)</span> can mean 10 different people drawn and <a class="reference external" href="https://stats.stackexchange.com/questions/141416/example-of-sample-x-1-x-2-ldots-x-n?rq=1">here</a>.</p>
 </section>
+</section>
+<section id="further-readings">
+<h2>Further Readings<a class="headerlink" href="#further-readings" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Independent_and_identically_distributed_random_variables">https://en.wikipedia.org/wiki/Independent_and_identically_distributed_random_variables</a></p></li>
+<li><p>Chan, Stanley H. “Chapter 5.1.6  Independent random variables.” In Introduction to Probability for Data Science, 253-254. Ann Arbor, Michigan: Michigan Publishing Services, 2021.</p></li>
+<li><p><a class="reference external" href="https://stats.stackexchange.com/questions/213464/on-the-importance-of-the-i-i-d-assumption-in-statistical-learning">https://stats.stackexchange.com/questions/213464/on-the-importance-of-the-i-i-d-assumption-in-statistical-learning</a></p></li>
+</ul>
 </section>
 </section>
 
