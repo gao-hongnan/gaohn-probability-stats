@@ -299,7 +299,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../03_discrete_random_variables/03_problems_and_solutions.html">
+  <a class="reference internal" href="../03_discrete_random_variables/exercises.html">
    Problems and Solutions
   </a>
  </li>
@@ -378,12 +378,12 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../bibliography/bibliography.html">
+  <a class="reference internal" href="../references_and_resources/bibliography.html">
    Bibliography
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../resources.html">
+  <a class="reference internal" href="../references_and_resources/resources.html">
    Resources
   </a>
  </li>
@@ -791,7 +791,7 @@ using the CDF of the standard normal distribution later.</p>
 <p>Yes, you have to integrate the PDF to get the CDF but there is no “general” solution.</p>
 </section>
 </div><p>The PDF of the Gaussian distribution is shown below. The code is referenced and modified
-from <span id="id1">[<a class="reference internal" href="../bibliography/bibliography.html#id5" title="John M. Shea. Foundations of data science with python. 2021. URL: https://jmshea.github.io/Foundations-of-Data-Science-with-Python/intro.html.">Shea, 2021</a>]</span>.</p>
+from <span id="id1">[<a class="reference internal" href="../references_and_resources/bibliography.html#id5" title="John M. Shea. Foundations of data science with python. 2021. URL: https://jmshea.github.io/Foundations-of-Data-Science-with-Python/intro.html.">Shea, 2021</a>]</span>.</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -991,7 +991,7 @@ The definition of a Gaussian distribution is given by:</p>
         &amp;= \int_{-\infty}^x \frac{1}{\sqrt{2 \pi \sigma^2}} \exp \lcurl -\frac{(t - \mu)^2}{2 \sigma^2} \rcurl \, \mathrm{d}t \\
 \end{aligned}
 \end{split}\]</div>
-<p>We can use the (integration by) substitution <span class="math notranslate nohighlight">\(u = \frac{t - \mu}{\sigma}\)</span> to get <span id="id3">[<a class="reference internal" href="../bibliography/bibliography.html#id2" title="Stanley H. Chan. Introduction to probability for Data Science. Michigan Publishing, 2021.">Chan, 2021</a>]</span>:</p>
+<p>We can use the (integration by) substitution <span class="math notranslate nohighlight">\(u = \frac{t - \mu}{\sigma}\)</span> to get <span id="id3">[<a class="reference internal" href="../references_and_resources/bibliography.html#id2" title="Stanley H. Chan. Introduction to probability for Data Science. Michigan Publishing, 2021.">Chan, 2021</a>]</span>:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{aligned}
@@ -1019,7 +1019,7 @@ solves our problem of computing the probability of an interval for a Gaussian Di
 <p class="admonition-title"><span class="caption-number">Corollary 9 </span> (Corollary of Standard Gaussian)</p>
 <section class="corollary-content" id="proof-content">
 <p>As a consequence of <a class="reference internal" href="#thm_cdf_arbitrary_gaussian_distribution">Theorem 16</a>, we have
-the following corollaries <span id="id4">[<a class="reference internal" href="../bibliography/bibliography.html#id2" title="Stanley H. Chan. Introduction to probability for Data Science. Michigan Publishing, 2021.">Chan, 2021</a>]</span>:</p>
+the following corollaries <span id="id4">[<a class="reference internal" href="../references_and_resources/bibliography.html#id2" title="Stanley H. Chan. Introduction to probability for Data Science. Michigan Publishing, 2021.">Chan, 2021</a>]</span>:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\Phi(y) = 1 - \Phi(-y)\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\P \lsq X \geq b \rsq = 1 - \Phi \lpar \frac{b - \mu}{\sigma} \rpar\)</span></p></li>
