@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Bernoulli Distribution &#8212; Probability &amp; Statistics</title>
+    <title>Binomial Distribution &#8212; Probability &amp; Statistics</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -59,8 +59,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Implementation" href="0308_bernoulli_distribution_implementation.html" />
-    <link rel="prev" title="Implementation" href="0307_discrete_uniform_distribution_implementation.html" />
+    <link rel="next" title="Implementation" href="0309_binomial_distribution_implementation.html" />
+    <link rel="prev" title="Independent and Identically Distributed (IID)" href="iid.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -232,11 +232,11 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="0308_bernoulli_distribution_concept.html">
    Bernoulli Distribution
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
@@ -254,11 +254,11 @@ const thebe_selector_output = ".output, .cell_output"
    Independent and Identically Distributed (IID)
   </a>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="0309_binomial_distribution.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
    Binomial Distribution
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
@@ -270,7 +270,7 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="0309_binomial_distribution_real_world_examples.html">
+    <a class="reference internal" href="0309_binomial_distribution_application.html">
      Real World Examples
     </a>
    </li>
@@ -458,7 +458,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/gao-hongnan/gaohn-probability-stats/main?urlpath=tree/content/03_discrete_random_variables/0308_bernoulli_distribution.md"
+        <a href="https://mybinder.org/v2/gh/gao-hongnan/gaohn-probability-stats/main?urlpath=tree/content/03_discrete_random_variables/0309_binomial_distribution_concept.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -476,7 +476,7 @@ title="Launch on Binder"
       </li>
       
       <li>
-        <a href="https://colab.research.google.com/github/gao-hongnan/gaohn-probability-stats/blob/main/content/03_discrete_random_variables/0308_bernoulli_distribution.md"
+        <a href="https://colab.research.google.com/github/gao-hongnan/gaohn-probability-stats/blob/main/content/03_discrete_random_variables/0309_binomial_distribution_concept.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -536,7 +536,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/gao-hongnan/gaohn-probability-stats/issues/new?title=Issue%20on%20page%20%2F03_discrete_random_variables/0308_bernoulli_distribution.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/gao-hongnan/gaohn-probability-stats/issues/new?title=Issue%20on%20page%20%2F03_discrete_random_variables/0309_binomial_distribution_concept.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -564,7 +564,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/03_discrete_random_variables/0308_bernoulli_distribution.ipynb"
+        <a href="../_sources/03_discrete_random_variables/0309_binomial_distribution_concept.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -581,7 +581,7 @@ title="Download notebook file"
       </li>
       
       <li>
-        <a href="../_sources/03_discrete_random_variables/0308_bernoulli_distribution.md"
+        <a href="../_sources/03_discrete_random_variables/0309_binomial_distribution_concept.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -641,8 +641,13 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pmf-and-cdf-of-bernoulli-distribution">
-   PMF and CDF of Bernoulli Distribution
+  <a class="reference internal nav-link" href="#pmf-and-cdf-of-binomial-distribution">
+   PMF and CDF of Binomial Distribution
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting-pmf-and-cdf-of-binomial-distribution">
+   Plotting PMF and CDF of Binomial Distribution
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -656,16 +661,9 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#maximum-variance">
-   Maximum Variance
+  <a class="reference internal nav-link" href="#binomial-distribution-as-a-sum-of-bernoulli-trials">
+   Binomial Distribution as a Sum of Bernoulli Trials
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#minimum-and-maximum-variance-of-coin-toss">
-     Minimum and Maximum Variance of Coin Toss
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#further-readings">
@@ -681,7 +679,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Bernoulli Distribution</h1>
+                <h1>Binomial Distribution</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -692,8 +690,13 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pmf-and-cdf-of-bernoulli-distribution">
-   PMF and CDF of Bernoulli Distribution
+  <a class="reference internal nav-link" href="#pmf-and-cdf-of-binomial-distribution">
+   PMF and CDF of Binomial Distribution
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting-pmf-and-cdf-of-binomial-distribution">
+   Plotting PMF and CDF of Binomial Distribution
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -707,16 +710,9 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#maximum-variance">
-   Maximum Variance
+  <a class="reference internal nav-link" href="#binomial-distribution-as-a-sum-of-bernoulli-trials">
+   Binomial Distribution as a Sum of Bernoulli Trials
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#minimum-and-maximum-variance-of-coin-toss">
-     Minimum and Maximum Variance of Coin Toss
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#further-readings">
@@ -735,12 +731,22 @@ title="Print to PDF"
                 
   <div class="cell tag_remove-input docutils container">
 </div>
-<section class="tex2jax_ignore mathjax_ignore" id="bernoulli-distribution">
-<h1>Bernoulli Distribution<a class="headerlink" href="#bernoulli-distribution" title="Permalink to this headline">#</a></h1>
-<section id="pmf-and-cdf-of-bernoulli-distribution">
-<h2>PMF and CDF of Bernoulli Distribution<a class="headerlink" href="#pmf-and-cdf-of-bernoulli-distribution" title="Permalink to this headline">#</a></h2>
-<div class="proof definition admonition" id="def:bernoulli_trials_1">
-<p class="admonition-title"><span class="caption-number">Definition 25 </span> (Bernoulli Trials)</p>
+<section class="tex2jax_ignore mathjax_ignore" id="binomial-distribution">
+<h1>Binomial Distribution<a class="headerlink" href="#binomial-distribution" title="Permalink to this headline">#</a></h1>
+<p>In the previous chapter on Bernoulli, we say that given a true population,
+what is the probability of a randomly drawn person has covid? This probability
+<span class="math notranslate nohighlight">\(p\)</span> is the parameter of the Bernoulli.</p>
+<p>Now we ask, if we sample <span class="math notranslate nohighlight">\(n\)</span> people from the true population, and these <span class="math notranslate nohighlight">\(n\)</span> samples
+are <strong>i.i.d.</strong>, and are also <span class="math notranslate nohighlight">\(n\)</span> indepenedent Bernoulli trials. Then we ask,
+what’s the number of successes in <span class="math notranslate nohighlight">\(n\)</span> such samples?</p>
+<p>Instead of asking the question, what is the probability of <strong>a single randomly drawn person</strong>
+having covid, we ask, if we randomly drawn <span class="math notranslate nohighlight">\(n\)</span> people independently, what is the probability of exactly
+<span class="math notranslate nohighlight">\(k &lt;= n\)</span> people having covid?</p>
+<p>The distinction is a single random draw vs <span class="math notranslate nohighlight">\(n\)</span> i.i.d. draws.</p>
+<section id="pmf-and-cdf-of-binomial-distribution">
+<h2>PMF and CDF of Binomial Distribution<a class="headerlink" href="#pmf-and-cdf-of-binomial-distribution" title="Permalink to this headline">#</a></h2>
+<div class="proof definition admonition" id="def:bernoulli_trials_2">
+<p class="admonition-title"><span class="caption-number">Definition 29 </span> (Bernoulli Trials)</p>
 <section class="definition-content" id="proof-content">
 <p>A <strong>Bernoulli trial</strong> is an <strong>experiment</strong> with two possible outcomes: success or failure, often
 denoted as 1 or 0 respectively.</p>
@@ -752,61 +758,52 @@ denoted as 1 or 0 respectively.</p>
 </ol>
 <p>See more <a class="reference external" href="https://www.statisticshowto.com/bernoulli-trials/">here</a>.</p>
 </section>
-</div><div class="proof definition admonition" id="def_bernoulli_distribution_pmf">
-<p class="admonition-title"><span class="caption-number">Definition 26 </span> (Bernoulli Distribution (PMF))</p>
+</div><div class="proof definition admonition" id="def_binomial_distribution_pmf">
+<p class="admonition-title"><span class="caption-number">Definition 30 </span> (Binomial Distribution (PMF))</p>
 <section class="definition-content" id="proof-content">
-<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a <strong>Bernoulli random variable</strong> with parameter <span class="math notranslate nohighlight">\(p\)</span>. Then the
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a <strong>Binomial random variable</strong> with parameters <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(p\)</span>. Then the
 probability mass function (PMF) of <span class="math notranslate nohighlight">\(X\)</span> is given by</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align}
-\P(X=x) = \begin{cases}
-p   &amp;\quad \text{ if } x=1 \\
-1-p &amp;\quad \text{ if } x=0 \\
-0   &amp;\quad \text{ otherwise }
-\end{cases}
-\end{align}
-\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(0 \leq p \leq 1\)</span> is called the Bernoulli parameter.</p>
-<p>A <strong>Bernoulli distribution is a Bernoulli trial</strong>.</p>
+\[
+\P \lsq X = k \rsq = \binom{n}{k} p^k (1-p)^{n-k} \qquad \text{for } k = 0, 1, \ldots, n
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(0 \leq p \leq 1\)</span> is called the binomial parameter, and <span class="math notranslate nohighlight">\(n\)</span> is the <em><strong>total number of trials</strong></em>.</p>
 <p>Some conventions:</p>
 <ol class="simple">
-<li><p>We denote <span class="math notranslate nohighlight">\(X \sim \bern(p)\)</span> if <span class="math notranslate nohighlight">\(X\)</span> follows a Bernoulli distribution with parameter <span class="math notranslate nohighlight">\(p\)</span>.</p></li>
-<li><p>The states of <span class="math notranslate nohighlight">\(X\)</span> are <span class="math notranslate nohighlight">\(x \in \{0,1\}\)</span>. This means <span class="math notranslate nohighlight">\(X\)</span> only has two (binary) states, 0 and 1.</p></li>
-<li><p>We denote <span class="math notranslate nohighlight">\(1\)</span> as <strong>success</strong> and <span class="math notranslate nohighlight">\(0\)</span> as <strong>failure</strong> and consequently <span class="math notranslate nohighlight">\(p\)</span> as the probability of success
-and <span class="math notranslate nohighlight">\(1-p\)</span> as the probability of failure.</p></li>
-<li><p>Bear in mind that <span class="math notranslate nohighlight">\(X\)</span> is defined over <span class="math notranslate nohighlight">\(\pspace\)</span>, and when we say <span class="math notranslate nohighlight">\(\P \lsq X=x \rsq\)</span>, we are also saying
-<span class="math notranslate nohighlight">\(\P \lsq E \rsq\)</span> where <span class="math notranslate nohighlight">\(E \in \E\)</span>. Imagine a coin toss, <span class="math notranslate nohighlight">\(E\)</span> is the event that the coin lands on heads,
-which translates to <span class="math notranslate nohighlight">\(E = \{X=1\}\)</span>.</p></li>
-<li><p>Note further that a Bernoulli Trial is a <strong>single</strong> experiment with only two possible outcomes.
-This will be the main difference when we learn Binomial distribution (i.e. sampling 1 guy vs sampling n guys).</p></li>
+<li><p>We denote <span class="math notranslate nohighlight">\(X \sim \binomial(n, p)\)</span> if <span class="math notranslate nohighlight">\(X\)</span> follows the binomial distribution with parameters <span class="math notranslate nohighlight">\(p\)</span> of size <span class="math notranslate nohighlight">\(n\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(n\)</span> is typically the number of trials, but in this book it is also stated as the number of states, this makes sense
+because <span class="math notranslate nohighlight">\(X\)</span> can only take on <span class="math notranslate nohighlight">\(n\)</span> states (outcomes).</p></li>
+<li><p>Binomial distribution is defined by two parameters <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(p\)</span>.</p></li>
 </ol>
 </section>
-</div><div class="proof definition admonition" id="def_bernoulli_distribution_cdf">
-<p class="admonition-title"><span class="caption-number">Definition 27 </span> (Bernoulli Distribution (CDF))</p>
+</div><div class="proof definition admonition" id="def:state_space_binomial">
+<p class="admonition-title"><span class="caption-number">Definition 31 </span> (The State Space of Binomial Distribution)</p>
 <section class="definition-content" id="proof-content">
-<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a <strong>Bernoulli random variable</strong> with parameter <span class="math notranslate nohighlight">\(p\)</span>. Then the
+<p>The state space of a binomial random variable <span class="math notranslate nohighlight">\(X\)</span> is <span class="math notranslate nohighlight">\(\{0, 1, \ldots, n\}\)</span>.</p>
+</section>
+</div><div class="proof definition admonition" id="def_binomial_distribution_cdf">
+<p class="admonition-title"><span class="caption-number">Definition 32 </span> (Binomial Distribution (CDF))</p>
+<section class="definition-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a <strong>Binomial random variable</strong> with parameters <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(p\)</span>. Then the
 cumulative distribution function (CDF) of <span class="math notranslate nohighlight">\(X\)</span> is given by</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align}
-\cdf(x) = \begin{cases}
-0   &amp;\quad \text{ if } x &lt; 0 \\
-1-p &amp;\quad \text{ if } 0 \leq x &lt; 1 \\
-1   &amp;\quad \text{ if } x \geq 1
-\end{cases}
-\end{align}
-\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(0 \leq p \leq 1\)</span> is called the Bernoulli parameter.</p>
+\[
+\cdf(k) = \P \lsq X \leq k \rsq = \sum_{\ell=0}^k \binom{n}{i} p^{\ell} (1-p)^{n-\ell}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(0 \leq p \leq 1\)</span> is called the binomial parameter, and <span class="math notranslate nohighlight">\(n\)</span> is the <em><strong>total number of trials</strong></em>.</p>
 </section>
-</div><p>The PMF and CDF plots are shown below.</p>
+</div></section>
+<section id="plotting-pmf-and-cdf-of-binomial-distribution">
+<h2>Plotting PMF and CDF of Binomial Distribution<a class="headerlink" href="#plotting-pmf-and-cdf-of-binomial-distribution" title="Permalink to this headline">#</a></h2>
+<p>The below plot shows the PMF and its Empirical Histogram distribution for parameters
+<span class="math notranslate nohighlight">\(n=10\)</span> and <span class="math notranslate nohighlight">\(p=0.5\)</span>, with the latter consisting of 5000 samples drawn from a binomial distribution.</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">plot</span> <span class="kn">import</span> <span class="n">plot_bernoulli_pmf</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">plot</span> <span class="kn">import</span> <span class="n">plot_binomial_pmfs</span><span class="p">,</span> <span class="n">plot_empirical_binomial</span>
 
-<span class="n">_fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">8.4</span><span class="p">,</span> <span class="mf">4.8</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
-<span class="n">plot_bernoulli_pmf</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="n">plot_bernoulli_pmf</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">_fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">plot_binomial_pmfs</span><span class="p">(</span><span class="n">ns</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">ps</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">plot_empirical_binomial</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -815,7 +812,26 @@ cumulative distribution function (CDF) of <span class="math notranslate nohighli
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using Seed Number 42
 </pre></div>
 </div>
-<img alt="../_images/0308_bernoulli_distribution_2_1.svg" src="../_images/0308_bernoulli_distribution_2_1.svg" /></div>
+<img alt="../_images/0309_binomial_distribution_concept_2_1.svg" src="../_images/0309_binomial_distribution_concept_2_1.svg" /></div>
+</div>
+<p>The below plot shows the CDF and its Empirical ECDF distribution for parameters <span class="math notranslate nohighlight">\(n=10\)</span> and <span class="math notranslate nohighlight">\(p=0.5\)</span>,
+with the latter consisting of 5000 samples drawn from a binomial distribution.</p>
+<p><strong>TODO</strong>.</p>
+<p>The below plots show the PMF and CDF of binomial distribution for different values of <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(p\)</span>.
+More specifically, when we fix <span class="math notranslate nohighlight">\(n=60\)</span> and <span class="math notranslate nohighlight">\(p\)</span> varies, and when we fix <span class="math notranslate nohighlight">\(p=0.5\)</span> and <span class="math notranslate nohighlight">\(n\)</span> varies.</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">plot</span> <span class="kn">import</span> <span class="n">plot_binomial_pmfs</span>
+
+<span class="n">_fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">plot_binomial_pmfs</span><span class="p">(</span><span class="n">ns</span><span class="o">=</span><span class="p">[</span><span class="mi">60</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">60</span><span class="p">],</span> <span class="n">ps</span><span class="o">=</span><span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">plot_binomial_pmfs</span><span class="p">(</span><span class="n">ns</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="n">ps</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/0309_binomial_distribution_concept_4_0.svg" src="../_images/0309_binomial_distribution_concept_4_0.svg" /></div>
 </div>
 </section>
 <section id="assumptions">
@@ -829,71 +845,45 @@ cumulative distribution function (CDF) of <span class="math notranslate nohighli
 </section>
 <section id="expectation-and-variance">
 <h2>Expectation and Variance<a class="headerlink" href="#expectation-and-variance" title="Permalink to this headline">#</a></h2>
-<div class="proof property admonition" id="prop:bernoulli">
-<p class="admonition-title"><span class="caption-number">Property 9 </span> (Expectation of Bernoulli Distribution)</p>
+<div class="proof property admonition" id="prop:bino_exp">
+<p class="admonition-title"><span class="caption-number">Property 11 </span> (Expectation of Binomial Distribution)</p>
 <section class="property-content" id="proof-content">
-<p>Let <span class="math notranslate nohighlight">\(X \sim \bern(p)\)</span> be a Bernoulli random variable with parameter <span class="math notranslate nohighlight">\(p\)</span>. Then the expectation of <span class="math notranslate nohighlight">\(X\)</span> is given by</p>
+<p>Let <span class="math notranslate nohighlight">\(X \sim \binomial(n, p)\)</span> be a Binomial random variable with parameters <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(p\)</span>.
+Then the expectation of <span class="math notranslate nohighlight">\(X\)</span> is given by</p>
 <div class="math notranslate nohighlight">
 \[
 \begin{align}
-\expectation \lsq X \rsq = p
+\expectation \lsq X \rsq = np
 \end{align}
 \]</div>
 </section>
-</div><div class="proof admonition" id="proof">
-<p>Proof. The proof is as follows</p>
-<div class="math notranslate nohighlight">
-\[
-\sum_{x \in X(\S)} x \cdot \P(X=x) = 1 \cdot p + 0 \cdot (1-p) = p
-\]</div>
-</div>
-<div class="proof property admonition" id="prop:bernoulli_var">
-<p class="admonition-title"><span class="caption-number">Property 10 </span> (Variance of Bernoulli Distribution)</p>
+</div><div class="proof property admonition" id="prop:bino_var">
+<p class="admonition-title"><span class="caption-number">Property 12 </span> (Variance of Binomial Distribution)</p>
 <section class="property-content" id="proof-content">
-<p>Let <span class="math notranslate nohighlight">\(X \sim \bern(p)\)</span> be a Bernoulli random variable with parameter <span class="math notranslate nohighlight">\(p\)</span>. Then the variance of <span class="math notranslate nohighlight">\(X\)</span> is given by</p>
+<p>Let <span class="math notranslate nohighlight">\(X \sim \binomial(n, p)\)</span> be a Binomial random variable with parameters <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(p\)</span>.
+Then the variance of <span class="math notranslate nohighlight">\(X\)</span> is given by</p>
 <div class="math notranslate nohighlight">
 \[
 \begin{align}
-\var \lsq X \rsq = p(1-p)
+\var \lsq X \rsq = np(1-p)
 \end{align}
 \]</div>
 </section>
-</div><div class="proof admonition" id="proof">
-<p>Proof. The proof is as follows</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{align}
-\var \lsq X \rsq = \sum_{x \in X(\S)} (x - \expectation \lsq X \rsq)^2 \cdot \P(X=x) = (1 - p)^2 \cdot p + (0 - p)^2 \cdot (1-p) = p(1-p)
-\end{align}
-\]</div>
-<p>It can also be shown using the second moment of <span class="math notranslate nohighlight">\(X\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{align}
-\var \lsq X \rsq = \expectation \lsq X^2 \rsq - \expectation \lsq X \rsq^2 = \expectation \lsq X^2 \rsq - p^2 = p(1-p)
-\end{align}
-\]</div>
-</div>
+</div></section>
+<section id="binomial-distribution-as-a-sum-of-bernoulli-trials">
+<h2>Binomial Distribution as a Sum of Bernoulli Trials<a class="headerlink" href="#binomial-distribution-as-a-sum-of-bernoulli-trials" title="Permalink to this headline">#</a></h2>
+<div class="proof definition admonition" id="def:binomial_as_sum_of_bernoulli">
+<p class="admonition-title"><span class="caption-number">Definition 33 </span> (Binomial Distribution as a Sum of Bernoulli Trials)</p>
+<section class="definition-content" id="proof-content">
+<p>Let us define <span class="math notranslate nohighlight">\(X_1, X_2, \ldots, X_n\)</span> to be <span class="math notranslate nohighlight">\(n\)</span> independent Bernoulli trials with parameter <span class="math notranslate nohighlight">\(p\)</span>
+(i.e. <span class="math notranslate nohighlight">\(X_i \sim \bern(p)\)</span>).</p>
+<p>Then the random variable <span class="math notranslate nohighlight">\(X = X_1 + X_2 + \cdots + X_n\)</span> is a Binomial random variable with parameters <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(p\)</span>.</p>
 </section>
-<section id="maximum-variance">
-<h2>Maximum Variance<a class="headerlink" href="#maximum-variance" title="Permalink to this headline">#</a></h2>
-<section id="minimum-and-maximum-variance-of-coin-toss">
-<h3>Minimum and Maximum Variance of Coin Toss<a class="headerlink" href="#minimum-and-maximum-variance-of-coin-toss" title="Permalink to this headline">#</a></h3>
-<p>This example is taken from <span id="id1">[<a class="reference internal" href="../references_and_resources/bibliography.html#id2" title="Stanley H. Chan. Introduction to probability for Data Science. Michigan Publishing, 2021.">Chan, 2021</a>]</span>, page 140.</p>
-<p>Consider a coin toss, following a Bernoulli distribution. Define <span class="math notranslate nohighlight">\(X \sim \bern(p)\)</span>.</p>
-<p>If we toss the coin <span class="math notranslate nohighlight">\(n\)</span> times, then we ask ourselves what is the minimum and maximum variance of the coin toss.</p>
-<p>Recall in <a class="reference internal" href="0306_moments_and_variance.html#def_variance">Definition 21</a> that the variance is basically how much the data deviates from the mean.</p>
-<p>If the coin is biased at <span class="math notranslate nohighlight">\(p=1\)</span>, then the variance is <span class="math notranslate nohighlight">\(0\)</span> because the coin always lands on heads. The
-intuition is that the coin is “deterministic”, and hence there is no variance at all. If the coin
-is biased at <span class="math notranslate nohighlight">\(p=0.9\)</span>, then there is a little variance, because the coin will consistently land on heads
-<span class="math notranslate nohighlight">\(90\%\)</span> of the time. If the coin is biased at <span class="math notranslate nohighlight">\(p=0.5\)</span>, then there is a lot of variance, because the coin
-is fair and has a 50-50 chance of landing on heads or tails. Though fair, the variance is maximum here.</p>
-</section>
-</section>
+</div></section>
 <section id="further-readings">
 <h2>Further Readings<a class="headerlink" href="#further-readings" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
-<li><p>Chan, Stanley H. “Chapter 3.5.1. Bernoulli random variable.” In Introduction to Probability for Data Science, 137-142. Ann Arbor, Michigan: Michigan Publishing Services, 2021.</p></li>
+<li><p>Chan, Stanley H. “Chapter 3.5.2. Binomial random variable.” In Introduction to Probability for Data Science, 143-149. Ann Arbor, Michigan: Michigan Publishing Services, 2021.</p></li>
 </ul>
 </section>
 <div class="toctree-wrapper compound">
@@ -927,14 +917,14 @@ is fair and has a 50-50 chance of landing on heads or tails. Though fair, the va
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="0307_discrete_uniform_distribution_implementation.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="iid.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Implementation</p>
+            <p class="prev-next-title">Independent and Identically Distributed (IID)</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="0308_bernoulli_distribution_implementation.html" title="next page">
+    <a class='right-next' id="next-link" href="0309_binomial_distribution_implementation.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Implementation</p>

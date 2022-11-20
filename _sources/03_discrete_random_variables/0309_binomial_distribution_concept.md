@@ -100,7 +100,28 @@ $$
 where $0 \leq p \leq 1$ is called the binomial parameter, and $n$ is the ***total number of trials***.
 ```
 
-The PMF and CDF plots are shown below.
+## Plotting PMF and CDF of Binomial Distribution
+
+The below plot shows the PMF and its Empirical Histogram distribution for parameters
+$n=10$ and $p=0.5$, with the latter consisting of 5000 samples drawn from a binomial distribution.
+
+```{code-cell} ipython3
+:tags: [hide-input]
+from plot import plot_binomial_pmfs, plot_empirical_binomial
+
+_fig, ax = plt.subplots(1, figsize=(12, 8))
+plot_binomial_pmfs(ns=[10], ps=[0.5], ax=ax)
+plot_empirical_binomial(n=10, p=0.5, size=5000, ax=ax)
+plt.show()
+```
+
+The below plot shows the CDF and its Empirical ECDF distribution for parameters $n=10$ and $p=0.5$,
+with the latter consisting of 5000 samples drawn from a binomial distribution.
+
+**TODO**.
+
+The below plots show the PMF and CDF of binomial distribution for different values of $n$ and $p$.
+More specifically, when we fix $n=60$ and $p$ varies, and when we fix $p=0.5$ and $n$ varies.
 
 ```{code-cell} ipython3
 :tags: [hide-input]

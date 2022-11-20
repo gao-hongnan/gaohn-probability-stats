@@ -26,6 +26,7 @@ import matplotlib.pyplot as plt
 %matplotlib inline
 import matplotlib_inline
 matplotlib_inline.backend_inline.set_matplotlib_formats('svg')
+plt.style.use("dark_background")
 ```
 
 # Bernoulli Distribution
@@ -99,6 +100,8 @@ $$
 where $0 \leq p \leq 1$ is called the Bernoulli parameter.
 ```
 
+## Plotting PMF and CDF of Bernoulli Distribution
+
 The PMF and CDF plots are shown below.
 
 ```{code-cell} ipython3
@@ -108,6 +111,22 @@ from plot import plot_bernoulli_pmf
 _fig, axes = plt.subplots(1,2, figsize=(8.4, 4.8), dpi=300)
 plot_bernoulli_pmf(p=0.2, ax=axes[0])
 plot_bernoulli_pmf(p=0.8, ax=axes[1])
+plt.show()
+```
+
+```{code-cell} ipython3
+:tags: [hide-input]
+from plot import plot_bernoulli_pmf, plot_empirical_bernoulli
+
+fig, axes = plt.subplots(1, 2, figsize=(8.4, 4.8), sharey=True, dpi=100)
+plot_bernoulli_pmf(p=0.2, ax=axes[0])
+plot_empirical_bernoulli(p=0.2, size=100, ax=axes[0])
+
+plot_bernoulli_pmf(p=0.2, ax=axes[1])
+plot_empirical_bernoulli(p=0.2, size=1000, ax=axes[1])
+
+fig.supylabel("relative frequency")
+fig.suptitle("Histogram of Bernoulli($p=0.2$) based on $100$ and $1000$ samples.")
 plt.show()
 ```
 
