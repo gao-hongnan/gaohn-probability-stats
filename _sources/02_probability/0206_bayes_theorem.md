@@ -63,7 +63,7 @@ Now if this intuition is established, we just express
 $\P(B \cap A_i) = \P(B|A_i)\P(A_i)$ by conditional probability and we
 recovered back the formula for the law of total probability.
 
-```{figure} https://storage.googleapis.com/reighns/reighns_ml_projects/docs/probability_and_statistics/02_introduction_to_probability/law_of_total_probability.jpg
+```{figure} ../assets/law_of_total_probability.jpg
 ---
 height: 300px
 name: law_of_total_probability

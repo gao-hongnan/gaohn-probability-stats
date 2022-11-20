@@ -42,7 +42,7 @@ circle - or in other words, the number of outcomes of $A$ in the right
 circle (which is $n(A \cap B)$, over the number of outcomes of the
 reduced sample space $B$.
 
-```{figure} https://storage.googleapis.com/reighns/reighns_ml_projects/docs/probability_and_statistics/02_introduction_to_probability/conditional.png
+```{figure} ../assets/conditional.png
 ---
 name: fig_conditional_probability
 ---

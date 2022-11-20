@@ -10,15 +10,19 @@ An extract from [math.stackexchange.com](https://math.stackexchange.com/question
 
 The motivation behind integration is to find the area under a curve. You do this, schematically, by breaking up the interval $[a, b]$ into little regions of width $\Delta x$ and adding up the areas of the resulting rectangles. Here's an illustration from [Wikipedia](http://en.wikipedia.org/wiki/Riemann_sum):
 
-![Riemann sum illustration][1]
+
+```{figure} ../assets/wiki_1024px-Riemann_sum_convergence.png
+---
+name: fig_riemann_sum_convergence.
+---
+Riemann sum illustration. Image Credit: [Wikipedia](https://en.m.wikipedia.org/wiki/Integral#/media/File%3ARiemann_sum_convergence.png)
+```
 
 Then we want to make an identification along the lines of
 
 $$\sum_x f(x)\Delta x\approx\int_a^b f(x)\,dx,$$
 
 where we take those rectangle widths to be vanishingly small and refer to them as $dx$.
-
-  [1]: http://i.stack.imgur.com/yXK1m.png
 
 
 The symbol used for integration, ∫, is in fact just a stylized "S" for "sum"; The classical definition of the definite integral is 
@@ -60,14 +64,20 @@ $$
 where we assumes that $F$ is continuous on $[a, b]$.
 ```
 
-## Integration and Probability
+### Double Integrals
 
-The post below is fully cited from [https://math.stackexchange.com/questions/916569/whats-an-intuitive-explanation-for-integration](https://math.stackexchange.com/questions/916569/whats-an-intuitive-explanation-for-integration),
-made by user Felix B.
+See [Paul's Online Notes](https://tutorial.math.lamar.edu/classes/calciii/DoubleIntegrals.aspx) for a good introduction to double integrals.
+
+### Integration and Probability
+
+Let's see how to construct measures on a probability space using integration.'
+The post below is fully cited from [What's an intuitive explanation for 
+integration?](https://math.stackexchange.com/questions/916569/whats-an-intuitive-explanation-for-integration);
+written by user Felix B.
 
 Integration in probability is often interpreted as "the **expected value**". To build up our intuition why, let us start with sums.
 
-### Starting Small
+#### Starting Small
 
 Let's say you play a game of dice where you win 2€ if you roll a 6 and lose 1€ if you roll any other number. Then we want to calculate what you should *expect* to receive "on average". Now most people find the practice of multiplying the payoff by its probability and summing over them relatively straightforward. In this case you get
 
@@ -75,7 +85,9 @@ $$
 \text{Expected Payoff} = \frac{1}{6} 2 \text{€} + \frac{5}{6}(-1\text{€}) = -0.5\text{€}
 $$
 
-Now let us try to formalize this and think about what is happening here. We have a set of possible outcomes $\Omega=\{1,2,3,4,5,6\}$ where each outcome is equally likely. And we have a mapping $Y:\Omega \to \mathbb{R}$ which denotes the payoff. I.e.
+Now let us try to formalize this and think about what is happening here. We have a set 
+of possible outcomes $\Omega=\{1,2,3,4,5,6\}$ where each outcome is equally likely. 
+And we have a mapping $Y:\Omega \to \mathbb{R}$ which denotes the payoff. I.e.
 
 $$
 Y(\omega) = \begin{cases}
@@ -89,9 +101,10 @@ $$
   = \frac{1}{6}(2 + (-1) + ... + (-1)) 
   = -0.5
 $$
+
 where $|\Omega|$ is the number of elements contained in $\Omega$.
 
-### Introducing Infinity
+#### Introducing Infinity
 
 Now this works fine for finite $\Omega$, but what if the set of possible
 outcomes is infinite? What if every real number in $[0,1]$ was possible,
@@ -118,7 +131,12 @@ $$
 Okay so we have to be a bit more clever about this. If we have a look at a
 plot of your payoff $Y$, 
 
-[![Payoff Plot][1]][1]
+```{figure} ../assets/payoff_plot.png
+---
+name: fig_payoff_plot
+---
+Payoff Plot.
+```
 
 we might notice that the area under the curve is exactly what we want.
 
@@ -128,7 +146,7 @@ $$
 
 Now why is this the same? How are our sums related to an area under a curve?
 
-### Summing to one
+#### Summing to one
 
 To understand this it might be useful to consider what the expected value of
 a simpler function is
@@ -169,7 +187,7 @@ This is why probability is closely intertwined with [measure theory], where a
 measure is a function assigning sets (e.g. intervals) a weight (e.g. lenght,
 or probability).
 
-### Doing it properly
+#### Doing it properly
 
 So if we restart our attempt at defining the expected value, we start with a
 probability space $\Omega$ and a probability measure $P$ which assigns subsets
@@ -181,7 +199,9 @@ then we can calculate the expected value by going through these values, weighten
 $$
 	\mathbb{E}[Y] = \sum_{y\in Y(\Omega)} y P[Y^{-1}(\{y\})]
 $$
+
 To make notation more readable we can define
+
 $$
 \begin{aligned}
 	P[Y\in A] &:= P[Y^{-1}(A)] \qquad\text{and} \\
@@ -198,7 +218,9 @@ $$
 	&= 2 \frac16 -1 \frac56 = -0.5
 \end{aligned}
 $$
+
 In our infinite example the expected value is
+
 $$
 \begin{aligned}
 	\mathbb{E}[Y] &= 2P(Y=2) + (-1)P(Y=-1)\\
@@ -218,7 +240,7 @@ $$
 
 is also well defined and independent of the sequence $Y_n$.
 
-### Lebesgue Integral
+#### Lebesgue Integral
 
 The integral we defined above is called the [Lebesgue Integral]. The neat thing
 about it is, that
@@ -226,7 +248,11 @@ about it is, that
 1. Riemann
 integration is a special case of it, if we integrate over the [Lebesgue Measure]
 $\lambda$ which assigns intervals $[a,b]$ their length $\lambda([a,b])=b-a$.
-$$\int_{[a,b]} f d\lambda = \int_a^b f(x) dx$$
+
+$$
+\int_{[a,b]} f d\lambda = \int_a^b f(x) dx
+$$
+
 2. Sums and series are also a special case using sequences $(a(n),
 n\in\mathbb{N})$ and a "counting measure" $\mu$ on $\mathbb{N}$ which assigns a
 set $A$ its size $\mu(A) = |A|$. Then
@@ -256,7 +282,7 @@ the $x$-axis and $y$-axis into intervals without consulting the function that is
 supposed to be integrated, while lebesgue integration only subdivides the
 $y$-axis and utilizes the preimage information about the function that is supposed to be integrated.
 
-### Back to Intuition
+#### Back to Intuition
 
 Now the end result might not resemble our intuition about "expected values"
 anymore. We get some of that back with theorems like the [law of
@@ -267,7 +293,7 @@ $$\frac{1}{n} \sum_{k=1}^n X_k$$
 of independently, identically distributed random variables converge (in various
 senses) to the theoretically defined expected value $\mathbb{E}[X]$.
 
-### A note on Random Variables
+#### A note on Random Variables
 
 In our examples above, only the payoff $Y$ was a random variable (a function
 from the probability space $\Omega$ to $\mathbb{R}$). But since we can compose
@@ -282,7 +308,7 @@ work with known *windows* (random variables) into it. Notice how you could
 not discern the die faces $\{1,...,5\}$ from payoff $Y=-1$ alone. So
 random variables can also be viewed as information filters.
 
-### Lies
+#### Lies
 
 While we would like our measures to assign every subset of $\Omega$ a number,
 this is generally not possible without sacrificing its usefulness.
@@ -312,7 +338,6 @@ lebesgue integration to the set of "measurable functions".
 
 But all of these things are technicalities distracting from the intuition.
 
-  [1]: https://i.stack.imgur.com/jQCBD.png
   [measure theory]: https://en.wikipedia.org/wiki/Measure_(mathematics)
   [Lebesgue Integral]: https://en.wikipedia.org/wiki/Lebesgue_integration
   [Lebesgue Measure]: https://en.wikipedia.org/wiki/Lebesgue_measure
@@ -323,3 +348,4 @@ But all of these things are technicalities distracting from the intuition.
 
 - https://www.khanacademy.org/math/calculus-1
 - https://tutorial.math.lamar.edu/
+- https://tutorial.math.lamar.edu/classes/calciii/DoubleIntegrals.aspx
