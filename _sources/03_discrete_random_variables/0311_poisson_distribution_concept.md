@@ -1,6 +1,36 @@
+---
+jupytext:
+  cell_metadata_filter: -all
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.11.5
+mystnb:
+  number_source_lines: true
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
+
+```{code-cell} ipython3
+:tags: [remove-input]
+import sys
+from pathlib import Path
+parent_dir = str(Path().resolve().parent)
+sys.path.append(parent_dir)
+
+import matplotlib.pyplot as plt
+%matplotlib inline
+import matplotlib_inline
+matplotlib_inline.backend_inline.set_matplotlib_formats('svg')
+```
+
 # Poisson Distribution
 
-## Definition
+## PMF and CDF of Poisson Distribution
 
 ```{prf:definition} Poisson Distribution
 :label: def:poi
@@ -27,6 +57,20 @@ Some conventions:
 2. $T$ is a length of time/space being considered.
 3. $\lambda = \alpha T$ is the ***average number of occurrences*** over the time/space being considered.
 ```
+
+## Plotting PMF and CDF of Poisson Distribution
+
+```{code-cell} ipython3
+:tags: [hide-input]
+from plot import plot_poisson_pmfs, plot_empirical_poisson
+
+_fig, axes = plt.subplots(2, 1, figsize=(12, 8), dpi=125)
+lambdas = [5, 10, 20]
+plot_poisson_pmfs(lambdas=lambdas, ax=axes[0])
+plot_empirical_poisson(lambdas=lambdas, ax=axes[1])
+plt.show()
+```
+
 
 (poisson_assumptions)=
 ## Assumptions

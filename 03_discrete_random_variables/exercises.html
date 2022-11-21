@@ -277,12 +277,12 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="0310_geometric_distribution.html">
+  <a class="reference internal" href="0310_geometric_distribution_concept.html">
    Geometric Distribution
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="0311_poisson_distribution.html">
+  <a class="reference internal" href="0311_poisson_distribution_concept.html">
    Poisson Distribution
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
@@ -631,7 +631,7 @@ It is observed that I did not receive any emails in that interval.
 What is the probability that the chosen day is a weekday?</p>
 <p>a) Let <span class="math notranslate nohighlight">\(X\)</span> be the number of emails received on a weekend, in a time interval of length <span class="math notranslate nohighlight">\(1\)</span> minute.
 Then <span class="math notranslate nohighlight">\(X \sim \text{Poisson}(\frac{1}{30})\)</span> has a Poisson distribution with parameter <span class="math notranslate nohighlight">\(\lambda = \frac{1}{30}\)</span>.</p>
-<p>In Poisson’s <a class="reference internal" href="0311_poisson_distribution.html#poisson-assumptions"><span class="std std-ref">Assumptions</span></a>, the <strong>linearity assumption</strong> states
+<p>In Poisson’s <a class="reference internal" href="0311_poisson_distribution_concept.html#poisson-assumptions"><span class="std std-ref">Assumptions</span></a>, the <strong>linearity assumption</strong> states
 that the probability of an event occurring is proportional to the length of the time period.
 As a consequence, the value of <span class="math notranslate nohighlight">\(\lambda\)</span> is proportional to the length of the time period.</p>
 <p>And since the problem asked for a time period of length <span class="math notranslate nohighlight">\(4\)</span> hours, we have that the
@@ -656,7 +656,7 @@ Then <span class="math notranslate nohighlight">\(X \sim \text{Poisson}(8)\)</sp
 <span class="math notranslate nohighlight">\(Y \sim \poisson \lpar 60 \times \frac{1}{30} \rpar = \poisson(2)\)</span>.</p>
 <p>Let <span class="math notranslate nohighlight">\(Z\)</span> be the disjoint union of <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>, and <span class="math notranslate nohighlight">\(Z = X \sqcup Y\)</span>. <span class="math notranslate nohighlight">\(Z\)</span> is also a random variable
 with a Poisson distribution <span class="math notranslate nohighlight">\(Z \sim \poisson(12)\)</span>. This is a consequence of the the <strong>additivity property</strong>
-in Poisson’s <a class="reference internal" href="0311_poisson_distribution.html#prop_sum_poi">Property 17</a>.</p>
+in Poisson’s <a class="reference internal" href="0311_poisson_distribution_concept.html#prop_sum_poi">Property 17</a>.</p>
 <p>Let <span class="math notranslate nohighlight">\(W\)</span> be a random chosen day in a week, and <span class="math notranslate nohighlight">\(W\)</span> is a random variable with a Uniform distribution
 <span class="math notranslate nohighlight">\(W \sim \uniform \lpar 1, 7 \rpar\)</span>.</p>
 <p>Now we can further decompose <span class="math notranslate nohighlight">\(W\)</span> to <span class="math notranslate nohighlight">\(W = W_1 \sqcup W_2\)</span>, where <span class="math notranslate nohighlight">\(W_1\)</span> is the random variable that

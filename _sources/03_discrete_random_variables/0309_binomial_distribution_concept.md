@@ -109,7 +109,7 @@ $n=10$ and $p=0.5$, with the latter consisting of 5000 samples drawn from a bino
 :tags: [hide-input]
 from plot import plot_binomial_pmfs, plot_empirical_binomial
 
-_fig, ax = plt.subplots(1, figsize=(12, 8))
+_fig, ax = plt.subplots(1, figsize=(12, 8), dpi=125)
 plot_binomial_pmfs(ns=[10], ps=[0.5], ax=ax)
 plot_empirical_binomial(n=10, p=0.5, size=5000, ax=ax)
 plt.show()
@@ -127,7 +127,7 @@ More specifically, when we fix $n=60$ and $p$ varies, and when we fix $p=0.5$ an
 :tags: [hide-input]
 from plot import plot_binomial_pmfs
 
-_fig, axes = plt.subplots(2, 1, figsize=(10, 10))
+_fig, axes = plt.subplots(2, 1, figsize=(10, 10), dpi=125)
 plot_binomial_pmfs(ns=[60, 60, 60], ps=[0.1, 0.5, 0.9], ax=axes[0])
 plot_binomial_pmfs(ns=[5, 50, 100], ps=[0.5, 0.5, 0.5], ax=axes[1])
 plt.show()
