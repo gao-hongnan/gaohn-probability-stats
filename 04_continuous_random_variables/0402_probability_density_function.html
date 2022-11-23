@@ -216,7 +216,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../03_discrete_random_variables/0307_discrete_uniform_distribution.html">
+  <a class="reference internal" href="../03_discrete_random_variables/0307_discrete_uniform_distribution_concept.html">
    Discrete Uniform Distribution
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
@@ -297,6 +297,11 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_discrete_random_variables/summary.html">
+   Important
+  </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../03_discrete_random_variables/exercises.html">
@@ -629,9 +634,9 @@ title="Print to PDF"
 <h1>Probability Density Function<a class="headerlink" href="#probability-density-function" title="Permalink to this headline">#</a></h1>
 <section id="definition">
 <h2>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">#</a></h2>
-<p>As mentioned in <a class="reference internal" href="0401_continuous_random_variables.html#def_continuous_random_variable">Definition 37</a>, a continuous random variable <span class="math notranslate nohighlight">\(X\)</span> is defined by its probability density function (PDF) <span class="math notranslate nohighlight">\(f(x)\)</span> or its cumulative distribution function (CDF) <span class="math notranslate nohighlight">\(F(x)\)</span>.</p>
+<p>As mentioned in <a class="reference internal" href="0401_continuous_random_variables.html#def_continuous_random_variable">Definition 38</a>, a continuous random variable <span class="math notranslate nohighlight">\(X\)</span> is defined by its probability density function (PDF) <span class="math notranslate nohighlight">\(f(x)\)</span> or its cumulative distribution function (CDF) <span class="math notranslate nohighlight">\(F(x)\)</span>.</p>
 <div class="proof definition admonition" id="def_probability_density_function">
-<p class="admonition-title"><span class="caption-number">Definition 38 </span> (Probability Density Function)</p>
+<p class="admonition-title"><span class="caption-number">Definition 39 </span> (Probability Density Function)</p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>probability density function</strong> (PDF) of a random variable <span class="math notranslate nohighlight">\(X\)</span> is a mapping
 <span class="math notranslate nohighlight">\(f_X(x)\)</span></p>
@@ -665,7 +670,7 @@ instead it just mentions that the measure of a set to be <span class="math notra
 <p>The author further mentioned if we are dealing with 1-dimensional data (on the real line), then we can
 then give a more intuitive definition of the PDF.</p>
 <div class="proof definition admonition" id="def_probability_density_function_1d">
-<p class="admonition-title"><span class="caption-number">Definition 39 </span> (Probability Density Function (1-dimensional))</p>
+<p class="admonition-title"><span class="caption-number">Definition 40 </span> (Probability Density Function (1-dimensional))</p>
 <section class="definition-content" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(X\)</span> be a continuous random variable on the real line <span class="math notranslate nohighlight">\(\R\)</span>. The <strong>probability density function</strong> (PDF) of <span class="math notranslate nohighlight">\(X\)</span> is a mapping <span class="math notranslate nohighlight">\(f_X(x)\)</span></p>
 <div class="math notranslate nohighlight">
@@ -684,7 +689,7 @@ the probability of observing a value of <span class="math notranslate nohighligh
 <p>Notice that we have replaced <span class="math notranslate nohighlight">\(\int_{A}\)</span> with <span class="math notranslate nohighlight">\(\int_a^b\)</span> where <span class="math notranslate nohighlight">\(A = [a, b]\)</span>.</p>
 </section>
 </div><div class="proof definition admonition" id="def_zero_measure">
-<p class="admonition-title"><span class="caption-number">Definition 40 </span> (Zero Measure)</p>
+<p class="admonition-title"><span class="caption-number">Definition 41 </span> (Zero Measure)</p>
 <section class="definition-content" id="proof-content">
 <p>The probability of a continuous random variable <span class="math notranslate nohighlight">\(X\)</span> taking on a value <span class="math notranslate nohighlight">\(x\)</span> is zero:</p>
 <div class="math notranslate nohighlight">
@@ -695,7 +700,7 @@ the probability of observing a value of <span class="math notranslate nohighligh
 </div><div class="proof remark admonition" id="rem_open_equals_closed_interval">
 <p class="admonition-title"><span class="caption-number">Remark 2 </span> (Open Equals Closed Interval)</p>
 <section class="remark-content" id="proof-content">
-<p>By <a class="reference internal" href="#def_zero_measure">Definition 40</a>, all isolated points have zero measure
+<p>By <a class="reference internal" href="#def_zero_measure">Definition 41</a>, all isolated points have zero measure
 in the continuous space and therefore the probability of
 an open interval <span class="math notranslate nohighlight">\((a, b)\)</span> is equivalent to the probability of a closed interval <span class="math notranslate nohighlight">\([a, b]\)</span>.</p>
 <p>More concretely, let <span class="math notranslate nohighlight">\(\P \lsq [a, b] \rsq = \P \lsq a \leq X \leq b \rsq\)</span>, then</p>

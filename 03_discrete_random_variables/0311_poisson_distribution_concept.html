@@ -216,7 +216,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="0307_discrete_uniform_distribution.html">
+  <a class="reference internal" href="0307_discrete_uniform_distribution_concept.html">
    Discrete Uniform Distribution
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
@@ -297,6 +297,11 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="summary.html">
+   Important
+  </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="exercises.html">
@@ -736,7 +741,7 @@ title="Print to PDF"
 <section id="pmf-and-cdf-of-poisson-distribution">
 <h2>PMF and CDF of Poisson Distribution<a class="headerlink" href="#pmf-and-cdf-of-poisson-distribution" title="Permalink to this headline">#</a></h2>
 <div class="proof definition admonition" id="def:poi">
-<p class="admonition-title"><span class="caption-number">Definition 35 </span> (Poisson Distribution)</p>
+<p class="admonition-title"><span class="caption-number">Definition 36 </span> (Poisson Distribution)</p>
 <section class="definition-content" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(X\)</span> be a <strong>Poisson random variable</strong>. Then the probability mass function (PMF) of <span class="math notranslate nohighlight">\(X\)</span> is given by</p>
 <div class="math notranslate nohighlight">
@@ -760,11 +765,13 @@ X \sim \poisson(\lambda)
 </div></section>
 <section id="plotting-pmf-and-cdf-of-poisson-distribution">
 <h2>Plotting PMF and CDF of Poisson Distribution<a class="headerlink" href="#plotting-pmf-and-cdf-of-poisson-distribution" title="Permalink to this headline">#</a></h2>
+<p>The below plot shows the PMF and its Empirical Histogram distribution for a Poisson distribution with
+<span class="math notranslate nohighlight">\(\lambda \in \lset 5, 10, 20 \rset\)</span>.</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">plot</span> <span class="kn">import</span> <span class="n">plot_poisson_pmfs</span><span class="p">,</span> <span class="n">plot_empirical_poisson</span>
 
-<span class="n">_fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">125</span><span class="p">)</span>
+<span class="n">_fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">125</span><span class="p">)</span>
 <span class="n">lambdas</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
 <span class="n">plot_poisson_pmfs</span><span class="p">(</span><span class="n">lambdas</span><span class="o">=</span><span class="n">lambdas</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="n">plot_empirical_poisson</span><span class="p">(</span><span class="n">lambdas</span><span class="o">=</span><span class="n">lambdas</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
