@@ -8,3 +8,5 @@ determined by the joint distribution $\pdfjoint(x_1, x_2, \ldots, x_{150528})$. 
 we can imagine that for the car class, the probability of drawing a Ferrari is lower than
 the probability of drawing a Toyota, just because a Ferrari is more expensive than a Toyota,
 and hence rarer.
+
+- Note marginalization derives from the law of total probability. https://math.stackexchange.com/questions/3166711/is-marginalization-a-sum-of-conditioned-observations

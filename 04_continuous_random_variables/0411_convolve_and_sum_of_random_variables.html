@@ -647,7 +647,9 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="convolution-and-sum-of-random-variables">
+  <div class="cell tag_remove-input docutils container">
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="convolution-and-sum-of-random-variables">
 <h1>Convolution and Sum of Random Variables<a class="headerlink" href="#convolution-and-sum-of-random-variables" title="Permalink to this headline">#</a></h1>
 <p>In <span id="id1">[<a class="reference internal" href="../references_and_resources/bibliography.html#id2" title="Stanley H. Chan. Introduction to probability for Data Science. Michigan Publishing, 2021.">Chan, 2021</a>]</span>, the author gave us an intuitive treatment of the origin of
 Gaussian random variables before the formal mathematical treatment
@@ -666,32 +668,22 @@ It should not be a surprise that the histogram has a triangular shape, since we 
 the sum of two dice to be more likely to be closer to 7 than 2 or 12, simply because
 there are more way to get a sum of 7 (e.g. <span class="math notranslate nohighlight">\((1, 6)\)</span>, <span class="math notranslate nohighlight">\((2, 5)\)</span>, <span class="math notranslate nohighlight">\((3, 4)\)</span> …) than
 to get a sum of 2 or 12 (e.g. <span class="math notranslate nohighlight">\((1, 1)\)</span>, <span class="math notranslate nohighlight">\((6, 6)\)</span>).</p>
+<p>The logic follows when we throw <span class="math notranslate nohighlight">\(6\)</span> dice and consider <span class="math notranslate nohighlight">\(Z = X_1 + X_2 + \cdots + X_6\)</span>,
+and if we throw <span class="math notranslate nohighlight">\(100\)</span> dice, we will get <span class="math notranslate nohighlight">\(Z = X_1 + X_2 + \cdots + X_{100}\)</span>. The triangle
+shape will “evolve” and become more and more like a bell curve, as shown below.</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="n">parent_dir</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">parent_dir</span><span class="p">)</span>
-
-<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">plot_sum_of_uniform_distribution</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">plot</span> <span class="kn">import</span> <span class="n">plot_sum_of_uniform_distribution</span>
 
 <span class="n">plot_sum_of_uniform_distribution</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">6</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">parent_dir</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">parent_dir</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">plot_sum_of_uniform_distribution</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">plot_sum_of_uniform_distribution</span><span class="p">()</span>
-
-<span class="ne">ImportError</span>: cannot import name &#39;plot_sum_of_uniform_distribution&#39; from &#39;utils&#39; (/home/runner/work/gaohn-probability-stats/gaohn-probability-stats/content/utils.py)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using Seed Number 42
 </pre></div>
 </div>
-</div>
+<img alt="../_images/0411_convolve_and_sum_of_random_variables_2_1.svg" src="../_images/0411_convolve_and_sum_of_random_variables_2_1.svg" /></div>
 </div>
 </section>
 
