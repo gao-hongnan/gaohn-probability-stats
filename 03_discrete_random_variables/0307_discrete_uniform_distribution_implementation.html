@@ -392,6 +392,11 @@ const thebe_selector_output = ".output, .cell_output"
    Brain Dump
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05_joint_distributions/naive_bayes.html">
+   Naive Bayes
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -699,29 +704,29 @@ title="Print to PDF"
 <p>We will also use NumPy to create various input ranges and Matplotlib to visualize various functions:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="n">parent_dir</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">parent_dir</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import sys
+from pathlib import Path
+parent_dir = str(Path().resolve().parent)
+sys.path.append(parent_dir)
 
-<span class="kn">import</span> <span class="nn">random</span>
-<span class="kn">import</span> <span class="nn">warnings</span>
+import random
+import warnings
 
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stats</span>
+import matplotlib.pyplot as plt
+import numpy as np
+import scipy.stats as stats
 
-<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">DeprecationWarning</span><span class="p">)</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline
+warnings.filterwarnings(&quot;ignore&quot;, category=DeprecationWarning)
+%matplotlib inline
 
-<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">seed_all</span>
+from utils import seed_all
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seed_all</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>seed_all(42)
 </pre></div>
 </div>
 </div>
@@ -733,8 +738,8 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a true population of 1000 people with equal heights across 1-10cm</span>
-<span class="n">true_population</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># create a true population of 1000 people with equal heights across 1-10cm
+true_population = np.arange(1, 11, 1).repeat(100)
 </pre></div>
 </div>
 </div>
@@ -742,25 +747,25 @@ title="Print to PDF"
 <p>Both are the same but it is to differentiate between true and empirical.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">true_pmf</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">population</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;PMF of the true population: map X(\S) to a probability.</span>
-<span class="sd">    </span>
-<span class="sd">    Note:</span>
-<span class="sd">        The PMF is completely determined if we know the true distribution.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">population</span> <span class="o">==</span> <span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">population</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def true_pmf(x: float, population: np.ndarray) -&gt; float:
+    &quot;&quot;&quot;PMF of the true population: map X(\S) to a probability.
+    
+    Note:
+        The PMF is completely determined if we know the true distribution.
+    &quot;&quot;&quot;
+    return np.sum(population == x) / len(population)
 
-<span class="k">def</span> <span class="nf">empirical_pmf</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">sample</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Empirical distribution of the sample.&quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">sample</span> <span class="o">==</span> <span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+def empirical_pmf(x: float, sample: np.ndarray):
+    &quot;&quot;&quot;Empirical distribution of the sample.&quot;&quot;&quot;
+    return np.sum(sample == x) / len(sample)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. What is the probability of selecting a person of height 1cm?</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P(X=1) = </span><span class="si">{</span><span class="n">true_pmf</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">true_population</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># 1. What is the probability of selecting a person of height 1cm?
+print(f&quot;P(X=1) = {true_pmf(1, true_population)}&quot;)
 </pre></div>
 </div>
 </div>
@@ -802,41 +807,41 @@ since the sample space <span class="math notranslate nohighlight">\(\Omega\)</sp
 <p>We call this an <strong>ideal histogram</strong> because we know the true population, and we are plotting every single person’s height in this true population.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_true_pmf</span><span class="p">(</span><span class="n">population</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Plots the PMF of the true population.&quot;&quot;&quot;</span>
-    <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">population</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mf">1.5</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span>
-    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-    <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span>
-        <span class="n">population</span><span class="p">,</span>
-        <span class="n">bins</span><span class="p">,</span>
-        <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-        <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#0504AA&quot;</span><span class="p">,</span>
-        <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-        <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
-        <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-    <span class="p">)</span>
-    <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span>
-        <span class="n">population</span><span class="p">,</span>
-        <span class="p">[</span><span class="n">true_pmf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">population</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">population</span><span class="p">],</span>
-        <span class="n">linefmt</span><span class="o">=</span><span class="s2">&quot;C3-&quot;</span><span class="p">,</span>
-        <span class="n">markerfmt</span><span class="o">=</span><span class="s2">&quot;C3o&quot;</span><span class="p">,</span>
-        <span class="n">basefmt</span><span class="o">=</span><span class="s2">&quot;C3-&quot;</span><span class="p">,</span>
-        <span class="n">use_line_collection</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def plot_true_pmf(population: np.ndarray):
+    &quot;&quot;&quot;Plots the PMF of the true population.&quot;&quot;&quot;
+    bins = np.arange(1, population.max() + 1.5) - 0.5
+    fig, ax = plt.subplots()
+    _ = ax.hist(
+        population,
+        bins,
+        density=True,
+        color=&quot;#0504AA&quot;,
+        alpha=0.5,
+        edgecolor=&quot;black&quot;,
+        linewidth=2,
+    )
+    _ = ax.stem(
+        population,
+        [true_pmf(x, population) for x in population],
+        linefmt=&quot;C3-&quot;,
+        markerfmt=&quot;C3o&quot;,
+        basefmt=&quot;C3-&quot;,
+        use_line_collection=True,
+    )
 
-    <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Height (cm)&quot;</span><span class="p">)</span>
-    <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Probability&quot;</span><span class="p">)</span>
-    <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;PMF of the true population&quot;</span><span class="p">)</span>
-    <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">bins</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span>
+    _ = ax.set_xlabel(&quot;Height (cm)&quot;)
+    _ = ax.set_ylabel(&quot;Probability&quot;)
+    _ = ax.set_title(&quot;PMF of the true population&quot;)
+    _ = ax.set_xticks(bins + 0.5)
 
-    <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span>
+    return fig, ax
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span> <span class="o">=</span> <span class="n">plot_true_pmf</span><span class="p">(</span><span class="n">true_population</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>_ = plot_true_pmf(true_population)
 </pre></div>
 </div>
 </div>
@@ -869,11 +874,11 @@ the true population, our “universe”, has enumerated all the possible states 
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. What is the probability of selecting a person of height 1cm?</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P(X=1) = </span><span class="si">{</span><span class="n">true_pmf</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">true_population</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># 1. What is the probability of selecting a person of height 1cm?
+print(f&quot;P(X=1) = {true_pmf(1, true_population)}&quot;)
 
-<span class="c1"># 2. What is the probability of selecting a person that is taller than 5cm?</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P(X&gt;5) = </span><span class="si">{</span><span class="n">true_pmf</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">true_population</span><span class="p">)</span> <span class="o">+</span> <span class="n">true_pmf</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="n">true_population</span><span class="p">)</span> <span class="o">+</span> <span class="n">true_pmf</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">true_population</span><span class="p">)</span> <span class="o">+</span> <span class="n">true_pmf</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="n">true_population</span><span class="p">)</span> <span class="o">+</span> <span class="n">true_pmf</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">true_population</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+# 2. What is the probability of selecting a person that is taller than 5cm?
+print(f&quot;P(X&gt;5) = {true_pmf(6, true_population) + true_pmf(7, true_population) + true_pmf(8, true_population) + true_pmf(9, true_population) + true_pmf(10, true_population)}&quot;)
 </pre></div>
 </div>
 </div>
@@ -920,34 +925,34 @@ empirical dataset.</p>
 <p>But we can still make sense of it with the following example with uniform distribution even if it is non-parametric.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_empirical_pmf</span><span class="p">(</span><span class="n">sample</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Plots the empirical histogram of a sample dataset drawn from the population.&quot;&quot;&quot;</span>
-    <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">sample</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mf">1.5</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span>
-    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-    <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span>
-        <span class="n">sample</span><span class="p">,</span>
-        <span class="n">bins</span><span class="p">,</span>
-        <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-        <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#0504AA&quot;</span><span class="p">,</span>
-        <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-        <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
-        <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-    <span class="p">)</span>
-    <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span>
-        <span class="n">sample</span><span class="p">,</span>
-        <span class="p">[</span><span class="n">empirical_pmf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sample</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">sample</span><span class="p">],</span>
-        <span class="n">linefmt</span><span class="o">=</span><span class="s2">&quot;C3-&quot;</span><span class="p">,</span>
-        <span class="n">markerfmt</span><span class="o">=</span><span class="s2">&quot;C3o&quot;</span><span class="p">,</span>
-        <span class="n">basefmt</span><span class="o">=</span><span class="s2">&quot;C3-&quot;</span><span class="p">,</span>
-        <span class="n">use_line_collection</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def plot_empirical_pmf(sample: np.ndarray):
+    &quot;&quot;&quot;Plots the empirical histogram of a sample dataset drawn from the population.&quot;&quot;&quot;
+    bins = np.arange(1, sample.max() + 1.5) - 0.5
+    fig, ax = plt.subplots()
+    _ = ax.hist(
+        sample,
+        bins,
+        density=True,
+        color=&quot;#0504AA&quot;,
+        alpha=0.5,
+        edgecolor=&quot;black&quot;,
+        linewidth=2,
+    )
+    _ = ax.stem(
+        sample,
+        [empirical_pmf(x, sample) for x in sample],
+        linefmt=&quot;C3-&quot;,
+        markerfmt=&quot;C3o&quot;,
+        basefmt=&quot;C3-&quot;,
+        use_line_collection=True,
+    )
 
-    <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Height (cm)&quot;</span><span class="p">)</span>
-    <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Probability&quot;</span><span class="p">)</span>
-    <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;PMF of a sample of size </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">bins</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span>
+    _ = ax.set_xlabel(&quot;Height (cm)&quot;)
+    _ = ax.set_ylabel(&quot;Probability&quot;)
+    _ = ax.set_title(f&quot;PMF of a sample of size {len(sample)}&quot;)
+    _ = ax.set_xticks(bins + 0.5)
 
-    <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span>
+    return fig, ax
 </pre></div>
 </div>
 </div>
@@ -956,9 +961,9 @@ empirical dataset.</p>
 <p><strong>TODO: no replacement means samples are dependent, but seems to be more accurate to illustrate a point?</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample_100</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">true_population</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">sample_500</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">true_population</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">sample_900</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">true_population</span><span class="p">,</span> <span class="mi">900</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sample_100 = np.random.choice(true_population, 100, replace=False)
+sample_500 = np.random.choice(true_population, 500, replace=False)
+sample_900 = np.random.choice(true_population, 900, replace=False)
 </pre></div>
 </div>
 </div>
@@ -966,96 +971,96 @@ empirical dataset.</p>
 <p>We then plot their histogram and compare to the ideal histogram.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ideal + empirical</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
-<span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">true_population</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mf">1.5</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span>
-    <span class="n">true_population</span><span class="p">,</span>
-    <span class="n">bins</span><span class="p">,</span>
-    <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#0504AA&quot;</span><span class="p">,</span>
-    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-    <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
-    <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span>
-    <span class="n">true_population</span><span class="p">,</span>
-    <span class="p">[</span><span class="n">true_pmf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">true_population</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">true_population</span><span class="p">],</span>
-    <span class="n">linefmt</span><span class="o">=</span><span class="s2">&quot;C3-&quot;</span><span class="p">,</span>
-    <span class="n">markerfmt</span><span class="o">=</span><span class="s2">&quot;C3o&quot;</span><span class="p">,</span>
-    <span class="n">basefmt</span><span class="o">=</span><span class="s2">&quot;C3-&quot;</span><span class="p">,</span>
-    <span class="n">use_line_collection</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;PMF of the true population&quot;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Height (cm)&quot;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Probability&quot;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">bins</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># ideal + empirical
+fig, axs = plt.subplots(2, 2, figsize=(20, 10))
+bins = np.arange(1, true_population.max() + 1.5) - 0.5
+axs[0, 0].hist(
+    true_population,
+    bins,
+    density=True,
+    color=&quot;#0504AA&quot;,
+    alpha=0.5,
+    edgecolor=&quot;black&quot;,
+    linewidth=2,
+)
+axs[0, 0].stem(
+    true_population,
+    [true_pmf(x, true_population) for x in true_population],
+    linefmt=&quot;C3-&quot;,
+    markerfmt=&quot;C3o&quot;,
+    basefmt=&quot;C3-&quot;,
+    use_line_collection=True,
+)
+axs[0, 0].set_title(&quot;PMF of the true population&quot;)
+axs[0, 0].set_xlabel(&quot;Height (cm)&quot;)
+axs[0, 0].set_ylabel(&quot;Probability&quot;)
+axs[0, 0].set_xticks(bins + 0.5)
 
-<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span>
-    <span class="n">sample_100</span><span class="p">,</span>
-    <span class="n">bins</span><span class="p">,</span>
-    <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#0504AA&quot;</span><span class="p">,</span>
-    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-    <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
-    <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span>
-    <span class="n">sample_100</span><span class="p">,</span>
-    <span class="p">[</span><span class="n">empirical_pmf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sample_100</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">sample_100</span><span class="p">],</span>
-    <span class="n">linefmt</span><span class="o">=</span><span class="s2">&quot;C3-&quot;</span><span class="p">,</span>
-    <span class="n">markerfmt</span><span class="o">=</span><span class="s2">&quot;C3o&quot;</span><span class="p">,</span>
-    <span class="n">basefmt</span><span class="o">=</span><span class="s2">&quot;C3-&quot;</span><span class="p">,</span>
-    <span class="n">use_line_collection</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;PMF of a sample of size 100&quot;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Height (cm)&quot;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Probability&quot;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">bins</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span>
+axs[0, 1].hist(
+    sample_100,
+    bins,
+    density=True,
+    color=&quot;#0504AA&quot;,
+    alpha=0.5,
+    edgecolor=&quot;black&quot;,
+    linewidth=2,
+)
+axs[0, 1].stem(
+    sample_100,
+    [empirical_pmf(x, sample_100) for x in sample_100],
+    linefmt=&quot;C3-&quot;,
+    markerfmt=&quot;C3o&quot;,
+    basefmt=&quot;C3-&quot;,
+    use_line_collection=True,
+)
+axs[0, 1].set_title(&quot;PMF of a sample of size 100&quot;)
+axs[0, 1].set_xlabel(&quot;Height (cm)&quot;)
+axs[0, 1].set_ylabel(&quot;Probability&quot;)
+axs[0, 1].set_xticks(bins + 0.5)
 
-<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span>
-    <span class="n">sample_500</span><span class="p">,</span>
-    <span class="n">bins</span><span class="p">,</span>
-    <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#0504AA&quot;</span><span class="p">,</span>
-    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-    <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
-    <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span>
-    <span class="n">sample_500</span><span class="p">,</span>
-    <span class="p">[</span><span class="n">empirical_pmf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sample_500</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">sample_500</span><span class="p">],</span>
-    <span class="n">linefmt</span><span class="o">=</span><span class="s2">&quot;C3-&quot;</span><span class="p">,</span>
-    <span class="n">markerfmt</span><span class="o">=</span><span class="s2">&quot;C3o&quot;</span><span class="p">,</span>
-    <span class="n">basefmt</span><span class="o">=</span><span class="s2">&quot;C3-&quot;</span><span class="p">,</span>
-    <span class="n">use_line_collection</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;PMF of a sample of size 500&quot;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Height (cm)&quot;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Probability&quot;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">bins</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span>
+axs[1, 0].hist(
+    sample_500,
+    bins,
+    density=True,
+    color=&quot;#0504AA&quot;,
+    alpha=0.5,
+    edgecolor=&quot;black&quot;,
+    linewidth=2,
+)
+axs[1, 0].stem(
+    sample_500,
+    [empirical_pmf(x, sample_500) for x in sample_500],
+    linefmt=&quot;C3-&quot;,
+    markerfmt=&quot;C3o&quot;,
+    basefmt=&quot;C3-&quot;,
+    use_line_collection=True,
+)
+axs[1, 0].set_title(&quot;PMF of a sample of size 500&quot;)
+axs[1, 0].set_xlabel(&quot;Height (cm)&quot;)
+axs[1, 0].set_ylabel(&quot;Probability&quot;)
+axs[1, 0].set_xticks(bins + 0.5)
 
-<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span>
-    <span class="n">sample_900</span><span class="p">,</span>
-    <span class="n">bins</span><span class="p">,</span>
-    <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#0504AA&quot;</span><span class="p">,</span>
-    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-    <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
-    <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span>
-    <span class="n">sample_900</span><span class="p">,</span>
-    <span class="p">[</span><span class="n">empirical_pmf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sample_900</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">sample_900</span><span class="p">],</span>
-    <span class="n">linefmt</span><span class="o">=</span><span class="s2">&quot;C3-&quot;</span><span class="p">,</span>
-    <span class="n">markerfmt</span><span class="o">=</span><span class="s2">&quot;C3o&quot;</span><span class="p">,</span>
-    <span class="n">basefmt</span><span class="o">=</span><span class="s2">&quot;C3-&quot;</span><span class="p">,</span>
-    <span class="n">use_line_collection</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;PMF of a sample of size 900&quot;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Height (cm)&quot;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Probability&quot;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">bins</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">);</span>
+axs[1, 1].hist(
+    sample_900,
+    bins,
+    density=True,
+    color=&quot;#0504AA&quot;,
+    alpha=0.5,
+    edgecolor=&quot;black&quot;,
+    linewidth=2,
+)
+axs[1, 1].stem(
+    sample_900,
+    [empirical_pmf(x, sample_900) for x in sample_900],
+    linefmt=&quot;C3-&quot;,
+    markerfmt=&quot;C3o&quot;,
+    basefmt=&quot;C3-&quot;,
+    use_line_collection=True,
+)
+axs[1, 1].set_title(&quot;PMF of a sample of size 900&quot;)
+axs[1, 1].set_xlabel(&quot;Height (cm)&quot;)
+axs[1, 1].set_ylabel(&quot;Probability&quot;)
+axs[1, 1].set_xticks(bins + 0.5);
 </pre></div>
 </div>
 </div>
@@ -1078,22 +1083,22 @@ with height 2 cm, so our empirical histogram tells us a empirical distribution o
 of getting a person with 2 cm, which is very different from 0.1.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">expected_value</span><span class="p">(</span><span class="n">population</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Expected value of the true population.&quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">population</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">population</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def expected_value(population: np.ndarray) -&gt; float:
+    &quot;&quot;&quot;Expected value of the true population.&quot;&quot;&quot;
+    return np.sum(population) / len(population)
 
 
-<span class="k">def</span> <span class="nf">empirical_mean</span><span class="p">(</span><span class="n">sample</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Empirical mean of the sample.&quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+def empirical_mean(sample: np.ndarray) -&gt; float:
+    &quot;&quot;&quot;Empirical mean of the sample.&quot;&quot;&quot;
+    return np.sum(sample) / len(sample)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># What is the mean height of the true population (expected value)?</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The expected value of the true population is </span><span class="si">{</span><span class="n">expected_value</span><span class="p">(</span><span class="n">true_population</span><span class="p">)</span><span class="si">}</span><span class="s2">cm.&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># What is the mean height of the true population (expected value)?
+print(f&quot;The expected value of the true population is {expected_value(true_population)}cm.&quot;)
 </pre></div>
 </div>
 </div>
@@ -1105,9 +1110,9 @@ of getting a person with 2 cm, which is very different from 0.1.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The empirical mean of the sample size of 100 is </span><span class="si">{</span><span class="n">empirical_mean</span><span class="p">(</span><span class="n">sample_100</span><span class="p">)</span><span class="si">}</span><span class="s2">cm.&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The empirical mean of the sample size of 500 is </span><span class="si">{</span><span class="n">empirical_mean</span><span class="p">(</span><span class="n">sample_500</span><span class="p">)</span><span class="si">}</span><span class="s2">cm.&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The empirical mean of the sample size of 900 is </span><span class="si">{</span><span class="n">empirical_mean</span><span class="p">(</span><span class="n">sample_900</span><span class="p">)</span><span class="si">}</span><span class="s2">cm.&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(f&quot;The empirical mean of the sample size of 100 is {empirical_mean(sample_100)}cm.&quot;)
+print(f&quot;The empirical mean of the sample size of 500 is {empirical_mean(sample_500)}cm.&quot;)
+print(f&quot;The empirical mean of the sample size of 900 is {empirical_mean(sample_900)}cm.&quot;)
 </pre></div>
 </div>
 </div>
@@ -1123,11 +1128,11 @@ The empirical mean of the sample size of 900 is 5.541111111111111cm.
 as there are more samples, we get a more accurate representation of the true population, and therefore mean also more accurate.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># uvals2 = np.linspace(0, 6, 61)</span>
-<span class="c1"># plt.step(uvals2, U.cdf(uvals2), where=&quot;post&quot;)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># uvals2 = np.linspace(0, 6, 61)
+# plt.step(uvals2, U.cdf(uvals2), where=&quot;post&quot;)
 
-<span class="c1"># plt.xlabel(&quot;$u$&quot;)</span>
-<span class="c1"># plt.ylabel(&quot;$F_U(u)$&quot;);</span>
+# plt.xlabel(&quot;$u$&quot;)
+# plt.ylabel(&quot;$F_U(u)$&quot;);
 </pre></div>
 </div>
 </div>
@@ -1135,12 +1140,12 @@ as there are more samples, we get a more accurate representation of the true pop
 <p>Finally, let’s compare the cumulative histogram (with both <code class="docutils literal notranslate"><span class="pre">cumulative</span> <span class="pre">=</span> <span class="pre">True</span></code> and <code class="docutils literal notranslate"><span class="pre">density</span> <span class="pre">=</span> <span class="pre">True</span></code>) to the CDF:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># uvals2 = np.linspace(0, 6, 61)</span>
-<span class="c1"># plt.step(uvals2, U.cdf(uvals2), where=&quot;post&quot;)</span>
-<span class="c1"># plt.hist(u, cumulative=True, density=True, bins=newbins)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># uvals2 = np.linspace(0, 6, 61)
+# plt.step(uvals2, U.cdf(uvals2), where=&quot;post&quot;)
+# plt.hist(u, cumulative=True, density=True, bins=newbins)
 
-<span class="c1"># plt.xlabel(&quot;$u$&quot;)</span>
-<span class="c1"># plt.ylabel(&quot;$F_U(u)$&quot;);</span>
+# plt.xlabel(&quot;$u$&quot;)
+# plt.ylabel(&quot;$F_U(u)$&quot;);
 </pre></div>
 </div>
 </div>

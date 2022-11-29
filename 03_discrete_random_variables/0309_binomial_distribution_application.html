@@ -392,6 +392,11 @@ const thebe_selector_output = ".output, .cell_output"
    Brain Dump
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05_joint_distributions/naive_bayes.html">
+   Naive Bayes
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -733,29 +738,29 @@ title="Print to PDF"
 <h2>Utilities<a class="headerlink" href="#utilities" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="n">parent_dir</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">parent_dir</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import sys
+from pathlib import Path
+parent_dir = str(Path().resolve().parent)
+sys.path.append(parent_dir)
 
-<span class="kn">import</span> <span class="nn">random</span>
-<span class="kn">import</span> <span class="nn">warnings</span>
+import random
+import warnings
 
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stats</span>
+import matplotlib.pyplot as plt
+import numpy as np
+import scipy.stats as stats
 
-<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">DeprecationWarning</span><span class="p">)</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline
+warnings.filterwarnings(&quot;ignore&quot;, category=DeprecationWarning)
+%matplotlib inline
 
-<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">seed_all</span><span class="p">,</span> <span class="n">true_pmf</span><span class="p">,</span> <span class="n">empirical_pmf</span>
+from utils import seed_all, true_pmf, empirical_pmf
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seed_all</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>seed_all(42)
 </pre></div>
 </div>
 </div>
@@ -875,21 +880,21 @@ It is just the total number of successful conversion calls made by 1 single empl
 \end{split}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="mf">0.04</span>
-<span class="n">n</span> <span class="o">=</span> <span class="mi">50</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>p = 0.04
+n = 50
 
-<span class="c1"># our random variable Y</span>
-<span class="n">Y</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">binom</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+# our random variable Y
+Y = stats.binom(n, p)
 
-<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># [0, 1, ..., 50]</span>
+y = np.arange(n + 1)  # [0, 1, ..., 50]
 
-<span class="n">f</span> <span class="o">=</span> <span class="n">Y</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>  <span class="c1"># pmf P(Y=0) P(Y=1)</span>
+f = Y.pmf(y)  # pmf P(Y=0) P(Y=1)
 
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="s2">&quot;bo&quot;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">();</span>
+fig = plt.figure(figsize=(20, 5))
+plt.plot(y, f, &quot;bo&quot;, ms=10)
+plt.vlines(y, 0, f, colors=&quot;b&quot;, lw=5, alpha=0.5)
+plt.xticks(y)
+plt.show();
 </pre></div>
 </div>
 </div>
@@ -899,8 +904,8 @@ It is just the total number of successful conversion calls made by 1 single empl
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">y_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">51</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;PMF for Y=</span><span class="si">{</span><span class="n">y_</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">Y</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">y_</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for y_ in range(51):
+    print(f&quot;PMF for Y={y_} is {Y.pmf(y_)}&quot;)
 </pre></div>
 </div>
 </div>
@@ -962,9 +967,9 @@ PMF for Y=50 is 1.2676506002282307e-70
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean</span><span class="p">,</span> <span class="n">var</span> <span class="o">=</span> <span class="n">Y</span><span class="o">.</span><span class="n">stats</span><span class="p">(</span><span class="n">moments</span><span class="o">=</span><span class="s2">&quot;mv&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Expected value: </span><span class="si">{</span><span class="n">mean</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Variance: </span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>mean, var = Y.stats(moments=&quot;mv&quot;)
+print(f&quot;Expected value: {mean}&quot;)
+print(f&quot;Variance: {var}&quot;)
 </pre></div>
 </div>
 </div>
@@ -982,17 +987,17 @@ to get the average number of successful conversion per day.</p>
 <p>We see that we are making a loss of <span class="math notranslate nohighlight">\(-2000\)</span> a day.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_employees</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="n">salary_per_employee</span> <span class="o">=</span> <span class="mi">200</span>
-<span class="n">revenue_per_successful_call</span> <span class="o">=</span> <span class="mi">90</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>num_employees = 100
+salary_per_employee = 200
+revenue_per_successful_call = 90
 
-<span class="n">expected_total_conversions</span> <span class="o">=</span> <span class="n">mean</span> <span class="o">*</span> <span class="n">num_employees</span>
-<span class="n">expected_total_revenue</span>     <span class="o">=</span> <span class="n">revenue_per_successful_call</span> <span class="o">*</span> <span class="n">expected_total_conversions</span>
-<span class="n">expected_total_profits</span>     <span class="o">=</span> <span class="n">expected_total_revenue</span> <span class="o">-</span> <span class="n">salary_per_employee</span> <span class="o">*</span> <span class="n">num_employees</span>
+expected_total_conversions = mean * num_employees
+expected_total_revenue     = revenue_per_successful_call * expected_total_conversions
+expected_total_profits     = expected_total_revenue - salary_per_employee * num_employees
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Expected Total Conversions Per Day: </span><span class="si">{</span><span class="n">expected_total_conversions</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Expected Total Revenue Per Day: </span><span class="si">{</span><span class="n">expected_total_revenue</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Expected Total Profits Per Day: </span><span class="si">{</span><span class="n">expected_total_profits</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+print(f&quot;Expected Total Conversions Per Day: {expected_total_conversions}&quot;)
+print(f&quot;Expected Total Revenue Per Day: {expected_total_revenue}&quot;)
+print(f&quot;Expected Total Profits Per Day: {expected_total_profits}&quot;)
 </pre></div>
 </div>
 </div>
@@ -1027,8 +1032,8 @@ Note the distinction, in <span class="math notranslate nohighlight">\(X_i\)</spa
 can be any member from the population.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># generate states from binomial distribution</span>
-<span class="n">Y</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># generate states from binomial distribution
+Y.rvs(size = 10)
 </pre></div>
 </div>
 </div>
@@ -1041,22 +1046,22 @@ can be any member from the population.</p>
 <p>If we plot 100 such <span class="math notranslate nohighlight">\(Y_i\)</span>, we form an empirical distribution and compared to the true PMF it has a bit of differences.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span> <span class="o">+</span> <span class="mf">1.5</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span>
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span>
-    <span class="n">Y</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">),</span>
-    <span class="n">bins</span><span class="p">,</span>
-    <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span>
-    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-    <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
-    <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-<span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>bins = np.arange(0, 50 + 1.5) - 0.5
+fig = plt.figure(figsize=(20, 5))
+plt.hist(
+    Y.rvs(size=100),
+    bins,
+    density=True,
+    color=&quot;red&quot;,
+    alpha=0.5,
+    edgecolor=&quot;black&quot;,
+    linewidth=2,
+)
 
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="s2">&quot;bo&quot;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+plt.plot(y, f, &quot;bo&quot;, ms=10)
+plt.vlines(y, 0, f, colors=&quot;b&quot;, lw=5, alpha=0.5)
+plt.xticks(y)
+plt.show()
 </pre></div>
 </div>
 </div>
@@ -1067,23 +1072,23 @@ can be any member from the population.</p>
 <p>When we increase to 10000, the empirical starts to be closer to the true PMF.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span> <span class="o">+</span> <span class="mf">1.5</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span>
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>bins = np.arange(0, 50 + 1.5) - 0.5
+fig = plt.figure(figsize=(20, 5))
 
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span>
-    <span class="n">Y</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">10000</span><span class="p">),</span>
-    <span class="n">bins</span><span class="p">,</span>
-    <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span>
-    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-    <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
-    <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-<span class="p">)</span>
+plt.hist(
+    Y.rvs(size=10000),
+    bins,
+    density=True,
+    color=&quot;green&quot;,
+    alpha=0.5,
+    edgecolor=&quot;black&quot;,
+    linewidth=2,
+)
 
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="s2">&quot;bo&quot;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+plt.plot(y, f, &quot;bo&quot;, ms=10)
+plt.vlines(y, 0, f, colors=&quot;b&quot;, lw=5, alpha=0.5)
+plt.xticks(y)
+plt.show()
 </pre></div>
 </div>
 </div>
@@ -1114,38 +1119,38 @@ to be the random variable <span class="math notranslate nohighlight">\(Z = 90Y\)
 <p>At each loop (day), we get a new draw random variable <span class="math notranslate nohighlight">\(Z\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">yearly_revenue</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="mi">365</span><span class="p">)</span>
-<span class="n">yearly_salary_paid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="mi">365</span><span class="p">)</span> <span class="o">*</span> <span class="mi">20000</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>yearly_revenue = np.zeros(shape=365)
+yearly_salary_paid = np.ones(shape=365) * 20000
 
-<span class="k">for</span> <span class="n">each_day</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">365</span><span class="p">):</span>
-    <span class="n">Z</span> <span class="o">=</span> <span class="mi">90</span> <span class="o">*</span> <span class="n">Y</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span> <span class="c1"># 100 employees&#39; revenue [90, 180, 0, ...]</span>
-    <span class="n">daily_revenue</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span>
-    <span class="n">yearly_revenue</span><span class="p">[</span><span class="n">each_day</span><span class="p">]</span> <span class="o">=</span> <span class="n">daily_revenue</span>
+for each_day in range(365):
+    Z = 90 * Y.rvs(size = 100) # 100 employees&#39; revenue [90, 180, 0, ...]
+    daily_revenue = np.sum(Z)
+    yearly_revenue[each_day] = daily_revenue
     
-<span class="n">yearly_profits</span> <span class="o">=</span> <span class="n">yearly_revenue</span> <span class="o">-</span>  <span class="n">yearly_salary_paid</span>
+yearly_profits = yearly_revenue -  yearly_salary_paid
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#bins = np.arange(0, yearly_revenue.max() + 1.5) - 0.5</span>
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#bins = np.arange(0, yearly_revenue.max() + 1.5) - 0.5
+fig = plt.figure(figsize=(20, 5))
 
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span>
-    <span class="n">yearly_profits</span><span class="p">,</span>
-    <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
-    <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span>
-    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-    <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
-    <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-<span class="p">)</span>
+plt.hist(
+    yearly_profits,
+    bins=20,
+    density=True,
+    color=&quot;red&quot;,
+    alpha=0.5,
+    edgecolor=&quot;black&quot;,
+    linewidth=2,
+)
 
-<span class="c1"># plt.plot(y, f, &quot;bo&quot;, ms=10)</span>
-<span class="c1"># plt.vlines(y, 0, f, colors=&quot;b&quot;, lw=5, alpha=0.5)</span>
-<span class="c1">#plt.xticks(y)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+# plt.plot(y, f, &quot;bo&quot;, ms=10)
+# plt.vlines(y, 0, f, colors=&quot;b&quot;, lw=5, alpha=0.5)
+#plt.xticks(y)
+plt.show()
 </pre></div>
 </div>
 </div>
@@ -1156,55 +1161,55 @@ to be the random variable <span class="math notranslate nohighlight">\(Z = 90Y\)
 <p>If we increase <span class="math notranslate nohighlight">\(n\)</span> or <span class="math notranslate nohighlight">\(p\)</span>, say just bump out both by a bit to <span class="math notranslate nohighlight">\(n=58\)</span> and <span class="math notranslate nohighlight">\(p=0.06\)</span>, then we have</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="mf">0.06</span>
-<span class="n">n</span> <span class="o">=</span> <span class="mi">58</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>p = 0.06
+n = 58
 
-<span class="c1"># our random variable Y</span>
-<span class="n">Y</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">binom</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+# our random variable Y
+Y = stats.binom(n, p)
 
-<span class="n">yearly_revenue</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="mi">365</span><span class="p">)</span>
-<span class="n">yearly_salary_paid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="mi">365</span><span class="p">)</span> <span class="o">*</span> <span class="mi">20000</span>
+yearly_revenue = np.zeros(shape=365)
+yearly_salary_paid = np.ones(shape=365) * 20000
 
-<span class="k">for</span> <span class="n">each_day</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">365</span><span class="p">):</span>
-    <span class="n">Z</span> <span class="o">=</span> <span class="mi">90</span> <span class="o">*</span> <span class="n">Y</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span> <span class="c1"># 100 employees&#39; revenue [90, 180, 0, ...]</span>
-    <span class="n">daily_revenue</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span>
-    <span class="n">yearly_revenue</span><span class="p">[</span><span class="n">each_day</span><span class="p">]</span> <span class="o">=</span> <span class="n">daily_revenue</span>
+for each_day in range(365):
+    Z = 90 * Y.rvs(size = 100) # 100 employees&#39; revenue [90, 180, 0, ...]
+    daily_revenue = np.sum(Z)
+    yearly_revenue[each_day] = daily_revenue
     
-<span class="n">yearly_profits_improved</span> <span class="o">=</span> <span class="n">yearly_revenue</span> <span class="o">-</span>  <span class="n">yearly_salary_paid</span>
+yearly_profits_improved = yearly_revenue -  yearly_salary_paid
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#bins = np.arange(0, yearly_revenue.max() + 1.5) - 0.5</span>
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#bins = np.arange(0, yearly_revenue.max() + 1.5) - 0.5
+fig = plt.figure(figsize=(20, 5))
 
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span>
-    <span class="n">yearly_profits</span><span class="p">,</span>
-    <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
-    <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span>
-    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-    <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
-    <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-<span class="p">)</span>
+plt.hist(
+    yearly_profits,
+    bins=20,
+    density=True,
+    color=&quot;red&quot;,
+    alpha=0.5,
+    edgecolor=&quot;black&quot;,
+    linewidth=2,
+)
 
 
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span>
-    <span class="n">yearly_profits_improved</span><span class="p">,</span>
-    <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
-    <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span>
-    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-    <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
-    <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-<span class="p">)</span>
+plt.hist(
+    yearly_profits_improved,
+    bins=20,
+    density=True,
+    color=&quot;green&quot;,
+    alpha=0.5,
+    edgecolor=&quot;black&quot;,
+    linewidth=2,
+)
 
-<span class="c1"># plt.plot(y, f, &quot;bo&quot;, ms=10)</span>
-<span class="c1"># plt.vlines(y, 0, f, colors=&quot;b&quot;, lw=5, alpha=0.5)</span>
-<span class="c1">#plt.xticks(y)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+# plt.plot(y, f, &quot;bo&quot;, ms=10)
+# plt.vlines(y, 0, f, colors=&quot;b&quot;, lw=5, alpha=0.5)
+#plt.xticks(y)
+plt.show()
 </pre></div>
 </div>
 </div>

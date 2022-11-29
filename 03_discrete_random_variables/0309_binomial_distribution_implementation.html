@@ -392,6 +392,11 @@ const thebe_selector_output = ".output, .cell_output"
    Brain Dump
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05_joint_distributions/naive_bayes.html">
+   Naive Bayes
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -718,29 +723,29 @@ title="Print to PDF"
 <h2>Utilities<a class="headerlink" href="#utilities" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="n">parent_dir</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">parent_dir</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import sys
+from pathlib import Path
+parent_dir = str(Path().resolve().parent)
+sys.path.append(parent_dir)
 
-<span class="kn">import</span> <span class="nn">random</span>
-<span class="kn">import</span> <span class="nn">warnings</span>
+import random
+import warnings
 
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stats</span>
+import matplotlib.pyplot as plt
+import numpy as np
+import scipy.stats as stats
 
-<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">DeprecationWarning</span><span class="p">)</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline
+warnings.filterwarnings(&quot;ignore&quot;, category=DeprecationWarning)
+%matplotlib inline
 
-<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">seed_all</span><span class="p">,</span> <span class="n">true_pmf</span><span class="p">,</span> <span class="n">empirical_pmf</span>
+from utils import seed_all, true_pmf, empirical_pmf
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seed_all</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>seed_all(42)
 </pre></div>
 </div>
 </div>
@@ -803,9 +808,9 @@ An important reminder is that in real world, we often won’t know the true popu
 <h2>The PMF (Ideal Histogram)<a class="headerlink" href="#the-pmf-ideal-histogram" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a true population of 1000 people of 200 1s and 800 0s</span>
-<span class="n">true_population</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
-<span class="n">true_population</span><span class="p">[:</span><span class="mi">2000</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># create a true population of 1000 people of 200 1s and 800 0s
+true_population = np.zeros(shape=10000)
+true_population[:2000] = 1
 </pre></div>
 </div>
 </div>
@@ -815,14 +820,14 @@ This means we are drawing 10 people from the true population
 in i.i.d. fashion, and the true PMF should be something like the below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="mf">0.2</span>
-<span class="n">n</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="n">Y</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">binom</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">p</span><span class="p">)</span> <span class="c1"># the Y ~ Binomial(n, p)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span> <span class="c1"># the states [0, 1, ..., 10]</span>
-<span class="n">f</span> <span class="o">=</span> <span class="n">Y</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="c1"># pmf function</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="s1">&#39;bo&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>p = 0.2
+n = 10
+Y = stats.binom(n,p) # the Y ~ Binomial(n, p)
+y = np.arange(11) # the states [0, 1, ..., 10]
+f = Y.pmf(y) # pmf function
+print(f)
+plt.plot(y, f, &#39;bo&#39;, ms=10)
+plt.vlines(y, 0, f, colors=&#39;b&#39;, lw=5, alpha=0.5);
 </pre></div>
 </div>
 </div>
@@ -850,7 +855,7 @@ and since these are all independent, by basic probability, then the true probabi
 indeed <span class="math notranslate nohighlight">\(\P(Y_i = T)\)</span> multipled by 10 times.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">0.8</span><span class="o">**</span><span class="mi">10</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>0.8**10
 </pre></div>
 </div>
 </div>
@@ -862,7 +867,7 @@ indeed <span class="math notranslate nohighlight">\(\P(Y_i = T)\)</span> multipl
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Y</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># verified with hand calculation</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Y.pmf(0) # verified with hand calculation
 </pre></div>
 </div>
 </div>
@@ -882,7 +887,7 @@ each case, the probability is <span class="math notranslate nohighlight">\(0.2^{
 \]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">120</span> <span class="o">*</span> <span class="p">(</span><span class="mf">0.2</span><span class="o">**</span><span class="mi">3</span> <span class="o">*</span> <span class="mf">0.8</span> <span class="o">**</span> <span class="mi">7</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>120 * (0.2**3 * 0.8 ** 7)
 </pre></div>
 </div>
 </div>
@@ -894,7 +899,7 @@ each case, the probability is <span class="math notranslate nohighlight">\(0.2^{
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Y</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Y.pmf(3)
 </pre></div>
 </div>
 </div>
@@ -919,8 +924,8 @@ the true PMF is realized as:</p>
 \end{split}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">11</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;PMF for Y=</span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">Y</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for y in range(11):
+    print(f&quot;PMF for Y={y} is {Y.pmf(y)}&quot;)
 </pre></div>
 </div>
 </div>
@@ -945,76 +950,76 @@ PMF for Y=10 is 1.0240000000000006e-07
 <h2>Empirical Distribution (Empirical Histograms)<a class="headerlink" href="#empirical-distribution-empirical-histograms" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample_100</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">true_population</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">sample_500</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">true_population</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">sample_900</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">true_population</span><span class="p">,</span> <span class="mi">900</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sample_100 = np.random.choice(true_population, 100, replace=True)
+sample_500 = np.random.choice(true_population, 500, replace=True)
+sample_900 = np.random.choice(true_population, 900, replace=True)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">perform_bernoulli_trials</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">p</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Perform n Bernoulli trials with success probability p</span>
-<span class="sd">    and return number of successes. That is to say:</span>
-<span class="sd">    If I toss coin 10 times, and landed head 7 times, then success rate is</span>
-<span class="sd">    70% -&gt; this is what I should return. But note this is binary.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># Initialize number of successes: n_success</span>
-    <span class="n">n_success</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def perform_bernoulli_trials(n: int, p: float):
+    &quot;&quot;&quot;
+    Perform n Bernoulli trials with success probability p
+    and return number of successes. That is to say:
+    If I toss coin 10 times, and landed head 7 times, then success rate is
+    70% -&gt; this is what I should return. But note this is binary.
+    &quot;&quot;&quot;
+    # Initialize number of successes: n_success
+    n_success = 0
+    rng = np.random.default_rng()
 
-    <span class="c1"># Perform trials</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-        <span class="c1"># Choose random number between zero and one: random_number</span>
-        <span class="n">random_number</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-        <span class="c1"># If less than p, it&#39;s a success so add one to n_success</span>
-        <span class="k">if</span> <span class="n">random_number</span> <span class="o">&lt;</span> <span class="n">p</span><span class="p">:</span>
-            <span class="n">n_success</span> <span class="o">+=</span> <span class="mi">1</span>
+    # Perform trials
+    for i in range(n):
+        # Choose random number between zero and one: random_number
+        random_number = rng.random(size=None)
+        # If less than p, it&#39;s a success so add one to n_success
+        if random_number &lt; p:
+            n_success += 1
 
-    <span class="k">return</span> <span class="n">n_success</span>
+    return n_success
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">perform_bernoulli_trials</span><span class="p">(</span><span class="n">population</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">p</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Perform n Bernoulli trials with success probability p</span>
-<span class="sd">    and return number of successes. That is to say:</span>
-<span class="sd">    If I toss coin 10 times, and landed head 7 times, then success rate is</span>
-<span class="sd">    70% -&gt; this is what I should return. But note this is binary.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># Initialize number of successes: n_success</span>
-    <span class="n">n_success</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def perform_bernoulli_trials(population: np.ndarray, n: int, p: float):
+    &quot;&quot;&quot;
+    Perform n Bernoulli trials with success probability p
+    and return number of successes. That is to say:
+    If I toss coin 10 times, and landed head 7 times, then success rate is
+    70% -&gt; this is what I should return. But note this is binary.
+    &quot;&quot;&quot;
+    # Initialize number of successes: n_success
+    n_success = 0
 
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-        <span class="c1"># Choose random number between zero and one: random_number</span>
-        <span class="n">random_number</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">population</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-        <span class="c1"># If less than p, it&#39;s a success so add one to n_success</span>
-        <span class="k">if</span> <span class="n">random_number</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="n">n_success</span> <span class="o">+=</span> <span class="mi">1</span>
+    for i in range(n):
+        # Choose random number between zero and one: random_number
+        random_number = np.random.choice(population, size=None, replace=True, p=None)
+        # If less than p, it&#39;s a success so add one to n_success
+        if random_number == 1:
+            n_success += 1
 
-    <span class="k">return</span> <span class="n">n_success</span>
+    return n_success
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_repeats</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="n">n_covid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">n_repeats</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_repeats</span><span class="p">):</span>
-    <span class="n">n_covid</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">perform_bernoulli_trials</span><span class="p">(</span><span class="n">true_population</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>n_repeats = 100
+n_covid = np.empty(shape=n_repeats)
+for i in range(n_repeats):
+    n_covid[i] = perform_bernoulli_trials(true_population, 10, 0.2)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_covid</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>n_covid
 </pre></div>
 </div>
 </div>
@@ -1031,17 +1036,17 @@ PMF for Y=10 is 1.0240000000000006e-07
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_covid</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mf">1.5</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>bins = np.arange(0, n_covid.max() + 1.5) - 0.5
 
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span>
-    <span class="n">n_covid</span><span class="p">,</span>
-    <span class="n">bins</span><span class="p">,</span>
-    <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#0504AA&quot;</span><span class="p">,</span>
-    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-    <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
-    <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-<span class="p">)</span>
+plt.hist(
+    n_covid,
+    bins,
+    density=True,
+    color=&quot;#0504AA&quot;,
+    alpha=0.5,
+    edgecolor=&quot;black&quot;,
+    linewidth=2,
+)
 </pre></div>
 </div>
 </div>
@@ -1056,26 +1061,26 @@ PMF for Y=10 is 1.0240000000000006e-07
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_repeats</span> <span class="o">=</span> <span class="mi">10000</span>
-<span class="n">n_covid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">n_repeats</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_repeats</span><span class="p">):</span>
-    <span class="n">n_covid</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">perform_bernoulli_trials</span><span class="p">(</span><span class="n">true_population</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>n_repeats = 10000
+n_covid = np.empty(shape=n_repeats)
+for i in range(n_repeats):
+    n_covid[i] = perform_bernoulli_trials(true_population, 10, 0.2)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_covid</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mf">1.5</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span>
-    <span class="n">n_covid</span><span class="p">,</span>
-    <span class="n">bins</span><span class="p">,</span>
-    <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#0504AA&quot;</span><span class="p">,</span>
-    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-    <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
-    <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-<span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>bins = np.arange(0, n_covid.max() + 1.5) - 0.5
+plt.hist(
+    n_covid,
+    bins,
+    density=True,
+    color=&quot;#0504AA&quot;,
+    alpha=0.5,
+    edgecolor=&quot;black&quot;,
+    linewidth=2,
+)
 </pre></div>
 </div>
 </div>

@@ -2,6 +2,10 @@
 
 To copy paste over each section/chapter's Further Readings section to the below sections.
 
+## Books/Courses
+
+- https://statproofbook.github.io/
+
 ## Calculus
 
 - https://www.khanacademy.org/math/calculus-1

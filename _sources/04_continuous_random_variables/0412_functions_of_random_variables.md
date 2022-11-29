@@ -26,7 +26,7 @@ strictly monotonically increasing. Step $(d)$ is just the definition of CDF.
 
 Further intuition can be found in Chan's book, see {ref}`functions-of-random-variables-further-readings`.
 
-## Assumptions and Constraints
+## CDF of Functions of Random Variables
 
 ```{prf:remark} Finding CDF is easier
 
@@ -39,8 +39,10 @@ can be non-linear, and $g$ can also be non-linear, their interactions can be com
 After finding the CDF of $Y$, we can always find the PDF of $Y$ by taking the derivative of the CDF.
 ```
 
-First, note that we already know the CDF and PDF of $X$. In particular,
+## PDF of Functions of Random Variables
 
+As mentioned, we can find the PDF of $Y$ by taking the derivative of the CDF of $Y$. But what
+if we want to find the PDF of $Y$ directly?
 
 
 (functions-of-random-variables-further-readings)=

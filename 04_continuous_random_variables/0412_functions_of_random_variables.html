@@ -392,6 +392,11 @@ const thebe_selector_output = ".output, .cell_output"
    Brain Dump
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05_joint_distributions/naive_bayes.html">
+   Naive Bayes
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -592,8 +597,13 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#assumptions-and-constraints">
-   Assumptions and Constraints
+  <a class="reference internal nav-link" href="#cdf-of-functions-of-random-variables">
+   CDF of Functions of Random Variables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pdf-of-functions-of-random-variables">
+   PDF of Functions of Random Variables
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -626,8 +636,13 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#assumptions-and-constraints">
-   Assumptions and Constraints
+  <a class="reference internal nav-link" href="#cdf-of-functions-of-random-variables">
+   CDF of Functions of Random Variables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pdf-of-functions-of-random-variables">
+   PDF of Functions of Random Variables
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -669,8 +684,8 @@ assumes that <span class="math notranslate nohighlight">\(g\)</span> is invertib
 strictly monotonically increasing. Step <span class="math notranslate nohighlight">\((d)\)</span> is just the definition of CDF.</p>
 <p>Further intuition can be found in Chan’s book, see <a class="reference internal" href="#functions-of-random-variables-further-readings"><span class="std std-ref">Further Readings</span></a>.</p>
 </section>
-<section id="assumptions-and-constraints">
-<h2>Assumptions and Constraints<a class="headerlink" href="#assumptions-and-constraints" title="Permalink to this headline">#</a></h2>
+<section id="cdf-of-functions-of-random-variables">
+<h2>CDF of Functions of Random Variables<a class="headerlink" href="#cdf-of-functions-of-random-variables" title="Permalink to this headline">#</a></h2>
 <div class="proof remark admonition" id="remark-0">
 <p class="admonition-title"><span class="caption-number">Remark 6 </span> (Finding CDF is easier)</p>
 <section class="remark-content" id="proof-content">
@@ -681,7 +696,11 @@ increasing, regardless of <span class="math notranslate nohighlight">\(g\)</span
 can be non-linear, and <span class="math notranslate nohighlight">\(g\)</span> can also be non-linear, their interactions can be complicated <span id="id2">[<a class="reference internal" href="../references_and_resources/bibliography.html#id2" title="Stanley H. Chan. Introduction to probability for Data Science. Michigan Publishing, 2021.">Chan, 2021</a>]</span>.</p>
 <p>After finding the CDF of <span class="math notranslate nohighlight">\(Y\)</span>, we can always find the PDF of <span class="math notranslate nohighlight">\(Y\)</span> by taking the derivative of the CDF.</p>
 </section>
-</div><p>First, note that we already know the CDF and PDF of <span class="math notranslate nohighlight">\(X\)</span>. In particular,</p>
+</div></section>
+<section id="pdf-of-functions-of-random-variables">
+<h2>PDF of Functions of Random Variables<a class="headerlink" href="#pdf-of-functions-of-random-variables" title="Permalink to this headline">#</a></h2>
+<p>As mentioned, we can find the PDF of <span class="math notranslate nohighlight">\(Y\)</span> by taking the derivative of the CDF of <span class="math notranslate nohighlight">\(Y\)</span>. But what
+if we want to find the PDF of <span class="math notranslate nohighlight">\(Y\)</span> directly?</p>
 </section>
 <section id="further-readings">
 <span id="functions-of-random-variables-further-readings"></span><h2>Further Readings<a class="headerlink" href="#further-readings" title="Permalink to this headline">#</a></h2>

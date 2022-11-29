@@ -392,6 +392,11 @@ const thebe_selector_output = ".output, .cell_output"
    Brain Dump
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05_joint_distributions/naive_bayes.html">
+   Naive Bayes
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -766,31 +771,31 @@ the symbol with the <span class="math notranslate nohighlight">\(\pmf\)</span> s
 </section>
 </div><div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import warnings
 
-<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+warnings.filterwarnings(&quot;ignore&quot;)
+import numpy as np
+import matplotlib.pyplot as plt
 
-<span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">])</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
-<span class="n">F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
-<span class="c1"># plot 2 diagrams in one figure</span>
-<span class="c1"># y axis start from 0 to 1</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;PMF&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Probability&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">use_line_collection</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;CDF&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Probability&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">F</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+p = np.array([0.25, 0.5, 0.25])
+x = np.array([0, 1, 4])
+F = np.cumsum(p)
+# plot 2 diagrams in one figure
+# y axis start from 0 to 1
+fig, ax = plt.subplots(1, 2, sharex=False, sharey=False, figsize=(10, 5))
+ax[0].set_ylim(0, 1)
+ax[0].set_title(&quot;PMF&quot;)
+ax[0].set_ylabel(&quot;Probability&quot;)
+ax[0].set_xlabel(&quot;x&quot;)
+ax[0].stem(x, p, use_line_collection=True)
+ax[0].grid(False)
+ax[1].set_ylim(0, 1)
+ax[1].set_title(&quot;CDF&quot;)
+ax[1].set_ylabel(&quot;Probability&quot;)
+ax[1].set_xlabel(&quot;x&quot;)
+ax[1].step(x, F)
+ax[1].grid(False)
+plt.show()
 </pre></div>
 </div>
 </div>

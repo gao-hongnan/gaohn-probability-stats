@@ -392,6 +392,11 @@ const thebe_selector_output = ".output, .cell_output"
    Brain Dump
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05_joint_distributions/naive_bayes.html">
+   Naive Bayes
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -825,12 +830,12 @@ cumulative distribution function (CDF) of <span class="math notranslate nohighli
 <p>The PMF and CDF plots are shown below.</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">plot</span> <span class="kn">import</span> <span class="n">plot_bernoulli_pmf</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from plot import plot_bernoulli_pmf
 
-<span class="n">_fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">8.4</span><span class="p">,</span> <span class="mf">4.8</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">125</span><span class="p">)</span>
-<span class="n">plot_bernoulli_pmf</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="n">plot_bernoulli_pmf</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+_fig, axes = plt.subplots(1,2, figsize=(8.4, 4.8), sharey=True, dpi=125)
+plot_bernoulli_pmf(p=0.2, ax=axes[0])
+plot_bernoulli_pmf(p=0.8, ax=axes[1])
+plt.show()
 </pre></div>
 </div>
 </div>
@@ -842,18 +847,18 @@ cumulative distribution function (CDF) of <span class="math notranslate nohighli
 </div>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">plot</span> <span class="kn">import</span> <span class="n">plot_bernoulli_pmf</span><span class="p">,</span> <span class="n">plot_empirical_bernoulli</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from plot import plot_bernoulli_pmf, plot_empirical_bernoulli
 
-<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">8.4</span><span class="p">,</span> <span class="mf">4.8</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">125</span><span class="p">)</span>
-<span class="n">plot_bernoulli_pmf</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="n">plot_empirical_bernoulli</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+fig, axes = plt.subplots(1, 2, figsize=(8.4, 4.8), sharey=True, dpi=125)
+plot_bernoulli_pmf(p=0.2, ax=axes[0])
+plot_empirical_bernoulli(p=0.2, size=100, ax=axes[0])
 
-<span class="n">plot_bernoulli_pmf</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-<span class="n">plot_empirical_bernoulli</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+plot_bernoulli_pmf(p=0.2, ax=axes[1])
+plot_empirical_bernoulli(p=0.2, size=1000, ax=axes[1])
 
-<span class="n">fig</span><span class="o">.</span><span class="n">supylabel</span><span class="p">(</span><span class="s2">&quot;relative frequency&quot;</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Histogram of Bernoulli($p=0.2$) based on $100$ and $1000$ samples.&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+fig.supylabel(&quot;relative frequency&quot;)
+fig.suptitle(&quot;Histogram of Bernoulli($p=0.2$) based on $100$ and $1000$ samples.&quot;)
+plt.show()
 </pre></div>
 </div>
 </div>

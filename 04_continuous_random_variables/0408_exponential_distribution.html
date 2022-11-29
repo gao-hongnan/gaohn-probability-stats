@@ -392,6 +392,11 @@ const thebe_selector_output = ".output, .cell_output"
    Brain Dump
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05_joint_distributions/naive_bayes.html">
+   Naive Bayes
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -755,25 +760,25 @@ title="Print to PDF"
 </div><p>The PDF and CDF of two exponential distributions are shown below.</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="n">parent_dir</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">parent_dir</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import sys
+from pathlib import Path
+parent_dir = str(Path().resolve().parent)
+sys.path.append(parent_dir)
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stats</span>
+import numpy as np
+import scipy.stats as stats
 
-<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">seed_all</span><span class="p">,</span> <span class="n">plot_continuous_pdf_and_cdf</span>
-<span class="n">seed_all</span><span class="p">()</span>
+from utils import seed_all, plot_continuous_pdf_and_cdf
+seed_all()
 
-<span class="c1"># x = np.linspace(0, 10, 5000)</span>
-<span class="n">lambda_1</span><span class="p">,</span> <span class="n">lambda_2</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">2</span>
-<span class="n">scale_1</span><span class="p">,</span> <span class="n">scale_2</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">lambda_1</span><span class="p">,</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">lambda_2</span>
-<span class="n">X1</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">expon</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="n">scale_1</span><span class="p">)</span>
-<span class="n">X2</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">expon</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="n">scale_2</span><span class="p">)</span>
+# x = np.linspace(0, 10, 5000)
+lambda_1, lambda_2 = 0.5, 2
+scale_1, scale_2 = 1 / lambda_1, 1 / lambda_2
+X1 = stats.expon(scale=scale_1)
+X2 = stats.expon(scale=scale_2)
 
-<span class="n">plot_continuous_pdf_and_cdf</span><span class="p">(</span><span class="n">X1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Exponential$(\lambda = 0.5)$&quot;</span><span class="p">)</span>
-<span class="n">plot_continuous_pdf_and_cdf</span><span class="p">(</span><span class="n">X2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Exponential$(\lambda = 2)$&quot;</span><span class="p">)</span>
+plot_continuous_pdf_and_cdf(X1, 0, 10, title=&quot;Exponential$(\lambda = 0.5)$&quot;)
+plot_continuous_pdf_and_cdf(X2, 0, 10, title=&quot;Exponential$(\lambda = 2)$&quot;)
 </pre></div>
 </div>
 </div>
