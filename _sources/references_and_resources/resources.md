@@ -16,3 +16,8 @@ To copy paste over each section/chapter's Further Readings section to the below 
 
 - 3blue1brown: https://www.youtube.com/watch?v=KuXjwB4LzSA&t=1s
 - Chapter 4.6.4 of Chan's book.
+
+
+## Multivariate Normal
+
+- https://peterroelants.github.io/posts/multivariate-normal-primer/
