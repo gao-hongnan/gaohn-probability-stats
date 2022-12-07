@@ -138,6 +138,23 @@ $$
 $$ (eq:gaussian_distribution_expectation_variance)
 ```
 
+## Linear Transformation of Gaussian Distribution
+
+```{prf:theorem} Linear Transformation of Gaussian Distribution
+:label: thm_linear_transformation_gaussian_distribution
+
+Let $X \sim \gaussiansymbol(\mu, \sigma^2)$ be a random variable with a Gaussian
+distribution with mean $\mu$ and variance $\sigma^2$.
+
+Let $Y = aX + b$ be a linear transformation of $X$.
+
+Then, $Y \sim \gaussiansymbol(a\mu + b, a^2\sigma^2)$ is a Gaussian distribution with mean $a\mu + b$ and variance $a^2\sigma^2$.
+
+In other words, $Y$ experiences a shift and scale change in coordinates, and while
+the distribution may not longer be the same as $X$, it still belongs to the same family.
+```
+
+
 ## Standard Gaussian Distribution
 
 ### Motivation

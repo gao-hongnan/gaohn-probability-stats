@@ -673,6 +673,11 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linear-transformation-of-gaussian-distribution">
+   Linear Transformation of Gaussian Distribution
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#standard-gaussian-distribution">
    Standard Gaussian Distribution
   </a>
@@ -739,6 +744,11 @@ title="Print to PDF"
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linear-transformation-of-gaussian-distribution">
+   Linear Transformation of Gaussian Distribution
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#standard-gaussian-distribution">
@@ -905,6 +915,19 @@ expectation and variance of <span class="math notranslate nohighlight">\(X\)</sp
 </section>
 </div></section>
 </section>
+<section id="linear-transformation-of-gaussian-distribution">
+<h2>Linear Transformation of Gaussian Distribution<a class="headerlink" href="#linear-transformation-of-gaussian-distribution" title="Permalink to this headline">#</a></h2>
+<div class="proof theorem admonition" id="thm_linear_transformation_gaussian_distribution">
+<p class="admonition-title"><span class="caption-number">Theorem 16 </span> (Linear Transformation of Gaussian Distribution)</p>
+<section class="theorem-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(X \sim \gaussiansymbol(\mu, \sigma^2)\)</span> be a random variable with a Gaussian
+distribution with mean <span class="math notranslate nohighlight">\(\mu\)</span> and variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>.</p>
+<p>Let <span class="math notranslate nohighlight">\(Y = aX + b\)</span> be a linear transformation of <span class="math notranslate nohighlight">\(X\)</span>.</p>
+<p>Then, <span class="math notranslate nohighlight">\(Y \sim \gaussiansymbol(a\mu + b, a^2\sigma^2)\)</span> is a Gaussian distribution with mean <span class="math notranslate nohighlight">\(a\mu + b\)</span> and variance <span class="math notranslate nohighlight">\(a^2\sigma^2\)</span>.</p>
+<p>In other words, <span class="math notranslate nohighlight">\(Y\)</span> experiences a shift and scale change in coordinates, and while
+the distribution may not longer be the same as <span class="math notranslate nohighlight">\(X\)</span>, it still belongs to the same family.</p>
+</section>
+</div></section>
 <section id="standard-gaussian-distribution">
 <h2>Standard Gaussian Distribution<a class="headerlink" href="#standard-gaussian-distribution" title="Permalink to this headline">#</a></h2>
 <section id="motivation">
@@ -998,7 +1021,7 @@ plot_continuous_pdf_and_cdf(X, -5, 5, title=&quot;Normal Distribution $\mu=0, \s
 <section id="cdf-of-arbitrary-gaussian-distribution">
 <h3>CDF of Arbitrary Gaussian Distribution<a class="headerlink" href="#cdf-of-arbitrary-gaussian-distribution" title="Permalink to this headline">#</a></h3>
 <div class="proof theorem admonition" id="thm_cdf_arbitrary_gaussian_distribution">
-<p class="admonition-title"><span class="caption-number">Theorem 16 </span> (CDF of Arbitrary Gaussian Distribution)</p>
+<p class="admonition-title"><span class="caption-number">Theorem 17 </span> (CDF of Arbitrary Gaussian Distribution)</p>
 <section class="theorem-content" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(X\)</span> be a continuous random variable with a Gaussian distribution with mean <span class="math notranslate nohighlight">\(\mu\)</span> and variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>.
 Then we can convert the CDF of <span class="math notranslate nohighlight">\(X\)</span> to the CDF of the Standard Gaussian by:</p>
@@ -1030,7 +1053,7 @@ The definition of a Gaussian distribution is given by:</p>
 <div class="proof corollary admonition" id="cor_probability_interval">
 <p class="admonition-title"><span class="caption-number">Corollary 8 </span> (Probability of an Interval)</p>
 <section class="corollary-content" id="proof-content">
-<p>As a consequence of <a class="reference internal" href="#thm_cdf_arbitrary_gaussian_distribution">Theorem 16</a>, we can compute
+<p>As a consequence of <a class="reference internal" href="#thm_cdf_arbitrary_gaussian_distribution">Theorem 17</a>, we can compute
 the probability of an interval for an arbitrary Gaussian distribution. This
 solves our problem of computing the probability of an interval for a Gaussian Distribution earlier.</p>
 <div class="math notranslate nohighlight" id="equation-eq-probability-interval">
@@ -1045,7 +1068,7 @@ solves our problem of computing the probability of an interval for a Gaussian Di
 </div><div class="proof corollary admonition" id="cor_standard_gaussian">
 <p class="admonition-title"><span class="caption-number">Corollary 9 </span> (Corollary of Standard Gaussian)</p>
 <section class="corollary-content" id="proof-content">
-<p>As a consequence of <a class="reference internal" href="#thm_cdf_arbitrary_gaussian_distribution">Theorem 16</a>, we have
+<p>As a consequence of <a class="reference internal" href="#thm_cdf_arbitrary_gaussian_distribution">Theorem 17</a>, we have
 the following corollaries <span id="id4">[<a class="reference internal" href="../references_and_resources/bibliography.html#id2" title="Stanley H. Chan. Introduction to probability for Data Science. Michigan Publishing, 2021.">Chan, 2021</a>]</span>:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\Phi(y) = 1 - \Phi(-y)\)</span></p></li>
