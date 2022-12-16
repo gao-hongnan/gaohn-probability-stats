@@ -1,0 +1,2312 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Naive Bayes Example &#8212; Probability &amp; Statistics</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/tabs.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"defeq": "\\overset{\\text{def}}{=}", "defa": "\\overset{\\text{(a)}}{=}", "defb": "\\overset{\\text{(b)}}{=}", "defc": "\\overset{\\text{(c)}}{=}", "defd": "\\overset{\\text{(d)}}{=}", "st": "\\mid", "mod": "\\mid", "S": "\\Omega", "s": "\\omega", "e": "\\exp", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "expectation": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "lpar": "\\left(", "rpar": "\\right)", "lcurl": "\\left\\{", "rcurl": "\\right\\}", "pmf": "p_X", "pdf": "f_X", "pdftwo": "f_{X,Y}", "pdfjoint": "f_{\\mathbf{X}}", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})", "var": "\\operatorname{Var}", "std": "\\operatorname{Std}", "bern": "\\operatorname{Bernoulli}", "binomial": "\\operatorname{Binomial}", "geometric": "\\operatorname{Geometric}", "poisson": "\\operatorname{Poisson}", "uniform": "\\operatorname{Uniform}", "normal": "\\operatorname{Normal}", "gaussian": "\\operatorname{Gaussian}", "gaussiansymbol": "\\mathcal{N}", "exponential": "\\operatorname{Exponential}", "iid": "\\textbf{i.i.d.}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Bibliography" href="../references_and_resources/bibliography.html" />
+    <link rel="prev" title="Naive Bayes" href="naive_bayes.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Probability & Statistics</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Chapter 1. Mathematical Preliminaries
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_mathematical_preliminaries/01_combinatorics.html">
+   Permutations and Combinations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_mathematical_preliminaries/02_calculus.html">
+   Calculus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_mathematical_preliminaries/exercises.html">
+   Exercises
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Chapter 2. Probability
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_probability/0202_probability_space.html">
+   Probability Space
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_probability/0203_probability_axioms.html">
+   Probability Axioms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_probability/0204_conditional_probability.html">
+   Conditional Probability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_probability/0205_independence.html">
+   Independence
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_probability/0206_bayes_theorem.html">
+   Baye’s Theorem and the Law of Total Probability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_probability/summary.html">
+   Summary
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Chapter 3. Discrete Random Variables
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_discrete_random_variables/0301_random_variables.html">
+   Random Variables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_discrete_random_variables/0302_discrete_random_variables.html">
+   Discrete Random Variables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_discrete_random_variables/0303_probability_mass_function.html">
+   Probability Mass Function
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_discrete_random_variables/0304_cumulative_distribution_function.html">
+   Cumulative Distribution Function
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_discrete_random_variables/0305_expectation.html">
+   Expectation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_discrete_random_variables/0306_moments_and_variance.html">
+   Moments and Variance
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../03_discrete_random_variables/0307_discrete_uniform_distribution_concept.html">
+   Discrete Uniform Distribution
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03_discrete_random_variables/0307_discrete_uniform_distribution_implementation.html">
+     Implementation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../03_discrete_random_variables/0308_bernoulli_distribution_concept.html">
+   Bernoulli Distribution
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03_discrete_random_variables/0308_bernoulli_distribution_implementation.html">
+     Implementation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_discrete_random_variables/iid.html">
+   Independent and Identically Distributed (IID)
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../03_discrete_random_variables/0309_binomial_distribution_concept.html">
+   Binomial Distribution
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03_discrete_random_variables/0309_binomial_distribution_implementation.html">
+     Implementation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03_discrete_random_variables/0309_binomial_distribution_application.html">
+     Real World Examples
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_discrete_random_variables/0310_geometric_distribution_concept.html">
+   Geometric Distribution
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../03_discrete_random_variables/0311_poisson_distribution_concept.html">
+   Poisson Distribution
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03_discrete_random_variables/0311_poisson_distribution_implementation.html">
+     Implementation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_discrete_random_variables/summary.html">
+   Important
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_discrete_random_variables/exercises.html">
+   Exercises
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Chapter 4. Continuous Random Variables
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_continuous_random_variables/from_discrete_to_continuous.html">
+   From Discrete to Continuous
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_continuous_random_variables/0401_continuous_random_variables.html">
+   Continuous Random Variables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_continuous_random_variables/0402_probability_density_function.html">
+   Probability Density Function
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_continuous_random_variables/0403_expectation.html">
+   Expectation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_continuous_random_variables/0404_moments_and_variance.html">
+   Moments and Variance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_continuous_random_variables/0405_cumulative_distribution_function.html">
+   Cumulative Distribution Function
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_continuous_random_variables/0406_mean_median_mode.html">
+   Mean, Median and Mode
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_continuous_random_variables/0407_continuous_uniform_distribution.html">
+   Continuous Uniform Distribution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_continuous_random_variables/0408_exponential_distribution.html">
+   Exponential Distribution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_continuous_random_variables/0409_gaussian_distribution.html">
+   Gaussian Distribution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_continuous_random_variables/0410_skewness_and_kurtosis.html">
+   Skewness and Kurtosis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_continuous_random_variables/0411_convolve_and_sum_of_random_variables.html">
+   Convolution and Sum of Random Variables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_continuous_random_variables/0412_functions_of_random_variables.html">
+   Functions of Random Variables
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Chapter 5. Joint Distributions
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="braindump.html">
+   Brain Dump
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="naive_bayes.html">
+   Naive Bayes
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Naive Bayes Example
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  References and Resources
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../references_and_resources/bibliography.html">
+   Bibliography
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../references_and_resources/resources.html">
+   Resources
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/gao-hongnan/gaohn-probability-stats/main?urlpath=tree/content/05_joint_distributions/naive_bayes_example.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/gao-hongnan/gaohn-probability-stats/blob/main/content/05_joint_distributions/naive_bayes_example.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/gao-hongnan/gaohn-probability-stats"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/gao-hongnan/gaohn-probability-stats/issues/new?title=Issue%20on%20page%20%2F05_joint_distributions/naive_bayes_example.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/05_joint_distributions/naive_bayes_example.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-prior">
+   The Prior
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#classifying-one-penguin">
+   Classifying one penguin
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#one-categorical-feature">
+     One Categorical Feature
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#one-quantitative-predictor">
+     One Quantitative Predictor
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting-joint-and-marginal-distributions">
+   Plotting joint and marginal distributions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#features-1-class-plots">
+   2 Features + 1 Class Plots
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Naive Bayes Example</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-prior">
+   The Prior
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#classifying-one-penguin">
+   Classifying one penguin
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#one-categorical-feature">
+     One Categorical Feature
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#one-quantitative-predictor">
+     One Quantitative Predictor
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting-joint-and-marginal-distributions">
+   Plotting joint and marginal distributions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#features-1-class-plots">
+   2 Features + 1 Class Plots
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="naive-bayes-example">
+<h1>Naive Bayes Example<a class="headerlink" href="#naive-bayes-example" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
+import numpy as np
+from scipy import stats
+import seaborn as sns 
+import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
+sns.set_style(&#39;white&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>There exist multiple penguin species throughout Antarctica, including the Adelie, Chinstrap, and Gentoo. When encountering one of these penguins on an Antarctic trip, we might classify its species</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+Y= \begin{cases}A &amp; \text { Adelie } \\ C &amp; \text { Chinstrap } \\ G &amp; \text { Gentoo }\end{cases}
+\end{split}\]</div>
+<p>by examining various physical characteristics, such as whether the penguin weighs more than the average <span class="math notranslate nohighlight">\(4200 \mathrm{~g}\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+X_1= \begin{cases}1 &amp; \text { above-average weight } \\ 0 &amp; \text { below-average weight }\end{cases}
+\end{split}\]</div>
+<p>as well as measurements of the penguin’s bill</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+&amp; X_2=\text { bill length }(\text { in } \mathrm{mm}) \\
+&amp; X_3=\text { flipper length }(\text { in } \mathrm{mm})
+\end{aligned}
+\end{split}\]</div>
+<p>The penguins_bayes data, originally made available by Gorman, Williams, and Fraser (2014) and distributed by Horst, Hill, and Gorman (2020), contains the above species and feature information for a sample of 344 Antarctic penguins:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>penguins = sns.load_dataset(&#39;penguins&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>display(penguins.head())
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>species</th>
+      <th>island</th>
+      <th>bill_length_mm</th>
+      <th>bill_depth_mm</th>
+      <th>flipper_length_mm</th>
+      <th>body_mass_g</th>
+      <th>sex</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Adelie</td>
+      <td>Torgersen</td>
+      <td>39.1</td>
+      <td>18.7</td>
+      <td>181.0</td>
+      <td>3750.0</td>
+      <td>Male</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Adelie</td>
+      <td>Torgersen</td>
+      <td>39.5</td>
+      <td>17.4</td>
+      <td>186.0</td>
+      <td>3800.0</td>
+      <td>Female</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Adelie</td>
+      <td>Torgersen</td>
+      <td>40.3</td>
+      <td>18.0</td>
+      <td>195.0</td>
+      <td>3250.0</td>
+      <td>Female</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Adelie</td>
+      <td>Torgersen</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Adelie</td>
+      <td>Torgersen</td>
+      <td>36.7</td>
+      <td>19.3</td>
+      <td>193.0</td>
+      <td>3450.0</td>
+      <td>Female</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>display(penguins.info())
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 344 entries, 0 to 343
+Data columns (total 7 columns):
+ #   Column             Non-Null Count  Dtype  
+---  ------             --------------  -----  
+ 0   species            344 non-null    object 
+ 1   island             344 non-null    object 
+ 2   bill_length_mm     342 non-null    float64
+ 3   bill_depth_mm      342 non-null    float64
+ 4   flipper_length_mm  342 non-null    float64
+ 5   body_mass_g        342 non-null    float64
+ 6   sex                333 non-null    object 
+dtypes: float64(4), object(3)
+memory usage: 18.9+ KB
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>None
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>display(penguins.describe())
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>bill_length_mm</th>
+      <th>bill_depth_mm</th>
+      <th>flipper_length_mm</th>
+      <th>body_mass_g</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>342.000000</td>
+      <td>342.000000</td>
+      <td>342.000000</td>
+      <td>342.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>43.921930</td>
+      <td>17.151170</td>
+      <td>200.915205</td>
+      <td>4201.754386</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>5.459584</td>
+      <td>1.974793</td>
+      <td>14.061714</td>
+      <td>801.954536</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>32.100000</td>
+      <td>13.100000</td>
+      <td>172.000000</td>
+      <td>2700.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>39.225000</td>
+      <td>15.600000</td>
+      <td>190.000000</td>
+      <td>3550.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>44.450000</td>
+      <td>17.300000</td>
+      <td>197.000000</td>
+      <td>4050.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>48.500000</td>
+      <td>18.700000</td>
+      <td>213.000000</td>
+      <td>4750.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>59.600000</td>
+      <td>21.500000</td>
+      <td>231.000000</td>
+      <td>6300.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Among these penguins, 152 are Adelies, 68 are Chinstraps, and 124 are Gentoos. We’ll assume throughout that the proportional breakdown of these species in our dataset reflects the species breakdown in the wild. That is, our prior assumption about any new penguin is that it’s most likely an Adelie and least likely a Chinstrap:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>display(penguins[&#39;species&#39;].value_counts(normalize=False))
+display(penguins[&#39;species&#39;].value_counts(normalize=True))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Adelie       152
+Gentoo       124
+Chinstrap     68
+Name: species, dtype: int64
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Adelie       0.441860
+Gentoo       0.360465
+Chinstrap    0.197674
+Name: species, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>We drop <code class="docutils literal notranslate"><span class="pre">sex</span></code> column for simplicity as there are quite a few missing values in it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>penguins = penguins.drop(columns=[&quot;sex&quot;], inplace=False).reset_index(drop=True)
+</pre></div>
+</div>
+</div>
+</div>
+<p>We also drop the other NA rows, there are only 2 of them.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>penguins = penguins.dropna().reset_index(drop=True) # drop rows with NAs, only 2 rows
+penguins
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>species</th>
+      <th>island</th>
+      <th>bill_length_mm</th>
+      <th>bill_depth_mm</th>
+      <th>flipper_length_mm</th>
+      <th>body_mass_g</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Adelie</td>
+      <td>Torgersen</td>
+      <td>39.1</td>
+      <td>18.7</td>
+      <td>181.0</td>
+      <td>3750.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Adelie</td>
+      <td>Torgersen</td>
+      <td>39.5</td>
+      <td>17.4</td>
+      <td>186.0</td>
+      <td>3800.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Adelie</td>
+      <td>Torgersen</td>
+      <td>40.3</td>
+      <td>18.0</td>
+      <td>195.0</td>
+      <td>3250.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Adelie</td>
+      <td>Torgersen</td>
+      <td>36.7</td>
+      <td>19.3</td>
+      <td>193.0</td>
+      <td>3450.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Adelie</td>
+      <td>Torgersen</td>
+      <td>39.3</td>
+      <td>20.6</td>
+      <td>190.0</td>
+      <td>3650.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>337</th>
+      <td>Gentoo</td>
+      <td>Biscoe</td>
+      <td>47.2</td>
+      <td>13.7</td>
+      <td>214.0</td>
+      <td>4925.0</td>
+    </tr>
+    <tr>
+      <th>338</th>
+      <td>Gentoo</td>
+      <td>Biscoe</td>
+      <td>46.8</td>
+      <td>14.3</td>
+      <td>215.0</td>
+      <td>4850.0</td>
+    </tr>
+    <tr>
+      <th>339</th>
+      <td>Gentoo</td>
+      <td>Biscoe</td>
+      <td>50.4</td>
+      <td>15.7</td>
+      <td>222.0</td>
+      <td>5750.0</td>
+    </tr>
+    <tr>
+      <th>340</th>
+      <td>Gentoo</td>
+      <td>Biscoe</td>
+      <td>45.2</td>
+      <td>14.8</td>
+      <td>212.0</td>
+      <td>5200.0</td>
+    </tr>
+    <tr>
+      <th>341</th>
+      <td>Gentoo</td>
+      <td>Biscoe</td>
+      <td>49.9</td>
+      <td>16.1</td>
+      <td>213.0</td>
+      <td>5400.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>342 rows × 6 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>display(penguins[&#39;species&#39;].value_counts(normalize=False))
+display(penguins[&#39;species&#39;].value_counts(normalize=True))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Adelie       151
+Gentoo       123
+Chinstrap     68
+Name: species, dtype: int64
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Adelie       0.441520
+Gentoo       0.359649
+Chinstrap    0.198830
+Name: species, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(f&quot;The mean body mass of penguins is {penguins[&#39;body_mass_g&#39;].mean():.2f} grams.&quot;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The mean body mass of penguins is 4201.75 grams.
+</pre></div>
+</div>
+</div>
+</div>
+<p>We create a new categorical feature <code class="docutils literal notranslate"><span class="pre">overweight</span></code> which is 1 if the <code class="docutils literal notranslate"><span class="pre">body_mass_g</span></code> is over the
+mean, and 0 otherwise. This feature corresponds to our earlier defined random variable <span class="math notranslate nohighlight">\(X_1\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>penguins[&quot;overweight&quot;] = (penguins[&quot;body_mass_g&quot;] &gt; penguins[&quot;body_mass_g&quot;].mean()).astype(int)
+display(penguins[&quot;overweight&quot;].value_counts())
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    193
+1    149
+Name: overweight, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<section id="the-prior">
+<h2>The Prior<a class="headerlink" href="#the-prior" title="Permalink to this headline">#</a></h2>
+<p>The prior distribution for <span class="math notranslate nohighlight">\(Y\)</span> is a <a class="reference external" href="https://en.wikipedia.org/wiki/Categorical_distribution">categorical distribution</a> with three categories, one for each species. The prior probabilities are given by the relative frequencies of each species in the dataset:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+&amp; \text { A } \sim \text { Categorical }(\pi_A=0.44) \\
+&amp; \text { C } \sim \text { Categorical }(\pi_C=0.20) \\
+&amp; \text { G } \sim \text { Categorical }(\pi_G=0.36)
+\end{aligned}
+\end{split}\]</div>
+<p>which implies</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\mathbb{P}(Y=A) &amp;= 0.44 \\
+\mathbb{P}(Y=C) &amp;= 0.20 \\
+\mathbb{P}(Y=G) &amp;= 0.36
+\end{aligned}
+\end{split}\]</div>
+<p>Given a new penguin not in the dataset, the <strong>prior assumption</strong> says that the probability
+of it being an Adelie is <span class="math notranslate nohighlight">\(0.44\)</span>, the probability of it being a Chinstrap is <span class="math notranslate nohighlight">\(0.20\)</span>, and the probability of it being a Gentoo is <span class="math notranslate nohighlight">\(0.36\)</span>.</p>
+<p>Reference: <a class="reference external" href="https://www.bayesrulesbook.com/chapter-2.html#building-a-bayesian-model-for-events">The Bayes Rules Book</a>.</p>
+</section>
+<section id="classifying-one-penguin">
+<h2>Classifying one penguin<a class="headerlink" href="#classifying-one-penguin" title="Permalink to this headline">#</a></h2>
+<p>Consider a new penguin with the following features:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">body_mass_g</span></code> <span class="math notranslate nohighlight">\(&lt; 4200 \mathrm{~g}\)</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bill_length_mm</span></code> <span class="math notranslate nohighlight">\(50 \mathrm{~mm}\)</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">flipper_length_mm</span></code> <span class="math notranslate nohighlight">\(195 \mathrm{~mm}\)</span></p></li>
+</ul>
+<p>Then we want to find out the posterior distribution of the species of this penguin, given the features.
+In other words, what is the probability of this penguin being an Adelie, Chinstrap, or Gentoo, given the features?</p>
+<section id="one-categorical-feature">
+<h3>One Categorical Feature<a class="headerlink" href="#one-categorical-feature" title="Permalink to this headline">#</a></h3>
+<p>Let’s start with the first feature, <code class="docutils literal notranslate"><span class="pre">body_mass_g</span></code> and since the penguin weights less than the average weight of <span class="math notranslate nohighlight">\(4200 \mathrm{~g}\)</span>, it belongs to the category <span class="math notranslate nohighlight">\(0\)</span> of the feature <code class="docutils literal notranslate"><span class="pre">overweight</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>total = penguins.groupby(&quot;species&quot;).size().reset_index(name=&quot;counts&quot;)
+display(total)
+
+overweight = (
+    penguins[penguins[&quot;overweight&quot;] == 1]
+    .groupby(&quot;species&quot;)[&quot;overweight&quot;]
+    .sum()
+    .reset_index()
+)
+display(overweight)
+
+overweight[&quot;overweight&quot;] = [
+    i / j * 100 for i, j in zip(overweight[&quot;overweight&quot;], total[&quot;counts&quot;])
+]
+total[&quot;counts&quot;] = [i / j * 100 for i, j in zip(total[&quot;counts&quot;], total[&quot;counts&quot;])]
+
+display(total)
+display(overweight)  # percentage of overweight penguins for each species
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>species</th>
+      <th>counts</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Adelie</td>
+      <td>151</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Chinstrap</td>
+      <td>68</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Gentoo</td>
+      <td>123</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>species</th>
+      <th>overweight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Adelie</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Chinstrap</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Gentoo</td>
+      <td>117</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>species</th>
+      <th>counts</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Adelie</td>
+      <td>100.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Chinstrap</td>
+      <td>100.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Gentoo</td>
+      <td>100.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>species</th>
+      <th>overweight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Adelie</td>
+      <td>16.556291</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Chinstrap</td>
+      <td>10.294118</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Gentoo</td>
+      <td>95.121951</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># bar chart 1 -&gt; top bars (group of &#39;overweight=No&#39;)
+bar1 = sns.barplot(x=&quot;species&quot;, y=&quot;counts&quot;, data=total, color=&quot;darkblue&quot;)
+
+# bar chart 2 -&gt; bottom bars (group of &#39;overweight=Yes&#39;)
+bar2 = sns.barplot(x=&quot;species&quot;, y=&quot;overweight&quot;, data=overweight, color=&quot;lightblue&quot;)
+
+# add legend
+top_bar = mpatches.Patch(color=&quot;darkblue&quot;, label=&quot;overweight = No&quot;)
+bottom_bar = mpatches.Patch(color=&quot;lightblue&quot;, label=&quot;overweight = Yes&quot;)
+plt.legend(handles=[top_bar, bottom_bar])
+
+# show the graph
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/naive_bayes_example_21_0.png" src="../_images/naive_bayes_example_21_0.png" />
+</div>
+</div>
+<p>Before we do anything, we are given one categorical variable and for this penguin, it falls under
+category <span class="math notranslate nohighlight">\(0\)</span> of the <code class="docutils literal notranslate"><span class="pre">overweight</span></code> feature (i.e. underweight).</p>
+<p>From the conditionals below, the Chinstrap species have the highest probability of underweight penguins by
+the relative freqeuncy table. That is, for each species, we compute the relative frequency within each species as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\mathbb{P}[X_1=0|Y=A] &amp;= 0.8344 \\
+\mathbb{P}[X_1=0|Y=C] &amp;= 0.8971 \\
+\mathbb{P}[X_1=0|Y=G] &amp;= 0.0488 \\
+\end{aligned}
+\end{split}\]</div>
+<p>Note that we are abusing the notation <span class="math notranslate nohighlight">\(\mathbb{P}\)</span> here, since we are not talking about the probability of a random variable, but rather the relative frequency of a feature within a species.
+Also note the above expressions is the conditional probability of <span class="math notranslate nohighlight">\(X_1=0\)</span> given <span class="math notranslate nohighlight">\(Y\)</span> is a certain species, also termed as the <strong>likelihood</strong> of <span class="math notranslate nohighlight">\(Y\)</span> being a certain species given <span class="math notranslate nohighlight">\(X_1=0\)</span>. Again, we are being loose with notation here as everything here is empirical!</p>
+<p>So one might say that the Chinstrap species is the least likely to be overweight, and the Gentoo species is the most likely to be overweight. Well, this makes intuitive sense since we are talking
+about “likelihood” here: of all <span class="math notranslate nohighlight">\(P(X_1=0|Y=A)\)</span>, <span class="math notranslate nohighlight">\(P(X_0=1|Y=C)\)</span>, and <span class="math notranslate nohighlight">\(P(X_1=0|Y=G)\)</span>, the Chinstrap species is the least likely to be overweight.</p>
+<p>Yet before we can make any conclusions, we need to take into account the prior probabilities of each species. We should weight the relative frequencies by the prior probabilities of each species. Intuitively, since Chinstrap is also the <em><strong>rarest</strong></em> species, it diminishes the likelihood of the penguin being a Chinstrap.</p>
+<p>We need to use both the prior and the likelihood to compute the posterior distribution of the species of the penguin.
+The posterior distribution is the probability of the species of the penguin given the features.</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{aligned}
+\mathbb{P}[Y=y|X_1=x_1] = \frac{\mathbb{P}[X_1=x_1|Y=y] \mathbb{P}[Y=y]}{\mathbb{P}[X_1=x_1]}
+\end{aligned}
+\]</div>
+<p>For example, if our given feature of the test penguin is <span class="math notranslate nohighlight">\(X_1=0\)</span>, then we need
+to find the posterior distribution of <strong>all</strong> species given <span class="math notranslate nohighlight">\(X_1=0\)</span>. That is, we need to compute</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\mathbb{P}[Y=A|X_1=0] &amp;= \frac{\mathbb{P}[X_1=0|Y=A] \mathbb{P}[Y=A]}{\mathbb{P}[X_1=0]} \\
+\mathbb{P}[Y=C|X_1=0] &amp;= \frac{\mathbb{P}[X_1=0|Y=C] \mathbb{P}[Y=C]}{\mathbb{P}[X_1=0]} \\
+\mathbb{P}[Y=G|X_1=0] &amp;= \frac{\mathbb{P}[X_1=0|Y=G] \mathbb{P}[Y=G]}{\mathbb{P}[X_1=0]}
+\end{aligned}
+\end{split}\]</div>
+<p>and get the <strong>argmax</strong> of the above three expressions. The argmax is the species with the highest probability.
+Note this makes sense because <span class="math notranslate nohighlight">\(\mathbb{P}[Y=y|X_1=x_1]\)</span> is a legitimate probability measure, since it sums to <span class="math notranslate nohighlight">\(1\)</span>.</p>
+<p>The <strong>argmax</strong> expression is as follows:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\text{argmax}_{y \in \{A, C, G\}} \mathbb{P}[Y=y|X_1=0] &amp;= \text{argmax}_{y \in \{A, C, G\}} \frac{\mathbb{P}[X_1=0|Y=y] \mathbb{P}[Y=y]}{\mathbb{P}[X_1=0]} \\
+&amp;= \text{argmax}_{y \in \{A, C, G\}} \frac{\mathbb{P}[X_1=0|Y=y] \mathbb{P}[Y=y]}{\sum_{y' \in \{A, C, G\}} \mathbb{P}[X_1=0|Y=y'] \mathbb{P}[Y=y']}
+\end{aligned}
+\end{split}\]</div>
+<p>Note in the Bayes Rules Book, the authors used the notation <span class="math notranslate nohighlight">\(f\)</span> instead of <span class="math notranslate nohighlight">\(\mathbb{P}\)</span>,
+they are the same thing in this context since both <span class="math notranslate nohighlight">\(X_1\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> are discrete random variables.
+Consequently, the right hand side of the equation <span class="math notranslate nohighlight">\(\mathbb{P}[X_1=x_1|Y=y]\)</span> is
+gives us a concrete value. However, if <span class="math notranslate nohighlight">\(X_1\)</span> were a continuous random variable, as we will see in the
+next section, then the expression <span class="math notranslate nohighlight">\(\mathbb{P}[X_1=x_1|Y=y]\)</span> would not make much sense since
+we the conditional probability of a continuous random variable at a point <span class="math notranslate nohighlight">\(x_1\)</span> is <span class="math notranslate nohighlight">\(0\)</span> by definition.</p>
+<p>We reconcile this by expressing Bayes Rule in terms of the probability density function (PDF) of the posterior distribution.</p>
+<p>The conditional PDF of the posterior distribution is</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{aligned}
+f_{Y|X_1}(y|x_1) = \frac{f_{X_1|Y}(x_1|y) f_{Y}(y)}{f_{X_1}(x_1)}
+\end{aligned}
+\]</div>
+<p>We make a bold statement now (not proven but will do so) that the <span class="math notranslate nohighlight">\(\hat{y}\)</span> that maximizes
+the posterior distribution in terms of Bayes Rules is the same as the <span class="math notranslate nohighlight">\(\hat{y}\)</span> that maximizes
+the posterior distribution in terms of the conditional PDF.</p>
+<p>If this statement is true, then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\text{argmax}_{y \in \{A, C, G\}} f_{Y|X_1}(y|x_1) &amp;= \text{argmax}_{y \in \{A, C, G\}} \frac{f_{X_1|Y}(x_1|y) f_{Y}(y)}{f_{X_1}(x_1)} \\
+&amp;= \text{argmax}_{y \in \{A, C, G\}} \frac{f_{X_1|Y}(x_1|y) f_{Y}(y)}{\sum_{y' \in \{A, C, G\}} f_{X_1|Y}(x_1|y') f_{Y}(y')}
+\end{aligned}
+\end{split}\]</div>
+<p>We pause here and move on to the discrete case, but in any case, we can also use
+the conditional PMF here, where the author sort of abused the notation here by using <span class="math notranslate nohighlight">\(f\)</span> instead of <span class="math notranslate nohighlight">\(\mathbb{P}\)</span>.</p>
+<p>The table below breaks down the joint distribution table of <span class="math notranslate nohighlight">\(Y\)</span> and <span class="math notranslate nohighlight">\(X_1\)</span>, since
+both are categorical, it is easy to compute the joint distribution table.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(Y\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(X_1 = 0\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(X_1 = 1\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(\sum\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>A</p></td>
+<td><p>126</p></td>
+<td><p>25</p></td>
+<td><p>151</p></td>
+</tr>
+<tr class="row-odd"><td><p>C</p></td>
+<td><p>61</p></td>
+<td><p>7</p></td>
+<td><p>68</p></td>
+</tr>
+<tr class="row-even"><td><p>G</p></td>
+<td><p>6</p></td>
+<td><p>117</p></td>
+<td><p>123</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\sum\)</span></p></td>
+<td><p>193</p></td>
+<td><p>149</p></td>
+<td><p>342</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(Y\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(X_1 = 0\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(X_1 = 1\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(\sum\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>A</p></td>
+<td><p>0.365</p></td>
+<td><p>0.072</p></td>
+<td><p>0.437</p></td>
+</tr>
+<tr class="row-odd"><td><p>C</p></td>
+<td><p>0.178</p></td>
+<td><p>0.020</p></td>
+<td><p>0.198</p></td>
+</tr>
+<tr class="row-even"><td><p>G</p></td>
+<td><p>0.017</p></td>
+<td><p>0.342</p></td>
+<td><p>0.359</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\sum\)</span></p></td>
+<td><p>0.560</p></td>
+<td><p>0.434</p></td>
+<td><p>1.000</p></td>
+</tr>
+</tbody>
+</table>
+<p>The image is a sketch of the joint distribution table of <span class="math notranslate nohighlight">\(Y\)</span> and <span class="math notranslate nohighlight">\(X_1\)</span>.</p>
+<img src="../assets/penguin_overweight_joint.jpg" alt="alt text" height="500"/><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>g = sns.JointGrid(data=penguins, x=&quot;overweight&quot;, y=&quot;species&quot;)
+low, high = 0, 1
+# bins =  np.arange(0, high + 1.5) - 0.5 # [-0.5, 0.5, 1.5]
+g.plot_joint(sns.histplot,discrete=True, cbar=True, color=&quot;red&quot;)
+g.plot_marginals(sns.histplot, discrete=True, color=&quot;red&quot;);
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/naive_bayes_example_26_0.png" src="../_images/naive_bayes_example_26_0.png" />
+</div>
+</div>
+<p>We can also use seaborns <code class="docutils literal notranslate"><span class="pre">jointgrid</span></code> to do a joint distribution plot, the darker tone of red
+corresponds to a higher impulse of the joint distribution.</p>
+<p>Indeed we can see that Adelie + overweight = 0 and Gentoo + overweight = 1 are the
+most red tone, indicating that <span class="math notranslate nohighlight">\(\mathbb{P}[X_1=0, Y=A]\)</span> and <span class="math notranslate nohighlight">\(\mathbb{P}[X_1=1, Y=G]\)</span> are the highest
+impulses of the joint distribution.</p>
+<p>In our table they correspond to 0.365 and 0.342 respectively.</p>
+<p>The top and right are the marginal distribution of <span class="math notranslate nohighlight">\(Y\)</span> and <span class="math notranslate nohighlight">\(X_1\)</span> respectively. They are
+just relative frequencies.</p>
+<p>Note the above all uses histo plot as default, where we used normal histograms to
+“estimate” the PDF of the joint distribution. We can also use a kernel density estimation (KDE) to
+do so, which is a bit more smooth and accurate. Note everything here is JUST an estimation. We will
+use it in continuous distributions later.</p>
+<p>To see the empirical conditional distribution of <span class="math notranslate nohighlight">\(X_1=0\)</span> given <span class="math notranslate nohighlight">\(Y=C\)</span> for example,
+it is simply given by the table above. To calculate we ask ourselves the following question:</p>
+<p>what is <span class="math notranslate nohighlight">\(P(X_1=0|Y=C)\)</span>? We simply look at the table EARLIER and see that it is <span class="math notranslate nohighlight">\(0.8971\)</span>. But to
+read it off this joint distribution table, you first need to recognize that when <span class="math notranslate nohighlight">\(Y=C\)</span>, we have shrinked our table to only the rows where <span class="math notranslate nohighlight">\(Y=C\)</span> (2nd row). Then we look at the column where <span class="math notranslate nohighlight">\(X_1=0\)</span> and see that it is 61, then we divide by the sum of the row, which is 68, to get <span class="math notranslate nohighlight">\(0.8971\)</span>.</p>
+<p>In this scenario, the author mentioned that we can actually directly compute the posterior probability from the empirical joint distribution table.</p>
+<p>For example, if we want to calculate the posterior probability of <span class="math notranslate nohighlight">\(Y=A\)</span> given <span class="math notranslate nohighlight">\(X_1=0\)</span>,
+we simply look at the column <span class="math notranslate nohighlight">\(X_1=0\)</span> and calculate the relative frequency of <span class="math notranslate nohighlight">\(Y=A\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{P}[Y=A|X_1=0] = \frac{126}{193} = 0.652
+\]</div>
+<p>or equivalently</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{P}[Y=A|X_1=0] = \frac{0.365}{0.560} = 0.652
+\]</div>
+<p>Note that we are still talking about empirical here, so nothing is really proven yet.</p>
+<p>In a similar fashion, we have</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{P}[Y=C|X_1=0] = \frac{61}{193} = 0.315
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{P}[Y=G|X_1=0] = \frac{6}{193} = 0.031
+\]</div>
+<p>We can confirm this by computing the posterior distribution using the formula above.</p>
+<p>Firstly, our prior says that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\mathbb{P}[Y=A] &amp;= \frac{151}{342} = 0.4415 \\
+\mathbb{P}[Y=C] &amp;= \frac{68}{342} = 0.1988 \\
+\mathbb{P}[Y=G] &amp;= \frac{123}{342} = 0.3596 \\
+\end{aligned}
+\end{split}\]</div>
+<p>These values will handle the <span class="math notranslate nohighlight">\(\mathbb{P}[Y=y]\)</span> term in the formula above.
+I have to emphasize again that all of these are empirical probabilities, the actual
+probability of the species of the penguin is not known, i.e <span class="math notranslate nohighlight">\(\mathbb{P}[Y=y]\)</span> is not known
+but we can reasonably estimate it using statistics, and in this case we estimate
+it using the relative frequency of each species, we will see later that the
+relative frequency is a good estimator of the actual probability by Maximum Likelihood Estimation.</p>
+<p>Next, we find the likelihood terms of <span class="math notranslate nohighlight">\(\mathbb{P}[X_1=0|Y=y]\)</span> for each species <span class="math notranslate nohighlight">\(y\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\mathbb{P}[X_1=0|Y=A] &amp;= \frac{126}{151} = 0.8344 \\
+\mathbb{P}[X_1=0|Y=C] &amp;= \frac{61}{68} = 0.8971 \\
+\mathbb{P}[X_1=0|Y=G] &amp;= \frac{6}{123} = 0.0488 \\
+\end{aligned}
+\end{split}\]</div>
+<p>Again, these are empirical probabilities, we are not sure if these are the actual probabilities of the features given the species, but we can reasonably estimate it using statistics, and
+in this case we again use relative frequency to estimate it. We will see later this is modelled
+by the Multinomial distribution with parameter <span class="math notranslate nohighlight">\(\pi_y\)</span>.</p>
+<p>See WIKIPEDIA: When k is 2 and n is 1, the multinomial distribution is the Bernoulli distribution. When k is 2 and n is bigger than 1, it is the binomial distribution. When k is bigger than 2 and n is 1, it is the categorical distribution.</p>
+<p>Plugging these <strong>priors</strong> and <strong>likelihoods</strong> into the formula above, we get the
+denominator, the normalizing constant, which is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\mathbb{P}[X_1=0] &amp;= \mathbb{P}[X_1=0|Y=A] \mathbb{P}[Y=A] \\
+&amp;+ \mathbb{P}[X_1=0|Y=C] \mathbb{P}[Y=C] \\
+&amp;+ \mathbb{P}[X_1=0|Y=G] \mathbb{P}[Y=G] \\
+&amp;= \dfrac{193}{342} = 0.565
+\end{aligned}
+\end{split}\]</div>
+<p>We pause a while to note that <span class="math notranslate nohighlight">\(\mathbb{P}[X_1]\)</span> is the probability of observing <span class="math notranslate nohighlight">\(X_1=x_1\)</span>,
+which is independent of <span class="math notranslate nohighlight">\(Y\)</span>, so we can compute it using the law of total probability.</p>
+<p>Of course, this is also merely the relative frequency of <span class="math notranslate nohighlight">\(X_1=0\)</span> in the dataset, which is expected
+by intuition, but we will never know the actual probability of <span class="math notranslate nohighlight">\(X_1=0\)</span>. We can also
+estimate it using Binomial distribution if we assume that it is a Bernoulli process, but
+if it is continuous, then it is often harder to estimate it. We will see later that
+we can omit the denominator since it is “constant” for all <span class="math notranslate nohighlight">\(Y\)</span>.</p>
+<p>Finally, by Bayes’ rule, we get the posterior probability of <span class="math notranslate nohighlight">\(Y=A\)</span> given <span class="math notranslate nohighlight">\(X_1=0\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\mathbb{P}[Y=A|X_1=0] &amp;= \dfrac{\mathbb{P}[X_1=0|Y=A] \mathbb{P}[Y=A]}{\mathbb{P}[X_1=0]} \\
+&amp;= \dfrac{151/342 \times 126/151}{193/342} \\
+&amp;= \dfrac{126}{193} = 0.6528
+\end{aligned}
+\end{split}\]</div>
+<p>which is the same as the one we calculated earlier using the empirical joint distribution table.</p>
+<p>In a similar fashion, we get the posterior probability of <span class="math notranslate nohighlight">\(Y=C\)</span> given <span class="math notranslate nohighlight">\(X_1=0\)</span>, and <span class="math notranslate nohighlight">\(Y=G\)</span> given <span class="math notranslate nohighlight">\(X_1=0\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\mathbb{P}[Y=C|X_1=0] &amp;= \dfrac{68/342 \times 61/68}{193/342} = \dfrac{61}{193} = 0.3161 \\
+\mathbb{P}[Y=G|X_1=0] &amp;= \dfrac{123/342 \times 6/123}{193/342} = \dfrac{6}{193} = 0.0311
+\end{aligned}
+\end{split}\]</div>
+<p>And the argmax of these three posterior probabilities is <span class="math notranslate nohighlight">\(Y=A\)</span>, so we predict that the penguin is of species <span class="math notranslate nohighlight">\(A\)</span>.
+We observe that to get the argmax, we do not need the denominator, because it is the same for all <span class="math notranslate nohighlight">\(Y\)</span>.</p>
+<p>So we can omit the denominator, and we get the same result, it may no longer sum to 1, but
+it does not affect the final result.</p>
+<p>We also saw here that if our prior is very low, then even though the likelihood is high, the posterior can still be
+low if <code class="docutils literal notranslate"><span class="pre">prior</span> <span class="pre">&lt;&lt;</span> <span class="pre">likelihood</span></code>. This is the reason why we need to use prior knowledge to help us make better predictions.</p>
+</section>
+<section id="one-quantitative-predictor">
+<h3>One Quantitative Predictor<a class="headerlink" href="#one-quantitative-predictor" title="Permalink to this headline">#</a></h3>
+<p>We now ignore the earlier categorical predictor <span class="math notranslate nohighlight">\(X_1\)</span> and focus on the quantitative predictor <span class="math notranslate nohighlight">\(X_2\)</span>.
+This penguin has a <code class="docutils literal notranslate"><span class="pre">bill_length_mm</span></code> of 50mm, so we want to predict the species of the penguin given this information.</p>
+<p>We know that as we move on to continuous space, we can no longer use “relative frequency” to estimate the probability of a continuous variable happening, as we will see later.</p>
+<p>Let’s do some EDA.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>bill_length_mm = penguins[[&#39;bill_length_mm&#39;, &#39;species&#39;]]
+bill_length_mm
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>bill_length_mm</th>
+      <th>species</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>39.1</td>
+      <td>Adelie</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>39.5</td>
+      <td>Adelie</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>40.3</td>
+      <td>Adelie</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>36.7</td>
+      <td>Adelie</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>39.3</td>
+      <td>Adelie</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>337</th>
+      <td>47.2</td>
+      <td>Gentoo</td>
+    </tr>
+    <tr>
+      <th>338</th>
+      <td>46.8</td>
+      <td>Gentoo</td>
+    </tr>
+    <tr>
+      <th>339</th>
+      <td>50.4</td>
+      <td>Gentoo</td>
+    </tr>
+    <tr>
+      <th>340</th>
+      <td>45.2</td>
+      <td>Gentoo</td>
+    </tr>
+    <tr>
+      <th>341</th>
+      <td>49.9</td>
+      <td>Gentoo</td>
+    </tr>
+  </tbody>
+</table>
+<p>342 rows × 2 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># plotting both distibutions on the same figure
+_ = sns.kdeplot(data=penguins, x=&quot;bill_length_mm&quot;, fill=True, common_norm=False, alpha=.5, linewidth=0, legend=True)
+# plot vertical line 
+_ = plt.axvline(x=penguins[&quot;bill_length_mm&quot;].mean(), color=&#39;red&#39;, linestyle=&#39;--&#39;)
+# plt.legend()
+plt.show();
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/naive_bayes_example_36_0.png" src="../_images/naive_bayes_example_36_0.png" />
+</div>
+</div>
+<p>The kdeplot above is for an univariate, empirical estimation of the whole dataset, not
+conditional on any class label.</p>
+<p>To see the conditional distribution, we can use the <code class="docutils literal notranslate"><span class="pre">hue</span></code> parameter in <code class="docutils literal notranslate"><span class="pre">seaborn.kdeplot</span></code> to plot the conditional distribution of <span class="math notranslate nohighlight">\(X_2\)</span> given <span class="math notranslate nohighlight">\(Y=y\)</span>. You just imagine that given
+say Adelie has happened, then we zoom into the reduced sample space of Adelie, and plot the distribution of <span class="math notranslate nohighlight">\(X_2\)</span> in this <strong>reduced sample space</strong>. Things get a bit more complicated when we have more than one predictor, but the idea is the same, we will see later as well.</p>
+<p>I want to emphasize that for 1 predictor conditioned on another random variable,
+in this case <span class="math notranslate nohighlight">\(X_2\)</span> conditioned on <span class="math notranslate nohighlight">\(Y\)</span>, the conditional distribution is a <strong>marginal distribution</strong>,
+or we can view it as <strong>univariate distribution</strong>. This is because once we <span class="math notranslate nohighlight">\(Y=y\)</span> has happened,
+there is no randomness left in <span class="math notranslate nohighlight">\(Y\)</span>, we are only looking at the distribution of <span class="math notranslate nohighlight">\(X_2\)</span> in the reduced sample space <span class="math notranslate nohighlight">\(\mathcal{\Omega}_{X_2|Y}\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># plotting both distibutions on the same figure
+x2 = 50
+_ = sns.kdeplot(
+    data=penguins,
+    x=&quot;bill_length_mm&quot;,
+    hue=&quot;species&quot;,
+    fill=True,
+    common_norm=False,
+    alpha=0.5,
+    linewidth=0,
+    legend=True,
+)
+# plot vertical line
+_ = plt.axvline(x2, color=&quot;r&quot;, linestyle=&quot;--&quot;, label=&quot;50 mm&quot;)
+# plt.legend()
+plt.show();
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/naive_bayes_example_38_0.png" src="../_images/naive_bayes_example_38_0.png" />
+</div>
+</div>
+<p>Before we move on, some EDA on the joint distribution of <span class="math notranslate nohighlight">\(X_2\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>.
+Note very carefully that this is a <strong>joint distribution</strong> of <span class="math notranslate nohighlight">\(X_2\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>, not a <strong>conditional distribution</strong> of <span class="math notranslate nohighlight">\(X_2\)</span> given <span class="math notranslate nohighlight">\(Y\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>g = sns.JointGrid(data=penguins, x=&quot;bill_length_mm&quot;, y=&quot;species&quot;)
+g.plot_joint(sns.histplot, color = &quot;red&quot;, cbar=True)
+
+sns.jointplot(data=penguins, x=&quot;bill_length_mm&quot;, y=&quot;species&quot;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7f94bf7e97c0&gt;
+</pre></div>
+</div>
+<img alt="../_images/naive_bayes_example_40_1.png" src="../_images/naive_bayes_example_40_1.png" />
+<img alt="../_images/naive_bayes_example_40_2.png" src="../_images/naive_bayes_example_40_2.png" />
+</div>
+</div>
+<p>We see that the for this penguin with <code class="docutils literal notranslate"><span class="pre">bill_length_mm</span></code> of 50mm, our gut feeling tells us
+that it most likely is not an Adelie, since the distribution of <span class="math notranslate nohighlight">\(X_2\)</span> for Adelie is
+much less than 50 mm. It could be a Chinstrap or a Gentoo, but we are not sure which one,
+though Chinstrap is tends to be longer for bill length, but the earlier section has
+told us that we should weigh the prior probability of each species into consideration.</p>
+<p>We can again use Bayes’ rule to compute the posterior probability of <span class="math notranslate nohighlight">\(Y=A\)</span> given <span class="math notranslate nohighlight">\(X_2=50\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{aligned}
+\mathbb{P}[Y=y|X_2=x_2] = \frac{\mathbb{P}[X_2=x_2|Y=y] \mathbb{P}[Y=y]}{\mathbb{P}[X_2=x_2]}
+\end{aligned}
+\]</div>
+<p>For example, since our given feature is <code class="docutils literal notranslate"><span class="pre">bill_length_mm</span></code> of 50mm, we see</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
+\begin{aligned}
+\mathbb{P}[Y=A|X_2=50] &amp;= \dfrac{\mathbb{P}[X_2=50|Y=A] \mathbb{P}[Y=A]}{\mathbb{P}[X_2=50]} \\
+\mathbb{P}[Y=C|X_2=50] &amp;= \dfrac{\mathbb{P}[X_2=50|Y=C] \mathbb{P}[Y=C]}{\mathbb{P}[X_2=50]} \\
+\mathbb{P}[Y=G|X_2=50] &amp;= \dfrac{\mathbb{P}[X_2=50|Y=G] \mathbb{P}[Y=G]}{\mathbb{P}[X_2=50]}
+\end{aligned}
+\end{split}\]</div>
+<p>Again, we use argmax to solve the problem,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\text{argmax}_{y \in \{A, C, G\}} \mathbb{P}[Y=y|X_2=50] &amp;= \text{argmax}_{y \in \{A, C, G\}} \dfrac{\mathbb{P}[X_2=50|Y=y] \mathbb{P}[Y=y]}{\mathbb{P}[X_2=50]} \\
+&amp;= \text{argmax}_{y \in \{A, C, G\}} \dfrac{\mathbb{P}[X_2=50|Y=y] \mathbb{P}[Y=y]}{\sum_{y' \in \{A, C, G\}} \mathbb{P}[X_2=50|Y=y'] \mathbb{P}[Y=y']}
+\end{aligned}
+\end{split}\]</div>
+<p>Now we met our first hurdle here since <span class="math notranslate nohighlight">\(\mathbb{P}[X_2=50|Y=y]\)</span> is not easy to compute since
+<span class="math notranslate nohighlight">\(X_2\)</span> is a continuous variable, we cannot construct a empirical joint distribution table like
+how we did earlier (<code class="docutils literal notranslate"><span class="pre">species</span></code> vs <code class="docutils literal notranslate"><span class="pre">bill_length_mm</span></code> does not work here).</p>
+<p>Further, we haven’t assumed a model for <span class="math notranslate nohighlight">\(X_2\)</span> yet from which to define the likelihood <span class="math notranslate nohighlight">\(\mathbb{P}[X_2=50|Y=y]\)</span> or <span class="math notranslate nohighlight">\(\mathcal{L}(X_2=50|Y=y)\)</span>. We can do like previously to assume <strong>naively (pun intended)</strong> that the distribution of <span class="math notranslate nohighlight">\(X_2\)</span> <strong>GIVEN Y</strong> is Gaussian, note carefully
+that this is a <strong>conditional distribution</strong> of <span class="math notranslate nohighlight">\(X_2\)</span> given <span class="math notranslate nohighlight">\(Y\)</span>, we can also say in same
+term that <span class="math notranslate nohighlight">\(X_2\)</span> is <strong>continuous</strong> and <strong>conditionally normal</strong>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+X_2 \mid Y=A \sim \mathcal{N}(\mu_A, \sigma_A^2) \\
+X_2 \mid Y=C \sim \mathcal{N}(\mu_C, \sigma_C^2) \\
+X_2 \mid Y=G \sim \mathcal{N}(\mu_G, \sigma_G^2)
+\end{aligned}
+\end{split}\]</div>
+<p>Notice here that it is possible that the three conditional distributions are different with
+different <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span>. Technically, we can even assume that the three conditional
+distributions come from different families, but we will stick to the Gaussian family for now.
+We usually call this the <strong>Gaussian Naive Bayes</strong> model.</p>
+<p>Intuitively, we can see that the three species are not well separated in the joint distribution space, so we cannot expect a good performance from the Gaussian Naive Bayes model. For example,
+50 mm could well be either Gentoo or Chinstrap. (This understanding may be wrong?) In any case,
+in our example, the conditional distribution of <span class="math notranslate nohighlight">\(X_2\)</span> given <span class="math notranslate nohighlight">\(Y\)</span> appears quite Gaussian.
+Even if not so, the Central Limit Theorem tells us that the sum of many independent random
+variables tends to be Gaussian, so we can still use the Gaussian Naive Bayes model
+if we have enough data (?).</p>
+<p>The next question is how do we estimate the <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span> for each <span class="math notranslate nohighlight">\(X_2\)</span> given <span class="math notranslate nohighlight">\(Y\)</span>?
+We can use the <strong>Maximum Likelihood Estimation</strong> (MLE) method to estimate the parameters (clarify
+whether it is MLE of MAP?)</p>
+<p>It turns out that the MLE of <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span> for each <span class="math notranslate nohighlight">\(X_2\)</span> given <span class="math notranslate nohighlight">\(Y\)</span> is the sample mean
+and sample standard deviation of <span class="math notranslate nohighlight">\(X_2\)</span> given <span class="math notranslate nohighlight">\(Y\)</span>. They are unbiased estimators of the true
+<span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span>! (<strong>FILL In the blanks for the categorical part on Binomial and multinomial</strong>)
+See bishops proof also.</p>
+<p>The below table summarizes the sample (empirical) mean and sample standard deviation of <span class="math notranslate nohighlight">\(X_2\)</span> given <span class="math notranslate nohighlight">\(Y\)</span>.
+For example, the sample mean of <span class="math notranslate nohighlight">\(X_2\)</span> given <span class="math notranslate nohighlight">\(Y=A\)</span> is 38.8 mm, and the sample standard deviation
+is 2.66 mm.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Species</p></th>
+<th class="head"><p>Sample Mean</p></th>
+<th class="head"><p>Sample Standard Deviation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>A</p></td>
+<td><p>38.8</p></td>
+<td><p>2.66</p></td>
+</tr>
+<tr class="row-odd"><td><p>C</p></td>
+<td><p>48.8</p></td>
+<td><p>3.34</p></td>
+</tr>
+<tr class="row-even"><td><p>G</p></td>
+<td><p>47.5</p></td>
+<td><p>3.08</p></td>
+</tr>
+</tbody>
+</table>
+<p>Remember again, the sample mean and sample standard deviation are unbiased estimators of the true
+<span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span>, and can be shown by MLE.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>bill_length_mean_std = bill_length_mm.groupby(&#39;species&#39;).agg([&#39;mean&#39;, &#39;std&#39;])
+bill_length_mean_std
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="2" halign="left">bill_length_mm</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>mean</th>
+      <th>std</th>
+    </tr>
+    <tr>
+      <th>species</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Adelie</th>
+      <td>38.791391</td>
+      <td>2.663405</td>
+    </tr>
+    <tr>
+      <th>Chinstrap</th>
+      <td>48.833824</td>
+      <td>3.339256</td>
+    </tr>
+    <tr>
+      <th>Gentoo</th>
+      <td>47.504878</td>
+      <td>3.081857</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Let’s plot the normal distribution with the sample mean and sample standard deviation for each <span class="math notranslate nohighlight">\(X_2\)</span> given <span class="math notranslate nohighlight">\(Y\)</span>.
+We also round off the sample mean and sample standard deviation to 2 decimal places for convenience and
+stay true to the original book.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># rv_adelie = stats.norm(bill_length_mean_std.loc[&#39;Adelie&#39;][&#39;bill_length_mm&#39;][&#39;mean&#39;], bill_length_mean_std.loc[&#39;Adelie&#39;][&#39;bill_length_mm&#39;][&#39;std&#39;])
+# rv_chinstrap = stats.norm(bill_length_mean_std.loc[&#39;Chinstrap&#39;][&#39;bill_length_mm&#39;][&#39;mean&#39;], bill_length_mean_std.loc[&#39;Chinstrap&#39;][&#39;bill_length_mm&#39;][&#39;std&#39;])
+# rv_gentoo = stats.norm(bill_length_mean_std.loc[&#39;Gentoo&#39;][&#39;bill_length_mm&#39;][&#39;mean&#39;], bill_length_mean_std.loc[&#39;Gentoo&#39;][&#39;bill_length_mm&#39;][&#39;std&#39;])
+
+rv_adelie = stats.norm(38.8, 2.66)
+rv_chinstrap = stats.norm(48.8, 3.34)
+rv_gentoo = stats.norm(47.5, 3.08)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig, ax = plt.subplots(1, 1)
+ax.plot(np.linspace(30, 60, 100), rv_adelie.pdf(np.linspace(30, 60, 100)), &#39;r-&#39;, lw=5, alpha=0.6, label=&#39;Adelie&#39;)
+ax.plot(np.linspace(30, 60, 100), rv_chinstrap.pdf(np.linspace(30, 60, 100)), &#39;b-&#39;, lw=5, alpha=0.6, label=&#39;Chinstrap&#39;)
+ax.plot(np.linspace(30, 60, 100), rv_gentoo.pdf(np.linspace(30, 60, 100)), &#39;g-&#39;, lw=5, alpha=0.6, label=&#39;Gentoo&#39;)
+# plot vertical line
+_ = plt.axvline(x2, color=&quot;y&quot;, linestyle=&quot;--&quot;, label=&quot;50 mm&quot;)
+_ = plt.axvline(x2+0.5, color=&quot;y&quot;, linestyle=&quot;--&quot;, label=&quot;50.5 mm&quot;)
+_ = plt.axvline(x2-0.5, color=&quot;y&quot;, linestyle=&quot;--&quot;, label=&quot;49.5 mm&quot;)
+ax.set_xlabel(&#39;bill_length_mm&#39;)
+ax.set_ylabel(&#39;Probability density&#39;)
+ax.legend()
+plt.show();
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/naive_bayes_example_49_0.png" src="../_images/naive_bayes_example_49_0.png" />
+</div>
+</div>
+<p>As we can see, the this naive assumption of Gaussian distribution for <span class="math notranslate nohighlight">\(X_2\)</span> given <span class="math notranslate nohighlight">\(Y\)</span> is not
+perfect, but it isn’t too bad either. Note the distinction in the plot here and previously.
+The previous diagram is the empirical density plot of the raw data, while this one is the
+density plot of the conditional gaussian distribution of <span class="math notranslate nohighlight">\(X_2\)</span> given <span class="math notranslate nohighlight">\(Y\)</span> where we have
+used the sample mean and sample standard deviation as the parameters of the Gaussian <span class="math notranslate nohighlight">\(X_2 \mid Y \sim \mathcal{N}(\mu, \sigma^2)\)</span>.</p>
+<p>Now we can finally solve our “hurdle” problem of computing <span class="math notranslate nohighlight">\(\mathbb{P}[X_2=50|Y=y]\)</span>.
+We can use the Gaussian density function to compute the probability density of <span class="math notranslate nohighlight">\(X_2=50\)</span> given <span class="math notranslate nohighlight">\(Y=y\)</span>.
+Geometrically, we can see that the probability density of <span class="math notranslate nohighlight">\(X_2=50\)</span> given <span class="math notranslate nohighlight">\(Y=y\)</span> is the area under the
+curve of the Gaussian density function at <span class="math notranslate nohighlight">\(X_2=50\)</span> for each <span class="math notranslate nohighlight">\(Y=y\)</span> around a small neighborhood <span class="math notranslate nohighlight">\(\delta\)</span>
+of <span class="math notranslate nohighlight">\(X_2=50\)</span>. Illustrated in diagram above, the <span class="math notranslate nohighlight">\(\delta=0.5\)</span> mm and the area under the curve is
+computed by the integral of the Gaussian density function from <span class="math notranslate nohighlight">\(X_2=49.5\)</span> to <span class="math notranslate nohighlight">\(X_2=50.5\)</span>. In reality however,
+the <span class="math notranslate nohighlight">\(\delta\)</span> is infinitesimally small.</p>
+<p>In practice, we just need to compute the probability density of <span class="math notranslate nohighlight">\(X_2=50\)</span> given <span class="math notranslate nohighlight">\(Y=y\)</span> at <span class="math notranslate nohighlight">\(X_2=50\)</span> and
+not the actual probability. Note very carefully that PDF is not probability, it is the probability density!!!</p>
+<p>So one natural question becomes,</p>
+<p>READ HERE, DON’T BE LAZY:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.probabilitycourse.com/chapter5/5_2_3_conditioning_independence.php">https://www.probabilitycourse.com/chapter5/5_2_3_conditioning_independence.php</a></p></li>
+<li><p><a class="reference external" href="https://d2l.ai/chapter_appendix-mathematics-for-deep-learning/maximum-likelihood.html#summary">https://d2l.ai/chapter_appendix-mathematics-for-deep-learning/maximum-likelihood.html#summary</a></p></li>
+<li><p>Chan’s book.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>px2_given_adelie = rv_adelie.pdf(x2)
+px2_given_chinstrap = rv_chinstrap.pdf(x2)
+px2_given_gentoo = rv_gentoo.pdf(x2)
+
+print(f&#39;P(x=50|Adelie) = {px2_given_adelie:.7f}&#39;)
+print(f&#39;P(x=50|Chinstrap) = {px2_given_chinstrap:.3f}&#39;)
+print(f&#39;P(x=50|Gentoo) = {px2_given_gentoo:.5f}&#39;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P(x=50|Adelie) = 0.0000212
+P(x=50|Chinstrap) = 0.112
+P(x=50|Gentoo) = 0.09317
+</pre></div>
+</div>
+</div>
+</div>
+<p>As an example, the probability density of <span class="math notranslate nohighlight">\(X_2=50\)</span> given <span class="math notranslate nohighlight">\(Y=A\)</span> is <span class="math notranslate nohighlight">\(0.0000212 \text{ mm}^{-1}\)</span>, and indeed from
+the plot above, the area under the curve is definitely the smallest, and the lowest since there is
+almost no Adelie with 50 mm bill length.</p>
+<p>So we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\mathbb{P}[X_2=50|Y=A] &amp;= \int_{50}^{50.5} \dfrac{1}{\sqrt{2 \pi \sigma_A^2}} \exp \left( -\dfrac{(x - \mu_A)^2}{2 \sigma_A^2} \right) \mathrm{d}x \\
+\end{aligned}
+\end{split}\]</div>
+<p>16/12/2022</p>
+<p>once i get prob of 0.3992 , 0.6006 and 0.0002, we can then reconcile with the
+conditional KDE plot above, and “eyeball” that for 50mm, the area under the
+curve for a small neighbourhood <span class="math notranslate nohighlight">\(\delta\)</span> is indeed higher for Gentoo than
+Chinstrap. Is this decision boundary? No I doubt so, clarify?</p>
+<ul class="simple">
+<li><p>prior is low but likelihood is high, so posterior may not be high if prior &lt;&lt; likelihood</p></li>
+<li><p>Normalizing constant. argmax so it does not matter if output is probability? because for an image vector input of a certain x = [1,2,3] for eg, the P(Y=k|x) for Y = 0, 1, 2,…9 for that image are fixed at the given x, and as a result we need to compare the p(y|x) for diff y and see which is highest value. MOreover, it says that in D2L the sum of p(y|x) over y is 1, so we can cross multiply anwyays to get?</p>
+<ul>
+<li><p>Furthermore, <span class="math notranslate nohighlight">\(P(X_i=x_i)\)</span> is constant during argmax comparison, see 14.1.1 and 14.1.2 in bayes rules book, denominator is rules of total probability, so it is constant.</p></li>
+</ul>
+</li>
+<li><p>Key is estimating , like P(y) we dk population! but estimate from samples, so MLE tells us that indeed
+the best estimate is derived from the sample mean. Same for the mean of the conditional distribution.</p></li>
+</ul>
+<p>conditionally normal means within each class, the data is normal. reasonable assumption because of central limit theorem.</p>
+<ul class="simple">
+<li><p>Plotting the tuned Normal models for each species confirms that this naive Bayes assumption isn’t perfect – it’s a bit more idealistic than the density plots of the raw data in Figure 14.2. But it’s fine enough to continue. THIS IS BECAUSE THE ORIGINAL DATA IS NOT EXACTLY NORMAL, BUT THE CONDITIONAL NORMAL ASSUMPTION IS GOOD ENOUGH TO CONTINUE.</p></li>
+<li><p>Note only assumption of Naive Bayes is the random variables within xn are independent conditional on the class of observation.</p></li>
+</ul>
+<ul class="simple">
+<li><p>The plot below is the 1-d empirical distribution of <code class="docutils literal notranslate"><span class="pre">bill_length_mm</span></code> for all species.</p></li>
+<li><p>The vertical red line is the mean of the empirical distribution.</p></li>
+<li><p>This is where one “naive” part of naive Bayes classification comes into play. The naive Bayes method typically assumes that any quantitative predictor, here <code class="docutils literal notranslate"><span class="pre">X_2</span> <span class="pre">=</span> <span class="pre">bill_length_mm</span></code>
+is continuous and conditionally Normal.</p></li>
+</ul>
+<p><strong>Important</strong></p>
+<p>From sklearn: and we can use Maximum A Posteriori (MAP) estimation to estimate <span class="math notranslate nohighlight">\(P(y)\)</span>  and <span class="math notranslate nohighlight">\(P(x_i|y)\)</span> ; the former is then the relative frequency of class y in the training set.</p>
+<p>The different naive Bayes classifiers differ mainly by the assumptions they make regarding the distribution of <span class="math notranslate nohighlight">\(P(x_i|y)\)</span>.</p>
+<p>page 475 of chans book says that sample mean of the normal distribution coincides when you use MLE to estimate the mean parameter of the normal distribution.
+In other words, if <span class="math notranslate nohighlight">\(X_2 | Y = A \sim N(\mu_{A}, \sigma_{A}^2)\)</span>, then to find the <span class="math notranslate nohighlight">\(P(X_2 | Y = A)\)</span>, which is the probability of <span class="math notranslate nohighlight">\(X_2=x_2\)</span> given <span class="math notranslate nohighlight">\(Y=A\)</span>,
+we know that conditional PDF is about <span class="math notranslate nohighlight">\(X_2\)</span> as <span class="math notranslate nohighlight">\(Y\)</span> is fixed, so we need the parameters <span class="math notranslate nohighlight">\(\mu_{A}\)</span> and <span class="math notranslate nohighlight">\(\sigma_{A}^2\)</span> to find the PDF.</p>
+<p>So this is an inverse problem of finding the parameters <span class="math notranslate nohighlight">\(\mu_{A}\)</span> and <span class="math notranslate nohighlight">\(\sigma_{A}^2\)</span>.
+A bit confused see chans page 469, but overall, the idea is that we want to find the parameters of the normal distribution that best fit the data.
+And we use MLE to find the parameters of the normal distribution that best fit the data. It turns the parameters
+found through MLE are the sample mean and sample variance of the data.</p>
+<p>Penguin with bill length of 50mm.</p>
+<p><span class="math notranslate nohighlight">\(P(x_2=50|y=Adelie)\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># plot conditional distribution of bill length given species
+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.displot(penguins, x=&quot;bill_length_mm&quot;, y=&quot;bill_depth_mm&quot;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f94bf618730&gt;
+</pre></div>
+</div>
+<img alt="../_images/naive_bayes_example_64_1.png" src="../_images/naive_bayes_example_64_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.displot(penguins, x=&quot;bill_length_mm&quot;, y=&quot;bill_depth_mm&quot;, hue=&quot;species&quot;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f94bf7e9070&gt;
+</pre></div>
+</div>
+<img alt="../_images/naive_bayes_example_66_1.png" src="../_images/naive_bayes_example_66_1.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="plotting-joint-and-marginal-distributions">
+<h2>Plotting joint and marginal distributions<a class="headerlink" href="#plotting-joint-and-marginal-distributions" title="Permalink to this headline">#</a></h2>
+<p>The first is jointplot(), which augments a bivariate relatonal or distribution plot with the marginal distributions of the two variables. By default, jointplot() represents the bivariate distribution using scatterplot() and the marginal distributions using histplot():</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.jointplot(data=penguins, x=&quot;bill_length_mm&quot;, y=&quot;bill_depth_mm&quot;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7f94bf44a940&gt;
+</pre></div>
+</div>
+<img alt="../_images/naive_bayes_example_69_1.png" src="../_images/naive_bayes_example_69_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># ax = sns.histplot(x = df[&#39;class&#39;], hue=df[&#39;survived&#39;], multiple=&quot;dodge&quot;, 
+#                   stat = &#39;density&#39;, shrink = 0.8, common_norm=False)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.displot(data=penguins, x=&quot;body_mass_g&quot;, hue=&quot;species&quot;, kind=&quot;kde&quot;, fill=True)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f94bf33ff40&gt;
+</pre></div>
+</div>
+<img alt="../_images/naive_bayes_example_71_1.png" src="../_images/naive_bayes_example_71_1.png" />
+</div>
+</div>
+</section>
+<section id="features-1-class-plots">
+<h2>2 Features + 1 Class Plots<a class="headerlink" href="#features-1-class-plots" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>g = sns.JointGrid(data=penguins, x=&quot;bill_length_mm&quot;, y=&quot;bill_depth_mm&quot;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/naive_bayes_example_73_0.png" src="../_images/naive_bayes_example_73_0.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./05_joint_distributions"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="naive_bayes.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Naive Bayes</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../references_and_resources/bibliography.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Bibliography</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Gao Hongnan<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
