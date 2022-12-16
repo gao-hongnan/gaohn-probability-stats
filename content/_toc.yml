@@ -66,6 +66,7 @@ parts:
     chapters:
     - file: 05_joint_distributions/braindump.md
     - file: 05_joint_distributions/naive_bayes.ipynb
+    - file: 05_joint_distributions/naive_bayes_example.ipynb
 
   - caption: References and Resources
     chapters:
