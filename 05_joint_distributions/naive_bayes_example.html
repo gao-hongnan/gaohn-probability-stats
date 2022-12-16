@@ -1590,7 +1590,13 @@ both are categorical, it is easy to compute the joint distribution table.</p>
 </tbody>
 </table>
 <p>The image is a sketch of the joint distribution table of <span class="math notranslate nohighlight">\(Y\)</span> and <span class="math notranslate nohighlight">\(X_1\)</span>.</p>
-<img src="../assets/penguin_overweight_joint.jpg" alt="alt text" height="500"/><div class="cell docutils container">
+<figure class="align-default" id="penguin-overweight-joint">
+<a class="reference internal image-reference" href="../_images/penguin_overweight_joint.jpg"><img alt="../_images/penguin_overweight_joint.jpg" src="../_images/penguin_overweight_joint.jpg" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Joint distribution diagram of <span class="math notranslate nohighlight">\(Y\)</span> and <span class="math notranslate nohighlight">\(X_1\)</span>.</span><a class="headerlink" href="#penguin-overweight-joint" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>g = sns.JointGrid(data=penguins, x=&quot;overweight&quot;, y=&quot;species&quot;)
 low, high = 0, 1
@@ -1871,7 +1877,7 @@ sns.jointplot(data=penguins, x=&quot;bill_length_mm&quot;, y=&quot;species&quot;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7f94bf7e97c0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7fae446a7340&gt;
 </pre></div>
 </div>
 <img alt="../_images/naive_bayes_example_40_1.png" src="../_images/naive_bayes_example_40_1.png" />
@@ -2079,12 +2085,33 @@ computed by the integral of the Gaussian density function from <span class="math
 the <span class="math notranslate nohighlight">\(\delta\)</span> is infinitesimally small.</p>
 <p>In practice, we just need to compute the probability density of <span class="math notranslate nohighlight">\(X_2=50\)</span> given <span class="math notranslate nohighlight">\(Y=y\)</span> at <span class="math notranslate nohighlight">\(X_2=50\)</span> and
 not the actual probability. Note very carefully that PDF is not probability, it is the probability density!!!</p>
-<p>So one natural question becomes,</p>
+<p>So one natural question becomes, as mentioned earlier, we should compute
+the posterior conditional PDF and maximize over it instead of the posterior conditional probability
+and maximize over it since probability at a point is 0 for continuous variables.</p>
+<p>And so our</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+f_{X_2 \mid Y}(x_2=50 \mid y=A) &amp;= \frac{1}{\sqrt{2\pi}\sigma_A} \exp \left( -\frac{(x_2 - \mu_A)^2}{2\sigma_A^2} \right) \\
+&amp;= \frac{1}{\sqrt{2\pi}\sigma_A} \exp \left( -\frac{(50 - \mu_A)^2}{2\sigma_A^2} \right) \\
+&amp;= \frac{1}{\sqrt{38.8} \cdot 2.66} \exp \left( -\frac{(50 - 38.8)^2}{2 \cdot 2.66^2} \right) \\
+&amp;= 0.0000212 
+\end{aligned}
+\end{split}\]</div>
+<p>Similarly,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+f_{X_2 \mid Y}(x_2=50 \mid y=C) &amp;= 0.112 \\
+f_{X_2 \mid Y}(x_2=50 \mid y=G) &amp;= 0.09317 \\
+\end{aligned}
+\end{split}\]</div>
 <p>READ HERE, DON’T BE LAZY:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.probabilitycourse.com/chapter5/5_2_3_conditioning_independence.php">https://www.probabilitycourse.com/chapter5/5_2_3_conditioning_independence.php</a></p></li>
 <li><p><a class="reference external" href="https://d2l.ai/chapter_appendix-mathematics-for-deep-learning/maximum-likelihood.html#summary">https://d2l.ai/chapter_appendix-mathematics-for-deep-learning/maximum-likelihood.html#summary</a></p></li>
 <li><p>Chan’s book.</p></li>
+<li><p>Write out into content for my notes!!!</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2109,13 +2136,41 @@ P(x=50|Gentoo) = 0.09317
 <p>As an example, the probability density of <span class="math notranslate nohighlight">\(X_2=50\)</span> given <span class="math notranslate nohighlight">\(Y=A\)</span> is <span class="math notranslate nohighlight">\(0.0000212 \text{ mm}^{-1}\)</span>, and indeed from
 the plot above, the area under the curve is definitely the smallest, and the lowest since there is
 almost no Adelie with 50 mm bill length.</p>
-<p>So we have</p>
+<p>So the marginal PDF of observing a penguin with a 50 mm bill length is,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{aligned}
-\mathbb{P}[X_2=50|Y=A] &amp;= \int_{50}^{50.5} \dfrac{1}{\sqrt{2 \pi \sigma_A^2}} \exp \left( -\dfrac{(x - \mu_A)^2}{2 \sigma_A^2} \right) \mathrm{d}x \\
+f_{X_2}(50) &amp;= \sum_{y \in \mathcal{Y}} f_{X_2|Y}(50|y) f_{Y}(y) \\
+&amp;= \frac{151}{342} \cdot 0.0000212 + \frac{68}{342} \cdot 0.112 + \frac{123}{342} \cdot 0.09317 \\
+&amp;= 0.05579
 \end{aligned}
 \end{split}\]</div>
+<p>Once again, this number is not a probability, it is the probability density, it just means for
+every 1 mm, there is a 0.05579 mm chance of observing a penguin with a 50 mm bill length AROUND THAT SMALL NEIGHBORHOOD.
+In laymen, it is how “dense” the probability is at that point.</p>
+<p>Then, the posterior conditional PDF of <span class="math notranslate nohighlight">\(Y\)</span> given <span class="math notranslate nohighlight">\(X_2=50\)</span> is,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+f_{Y|X_2}(y=A|x_2=50) &amp;= \frac{f_{X_2|Y}(x_2=50|y=A) f_{Y}(y=A)}{f_{X_2}(x_2=50)} \\
+&amp;= \dfrac{(151/342) \cdot 0.0000212}{0.05579} \\
+&amp;\approx 0.0002
+\end{aligned}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+f_{Y|X_2}(y=C|x_2=50) \approx 0.3992 \\
+\end{aligned}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+f_{Y|X_2}(y=G|x_2=50) \approx 0.6006 \\
+\end{aligned}
+\end{split}\]</div>
+<p>Again note that these are not probabilities, they are probability densities. This time round,
+the final results was pushed over again by the fact that Gentoo is more common in the wild (prior <span class="math notranslate nohighlight">\(P(Y=G)\approx 0.3605\)</span>).</p>
 <p>16/12/2022</p>
 <p>once i get prob of 0.3992 , 0.6006 and 0.0002, we can then reconcile with the
 conditional KDE plot above, and “eyeball” that for 50mm, the area under the
@@ -2169,7 +2224,7 @@ found through MLE are the sample mean and sample variance of the data.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f94bf618730&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fae443fe910&gt;
 </pre></div>
 </div>
 <img alt="../_images/naive_bayes_example_64_1.png" src="../_images/naive_bayes_example_64_1.png" />
@@ -2182,7 +2237,7 @@ found through MLE are the sample mean and sample variance of the data.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f94bf7e9070&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fae44386370&gt;
 </pre></div>
 </div>
 <img alt="../_images/naive_bayes_example_66_1.png" src="../_images/naive_bayes_example_66_1.png" />
@@ -2200,7 +2255,7 @@ found through MLE are the sample mean and sample variance of the data.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7f94bf44a940&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7fae4430e430&gt;
 </pre></div>
 </div>
 <img alt="../_images/naive_bayes_example_69_1.png" src="../_images/naive_bayes_example_69_1.png" />
@@ -2221,7 +2276,7 @@ found through MLE are the sample mean and sample variance of the data.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f94bf33ff40&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fae441cd1f0&gt;
 </pre></div>
 </div>
 <img alt="../_images/naive_bayes_example_71_1.png" src="../_images/naive_bayes_example_71_1.png" />
