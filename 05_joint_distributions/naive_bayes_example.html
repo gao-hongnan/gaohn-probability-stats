@@ -663,17 +663,24 @@ title="Print to PDF"
      One Quantitative Predictor
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#two-predictors">
+     Two Predictors
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#plots">
+       Plots!!!
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#three-predictors">
+     Three Predictors
+    </a>
+   </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#plotting-joint-and-marginal-distributions">
-   Plotting joint and marginal distributions
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#features-1-class-plots">
-   2 Features + 1 Class Plots
-  </a>
  </li>
 </ul>
 
@@ -714,17 +721,24 @@ title="Print to PDF"
      One Quantitative Predictor
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#two-predictors">
+     Two Predictors
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#plots">
+       Plots!!!
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#three-predictors">
+     Three Predictors
+    </a>
+   </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#plotting-joint-and-marginal-distributions">
-   Plotting joint and marginal distributions
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#features-1-class-plots">
-   2 Features + 1 Class Plots
-  </a>
  </li>
 </ul>
 
@@ -1236,7 +1250,7 @@ of it being an Adelie is <span class="math notranslate nohighlight">\(0.44\)</sp
 <h2>Classifying one penguin<a class="headerlink" href="#classifying-one-penguin" title="Permalink to this headline">#</a></h2>
 <p>Consider a new penguin with the following features:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">body_mass_g</span></code> <span class="math notranslate nohighlight">\(&lt; 4200 \mathrm{~g}\)</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">body_mass_g</span></code> <span class="math notranslate nohighlight">\(&lt; 4200 \mathrm{~g}\)</span> (<code class="docutils literal notranslate"><span class="pre">overweight</span></code> = 0 if <code class="docutils literal notranslate"><span class="pre">body_mass_g</span></code> <span class="math notranslate nohighlight">\(&lt; 4200 \mathrm{~g}\)</span>, 1 otherwise)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">bill_length_mm</span></code> <span class="math notranslate nohighlight">\(50 \mathrm{~mm}\)</span></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">flipper_length_mm</span></code> <span class="math notranslate nohighlight">\(195 \mathrm{~mm}\)</span></p></li>
 </ul>
@@ -1856,6 +1870,7 @@ _ = sns.kdeplot(
 )
 # plot vertical line
 _ = plt.axvline(x2, color=&quot;r&quot;, linestyle=&quot;--&quot;, label=&quot;50 mm&quot;)
+plt.title(&quot;Density plot of bill length&quot;)
 # plt.legend()
 plt.show();
 </pre></div>
@@ -1877,7 +1892,7 @@ sns.jointplot(data=penguins, x=&quot;bill_length_mm&quot;, y=&quot;species&quot;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7fae446a7340&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7f112c1ac940&gt;
 </pre></div>
 </div>
 <img alt="../_images/naive_bayes_example_40_1.png" src="../_images/naive_bayes_example_40_1.png" />
@@ -2171,6 +2186,178 @@ f_{Y|X_2}(y=G|x_2=50) \approx 0.6006 \\
 \end{split}\]</div>
 <p>Again note that these are not probabilities, they are probability densities. This time round,
 the final results was pushed over again by the fact that Gentoo is more common in the wild (prior <span class="math notranslate nohighlight">\(P(Y=G)\approx 0.3605\)</span>).</p>
+</section>
+<section id="two-predictors">
+<h3>Two Predictors<a class="headerlink" href="#two-predictors" title="Permalink to this headline">#</a></h3>
+<p>The reality is that the data is usually multi-dimensional, and we need to use multiple predictors
+to make a prediction.</p>
+<p>In the previous two examples, we have seen that for the same penguin with the following features,</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">body_mass_g</span></code> <span class="math notranslate nohighlight">\(&lt; 4200 \mathrm{~g}\)</span> (<code class="docutils literal notranslate"><span class="pre">overweight</span></code> = 0 if <code class="docutils literal notranslate"><span class="pre">body_mass_g</span></code> <span class="math notranslate nohighlight">\(&lt; 4200 \mathrm{~g}\)</span>, 1 otherwise)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bill_length_mm</span></code> <span class="math notranslate nohighlight">\(50 \mathrm{~mm}\)</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">flipper_length_mm</span></code> <span class="math notranslate nohighlight">\(195 \mathrm{~mm}\)</span></p></li>
+</ul>
+<p>the predictions for the species is an Adelie if we only use <code class="docutils literal notranslate"><span class="pre">overweight</span></code>, and
+a Gentoo if we only use <code class="docutils literal notranslate"><span class="pre">bill_length_mm</span></code>. This inconsistency suggest that
+our model may have room for improvement. Intuitively, we can add
+multiple predictors to our model to make a more accurate prediction, though
+this is not always the case if the predictors are correlated, or if there are
+too many predictors (curse of dimensionality).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># plotting both distibutions on the same figure
+_ = sns.kdeplot(data=penguins, x=&quot;flipper_length_mm&quot;, fill=True, common_norm=False, alpha=.5, linewidth=0, legend=True)
+# plot vertical line 
+_ = plt.axvline(x=penguins[&quot;flipper_length_mm&quot;].mean(), color=&#39;red&#39;, linestyle=&#39;--&#39;)
+# plt.legend()
+plt.show();
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/naive_bayes_example_57_0.png" src="../_images/naive_bayes_example_57_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># plotting both distibutions on the same figure
+x3 = 195
+_ = sns.kdeplot(
+    data=penguins,
+    x=&quot;flipper_length_mm&quot;,
+    hue=&quot;species&quot;,
+    fill=True,
+    common_norm=False,
+    alpha=0.5,
+    linewidth=0,
+    legend=True,
+)
+# plot vertical line
+_ = plt.axvline(x3, color=&quot;r&quot;, linestyle=&quot;--&quot;, label=&quot;195 mm&quot;)
+plt.title(&quot;Density plot of flipper length&quot;)
+# plt.legend()
+plt.show();
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/naive_bayes_example_58_0.png" src="../_images/naive_bayes_example_58_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># plotting both distibutions on the same figure
+x2 = 50
+_ = sns.kdeplot(
+    data=penguins,
+    x=&quot;bill_length_mm&quot;,
+    hue=&quot;species&quot;,
+    fill=True,
+    common_norm=False,
+    alpha=0.5,
+    linewidth=0,
+    legend=True,
+)
+# plot vertical line
+_ = plt.axvline(x2, color=&quot;r&quot;, linestyle=&quot;--&quot;, label=&quot;50 mm&quot;)
+plt.title(&quot;Density plot of bill length&quot;)
+# plt.legend()
+plt.show();
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/naive_bayes_example_59_0.png" src="../_images/naive_bayes_example_59_0.png" />
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">bill_length_mm</span></code> and <code class="docutils literal notranslate"><span class="pre">flipper_length_mm</span></code> are plotted above as density plots,
+just by looking at them alone may be hard to distinguish between the
+Chinstrap and Gentoo for the <code class="docutils literal notranslate"><span class="pre">bill_length_mm</span></code> plot because they are
+quite close (overlap in density curve) with each other, while if you
+only look at the <code class="docutils literal notranslate"><span class="pre">flipper_length_mm</span></code> plot, you can see that the Chinstrap and
+Adelie are now quite close to each other, but if you combine
+both <code class="docutils literal notranslate"><span class="pre">bill_length_mm</span></code> and <code class="docutils literal notranslate"><span class="pre">flipper_length_mm</span></code> together, you can see that
+it is much easier to distinguish between them.</p>
+<section id="plots">
+<h4>Plots!!!<a class="headerlink" href="#plots" title="Permalink to this headline">#</a></h4>
+<p>This plot is from <a class="reference external" href="https://seaborn.pydata.org/tutorial/distributions.html#distribution-visualization-in-other-settings">Seaborn guide</a>, one can see with default setting
+we have a joint plot of <code class="docutils literal notranslate"><span class="pre">bill_length_mm</span></code> and <code class="docutils literal notranslate"><span class="pre">flipper_length_mm</span></code> with the marginal
+histograms on the side. The joint plot is a scatter plot of the two variables.</p>
+<p>The plot with <code class="docutils literal notranslate"><span class="pre">kind=hist</span></code> will show the joint distribution as a histogram, and the
+rectangular bins are colored by the density of the points in each bin. The darker
+the color the more points in that bin. You can understand this as impulses from chan’s book.</p>
+<p>Lastly, the plot with <code class="docutils literal notranslate"><span class="pre">kind=kde</span></code> will show the joint distribution as a contour plot.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.jointplot(data=penguins, x=&quot;bill_length_mm&quot;, y=&quot;flipper_length_mm&quot;, color=&quot;orange&quot;)
+sns.jointplot(
+    data=penguins,
+    x=&quot;bill_length_mm&quot;,
+    y=&quot;flipper_length_mm&quot;,
+    kind=&quot;hist&quot;,
+    color=&quot;orange&quot;,
+    cbar=True,
+)
+sns.jointplot(
+    data=penguins,
+    x=&quot;bill_length_mm&quot;,
+    y=&quot;flipper_length_mm&quot;,
+    kind=&quot;kde&quot;,
+    color=&quot;orange&quot;,
+    # cbar=True,
+)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7f112bd89a90&gt;
+</pre></div>
+</div>
+<img alt="../_images/naive_bayes_example_63_1.png" src="../_images/naive_bayes_example_63_1.png" />
+<img alt="../_images/naive_bayes_example_63_2.png" src="../_images/naive_bayes_example_63_2.png" />
+<img alt="../_images/naive_bayes_example_63_3.png" src="../_images/naive_bayes_example_63_3.png" />
+</div>
+</div>
+<p>To see the joint distribution conditioned on the class (species) <span class="math notranslate nohighlight">\(Y\)</span>, where <span class="math notranslate nohighlight">\(Y\)</span>
+can be treated as a random variable as well <a class="footnote-reference brackets" href="#id2" id="id1">1</a>, we can use the <code class="docutils literal notranslate"><span class="pre">hue</span></code> argument.</p>
+<p>To emphasise, the way to approach conditional distributions is to zoom in on the
+“reduced” sample space, for example if I want to look at the conditional distribution
+of <span class="math notranslate nohighlight">\(X_2\)</span> and <span class="math notranslate nohighlight">\(X_3\)</span> conditioned on <span class="math notranslate nohighlight">\(Y=G\)</span>, then you should look at the green colored
+hues.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.jointplot(data=penguins, x=&quot;bill_length_mm&quot;, y=&quot;flipper_length_mm&quot;, hue=&quot;species&quot;)
+sns.jointplot(
+    data=penguins, x=&quot;bill_length_mm&quot;, y=&quot;flipper_length_mm&quot;, hue=&quot;species&quot;, kind=&quot;hist&quot;
+)
+sns.jointplot(
+    data=penguins, x=&quot;bill_length_mm&quot;, y=&quot;flipper_length_mm&quot;, hue=&quot;species&quot;, kind=&quot;kde&quot;
+)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7f112c232280&gt;
+</pre></div>
+</div>
+<img alt="../_images/naive_bayes_example_65_1.png" src="../_images/naive_bayes_example_65_1.png" />
+<img alt="../_images/naive_bayes_example_65_2.png" src="../_images/naive_bayes_example_65_2.png" />
+<img alt="../_images/naive_bayes_example_65_3.png" src="../_images/naive_bayes_example_65_3.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="three-predictors">
+<h3>Three Predictors<a class="headerlink" href="#three-predictors" title="Permalink to this headline">#</a></h3>
+<p>Even though not mentioned in the book, we can also use 3 predictors to make a prediction.
+The three predictors are <code class="docutils literal notranslate"><span class="pre">overweight</span></code>, <code class="docutils literal notranslate"><span class="pre">bill_length_mm</span></code>, and <code class="docutils literal notranslate"><span class="pre">flipper_length_mm</span></code>. The tricky
+part is that <code class="docutils literal notranslate"><span class="pre">overweight</span></code> is a categorical variable, and <code class="docutils literal notranslate"><span class="pre">bill_length_mm</span></code> and <code class="docutils literal notranslate"><span class="pre">flipper_length_mm</span></code>
+are continuous variables. We can still do it though, <a class="reference external" href="https://dafriedman97.github.io/mlbook/content/c4/concept.html#model-structure">dafriedman97</a>
+mentioned that we for a random vector <span class="math notranslate nohighlight">\(\mathrm{X_n} = (X_{n1}, X_{n2}, \ldots, X_{nd})\)</span>, the individual
+predictors can take on different distributions. In our case, <code class="docutils literal notranslate"><span class="pre">overweight</span></code> is assumed to be follow a Bernoulli distribution,
+<code class="docutils literal notranslate"><span class="pre">bill_length_mm</span></code> and <code class="docutils literal notranslate"><span class="pre">flipper_length_mm</span></code> are assumed to be follow a Gaussian distribution. Note again that
+this is an assumption, and we can always change it to something else if we want to since Naive Bayes does
+not have any assumptions on the distribution of the predictors (potentially confusing part!).</p>
 <p>16/12/2022</p>
 <p>once i get prob of 0.3992 , 0.6006 and 0.0002, we can then reconcile with the
 conditional KDE plot above, and “eyeball” that for 50mm, the area under the
@@ -2224,10 +2411,10 @@ found through MLE are the sample mean and sample variance of the data.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fae443fe910&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f11285337c0&gt;
 </pre></div>
 </div>
-<img alt="../_images/naive_bayes_example_64_1.png" src="../_images/naive_bayes_example_64_1.png" />
+<img alt="../_images/naive_bayes_example_77_1.png" src="../_images/naive_bayes_example_77_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2237,64 +2424,21 @@ found through MLE are the sample mean and sample variance of the data.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fae44386370&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f112beff460&gt;
 </pre></div>
 </div>
-<img alt="../_images/naive_bayes_example_66_1.png" src="../_images/naive_bayes_example_66_1.png" />
+<img alt="../_images/naive_bayes_example_79_1.png" src="../_images/naive_bayes_example_79_1.png" />
 </div>
 </div>
+<hr class="footnotes docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>In Naive Bayes, both the predictor and the target are random variables, while
+it is not the case for logistic regression. Regardless, once you condition on <span class="math notranslate nohighlight">\(Y\)</span>, <span class="math notranslate nohighlight">\(Y\)</span>
+is no longer random.</p>
+</dd>
+</dl>
 </section>
-</section>
-<section id="plotting-joint-and-marginal-distributions">
-<h2>Plotting joint and marginal distributions<a class="headerlink" href="#plotting-joint-and-marginal-distributions" title="Permalink to this headline">#</a></h2>
-<p>The first is jointplot(), which augments a bivariate relatonal or distribution plot with the marginal distributions of the two variables. By default, jointplot() represents the bivariate distribution using scatterplot() and the marginal distributions using histplot():</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.jointplot(data=penguins, x=&quot;bill_length_mm&quot;, y=&quot;bill_depth_mm&quot;)
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7fae4430e430&gt;
-</pre></div>
-</div>
-<img alt="../_images/naive_bayes_example_69_1.png" src="../_images/naive_bayes_example_69_1.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># ax = sns.histplot(x = df[&#39;class&#39;], hue=df[&#39;survived&#39;], multiple=&quot;dodge&quot;, 
-#                   stat = &#39;density&#39;, shrink = 0.8, common_norm=False)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.displot(data=penguins, x=&quot;body_mass_g&quot;, hue=&quot;species&quot;, kind=&quot;kde&quot;, fill=True)
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fae441cd1f0&gt;
-</pre></div>
-</div>
-<img alt="../_images/naive_bayes_example_71_1.png" src="../_images/naive_bayes_example_71_1.png" />
-</div>
-</div>
-</section>
-<section id="features-1-class-plots">
-<h2>2 Features + 1 Class Plots<a class="headerlink" href="#features-1-class-plots" title="Permalink to this headline">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>g = sns.JointGrid(data=penguins, x=&quot;bill_length_mm&quot;, y=&quot;bill_depth_mm&quot;)
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/naive_bayes_example_73_0.png" src="../_images/naive_bayes_example_73_0.png" />
-</div>
-</div>
 </section>
 </section>
 
