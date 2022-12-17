@@ -1892,7 +1892,7 @@ sns.jointplot(data=penguins, x=&quot;bill_length_mm&quot;, y=&quot;species&quot;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7f112c1ac940&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7f7933f1d490&gt;
 </pre></div>
 </div>
 <img alt="../_images/naive_bayes_example_40_1.png" src="../_images/naive_bayes_example_40_1.png" />
@@ -2310,7 +2310,7 @@ sns.jointplot(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7f112bd89a90&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7f7938053160&gt;
 </pre></div>
 </div>
 <img alt="../_images/naive_bayes_example_63_1.png" src="../_images/naive_bayes_example_63_1.png" />
@@ -2337,12 +2337,54 @@ sns.jointplot(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7f112c232280&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7f7933734220&gt;
 </pre></div>
 </div>
 <img alt="../_images/naive_bayes_example_65_1.png" src="../_images/naive_bayes_example_65_1.png" />
 <img alt="../_images/naive_bayes_example_65_2.png" src="../_images/naive_bayes_example_65_2.png" />
 <img alt="../_images/naive_bayes_example_65_3.png" src="../_images/naive_bayes_example_65_3.png" />
+</div>
+</div>
+<p>Now we plot two dashed lines for where <span class="math notranslate nohighlight">\(X_2=50\)</span> and <span class="math notranslate nohighlight">\(X_3=195\)</span> respectively, and
+see that when combined together, the penguin lies amongst the Chinstrap species,
+and it is not even close to the other two speces!!</p>
+<p>To internalize this concept, we are again looking at the argmax expression below:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\hat{y} &amp;= \arg\max_{y \in \mathcal{Y}} \mathbb{P}(Y=y|X_2=x_2,X_3=x_3) \\
+        &amp;= \arg\max_{y \in \mathcal{Y}} \mathbb{P}(Y=y|X_2=50,X_3=195) \\
+\end{aligned}
+\end{split}\]</div>
+<p>or equivalently,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\hat{y} &amp;= \arg\max_{y \in \mathcal{Y}} f_{Y|X_2,X_3}(y|x_2,x_3) \\
+        &amp;= \arg\max_{y \in \mathcal{Y}} f_{Y|X_2,X_3}(y|50,195) \\
+\end{aligned}
+\end{split}\]</div>
+<p>We want to know <strong>given each species <span class="math notranslate nohighlight">\(Y\)</span></strong>, which <span class="math notranslate nohighlight">\(y\)</span> <strong>maximizes</strong>
+this conditional probability density function <span class="math notranslate nohighlight">\(f_{Y|X_2,X_3}(y|x_2,x_3)\)</span>.
+In other words, given <span class="math notranslate nohighlight">\(X_2=50\)</span> and <span class="math notranslate nohighlight">\(X_3=195\)</span>, which species <span class="math notranslate nohighlight">\(Y\)</span> has the highest
+“probability” of being the true species of the penguin. And from the diagram,
+we can see that the Chinstrap species has the highest probability of being the true
+species of the penguin. We will see later that the geometric interpretation of this
+is correct, with the formula.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># sns.jointplot(data=penguins, x=&quot;bill_length_mm&quot;, y=&quot;flipper_length_mm&quot;, hue=&quot;species&quot;)
+sns.jointplot(
+    data=penguins, x=&quot;bill_length_mm&quot;, y=&quot;flipper_length_mm&quot;, hue=&quot;species&quot;, kind=&quot;hist&quot;
+)
+
+_ = plt.axvline(x2, color=&quot;black&quot;, linestyle=&quot;--&quot;, label=&quot;50 mm&quot;)
+_ = plt.axhline(x3, color=&quot;black&quot;, linestyle=&quot;--&quot;, label=&quot;195 mm&quot;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/naive_bayes_example_67_0.png" src="../_images/naive_bayes_example_67_0.png" />
 </div>
 </div>
 </section>
@@ -2411,10 +2453,10 @@ found through MLE are the sample mean and sample variance of the data.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f11285337c0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f793126aa00&gt;
 </pre></div>
 </div>
-<img alt="../_images/naive_bayes_example_77_1.png" src="../_images/naive_bayes_example_77_1.png" />
+<img alt="../_images/naive_bayes_example_78_1.png" src="../_images/naive_bayes_example_78_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2424,10 +2466,10 @@ found through MLE are the sample mean and sample variance of the data.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f112beff460&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f793137d670&gt;
 </pre></div>
 </div>
-<img alt="../_images/naive_bayes_example_79_1.png" src="../_images/naive_bayes_example_79_1.png" />
+<img alt="../_images/naive_bayes_example_80_1.png" src="../_images/naive_bayes_example_80_1.png" />
 </div>
 </div>
 <hr class="footnotes docutils" />
