@@ -644,6 +644,11 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#notations">
+   Notations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-prior">
    The Prior
   </a>
@@ -671,6 +676,11 @@ title="Print to PDF"
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#plots">
        Plots!!!
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#conditional-independence">
+       Conditional Independence
       </a>
      </li>
     </ul>
@@ -702,6 +712,11 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#notations">
+   Notations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-prior">
    The Prior
   </a>
@@ -731,6 +746,11 @@ title="Print to PDF"
        Plots!!!
       </a>
      </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#conditional-independence">
+       Conditional Independence
+      </a>
+     </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -752,6 +772,14 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="naive-bayes-example">
 <h1>Naive Bayes Example<a class="headerlink" href="#naive-bayes-example" title="Permalink to this headline">#</a></h1>
+<section id="notations">
+<h2>Notations<a class="headerlink" href="#notations" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathcal{D}\)</span>: Dataset</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathcal{D} = \{(\mathbf{x}_1, y_1), (\mathbf{x}_2, y_2), \cdots, (\mathbf{x}_N, y_N)\}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathcal{X}\)</span>: Feature space</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathcal{Y}\)</span>: Label space = <span class="math notranslate nohighlight">\(\{0, 1, 2\}\)</span></p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
@@ -1222,6 +1250,7 @@ Name: overweight, dtype: int64
 </div>
 </div>
 </div>
+</section>
 <section id="the-prior">
 <h2>The Prior<a class="headerlink" href="#the-prior" title="Permalink to this headline">#</a></h2>
 <p>The prior distribution for <span class="math notranslate nohighlight">\(Y\)</span> is a <a class="reference external" href="https://en.wikipedia.org/wiki/Categorical_distribution">categorical distribution</a> with three categories, one for each species. The prior probabilities are given by the relative frequencies of each species in the dataset:</p>
@@ -1464,7 +1493,7 @@ plt.show()
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/naive_bayes_example_21_0.png" src="../_images/naive_bayes_example_21_0.png" />
+<img alt="../_images/naive_bayes_example_22_0.png" src="../_images/naive_bayes_example_22_0.png" />
 </div>
 </div>
 <p>Before we do anything, we are given one categorical variable and for this penguin, it falls under
@@ -1621,7 +1650,7 @@ g.plot_marginals(sns.histplot, discrete=True, color=&quot;red&quot;);
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/naive_bayes_example_26_0.png" src="../_images/naive_bayes_example_26_0.png" />
+<img alt="../_images/naive_bayes_example_27_0.png" src="../_images/naive_bayes_example_27_0.png" />
 </div>
 </div>
 <p>We can also use seaborns <code class="docutils literal notranslate"><span class="pre">jointgrid</span></code> to do a joint distribution plot, the darker tone of red
@@ -1843,7 +1872,7 @@ plt.show();
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/naive_bayes_example_36_0.png" src="../_images/naive_bayes_example_36_0.png" />
+<img alt="../_images/naive_bayes_example_37_0.png" src="../_images/naive_bayes_example_37_0.png" />
 </div>
 </div>
 <p>The kdeplot above is for an univariate, empirical estimation of the whole dataset, not
@@ -1877,7 +1906,7 @@ plt.show();
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/naive_bayes_example_38_0.png" src="../_images/naive_bayes_example_38_0.png" />
+<img alt="../_images/naive_bayes_example_39_0.png" src="../_images/naive_bayes_example_39_0.png" />
 </div>
 </div>
 <p>Before we move on, some EDA on the joint distribution of <span class="math notranslate nohighlight">\(X_2\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>.
@@ -1892,11 +1921,11 @@ sns.jointplot(data=penguins, x=&quot;bill_length_mm&quot;, y=&quot;species&quot;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7f7933f1d490&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7f8e8872c940&gt;
 </pre></div>
 </div>
-<img alt="../_images/naive_bayes_example_40_1.png" src="../_images/naive_bayes_example_40_1.png" />
-<img alt="../_images/naive_bayes_example_40_2.png" src="../_images/naive_bayes_example_40_2.png" />
+<img alt="../_images/naive_bayes_example_41_1.png" src="../_images/naive_bayes_example_41_1.png" />
+<img alt="../_images/naive_bayes_example_41_2.png" src="../_images/naive_bayes_example_41_2.png" />
 </div>
 </div>
 <p>We see that the for this penguin with <code class="docutils literal notranslate"><span class="pre">bill_length_mm</span></code> of 50mm, our gut feeling tells us
@@ -2083,7 +2112,7 @@ plt.show();
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/naive_bayes_example_49_0.png" src="../_images/naive_bayes_example_49_0.png" />
+<img alt="../_images/naive_bayes_example_50_0.png" src="../_images/naive_bayes_example_50_0.png" />
 </div>
 </div>
 <p>As we can see, the this naive assumption of Gaussian distribution for <span class="math notranslate nohighlight">\(X_2\)</span> given <span class="math notranslate nohighlight">\(Y\)</span> is not
@@ -2215,7 +2244,7 @@ plt.show();
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/naive_bayes_example_57_0.png" src="../_images/naive_bayes_example_57_0.png" />
+<img alt="../_images/naive_bayes_example_58_0.png" src="../_images/naive_bayes_example_58_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2241,7 +2270,7 @@ plt.show();
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/naive_bayes_example_58_0.png" src="../_images/naive_bayes_example_58_0.png" />
+<img alt="../_images/naive_bayes_example_59_0.png" src="../_images/naive_bayes_example_59_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2267,7 +2296,7 @@ plt.show();
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/naive_bayes_example_59_0.png" src="../_images/naive_bayes_example_59_0.png" />
+<img alt="../_images/naive_bayes_example_60_0.png" src="../_images/naive_bayes_example_60_0.png" />
 </div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">bill_length_mm</span></code> and <code class="docutils literal notranslate"><span class="pre">flipper_length_mm</span></code> are plotted above as density plots,
@@ -2310,12 +2339,12 @@ sns.jointplot(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7f7938053160&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7f8e880b8d30&gt;
 </pre></div>
 </div>
-<img alt="../_images/naive_bayes_example_63_1.png" src="../_images/naive_bayes_example_63_1.png" />
-<img alt="../_images/naive_bayes_example_63_2.png" src="../_images/naive_bayes_example_63_2.png" />
-<img alt="../_images/naive_bayes_example_63_3.png" src="../_images/naive_bayes_example_63_3.png" />
+<img alt="../_images/naive_bayes_example_64_1.png" src="../_images/naive_bayes_example_64_1.png" />
+<img alt="../_images/naive_bayes_example_64_2.png" src="../_images/naive_bayes_example_64_2.png" />
+<img alt="../_images/naive_bayes_example_64_3.png" src="../_images/naive_bayes_example_64_3.png" />
 </div>
 </div>
 <p>To see the joint distribution conditioned on the class (species) <span class="math notranslate nohighlight">\(Y\)</span>, where <span class="math notranslate nohighlight">\(Y\)</span>
@@ -2337,12 +2366,12 @@ sns.jointplot(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7f7933734220&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7f8e888317f0&gt;
 </pre></div>
 </div>
-<img alt="../_images/naive_bayes_example_65_1.png" src="../_images/naive_bayes_example_65_1.png" />
-<img alt="../_images/naive_bayes_example_65_2.png" src="../_images/naive_bayes_example_65_2.png" />
-<img alt="../_images/naive_bayes_example_65_3.png" src="../_images/naive_bayes_example_65_3.png" />
+<img alt="../_images/naive_bayes_example_66_1.png" src="../_images/naive_bayes_example_66_1.png" />
+<img alt="../_images/naive_bayes_example_66_2.png" src="../_images/naive_bayes_example_66_2.png" />
+<img alt="../_images/naive_bayes_example_66_3.png" src="../_images/naive_bayes_example_66_3.png" />
 </div>
 </div>
 <p>Now we plot two dashed lines for where <span class="math notranslate nohighlight">\(X_2=50\)</span> and <span class="math notranslate nohighlight">\(X_3=195\)</span> respectively, and
@@ -2384,9 +2413,29 @@ _ = plt.axhline(x3, color=&quot;black&quot;, linestyle=&quot;--&quot;, label=&qu
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/naive_bayes_example_67_0.png" src="../_images/naive_bayes_example_67_0.png" />
+<img alt="../_images/naive_bayes_example_68_0.png" src="../_images/naive_bayes_example_68_0.png" />
 </div>
 </div>
+</section>
+<section id="conditional-independence">
+<h4>Conditional Independence<a class="headerlink" href="#conditional-independence" title="Permalink to this headline">#</a></h4>
+<p>Let’s use naive Bayes to make a prediction for the same penguin with the following features
+<span class="math notranslate nohighlight">\(X_2=x_2\)</span> and <span class="math notranslate nohighlight">\(X_3=x_3\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+f_{Y|X_2,X_3}(y|x_2,x_3) &amp;= \frac{f_{X_2,X_3|Y}(x_2,x_3|y) f_{Y}(y)}{f_{X_2,X_3}(x_2,x_3)} \\
+                         &amp;= \frac{f_{X_2,X_3|Y}(x_2,x_3|y) f_{Y}(y)}{\sum_{y \in \mathcal{Y}} f_{X_2,X_3|Y}(x_2,x_3|y) f_{Y}(y)} \\
+\end{aligned}
+\end{split}\]</div>
+<p>Another hurdle is presented in front of us, we need to compute the conditional
+joint distribution (PDF) <span class="math notranslate nohighlight">\(f_{X_2,X_3|Y}(x_2,x_3|y)\)</span>, which is not easy to do…in fact
+I have no idea how to do it. This is because we were dealing with only one-dimensional
+distribution, even though there are two variables just now, but as I mentioned,
+when we condition on <span class="math notranslate nohighlight">\(Y\)</span>, we are looking at the reduced sample space of <span class="math notranslate nohighlight">\(X\)</span> in
+which <span class="math notranslate nohighlight">\(Y\)</span> is fixed,
+and not the joint sample space of <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>. This is the reason why we can happily
+use 1dimensional Gaussian to get the conditional distribution of <span class="math notranslate nohighlight">\(X_2\)</span>.</p>
 </section>
 </section>
 <section id="three-predictors">
@@ -2453,10 +2502,10 @@ found through MLE are the sample mean and sample variance of the data.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f793126aa00&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f8e8496f070&gt;
 </pre></div>
 </div>
-<img alt="../_images/naive_bayes_example_78_1.png" src="../_images/naive_bayes_example_78_1.png" />
+<img alt="../_images/naive_bayes_example_80_1.png" src="../_images/naive_bayes_example_80_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2466,10 +2515,10 @@ found through MLE are the sample mean and sample variance of the data.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f793137d670&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f8e84926130&gt;
 </pre></div>
 </div>
-<img alt="../_images/naive_bayes_example_80_1.png" src="../_images/naive_bayes_example_80_1.png" />
+<img alt="../_images/naive_bayes_example_82_1.png" src="../_images/naive_bayes_example_82_1.png" />
 </div>
 </div>
 <hr class="footnotes docutils" />
