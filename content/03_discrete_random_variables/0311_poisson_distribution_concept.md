@@ -60,11 +60,14 @@ Some conventions:
 
 ## Plotting PMF and CDF of Poisson Distribution
 
+The below plot shows the PMF and its Empirical Histogram distribution for a Poisson distribution with
+$\lambda \in \lset 5, 10, 20 \rset$.
+
 ```{code-cell} ipython3
 :tags: [hide-input]
 from plot import plot_poisson_pmfs, plot_empirical_poisson
 
-_fig, axes = plt.subplots(2, 1, figsize=(12, 8), dpi=125)
+_fig, axes = plt.subplots(2, 1, figsize=(12, 10), dpi=125)
 lambdas = [5, 10, 20]
 plot_poisson_pmfs(lambdas=lambdas, ax=axes[0])
 plot_empirical_poisson(lambdas=lambdas, ax=axes[1])

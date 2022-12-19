@@ -28,7 +28,7 @@ parts:
     - file: 03_discrete_random_variables/0304_cumulative_distribution_function.md
     - file: 03_discrete_random_variables/0305_expectation.md
     - file: 03_discrete_random_variables/0306_moments_and_variance.md
-    - file: 03_discrete_random_variables/0307_discrete_uniform_distribution.md
+    - file: 03_discrete_random_variables/0307_discrete_uniform_distribution_concept.md
       sections:
       - file: 03_discrete_random_variables/0307_discrete_uniform_distribution_implementation.ipynb    
     - file: 03_discrete_random_variables/0308_bernoulli_distribution_concept.md
@@ -43,7 +43,7 @@ parts:
     - file: 03_discrete_random_variables/0311_poisson_distribution_concept.md
       sections:
       - file: 03_discrete_random_variables/0311_poisson_distribution_implementation.ipynb
-    # - file: 03_discrete_random_variables/summary.md
+    - file: 03_discrete_random_variables/summary.md
     - file: 03_discrete_random_variables/exercises.md
 
   - caption: Chapter 4. Continuous Random Variables
@@ -60,10 +60,13 @@ parts:
     - file: 04_continuous_random_variables/0409_gaussian_distribution.md
     - file: 04_continuous_random_variables/0410_skewness_and_kurtosis.md
     - file: 04_continuous_random_variables/0411_convolve_and_sum_of_random_variables.md
+    - file: 04_continuous_random_variables/0412_functions_of_random_variables.md
 
   - caption: Chapter 5. Joint Distributions
     chapters:
     - file: 05_joint_distributions/braindump.md
+    - file: 05_joint_distributions/naive_bayes.ipynb
+    - file: 05_joint_distributions/naive_bayes_example.ipynb
 
   - caption: References and Resources
     chapters:

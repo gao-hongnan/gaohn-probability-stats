@@ -108,7 +108,7 @@ The PMF and CDF plots are shown below.
 :tags: [hide-input]
 from plot import plot_bernoulli_pmf
 
-_fig, axes = plt.subplots(1,2, figsize=(8.4, 4.8), dpi=300)
+_fig, axes = plt.subplots(1,2, figsize=(8.4, 4.8), sharey=True, dpi=125)
 plot_bernoulli_pmf(p=0.2, ax=axes[0])
 plot_bernoulli_pmf(p=0.8, ax=axes[1])
 plt.show()
@@ -118,7 +118,7 @@ plt.show()
 :tags: [hide-input]
 from plot import plot_bernoulli_pmf, plot_empirical_bernoulli
 
-fig, axes = plt.subplots(1, 2, figsize=(8.4, 4.8), sharey=True, dpi=100)
+fig, axes = plt.subplots(1, 2, figsize=(8.4, 4.8), sharey=True, dpi=125)
 plot_bernoulli_pmf(p=0.2, ax=axes[0])
 plot_empirical_bernoulli(p=0.2, size=100, ax=axes[0])
 

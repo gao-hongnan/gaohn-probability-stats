@@ -15,6 +15,19 @@ kernelspec:
   name: python3
 ---
 
+```{code-cell} ipython3
+:tags: [remove-input]
+import sys
+from pathlib import Path
+parent_dir = str(Path().resolve().parent)
+sys.path.append(parent_dir)
+
+import matplotlib.pyplot as plt
+%matplotlib inline
+import matplotlib_inline
+matplotlib_inline.backend_inline.set_matplotlib_formats('svg')
+```
+
 # Convolution and Sum of Random Variables
 
 In {cite}`chan_2021`, the author gave us an intuitive treatment of the origin of
@@ -37,16 +50,13 @@ the sum of two dice to be more likely to be closer to 7 than 2 or 12, simply bec
 there are more way to get a sum of 7 (e.g. $(1, 6)$, $(2, 5)$, $(3, 4)$ ...) than
 to get a sum of 2 or 12 (e.g. $(1, 1)$, $(6, 6)$).
 
+The logic follows when we throw $6$ dice and consider $Z = X_1 + X_2 + \cdots + X_6$,
+and if we throw $100$ dice, we will get $Z = X_1 + X_2 + \cdots + X_{100}$. The triangle
+shape will "evolve" and become more and more like a bell curve, as shown below.
 
 ```{code-cell} ipython3
 :tags: [hide-input]
-
-import sys
-from pathlib import Path
-parent_dir = str(Path().resolve().parent)
-sys.path.append(parent_dir)
-
-from utils import plot_sum_of_uniform_distribution
+from plot import plot_sum_of_uniform_distribution
 
 plot_sum_of_uniform_distribution()
 ```

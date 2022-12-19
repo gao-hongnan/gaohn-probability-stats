@@ -1,4 +1,4 @@
-# Problems and Solutions
+# Exercises
 
 ## Problem 1
 

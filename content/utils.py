@@ -4,106 +4,10 @@ import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy import stats
-
+from matplotlib_inline import backend_inline
 
 # plt.rcParams["figure.dpi"] = 600
 # plt.rcParams["savefig.dpi"] = 600
-
-# pylint: disable=too-many-arguments
-def plot_empirical_hist_distribution(
-    distribution: np.ndarray,
-    bins: List[float],
-    ax: Optional[plt.Axes] = None,
-    title="Uniform Distribution",
-    linewidth: int = 2,
-    alpha: float = 0.5,
-    color: str = "#0504AA",
-    density: bool = True,
-    xlim: Optional[Tuple[float, float]] = None,
-    ylim: Optional[Tuple[float, float]] = None,
-    xlabel: str = "x",
-    ylabel: str = "P[X = x]",
-    xticks: Optional[List[float]] = None,
-) -> matplotlib.container.BarContainer:
-    """Takes in a distribution (population or sample values), and plots the empirical distribution."""
-    ax = ax or plt.gca()
-
-    _, _, hist = ax.hist(
-        distribution,
-        bins,
-        density=density,
-        color=color,
-        alpha=alpha,
-        edgecolor="black",
-        linewidth=linewidth,
-    )
-
-    ax.set_title(title, fontsize=16)
-    ax.set_xlabel(xlabel, fontsize=16)
-    ax.set_ylabel(ylabel, fontsize=16)
-
-    if xticks is None:
-        ax.set_xticks(bins + 0.5)
-    else:
-        ax.set_xticks(xticks)
-
-    if xlim is not None:
-        ax.set_xlim(*xlim)
-
-    if ylim is not None:
-        ax.set_ylim(*ylim)
-
-    return hist
-
-
-def plot_sum_of_uniform_distribution() -> None:
-    """This plot is used to show the sum of multiple uniform distributions."""
-    fig, axes = plt.subplots(2, 2, figsize=(20, 12))
-    # discrete uniform distribution
-    low, high = 1, 6 + 1  # [1, 6] for dice roll
-    X = stats.randint(low, high)
-
-    n_rolls = 10000
-    num_rvs = 100
-
-    list_of_rvs = [X.rvs(size=n_rolls) for _ in range(num_rvs)]
-    Z1 = X.rvs(size=n_rolls)  # X
-    states_z1 = np.arange(low, high + 1)
-    bins_z1 = states_z1 - 0.5  # center the bins
-
-    Z2 = list_of_rvs[0] + list_of_rvs[1]  # X1 + X2
-    states_z2 = np.arange(2, 12 + 1)  # [2, 12] since it is sum of 2 variables
-    bins_z2 = states_z2 - 0.5  # center the bins
-
-    Z6 = sum(list_of_rvs[:6])  # X1 + X2 + X3 + X4 + X5 + X6
-    states_z6 = np.arange(6, 36 + 1)  # [6, 36] since it is sum of 6 variables
-    bins_z6 = states_z6 - 0.5  # center the bins
-
-    Z100 = sum(list_of_rvs)  # X1 + X2 + ... + X100
-    states_z100 = np.arange(100, 600 + 1)  # [100, 600] since it is sum of 100 variables
-    bins_z100 = states_z100 - 0.5  # center the bins
-    plot_empirical_hist_distribution(
-        Z1, bins=bins_z1, ax=axes[0, 0], title="Distribution of $Z = X$"
-    )
-    plot_empirical_hist_distribution(
-        Z2, bins=bins_z2, ax=axes[0, 1], title="Distribution of $Z = X1 + X2$"
-    )
-    plot_empirical_hist_distribution(
-        Z6,
-        bins=bins_z6,
-        ax=axes[1, 0],
-        title="Distribution of $Z = X1 + X2 + X3 + X4 + X5 + X6$",
-    )
-    plot_empirical_hist_distribution(
-        Z100,
-        bins=bins_z100,
-        linewidth=0.01,
-        xlim=(100, 600),
-        xticks=np.arange(100, 600 + 1, 50),
-        ax=axes[1, 1],
-        title="Distribution of $Z = X1 + X2 + \ldots + X100$",
-    )
-    plt.show()
 
 
 # pylint: disable=too-many-arguments,too-many-locals
@@ -179,6 +83,12 @@ def true_pmf(x: float, population: np.ndarray) -> float:
 def empirical_pmf(x: float, sample: np.ndarray):
     """Empirical distribution of the sample."""
     return np.sum(sample == x) / len(sample)
+
+
+def use_svg_display():
+    """Use the svg format to display a plot in Jupyter.
+    Defined in :numref:`sec_calculus`"""
+    backend_inline.set_matplotlib_formats("svg")
 
 
 if __name__ == "__main__":
