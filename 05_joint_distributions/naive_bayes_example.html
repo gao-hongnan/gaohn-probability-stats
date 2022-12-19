@@ -1921,7 +1921,7 @@ sns.jointplot(data=penguins, x=&quot;bill_length_mm&quot;, y=&quot;species&quot;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7f8e8872c940&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7fe705f2a850&gt;
 </pre></div>
 </div>
 <img alt="../_images/naive_bayes_example_41_1.png" src="../_images/naive_bayes_example_41_1.png" />
@@ -2150,6 +2150,8 @@ f_{X_2 \mid Y}(x_2=50 \mid y=C) &amp;= 0.112 \\
 f_{X_2 \mid Y}(x_2=50 \mid y=G) &amp;= 0.09317 \\
 \end{aligned}
 \end{split}\]</div>
+<p>Note that <span class="math notranslate nohighlight">\(\mu_A\)</span> and <span class="math notranslate nohighlight">\(\sigma_A\)</span> are the sample mean and sample standard deviation of <span class="math notranslate nohighlight">\(X_2\)</span> given <span class="math notranslate nohighlight">\(Y=A\)</span>.
+Notation wise it is fine but you can also view it as <span class="math notranslate nohighlight">\(\mu_{A|X_2}\)</span> and <span class="math notranslate nohighlight">\(\sigma_{A|X_2}\)</span>.</p>
 <p>READ HERE, DON’T BE LAZY:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.probabilitycourse.com/chapter5/5_2_3_conditioning_independence.php">https://www.probabilitycourse.com/chapter5/5_2_3_conditioning_independence.php</a></p></li>
@@ -2163,16 +2165,16 @@ f_{X_2 \mid Y}(x_2=50 \mid y=G) &amp;= 0.09317 \\
 px2_given_chinstrap = rv_chinstrap.pdf(x2)
 px2_given_gentoo = rv_gentoo.pdf(x2)
 
-print(f&#39;P(x=50|Adelie) = {px2_given_adelie:.7f}&#39;)
-print(f&#39;P(x=50|Chinstrap) = {px2_given_chinstrap:.3f}&#39;)
-print(f&#39;P(x=50|Gentoo) = {px2_given_gentoo:.5f}&#39;)
+print(f&#39;P(X_2=50|Adelie) = {px2_given_adelie:.7f}&#39;)
+print(f&#39;P(X_2=50|Chinstrap) = {px2_given_chinstrap:.3f}&#39;)
+print(f&#39;P(X_2=50|Gentoo) = {px2_given_gentoo:.5f}&#39;)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P(x=50|Adelie) = 0.0000212
-P(x=50|Chinstrap) = 0.112
-P(x=50|Gentoo) = 0.09317
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P(X_2=50|Adelie) = 0.0000212
+P(X_2=50|Chinstrap) = 0.112
+P(X_2=50|Gentoo) = 0.09317
 </pre></div>
 </div>
 </div>
@@ -2339,7 +2341,7 @@ sns.jointplot(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7f8e880b8d30&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7fe7058b8af0&gt;
 </pre></div>
 </div>
 <img alt="../_images/naive_bayes_example_64_1.png" src="../_images/naive_bayes_example_64_1.png" />
@@ -2348,7 +2350,7 @@ sns.jointplot(
 </div>
 </div>
 <p>To see the joint distribution conditioned on the class (species) <span class="math notranslate nohighlight">\(Y\)</span>, where <span class="math notranslate nohighlight">\(Y\)</span>
-can be treated as a random variable as well <a class="footnote-reference brackets" href="#id2" id="id1">1</a>, we can use the <code class="docutils literal notranslate"><span class="pre">hue</span></code> argument.</p>
+can be treated as a random variable as well <a class="footnote-reference brackets" href="#id3" id="id1">1</a>, we can use the <code class="docutils literal notranslate"><span class="pre">hue</span></code> argument.</p>
 <p>To emphasise, the way to approach conditional distributions is to zoom in on the
 “reduced” sample space, for example if I want to look at the conditional distribution
 of <span class="math notranslate nohighlight">\(X_2\)</span> and <span class="math notranslate nohighlight">\(X_3\)</span> conditioned on <span class="math notranslate nohighlight">\(Y=G\)</span>, then you should look at the green colored
@@ -2366,7 +2368,7 @@ sns.jointplot(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7f8e888317f0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7fe705fc2160&gt;
 </pre></div>
 </div>
 <img alt="../_images/naive_bayes_example_66_1.png" src="../_images/naive_bayes_example_66_1.png" />
@@ -2436,6 +2438,191 @@ when we condition on <span class="math notranslate nohighlight">\(Y\)</span>, we
 which <span class="math notranslate nohighlight">\(Y\)</span> is fixed,
 and not the joint sample space of <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>. This is the reason why we can happily
 use 1dimensional Gaussian to get the conditional distribution of <span class="math notranslate nohighlight">\(X_2\)</span>.</p>
+<p>To reconcile this, Naive Bayes assumes that the predictors are <strong>conditionally independent</strong><a class="footnote-reference brackets" href="#id3" id="id2">1</a>.
+It states that given a set of continuous predictors <span class="math notranslate nohighlight">\(X_1, \ldots, X_n\)</span>, they are called conditionally
+independent given <span class="math notranslate nohighlight">\(Y\)</span> if the joint distribution of <span class="math notranslate nohighlight">\(X_1, \ldots, X_n\)</span> given <span class="math notranslate nohighlight">\(Y\)</span> can be written as</p>
+<div class="math notranslate nohighlight">
+\[
+f_{X_1,\ldots,X_n|Y}(x_1,\ldots,x_n|y) = \prod_{i=1}^n f_{X_i|Y}(x_i|y)
+\]</div>
+<p>The theorem holds for discrete case as well with the difference being that the
+PDF is replaced by the PMF.</p>
+<p>This theorem means that <em><strong>within each class (species)</strong></em>, the predictors are independent.
+More concretely, if we say that <span class="math notranslate nohighlight">\(X_2\)</span> and <span class="math notranslate nohighlight">\(X_3\)</span> are conditionally independent given <span class="math notranslate nohighlight">\(Y\)</span>,
+then we are saying that <em><strong>within each class (species)</strong></em>, the <code class="docutils literal notranslate"><span class="pre">bill_length_mm</span></code> (<span class="math notranslate nohighlight">\(X_2\)</span>)
+is independent of the <code class="docutils literal notranslate"><span class="pre">flipper_length_mm</span></code> (<span class="math notranslate nohighlight">\(X_3\)</span>). This is a very strong assumption,
+but is at the heart of Naive Bayes and many other algorithms. It simplifies the parameters a lot
+(see d2l on the parameters reduction). Such a strong assumption is usually not always true,
+see the plot below again, within the class <code class="docutils literal notranslate"><span class="pre">Gentoo</span></code>, we can see that the <code class="docutils literal notranslate"><span class="pre">bill_length_mm</span></code>
+and <code class="docutils literal notranslate"><span class="pre">flipper_length_mm</span></code> exhibit some positive correlation. We will still use this assumption
+even though it is not perfect.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.jointplot(data=penguins, x=&quot;bill_length_mm&quot;, y=&quot;flipper_length_mm&quot;, hue=&quot;species&quot;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7fe7040942e0&gt;
+</pre></div>
+</div>
+<img alt="../_images/naive_bayes_example_70_1.png" src="../_images/naive_bayes_example_70_1.png" />
+</div>
+</div>
+<p>Back to our</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+f_{Y|X_2,X_3}(y|x_2,x_3) &amp;= \frac{f_{X_2,X_3|Y}(x_2,x_3|y) f_{Y}(y)}{f_{X_2,X_3}(x_2,x_3)} \\
+                         &amp;= \frac{f_{X_2,X_3|Y}(x_2,x_3|y) f_{Y}(y)}{\sum_{y \in \mathcal{Y}} f_{X_2,X_3|Y}(x_2,x_3|y) f_{Y}(y)} \\
+\end{aligned}
+\end{split}\]</div>
+<p>We now have an answer on how to unpack the joint conditional distribution <span class="math notranslate nohighlight">\(f_{X_2,X_3|Y}(x_2,x_3|y)\)</span>.</p>
+<p>We can merely do</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+f_{X_2,X_3|Y}(x_2,x_3|y) &amp;= f_{X_2|Y}(x_2|y) f_{X_3|Y}(x_3|y) \\
+\end{aligned}
+\end{split}\]</div>
+<p>so that our previous expression becomes</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+f_{Y|X_2,X_3}(y|x_2,x_3) &amp;= \frac{f_{X_2|Y}(x_2|y) f_{X_3|Y}(x_3|y) f_{Y}(y)}{\sum_{y \in \mathcal{Y}} f_{X_2|Y}(x_2|y) f_{X_3|Y}(x_3|y) f_{Y}(y)} \\
+\end{aligned}
+\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>flipper_length_mean_std = penguins.groupby(&quot;species&quot;)[&quot;flipper_length_mm&quot;].agg([&quot;mean&quot;, &quot;std&quot;]) 
+flipper_length_mean_std
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mean</th>
+      <th>std</th>
+    </tr>
+    <tr>
+      <th>species</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Adelie</th>
+      <td>189.953642</td>
+      <td>6.539457</td>
+    </tr>
+    <tr>
+      <th>Chinstrap</th>
+      <td>195.823529</td>
+      <td>7.131894</td>
+    </tr>
+    <tr>
+      <th>Gentoo</th>
+      <td>217.186992</td>
+      <td>6.484976</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>rv_adelie = stats.norm(190., 6.54)
+rv_chinstrap = stats.norm(196., 7.13)
+rv_gentoo = stats.norm(217., 6.48)
+
+fig, ax = plt.subplots(1, 1)
+ax.plot(np.linspace(170, 240, 100), rv_adelie.pdf(np.linspace(170, 240, 100)), &#39;r-&#39;, lw=5, alpha=0.6, label=&#39;Adelie&#39;)
+ax.plot(np.linspace(170, 240, 100), rv_chinstrap.pdf(np.linspace(170, 240, 100)), &#39;b-&#39;, lw=5, alpha=0.6, label=&#39;Chinstrap&#39;)
+ax.plot(np.linspace(170, 240, 100), rv_gentoo.pdf(np.linspace(170, 240, 100)), &#39;g-&#39;, lw=5, alpha=0.6, label=&#39;Gentoo&#39;)
+# plot vertical line
+_ = plt.axvline(x3, color=&quot;y&quot;, linestyle=&quot;--&quot;, label=&quot;195 mm&quot;)
+_ = plt.axvline(x3+0.5, color=&quot;y&quot;, linestyle=&quot;--&quot;, label=&quot;195.5 mm&quot;)
+_ = plt.axvline(x3-0.5, color=&quot;y&quot;, linestyle=&quot;--&quot;, label=&quot;194.5 mm&quot;)
+ax.set_xlabel(&#39;flipper_length_mm&#39;)
+ax.set_ylabel(&#39;Probability density&#39;)
+ax.legend()
+plt.show();
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/naive_bayes_example_74_0.png" src="../_images/naive_bayes_example_74_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>px3_given_adelie = rv_adelie.pdf(x3)
+px3_given_chinstrap = rv_chinstrap.pdf(x3)
+px3_given_gentoo = rv_gentoo.pdf(x3)
+
+print(f&#39;P(X_3=195|Adelie) = {px3_given_adelie:.5f}&#39;)
+print(f&#39;P(X_3=195|Chinstrap) = {px3_given_chinstrap:.5f}&#39;)
+print(f&#39;P(X_3=195|Gentoo) = {px3_given_gentoo:.7f}&#39;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P(X_3=195|Adelie) = 0.04554
+P(X_3=195|Chinstrap) = 0.05541
+P(X_3=195|Gentoo) = 0.0001934
+</pre></div>
+</div>
+</div>
+</div>
+<p>For formality, the code above translates to</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+f_{X_3|Y}(x_3=195|y=A) &amp;= \frac{1}{\sqrt{2\pi}\sigma_{A}} \exp\left(-\frac{(195-\mu_{A})^2}{2\sigma_A^2}\right) \\
+&amp;= 0.04554
+\end{aligned}
+\end{split}\]</div>
+<p>Similarly, we can compute the other two conditional distributions to be <span class="math notranslate nohighlight">\(0.05541\)</span> and <span class="math notranslate nohighlight">\(0.0001934\)</span> respectively.</p>
+<p>Next, we compute the denominator, which is the joint distribution of observing <span class="math notranslate nohighlight">\(X_2=50\)</span> and <span class="math notranslate nohighlight">\(X_3=195\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\sum_{y \in \mathcal{Y}} f_{X_2|Y}(x_2|y) f_{X_3|Y}(x_3|y) f_{Y}(y) &amp;= \sum_{y \in \mathcal{Y}} f_{X_2|Y}(x_2=50|y) f_{X_3|Y}(x_3=195|y) f_{Y}(y) \\
+&amp;= f_{X_2|Y=A}(x_2=50|y=A) f_{X_3|Y=A}(x_3=195|y=A) f_{Y}(y=A) \\
+&amp;+ f_{X_2|Y=C}(x_2=50|y=C) f_{X_3|Y=C}(x_3=195|y=C) f_{Y}(y=C) \\
+&amp;+ f_{X_2|Y=G}(x_2=50|y=G) f_{X_3|Y=G}(x_3=195|y=G) f_{Y}(y=G) \\
+&amp;= 0.0000212 \cdot 0.04554 \cdot \frac{151}{342} \\
+&amp;+ 0.112 \cdot 0.05541 \cdot \frac{68}{342} \\
+&amp;+ 0.09317 \cdot 0.0001934 \cdot \frac{123}{342} \\
+&amp;\approx 0.001241
+\end{aligned}
+\end{split}\]</div>
+<p>We plug into Bayes’ rule to get the posterior probability of <span class="math notranslate nohighlight">\(Y=A\)</span> given <span class="math notranslate nohighlight">\(X_2=50\)</span> and <span class="math notranslate nohighlight">\(X_3=195\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+f_{Y=A|X_2,X_3}(y=A|x_2=50,x_3=195) &amp;= \frac{f_{X_2|Y=A}(x_2=50|y=A) f_{X_3|Y=A}(x_3=195|y=A) f_{Y}(y=A)}{\sum_{y \in \mathcal{Y}} f_{X_2|Y}(x_2|y) f_{X_3|Y}(x_3|y) f_{Y}(y)} \\
+&amp;= \frac{0.0000212 \cdot 0.04554 \cdot \frac{151}{342}}{0.001241} \\
+\end{aligned}
+\end{split}\]</div>
 </section>
 </section>
 <section id="three-predictors">
@@ -2502,10 +2689,10 @@ found through MLE are the sample mean and sample variance of the data.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f8e8496f070&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fe6fdedea60&gt;
 </pre></div>
 </div>
-<img alt="../_images/naive_bayes_example_80_1.png" src="../_images/naive_bayes_example_80_1.png" />
+<img alt="../_images/naive_bayes_example_87_1.png" src="../_images/naive_bayes_example_87_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2515,15 +2702,15 @@ found through MLE are the sample mean and sample variance of the data.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f8e84926130&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fe704138af0&gt;
 </pre></div>
 </div>
-<img alt="../_images/naive_bayes_example_82_1.png" src="../_images/naive_bayes_example_82_1.png" />
+<img alt="../_images/naive_bayes_example_89_1.png" src="../_images/naive_bayes_example_89_1.png" />
 </div>
 </div>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
-<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dt class="label" id="id3"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>)</span></dt>
 <dd><p>In Naive Bayes, both the predictor and the target are random variables, while
 it is not the case for logistic regression. Regardless, once you condition on <span class="math notranslate nohighlight">\(Y\)</span>, <span class="math notranslate nohighlight">\(Y\)</span>
 is no longer random.</p>
