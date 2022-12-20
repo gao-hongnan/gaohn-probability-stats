@@ -28,38 +28,99 @@ class NaivesBayesClassifier(BaseEstimator):
         self.distributions = hyperparameters.distributions
         self.num_features: int
         self.num_samples: int
-        self.parameters: List[List[Dict[str, float]]]
+        self.estimated_parameters: List[List[Dict[str, float]]]
         self.prior: T
         self.likelihood: T
         self.posterior: T
 
     def fit(self, X, y):
         self.X, self.y = X, y
-        self.classes = np.unique(y)
-        self.parameters = []
+        self.num_samples, self.num_features = X.shape
         # Calculate the mean and variance of each feature for each class
-        for i, c in enumerate(self.classes):
-            # Only select the rows where the label equals the given class
-            X_where_c = X[np.where(y == c)]
-            self.parameters.append([])
-            # Add the mean and variance for each feature (column)
-            for col in X_where_c.T:
-                parameters = {"mean": col.mean(), "var": col.var()}
-                self.parameters[i].append(parameters)
+        self.estimated_parameters = self._estimate_class_parameters(X, y)
+        self.prior = self._calculate_prior(y)
 
-    def _calculate_likelihood(self, mean, var, x):
+        # fit done
+        # 1. prior
+        # 2. estimated_parameters
+        return self
+
+    def _estimate_class_parameters(self, X, y):
+        """Estimate the mean and variance of each feature for each class."""
+        parameters = []
+        # for each feature (column) conditional on the class k
+        # here must be careful, X_k is a 2D array consisting the rows
+        # where the label equals the given class
+        for i, c in enumerate(range(self.num_classes)):
+            # Only select the rows where the label equals the given class
+            X_where_c = X[np.where(y == c)]  # shape = (num_samples, num_features)
+            parameters.append([])
+            for col in X_where_c.T:  # we want the column now so loop over transpose.
+                param_dict = {"mean": col.mean(), "var": col.var()}
+                parameters[i].append(param_dict)
+        return parameters
+
+    # def _calculate_likelihood(self, X, y, x, mean=None, var=None):
+    #     """Gaussian likelihood of the data x given mean and var."""
+    #     likelihood = np.zeros(self.num_classes)
+    #     eps = 1e-4  # Added in denominator to prevent division by zero
+    #     # coeff = 1.0 / math.sqrt(2.0 * math.pi * var + eps)
+    #     # exponent = math.exp(-(math.pow(x - mean, 2) / (2 * var + eps)))
+    #     # 1 row: P(X=x1|Y=0), P(X=x2|Y=0), ..., P(X=xn|Y=0)
+    #     # 2 row: P(X=x1|Y=1), P(X=x2|Y=1), ..., P(X=xn|Y=1)
+    #     for i, c in enumerate(range(self.num_classes)):
+    #         X_where_c = X[np.where(y == c)]
+
+    #         for j, row in enumerate(X_where_c):
+    #             mean, var = (
+    #                 self.estimated_parameters[i][j]["mean"],
+    #                 self.estimated_parameters[i][j]["var"],
+    #             )
+
+    #             coeff = 1.0 / math.sqrt(2.0 * math.pi * var + eps)
+    #             exponent = math.exp(-(math.pow(x - mean, 2) / (2 * var + eps)))
+    #             gaussian = coeff * exponent
+    #             likelihood[i] *= gaussian
+    #     return likelihood
+    def _calculate_likelihood(self, x, mean=None, var=None):
         """Gaussian likelihood of the data x given mean and var"""
         eps = 1e-4  # Added in denominator to prevent division by zero
         coeff = 1.0 / math.sqrt(2.0 * math.pi * var + eps)
         exponent = math.exp(-(math.pow(x - mean, 2) / (2 * var + eps)))
         return coeff * exponent
 
-    def _calculate_prior(self, c):
-        """Calculate the prior of class c
-        (samples where class == c / total number of samples)"""
-        print(self.y)
-        frequency = np.mean(self.y == c)
-        return frequency
+    def _calculate_prior(self, y: T) -> T:
+        """Calculate the prior probability of each class.
+
+        Returns a vector of prior probabilities for each class.
+        prior = [P(Y = 0), P(Y = 1), ..., P(Y = c)]
+        """
+        prior = np.zeros(self.num_classes)  # shape: (num_classes,)
+        for i in range(self.num_classes):
+            prior[i] = np.sum(y == i) / len(y)
+        return prior
+
+    def _calculate_posterior(self, x):  # x is vector
+        self.likelihood = np.ones(
+            self.num_classes
+        )  # TODO: must be ones if not will be zero as I did *= later
+        for i, c in enumerate(range(self.num_classes)):
+            for j, feature in enumerate(x):
+                mean, var = (
+                    self.estimated_parameters[i][j]["mean"],
+                    self.estimated_parameters[i][j]["var"],
+                )
+                print(feature, mean, var)
+                self.likelihood[i] *= self._calculate_likelihood(feature, mean, var)
+        self.posterior = self.likelihood * self.prior
+        print(self.posterior)
+        return np.argmax(self.posterior)
+
+    def predict(self, X):
+        """Predict the class labels of the samples in X"""
+        y_pred = [self._calculate_posterior(sample) for sample in X]
+        print(len(y_pred))
+        return y_pred
 
     def _classify(self, sample):
         """Classification using Bayes Rule P(Y|X) = P(X|Y)*P(Y)/P(X),
@@ -75,27 +136,24 @@ class NaivesBayesClassifier(BaseEstimator):
         Classifies the sample as the class that results in the largest P(Y|X) (posterior)
         """
         posteriors = []
-        # Go through list of classes
-        for i, c in enumerate(self.classes):
-            # Initialize posterior as prior
-            posterior = self._calculate_prior(c)
-            # Naive assumption (independence):
-            # P(x1,x2,x3|Y) = P(x1|Y)*P(x2|Y)*P(x3|Y)
-            # Posterior is product of prior and likelihoods (ignoring scaling factor)
-            for feature_value, params in zip(sample, self.parameters[i]):
-                # Likelihood of feature value given distribution of feature values given y
-                likelihood = self._calculate_likelihood(
-                    params["mean"], params["var"], feature_value
-                )
-                posterior *= likelihood
-            posteriors.append(posterior)
-        # Return the class with the largest posterior probability
-        return self.classes[np.argmax(posteriors)]
-
-    def predict(self, X):
-        """Predict the class labels of the samples in X"""
-        y_pred = [self._classify(sample) for sample in X]
-        return y_pred
+        likelihood = self._calculate_likelihood(self.X, self.y, x)
+        print(likelihood)
+        # # Go through list of classes
+        # for i, c in enumerate(self.num_classes):
+        #     # Initialize posterior as prior
+        #     posterior = self._calculate_prior(c)
+        #     # Naive assumption (independence):
+        #     # P(x1,x2,x3|Y) = P(x1|Y)*P(x2|Y)*P(x3|Y)
+        #     # Posterior is product of prior and likelihoods (ignoring scaling factor)
+        #     for feature_value, params in zip(sample, self.parameters[i]):
+        #         # Likelihood of feature value given distribution of feature values given y
+        #         likelihood = self._calculate_likelihood(
+        #             params["mean"], params["var"], feature_value
+        #         )
+        #         posterior *= likelihood
+        #     posteriors.append(posterior)
+        # # Return the class with the largest posterior probability
+        # return np.argmax(posteriors)
 
 
 # class NaivesBayesClassifier(BaseEstimator):
@@ -329,6 +387,7 @@ if __name__ == "__main__":
     gnb = NaivesBayesClassifier(naives_bayes_hyperparams)
     gnb.fit(train_features, train_labels)  # type: ignore
     predictions = gnb.predict(test_features)  # type: ignore
+    print(predictions)
 
     accuracy = accuracy_score(test_labels, predictions)
     precision, recall, fscore, _ = precision_recall_fscore_support(
