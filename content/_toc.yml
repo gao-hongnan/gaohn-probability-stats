@@ -65,8 +65,12 @@ parts:
   - caption: Chapter 5. Joint Distributions
     chapters:
     - file: 05_joint_distributions/braindump.md
-    - file: 05_joint_distributions/naive_bayes.ipynb
-    - file: 05_joint_distributions/naive_bayes_example.ipynb
+
+  - caption: Machine Learning Algorithms
+    chapters:
+    - file: machine_learning_algorithms/generative/naive_bayes/naive_bayes_concept.md
+    - file: machine_learning_algorithms/generative/naive_bayes/naive_bayes.ipynb
+    - file: machine_learning_algorithms/generative/naive_bayes/naive_bayes_example.ipynb
 
   - caption: References and Resources
     chapters:
