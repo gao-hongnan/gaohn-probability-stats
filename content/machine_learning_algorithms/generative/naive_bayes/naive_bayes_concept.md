@@ -14,21 +14,22 @@
 - $\mathcal{D}$: The fixed but unknown distribution of the data. Usually, this refers 
 to the joint distribution of the input and the label, 
 
-$$
-\mathcal{D} &= \mathbb{P}(\mathcal{X}, \mathcal{Y} ; \boldsymbol{\theta}) \\
-&= \mathbb{P}_{\mathcal{X}, \mathcal{Y} ; \boldsymbol{\theta}}(\mathbf{x}, y)
-$$
+  $$
+  \mathcal{D} &= \mathbb{P}(\mathcal{X}, \mathcal{Y} ; \boldsymbol{\theta}) \\
+  &= \mathbb{P}_{\{\mathcal{X}, \mathcal{Y} ; \boldsymbol{\theta}\}}(\mathbf{x}, y)
+  $$
 
-where $\mathbf{x} \in \mathcal{X}$ and $y \in \mathcal{Y}$, and $\boldsymbol{\theta}$ is the 
-parameter vector of the distribution $\mathcal{D}$.
+  where $\mathbf{x} \in \mathcal{X}$ and $y \in \mathcal{Y}$, and $\boldsymbol{\theta}$ is the 
+  parameter vector of the distribution $\mathcal{D}$.
 ```
+
 
 ```{prf:definition} Dataset
 :label: dataset-definition
 
 Now, consider a dataset $\mathcal{D}_{\{\mathbf{x}, y\}}$ consisting of $N$ samples (observations) and $D$ predictors (features) drawn **jointly** and **indepedently and identically distributed** (i.i.d.) from $\mathcal{D}$. Note we will refer to the dataset $\mathcal{D}_{\{\mathbf{x}, y\}}$ with the same notation as the underlying distribution $\mathcal{D}$ from now on. 
   
-- $\mathcal{D}$ denotes the training dataset can also be represented compactly as a set:
+- The training dataset $\mathcal{D}$ can also be represented compactly as a set:
   
     $$
     \begin{align*}
@@ -64,7 +65,7 @@ i.e.
   y^{(n)} \in \mathbb{R}^{K} = \begin{bmatrix} 0 & 0 & \cdots & 1 & \cdots & 0 \end{bmatrix}_{K \times 1}
   $$
 
-  where the $1$ is at the $k$-th position, where $k$ is the class label of the n-th sample.
+  where the $1$ is at the $k$-th position, and $k$ is the class label of the n-th sample.
 
 - Everything defined above is for **one single sample/data point**, to represent it as a matrix, we can define
 a design matrix $\mathbf{X}$ and a label vector $\mathbf{y}$ as follows,
@@ -92,10 +93,10 @@ a design matrix $\mathbf{X}$ and a label vector $\mathbf{y}$ as follows,
 :label: iid-assumption
 
 In supervised learning, implicitly or explicitly, one *always* assumes that the training set
-$\mathcal{D} = \left\{\left(\mathbf{x}^{(1)}, y^{(1)}\right), \left(\mathbf{x}^{(2)}, y^{(2)}\right), \cdots, \left(\mathbf{x}^{(N)}, y^{(N)}\right)\right\} $ is composed of $N$ input/response tuples $\left({\mathbf{X}}^{(n)} = \mathbf{x}^{(n)}, Y^{(n)} = y^{(n)}\right)$ that are *independently drawn from the same joint distribution* $\mathbb{P}_{\mathcal{X}, \mathcal{Y}}(\mathbf{x}, y)$ with
+$\mathcal{D} = \left\{\left(\mathbf{x}^{(1)}, y^{(1)}\right), \left(\mathbf{x}^{(2)}, y^{(2)}\right), \cdots, \left(\mathbf{x}^{(N)}, y^{(N)}\right)\right\} $ is composed of $N$ input/response tuples $\left({\mathbf{X}}^{(n)} = \mathbf{x}^{(n)}, Y^{(n)} = y^{(n)}\right)$ that are *independently drawn from the same joint distribution* $\mathbb{P}_{\{\mathcal{X}, \mathcal{Y}, \boldsymbol{\theta}\}}(\mathbf{x}, y)$ with
 
 $$
-\mathbb{P}(\mathbf{X} = \mathbf{x}, Y = y) = \mathbb{P}(Y = y \mid \mathbf{X} = \mathbf{x}) \mathbb{P}(\mathbf{X} = \mathbf{x})
+\mathbb{P}(\mathbf{X} = \mathbf{x}, Y = y ; \boldsymbol{\theta}) = \mathbb{P}(Y = y \mid \mathbf{X} = \mathbf{x}) \mathbb{P}(\mathbf{X} = \mathbf{x})
 $$
 
 and $\mathbb{P}(Y = y \mid \mathbf{X} = \mathbf{x})$ is the conditional probability of $Y$ given $\mathbf{X}$,
@@ -105,8 +106,8 @@ Mathematically, this i.i.d. assumption writes (also defined in {prf:ref}`def_iid
 
 $$
 \begin{aligned}
-({\mathbf{X}}^{(n)}, Y^{(n)}) &\sim \mathbb{P}_{\mathcal{X}, \mathcal{Y}}(\mathbf{x}, y) \\
-({\mathbf{X}}^{(n)}, Y^{(n)}) &\text{ independent of } ({\mathbf{X}}^{(m)}, Y^{(m)}) \quad \forall n \neq m \in \{1, 2, \ldots, N\}
+\left({\mathbf{X}}^{(n)}, Y^{(n)}\right) &\sim \mathbb{P}_{\{\mathcal{X}, \mathcal{Y}, \boldsymbol{\theta}\}}(\mathbf{x}, y)\\
+\left({\mathbf{X}}^{(n)}, Y^{(n)}\right) &\text{ independent of } \left({\mathbf{X}}^{(m)}, Y^{(m)}\right) \quad \forall n \neq m \in \{1, 2, \ldots, N\}
 \end{aligned}
 $$
 
@@ -114,9 +115,33 @@ and we sometimes denote
 
 $$
 \begin{aligned}
-\left(\mathbf{x}^{(n)}, y^{(n)}\right) \overset{\text{i.i.d.}}{\sim} \mathbb{P}_{\mathcal{X}, \mathcal{Y}}(\mathbf{x}, y)
+\left(\mathbf{x}^{(n)}, y^{(n)}\right) \overset{\text{i.i.d.}}{\sim} \mathbb{P}_{\{\mathcal{X}, \mathcal{Y}, \boldsymbol{\theta}\}}(\mathbf{x}, y)
 \end{aligned}
 $$
+```
+
+```{prf:example} Joint Distribution Example
+:label: joint-distribution-example
+
+For example, if the number of features, $D = 2$, then let's say
+
+$$
+\mathbf{X}^{(n)} = \begin{bmatrix} X^{(n)}_1 & X^{(n)}_2 \end{bmatrix} \in \mathbb{R}^2
+$$
+
+consists of two Gaussian random variables, 
+with $\mu_1$ and $\mu_2$ being the mean of the two distributions,
+and $\sigma_1$ and $\sigma_2$ being the variance of the two distributions;
+furthermore, $Y^{(n)}$ is a Bernoulli random variable with parameter $\boldsymbol{\pi}$, then we have 
+
+$$
+\begin{aligned}
+\boldsymbol{\theta} &= \begin{bmatrix} \mu_1 & \sigma_1 & \mu_2 & \sigma_2 & \boldsymbol{\pi}\end{bmatrix} \\
+&= \begin{bmatrix} \boldsymbol{\mu} & \boldsymbol{\sigma} & \boldsymbol{\pi} \end{bmatrix}
+\end{aligned}
+$$
+  
+where $\boldsymbol{\mu} = \begin{bmatrix} \mu_1 & \mu_2 \end{bmatrix}$ and $\boldsymbol{\sigma} = \begin{bmatrix} \sigma_1 & \sigma_2 \end{bmatrix}$.
 ```
 
 ```{prf:remark} Some remarks
@@ -142,10 +167,16 @@ $$
 where
 
 $$
-\mathbf{X} \in \mathbb{R}^{D} = \begin{bmatrix} X_1 \\ X_2 \\ \vdots \\ X_D \end{bmatrix} \quad \text{and} \quad \mathbf{x} = \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_D \end{bmatrix}
+\mathbf{X} \in \mathbb{R}^{D} = \begin{bmatrix} X_1 & X_2 & \cdots & X_D \end{bmatrix} 
 $$
 
-is a random vector and its realizations respectively, and therefore, $\mathbf{X}$ can be characterized by an $D$-dimensional PDF
+is a random vector and its realizations,
+
+$$
+\mathbf{x} = \begin{bmatrix} x_1 & x_2 & \cdots & x_D \end{bmatrix}
+$$
+
+and therefore, $\mathbf{X}$ can be characterized by an $D$-dimensional PDF
 
 $$
 f_{\mathbf{X}}(\mathbf{x}) = f_{X_1, X_2, \ldots, X_D}(x_1, x_2, \ldots, x_D ; \boldsymbol{\theta})
@@ -172,13 +203,15 @@ and not only from our given dataset $\mathcal{D}$.**
 ```{prf:definition} Likelihood
 :label: likelihood
 
-We denote the likelihood function as $\mathbb{P}(\mathbf{X} = \mathbf{x} \mid Y = k)$, which is the probability of observing $\mathbf{x}$ given that the sample belongs to class $k$. 
+We denote the likelihood function as $\mathbb{P}(\mathbf{X} = \mathbf{x} \mid Y = k)$, 
+which is the probability of observing $\mathbf{x}$ given that the sample belongs to class $Y = k$. 
 ```
 
 ```{prf:definition} Prior
 :label: prior
 
-We denote the prior probability of class $k$ as $\mathbb{P}(Y = k)$.
+We denote the prior probability of class $k$ as $\mathbb{P}(Y = k)$, which usually
+follows a discrete distribution such as the Categorical distribution.
 ```
 
 ```{prf:definition} Posterior
@@ -236,11 +269,13 @@ In SE post, discriminative model do not need make assumptions of X and therefore
 
 As mentioned earlier, both $Y^{(n)}$ and $\mathbf{X}^{(n)}$ are random variables/vectors. This means we need to estimate both of them.
 
-We first conveniently assumes that $Y^{(n)}$ is a discrete random variable, and follows a **[Category distribution](https://en.wikipedia.org/wiki/Categorical_distribution)**, 
-an extension of the Bernoulli distribution to multiple classes. Instead of a single parameter $p$, the Category distribution has $K$ parameters $\boldsymbol{\pi}_k$ for $k = 1, 2, \cdots, K$.
+We first conveniently assume that $Y^{(n)}$ is a discrete random variable, and
+follows the **[Category distribution](https://en.wikipedia.org/wiki/Categorical_distribution)**[^categorical-distribution], 
+an extension of the Bernoulli distribution to multiple classes. Instead of a single parameter $p$ (probability of success for Bernoulli), 
+the Category distribution has $K$ parameters $\boldsymbol{\pi}_k$ for $k = 1, 2, \cdots, K$.
 
 $$
-Y^{(n)} \overset{\small{\text{i.i.d.}}}{\sim} \text{Category}(\boldsymbol{\pi}_k) \quad \text{where } \boldsymbol{\pi}_k = \begin{bmatrix} \pi_1 & \dots & \pi_K \end{bmatrix}
+Y^{(n)} \overset{\small{\text{i.i.d.}}}{\sim} \text{Category}(\boldsymbol{\pi}) \quad \text{where } \boldsymbol{\pi} = \begin{bmatrix} \pi_1 & \dots & \pi_K \end{bmatrix}
 $$
 
 Equivalently,
@@ -252,7 +287,8 @@ $$ (eq:category-distribution)
 ```{prf:definition} Categorical Distribution
 :label: categorical-distribution
 
-Let $Y$ be a discrete random variable with $K$ number of states. Then $Y$ follows a categorical distribution with parameters $\boldsymbol{\pi}_k$ if
+Let $Y$ be a discrete random variable with $K$ number of states. 
+Then $Y$ follows a categorical distribution with parameters $\boldsymbol{\pi}$ if
 
 $$
 \mathbb{P}(Y = k) = \pi_k \quad \text{for } k = 1, 2, \cdots, K
@@ -273,16 +309,18 @@ where $I\{Y = k\}$ is the indicator function that is equal to 1 if $Y = k$ and 0
 This formulation is adopted by Bishop's{cite}`bishop_2016`, the categorical distribution is defined as
 
 $$
-\mathbb{P}(\mathrm{Y} = \mathrm{y}; \boldsymbol{\pi}) = \prod_{k=1}^K \pi_k^{y_k}
+\mathbb{P}(\mathbf{Y} = \mathbf{y}; \boldsymbol{\pi}) = \prod_{k=1}^K \pi_k^{y_k}
 $$
 
-where $\mathrm{y}$ is an one-hot encoded vector of size $K$, 
+where
 
 $$
-\begin{bmatrix} y_1 \\ y_2 \\ \vdots \\ y_K \end{bmatrix}
+\mathbf{y} = \begin{bmatrix} y_1 \\ y_2 \\ \vdots \\ y_K \end{bmatrix}
 $$
 
-The $y_k$ is the $k$-th element of $\mathrm{y}$, and is equal to 1 if $Y = k$ and 0 otherwise.
+is an one-hot encoded vector of size $K$, 
+
+The $y_k$ is the $k$-th element of $\mathbf{y}$, and is equal to 1 if $Y = k$ and 0 otherwise.
 The $\pi_k$ is the $k$-th element of $\boldsymbol{\pi}$, and is the probability of $Y = k$.
 
 This notation alongside with the indicator notation in the previous definition allows us to manipulate
@@ -325,71 +363,67 @@ $$
 \left \{ \left(\mathrm{X}^{(n)}, Y^{(n)} \right) \right \} \overset{\small{\text{i.i.d.}}}{\sim} \mathbb{P}(\mathcal{X}, \mathcal{Y} ; \boldsymbol{\theta}) \quad \text{for } n = 1, 2, \cdots, N
 $$
 
-where $\boldsymbol{\theta}$ is the parameter vector of the joint distribution. 
+where $\boldsymbol{\theta}$ is the parameter vector of the joint distribution. See {prf:ref}`joint-distribution-example` for an example of such.
 
-```{prf:example} Joint Distribution Example
-:label: joint-distribution-example
-
-For example, if the number of features, $D = 2$, then let's say
-
-$$
-\mathbf{X}^{(n)} = \begin{bmatrix} X^{(n)}_1 & X^{(n)}_2 \end{bmatrix} \in \mathbb{R}^2
-$$
-
-consists of two Gaussian random variables, 
-with $\mu_1$ and $\mu_2$ being the mean of the two distributions,
-and $\sigma_1$ and $\sigma_2$ being the variance of the two distributions;
-furthermore, $Y^{(n)}$ is a Bernoulli random variable with parameter $\boldsymbol{\pi}$, then we have 
+Recall that our goal in **INSERT INFERENCE SECTION ALGO** is to find the class $k \in \{1, 2, \cdots, K\}$ that maximizes the posterior probability
+$\mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x}^{(q)} ; \boldsymbol{\theta})$. 
 
 $$
 \begin{aligned}
-\boldsymbol{\theta} &= \begin{bmatrix} \mu_1 & \sigma_1 & \mu_2 & \sigma_2 & \boldsymbol{\pi}\end{bmatrix} \\
-&= \begin{bmatrix} \boldsymbol{\mu} & \boldsymbol{\sigma} & \boldsymbol{\pi} \end{bmatrix}
+\arg \max_{k} \mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x}^{(q)} ; \boldsymbol{\theta}) &= \arg \max_{k} \frac{\mathbb{P}(Y = k, \mathbf{X} = \mathbf{x}^{(q)} ; \boldsymbol{\theta})}{\mathbb{P}(\mathbf{X} = \mathbf{x}^{(q)} ; \boldsymbol{\theta})} \\
+&= \arg \max_{k} \frac{\mathbb{P}(Y = k ; \boldsymbol{\pi}) \mathbb{P}(\mathbf{X} \mid Y = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}})}{\mathbb{P}(\mathbf{X} = \mathbf{x}^{(q)} ; \boldsymbol{\theta})}\\
+&\propto \arg \max_{k} \mathbb{P}(Y = k ; \boldsymbol{\pi}) \mathbb{P}\left(\mathbf{X} \mid Y = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}\right)
 \end{aligned}
 $$
-  
-where $\boldsymbol{\mu} = \begin{bmatrix} \mu_1 & \mu_2 \end{bmatrix}$ and $\boldsymbol{\sigma} = \begin{bmatrix} \sigma_1 & \sigma_2 \end{bmatrix}$.
-```
 
-Our goal in **INSERT INFERENCE SECTION ALGO** is to find the class $k \in \{1, 2, \cdots, K\}$ that maximizes the posterior probability
-$\mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x}^{(q)} ; \boldsymbol{\theta})$. In order to do so, we need to estimate
-both **also insert inference section algo** the prior and the likelihood. We have seen earlier that since the 
-denominator is constant for all $k$, we can ignore it and just maximize the numerator. This suggests that
-we only need to find estimates for the prior and likelihood indeed.
+We have seen earlier in **iNSERT SECTION ON NORMALIZATING CONSTANT** that since the denominator 
+is constant for all $k$, we can ignore it and just maximize the numerator, as shown by the proportional sign.
 
-The numerator is
+This suggests we need to find estimates for both **also insert inference section algo** the prior and the likelihood. This of course 
+involves ur finding the $\boldsymbol{\pi}$ and $\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}$ that maximize the likelihood function, which we will talk about later.
+
+In order to meaningfully optimize the expression, we need to decompose the numerator into its components that contain the parameters we want to estimate.
 
 $$
 \begin{aligned}
 \mathbb{P}(Y = k ; \boldsymbol{\pi}) \mathbb{P}(\mathbf{X} \mid Y = k ; \boldsymbol{\theta}) &= \mathbb{P}((Y, \mathbf{X}) = (k, \mathbf{x}^{(q)}) ; \boldsymbol{\theta}, \boldsymbol{\pi}) \\
 &= \mathbb{P}(Y, X_1, X_2, \ldots X_D)
 \end{aligned}
-$$
+$$ (eq:joint-distribution)
 
 which is actually the joint distribution of $\mathbf{X}$ and $Y$[^joint-distribution]. 
 
-This joint distribution expression can be further decomposed by the chain rule of probability[^chain-rule-of-probability] as
+This joint distribution expression {eq}`eq:joint-distribution` can be further decomposed by the chain rule of probability[^chain-rule-of-probability] as
 
 $$
 \begin{aligned}
 \mathbb{P}(Y, X_1, X_2, \ldots X_D) &= \mathbb{P}(Y) \mathbb{P}(X_1, X_2, \ldots X_D \mid Y) \\
 &= \mathbb{P}(Y) \prod_{d=1}^D \mathbb{P}(X_d \mid Y, X_1, X_2, \ldots X_{d-1})
 \end{aligned}
-$$
+$$ (eq:joint-distribution-decomposed)
 
-and since the single assumption of the Naive Bayes' is conditional independence [^conditional-independence], i.e. the features are conditionally independent given the class label,
-defined as
+This alone does not get us any further, we still need to estimate roughly $2^{D}$ parameters **CITE D2L**, 
+which is computationally expensive. Not to forget that we need to estimate for each class $k \in \{1, 2, 3, \ldots, K\}$
+which has a complexity of $\sim \mathcal{O}(2^DK)$.
+
+This is where the "Naive" assumption comes in. The Naive Bayes' classifier assumes that the features are conditionally independent[^conditional-independence] given the class label, i.e.
+the features are conditionally independent given the class label.
+
+More formally stated,
+
+```{prf:definition} Conditional Independence
+:label: conditional-independence
 
 $$
 \mathbb{P}(X_d \mid Y = k, X_{d^{'}}) = \mathbb{P}(X_d \mid Y = k) \quad \text{for all } d \neq d^{'}
-$$
+$$ (eq:conditional-independence)
+```
 
-we can further simplify the expression to
+with this assumption, we can further simplify expression {eq}`eq:joint-distribution-decomposed` as
 
 $$
 \begin{aligned}
-\mathbb{P}(Y, X_1, X_2, \ldots X_D) &= \mathbb{P}(Y) \prod_{d=1}^D \mathbb{P}(X_d \mid Y) \\
-&= \mathbb{P}(Y ; \boldsymbol{\pi}) \prod_{d=1}^D \mathbb{P}(X_d \mid Y ; \theta_{d}) \\
+\mathbb{P}(Y, X_1, X_2, \ldots X_D) &= \mathbb{P}(Y ; \boldsymbol{\pi}) \prod_{d=1}^D \mathbb{P}(X_d \mid Y ; \theta_{d}) \\
 \end{aligned}
 $$
 
@@ -397,12 +431,12 @@ More precisely, after all the simplifications above,
 
 $$
 \begin{aligned}
-\mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x} ; \boldsymbol{\theta}) & = \dfrac{\mathbb{P}(Y = k ; \boldsymbol{\pi}) \mathbb{P}(\mathbf{X} \mid Y = k ; \boldsymbol{\theta})}{\mathbb{P}(\mathbf{X})} \\
+\mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x} ; \boldsymbol{\theta}) & = \dfrac{\mathbb{P}(Y = k ; \boldsymbol{\pi}) \mathbb{P}(\mathbf{X} \mid Y = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}})}{\mathbb{P}(\mathbf{X})} \\
 &= \dfrac{\mathbb{P}(Y, X_1, X_2, \ldots X_D)}{\mathbb{P}(\mathbf{X})} \\
 &= \dfrac{\mathbb{P}(Y = k ; \boldsymbol{\pi}) \prod_{d=1}^D \mathbb{P}(X_d = x_d \mid Y = k ; \theta_{dk})}{\mathbb{P}(\mathbf{X} = \mathbf{x})} \\
 &\propto \mathbb{P}(Y = k ; \boldsymbol{\pi}) \prod_{d=1}^D \mathbb{P}(X_d = x_d \mid Y = k ; \theta_{dk})
 \end{aligned}
-$$
+$$ (eq:naive-bayes-classifier-1)
 
 Consequently, $\boldsymbol{\pi} = \begin{bmatrix} \pi_1 & \pi_2 & \dots & \pi_K \end{bmatrix}$ and
 $\pi_k$ refers to the prior probability of class $k$, and $\theta_{dk}$ refers to the parameter of the
@@ -410,10 +444,90 @@ class conditional density for class $k$ and feature $d$ (**Cite murphy pp 358**)
 the boldsymbol $\boldsymbol{\theta}$ is the parameter vector,
 
 $$
-\boldsymbol{\theta} = (\boldsymbol{\pi}, \{\theta_{dk}\}_{k=1}^K, \{d=1, \ldots, D\})
+\boldsymbol{\theta} = \left(\boldsymbol{\pi}, \{\theta_{dk}\}_{k=1}^K, \{d=1, \ldots, D\}\right) = \left(\boldsymbol{\pi}, \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}\right)
 $$
 
----
+
+```{prf:definition} The Parameter Vector
+:label: parameter-vector
+
+There is not much to say about the categorical component $\boldsymbol{\pi}$, since we are
+just estimating the prior probabilities of the classes. 
+
+The parameter vector (matrix) $\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}=\{\theta_{dk}\}_{k=1}^K, \{d=1, \ldots, D\}$ is a bit more complicated.
+It resides in the $\mathbb{R}^{K \times D}$ space, where each element $\theta_{dk}$ is the parameter
+associated with feature $d$ conditioned on class $k$.
+
+So if $K=3$ and $D=2$, then the parameter vector $\boldsymbol{\theta}$ is a $3 \times 2$ matrix, i.e.
+
+$$
+\boldsymbol{\theta} = \begin{bmatrix}
+\theta_{11} & \theta_{12} \\
+\theta_{21} & \theta_{22} \\
+\theta_{31} & \theta_{32}
+\end{bmatrix}_{3 \times 2}
+$$
+
+This means we have effectively reduced our complexity from $\sim \mathcal{O}(2^D)$ to $\sim \mathcal{O}(DK + 1)$.
+
+**We have also reduced the problem of estimating the joint distribution to just individual conditional distributions.**
+```
+
+```{prf:remark} Notation remark
+A note, the notation $\boldsymbol{\theta}_{dk}$ should either be read as $\boldsymbol{\theta}_{kd}$ since
+we say $\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}$ is a $K \times D$ matrix.
+```
+
+### Inductive Bias
+
+We still need to introduce some inductive bias into {eq}`eq:naive-bayes-classifier-1`, more concretely, we need to make some assumptions about the distribution 
+of $\mathbb{P}(Y)$ and $\mathbb{P}(X_d \mid Y)$. 
+
+For the target variable, we typically model it as a categorical distribution, 
+
+$$
+\mathbb{P}(Y) \sim \mathrm{Categorical}(\boldsymbol{\pi})
+$$
+
+For the conditional distribution of the features, we typically model it according to what type of features we have. For example, if we have binary features, then we can model it as a Bernoulli distribution, 
+
+$$
+\mathbb{P}(X_d \mid Y) \sim \mathrm{Bernoulli}(\theta_{dk})
+$$
+
+If we have continuous features, then we can model it as a Gaussian distribution,
+
+$$
+\mathbb{P}(X_d \mid Y) \sim \mathcal{N}(\mu_{dk}, \sigma_{dk}^2)
+$$
+
+See **KEVIN MURPHY pp 358 for more details**.
+
+For simplicity sake, we assume that all features $X_d$ are of the same type, either all binary or all continuous.
+In reality, this may not need to be the case.
+
+### Model Fitting
+
+Everything we have talked about is just 1 single sample, and that won't work in the realm of 
+estimating the best parameters that fit the data. Since we are given a dataset $\mathcal{D}$
+consisting of $N$ samples, we can estimate the parameters of the model by maximizing the likelihood of the data.
+
+Since each sample is **i.i.d.**, we can write the joint probability distribution as the product of the individual probabilities of each sample:
+
+$$
+\begin{align*}
+\mathbb{P}(\mathcal{D} ; \boldsymbol{\theta}) &= \mathbb{P}\left(\mathcal{D} ; \left\{\boldsymbol{\pi}, \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}} \right\}\right) \\
+&= \mathbb{P}\left(\{\mathbf{X}^{(1)}, Y^{(1)}\}, \{\mathbf{X}^{(2)}, Y^{(2)}\}, \dots, \{\mathbf{X}^{(N)}, Y^{(N)}\} ; \left\{\boldsymbol{\pi}, \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}} \right\}\right) \\
+&= \prod_{n=1}^N  \mathbb{P}\left(Y^{(n)}=k ; \boldsymbol{\pi}\right) \mathbb{P}\left(\mathrm{X}^{(n)} \mid Y^{(n)} = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}} \right)  \\
+&= \prod_{n=1}^N  \left\{\mathbb{P}\left(Y^{(n)}=k ; \boldsymbol{\pi}\right) \prod_{d=1}^D \mathbb{P}\left(X_d^{(n)} \mid Y^{(n)} = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}} \right) \right\}  \\
+\end{align*}
+$$
+
+Then we can maximize $\prod_{n=1}^N  \mathbb{P}\left(Y^{(n)}=k ; \boldsymbol{\pi}\right)$ 
+individually since the above can be decomposed (**CITE MURPHY**).
+
+
+### Previous
 
 We denote the (joint) probability distribution of the observed data $\mathcal{D}$ as 
 
@@ -535,8 +649,13 @@ and summing each column will give us $N_1 = 2$, $N_2 = 3$, and $N_3 = 1$.
 ## Maximum Likelihood Estimation of Categorical Distribution for Target Variable
 
 
+aaa
+
+## References
 
 
+
+[^categorical-distribution]: [Category Distribution](https://en.wikipedia.org/wiki/Categorical_distribution)
 [^joint-distribution]: [Joint Probability Distribution](https://en.wikipedia.org/wiki/Joint_probability_distribution#Discrete_case)
 [^chain-rule-of-probability]: [Chain Rule of Probability](https://en.wikipedia.org/wiki/Chain_rule_(probability))
 [^conditional-independence]: [Conditional Independence](https://en.wikipedia.org/wiki/Conditional_independence)
