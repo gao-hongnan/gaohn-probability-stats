@@ -394,13 +394,25 @@ const thebe_selector_output = ".output, .cell_output"
    Brain Dump
   </a>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Machine Learning Algorithms
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="05_joint_distributions/naive_bayes.html">
+  <a class="reference internal" href="machine_learning_algorithms/generative/naive_bayes/naive_bayes_concept.html">
+   Naive Bayes Concept
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="machine_learning_algorithms/generative/naive_bayes/naive_bayes.html">
    Naive Bayes
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="05_joint_distributions/naive_bayes_example.html">
+  <a class="reference internal" href="machine_learning_algorithms/generative/naive_bayes/naive_bayes_example.html">
    Naive Bayes Example
   </a>
  </li>
@@ -564,6 +576,7 @@ title="Open an issue"
    <a href="#cap-categorical-distribution"><strong>categorical-distribution</strong></a> | 
    <a href="#cap-categorical-distribution-example"><strong>categorical-distribution-example</strong></a> | 
    <a href="#cap-categorical-multinomial-distribution"><strong>categorical-multinomial-distribution</strong></a> | 
+   <a href="#cap-conditional-independence"><strong>conditional-independence</strong></a> | 
    <a href="#cap-cor:law-total-probability"><strong>cor:law-total-probability</strong></a> | 
    <a href="#cap-cor_continuous_expectation"><strong>cor_continuous_expectation</strong></a> | 
    <a href="#cap-cor_probability_interval"><strong>cor_probability_interval</strong></a> | 
@@ -572,6 +585,7 @@ title="Open an issue"
    <a href="#cap-corollary:inequality-bounds"><strong>corollary:inequality-bounds</strong></a> | 
    <a href="#cap-corollary:probability-of-complements"><strong>corollary:probability-of-complements</strong></a> | 
    <a href="#cap-corollary:probability-of-empty-set"><strong>corollary:probability-of-empty-set</strong></a> | 
+   <a href="#cap-dataset-definition"><strong>dataset-definition</strong></a> | 
    <a href="#cap-def:bayes-theorem"><strong>def:bayes-theorem</strong></a> | 
    <a href="#cap-def:bernoulli_trials_1"><strong>def:bernoulli_trials_1</strong></a> | 
    <a href="#cap-def:bernoulli_trials_2"><strong>def:bernoulli_trials_2</strong></a> | 
@@ -636,13 +650,19 @@ title="Open an issue"
    <a href="#cap-experiment"><strong>experiment</strong></a> | 
    <a href="#cap-fundamental_theorem_of_calculus"><strong>fundamental_theorem_of_calculus</strong></a> | 
    <a href="#cap-fundamental_theorem_of_calculus_corollary"><strong>fundamental_theorem_of_calculus_corollary</strong></a> | 
+   <a href="#cap-iid-assumption"><strong>iid-assumption</strong></a> | 
+   <a href="#cap-joint-and-conditional-probability"><strong>joint-and-conditional-probability</strong></a> | 
+   <a href="#cap-joint-distribution-example"><strong>joint-distribution-example</strong></a> | 
    <a href="#cap-lagrangian-method"><strong>lagrangian-method</strong></a> | 
-   <a href="#cap-machine-learning-notations"><strong>machine-learning-notations</strong></a> | 
+   <a href="#cap-likelihood"><strong>likelihood</strong></a> | 
+   <a href="#cap-marginal-distribution-and-normalization-constant"><strong>marginal-distribution-and-normalization-constant</strong></a> | 
    <a href="#cap-measure_zero_sets"><strong>measure_zero_sets</strong></a> | 
    <a href="#cap-naive-bayes-inference-algorithm"><strong>naive-bayes-inference-algorithm</strong></a> | 
    <a href="#cap-notation-overload"><strong>notation-overload</strong></a> | 
+   <a href="#cap-parameter-vector"><strong>parameter-vector</strong></a> | 
+   <a href="#cap-posterior"><strong>posterior</strong></a> | 
    <a href="#cap-pre_image"><strong>pre_image</strong></a> | 
-   <a href="#cap-prf:remark"><strong>prf:remark</strong></a> | 
+   <a href="#cap-prior"><strong>prior</strong></a> | 
    <a href="#cap-probability_law"><strong>probability_law</strong></a> | 
    <a href="#cap-prop:bernoulli"><strong>prop:bernoulli</strong></a> | 
    <a href="#cap-prop:bernoulli_var"><strong>prop:bernoulli_var</strong></a> | 
@@ -674,9 +694,11 @@ title="Open an issue"
    <a href="#cap-rem_open_equals_closed_interval"><strong>rem_open_equals_closed_interval</strong></a> | 
    <a href="#cap-rem_probability_density_function"><strong>rem_probability_density_function</strong></a> | 
    <a href="#cap-remark-0"><strong>remark-0</strong></a> | 
+   <a href="#cap-remark-15"><strong>remark-15</strong></a> | 
    <a href="#cap-rmk_continuous_uniform_distribution"><strong>rmk_continuous_uniform_distribution</strong></a> | 
    <a href="#cap-rmk_gaussian_distribution_pdf"><strong>rmk_gaussian_distribution_pdf</strong></a> | 
    <a href="#cap-sample_space"><strong>sample_space</strong></a> | 
+   <a href="#cap-some-remarks"><strong>some-remarks</strong></a> | 
    <a href="#cap-theorem-3"><strong>theorem-3</strong></a> | 
    <a href="#cap-thm:disjoint-vs-independent"><strong>thm:disjoint-vs-independent</strong></a> | 
    <a href="#cap-thm:law-total-probability"><strong>thm:law-total-probability</strong></a> | 
@@ -692,7 +714,8 @@ title="Open an issue"
    <a href="#cap-thm_linear_transformation_gaussian_distribution"><strong>thm_linear_transformation_gaussian_distribution</strong></a> | 
    <a href="#cap-thm_pdf_derivative_cdf"><strong>thm_pdf_derivative_cdf</strong></a> | 
    <a href="#cap-thm_pmf_cdf"><strong>thm_pmf_cdf</strong></a> | 
-   <a href="#cap-thm_pmf_normalization"><strong>thm_pmf_normalization</strong></a>
+   <a href="#cap-thm_pmf_normalization"><strong>thm_pmf_normalization</strong></a> | 
+   <a href="#cap-underlying-distributions"><strong>underlying-distributions</strong></a>
    </div>
 
    <table class="indextable modindextable">
@@ -726,7 +749,7 @@ title="Open an issue"
      <tr>
        <td></td>
        <td>
-       <a href="05_joint_distributions/naive_bayes_example.html#categorical-distribution"><code class="xref">categorical-distribution</code></a> <em>(05_joint_distributions/naive_bayes_example)</em></td><td>
+       <a href="machine_learning_algorithms/generative/naive_bayes/naive_bayes_concept.html#categorical-distribution"><code class="xref">categorical-distribution</code></a> <em>(machine_learning_algorithms/generative/naive_bayes/naive_bayes_concept)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-categorical-distribution-example"><td></td><td>
@@ -734,7 +757,7 @@ title="Open an issue"
      <tr>
        <td></td>
        <td>
-       <a href="05_joint_distributions/naive_bayes_example.html#categorical-distribution-example"><code class="xref">categorical-distribution-example</code></a> <em>(05_joint_distributions/naive_bayes_example)</em></td><td>
+       <a href="machine_learning_algorithms/generative/naive_bayes/naive_bayes_concept.html#categorical-distribution-example"><code class="xref">categorical-distribution-example</code></a> <em>(machine_learning_algorithms/generative/naive_bayes/naive_bayes_concept)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-categorical-multinomial-distribution"><td></td><td>
@@ -742,7 +765,15 @@ title="Open an issue"
      <tr>
        <td></td>
        <td>
-       <a href="05_joint_distributions/naive_bayes_example.html#categorical-multinomial-distribution"><code class="xref">categorical-multinomial-distribution</code></a> <em>(05_joint_distributions/naive_bayes_example)</em></td><td>
+       <a href="machine_learning_algorithms/generative/naive_bayes/naive_bayes_concept.html#categorical-multinomial-distribution"><code class="xref">categorical-multinomial-distribution</code></a> <em>(machine_learning_algorithms/generative/naive_bayes/naive_bayes_concept)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-conditional-independence"><td></td><td>
+       <strong>conditional-independence</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="machine_learning_algorithms/generative/naive_bayes/naive_bayes_concept.html#conditional-independence"><code class="xref">conditional-independence</code></a> <em>(machine_learning_algorithms/generative/naive_bayes/naive_bayes_concept)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-cor:law-total-probability"><td></td><td>
@@ -808,6 +839,14 @@ title="Open an issue"
        <td>
        <a href="02_probability/0203_probability_axioms.html#corollary:probability-of-empty-set"><code class="xref">corollary:probability-of-empty-set</code></a> <em>(02_probability/0203_probability_axioms)</em></td><td>
        <em>corollary</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-dataset-definition"><td></td><td>
+       <strong>dataset-definition</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="machine_learning_algorithms/generative/naive_bayes/naive_bayes_concept.html#dataset-definition"><code class="xref">dataset-definition</code></a> <em>(machine_learning_algorithms/generative/naive_bayes/naive_bayes_concept)</em></td><td>
+       <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-def:bayes-theorem"><td></td><td>
        <strong>def:bayes-theorem</strong></td><td></td></tr>
@@ -1321,20 +1360,52 @@ title="Open an issue"
        <a href="01_mathematical_preliminaries/02_calculus.html#fundamental_theorem_of_calculus_corollary"><code class="xref">fundamental_theorem_of_calculus_corollary</code></a> <em>(01_mathematical_preliminaries/02_calculus)</em></td><td>
        <em>corollary</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-iid-assumption"><td></td><td>
+       <strong>iid-assumption</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="machine_learning_algorithms/generative/naive_bayes/naive_bayes_concept.html#iid-assumption"><code class="xref">iid-assumption</code></a> <em>(machine_learning_algorithms/generative/naive_bayes/naive_bayes_concept)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-joint-and-conditional-probability"><td></td><td>
+       <strong>joint-and-conditional-probability</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="machine_learning_algorithms/generative/naive_bayes/naive_bayes_concept.html#joint-and-conditional-probability"><code class="xref">joint-and-conditional-probability</code></a> <em>(machine_learning_algorithms/generative/naive_bayes/naive_bayes_concept)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-joint-distribution-example"><td></td><td>
+       <strong>joint-distribution-example</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="machine_learning_algorithms/generative/naive_bayes/naive_bayes_concept.html#joint-distribution-example"><code class="xref">joint-distribution-example</code></a> <em>(machine_learning_algorithms/generative/naive_bayes/naive_bayes_concept)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-lagrangian-method"><td></td><td>
        <strong>lagrangian-method</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="05_joint_distributions/naive_bayes_example.html#lagrangian-method"><code class="xref">lagrangian-method</code></a> <em>(05_joint_distributions/naive_bayes_example)</em></td><td>
+       <a href="machine_learning_algorithms/generative/naive_bayes/naive_bayes_example.html#lagrangian-method"><code class="xref">lagrangian-method</code></a> <em>(machine_learning_algorithms/generative/naive_bayes/naive_bayes_example)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-machine-learning-notations"><td></td><td>
-       <strong>machine-learning-notations</strong></td><td></td></tr>
+     <tr class="cap" id="cap-likelihood"><td></td><td>
+       <strong>likelihood</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="05_joint_distributions/naive_bayes_example.html#machine-learning-notations"><code class="xref">machine-learning-notations</code></a> <em>(05_joint_distributions/naive_bayes_example)</em></td><td>
+       <a href="machine_learning_algorithms/generative/naive_bayes/naive_bayes_concept.html#likelihood"><code class="xref">likelihood</code></a> <em>(machine_learning_algorithms/generative/naive_bayes/naive_bayes_concept)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-marginal-distribution-and-normalization-constant"><td></td><td>
+       <strong>marginal-distribution-and-normalization-constant</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="machine_learning_algorithms/generative/naive_bayes/naive_bayes_concept.html#marginal-distribution-and-normalization-constant"><code class="xref">marginal-distribution-and-normalization-constant</code></a> <em>(machine_learning_algorithms/generative/naive_bayes/naive_bayes_concept)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-measure_zero_sets"><td></td><td>
@@ -1350,7 +1421,7 @@ title="Open an issue"
      <tr>
        <td></td>
        <td>
-       <a href="05_joint_distributions/naive_bayes_example.html#naive-bayes-inference-algorithm"><code class="xref">naive-bayes-inference-algorithm</code></a> <em>(05_joint_distributions/naive_bayes_example)</em></td><td>
+       <a href="machine_learning_algorithms/generative/naive_bayes/naive_bayes_example.html#naive-bayes-inference-algorithm"><code class="xref">naive-bayes-inference-algorithm</code></a> <em>(machine_learning_algorithms/generative/naive_bayes/naive_bayes_example)</em></td><td>
        <em>algorithm</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-notation-overload"><td></td><td>
@@ -1358,8 +1429,24 @@ title="Open an issue"
      <tr>
        <td></td>
        <td>
-       <a href="05_joint_distributions/naive_bayes_example.html#notation-overload"><code class="xref">notation-overload</code></a> <em>(05_joint_distributions/naive_bayes_example)</em></td><td>
+       <a href="machine_learning_algorithms/generative/naive_bayes/naive_bayes_example.html#notation-overload"><code class="xref">notation-overload</code></a> <em>(machine_learning_algorithms/generative/naive_bayes/naive_bayes_example)</em></td><td>
        <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-parameter-vector"><td></td><td>
+       <strong>parameter-vector</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="machine_learning_algorithms/generative/naive_bayes/naive_bayes_concept.html#parameter-vector"><code class="xref">parameter-vector</code></a> <em>(machine_learning_algorithms/generative/naive_bayes/naive_bayes_concept)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-posterior"><td></td><td>
+       <strong>posterior</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="machine_learning_algorithms/generative/naive_bayes/naive_bayes_concept.html#posterior"><code class="xref">posterior</code></a> <em>(machine_learning_algorithms/generative/naive_bayes/naive_bayes_concept)</em></td><td>
+       <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-pre_image"><td></td><td>
        <strong>pre_image</strong></td><td></td></tr>
@@ -1369,13 +1456,13 @@ title="Open an issue"
        <a href="03_discrete_random_variables/0301_random_variables.html#pre_image"><code class="xref">pre_image</code></a> <em>(03_discrete_random_variables/0301_random_variables)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-prf:remark"><td></td><td>
-       <strong>prf:remark</strong></td><td></td></tr>
+     <tr class="cap" id="cap-prior"><td></td><td>
+       <strong>prior</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="05_joint_distributions/naive_bayes_example.html#prf:remark"><code class="xref">prf:remark</code></a> <em>(05_joint_distributions/naive_bayes_example)</em></td><td>
-       <em>remark</em></td></tr>
+       <a href="machine_learning_algorithms/generative/naive_bayes/naive_bayes_concept.html#prior"><code class="xref">prior</code></a> <em>(machine_learning_algorithms/generative/naive_bayes/naive_bayes_concept)</em></td><td>
+       <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-probability_law"><td></td><td>
        <strong>probability_law</strong></td><td></td></tr>
@@ -1625,6 +1712,14 @@ title="Open an issue"
        <a href="04_continuous_random_variables/0412_functions_of_random_variables.html#remark-0"><code class="xref">remark-0</code></a> <em>(04_continuous_random_variables/0412_functions_of_random_variables)</em></td><td>
        <em>remark</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-remark-15"><td></td><td>
+       <strong>remark-15</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="machine_learning_algorithms/generative/naive_bayes/naive_bayes_concept.html#remark-15"><code class="xref">remark-15</code></a> <em>(machine_learning_algorithms/generative/naive_bayes/naive_bayes_concept)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-rmk_continuous_uniform_distribution"><td></td><td>
        <strong>rmk_continuous_uniform_distribution</strong></td><td></td></tr>
      <tr>
@@ -1648,6 +1743,14 @@ title="Open an issue"
        <td>
        <a href="02_probability/0202_probability_space.html#sample_space"><code class="xref">sample_space</code></a> <em>(02_probability/0202_probability_space)</em></td><td>
        <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-some-remarks"><td></td><td>
+       <strong>some-remarks</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="machine_learning_algorithms/generative/naive_bayes/naive_bayes_concept.html#some-remarks"><code class="xref">some-remarks</code></a> <em>(machine_learning_algorithms/generative/naive_bayes/naive_bayes_concept)</em></td><td>
+       <em>remark</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-theorem-3"><td></td><td>
        <strong>theorem-3</strong></td><td></td></tr>
@@ -1776,6 +1879,14 @@ title="Open an issue"
        <td>
        <a href="03_discrete_random_variables/0303_probability_mass_function.html#thm_pmf_normalization"><code class="xref">thm_pmf_normalization</code></a> <em>(03_discrete_random_variables/0303_probability_mass_function)</em></td><td>
        <em>theorem</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-underlying-distributions"><td></td><td>
+       <strong>underlying-distributions</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="machine_learning_algorithms/generative/naive_bayes/naive_bayes_concept.html#underlying-distributions"><code class="xref">underlying-distributions</code></a> <em>(machine_learning_algorithms/generative/naive_bayes/naive_bayes_concept)</em></td><td>
+       <em>definition</em></td></tr>
    </table>
 
 

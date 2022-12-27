@@ -1,0 +1,1373 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Naive Bayes Concept &#8212; Probability &amp; Statistics</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../../../_static/tabs.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"defeq": "\\overset{\\text{def}}{=}", "defa": "\\overset{\\text{(a)}}{=}", "defb": "\\overset{\\text{(b)}}{=}", "defc": "\\overset{\\text{(c)}}{=}", "defd": "\\overset{\\text{(d)}}{=}", "st": "\\mid", "mod": "\\mid", "S": "\\Omega", "s": "\\omega", "e": "\\exp", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "expectation": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "lpar": "\\left(", "rpar": "\\right)", "lcurl": "\\left\\{", "rcurl": "\\right\\}", "pmf": "p_X", "pdf": "f_X", "pdftwo": "f_{X,Y}", "pdfjoint": "f_{\\mathbf{X}}", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})", "var": "\\operatorname{Var}", "std": "\\operatorname{Std}", "bern": "\\operatorname{Bernoulli}", "binomial": "\\operatorname{Binomial}", "geometric": "\\operatorname{Geometric}", "poisson": "\\operatorname{Poisson}", "uniform": "\\operatorname{Uniform}", "normal": "\\operatorname{Normal}", "gaussian": "\\operatorname{Gaussian}", "gaussiansymbol": "\\mathcal{N}", "exponential": "\\operatorname{Exponential}", "iid": "\\textbf{i.i.d.}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Naive Bayes" href="naive_bayes.html" />
+    <link rel="prev" title="Brain Dump" href="../../../05_joint_distributions/braindump.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Probability & Statistics</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Chapter 1. Mathematical Preliminaries
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../01_mathematical_preliminaries/01_combinatorics.html">
+   Permutations and Combinations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../01_mathematical_preliminaries/02_calculus.html">
+   Calculus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../01_mathematical_preliminaries/exercises.html">
+   Exercises
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Chapter 2. Probability
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../02_probability/0202_probability_space.html">
+   Probability Space
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../02_probability/0203_probability_axioms.html">
+   Probability Axioms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../02_probability/0204_conditional_probability.html">
+   Conditional Probability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../02_probability/0205_independence.html">
+   Independence
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../02_probability/0206_bayes_theorem.html">
+   Baye’s Theorem and the Law of Total Probability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../02_probability/summary.html">
+   Summary
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Chapter 3. Discrete Random Variables
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../03_discrete_random_variables/0301_random_variables.html">
+   Random Variables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../03_discrete_random_variables/0302_discrete_random_variables.html">
+   Discrete Random Variables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../03_discrete_random_variables/0303_probability_mass_function.html">
+   Probability Mass Function
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../03_discrete_random_variables/0304_cumulative_distribution_function.html">
+   Cumulative Distribution Function
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../03_discrete_random_variables/0305_expectation.html">
+   Expectation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../03_discrete_random_variables/0306_moments_and_variance.html">
+   Moments and Variance
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../03_discrete_random_variables/0307_discrete_uniform_distribution_concept.html">
+   Discrete Uniform Distribution
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../03_discrete_random_variables/0307_discrete_uniform_distribution_implementation.html">
+     Implementation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../03_discrete_random_variables/0308_bernoulli_distribution_concept.html">
+   Bernoulli Distribution
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../03_discrete_random_variables/0308_bernoulli_distribution_implementation.html">
+     Implementation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../03_discrete_random_variables/iid.html">
+   Independent and Identically Distributed (IID)
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../03_discrete_random_variables/0309_binomial_distribution_concept.html">
+   Binomial Distribution
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../03_discrete_random_variables/0309_binomial_distribution_implementation.html">
+     Implementation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../03_discrete_random_variables/0309_binomial_distribution_application.html">
+     Real World Examples
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../03_discrete_random_variables/0310_geometric_distribution_concept.html">
+   Geometric Distribution
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../03_discrete_random_variables/0311_poisson_distribution_concept.html">
+   Poisson Distribution
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../03_discrete_random_variables/0311_poisson_distribution_implementation.html">
+     Implementation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../03_discrete_random_variables/summary.html">
+   Important
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../03_discrete_random_variables/exercises.html">
+   Exercises
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Chapter 4. Continuous Random Variables
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../04_continuous_random_variables/from_discrete_to_continuous.html">
+   From Discrete to Continuous
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../04_continuous_random_variables/0401_continuous_random_variables.html">
+   Continuous Random Variables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../04_continuous_random_variables/0402_probability_density_function.html">
+   Probability Density Function
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../04_continuous_random_variables/0403_expectation.html">
+   Expectation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../04_continuous_random_variables/0404_moments_and_variance.html">
+   Moments and Variance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../04_continuous_random_variables/0405_cumulative_distribution_function.html">
+   Cumulative Distribution Function
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../04_continuous_random_variables/0406_mean_median_mode.html">
+   Mean, Median and Mode
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../04_continuous_random_variables/0407_continuous_uniform_distribution.html">
+   Continuous Uniform Distribution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../04_continuous_random_variables/0408_exponential_distribution.html">
+   Exponential Distribution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../04_continuous_random_variables/0409_gaussian_distribution.html">
+   Gaussian Distribution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../04_continuous_random_variables/0410_skewness_and_kurtosis.html">
+   Skewness and Kurtosis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../04_continuous_random_variables/0411_convolve_and_sum_of_random_variables.html">
+   Convolution and Sum of Random Variables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../04_continuous_random_variables/0412_functions_of_random_variables.html">
+   Functions of Random Variables
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Chapter 5. Joint Distributions
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../05_joint_distributions/braindump.html">
+   Brain Dump
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Machine Learning Algorithms
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Naive Bayes Concept
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="naive_bayes.html">
+   Naive Bayes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="naive_bayes_example.html">
+   Naive Bayes Example
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  References and Resources
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../references_and_resources/bibliography.html">
+   Bibliography
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../references_and_resources/resources.html">
+   Resources
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/gao-hongnan/gaohn-probability-stats"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/gao-hongnan/gaohn-probability-stats/issues/new?title=Issue%20on%20page%20%2Fmachine_learning_algorithms/generative/naive_bayes/naive_bayes_concept.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../../_sources/machine_learning_algorithms/generative/naive_bayes/naive_bayes_concept.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#notations">
+   Notations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#categorical-distribution">
+   Categorical Distribution
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#derivation">
+   Derivation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#inductive-bias">
+     Inductive Bias
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model-fitting">
+     Model Fitting
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#previous">
+     Previous
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#maximum-likelihood-estimation-of-categorical-distribution-for-target-variable">
+   Maximum Likelihood Estimation of Categorical Distribution for Target Variable
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Naive Bayes Concept</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#notations">
+   Notations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#categorical-distribution">
+   Categorical Distribution
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#derivation">
+   Derivation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#inductive-bias">
+     Inductive Bias
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model-fitting">
+     Model Fitting
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#previous">
+     Previous
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#maximum-likelihood-estimation-of-categorical-distribution-for-target-variable">
+   Maximum Likelihood Estimation of Categorical Distribution for Target Variable
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="naive-bayes-concept">
+<h1>Naive Bayes Concept<a class="headerlink" href="#naive-bayes-concept" title="Permalink to this headline">#</a></h1>
+<section id="notations">
+<h2>Notations<a class="headerlink" href="#notations" title="Permalink to this headline">#</a></h2>
+<div class="proof definition admonition" id="underlying-distributions">
+<p class="admonition-title"><span class="caption-number">Definition 57 </span> (Underlying Distributions)</p>
+<section class="definition-content" id="proof-content">
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\mathcal{X}\)</span>: Input space consists of all possible inputs <span class="math notranslate nohighlight">\(\mathbf{x} \in \mathcal{X}\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathcal{Y}\)</span>: Label space = <span class="math notranslate nohighlight">\(\{1, 2, \cdots, K\}\)</span> where <span class="math notranslate nohighlight">\(K\)</span> is the number of classes.</p></li>
+<li><p>The mapping between <span class="math notranslate nohighlight">\(\mathcal{X}\)</span> and <span class="math notranslate nohighlight">\(\mathcal{Y}\)</span> is given by <span class="math notranslate nohighlight">\(c: \mathcal{X} \rightarrow \mathcal{Y}\)</span> where <span class="math notranslate nohighlight">\(c\)</span> is called <em>concept</em> according to the PAC learning theory.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathcal{D}\)</span>: The fixed but unknown distribution of the data. Usually, this refers
+to the joint distribution of the input and the label,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  \mathcal{D} &amp;= \mathbb{P}(\mathcal{X}, \mathcal{Y} ; \boldsymbol{\theta}) \\
+  &amp;= \mathbb{P}_{\{\mathcal{X}, \mathcal{Y} ; \boldsymbol{\theta}\}}(\mathbf{x}, y)
+  \end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{x} \in \mathcal{X}\)</span> and <span class="math notranslate nohighlight">\(y \in \mathcal{Y}\)</span>, and <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> is the
+parameter vector of the distribution <span class="math notranslate nohighlight">\(\mathcal{D}\)</span>.</p>
+</li>
+</ul>
+</section>
+</div><div class="proof definition admonition" id="dataset-definition">
+<p class="admonition-title"><span class="caption-number">Definition 58 </span> (Dataset)</p>
+<section class="definition-content" id="proof-content">
+<p>Now, consider a dataset <span class="math notranslate nohighlight">\(\mathcal{D}_{\{\mathbf{x}, y\}}\)</span> consisting of <span class="math notranslate nohighlight">\(N\)</span> samples (observations) and <span class="math notranslate nohighlight">\(D\)</span> predictors (features) drawn <strong>jointly</strong> and <strong>indepedently and identically distributed</strong> (i.i.d.) from <span class="math notranslate nohighlight">\(\mathcal{D}\)</span>. Note we will refer to the dataset <span class="math notranslate nohighlight">\(\mathcal{D}_{\{\mathbf{x}, y\}}\)</span> with the same notation as the underlying distribution <span class="math notranslate nohighlight">\(\mathcal{D}\)</span> from now on.</p>
+<ul>
+<li><p>The training dataset <span class="math notranslate nohighlight">\(\mathcal{D}\)</span> can also be represented compactly as a set:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{align*}
+    \mathcal{D} \overset{\mathbf{def}}{=} \mathcal{D}_{\{\mathbf{x}, y\}} &amp;= \left\{\mathbf{x}^{(n)}, y^{(n)}\right\}_{n=1}^N \\
+    &amp;= \left\{\left(\mathbf{x}^{(1)}, y^{(1)}\right), \left(\mathbf{x}^{(2)}, y^{(2)}\right), \cdots, \left(\mathbf{x}^{(N)}, y^{(N)}\right)\right\} \\
+    &amp;= \left\{\mathbf{X}, \mathbf{y}\right\}
+    \end{align*}
+    \end{split}\]</div>
+<p>where we often subscript <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> and <span class="math notranslate nohighlight">\(y\)</span> with <span class="math notranslate nohighlight">\(n\)</span> to denote the <span class="math notranslate nohighlight">\(n\)</span>-th sample from the dataset, i.e.
+<span class="math notranslate nohighlight">\(\mathbf{x}^{(n)}\)</span> and <span class="math notranslate nohighlight">\(y^{(n)}\)</span>. Most of the times, <span class="math notranslate nohighlight">\(\mathbf{x}^{(n)}\)</span> is bolded since
+it represents a vector of <span class="math notranslate nohighlight">\(D\)</span> number of features, while <span class="math notranslate nohighlight">\(y^{(n)}\)</span> is not bolded since it is a scalar, though
+it is not uncommon for <span class="math notranslate nohighlight">\(y^{(n)}\)</span> to be bolded as well if you represent it with K-dim one-hot vector.</p>
+</li>
+<li><p>For the n-th sample <span class="math notranslate nohighlight">\(\mathbf{x}^{(n)}\)</span>, we often denote the <span class="math notranslate nohighlight">\(d\)</span>-th feature as <span class="math notranslate nohighlight">\(x_d^{(n)}\)</span> and the representation of <span class="math notranslate nohighlight">\(\mathbf{x}^{(n)}\)</span> as a vector as:</p>
+<div class="math notranslate nohighlight">
+\[
+  \mathbf{x}^{(n)} \in \mathbb{R}^{D} = \begin{bmatrix} x_1^{(n)} &amp; x_2^{(n)} &amp; \cdots &amp; x_D^{(n)} \end{bmatrix}_{D \times 1}
+  \]</div>
+<p>is a sample of size <span class="math notranslate nohighlight">\(D\)</span>, drawn (jointly with <span class="math notranslate nohighlight">\(y\)</span>) <span class="math notranslate nohighlight">\(\textbf{i.i.d.}\)</span> from <span class="math notranslate nohighlight">\(\mathcal{D}\)</span>.</p>
+</li>
+<li><p>We often add an extra feature <span class="math notranslate nohighlight">\(x_0^{(n)} = 1\)</span> to <span class="math notranslate nohighlight">\(\mathbf{x}^{(n)}\)</span> to represent the bias term.
+i.e.</p>
+<div class="math notranslate nohighlight">
+\[
+  \mathbf{x}^{(n)} \in \mathbb{R}^{D+1} = \begin{bmatrix} x_0^{(n)} &amp; x_1^{(n)} &amp; x_2^{(n)} &amp; \cdots &amp; x_D^{(n)} \end{bmatrix}_{(D+1) \times 1}
+  \]</div>
+</li>
+<li><p>For the n-th sample’s label <span class="math notranslate nohighlight">\(y^{(n)} \overset{\mathbf{def}}{=} c(\mathbf{x}^{(n)})\)</span>, if we were to represent it as K-dim one-hot vector, we would have:</p>
+<div class="math notranslate nohighlight">
+\[
+  y^{(n)} \in \mathbb{R}^{K} = \begin{bmatrix} 0 &amp; 0 &amp; \cdots &amp; 1 &amp; \cdots &amp; 0 \end{bmatrix}_{K \times 1}
+  \]</div>
+<p>where the <span class="math notranslate nohighlight">\(1\)</span> is at the <span class="math notranslate nohighlight">\(k\)</span>-th position, and <span class="math notranslate nohighlight">\(k\)</span> is the class label of the n-th sample.</p>
+</li>
+<li><p>Everything defined above is for <strong>one single sample/data point</strong>, to represent it as a matrix, we can define
+a design matrix <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> and a label vector <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> as follows,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  \begin{aligned}
+  \mathbf{X} \in \mathbb{R}^{N \times D} &amp;= \begin{bmatrix} \mathbf{x}^{(1)} \\ \mathbf{x}^{(2)} \\ \vdots \\ \mathbf{x}^{(N)} \end{bmatrix} = \begin{bmatrix} x_1^{(1)} &amp; x_2^{(1)} &amp; \cdots &amp; x_D^{(1)} \\ x_1^{(2)} &amp; x_2^{(2)} &amp; \cdots &amp; x_D^{(2)} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ x_1^{(N)} &amp; x_2^{(N)} &amp; \cdots &amp; x_D^{(N)} \end{bmatrix}_{N \times D} \\
+  \end{aligned}
+  \end{split}\]</div>
+<p>as the matrix of all samples. Note that each row is a sample and each column is a feature. We can append a column of 1’s to the first column of <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> to represent the bias term.</p>
+<p><strong>In this section, we also talk about random vectors <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> so we will replace the design matrix <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> with <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> to avoid confusion.</strong></p>
+<p>Subsequently, for the label vector <span class="math notranslate nohighlight">\(\mathbf{y}\)</span>, we can define it as follows,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  \begin{aligned}
+  \mathbf{y} \in \mathbb{R}^{N} = \begin{bmatrix} y^{(1)} \\ y^{(2)} \\ \vdots \\ y^{(N)} \end{bmatrix}
+  \end{aligned}
+  \end{split}\]</div>
+</li>
+</ul>
+</section>
+</div><div class="proof definition admonition" id="iid-assumption">
+<p class="admonition-title"><span class="caption-number">Definition 59 </span> (The i.i.d. Assumption)</p>
+<section class="definition-content" id="proof-content">
+<p>In supervised learning, implicitly or explicitly, one <em>always</em> assumes that the training set
+<span class="math notranslate nohighlight">\(\mathcal{D} = \left\{\left(\mathbf{x}^{(1)}, y^{(1)}\right), \left(\mathbf{x}^{(2)}, y^{(2)}\right), \cdots, \left(\mathbf{x}^{(N)}, y^{(N)}\right)\right\} \)</span> is composed of <span class="math notranslate nohighlight">\(N\)</span> input/response tuples <span class="math notranslate nohighlight">\(\left({\mathbf{X}}^{(n)} = \mathbf{x}^{(n)}, Y^{(n)} = y^{(n)}\right)\)</span> that are <em>independently drawn from the same joint distribution</em> <span class="math notranslate nohighlight">\(\mathbb{P}_{\{\mathcal{X}, \mathcal{Y}, \boldsymbol{\theta}\}}(\mathbf{x}, y)\)</span> with</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{P}(\mathbf{X} = \mathbf{x}, Y = y ; \boldsymbol{\theta}) = \mathbb{P}(Y = y \mid \mathbf{X} = \mathbf{x}) \mathbb{P}(\mathbf{X} = \mathbf{x})
+\]</div>
+<p>and <span class="math notranslate nohighlight">\(\mathbb{P}(Y = y \mid \mathbf{X} = \mathbf{x})\)</span> is the conditional probability of <span class="math notranslate nohighlight">\(Y\)</span> given <span class="math notranslate nohighlight">\(\mathbf{X}\)</span>,
+the relationship that the learner algorithm is trying to capture.</p>
+<p>Mathematically, this i.i.d. assumption writes (also defined in <a class="reference internal" href="../../../03_discrete_random_variables/iid.html#def_iid">Definition 29</a>):</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\left({\mathbf{X}}^{(n)}, Y^{(n)}\right) &amp;\sim \mathbb{P}_{\{\mathcal{X}, \mathcal{Y}, \boldsymbol{\theta}\}}(\mathbf{x}, y)\\
+\left({\mathbf{X}}^{(n)}, Y^{(n)}\right) &amp;\text{ independent of } \left({\mathbf{X}}^{(m)}, Y^{(m)}\right) \quad \forall n \neq m \in \{1, 2, \ldots, N\}
+\end{aligned}
+\end{split}\]</div>
+<p>and we sometimes denote</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{aligned}
+\left(\mathbf{x}^{(n)}, y^{(n)}\right) \overset{\text{i.i.d.}}{\sim} \mathbb{P}_{\{\mathcal{X}, \mathcal{Y}, \boldsymbol{\theta}\}}(\mathbf{x}, y)
+\end{aligned}
+\]</div>
+</section>
+</div><div class="proof example admonition" id="joint-distribution-example">
+<p class="admonition-title"><span class="caption-number">Example 12 </span> (Joint Distribution Example)</p>
+<section class="example-content" id="proof-content">
+<p>For example, if the number of features, <span class="math notranslate nohighlight">\(D = 2\)</span>, then let’s say</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{X}^{(n)} = \begin{bmatrix} X^{(n)}_1 &amp; X^{(n)}_2 \end{bmatrix} \in \mathbb{R}^2
+\]</div>
+<p>consists of two Gaussian random variables,
+with <span class="math notranslate nohighlight">\(\mu_1\)</span> and <span class="math notranslate nohighlight">\(\mu_2\)</span> being the mean of the two distributions,
+and <span class="math notranslate nohighlight">\(\sigma_1\)</span> and <span class="math notranslate nohighlight">\(\sigma_2\)</span> being the variance of the two distributions;
+furthermore, <span class="math notranslate nohighlight">\(Y^{(n)}\)</span> is a Bernoulli random variable with parameter <span class="math notranslate nohighlight">\(\boldsymbol{\pi}\)</span>, then we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\boldsymbol{\theta} &amp;= \begin{bmatrix} \mu_1 &amp; \sigma_1 &amp; \mu_2 &amp; \sigma_2 &amp; \boldsymbol{\pi}\end{bmatrix} \\
+&amp;= \begin{bmatrix} \boldsymbol{\mu} &amp; \boldsymbol{\sigma} &amp; \boldsymbol{\pi} \end{bmatrix}
+\end{aligned}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\boldsymbol{\mu} = \begin{bmatrix} \mu_1 &amp; \mu_2 \end{bmatrix}\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{\sigma} = \begin{bmatrix} \sigma_1 &amp; \sigma_2 \end{bmatrix}\)</span>.</p>
+</section>
+</div><div class="proof remark admonition" id="some-remarks">
+<p class="admonition-title"><span class="caption-number">Remark 7 </span> (Some remarks)</p>
+<section class="remark-content" id="proof-content">
+<ul class="simple">
+<li><p>From now on, we will refer the realization of <span class="math notranslate nohighlight">\(Y\)</span> as <span class="math notranslate nohighlight">\(k\)</span> instead.</p></li>
+<li><p>For some sections, when I mention <span class="math notranslate nohighlight">\(\mathbf{X}\)</span>, it means the random vector which resides in the
+<span class="math notranslate nohighlight">\(D\)</span>-dimensional space, not the design matrix. This also means that this random vector refers
+to a single sample, not the entire dataset.</p></li>
+</ul>
+</section>
+</div><div class="proof definition admonition" id="joint-and-conditional-probability">
+<p class="admonition-title"><span class="caption-number">Definition 60 </span> (Joint and Conditional Probability)</p>
+<section class="definition-content" id="proof-content">
+<p>We are often interested in finding the probability of a label given a sample,</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{aligned}
+\mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x}) &amp;= \mathbb{P}(Y = k \mid \mathbf{X} = \left(x_1, x_2, \ldots, x_D\right)) 
+\end{aligned}
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{X} \in \mathbb{R}^{D} = \begin{bmatrix} X_1 &amp; X_2 &amp; \cdots &amp; X_D \end{bmatrix} 
+\]</div>
+<p>is a random vector and its realizations,</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{x} = \begin{bmatrix} x_1 &amp; x_2 &amp; \cdots &amp; x_D \end{bmatrix}
+\]</div>
+<p>and therefore, <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> can be characterized by an <span class="math notranslate nohighlight">\(D\)</span>-dimensional PDF</p>
+<div class="math notranslate nohighlight">
+\[
+f_{\mathbf{X}}(\mathbf{x}) = f_{X_1, X_2, \ldots, X_D}(x_1, x_2, \ldots, x_D ; \boldsymbol{\theta})
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+Y \in \mathbb{Z} \quad \text{and} \quad k \in \mathbb{Z}
+\]</div>
+<p>is a discrete random variable (in our case classification) and its realization respectively, and therefore, <span class="math notranslate nohighlight">\(Y\)</span> can be characterized by a discrete PDF (PMF)</p>
+<div class="math notranslate nohighlight">
+\[
+f_{Y}(k ; \boldsymbol{\pi}) \sim \text{Categorical}(\boldsymbol{\pi})
+\]</div>
+<p><strong>Note that we are talking about one single sample tuple <span class="math notranslate nohighlight">\(\left(\mathbf{x}, y\right)\)</span> here. I did not
+index the sample tuple with <span class="math notranslate nohighlight">\(n\)</span> because this sample can be any sample in the unknown distribution <span class="math notranslate nohighlight">\(\mathbb{P}_{\mathcal{X}, \mathcal{Y}}(\mathbf{x}, y)\)</span>
+and not only from our given dataset <span class="math notranslate nohighlight">\(\mathcal{D}\)</span>.</strong></p>
+</section>
+</div><div class="proof definition admonition" id="likelihood">
+<p class="admonition-title"><span class="caption-number">Definition 61 </span> (Likelihood)</p>
+<section class="definition-content" id="proof-content">
+<p>We denote the likelihood function as <span class="math notranslate nohighlight">\(\mathbb{P}(\mathbf{X} = \mathbf{x} \mid Y = k)\)</span>,
+which is the probability of observing <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> given that the sample belongs to class <span class="math notranslate nohighlight">\(Y = k\)</span>.</p>
+</section>
+</div><div class="proof definition admonition" id="prior">
+<p class="admonition-title"><span class="caption-number">Definition 62 </span> (Prior)</p>
+<section class="definition-content" id="proof-content">
+<p>We denote the prior probability of class <span class="math notranslate nohighlight">\(k\)</span> as <span class="math notranslate nohighlight">\(\mathbb{P}(Y = k)\)</span>, which usually
+follows a discrete distribution such as the Categorical distribution.</p>
+</section>
+</div><div class="proof definition admonition" id="posterior">
+<p class="admonition-title"><span class="caption-number">Definition 63 </span> (Posterior)</p>
+<section class="definition-content" id="proof-content">
+<p>We denote the posterior probability of class <span class="math notranslate nohighlight">\(k\)</span> given <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> as <span class="math notranslate nohighlight">\(\mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x})\)</span>.</p>
+</section>
+</div><div class="proof definition admonition" id="marginal-distribution-and-normalization-constant">
+<p class="admonition-title"><span class="caption-number">Definition 64 </span> (Marginal Distribution and Normalization Constant)</p>
+<section class="definition-content" id="proof-content">
+<p>We denote the normalizing constant as <span class="math notranslate nohighlight">\(\mathbb{P}(\mathbf{X} = \mathbf{x}) = \sum_{k=1}^K \mathbb{P}(Y = k) \mathbb{P}(\mathbf{X} = \mathbf{x} \mid Y = k)\)</span>.</p>
+</section>
+</div><p>Brain dump</p>
+<ol class="simple">
+<li><p>The data points <span class="math notranslate nohighlight">\(\mathbf{x}^{(1)}, \mathbf{x}^{(2)}, \ldots, \mathbf{x}^{(N)}\)</span> are <strong>i.i.d.</strong> (independent and identically distributed) realizations from the random variables (random vectors) <span class="math notranslate nohighlight">\(\mathbf{X}^{(1)}, \mathbf{X}^{(2)}, \ldots, \mathbf{X}^{(N)}\)</span>.</p></li>
+<li><p>Each <span class="math notranslate nohighlight">\(\mathbf{X}^{(n)}\)</span> is a random vector, i.e. <span class="math notranslate nohighlight">\(\mathbf{X}^{(n)} \in \mathbb{R}^{D}\)</span>, where <span class="math notranslate nohighlight">\(D\)</span> is the dimensionality of the feature space. This means that <span class="math notranslate nohighlight">\(\mathbf{X}^{(n)}\)</span> can be characterized by an <span class="math notranslate nohighlight">\(D\)</span>-dimensional PDF <span class="math notranslate nohighlight">\(f_{\mathbf{X}^{(n)}}(\mathbf{x}^{(n)}) = f_{X_1^{(n)}, X_2^{(n)}, \ldots, X_D^{(n)}}(x_1^{(n)}, x_2^{(n)}, \ldots, x_D^{(n)})\)</span>.</p></li>
+</ol>
+<p>This means <span class="math notranslate nohighlight">\(\mathbf{X}^{(n)}\)</span> is a multi-dimensional joint distribution,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\mathbf{X}^{(n)} \in \mathbb{R}^{D} = \begin{bmatrix} X_1^{(n)} \\ X_2^{(n)} \\ \vdots \\ X_D^{(n)} \end{bmatrix}
+\end{aligned}
+\end{split}\]</div>
+<p>and can be characterized by an <span class="math notranslate nohighlight">\(D\)</span>-dimensional PDF</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{aligned}
+f_{\mathbf{X}^{(n)}}(\mathbf{x}^{(n)}) = f_{\mathbf{X}^{(n)}}\left(\mathbf{x}^{(n)}\right) = f_{X_1^{(n)}, X_2^{(n)}, \ldots, X_D^{(n)}}\left(x_1^{(n)}, x_2^{(n)}, \ldots, x_D^{(n)}\right)
+\end{aligned}
+\]</div>
+<p>For example, if <span class="math notranslate nohighlight">\(D = 3\)</span>, and the realizations of <span class="math notranslate nohighlight">\(\mathbf{X}^{(n)}\)</span> are <span class="math notranslate nohighlight">\(\mathbf{x}^{(n)} = (22, 80, 1)\)</span>,
+then <span class="math notranslate nohighlight">\(f_{\mathbf{X}^{(n)}}\left(\mathbf{x}^{(n)}\right)\)</span> is the probability density of observing this 3-dimensional vector in <span class="math notranslate nohighlight">\(\mathbb{R}^{3}\)</span>, within the
+sample space <span class="math notranslate nohighlight">\(\Omega_{\mathbf{X}} = \mathbb{R}  \times \mathbb{R} \times \mathbb{R}\)</span>.</p>
+<p>The confusion in the <strong>i.i.d.</strong> assumption is that we are not talking about the individual random variables
+<span class="math notranslate nohighlight">\(X_1^{(n)}, X_2^{(n)}, \ldots, X_D^{(n)}\)</span> here, but the entire random vector <span class="math notranslate nohighlight">\(\mathbf{X}^{(n)}\)</span>.</p>
+<p>This means there is no assumption of <span class="math notranslate nohighlight">\(X_1^{(n)}, X_2^{(n)}, \ldots, X_D^{(n)}\)</span> being <strong>i.i.d.</strong>. Instead, the samples
+<span class="math notranslate nohighlight">\(\mathbf{X}^{(1)}, \mathbf{X}^{(2)}, \ldots, \mathbf{X}^{(N)}\)</span> are <strong>i.i.d.</strong>.</p>
+<ol class="simple">
+<li><p>More confusion, is it iid with label <span class="math notranslate nohighlight">\(Y=k\)</span>, seems like it is together since we can indeed decompose
+the <span class="math notranslate nohighlight">\(\mathbb{P}(Y=k \mid \mathbf{X} = \mathbf{x})\)</span> into proportional <span class="math notranslate nohighlight">\(\mathbb{P}(Y=k) \mathbb{P}(\mathbf{X} = \mathbf{x} \mid Y = k)\)</span>.</p></li>
+</ol>
+<p>In SE post, discriminative model do not need make assumptions of X and therefore they may or may not be i.i.d.</p>
+</section>
+<section id="categorical-distribution">
+<h2>Categorical Distribution<a class="headerlink" href="#categorical-distribution" title="Permalink to this headline">#</a></h2>
+<p>As mentioned earlier, both <span class="math notranslate nohighlight">\(Y^{(n)}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{X}^{(n)}\)</span> are random variables/vectors. This means we need to estimate both of them.</p>
+<p>We first conveniently assume that <span class="math notranslate nohighlight">\(Y^{(n)}\)</span> is a discrete random variable, and
+follows the <strong><a class="reference external" href="https://en.wikipedia.org/wiki/Categorical_distribution">Category distribution</a></strong><a class="footnote-reference brackets" href="#id6" id="id1">1</a>,
+an extension of the Bernoulli distribution to multiple classes. Instead of a single parameter <span class="math notranslate nohighlight">\(p\)</span> (probability of success for Bernoulli),
+the Category distribution has <span class="math notranslate nohighlight">\(K\)</span> parameters <span class="math notranslate nohighlight">\(\boldsymbol{\pi}_k\)</span> for <span class="math notranslate nohighlight">\(k = 1, 2, \cdots, K\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+Y^{(n)} \overset{\small{\text{i.i.d.}}}{\sim} \text{Category}(\boldsymbol{\pi}) \quad \text{where } \boldsymbol{\pi} = \begin{bmatrix} \pi_1 &amp; \dots &amp; \pi_K \end{bmatrix}
+\]</div>
+<p>Equivalently,</p>
+<div class="math notranslate nohighlight" id="equation-eq-category-distribution">
+<span class="eqno">(29)<a class="headerlink" href="#equation-eq-category-distribution" title="Permalink to this equation">#</a></span>\[
+\mathbb{P}(Y^{(n)} = k) = \pi_k \quad \text{for } k = 1, 2, \cdots, K
+\]</div>
+<div class="proof definition admonition" id="categorical-distribution">
+<p class="admonition-title"><span class="caption-number">Definition 65 </span> (Categorical Distribution)</p>
+<section class="definition-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(Y\)</span> be a discrete random variable with <span class="math notranslate nohighlight">\(K\)</span> number of states.
+Then <span class="math notranslate nohighlight">\(Y\)</span> follows a categorical distribution with parameters <span class="math notranslate nohighlight">\(\boldsymbol{\pi}\)</span> if</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{P}(Y = k) = \pi_k \quad \text{for } k = 1, 2, \cdots, K
+\]</div>
+<p>Consequently, the PMF of the categorical distribution is defined more compactly as,</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{P}(Y = k) = \prod_{k=1}^K \pi_k^{I\{Y = k\}}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(I\{Y = k\}\)</span> is the indicator function that is equal to 1 if <span class="math notranslate nohighlight">\(Y = k\)</span> and 0 otherwise.</p>
+</section>
+</div><div class="proof definition admonition" id="categorical-multinomial-distribution">
+<p class="admonition-title"><span class="caption-number">Definition 66 </span> (Categorical (Multinomial) Distribution)</p>
+<section class="definition-content" id="proof-content">
+<p>This formulation is adopted by Bishop’s<span id="id2">[<a class="reference internal" href="../../../references_and_resources/bibliography.html#id3" title="CHRISTOPHER M. BISHOP. Pattern recognition and machine learning. SPRINGER-VERLAG NEW YORK, 2016.">BISHOP, 2016</a>]</span>, the categorical distribution is defined as</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{P}(\mathbf{Y} = \mathbf{y}; \boldsymbol{\pi}) = \prod_{k=1}^K \pi_k^{y_k}
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{y} = \begin{bmatrix} y_1 \\ y_2 \\ \vdots \\ y_K \end{bmatrix}
+\end{split}\]</div>
+<p>is an one-hot encoded vector of size <span class="math notranslate nohighlight">\(K\)</span>,</p>
+<p>The <span class="math notranslate nohighlight">\(y_k\)</span> is the <span class="math notranslate nohighlight">\(k\)</span>-th element of <span class="math notranslate nohighlight">\(\mathbf{y}\)</span>, and is equal to 1 if <span class="math notranslate nohighlight">\(Y = k\)</span> and 0 otherwise.
+The <span class="math notranslate nohighlight">\(\pi_k\)</span> is the <span class="math notranslate nohighlight">\(k\)</span>-th element of <span class="math notranslate nohighlight">\(\boldsymbol{\pi}\)</span>, and is the probability of <span class="math notranslate nohighlight">\(Y = k\)</span>.</p>
+<p>This notation alongside with the indicator notation in the previous definition allows us to manipulate
+the likelihood function easier.</p>
+</section>
+</div><div class="proof example admonition" id="categorical-distribution-example">
+<p class="admonition-title"><span class="caption-number">Example 13 </span> (Categorical Distribution Example)</p>
+<section class="example-content" id="proof-content">
+<p>Consider rolling a fair six-sided die. Let <span class="math notranslate nohighlight">\(Y\)</span> be the random variable that represents the outcome of the die roll. Then <span class="math notranslate nohighlight">\(Y\)</span> follows a categorical distribution with parameters <span class="math notranslate nohighlight">\(\boldsymbol{\pi}_k\)</span> where <span class="math notranslate nohighlight">\(\pi_k = \frac{1}{6}\)</span> for <span class="math notranslate nohighlight">\(k = 1, 2, \cdots, 6\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{P}(Y = k) = \frac{1}{6} \quad \text{for } k = 1, 2, \cdots, 6
+\]</div>
+<p>For example, if we roll a 3, then <span class="math notranslate nohighlight">\(\mathbb{P}(Y = 3) = \frac{1}{6}\)</span>.</p>
+<p>With the more compact notation, the indicator function is <span class="math notranslate nohighlight">\(I\{Y = k\} = 1\)</span> if <span class="math notranslate nohighlight">\(Y = 3\)</span> and <span class="math notranslate nohighlight">\(0\)</span> otherwise. Therefore, the PMF is</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{P}(Y = k) = \prod_{k=1}^6 \frac{1}{6}^{I\{Y = k\}} = \left(\frac{1}{6}\right)^0 \cdot \left(\frac{1}{6}\right)^0 \cdot \left(\frac{1}{6}\right)^1 \cdot \left(\frac{1}{6}\right)^0 \cdot \left(\frac{1}{6}\right)^0 \cdot \left(\frac{1}{6}\right)^0 = \frac{1}{6}
+\]</div>
+<p>Using Bishop’s notation, the PMF is still the same, only the realization <span class="math notranslate nohighlight">\(\mathrm{y}\)</span> is not a scalar,
+but instead a vector of size <span class="math notranslate nohighlight">\(6\)</span>. In the case where <span class="math notranslate nohighlight">\(Y = 3\)</span>, the vector <span class="math notranslate nohighlight">\(\mathrm{y}\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathrm{y} = \begin{bmatrix} 0 \\ 0 \\ 1 \\ 0 \\ 0 \\ 0 \end{bmatrix}
+\end{split}\]</div>
+</section>
+</div></section>
+<section id="derivation">
+<h2>Derivation<a class="headerlink" href="#derivation" title="Permalink to this headline">#</a></h2>
+<p>Let <span class="math notranslate nohighlight">\(\mathcal{D} = \left \{ \left(\mathrm{X}^{(n)}, Y^{(n)} \right) \right \}_{n=1}^N = \left \{ \left(\mathrm{x}^{(n)}, y^{(n)} \right) \right \}_{n=1}^N\)</span> be the dataset
+with <span class="math notranslate nohighlight">\(N\)</span> samples and <span class="math notranslate nohighlight">\(D\)</span> predictors. All samples are assumed to be <strong>independent and identically distributed (i.i.d.)</strong> from the unknown but fixed joint distribution
+<span class="math notranslate nohighlight">\(\mathbb{P}(\mathcal{X}, \mathcal{Y} ; \boldsymbol{\theta})\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+\left \{ \left(\mathrm{X}^{(n)}, Y^{(n)} \right) \right \} \overset{\small{\text{i.i.d.}}}{\sim} \mathbb{P}(\mathcal{X}, \mathcal{Y} ; \boldsymbol{\theta}) \quad \text{for } n = 1, 2, \cdots, N
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> is the parameter vector of the joint distribution. See <a class="reference internal" href="#joint-distribution-example">Example 12</a> for an example of such.</p>
+<p>Recall that our goal in <strong>INSERT INFERENCE SECTION ALGO</strong> is to find the class <span class="math notranslate nohighlight">\(k \in \{1, 2, \cdots, K\}\)</span> that maximizes the posterior probability
+<span class="math notranslate nohighlight">\(\mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x}^{(q)} ; \boldsymbol{\theta})\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\arg \max_{k} \mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x}^{(q)} ; \boldsymbol{\theta}) &amp;= \arg \max_{k} \frac{\mathbb{P}(Y = k, \mathbf{X} = \mathbf{x}^{(q)} ; \boldsymbol{\theta})}{\mathbb{P}(\mathbf{X} = \mathbf{x}^{(q)} ; \boldsymbol{\theta})} \\
+&amp;= \arg \max_{k} \frac{\mathbb{P}(Y = k ; \boldsymbol{\pi}) \mathbb{P}(\mathbf{X} \mid Y = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}})}{\mathbb{P}(\mathbf{X} = \mathbf{x}^{(q)} ; \boldsymbol{\theta})}\\
+&amp;\propto \arg \max_{k} \mathbb{P}(Y = k ; \boldsymbol{\pi}) \mathbb{P}\left(\mathbf{X} \mid Y = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}\right)
+\end{aligned}
+\end{split}\]</div>
+<p>We have seen earlier in <strong>iNSERT SECTION ON NORMALIZATING CONSTANT</strong> that since the denominator
+is constant for all <span class="math notranslate nohighlight">\(k\)</span>, we can ignore it and just maximize the numerator, as shown by the proportional sign.</p>
+<p>This suggests we need to find estimates for both <strong>also insert inference section algo</strong> the prior and the likelihood. This of course
+involves ur finding the <span class="math notranslate nohighlight">\(\boldsymbol{\pi}\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}\)</span> that maximize the likelihood function, which we will talk about later.</p>
+<p>In order to meaningfully optimize the expression, we need to decompose the numerator into its components that contain the parameters we want to estimate.</p>
+<div class="math notranslate nohighlight" id="equation-eq-joint-distribution">
+<span class="eqno">(30)<a class="headerlink" href="#equation-eq-joint-distribution" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+\mathbb{P}(Y = k ; \boldsymbol{\pi}) \mathbb{P}(\mathbf{X} \mid Y = k ; \boldsymbol{\theta}) &amp;= \mathbb{P}((Y, \mathbf{X}) = (k, \mathbf{x}^{(q)}) ; \boldsymbol{\theta}, \boldsymbol{\pi}) \\
+&amp;= \mathbb{P}(Y, X_1, X_2, \ldots X_D)
+\end{aligned}
+\end{split}\]</div>
+<p>which is actually the joint distribution of <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> and <span class="math notranslate nohighlight">\(Y\)</span><a class="footnote-reference brackets" href="#joint-distribution" id="id3">2</a>.</p>
+<p>This joint distribution expression <a class="reference internal" href="#equation-eq-joint-distribution">(30)</a> can be further decomposed by the chain rule of probability<a class="footnote-reference brackets" href="#chain-rule-of-probability" id="id4">3</a> as</p>
+<div class="math notranslate nohighlight" id="equation-eq-joint-distribution-decomposed">
+<span class="eqno">(31)<a class="headerlink" href="#equation-eq-joint-distribution-decomposed" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+\mathbb{P}(Y, X_1, X_2, \ldots X_D) &amp;= \mathbb{P}(Y) \mathbb{P}(X_1, X_2, \ldots X_D \mid Y) \\
+&amp;= \mathbb{P}(Y) \prod_{d=1}^D \mathbb{P}(X_d \mid Y, X_1, X_2, \ldots X_{d-1})
+\end{aligned}
+\end{split}\]</div>
+<p>This alone does not get us any further, we still need to estimate roughly <span class="math notranslate nohighlight">\(2^{D}\)</span> parameters <strong>CITE D2L</strong>,
+which is computationally expensive. Not to forget that we need to estimate for each class <span class="math notranslate nohighlight">\(k \in \{1, 2, 3, \ldots, K\}\)</span>
+which has a complexity of <span class="math notranslate nohighlight">\(\sim \mathcal{O}(2^DK)\)</span>.</p>
+<p>This is where the “Naive” assumption comes in. The Naive Bayes’ classifier assumes that the features are conditionally independent<a class="footnote-reference brackets" href="#conditional-independence" id="id5">4</a> given the class label, i.e.
+the features are conditionally independent given the class label.</p>
+<p>More formally stated,</p>
+<div class="proof definition admonition" id="conditional-independence">
+<p class="admonition-title"><span class="caption-number">Definition 67 </span> (Conditional Independence)</p>
+<section class="definition-content" id="proof-content">
+<div class="math notranslate nohighlight" id="equation-eq-conditional-independence">
+<span class="eqno">(32)<a class="headerlink" href="#equation-eq-conditional-independence" title="Permalink to this equation">#</a></span>\[
+\mathbb{P}(X_d \mid Y = k, X_{d^{'}}) = \mathbb{P}(X_d \mid Y = k) \quad \text{for all } d \neq d^{'}
+\]</div>
+</section>
+</div><p>with this assumption, we can further simplify expression <a class="reference internal" href="#equation-eq-joint-distribution-decomposed">(31)</a> as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\mathbb{P}(Y, X_1, X_2, \ldots X_D) &amp;= \mathbb{P}(Y ; \boldsymbol{\pi}) \prod_{d=1}^D \mathbb{P}(X_d \mid Y ; \theta_{d}) \\
+\end{aligned}
+\end{split}\]</div>
+<p>More precisely, after all the simplifications above,</p>
+<div class="math notranslate nohighlight" id="equation-eq-naive-bayes-classifier-1">
+<span class="eqno">(33)<a class="headerlink" href="#equation-eq-naive-bayes-classifier-1" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+\mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x} ; \boldsymbol{\theta}) &amp; = \dfrac{\mathbb{P}(Y = k ; \boldsymbol{\pi}) \mathbb{P}(\mathbf{X} \mid Y = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}})}{\mathbb{P}(\mathbf{X})} \\
+&amp;= \dfrac{\mathbb{P}(Y, X_1, X_2, \ldots X_D)}{\mathbb{P}(\mathbf{X})} \\
+&amp;= \dfrac{\mathbb{P}(Y = k ; \boldsymbol{\pi}) \prod_{d=1}^D \mathbb{P}(X_d = x_d \mid Y = k ; \theta_{dk})}{\mathbb{P}(\mathbf{X} = \mathbf{x})} \\
+&amp;\propto \mathbb{P}(Y = k ; \boldsymbol{\pi}) \prod_{d=1}^D \mathbb{P}(X_d = x_d \mid Y = k ; \theta_{dk})
+\end{aligned}
+\end{split}\]</div>
+<p>Consequently, <span class="math notranslate nohighlight">\(\boldsymbol{\pi} = \begin{bmatrix} \pi_1 &amp; \pi_2 &amp; \dots &amp; \pi_K \end{bmatrix}\)</span> and
+<span class="math notranslate nohighlight">\(\pi_k\)</span> refers to the prior probability of class <span class="math notranslate nohighlight">\(k\)</span>, and <span class="math notranslate nohighlight">\(\theta_{dk}\)</span> refers to the parameter of the
+class conditional density for class <span class="math notranslate nohighlight">\(k\)</span> and feature <span class="math notranslate nohighlight">\(d\)</span> (<strong>Cite murphy pp 358</strong>). Furthermore,
+the boldsymbol <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> is the parameter vector,</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{\theta} = \left(\boldsymbol{\pi}, \{\theta_{dk}\}_{k=1}^K, \{d=1, \ldots, D\}\right) = \left(\boldsymbol{\pi}, \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}\right)
+\]</div>
+<div class="proof definition admonition" id="parameter-vector">
+<p class="admonition-title"><span class="caption-number">Definition 68 </span> (The Parameter Vector)</p>
+<section class="definition-content" id="proof-content">
+<p>There is not much to say about the categorical component <span class="math notranslate nohighlight">\(\boldsymbol{\pi}\)</span>, since we are
+just estimating the prior probabilities of the classes.</p>
+<p>The parameter vector (matrix) <span class="math notranslate nohighlight">\(\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}=\{\theta_{dk}\}_{k=1}^K, \{d=1, \ldots, D\}\)</span> is a bit more complicated.
+It resides in the <span class="math notranslate nohighlight">\(\mathbb{R}^{K \times D}\)</span> space, where each element <span class="math notranslate nohighlight">\(\theta_{dk}\)</span> is the parameter
+associated with feature <span class="math notranslate nohighlight">\(d\)</span> conditioned on class <span class="math notranslate nohighlight">\(k\)</span>.</p>
+<p>So if <span class="math notranslate nohighlight">\(K=3\)</span> and <span class="math notranslate nohighlight">\(D=2\)</span>, then the parameter vector <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> is a <span class="math notranslate nohighlight">\(3 \times 2\)</span> matrix, i.e.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{\theta} = \begin{bmatrix}
+\theta_{11} &amp; \theta_{12} \\
+\theta_{21} &amp; \theta_{22} \\
+\theta_{31} &amp; \theta_{32}
+\end{bmatrix}_{3 \times 2}
+\end{split}\]</div>
+<p>This means we have effectively reduced our complexity from <span class="math notranslate nohighlight">\(\sim \mathcal{O}(2^D)\)</span> to <span class="math notranslate nohighlight">\(\sim \mathcal{O}(DK + 1)\)</span>.</p>
+<p><strong>We have also reduced the problem of estimating the joint distribution to just individual conditional distributions.</strong></p>
+</section>
+</div><div class="proof remark admonition" id="remark-15">
+<p class="admonition-title"><span class="caption-number">Remark 8 </span> (Notation remark)</p>
+<section class="remark-content" id="proof-content">
+<p>A note, the notation <span class="math notranslate nohighlight">\(\boldsymbol{\theta}_{dk}\)</span> should either be read as <span class="math notranslate nohighlight">\(\boldsymbol{\theta}_{kd}\)</span> since
+we say <span class="math notranslate nohighlight">\(\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}\)</span> is a <span class="math notranslate nohighlight">\(K \times D\)</span> matrix.</p>
+</section>
+</div><section id="inductive-bias">
+<h3>Inductive Bias<a class="headerlink" href="#inductive-bias" title="Permalink to this headline">#</a></h3>
+<p>We still need to introduce some inductive bias into <a class="reference internal" href="#equation-eq-naive-bayes-classifier-1">(33)</a>, more concretely, we need to make some assumptions about the distribution
+of <span class="math notranslate nohighlight">\(\mathbb{P}(Y)\)</span> and <span class="math notranslate nohighlight">\(\mathbb{P}(X_d \mid Y)\)</span>.</p>
+<p>For the target variable, we typically model it as a categorical distribution,</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{P}(Y) \sim \mathrm{Categorical}(\boldsymbol{\pi})
+\]</div>
+<p>For the conditional distribution of the features, we typically model it according to what type of features we have. For example, if we have binary features, then we can model it as a Bernoulli distribution,</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{P}(X_d \mid Y) \sim \mathrm{Bernoulli}(\theta_{dk})
+\]</div>
+<p>If we have continuous features, then we can model it as a Gaussian distribution,</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{P}(X_d \mid Y) \sim \mathcal{N}(\mu_{dk}, \sigma_{dk}^2)
+\]</div>
+<p>See <strong>KEVIN MURPHY pp 358 for more details</strong>.</p>
+<p>For simplicity sake, we assume that all features <span class="math notranslate nohighlight">\(X_d\)</span> are of the same type, either all binary or all continuous.
+In reality, this may not need to be the case.</p>
+</section>
+<section id="model-fitting">
+<h3>Model Fitting<a class="headerlink" href="#model-fitting" title="Permalink to this headline">#</a></h3>
+<p>Everything we have talked about is just 1 single sample, and that won’t work in the realm of
+estimating the best parameters that fit the data. Since we are given a dataset <span class="math notranslate nohighlight">\(\mathcal{D}\)</span>
+consisting of <span class="math notranslate nohighlight">\(N\)</span> samples, we can estimate the parameters of the model by maximizing the likelihood of the data.</p>
+<p>Since each sample is <strong>i.i.d.</strong>, we can write the joint probability distribution as the product of the individual probabilities of each sample:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\mathbb{P}(\mathcal{D} ; \boldsymbol{\theta}) &amp;= \mathbb{P}\left(\mathcal{D} ; \left\{\boldsymbol{\pi}, \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}} \right\}\right) \\
+&amp;= \mathbb{P}\left(\{\mathbf{X}^{(1)}, Y^{(1)}\}, \{\mathbf{X}^{(2)}, Y^{(2)}\}, \dots, \{\mathbf{X}^{(N)}, Y^{(N)}\} ; \left\{\boldsymbol{\pi}, \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}} \right\}\right) \\
+&amp;= \prod_{n=1}^N  \mathbb{P}\left(Y^{(n)}=k ; \boldsymbol{\pi}\right) \mathbb{P}\left(\mathrm{X}^{(n)} \mid Y^{(n)} = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}} \right)  \\
+&amp;= \prod_{n=1}^N  \left\{\mathbb{P}\left(Y^{(n)}=k ; \boldsymbol{\pi}\right) \prod_{d=1}^D \mathbb{P}\left(X_d^{(n)} \mid Y^{(n)} = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}} \right) \right\}  \\
+\end{align*}
+\end{split}\]</div>
+<p>Then we can maximize <span class="math notranslate nohighlight">\(\prod_{n=1}^N  \mathbb{P}\left(Y^{(n)}=k ; \boldsymbol{\pi}\right)\)</span>
+individually since the above can be decomposed (<strong>CITE MURPHY</strong>).</p>
+</section>
+<section id="previous">
+<h3>Previous<a class="headerlink" href="#previous" title="Permalink to this headline">#</a></h3>
+<p>We denote the (joint) probability distribution of the observed data <span class="math notranslate nohighlight">\(\mathcal{D}\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{P}(\mathcal{D} ; \boldsymbol{\theta}) = \mathbb{P}(\mathbf{X})
+\]</div>
+<p>In this context, since we are estimating <span class="math notranslate nohighlight">\(\boldsymbol{\pi}\)</span> but do not really know the parameters of <span class="math notranslate nohighlight">\(\mathrm{X}\)</span> just yet, we can simplify the expression to just</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{P}(\mathcal{D} ; \left(\boldsymbol{\theta}, \boldsymbol{\pi} \right))
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\boldsymbol{\pi} = \begin{bmatrix} \pi_1 &amp; \pi_2 &amp; \dots &amp; \pi_K \end{bmatrix}\)</span> and
+<span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> is the parameter vector of <span class="math notranslate nohighlight">\(\mathrm{X}\)</span>.</p>
+<p>Since each sample is <strong>i.i.d.</strong>, we can write the joint probability distribution as the product of the individual probabilities of each sample:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\mathbb{P}(\mathcal{D} ; \left(\boldsymbol{\pi}, \boldsymbol{\theta} \right)) &amp;= \prod_{n=1}^N \mathbb{P}(\mathrm{X}^{(n)}, Y^{(n)} ;  \left(\boldsymbol{\theta}, \boldsymbol{\pi} \right)) \\
+&amp;= \prod_{n=1}^N \mathbb{P}(\mathrm{X}^{(n)} ; \boldsymbol{\theta}) \mathbb{P}(Y^{(n)} ; \boldsymbol{\pi})
+\end{align*}
+\end{split}\]</div>
+<p>There should be no confusion that both <span class="math notranslate nohighlight">\(\mathrm{X}\)</span> and <span class="math notranslate nohighlight">\(\mathrm{Y}\)</span> are included in the joint distribution,
+since the dataset <span class="math notranslate nohighlight">\(\mathcal{D}\)</span> is a joint distribution of <span class="math notranslate nohighlight">\(\mathrm{X}\)</span> and <span class="math notranslate nohighlight">\(\mathrm{Y}\)</span>, and not just <span class="math notranslate nohighlight">\(\mathrm{X}\)</span>(?) (Verify this.)</p>
+<p>Now, we are only interested in the term that depends on <span class="math notranslate nohighlight">\(\boldsymbol{\pi}\)</span>, so we can drop the term that depends on <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\mathbb{P}(\mathcal{D} ; \boldsymbol{\pi}) &amp;= \prod_{n=1}^N \mathbb{P}(Y^{(n)} ; \boldsymbol{\pi}) \\
+\end{align*}
+\end{split}\]</div>
+<p>The <strong>likelihood function</strong> is defined as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\mathcal{L}(\left \{ \boldsymbol{\theta}, \boldsymbol{\pi} \right \} ; \mathcal{D}) &amp;\overset{\mathrm{def}}{=} \mathbb{P}(\mathcal{D} ; \left(\boldsymbol{\theta}, \boldsymbol{\pi} \right)) \\
+&amp;= \prod_{n=1}^N \mathbb{P}(\mathrm{X}^{(n)}, Y^{(n)} ;  \left(\boldsymbol{\theta}, \boldsymbol{\pi} \right)) \\
+\end{align*}
+\end{split}\]</div>
+<p>but since we are only interested in the term that depends on <span class="math notranslate nohighlight">\(\boldsymbol{\pi}\)</span>, our likelihood function is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\mathcal{L}(\boldsymbol{\pi} ; \mathcal{D}) &amp;\overset{\mathrm{def}}{=} \mathbb{P}(\mathcal{D} ; \boldsymbol{\pi}) \\
+&amp;= \prod_{n=1}^N \mathbb{P}(Y^{(n)} ; \boldsymbol{\pi}) \\
+&amp;\overset{\mathrm{(a)}}{=} \prod_{n=1}^N \left(\prod_{k=1}^K \pi_k^{y^{(n)}_k} \right) \\
+\end{align*}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\left(\prod_{k=1}^K \pi_k^{y^{(n)}_k} \right)\)</span> in equation <span class="math notranslate nohighlight">\((a)\)</span> is a consequence
+of the definition of the Category distribution.</p>
+<p>Subsequently, we can take the log of the likelihood function to get the <strong>log-likelihood function</strong> (for the ease of computation):</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\mathcal{L}(\boldsymbol{\pi} ; \mathcal{D}) &amp;\overset{\mathrm{def}}{=} \log \mathcal{L}(\boldsymbol{\pi} ; \mathcal{D}) \\
+&amp;= \sum_{n=1}^N \log \left(\prod_{k=1}^K \pi_k^{y^{(n)}_k} \right) \\
+&amp;\overset{(b)}{=} \sum_{n=1}^N \sum_{k=1}^K y^{(n)}_k \log \pi_k \\
+&amp;\overset{(c)}{=} \sum_{k=1}^K N_k \log \pi_k \\
+\end{align*}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(N_k\)</span> is the number of samples that belong to the <span class="math notranslate nohighlight">\(k\)</span>-th category.</p>
+<div class="proof remark admonition" id="notation-overload">
+<p class="admonition-title"><span class="caption-number">Remark 9 </span> (Notation Overload)</p>
+<section class="remark-content" id="proof-content">
+<p>We note to ourselves that we are reusing, and hence abusing the notation <span class="math notranslate nohighlight">\(\mathcal{L}\)</span> for the log-likelihood function to be the same as the likelihood function, this is just for the ease of re-defining a new symbol for the log-likelihood function, <span class="math notranslate nohighlight">\(\log \mathcal{L}\)</span>.</p>
+</section>
+</div><p>Equation <span class="math notranslate nohighlight">\((c)\)</span> is derived by expanding equation <span class="math notranslate nohighlight">\((b)\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\sum_{n=1}^N \sum_{k=1}^K y^{(n)}_k \log \pi_k &amp;= \sum_{n=1}^N \left( \sum_{k=1}^K y^{(n)}_k \log \pi_k \right) \\
+&amp;= y^{(1)}_1 \log \pi_1 + y^{(1)}_2 \log \pi_2 + \dots + y^{(1)}_K \log \pi_K \\
+&amp;+ y^{(2)}_1 \log \pi_1 + y^{(2)}_2 \log \pi_2 + \dots + y^{(2)}_K \log \pi_K \\
+&amp;+ \qquad \vdots \qquad \\
+&amp;+ y^{(N)}_1 \log \pi_1 + y^{(N)}_2 \log \pi_2 + \dots + y^{(N)}_K \log \pi_K \\
+&amp;\overset{(d)}{=} \left( y^{(1)}_1 + y^{(2)}_1 + \dots + y^{(N)}_1 \right) \log \pi_1 \\
+&amp;+ \left( y^{(1)}_2 + y^{(2)}_2 + \dots + y^{(N)}_2 \right) \log \pi_2 \\
+&amp;+ \qquad \vdots \qquad \\
+&amp;+ \left( y^{(1)}_K + y^{(2)}_K + \dots + y^{(N)}_K \right) \log \pi_K \\
+&amp;\overset{(e)}{=} N_1 \log \pi_1 + N_2 \log \pi_2 + \dots + N_K \log \pi_K \\
+&amp;= \sum_{k=1}^K N_k \log \pi_k \\
+\end{align*}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\((d)\)</span> is derived by summing each column, and <span class="math notranslate nohighlight">\(N_k = y^{(1)}_k + y^{(2)}_k + \dots + y^{(N)}_k\)</span>
+is nothing but the number of samples that belong to the <span class="math notranslate nohighlight">\(k\)</span>-th category. One just need to recall that
+if we have say 6 samples of class <span class="math notranslate nohighlight">\((0, 1, 2, 0, 1, 1)\)</span> where <span class="math notranslate nohighlight">\(K=3\)</span>, then the one-hot encoded
+representation of the samples will be</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\left[
+\begin{array}{ccc}
+1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1 \\
+1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+\end{array}
+\right]
+\end{align*}
+\end{split}\]</div>
+<p>and summing each column will give us <span class="math notranslate nohighlight">\(N_1 = 2\)</span>, <span class="math notranslate nohighlight">\(N_2 = 3\)</span>, and <span class="math notranslate nohighlight">\(N_3 = 1\)</span>.</p>
+</section>
+</section>
+<section id="maximum-likelihood-estimation-of-categorical-distribution-for-target-variable">
+<h2>Maximum Likelihood Estimation of Categorical Distribution for Target Variable<a class="headerlink" href="#maximum-likelihood-estimation-of-categorical-distribution-for-target-variable" title="Permalink to this headline">#</a></h2>
+<p>aaa</p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<hr class="footnotes docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Categorical_distribution">Category Distribution</a></p>
+</dd>
+<dt class="label" id="joint-distribution"><span class="brackets"><a class="fn-backref" href="#id3">2</a></span></dt>
+<dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Joint_probability_distribution#Discrete_case">Joint Probability Distribution</a></p>
+</dd>
+<dt class="label" id="chain-rule-of-probability"><span class="brackets"><a class="fn-backref" href="#id4">3</a></span></dt>
+<dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Chain_rule_(probability)">Chain Rule of Probability</a></p>
+</dd>
+<dt class="label" id="conditional-independence"><span class="brackets"><a class="fn-backref" href="#id5">4</a></span></dt>
+<dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Conditional_independence">Conditional Independence</a></p>
+</dd>
+</dl>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./machine_learning_algorithms/generative/naive_bayes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../../../05_joint_distributions/braindump.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Brain Dump</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="naive_bayes.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Naive Bayes</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Gao Hongnan<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
