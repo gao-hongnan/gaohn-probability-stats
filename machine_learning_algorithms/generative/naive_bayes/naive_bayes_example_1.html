@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Naive Bayes Example &#8212; Probability &amp; Statistics</title>
+    <title>Example: Penguins Dataset &#8212; Probability &amp; Statistics</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -59,8 +59,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Bibliography" href="../../../references_and_resources/bibliography.html" />
-    <link rel="prev" title="Naive Bayes" href="naive_bayes.html" />
+    <link rel="next" title="Naive Bayes" href="naive_bayes.html" />
+    <link rel="prev" title="Naive Bayes Concept" href="naive_bayes_concept.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -404,14 +404,14 @@ const thebe_selector_output = ".output, .cell_output"
    Naive Bayes Concept
   </a>
  </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Example: Penguins Dataset
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="naive_bayes.html">
    Naive Bayes
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Naive Bayes Example
   </a>
  </li>
 </ul>
@@ -490,7 +490,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/gao-hongnan/gaohn-probability-stats/main?urlpath=tree/content/machine_learning_algorithms/generative/naive_bayes/naive_bayes_example.ipynb"
+        <a href="https://mybinder.org/v2/gh/gao-hongnan/gaohn-probability-stats/main?urlpath=tree/content/machine_learning_algorithms/generative/naive_bayes/naive_bayes_example_1.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -508,7 +508,7 @@ title="Launch on Binder"
       </li>
       
       <li>
-        <a href="https://colab.research.google.com/github/gao-hongnan/gaohn-probability-stats/blob/main/content/machine_learning_algorithms/generative/naive_bayes/naive_bayes_example.ipynb"
+        <a href="https://colab.research.google.com/github/gao-hongnan/gaohn-probability-stats/blob/main/content/machine_learning_algorithms/generative/naive_bayes/naive_bayes_example_1.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -568,7 +568,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/gao-hongnan/gaohn-probability-stats/issues/new?title=Issue%20on%20page%20%2Fmachine_learning_algorithms/generative/naive_bayes/naive_bayes_example.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/gao-hongnan/gaohn-probability-stats/issues/new?title=Issue%20on%20page%20%2Fmachine_learning_algorithms/generative/naive_bayes/naive_bayes_example_1.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -596,7 +596,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../../_sources/machine_learning_algorithms/generative/naive_bayes/naive_bayes_example.ipynb"
+        <a href="../../../_sources/machine_learning_algorithms/generative/naive_bayes/naive_bayes_example_1.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -656,45 +656,6 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#concept">
-   Concept
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#discriminative-vs-generative">
-     Discriminative vs Generative
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#inference-prediction">
-     Inference/Prediction
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#fitting-estimating">
-     Fitting/Estimating
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#estimation">
-     Estimation
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#estimating-priors">
-       Estimating Priors
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#penguins-dataset">
-   Penguins Dataset
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-prior">
    The Prior
   </a>
@@ -752,7 +713,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Naive Bayes Example</h1>
+                <h1>Example: Penguins Dataset</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -762,45 +723,6 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#concept">
-   Concept
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#discriminative-vs-generative">
-     Discriminative vs Generative
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#inference-prediction">
-     Inference/Prediction
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#fitting-estimating">
-     Fitting/Estimating
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#estimation">
-     Estimation
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#estimating-priors">
-       Estimating Priors
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#penguins-dataset">
-   Penguins Dataset
-  </a>
- </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-prior">
    The Prior
@@ -860,325 +782,17 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="naive-bayes-example">
-<h1>Naive Bayes Example<a class="headerlink" href="#naive-bayes-example" title="Permalink to this headline">#</a></h1>
-<section id="concept">
-<h2>Concept<a class="headerlink" href="#concept" title="Permalink to this headline">#</a></h2>
-<section id="discriminative-vs-generative">
-<h3>Discriminative vs Generative<a class="headerlink" href="#discriminative-vs-generative" title="Permalink to this headline">#</a></h3>
-<ul class="simple">
-<li><p>We will add a subscript <span class="math notranslate nohighlight">\(n\)</span> to denote the <span class="math notranslate nohighlight">\(n\)</span>-th sample from the dataset. It still is referring to a single sample.</p></li>
-<li><p>Discriminative classifiers model the conditional distribution <span class="math notranslate nohighlight">\(\mathbb{P}(Y_n = k \mid X_n =  \mathrm{x}_n)\)</span>. This means we are modelling the conditional distribution of the target <span class="math notranslate nohighlight">\(Y_n\)</span> given the input <span class="math notranslate nohighlight">\(\mathrm{x}_n\)</span>.</p></li>
-<li><p>Generative classifiers model the conditional distribution <span class="math notranslate nohighlight">\(\mathbb{P}(X_n = \mathrm{x}_n \mid Y_n = k)\)</span>. This means we are modelling the conditional distribution of the input <span class="math notranslate nohighlight">\(\mathrm{x}_n\)</span> given the target <span class="math notranslate nohighlight">\(Y_n\)</span>. Then we can use Bayes’ rule to compute the conditional distribution of the target <span class="math notranslate nohighlight">\(Y_n\)</span> given the input <span class="math notranslate nohighlight">\(\mathrm{x}_n\)</span>.</p></li>
-<li><p>Both the target <span class="math notranslate nohighlight">\(Y_n\)</span> and the input <span class="math notranslate nohighlight">\(X_n\)</span> are random variables in the generative model. In the discriminative model, only the target <span class="math notranslate nohighlight">\(Y_n\)</span> is a random variable as the input <span class="math notranslate nohighlight">\(X_n\)</span> is fixed (we do not need to estimate anything about the input <span class="math notranslate nohighlight">\(X\)</span>).</p></li>
-</ul>
-</section>
-<section id="inference-prediction">
-<h3>Inference/Prediction<a class="headerlink" href="#inference-prediction" title="Permalink to this headline">#</a></h3>
-<p>Suppose the problem at hand has <span class="math notranslate nohighlight">\(K\)</span> classes, <span class="math notranslate nohighlight">\(k = 1, 2, \cdots, K\)</span>, where <span class="math notranslate nohighlight">\(k\)</span> is the index of the class.</p>
-<p>Then, to find the class of a new test sample <span class="math notranslate nohighlight">\(\mathrm{x}_q\)</span>, we can compute the conditional probability of each class <span class="math notranslate nohighlight">\(Y = k\)</span> given the sample <span class="math notranslate nohighlight">\(\mathrm{x}_q\)</span>:</p>
-<div class="proof algorithm admonition" id="naive-bayes-inference-algorithm">
-<p class="admonition-title"><span class="caption-number">Algorithm 1 </span> (Naive Bayes Inference Algorithm)</p>
-<section class="algorithm-content" id="proof-content">
-<ol>
-<li><p>Compute the conditional probability of each class <span class="math notranslate nohighlight">\(Y = k\)</span> given the sample <span class="math notranslate nohighlight">\(\mathrm{x}_q\)</span>:</p>
-<div class="math notranslate nohighlight" id="equation-eq-conditional-naive-bayes">
-<span class="eqno">(34)<a class="headerlink" href="#equation-eq-conditional-naive-bayes" title="Permalink to this equation">#</a></span>\[
-    \mathbb{P}(Y = k \mid X = \mathrm{x}_q) = \dfrac{\mathbb{P}(X = \mathrm{x}_q \mid Y = k) \mathbb{P}(Y = k)}{\mathbb{P}(X = \mathrm{x}_q)} \quad \text{for } k = 1, 2, \cdots, K
-    \]</div>
-</li>
-<li><p>Choose the class <span class="math notranslate nohighlight">\(k\)</span> that maximizes the conditional probability:</p>
-<div class="math notranslate nohighlight" id="equation-eq-argmax-naive-bayes-1">
-<span class="eqno">(35)<a class="headerlink" href="#equation-eq-argmax-naive-bayes-1" title="Permalink to this equation">#</a></span>\[
-    \hat{y}_q = \arg\max_{k=1}^K \mathbb{P}(Y = k \mid X = \mathrm{x}_q)
-    \]</div>
-</li>
-</ol>
-<p>The observant reader would have noticed that the normalizing constant <span class="math notranslate nohighlight">\(\mathbb{P}(X = \mathrm{x}_q)\)</span> is the same for all <span class="math notranslate nohighlight">\(k\)</span>. Therefore, we can ignore it and simply choose the class <span class="math notranslate nohighlight">\(k\)</span> that maximizes the numerator of the conditional probability.</p>
-<div class="math notranslate nohighlight" id="equation-eq-argmax-naive-bayes-2">
-<span class="eqno">(36)<a class="headerlink" href="#equation-eq-argmax-naive-bayes-2" title="Permalink to this equation">#</a></span>\[
-\hat{y}_q = \arg\max_{k=1}^K \mathbb{P}(X = \mathrm{x}_q \mid Y = k) \mathbb{P}(Y = k)
-\]</div>
-<p>since <span class="math notranslate nohighlight">\(\mathbb{P}(Y = k \mid X = \mathrm{x}_q) \propto \mathbb{P}(X = \mathrm{x}_q \mid Y = k) \mathbb{P}(Y = k)\)</span>
-by a constant factor <span class="math notranslate nohighlight">\(\mathbb{P}(X = \mathrm{x}_q)\)</span>.</p>
-</section>
-</div><p>Now if we just proceed to estimate the conditional probability <span class="math notranslate nohighlight">\(\mathbb{P}(Y = k \mid X = \mathrm{x}_q)\)</span>, we will need to estimate the joint probability <span class="math notranslate nohighlight">\(\mathbb{P}(X = \mathrm{x}_q, Y = k)\)</span>, which is intractable<a class="footnote-reference brackets" href="#id4" id="id1">1</a>.</p>
-<p>However, if we can <em><strong>estimate</strong></em> the conditional probability (likelihood) <span class="math notranslate nohighlight">\(\mathbb{P}(X = \mathrm{x}_q \mid Y = k)\)</span> and the prior probability <span class="math notranslate nohighlight">\(\mathbb{P}(Y = k)\)</span>, then we can use Bayes’ rule to compute the posterior conditional probability <span class="math notranslate nohighlight">\(\mathbb{P}(Y = k \mid X = \mathrm{x}_q)\)</span>.</p>
-</section>
-<section id="fitting-estimating">
-<h3>Fitting/Estimating<a class="headerlink" href="#fitting-estimating" title="Permalink to this headline">#</a></h3>
-<p>This section’s content is adapted from <a class="reference external" href="https://dafriedman97.github.io/mlbook/content/c4/concept.html">Machine Learning from Scratch</a>.</p>
-<p>Similarly, we also make some inductive bias assumptions of <span class="math notranslate nohighlight">\(\mathrm{X}_n\)</span> conditional on <span class="math notranslate nohighlight">\(Y_n\)</span>. Note very carefully that we are not talking about the marginal distribution of <span class="math notranslate nohighlight">\(\mathrm{X}_n\)</span> here, instead, we are talking about the conditional distribution of <span class="math notranslate nohighlight">\(\mathrm{X}_n\)</span> given <span class="math notranslate nohighlight">\(Y_n\)</span>. The distinction is subtle, but important.</p>
-<p>In general, we assume all samples <span class="math notranslate nohighlight">\(X_n\)</span> come from the same <em>family</em> of distributions. This means that for samples <span class="math notranslate nohighlight">\(n = 1\)</span> to <span class="math notranslate nohighlight">\(n = N\)</span>, and class <span class="math notranslate nohighlight">\(k = 1\)</span> to <span class="math notranslate nohighlight">\(k = K\)</span>, we have the following:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-\mathrm{X}_n|(Y_n = 1) &amp;\sim \text{Distribution}(\boldsymbol{\theta}_1) \\
-\mathrm{X}_n|(Y_n = 2) &amp;\sim \text{Distribution}(\boldsymbol{\theta}_2) \\
-\vdots &amp; \quad \vdots \\
-\mathrm{X}_n|(Y_n = K) &amp;\sim \text{Distribution}(\boldsymbol{\theta}_K)
-\end{align*}
-\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\boldsymbol{\theta}_k\)</span> is the parameter vector of <span class="math notranslate nohighlight">\(\mathrm{X}_n\)</span> conditioned on the <span class="math notranslate nohighlight">\(k\)</span>-th class. For instance, if we are using a Multivariate Gaussian distribution, then <span class="math notranslate nohighlight">\(\boldsymbol{\theta}_k = \begin{bmatrix} \boldsymbol{\mu_k} &amp; \boldsymbol{\Sigma_k} \end{bmatrix}\)</span>.</p>
-<p>However, it is possible for the individual variables within the random vector <span class="math notranslate nohighlight">\(\mathrm{X}_n\)</span> to follow different distributions. For instance, if <span class="math notranslate nohighlight">\(\mathrm{X}_n = \begin{bmatrix} X_{n1} &amp; X_{n2} \end{bmatrix}^\top\)</span>, we might have</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-X_{n1}|(Y_n = k) &amp;\sim \text{Binomial}(n, p_{k}) \\
-X_{n2}|(Y_n = k) &amp;\sim \mathcal{N}(\boldsymbol{\mu_k}, \boldsymbol{\Sigma_k})
-\end{align*}
-\end{split}\]</div>
-<p>The machine learning fitting process is then to estimate the parameters of these distributions. More concretely, we need to estimate <span class="math notranslate nohighlight">\(\boldsymbol{\pi}_k\)</span> for <span class="math notranslate nohighlight">\(k = 1, \dots, K\)</span>, as well as <span class="math notranslate nohighlight">\(\boldsymbol{\theta}_k\)</span> for <span class="math notranslate nohighlight">\(k = 1, \dots, K\)</span> for what might be the possible distributions of <span class="math notranslate nohighlight">\(\mathrm{X}_n \mid Y_n\)</span>. In this example above, we would need to estimate <span class="math notranslate nohighlight">\(p_k\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol{\mu}_k\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{\Sigma}_k\)</span> for <span class="math notranslate nohighlight">\(k = 1, \dots, K\)</span> for the Binomial and Multivariate Gaussian distributions.</p>
-<p>Once that’s done, we can estimate <span class="math notranslate nohighlight">\(\mathbb{P}(Y_n = k)\)</span> and <span class="math notranslate nohighlight">\(\mathbb{P}(\mathrm{X}_n \mid Y_n = k)\)</span> for <span class="math notranslate nohighlight">\(k = 1, \dots, K\)</span>. We can then use these estimates to make predictions about the class of a new sample <span class="math notranslate nohighlight">\(\mathrm{X}_n\)</span> using Bayes’ rule in equation <a class="reference internal" href="#equation-eq-argmax-naive-bayes-2">(36)</a>.</p>
-</section>
-<section id="estimation">
-<h3>Estimation<a class="headerlink" href="#estimation" title="Permalink to this headline">#</a></h3>
-<section id="estimating-priors">
-<h4>Estimating Priors<a class="headerlink" href="#estimating-priors" title="Permalink to this headline">#</a></h4>
-<p>Before we start the formal estimation process, it is intuitive to think that the prior probabilities <span class="math notranslate nohighlight">\(\boldsymbol{\pi}_k\)</span> should be proportional to the number of samples in each class. In other words, if we have <span class="math notranslate nohighlight">\(N_1\)</span> samples in class 1, <span class="math notranslate nohighlight">\(N_2\)</span> samples in class 2, and so on, then we should have</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-\pi_1 &amp;\propto N_1 \\
-\pi_2 &amp;\propto N_2 \\
-\vdots &amp; \quad \vdots \\
-\pi_K &amp;\propto N_K
-\end{align*}
-\end{split}\]</div>
-<p>For instance, if we have a dataset with <span class="math notranslate nohighlight">\(N=100\)</span> samples with <span class="math notranslate nohighlight">\(K=3\)</span> classes, and <span class="math notranslate nohighlight">\(N_1 = 10\)</span>, <span class="math notranslate nohighlight">\(N_2 = 30\)</span> and <span class="math notranslate nohighlight">\(N_3 = 60\)</span>, then we should have <span class="math notranslate nohighlight">\(\pi_1 = \frac{10}{100} = 0.1\)</span>, <span class="math notranslate nohighlight">\(\pi_2 = \frac{30}{100} = 0.3\)</span> and <span class="math notranslate nohighlight">\(\pi_3 = \frac{60}{100} = 0.6\)</span>. This is just the relative frequency of each class.</p>
-<p>It turns out our intuition matches the formal estimation process.</p>
-<p>Let <span class="math notranslate nohighlight">\(\mathcal{D} = \left \{ \left(\mathrm{X}^{(n)}, Y^{(n)} \right) \right \}_{n=1}^N = \left \{ \left(\mathrm{x}^{(n)}, y^{(n)} \right) \right \}_{n=1}^N\)</span> be the dataset
-with <span class="math notranslate nohighlight">\(N\)</span> samples and <span class="math notranslate nohighlight">\(D\)</span> predictors. All samples are assumed to be <strong>independent and identically distributed (i.i.d.)</strong> from the unknown but fixed joint distribution
-<span class="math notranslate nohighlight">\(\mathbb{D} = \mathbb{P}(\mathcal{X}, \mathcal{Y} ; \boldsymbol{\theta})\)</span> where <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> is the parameter vector of the joint distribution. In other words, <span class="math notranslate nohighlight">\(\mathrm{X}^{(1)}, \mathrm{X}^{(2)}, \dots, \mathrm{X}^{(N)}\)</span> are all i.i.d. from <span class="math notranslate nohighlight">\(\mathbb{D}\)</span>, as well as <span class="math notranslate nohighlight">\(\mathrm{Y}^{(1)}, \mathrm{Y}^{(2)}, \dots, \mathrm{Y}^{(N)}\)</span>.</p>
-<p>We denote the (joint) probability distribution of the observed data <span class="math notranslate nohighlight">\(\mathcal{D}\)</span> as <span class="math notranslate nohighlight">\(\mathbb{P}(\mathcal{D} ; \boldsymbol{\theta})\)</span>.</p>
-<p>For example, if <span class="math notranslate nohighlight">\(D = 2\)</span>, and <span class="math notranslate nohighlight">\(X^{(n)}_1\)</span> and <span class="math notranslate nohighlight">\(X^{(n)}_2\)</span> are both multivariate Gaussian random variables,
-with <span class="math notranslate nohighlight">\(\boldsymbol{\mu}_1\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{\mu}_2\)</span> being the mean vectors of the two distributions,
-and <span class="math notranslate nohighlight">\(\boldsymbol{\Sigma}_1\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{\Sigma}_2\)</span> being the covariance matrices of the two distributions;
-furthermore, <span class="math notranslate nohighlight">\(Y^{(n)}\)</span> is a Bernoulli random variable with parameter <span class="math notranslate nohighlight">\(\pi\)</span>, then we have <span class="math notranslate nohighlight">\(\boldsymbol{\theta} = \begin{bmatrix} \boldsymbol{\mu}_1 &amp; \boldsymbol{\Sigma}_1 &amp; \boldsymbol{\mu}_2 &amp; \boldsymbol{\Sigma}_2 &amp; \pi \end{bmatrix}\)</span>.</p>
-<p>In this context, since we are estimating <span class="math notranslate nohighlight">\(\boldsymbol{\pi}\)</span> but do not really know the parameters of <span class="math notranslate nohighlight">\(\mathrm{X}\)</span> just yet, we can simplify the expression to just</p>
-<div class="math notranslate nohighlight">
-\[
-\mathbb{P}(\mathcal{D} ; \left(\boldsymbol{\theta}, \boldsymbol{\pi} \right))
-\]</div>
-<p>where <span class="math notranslate nohighlight">\(\boldsymbol{\pi} = \begin{bmatrix} \pi_1 &amp; \pi_2 &amp; \dots &amp; \pi_K \end{bmatrix}\)</span> and
-<span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> is the parameter vector of <span class="math notranslate nohighlight">\(\mathrm{X}\)</span>.</p>
-<p>Since each sample is <strong>i.i.d.</strong>, we can write the joint probability distribution as the product of the individual probabilities of each sample:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-\mathbb{P}(\mathcal{D} ; \left(\boldsymbol{\pi}, \boldsymbol{\theta} \right)) &amp;= \prod_{n=1}^N \mathbb{P}(\mathrm{X}^{(n)}, Y^{(n)} ;  \left(\boldsymbol{\theta}, \boldsymbol{\pi} \right)) \\
-&amp;= \prod_{n=1}^N \mathbb{P}(\mathrm{X}^{(n)} ; \boldsymbol{\theta}) \mathbb{P}(Y^{(n)} ; \boldsymbol{\pi})
-\end{align*}
-\end{split}\]</div>
-<p>There should be no confusion that both <span class="math notranslate nohighlight">\(\mathrm{X}\)</span> and <span class="math notranslate nohighlight">\(\mathrm{Y}\)</span> are included in the joint distribution,
-since the dataset <span class="math notranslate nohighlight">\(\mathcal{D}\)</span> is a joint distribution of <span class="math notranslate nohighlight">\(\mathrm{X}\)</span> and <span class="math notranslate nohighlight">\(\mathrm{Y}\)</span>, and not just <span class="math notranslate nohighlight">\(\mathrm{X}\)</span>(?) (Verify this.)</p>
-<p>Now, we are only interested in the term that depends on <span class="math notranslate nohighlight">\(\boldsymbol{\pi}\)</span>, so we can drop the term that depends on <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-\mathbb{P}(\mathcal{D} ; \boldsymbol{\pi}) &amp;= \prod_{n=1}^N \mathbb{P}(Y^{(n)} ; \boldsymbol{\pi}) \\
-\end{align*}
-\end{split}\]</div>
-<p>The <strong>likelihood function</strong> is defined as</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-\mathcal{L}(\left \{ \boldsymbol{\theta}, \boldsymbol{\pi} \right \} ; \mathcal{D}) &amp;\overset{\mathrm{def}}{=} \mathbb{P}(\mathcal{D} ; \left(\boldsymbol{\theta}, \boldsymbol{\pi} \right)) \\
-&amp;= \prod_{n=1}^N \mathbb{P}(\mathrm{X}^{(n)}, Y^{(n)} ;  \left(\boldsymbol{\theta}, \boldsymbol{\pi} \right)) \\
-\end{align*}
-\end{split}\]</div>
-<p>but since we are only interested in the term that depends on <span class="math notranslate nohighlight">\(\boldsymbol{\pi}\)</span>, our likelihood function is</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-\mathcal{L}(\boldsymbol{\pi} ; \mathcal{D}) &amp;\overset{\mathrm{def}}{=} \mathbb{P}(\mathcal{D} ; \boldsymbol{\pi}) \\
-&amp;= \prod_{n=1}^N \mathbb{P}(Y^{(n)} ; \boldsymbol{\pi}) \\
-&amp;\overset{\mathrm{(a)}}{=} \prod_{n=1}^N \left(\prod_{k=1}^K \pi_k^{y^{(n)}_k} \right) \\
-\end{align*}
-\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\left(\prod_{k=1}^K \pi_k^{y^{(n)}_k} \right)\)</span> in equation <span class="math notranslate nohighlight">\((a)\)</span> is a consequence
-of the definition of the Category distribution.</p>
-<p>Subsequently, we can take the log of the likelihood function to get the <strong>log-likelihood function</strong> (for the ease of computation):</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-\mathcal{L}(\boldsymbol{\pi} ; \mathcal{D}) &amp;\overset{\mathrm{def}}{=} \log \mathcal{L}(\boldsymbol{\pi} ; \mathcal{D}) \\
-&amp;= \sum_{n=1}^N \log \left(\prod_{k=1}^K \pi_k^{y^{(n)}_k} \right) \\
-&amp;\overset{(b)}{=} \sum_{n=1}^N \sum_{k=1}^K y^{(n)}_k \log \pi_k \\
-&amp;\overset{(c)}{=} \sum_{k=1}^K N_k \log \pi_k \\
-\end{align*}
-\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(N_k\)</span> is the number of samples that belong to the <span class="math notranslate nohighlight">\(k\)</span>-th category.</p>
-<div class="proof remark admonition" id="notation-overload">
-<p class="admonition-title"><span class="caption-number">Remark 10 </span> (Notation Overload)</p>
-<section class="remark-content" id="proof-content">
-<p>We note to ourselves that we are reusing, and hence abusing the notation <span class="math notranslate nohighlight">\(\mathcal{L}\)</span> for the log-likelihood function to be the same as the likelihood function, this is just for the ease of re-defining a new symbol for the log-likelihood function, <span class="math notranslate nohighlight">\(\log \mathcal{L}\)</span>.</p>
-</section>
-</div><p>Equation <span class="math notranslate nohighlight">\((c)\)</span> is derived by expanding equation <span class="math notranslate nohighlight">\((b)\)</span>,</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-\sum_{n=1}^N \sum_{k=1}^K y^{(n)}_k \log \pi_k &amp;= \sum_{n=1}^N \left( \sum_{k=1}^K y^{(n)}_k \log \pi_k \right) \\
-&amp;= y^{(1)}_1 \log \pi_1 + y^{(1)}_2 \log \pi_2 + \dots + y^{(1)}_K \log \pi_K \\
-&amp;+ y^{(2)}_1 \log \pi_1 + y^{(2)}_2 \log \pi_2 + \dots + y^{(2)}_K \log \pi_K \\
-&amp;+ \qquad \vdots \qquad \\
-&amp;+ y^{(N)}_1 \log \pi_1 + y^{(N)}_2 \log \pi_2 + \dots + y^{(N)}_K \log \pi_K \\
-&amp;\overset{(d)}{=} \left( y^{(1)}_1 + y^{(2)}_1 + \dots + y^{(N)}_1 \right) \log \pi_1 \\
-&amp;+ \left( y^{(1)}_2 + y^{(2)}_2 + \dots + y^{(N)}_2 \right) \log \pi_2 \\
-&amp;+ \qquad \vdots \qquad \\
-&amp;+ \left( y^{(1)}_K + y^{(2)}_K + \dots + y^{(N)}_K \right) \log \pi_K \\
-&amp;\overset{(e)}{=} N_1 \log \pi_1 + N_2 \log \pi_2 + \dots + N_K \log \pi_K \\
-&amp;= \sum_{k=1}^K N_k \log \pi_k \\
-\end{align*}
-\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\((d)\)</span> is derived by summing each column, and <span class="math notranslate nohighlight">\(N_k = y^{(1)}_k + y^{(2)}_k + \dots + y^{(N)}_k\)</span>
-is nothing but the number of samples that belong to the <span class="math notranslate nohighlight">\(k\)</span>-th category. One just need to recall that
-if we have say 6 samples of class <span class="math notranslate nohighlight">\((0, 1, 2, 0, 1, 1)\)</span> where <span class="math notranslate nohighlight">\(K=3\)</span>, then the one-hot encoded
-representation of the samples will be</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-\left[
-\begin{array}{ccc}
-1 &amp; 0 &amp; 0 \\
-0 &amp; 1 &amp; 0 \\
-0 &amp; 0 &amp; 1 \\
-1 &amp; 0 &amp; 0 \\
-0 &amp; 1 &amp; 0 \\
-0 &amp; 1 &amp; 0 \\
-\end{array}
-\right]
-\end{align*}
-\end{split}\]</div>
-<p>and summing each column will give us <span class="math notranslate nohighlight">\(N_1 = 2\)</span>, <span class="math notranslate nohighlight">\(N_2 = 3\)</span>, and <span class="math notranslate nohighlight">\(N_3 = 1\)</span>.</p>
-<p>Now we are finally ready to solve the estimation (optimization) problem for <span class="math notranslate nohighlight">\(\boldsymbol{\pi}\)</span>.</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-\hat{\boldsymbol{\pi}} &amp;= \underset{\boldsymbol{\pi}}{\mathrm{argmax}} ~~ \mathcal{L}(\boldsymbol{\pi} ; \mathcal{D}) \\
-&amp;= \underset{\boldsymbol{\pi}}{\mathrm{argmax}} ~~ \sum_{k=1}^K N_k \log \pi_k \\
-\end{align*}
-\end{split}\]</div>
-<p>subject to the constraint that</p>
-<div class="math notranslate nohighlight">
-\[
-\sum_{k=1}^K \pi_k = 1
-\]</div>
-<p>which is just saying the probabilities must sum up to 1.</p>
-<p>We can also write the expression as</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
-\max_{\boldsymbol{\pi}} &amp;~~ \sum_{k=1}^K N_k \log \pi_k \\
-\text{subject to} &amp;~~ \sum_{k=1}^K \pi_k = 1
-\end{aligned}
-\end{split}\]</div>
-<p>This is a constrained optimization problem, and we can solve it using the Lagrangian method.</p>
-<div class="proof definition admonition" id="lagrangian-method">
-<p class="admonition-title"><span class="caption-number">Definition 69 </span> (Lagrangian Method)</p>
-<section class="definition-content" id="proof-content">
-<p>The Lagrangian method is a method to solve constrained optimization problems. The idea is to
-convert the constrained optimization problem into an unconstrained optimization problem by
-introducing a Lagrangian multiplier <span class="math notranslate nohighlight">\(\lambda\)</span> and then solve the unconstrained optimization
-problem.</p>
-<p>Given a function <span class="math notranslate nohighlight">\(f(\mathrm{x})\)</span> and a constraint <span class="math notranslate nohighlight">\(g(\mathrm{x}) = 0\)</span>, the Lagrangian function,
-<span class="math notranslate nohighlight">\(\mathcal{L}(\mathrm{x}, \lambda)\)</span> is defined as</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-\mathcal{L}(\mathrm{x}, \lambda) &amp;= f(\mathrm{x}) - \lambda g(\mathrm{x}) \\
-\end{align*}
-\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\lambda\)</span> is the Lagrangian multiplier and may be either positive or negative. Then,
-the critical points of the Lagrangian function are the same as the critical points of the
-original constrained optimization problem, i.e. setting the gradient vector of the Lagrangian
-function <span class="math notranslate nohighlight">\(\nabla \mathcal{L}(\mathrm{x}, \lambda) = 0\)</span> with respect to <span class="math notranslate nohighlight">\(\mathrm{x}\)</span> and <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
-</section>
-</div><p>One note is that the notation of <span class="math notranslate nohighlight">\(\mathcal{L}\)</span> seems to be overloaded again with the Lagrangian function, we will have to change it to <span class="math notranslate nohighlight">\(\mathcal{L}_\lambda\)</span> to avoid confusion. So, to reiterate, solving the Lagrangian function is equivalent to solving the constrained optimization problem.</p>
-<p>In our problem, we can convert it to Lagrangian form as</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-\hat{\boldsymbol{\pi}} &amp;= \underset{\boldsymbol{\pi}}{\mathrm{argmax}} ~~ \mathcal{L}_\lambda(\boldsymbol{\pi}, \lambda ; \mathcal{D}) \\
-&amp;= \underset{\boldsymbol{\pi}}{\mathrm{argmax}} ~~ \underbrace{\mathcal{L}(\boldsymbol{\pi} ; \mathcal{D})}_{f(\boldsymbol{\pi})} - \lambda \left(\underbrace{\sum_{k=1}^K \pi_k - 1}_{g(\boldsymbol{\pi})} \right) \\
-&amp;= \underset{\boldsymbol{\pi}}{\mathrm{argmax}} ~~ \sum_{k=1}^K N_k \log \pi_k - \lambda \left( \sum_{k=1}^K \pi_k - 1 \right) \\
-\end{align*}
-\end{split}\]</div>
-<p>which is now an unconstrained optimization problem. We can now solve it by setting the gradient vector of the Lagrangian function <span class="math notranslate nohighlight">\(\nabla \mathcal{L}_\lambda(\boldsymbol{\pi}, \lambda ; \mathcal{D}) = 0\)</span> with respect to <span class="math notranslate nohighlight">\(\boldsymbol{\pi}\)</span> and <span class="math notranslate nohighlight">\(\lambda\)</span>, as follows,</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-\nabla \mathcal{L}_\lambda(\boldsymbol{\pi}, \lambda ; \mathcal{D}) &amp;\overset{\mathrm{def}}{=} \frac{\partial \mathcal{L}_\lambda(\boldsymbol{\pi}, \lambda ; \mathcal{D})}{\partial \boldsymbol{\pi}} = 0 \quad \text{and} \quad \frac{\partial \mathcal{L}_\lambda(\boldsymbol{\pi}, \lambda ; \mathcal{D})}{\partial \lambda} = 0 \\
-&amp;\iff \frac{\partial}{\partial \boldsymbol{\pi}} \left( \sum_{k=1}^K N_k \log \pi_k - \lambda \left( \sum_{k=1}^K \pi_k - 1 \right) \right) = 0 \quad \text{and} \quad \frac{\partial \mathcal{L}_\lambda(\boldsymbol{\pi}, \lambda ; \mathcal{D})}{\partial \lambda} = 0 \\
-\\
-&amp;\iff \begin{bmatrix} \frac{\partial \mathcal{L}}{\partial \pi_1} \\ \vdots \\ \frac{\partial \mathcal{L}}{\partial \pi_K} \\ \frac{\partial \mathcal{L}}{\partial \lambda} \end{bmatrix} = \begin{bmatrix} 0 \\ \vdots \\ 0 \\ 0 \end{bmatrix} \\
-&amp;\iff \begin{bmatrix} \frac{\partial}{\partial \pi_1} \left( N_1 \log \pi_1 - \lambda \left( \pi_1 - 1 \right) \right) \\ \vdots \\ \frac{\partial}{\partial \pi_K} \left( N_K \log \pi_K - \lambda \left( \pi_K - 1 \right) \right) \\ \frac{\partial \mathcal{L}_\lambda(\boldsymbol{\pi}, \lambda ; \mathcal{D})}{\partial \lambda} \end{bmatrix} = \begin{bmatrix} 0 \\ \vdots \\ 0 \\ 0 \end{bmatrix} \\
-&amp;\iff \begin{bmatrix} \frac{N_1}{\pi_1} - \lambda \\ \vdots \\ \frac{N_K}{\pi_K} - \lambda \\ \sum_{k=1}^K \pi_k - 1 \end{bmatrix} = \begin{bmatrix} 0 \\ \vdots \\ 0 \\ 0 \end{bmatrix} \\
-\end{align*}
-\end{split}\]</div>
-<p>The reason we can unpack <span class="math notranslate nohighlight">\(\frac{\partial}{\partial \pi_k}\left( \sum_{k=1}^K N_k \log \pi_k - \lambda \left( \sum_{k=1}^K \pi_k - 1 \right) \right)\)</span> as <span class="math notranslate nohighlight">\(\frac{\partial}{\partial \pi_k} \left( N_k \log \pi_k - \lambda \left( \pi_k - 1 \right) \right)\)</span> is because we are dealing with partial derivatives, so other terms other than <span class="math notranslate nohighlight">\(\pi_k\)</span> are constant.</p>
-<p>Finally, we have a system of equations for each <span class="math notranslate nohighlight">\(\pi_k\)</span> and if we can solve for <span class="math notranslate nohighlight">\(\pi_k\)</span> for each <span class="math notranslate nohighlight">\(k\)</span>, we can then find the best estimate of <span class="math notranslate nohighlight">\(\boldsymbol{\pi}\)</span>. It turns out we have to find <span class="math notranslate nohighlight">\(\lambda\)</span> first, and this can be solved by setting <span class="math notranslate nohighlight">\(\sum_{k=1}^K \pi_k - 1 = 0\)</span> and solving for <span class="math notranslate nohighlight">\(\lambda\)</span>, which is the last equation in the system of equations above. We first express each <span class="math notranslate nohighlight">\(\pi_k\)</span> in terms of <span class="math notranslate nohighlight">\(\lambda\)</span>,</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-\frac{N_1}{\pi_1} - \lambda &amp;= 0 \implies \pi_1 = \frac{N_1}{\lambda} \\
-\frac{N_2}{\pi_2} - \lambda &amp;= 0 \implies \pi_2 = \frac{N_2}{\lambda} \\
-\vdots \\
-\frac{N_K}{\pi_K} - \lambda &amp;= 0 \implies \pi_K = \frac{N_K}{\lambda} \\
-\end{align*}
-\end{split}\]</div>
-<p>Then we substitute these expressions into the last equation in the system of equations above, and solve for <span class="math notranslate nohighlight">\(\lambda\)</span>,</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-\sum_{k=1}^K \pi_k - 1 = 0 &amp;\implies \sum_{k=1}^K \frac{N_k}{\lambda} - 1 = 0 \\
-&amp;\implies \sum_{k=1}^K \frac{N_k}{\lambda} = 1 \\
-&amp;\implies \sum_{k=1}^K N_k = \lambda \\
-&amp;\implies \lambda = \sum_{k=1}^K N_k \\
-&amp;\implies \lambda = N \\
-\end{align*}
-\end{split}\]</div>
-<p>and therefore, we can now solve for <span class="math notranslate nohighlight">\(\pi_k\)</span>,</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\boldsymbol{\hat{\pi}} = \left .
-  \begin{cases}
-    \pi_1 = \frac{N_1}{N} \\
-    \pi_2 = \frac{N_2}{N} \\
-    \vdots \quad \vdots \quad \vdots \\
-    \pi_K = \frac{N_K}{N} \\
-  \end{cases}
-  \right\} \implies \pi_k = \frac{N_k}{N} \quad \text{for} \quad k = 1, 2, \ldots, K
-\end{split}\]</div>
-<p>We conclude that the maximum likelihood estimate of <span class="math notranslate nohighlight">\(\boldsymbol{\pi}\)</span> is <span class="math notranslate nohighlight">\(\boldsymbol{\pi} = \left( \frac{N_1}{N}, \frac{N_2}{N}, \ldots, \frac{N_K}{N} \right)\)</span>, which is the same as the empirical relative frequency of each class in the training data. This coincides with our intuition.</p>
-<p>For completeness of expression,</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-\hat{\boldsymbol{\pi}} &amp;= \arg \max_{\boldsymbol{\pi}} \mathcal{L}\left( \boldsymbol{\pi} ; \mathcal{D} \right) \\
-&amp;= \begin{bmatrix} \hat{\pi}_1 \\ \vdots \\ \hat{\pi}_K \end{bmatrix} \\
-&amp;= \begin{bmatrix} \frac{N_1}{N} \\ \vdots \\ \frac{N_K}{N} \end{bmatrix}
-\end{align*}
-\end{split}\]</div>
-<ol class="simple">
-<li><p>iid assumption very impt, see chans book, if not we cannot multiply the likelihoods?</p></li>
-<li><p>Each <span class="math notranslate nohighlight">\(X_n\)</span> is iid random vector of <span class="math notranslate nohighlight">\(N\)</span> samples.?</p></li>
-<li><p><strong>IMPORTANT, you are using <span class="math notranslate nohighlight">\(N\)</span> samples to estimate, so you can use multiplication of <span class="math notranslate nohighlight">\(N\)</span> samples PDF here, but note each sample is a random vector, not a random variable, so u r not estimating a single mean or variance, but a vector of means and variances.</strong></p></li>
-<li><p>Whether to use superscript to mean sample to avoid confusion?</p></li>
-</ol>
-</section>
-</section>
-</section>
-<section id="penguins-dataset">
-<h2>Penguins Dataset<a class="headerlink" href="#penguins-dataset" title="Permalink to this headline">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="example-penguins-dataset">
+<h1>Example: Penguins Dataset<a class="headerlink" href="#example-penguins-dataset" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
-import numpy as np
-from scipy import stats
-import seaborn as sns 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import matplotlib.patches as mpatches
 import matplotlib.pyplot as plt
-import matplotlib.patches as mpatches
+import numpy as np
+import pandas as pd
+import seaborn as sns
+from scipy import stats
+
 sns.set_style(&#39;white&#39;)
 </pre></div>
 </div>
@@ -1221,69 +835,69 @@ penguins.head().style.set_table_attributes(&#39;style=&quot;font-size: 13px&quot
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_82625" style="font-size: 13px">
+<table id="T_b0e88" style="font-size: 13px">
   <thead>
     <tr>
       <th class="blank level0" >&nbsp;</th>
-      <th id="T_82625_level0_col0" class="col_heading level0 col0" >species</th>
-      <th id="T_82625_level0_col1" class="col_heading level0 col1" >island</th>
-      <th id="T_82625_level0_col2" class="col_heading level0 col2" >bill_length_mm</th>
-      <th id="T_82625_level0_col3" class="col_heading level0 col3" >bill_depth_mm</th>
-      <th id="T_82625_level0_col4" class="col_heading level0 col4" >flipper_length_mm</th>
-      <th id="T_82625_level0_col5" class="col_heading level0 col5" >body_mass_g</th>
-      <th id="T_82625_level0_col6" class="col_heading level0 col6" >sex</th>
+      <th id="T_b0e88_level0_col0" class="col_heading level0 col0" >species</th>
+      <th id="T_b0e88_level0_col1" class="col_heading level0 col1" >island</th>
+      <th id="T_b0e88_level0_col2" class="col_heading level0 col2" >bill_length_mm</th>
+      <th id="T_b0e88_level0_col3" class="col_heading level0 col3" >bill_depth_mm</th>
+      <th id="T_b0e88_level0_col4" class="col_heading level0 col4" >flipper_length_mm</th>
+      <th id="T_b0e88_level0_col5" class="col_heading level0 col5" >body_mass_g</th>
+      <th id="T_b0e88_level0_col6" class="col_heading level0 col6" >sex</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th id="T_82625_level0_row0" class="row_heading level0 row0" >0</th>
-      <td id="T_82625_row0_col0" class="data row0 col0" >Adelie</td>
-      <td id="T_82625_row0_col1" class="data row0 col1" >Torgersen</td>
-      <td id="T_82625_row0_col2" class="data row0 col2" >39.100000</td>
-      <td id="T_82625_row0_col3" class="data row0 col3" >18.700000</td>
-      <td id="T_82625_row0_col4" class="data row0 col4" >181.000000</td>
-      <td id="T_82625_row0_col5" class="data row0 col5" >3750.000000</td>
-      <td id="T_82625_row0_col6" class="data row0 col6" >Male</td>
+      <th id="T_b0e88_level0_row0" class="row_heading level0 row0" >0</th>
+      <td id="T_b0e88_row0_col0" class="data row0 col0" >Adelie</td>
+      <td id="T_b0e88_row0_col1" class="data row0 col1" >Torgersen</td>
+      <td id="T_b0e88_row0_col2" class="data row0 col2" >39.100000</td>
+      <td id="T_b0e88_row0_col3" class="data row0 col3" >18.700000</td>
+      <td id="T_b0e88_row0_col4" class="data row0 col4" >181.000000</td>
+      <td id="T_b0e88_row0_col5" class="data row0 col5" >3750.000000</td>
+      <td id="T_b0e88_row0_col6" class="data row0 col6" >Male</td>
     </tr>
     <tr>
-      <th id="T_82625_level0_row1" class="row_heading level0 row1" >1</th>
-      <td id="T_82625_row1_col0" class="data row1 col0" >Adelie</td>
-      <td id="T_82625_row1_col1" class="data row1 col1" >Torgersen</td>
-      <td id="T_82625_row1_col2" class="data row1 col2" >39.500000</td>
-      <td id="T_82625_row1_col3" class="data row1 col3" >17.400000</td>
-      <td id="T_82625_row1_col4" class="data row1 col4" >186.000000</td>
-      <td id="T_82625_row1_col5" class="data row1 col5" >3800.000000</td>
-      <td id="T_82625_row1_col6" class="data row1 col6" >Female</td>
+      <th id="T_b0e88_level0_row1" class="row_heading level0 row1" >1</th>
+      <td id="T_b0e88_row1_col0" class="data row1 col0" >Adelie</td>
+      <td id="T_b0e88_row1_col1" class="data row1 col1" >Torgersen</td>
+      <td id="T_b0e88_row1_col2" class="data row1 col2" >39.500000</td>
+      <td id="T_b0e88_row1_col3" class="data row1 col3" >17.400000</td>
+      <td id="T_b0e88_row1_col4" class="data row1 col4" >186.000000</td>
+      <td id="T_b0e88_row1_col5" class="data row1 col5" >3800.000000</td>
+      <td id="T_b0e88_row1_col6" class="data row1 col6" >Female</td>
     </tr>
     <tr>
-      <th id="T_82625_level0_row2" class="row_heading level0 row2" >2</th>
-      <td id="T_82625_row2_col0" class="data row2 col0" >Adelie</td>
-      <td id="T_82625_row2_col1" class="data row2 col1" >Torgersen</td>
-      <td id="T_82625_row2_col2" class="data row2 col2" >40.300000</td>
-      <td id="T_82625_row2_col3" class="data row2 col3" >18.000000</td>
-      <td id="T_82625_row2_col4" class="data row2 col4" >195.000000</td>
-      <td id="T_82625_row2_col5" class="data row2 col5" >3250.000000</td>
-      <td id="T_82625_row2_col6" class="data row2 col6" >Female</td>
+      <th id="T_b0e88_level0_row2" class="row_heading level0 row2" >2</th>
+      <td id="T_b0e88_row2_col0" class="data row2 col0" >Adelie</td>
+      <td id="T_b0e88_row2_col1" class="data row2 col1" >Torgersen</td>
+      <td id="T_b0e88_row2_col2" class="data row2 col2" >40.300000</td>
+      <td id="T_b0e88_row2_col3" class="data row2 col3" >18.000000</td>
+      <td id="T_b0e88_row2_col4" class="data row2 col4" >195.000000</td>
+      <td id="T_b0e88_row2_col5" class="data row2 col5" >3250.000000</td>
+      <td id="T_b0e88_row2_col6" class="data row2 col6" >Female</td>
     </tr>
     <tr>
-      <th id="T_82625_level0_row3" class="row_heading level0 row3" >3</th>
-      <td id="T_82625_row3_col0" class="data row3 col0" >Adelie</td>
-      <td id="T_82625_row3_col1" class="data row3 col1" >Torgersen</td>
-      <td id="T_82625_row3_col2" class="data row3 col2" >nan</td>
-      <td id="T_82625_row3_col3" class="data row3 col3" >nan</td>
-      <td id="T_82625_row3_col4" class="data row3 col4" >nan</td>
-      <td id="T_82625_row3_col5" class="data row3 col5" >nan</td>
-      <td id="T_82625_row3_col6" class="data row3 col6" >nan</td>
+      <th id="T_b0e88_level0_row3" class="row_heading level0 row3" >3</th>
+      <td id="T_b0e88_row3_col0" class="data row3 col0" >Adelie</td>
+      <td id="T_b0e88_row3_col1" class="data row3 col1" >Torgersen</td>
+      <td id="T_b0e88_row3_col2" class="data row3 col2" >nan</td>
+      <td id="T_b0e88_row3_col3" class="data row3 col3" >nan</td>
+      <td id="T_b0e88_row3_col4" class="data row3 col4" >nan</td>
+      <td id="T_b0e88_row3_col5" class="data row3 col5" >nan</td>
+      <td id="T_b0e88_row3_col6" class="data row3 col6" >nan</td>
     </tr>
     <tr>
-      <th id="T_82625_level0_row4" class="row_heading level0 row4" >4</th>
-      <td id="T_82625_row4_col0" class="data row4 col0" >Adelie</td>
-      <td id="T_82625_row4_col1" class="data row4 col1" >Torgersen</td>
-      <td id="T_82625_row4_col2" class="data row4 col2" >36.700000</td>
-      <td id="T_82625_row4_col3" class="data row4 col3" >19.300000</td>
-      <td id="T_82625_row4_col4" class="data row4 col4" >193.000000</td>
-      <td id="T_82625_row4_col5" class="data row4 col5" >3450.000000</td>
-      <td id="T_82625_row4_col6" class="data row4 col6" >Female</td>
+      <th id="T_b0e88_level0_row4" class="row_heading level0 row4" >4</th>
+      <td id="T_b0e88_row4_col0" class="data row4 col0" >Adelie</td>
+      <td id="T_b0e88_row4_col1" class="data row4 col1" >Torgersen</td>
+      <td id="T_b0e88_row4_col2" class="data row4 col2" >36.700000</td>
+      <td id="T_b0e88_row4_col3" class="data row4 col3" >19.300000</td>
+      <td id="T_b0e88_row4_col4" class="data row4 col4" >193.000000</td>
+      <td id="T_b0e88_row4_col5" class="data row4 col5" >3450.000000</td>
+      <td id="T_b0e88_row4_col6" class="data row4 col6" >Female</td>
     </tr>
   </tbody>
 </table>
@@ -1631,7 +1245,6 @@ Name: overweight, dtype: int64
 </div>
 </div>
 </div>
-</section>
 <section id="the-prior">
 <h2>The Prior<a class="headerlink" href="#the-prior" title="Permalink to this headline">#</a></h2>
 <p>The prior distribution for <span class="math notranslate nohighlight">\(Y\)</span> is a <a class="reference external" href="https://en.wikipedia.org/wiki/Categorical_distribution">categorical distribution</a> with three categories, one for each species. The prior probabilities are given by the relative frequencies of each species in the dataset:</p>
@@ -1874,7 +1487,7 @@ plt.show()
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/naive_bayes_example_33_0.png" src="../../../_images/naive_bayes_example_33_0.png" />
+<img alt="../../../_images/naive_bayes_example_1_21_0.png" src="../../../_images/naive_bayes_example_1_21_0.png" />
 </div>
 </div>
 <p>Before we do anything, we are given one categorical variable and for this penguin, it falls under
@@ -2015,7 +1628,7 @@ both are categorical, it is easy to compute the joint distribution table.</p>
 </table>
 <p>The image is a sketch of the joint distribution table of <span class="math notranslate nohighlight">\(Y\)</span> and <span class="math notranslate nohighlight">\(X_1\)</span>.</p>
 <figure class="align-default" id="penguin-overweight-joint">
-<a class="reference internal image-reference" href="machine_learning_algorithms/generative/assets/penguin_overweight_joint.jpg"><img alt="machine_learning_algorithms/generative/assets/penguin_overweight_joint.jpg" src="machine_learning_algorithms/generative/assets/penguin_overweight_joint.jpg" style="height: 400px;" /></a>
+<a class="reference internal image-reference" href="../../../_images/penguin_overweight_joint_sketch.jpg"><img alt="../../../_images/penguin_overweight_joint_sketch.jpg" src="../../../_images/penguin_overweight_joint_sketch.jpg" style="height: 400px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 8 </span><span class="caption-text">Joint distribution diagram of <span class="math notranslate nohighlight">\(Y\)</span> and <span class="math notranslate nohighlight">\(X_1\)</span>.</span><a class="headerlink" href="#penguin-overweight-joint" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -2031,7 +1644,7 @@ g.plot_marginals(sns.histplot, discrete=True, color=&quot;red&quot;);
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/naive_bayes_example_38_0.png" src="../../../_images/naive_bayes_example_38_0.png" />
+<img alt="../../../_images/naive_bayes_example_1_26_0.png" src="../../../_images/naive_bayes_example_1_26_0.png" />
 </div>
 </div>
 <p>We can also use seaborns <code class="docutils literal notranslate"><span class="pre">jointgrid</span></code> to do a joint distribution plot, the darker tone of red
@@ -2253,7 +1866,7 @@ plt.show();
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/naive_bayes_example_48_0.png" src="../../../_images/naive_bayes_example_48_0.png" />
+<img alt="../../../_images/naive_bayes_example_1_36_0.png" src="../../../_images/naive_bayes_example_1_36_0.png" />
 </div>
 </div>
 <p>The kdeplot above is for an univariate, empirical estimation of the whole dataset, not
@@ -2287,7 +1900,7 @@ plt.show();
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/naive_bayes_example_50_0.png" src="../../../_images/naive_bayes_example_50_0.png" />
+<img alt="../../../_images/naive_bayes_example_1_38_0.png" src="../../../_images/naive_bayes_example_1_38_0.png" />
 </div>
 </div>
 <p>Before we move on, some EDA on the joint distribution of <span class="math notranslate nohighlight">\(X_2\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>.
@@ -2302,11 +1915,11 @@ sns.jointplot(data=penguins, x=&quot;bill_length_mm&quot;, y=&quot;species&quot;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7fcb5089feb0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7fcb03fa5f10&gt;
 </pre></div>
 </div>
-<img alt="../../../_images/naive_bayes_example_52_1.png" src="../../../_images/naive_bayes_example_52_1.png" />
-<img alt="../../../_images/naive_bayes_example_52_2.png" src="../../../_images/naive_bayes_example_52_2.png" />
+<img alt="../../../_images/naive_bayes_example_1_40_1.png" src="../../../_images/naive_bayes_example_1_40_1.png" />
+<img alt="../../../_images/naive_bayes_example_1_40_2.png" src="../../../_images/naive_bayes_example_1_40_2.png" />
 </div>
 </div>
 <p>We see that the for this penguin with <code class="docutils literal notranslate"><span class="pre">bill_length_mm</span></code> of 50mm, our gut feeling tells us
@@ -2493,7 +2106,7 @@ plt.show();
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/naive_bayes_example_62_0.png" src="../../../_images/naive_bayes_example_62_0.png" />
+<img alt="../../../_images/naive_bayes_example_1_50_0.png" src="../../../_images/naive_bayes_example_1_50_0.png" />
 </div>
 </div>
 <p>As we can see, the this naive assumption of Gaussian distribution for <span class="math notranslate nohighlight">\(X_2\)</span> given <span class="math notranslate nohighlight">\(Y\)</span> is not
@@ -2627,7 +2240,7 @@ plt.show();
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/naive_bayes_example_70_0.png" src="../../../_images/naive_bayes_example_70_0.png" />
+<img alt="../../../_images/naive_bayes_example_1_58_0.png" src="../../../_images/naive_bayes_example_1_58_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2653,7 +2266,7 @@ plt.show();
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/naive_bayes_example_71_0.png" src="../../../_images/naive_bayes_example_71_0.png" />
+<img alt="../../../_images/naive_bayes_example_1_59_0.png" src="../../../_images/naive_bayes_example_1_59_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2679,7 +2292,7 @@ plt.show();
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/naive_bayes_example_72_0.png" src="../../../_images/naive_bayes_example_72_0.png" />
+<img alt="../../../_images/naive_bayes_example_1_60_0.png" src="../../../_images/naive_bayes_example_1_60_0.png" />
 </div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">bill_length_mm</span></code> and <code class="docutils literal notranslate"><span class="pre">flipper_length_mm</span></code> are plotted above as density plots,
@@ -2722,16 +2335,16 @@ sns.jointplot(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7fcb5029af70&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7fcb03b81a00&gt;
 </pre></div>
 </div>
-<img alt="../../../_images/naive_bayes_example_76_1.png" src="../../../_images/naive_bayes_example_76_1.png" />
-<img alt="../../../_images/naive_bayes_example_76_2.png" src="../../../_images/naive_bayes_example_76_2.png" />
-<img alt="../../../_images/naive_bayes_example_76_3.png" src="../../../_images/naive_bayes_example_76_3.png" />
+<img alt="../../../_images/naive_bayes_example_1_64_1.png" src="../../../_images/naive_bayes_example_1_64_1.png" />
+<img alt="../../../_images/naive_bayes_example_1_64_2.png" src="../../../_images/naive_bayes_example_1_64_2.png" />
+<img alt="../../../_images/naive_bayes_example_1_64_3.png" src="../../../_images/naive_bayes_example_1_64_3.png" />
 </div>
 </div>
 <p>To see the joint distribution conditioned on the class (species) <span class="math notranslate nohighlight">\(Y\)</span>, where <span class="math notranslate nohighlight">\(Y\)</span>
-can be treated as a random variable as well <a class="footnote-reference brackets" href="#id4" id="id2">1</a>, we can use the <code class="docutils literal notranslate"><span class="pre">hue</span></code> argument.</p>
+can be treated as a random variable as well <a class="footnote-reference brackets" href="#id3" id="id1">1</a>, we can use the <code class="docutils literal notranslate"><span class="pre">hue</span></code> argument.</p>
 <p>To emphasise, the way to approach conditional distributions is to zoom in on the
 “reduced” sample space, for example if I want to look at the conditional distribution
 of <span class="math notranslate nohighlight">\(X_2\)</span> and <span class="math notranslate nohighlight">\(X_3\)</span> conditioned on <span class="math notranslate nohighlight">\(Y=G\)</span>, then you should look at the green colored
@@ -2749,12 +2362,12 @@ sns.jointplot(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7fcb4cde0640&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7fcb005c41f0&gt;
 </pre></div>
 </div>
-<img alt="../../../_images/naive_bayes_example_78_1.png" src="../../../_images/naive_bayes_example_78_1.png" />
-<img alt="../../../_images/naive_bayes_example_78_2.png" src="../../../_images/naive_bayes_example_78_2.png" />
-<img alt="../../../_images/naive_bayes_example_78_3.png" src="../../../_images/naive_bayes_example_78_3.png" />
+<img alt="../../../_images/naive_bayes_example_1_66_1.png" src="../../../_images/naive_bayes_example_1_66_1.png" />
+<img alt="../../../_images/naive_bayes_example_1_66_2.png" src="../../../_images/naive_bayes_example_1_66_2.png" />
+<img alt="../../../_images/naive_bayes_example_1_66_3.png" src="../../../_images/naive_bayes_example_1_66_3.png" />
 </div>
 </div>
 <p>Now we plot two dashed lines for where <span class="math notranslate nohighlight">\(X_2=50\)</span> and <span class="math notranslate nohighlight">\(X_3=195\)</span> respectively, and
@@ -2796,7 +2409,7 @@ _ = plt.axhline(x3, color=&quot;black&quot;, linestyle=&quot;--&quot;, label=&qu
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/naive_bayes_example_80_0.png" src="../../../_images/naive_bayes_example_80_0.png" />
+<img alt="../../../_images/naive_bayes_example_1_68_0.png" src="../../../_images/naive_bayes_example_1_68_0.png" />
 </div>
 </div>
 </section>
@@ -2819,7 +2432,7 @@ when we condition on <span class="math notranslate nohighlight">\(Y\)</span>, we
 which <span class="math notranslate nohighlight">\(Y\)</span> is fixed,
 and not the joint sample space of <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>. This is the reason why we can happily
 use 1dimensional Gaussian to get the conditional distribution of <span class="math notranslate nohighlight">\(X_2\)</span>.</p>
-<p>To reconcile this, Naive Bayes assumes that the predictors are <strong>conditionally independent</strong><a class="footnote-reference brackets" href="#id4" id="id3">1</a>.
+<p>To reconcile this, Naive Bayes assumes that the predictors are <strong>conditionally independent</strong><a class="footnote-reference brackets" href="#id3" id="id2">1</a>.
 It states that given a set of continuous predictors <span class="math notranslate nohighlight">\(X_1, \ldots, X_n\)</span>, they are called conditionally
 independent given <span class="math notranslate nohighlight">\(Y\)</span> if the joint distribution of <span class="math notranslate nohighlight">\(X_1, \ldots, X_n\)</span> given <span class="math notranslate nohighlight">\(Y\)</span> can be written as</p>
 <div class="math notranslate nohighlight">
@@ -2844,10 +2457,10 @@ even though it is not perfect.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7fcb4cc13e80&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7fcb037a3370&gt;
 </pre></div>
 </div>
-<img alt="../../../_images/naive_bayes_example_82_1.png" src="../../../_images/naive_bayes_example_82_1.png" />
+<img alt="../../../_images/naive_bayes_example_1_70_1.png" src="../../../_images/naive_bayes_example_1_70_1.png" />
 </div>
 </div>
 <p>Back to our</p>
@@ -2950,7 +2563,7 @@ plt.show();
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/naive_bayes_example_86_0.png" src="../../../_images/naive_bayes_example_86_0.png" />
+<img alt="../../../_images/naive_bayes_example_1_74_0.png" src="../../../_images/naive_bayes_example_1_74_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3082,10 +2695,10 @@ found through MLE are the sample mean and sample variance of the data.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fcb4cf681c0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fcb006718e0&gt;
 </pre></div>
 </div>
-<img alt="../../../_images/naive_bayes_example_99_1.png" src="../../../_images/naive_bayes_example_99_1.png" />
+<img alt="../../../_images/naive_bayes_example_1_86_1.png" src="../../../_images/naive_bayes_example_1_86_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3095,10 +2708,10 @@ found through MLE are the sample mean and sample variance of the data.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fcb52e962b0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fcb03aabe50&gt;
 </pre></div>
 </div>
-<img alt="../../../_images/naive_bayes_example_101_1.png" src="../../../_images/naive_bayes_example_101_1.png" />
+<img alt="../../../_images/naive_bayes_example_1_88_1.png" src="../../../_images/naive_bayes_example_1_88_1.png" />
 </div>
 </div>
 </section>
@@ -3111,8 +2724,10 @@ found through MLE are the sample mean and sample variance of the data.</p>
 </ul>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
-<dt class="label" id="id4"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>,<a href="#id3">3</a>)</span></dt>
-<dd><p>Cite Dive into Deep Learning on this. Also, the joint probability is intractable because the number of parameters to estimate is exponential in the number of features. Use binary bits example, see my notes.</p>
+<dt class="label" id="id3"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>)</span></dt>
+<dd><p>In Naive Bayes, both the predictor and the target are random variables, while
+it is not the case for logistic regression. Regardless, once you condition on <span class="math notranslate nohighlight">\(Y\)</span>, <span class="math notranslate nohighlight">\(Y\)</span>
+is no longer random.</p>
 </dd>
 </dl>
 </section>
@@ -3145,17 +2760,17 @@ found through MLE are the sample mean and sample variance of the data.</p>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="naive_bayes.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="naive_bayes_concept.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Naive Bayes</p>
+            <p class="prev-next-title">Naive Bayes Concept</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../../../references_and_resources/bibliography.html" title="next page">
+    <a class='right-next' id="next-link" href="naive_bayes.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Bibliography</p>
+        <p class="prev-next-title">Naive Bayes</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

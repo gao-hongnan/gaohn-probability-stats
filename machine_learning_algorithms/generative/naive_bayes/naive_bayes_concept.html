@@ -59,7 +59,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Naive Bayes" href="naive_bayes.html" />
+    <link rel="next" title="Example: Penguins Dataset" href="naive_bayes_example_1.html" />
     <link rel="prev" title="Brain Dump" href="../../../05_joint_distributions/braindump.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -405,13 +405,13 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="naive_bayes.html">
-   Naive Bayes
+  <a class="reference internal" href="naive_bayes_example_1.html">
+   Example: Penguins Dataset
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="naive_bayes_example.html">
-   Naive Bayes Example
+  <a class="reference internal" href="naive_bayes.html">
+   Naive Bayes
   </a>
  </li>
 </ul>
@@ -612,38 +612,74 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#notations">
    Notations
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#categorical-distribution">
-   Categorical Distribution
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#derivation">
-   Derivation
-  </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#inductive-bias">
-     Inductive Bias
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#model-fitting">
-     Model Fitting
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#previous">
-     Previous
+    <a class="reference internal nav-link" href="#discriminative-vs-generative">
+     Discriminative vs Generative
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#maximum-likelihood-estimation-of-categorical-distribution-for-target-variable">
-   Maximum Likelihood Estimation of Categorical Distribution for Target Variable
+  <a class="reference internal nav-link" href="#naive-bayes-setup">
+   Naive Bayes Setup
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#inference-prediction">
+   Inference/Prediction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-naive-bayes-assumptions">
+   The Naive Bayes Assumptions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#independent-and-identically-distributed-i-i-d">
+     Independent and Identically Distributed (i.i.d.)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conditional-independence">
+     Conditional Independence
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#inductive-bias">
+     Inductive Bias
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#discrete-features-targets-categorical-distribution">
+       Discrete Features/Targets (Categorical Distribution)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#continuous-features-gaussian-distribution">
+       Continuous Features (Gaussian Distribution)
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-fitting">
+   Model Fitting
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estimating-priors">
+     Estimating Priors
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#maximum-likelihood-estimation-for-priors-categorical-distribution">
+     Maximum Likelihood Estimation for Priors (Categorical Distribution)
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#references">
@@ -673,38 +709,74 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#notations">
    Notations
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#categorical-distribution">
-   Categorical Distribution
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#derivation">
-   Derivation
-  </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#inductive-bias">
-     Inductive Bias
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#model-fitting">
-     Model Fitting
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#previous">
-     Previous
+    <a class="reference internal nav-link" href="#discriminative-vs-generative">
+     Discriminative vs Generative
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#maximum-likelihood-estimation-of-categorical-distribution-for-target-variable">
-   Maximum Likelihood Estimation of Categorical Distribution for Target Variable
+  <a class="reference internal nav-link" href="#naive-bayes-setup">
+   Naive Bayes Setup
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#inference-prediction">
+   Inference/Prediction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-naive-bayes-assumptions">
+   The Naive Bayes Assumptions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#independent-and-identically-distributed-i-i-d">
+     Independent and Identically Distributed (i.i.d.)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conditional-independence">
+     Conditional Independence
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#inductive-bias">
+     Inductive Bias
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#discrete-features-targets-categorical-distribution">
+       Discrete Features/Targets (Categorical Distribution)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#continuous-features-gaussian-distribution">
+       Continuous Features (Gaussian Distribution)
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-fitting">
+   Model Fitting
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estimating-priors">
+     Estimating Priors
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#maximum-likelihood-estimation-for-priors-categorical-distribution">
+     Maximum Likelihood Estimation for Priors (Categorical Distribution)
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#references">
@@ -804,33 +876,6 @@ a design matrix <span class="math notranslate nohighlight">\(\mathbf{X}\)</span>
 </li>
 </ul>
 </section>
-</div><div class="proof definition admonition" id="iid-assumption">
-<p class="admonition-title"><span class="caption-number">Definition 59 </span> (The i.i.d. Assumption)</p>
-<section class="definition-content" id="proof-content">
-<p>In supervised learning, implicitly or explicitly, one <em>always</em> assumes that the training set
-<span class="math notranslate nohighlight">\(\mathcal{D} = \left\{\left(\mathbf{x}^{(1)}, y^{(1)}\right), \left(\mathbf{x}^{(2)}, y^{(2)}\right), \cdots, \left(\mathbf{x}^{(N)}, y^{(N)}\right)\right\} \)</span> is composed of <span class="math notranslate nohighlight">\(N\)</span> input/response tuples <span class="math notranslate nohighlight">\(\left({\mathbf{X}}^{(n)} = \mathbf{x}^{(n)}, Y^{(n)} = y^{(n)}\right)\)</span> that are <em>independently drawn from the same joint distribution</em> <span class="math notranslate nohighlight">\(\mathbb{P}_{\{\mathcal{X}, \mathcal{Y}, \boldsymbol{\theta}\}}(\mathbf{x}, y)\)</span> with</p>
-<div class="math notranslate nohighlight">
-\[
-\mathbb{P}(\mathbf{X} = \mathbf{x}, Y = y ; \boldsymbol{\theta}) = \mathbb{P}(Y = y \mid \mathbf{X} = \mathbf{x}) \mathbb{P}(\mathbf{X} = \mathbf{x})
-\]</div>
-<p>and <span class="math notranslate nohighlight">\(\mathbb{P}(Y = y \mid \mathbf{X} = \mathbf{x})\)</span> is the conditional probability of <span class="math notranslate nohighlight">\(Y\)</span> given <span class="math notranslate nohighlight">\(\mathbf{X}\)</span>,
-the relationship that the learner algorithm is trying to capture.</p>
-<p>Mathematically, this i.i.d. assumption writes (also defined in <a class="reference internal" href="../../../03_discrete_random_variables/iid.html#def_iid">Definition 29</a>):</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
-\left({\mathbf{X}}^{(n)}, Y^{(n)}\right) &amp;\sim \mathbb{P}_{\{\mathcal{X}, \mathcal{Y}, \boldsymbol{\theta}\}}(\mathbf{x}, y)\\
-\left({\mathbf{X}}^{(n)}, Y^{(n)}\right) &amp;\text{ independent of } \left({\mathbf{X}}^{(m)}, Y^{(m)}\right) \quad \forall n \neq m \in \{1, 2, \ldots, N\}
-\end{aligned}
-\end{split}\]</div>
-<p>and we sometimes denote</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{aligned}
-\left(\mathbf{x}^{(n)}, y^{(n)}\right) \overset{\text{i.i.d.}}{\sim} \mathbb{P}_{\{\mathcal{X}, \mathcal{Y}, \boldsymbol{\theta}\}}(\mathbf{x}, y)
-\end{aligned}
-\]</div>
-</section>
 </div><div class="proof example admonition" id="joint-distribution-example">
 <p class="admonition-title"><span class="caption-number">Example 12 </span> (Joint Distribution Example)</p>
 <section class="example-content" id="proof-content">
@@ -863,7 +908,7 @@ to a single sample, not the entire dataset.</p></li>
 </ul>
 </section>
 </div><div class="proof definition admonition" id="joint-and-conditional-probability">
-<p class="admonition-title"><span class="caption-number">Definition 60 </span> (Joint and Conditional Probability)</p>
+<p class="admonition-title"><span class="caption-number">Definition 59 </span> (Joint and Conditional Probability)</p>
 <section class="definition-content" id="proof-content">
 <p>We are often interested in finding the probability of a label given a sample,</p>
 <div class="math notranslate nohighlight">
@@ -902,24 +947,24 @@ index the sample tuple with <span class="math notranslate nohighlight">\(n\)</sp
 and not only from our given dataset <span class="math notranslate nohighlight">\(\mathcal{D}\)</span>.</strong></p>
 </section>
 </div><div class="proof definition admonition" id="likelihood">
-<p class="admonition-title"><span class="caption-number">Definition 61 </span> (Likelihood)</p>
+<p class="admonition-title"><span class="caption-number">Definition 60 </span> (Likelihood)</p>
 <section class="definition-content" id="proof-content">
 <p>We denote the likelihood function as <span class="math notranslate nohighlight">\(\mathbb{P}(\mathbf{X} = \mathbf{x} \mid Y = k)\)</span>,
 which is the probability of observing <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> given that the sample belongs to class <span class="math notranslate nohighlight">\(Y = k\)</span>.</p>
 </section>
 </div><div class="proof definition admonition" id="prior">
-<p class="admonition-title"><span class="caption-number">Definition 62 </span> (Prior)</p>
+<p class="admonition-title"><span class="caption-number">Definition 61 </span> (Prior)</p>
 <section class="definition-content" id="proof-content">
 <p>We denote the prior probability of class <span class="math notranslate nohighlight">\(k\)</span> as <span class="math notranslate nohighlight">\(\mathbb{P}(Y = k)\)</span>, which usually
 follows a discrete distribution such as the Categorical distribution.</p>
 </section>
 </div><div class="proof definition admonition" id="posterior">
-<p class="admonition-title"><span class="caption-number">Definition 63 </span> (Posterior)</p>
+<p class="admonition-title"><span class="caption-number">Definition 62 </span> (Posterior)</p>
 <section class="definition-content" id="proof-content">
 <p>We denote the posterior probability of class <span class="math notranslate nohighlight">\(k\)</span> given <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> as <span class="math notranslate nohighlight">\(\mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x})\)</span>.</p>
 </section>
 </div><div class="proof definition admonition" id="marginal-distribution-and-normalization-constant">
-<p class="admonition-title"><span class="caption-number">Definition 64 </span> (Marginal Distribution and Normalization Constant)</p>
+<p class="admonition-title"><span class="caption-number">Definition 63 </span> (Marginal Distribution and Normalization Constant)</p>
 <section class="definition-content" id="proof-content">
 <p>We denote the normalizing constant as <span class="math notranslate nohighlight">\(\mathbb{P}(\mathbf{X} = \mathbf{x}) = \sum_{k=1}^K \mathbb{P}(Y = k) \mathbb{P}(\mathbf{X} = \mathbf{x} \mid Y = k)\)</span>.</p>
 </section>
@@ -954,12 +999,307 @@ sample space <span class="math notranslate nohighlight">\(\Omega_{\mathbf{X}} = 
 the <span class="math notranslate nohighlight">\(\mathbb{P}(Y=k \mid \mathbf{X} = \mathbf{x})\)</span> into proportional <span class="math notranslate nohighlight">\(\mathbb{P}(Y=k) \mathbb{P}(\mathbf{X} = \mathbf{x} \mid Y = k)\)</span>.</p></li>
 </ol>
 <p>In SE post, discriminative model do not need make assumptions of X and therefore they may or may not be i.i.d.</p>
+<section id="discriminative-vs-generative">
+<h3>Discriminative vs Generative<a class="headerlink" href="#discriminative-vs-generative" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>We will add a subscript <span class="math notranslate nohighlight">\(n\)</span> to denote the <span class="math notranslate nohighlight">\(n\)</span>-th sample from the dataset. It still is referring to a single sample.</p></li>
+<li><p>Discriminative classifiers model the conditional distribution <span class="math notranslate nohighlight">\(\mathbb{P}(Y_n = k \mid X_n =  \mathrm{x}_n)\)</span>. This means we are modelling the conditional distribution of the target <span class="math notranslate nohighlight">\(Y_n\)</span> given the input <span class="math notranslate nohighlight">\(\mathrm{x}_n\)</span>.</p></li>
+<li><p>Generative classifiers model the conditional distribution <span class="math notranslate nohighlight">\(\mathbb{P}(X_n = \mathrm{x}_n \mid Y_n = k)\)</span>. This means we are modelling the conditional distribution of the input <span class="math notranslate nohighlight">\(\mathrm{x}_n\)</span> given the target <span class="math notranslate nohighlight">\(Y_n\)</span>. Then we can use Bayes’ rule to compute the conditional distribution of the target <span class="math notranslate nohighlight">\(Y_n\)</span> given the input <span class="math notranslate nohighlight">\(\mathrm{x}_n\)</span>.</p></li>
+<li><p>Both the target <span class="math notranslate nohighlight">\(Y_n\)</span> and the input <span class="math notranslate nohighlight">\(X_n\)</span> are random variables in the generative model. In the discriminative model, only the target <span class="math notranslate nohighlight">\(Y_n\)</span> is a random variable as the input <span class="math notranslate nohighlight">\(X_n\)</span> is fixed (we do not need to estimate anything about the input <span class="math notranslate nohighlight">\(X\)</span>).</p></li>
+</ul>
 </section>
-<section id="categorical-distribution">
-<h2>Categorical Distribution<a class="headerlink" href="#categorical-distribution" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="naive-bayes-setup">
+<h2>Naive Bayes Setup<a class="headerlink" href="#naive-bayes-setup" title="Permalink to this headline">#</a></h2>
+<p>Let</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{D} = \left \{ \left(\mathrm{X}^{(n)}, Y^{(n)} \right) \right \}_{n=1}^N = \left \{ \left(\mathrm{x}^{(n)}, y^{(n)} \right) \right \}_{n=1}^N
+\]</div>
+<p>be the dataset with <span class="math notranslate nohighlight">\(N\)</span> samples and <span class="math notranslate nohighlight">\(D\)</span> predictors.</p>
+<p>All samples are assumed to be <strong>independent and identically distributed (i.i.d.)</strong> from the unknown but fixed joint distribution
+<span class="math notranslate nohighlight">\(\mathbb{P}(\mathcal{X}, \mathcal{Y} ; \boldsymbol{\theta})\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+\left \{ \left(\mathrm{X}^{(n)}, Y^{(n)} \right) \right \} \overset{\small{\text{i.i.d.}}}{\sim} \mathbb{P}(\mathcal{X}, \mathcal{Y} ; \boldsymbol{\theta}) \quad \text{for } n = 1, 2, \cdots, N
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> is the parameter vector of the joint distribution. See <a class="reference internal" href="#joint-distribution-example">Example 12</a> for an example of such.</p>
+</section>
+<section id="inference-prediction">
+<span id="naive-bayes-inference-prediction"></span><h2>Inference/Prediction<a class="headerlink" href="#inference-prediction" title="Permalink to this headline">#</a></h2>
+<p>Before we look at the fitting/estimating process, let’s look at the inference/prediction process.</p>
+<p>Suppose the problem at hand has <span class="math notranslate nohighlight">\(K\)</span> classes, <span class="math notranslate nohighlight">\(k = 1, 2, \cdots, K\)</span>, where <span class="math notranslate nohighlight">\(k\)</span> is the index of the class.</p>
+<p>Then, to find the class of a new test sample <span class="math notranslate nohighlight">\(\mathbf{x}^{q} \in \mathbb{R}^{D}\)</span> with <span class="math notranslate nohighlight">\(D\)</span> features,
+we can compute the conditional probability of each class <span class="math notranslate nohighlight">\(Y = k\)</span> given the sample <span class="math notranslate nohighlight">\(\mathbf{x}^{q}\)</span>:</p>
+<div class="proof algorithm admonition" id="naive-bayes-inference-algorithm">
+<p class="admonition-title"><span class="caption-number">Algorithm 1 </span> (Naive Bayes Inference Algorithm)</p>
+<section class="algorithm-content" id="proof-content">
+<ol>
+<li><p>Compute the conditional probability of each class <span class="math notranslate nohighlight">\(Y = k\)</span> given the sample <span class="math notranslate nohighlight">\(\mathbf{x}^{q}\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-eq-conditional-naive-bayes">
+<span class="eqno">(29)<a class="headerlink" href="#equation-eq-conditional-naive-bayes" title="Permalink to this equation">#</a></span>\[
+    \mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x}^{q}) = \dfrac{\mathbb{P}(\mathbf{X} = \mathbf{x}^{q} \mid Y = k) \mathbb{P}(Y = k)}{\mathbb{P}(\mathbf{X} = \mathbf{x}^{q})} \quad \text{for } k = 1, 2, \cdots, K
+    \]</div>
+</li>
+<li><p>Choose the class <span class="math notranslate nohighlight">\(k\)</span> that maximizes the conditional probability:</p>
+<div class="math notranslate nohighlight" id="equation-eq-argmax-naive-bayes-1">
+<span class="eqno">(30)<a class="headerlink" href="#equation-eq-argmax-naive-bayes-1" title="Permalink to this equation">#</a></span>\[
+    \hat{y}^{(q)} = \arg\max_{k=1}^K \mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x}^{q})
+    \]</div>
+</li>
+</ol>
+<p>The observant reader would have noticed that the normalizing constant <span class="math notranslate nohighlight">\(\mathbb{P}(X = \mathbf{x}^{(q)})\)</span> is the same for all <span class="math notranslate nohighlight">\(k\)</span>.
+Therefore, we can ignore it and simply choose the class <span class="math notranslate nohighlight">\(k\)</span> that maximizes the numerator of the conditional probability.</p>
+<div class="math notranslate nohighlight" id="equation-eq-argmax-naive-bayes-2">
+<span class="eqno">(31)<a class="headerlink" href="#equation-eq-argmax-naive-bayes-2" title="Permalink to this equation">#</a></span>\[
+\hat{y}_q = \arg\max_{k=1}^K \mathbb{P}(X = \mathbf{x}^{q} \mid Y = k) \mathbb{P}(Y = k)
+\]</div>
+<p>since</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x}^{q}) \propto \mathbb{P}(\mathbf{X} = \mathbf{x}^{q} \mid Y = k) \mathbb{P}(Y = k)
+\]</div>
+<p>by a constant factor <span class="math notranslate nohighlight">\(\mathbb{P}(\mathbf{X} = \mathbf{x}^{q})\)</span>.</p>
+</section>
+</div><p>Now if we just proceed to estimate the conditional probability <span class="math notranslate nohighlight">\(\mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x}^{q})\)</span>, we will need to estimate the joint probability <span class="math notranslate nohighlight">\(\mathbb{P}(X = \mathbf{x}^{q}, Y = k)\)</span>, which is intractable<a class="footnote-reference brackets" href="#intractable" id="id1">1</a>.</p>
+<p>However, if we can <em><strong>estimate</strong></em> the conditional probability (likelihood) <span class="math notranslate nohighlight">\(\mathbb{P}(\mathbf{X} = \mathbf{x}^{q} \mid Y = k)\)</span>
+and the prior probability <span class="math notranslate nohighlight">\(\mathbb{P}(Y = k)\)</span>, then we can use Bayes’ rule to
+compute the posterior conditional probability <span class="math notranslate nohighlight">\(\mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x}^{q})\)</span>.</p>
+</section>
+<section id="the-naive-bayes-assumptions">
+<h2>The Naive Bayes Assumptions<a class="headerlink" href="#the-naive-bayes-assumptions" title="Permalink to this headline">#</a></h2>
+<p>In this section, we talk about some implicit and explicit assumptions of the Naive Bayes model.</p>
+<section id="independent-and-identically-distributed-i-i-d">
+<h3>Independent and Identically Distributed (i.i.d.)<a class="headerlink" href="#independent-and-identically-distributed-i-i-d" title="Permalink to this headline">#</a></h3>
+<p>In supervised learning, implicitly or explicitly, one <em>always</em> assumes that the training set</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\mathcal{D} &amp;= \left\{\left(\mathbf{x}^{(1)}, y^{(1)}\right), \left(\mathbf{x}^{(2)}, y^{(2)}\right), \cdots, \left(\mathbf{x}^{(N)}, y^{(N)}\right)\right\} \\
+\end{aligned}
+\end{split}\]</div>
+<p>is composed of <span class="math notranslate nohighlight">\(N\)</span> input/response tuples</p>
+<div class="math notranslate nohighlight">
+\[
+\left({\mathbf{X}}^{(n)} = \mathbf{x}^{(n)}, Y^{(n)} = y^{(n)}\right)
+\]</div>
+<p>that are <em><strong>independently drawn from the same (identical) joint distribution</strong></em></p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{P}_{\{\mathcal{X}, \mathcal{Y} ; \boldsymbol{\theta}\}}(\mathbf{x}, y)
+\]</div>
+<p>with</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{P}(\mathbf{X} = \mathbf{x}, Y = y ; \boldsymbol{\theta}) = \mathbb{P}(Y = y \mid \mathbf{X} = \mathbf{x}) \mathbb{P}(\mathbf{X} = \mathbf{x})
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbb{P}(Y = y \mid \mathbf{X} = \mathbf{x})\)</span> is the conditional probability of <span class="math notranslate nohighlight">\(Y\)</span> given <span class="math notranslate nohighlight">\(\mathbf{X}\)</span>,
+the relationship that the learner algorithm/concept <span class="math notranslate nohighlight">\(c\)</span> is trying to capture.</p>
+<div class="proof definition admonition" id="iid-assumption">
+<p class="admonition-title"><span class="caption-number">Definition 64 </span> (The i.i.d. Assumption)</p>
+<section class="definition-content" id="proof-content">
+<p>Mathematically, this i.i.d. assumption writes (also defined in <a class="reference internal" href="../../../03_discrete_random_variables/iid.html#def_iid">Definition 29</a>):</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\left({\mathbf{X}}^{(n)}, Y^{(n)}\right) &amp;\sim \mathbb{P}_{\{\mathcal{X}, \mathcal{Y}, \boldsymbol{\theta}\}}(\mathbf{x}, y) \quad \text{and}\\
+\left({\mathbf{X}}^{(n)}, Y^{(n)}\right) &amp;\text{ independent of } \left({\mathbf{X}}^{(m)}, Y^{(m)}\right) \quad \forall n \neq m \in \{1, 2, \ldots, N\}
+\end{aligned}
+\end{split}\]</div>
+<p>and we sometimes denote</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{aligned}
+\left(\mathbf{x}^{(n)}, y^{(n)}\right) \overset{\text{i.i.d.}}{\sim} \mathbb{P}_{\{\mathcal{X}, \mathcal{Y}, \boldsymbol{\theta}\}}(\mathbf{x}, y)
+\end{aligned}
+\]</div>
+</section>
+</div></section>
+<section id="conditional-independence">
+<h3>Conditional Independence<a class="headerlink" href="#conditional-independence" title="Permalink to this headline">#</a></h3>
+<p>The core assumption of the Naive Bayes model is that the predictors <span class="math notranslate nohighlight">\(\mathcal{X}\)</span> are conditionally independent given the class label <span class="math notranslate nohighlight">\(Y\)</span>.</p>
+<p>But how did we arrive at the conditional independence assumption? Let’s look at what we wanted to achieve in the first place.</p>
+<p>Recall that our goal in <a class="reference internal" href="#naive-bayes-inference-prediction"><span class="std std-ref">Inference/Prediction</span></a> is to find the class <span class="math notranslate nohighlight">\(k \in \{1, 2, \cdots, K\}\)</span> that maximizes the posterior probability
+<span class="math notranslate nohighlight">\(\mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x}^{(q)} ; \boldsymbol{\theta})\)</span>.</p>
+<div class="math notranslate nohighlight" id="equation-eq-argmax-naive-bayes-3">
+<span class="eqno">(32)<a class="headerlink" href="#equation-eq-argmax-naive-bayes-3" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+\arg \max_{k} \mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x}^{(q)} ; \boldsymbol{\theta}) &amp;= \arg \max_{k} \frac{\mathbb{P}(Y = k, \mathbf{X} = \mathbf{x}^{(q)} ; \boldsymbol{\theta})}{\mathbb{P}(\mathbf{X} = \mathbf{x}^{(q)} ; \boldsymbol{\theta})} \\
+&amp;= \arg \max_{k} \frac{\mathbb{P}(Y = k ; \boldsymbol{\pi}) \mathbb{P}(\mathbf{X} \mid Y = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}})}{\mathbb{P}(\mathbf{X} = \mathbf{x}^{(q)} ; \boldsymbol{\theta})}\\
+&amp;\propto \arg \max_{k} \mathbb{P}(Y = k ; \boldsymbol{\pi}) \mathbb{P}\left(\mathbf{X} \mid Y = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}\right)
+\end{aligned}
+\end{split}\]</div>
+<p>We have seen earlier in <a class="reference internal" href="#naive-bayes-inference-algorithm">Algorithm 1</a> that since the denominator
+is constant for all <span class="math notranslate nohighlight">\(k\)</span>, we can ignore it and just maximize the numerator, as shown by the proportional sign.</p>
+<p>This suggests we need to find estimates for both the prior and the likelihood. This of course
+involves ur finding the <span class="math notranslate nohighlight">\(\boldsymbol{\pi}\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}\)</span> that maximize the likelihood function, which we will talk about later.</p>
+<p>In order to meaningfully optimize the expression, we need to decompose the numerator <a class="reference internal" href="#equation-eq-argmax-naive-bayes-3">(32)</a>
+into its components that contain the parameters we want to estimate.</p>
+<div class="math notranslate nohighlight" id="equation-eq-joint-distribution">
+<span class="eqno">(33)<a class="headerlink" href="#equation-eq-joint-distribution" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+\mathbb{P}(Y = k ; \boldsymbol{\pi}) \mathbb{P}(\mathbf{X} \mid Y = k ; \boldsymbol{\theta}) &amp;= \mathbb{P}((Y, \mathbf{X}) = (k, \mathbf{x}^{(q)}) ; \boldsymbol{\theta}, \boldsymbol{\pi}) \\
+&amp;= \mathbb{P}(Y, X_1, X_2, \ldots X_D)
+\end{aligned}
+\end{split}\]</div>
+<p>which is actually the joint distribution of <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> and <span class="math notranslate nohighlight">\(Y\)</span><a class="footnote-reference brackets" href="#joint-distribution" id="id2">2</a>.</p>
+<p>This joint distribution expression <a class="reference internal" href="#equation-eq-joint-distribution">(33)</a> can be further decomposed by the chain rule of probability<a class="footnote-reference brackets" href="#chain-rule-of-probability" id="id3">3</a> as</p>
+<div class="math notranslate nohighlight" id="equation-eq-joint-distribution-decomposed">
+<span class="eqno">(34)<a class="headerlink" href="#equation-eq-joint-distribution-decomposed" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+\mathbb{P}(Y, X_1, X_2, \ldots X_D) &amp;= \mathbb{P}(Y) \mathbb{P}(X_1, X_2, \ldots X_D \mid Y) \\
+&amp;= \mathbb{P}(Y) \mathbb{P}(X_1 \mid Y) \mathbb{P}(X_2 \mid Y, X_1) \mathbb{P}(X_3 \mid Y, X_1, X_2) \cdots \mathbb{P}(X_D \mid Y, X_1, X_2, \ldots X_{D-1}) \\
+&amp;= \mathbb{P}(Y) \prod_{d=1}^D \mathbb{P}(X_d \mid Y, X_1, X_2, \ldots X_{d-1})
+\end{aligned}
+\end{split}\]</div>
+<p>This alone does not get us any further, we still need to estimate roughly <span class="math notranslate nohighlight">\(2^{D}\)</span> parameters<a class="footnote-reference brackets" href="#dparameters" id="id4">4</a>,
+which is computationally expensive. Not to forget that we need to estimate for each class <span class="math notranslate nohighlight">\(k \in \{1, 2, 3, \ldots, K\}\)</span>
+which has a complexity of <span class="math notranslate nohighlight">\(\sim \mathcal{O}(2^DK)\)</span>.</p>
+<div class="proof remark admonition" id="2dparameters">
+<p class="admonition-title"><span class="caption-number">Remark 8 </span> (Why <span class="math notranslate nohighlight">\(2^D\)</span> parameters?)</p>
+<section class="remark-content" id="proof-content">
+<p>Let’s simplify the problem by assuming each feature <span class="math notranslate nohighlight">\(X_d\)</span> and the class label <span class="math notranslate nohighlight">\(Y\)</span> are binary random variables,
+i.e. <span class="math notranslate nohighlight">\(X_d \in \{0, 1\}\)</span> and <span class="math notranslate nohighlight">\(Y \in \{0, 1\}\)</span>.</p>
+<p>Then <span class="math notranslate nohighlight">\(\mathbb{P}(Y, X_1, X_2, \ldots X_D)\)</span> is a joint distribution of <span class="math notranslate nohighlight">\(D+1\)</span> random variables, each with <span class="math notranslate nohighlight">\(2\)</span> values.</p>
+<p>This means the sample space of <span class="math notranslate nohighlight">\(\mathbb{P}(Y, X_1, X_2, \ldots X_D)\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\mathcal{S} &amp;= \{(0, 1)\} \times \{(0, 1)\} \times \{(0, 1)\} \times \cdots \times \{(0, 1)\} \\
+&amp;= \{(0, 0, 0, \ldots, 0), (0, 0, 0, \ldots, 1), (0, 0, 1, \ldots, 0), \ldots, (1, 1, 1, \ldots, 1)\}
+\end{aligned}
+\end{split}\]</div>
+<p>which has <span class="math notranslate nohighlight">\(2^{D+1}\)</span> elements.
+To really get the exact joint distribution, we need to estimate the probability of each element in the sample space, which is <span class="math notranslate nohighlight">\(2^{D+1}\)</span> parameters.</p>
+<p>This has two caveats:</p>
+<ol class="simple">
+<li><p>There are too many parameters to estimate, which is computationally expensive. Imagine if <span class="math notranslate nohighlight">\(D\)</span> is 1000, we need to estimate <span class="math notranslate nohighlight">\(2^{1000}\)</span> parameters, which is infeasible.</p></li>
+<li><p>Even if we can estimate all the parameters, we are essentially overfitting the data by memorizing the training data. There is no learning involved.</p></li>
+</ol>
+</section>
+</div><p>This is where the “Naive” assumption comes in. The Naive Bayes’ classifier assumes that the features are conditionally independent<a class="footnote-reference brackets" href="#id9" id="id5">5</a> given the class label, i.e.
+the features are conditionally independent given the class label.</p>
+<p>More formally stated,</p>
+<div class="proof definition admonition" id="conditional-independence">
+<p class="admonition-title"><span class="caption-number">Definition 65 </span> (Conditional Independence)</p>
+<section class="definition-content" id="proof-content">
+<div class="math notranslate nohighlight" id="equation-eq-conditional-independence">
+<span class="eqno">(35)<a class="headerlink" href="#equation-eq-conditional-independence" title="Permalink to this equation">#</a></span>\[
+\mathbb{P}(X_d \mid Y = k, X_{d^{'}}) = \mathbb{P}(X_d \mid Y = k) \quad \text{for all } d \neq d^{'}
+\]</div>
+</section>
+</div><p>with this assumption, we can further simplify expression <a class="reference internal" href="#equation-eq-joint-distribution-decomposed">(34)</a> as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\mathbb{P}(Y, X_1, X_2, \ldots X_D) &amp;= \mathbb{P}(Y ; \boldsymbol{\pi}) \prod_{d=1}^D \mathbb{P}(X_d \mid Y ; \theta_{d}) \\
+\end{aligned}
+\end{split}\]</div>
+<p>More precisely, after all the simplifications above,</p>
+<div class="math notranslate nohighlight" id="equation-eq-naive-bayes-classifier-1">
+<span class="eqno">(36)<a class="headerlink" href="#equation-eq-naive-bayes-classifier-1" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+\mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x} ; \boldsymbol{\theta}) &amp; = \dfrac{\mathbb{P}(Y = k ; \boldsymbol{\pi}) \mathbb{P}(\mathbf{X} \mid Y = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}})}{\mathbb{P}(\mathbf{X})} \\
+&amp;= \dfrac{\mathbb{P}(Y, X_1, X_2, \ldots X_D)}{\mathbb{P}(\mathbf{X})} \\
+&amp;= \dfrac{\mathbb{P}(Y = k ; \boldsymbol{\pi}) \prod_{d=1}^D \mathbb{P}(X_d = x_d \mid Y = k ; \theta_{dk})}{\mathbb{P}(\mathbf{X} = \mathbf{x})} \\
+&amp;\propto \mathbb{P}(Y = k ; \boldsymbol{\pi}) \prod_{d=1}^D \mathbb{P}(X_d = x_d \mid Y = k ; \theta_{dk})
+\end{aligned}
+\end{split}\]</div>
+<p>Consequently, <span class="math notranslate nohighlight">\(\boldsymbol{\pi} = \begin{bmatrix} \pi_1 &amp; \pi_2 &amp; \dots &amp; \pi_K \end{bmatrix}\)</span> and
+<span class="math notranslate nohighlight">\(\pi_k\)</span> refers to the prior probability of class <span class="math notranslate nohighlight">\(k\)</span>, and <span class="math notranslate nohighlight">\(\theta_{dk}\)</span> refers to the parameter of the
+class conditional density for class <span class="math notranslate nohighlight">\(k\)</span> and feature <span class="math notranslate nohighlight">\(d\)</span><a class="footnote-reference brackets" href="#kdparameters" id="id6">6</a>. Furthermore,
+the boldsymbol <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> is the parameter vector,</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{\theta} = \left(\boldsymbol{\pi}, \{\theta_{dk}\}_{k=1}^K, \{d=1, \ldots, D\}\right) = \left(\boldsymbol{\pi}, \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}\right)
+\]</div>
+<div class="proof definition admonition" id="parameter-vector">
+<p class="admonition-title"><span class="caption-number">Definition 66 </span> (The Parameter Vector)</p>
+<section class="definition-content" id="proof-content">
+<p>There is not much to say about the categorical component <span class="math notranslate nohighlight">\(\boldsymbol{\pi}\)</span>, since we are
+just estimating the prior probabilities of the classes.</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{\pi} = \begin{bmatrix} \pi_1 &amp; \pi_2 &amp; \dots &amp; \pi_K \end{bmatrix}
+\]</div>
+<p>The parameter vector (matrix) <span class="math notranslate nohighlight">\(\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}=\{\theta_{dk}\}_{k=1}^K, \{d=1, \ldots, D\}\)</span> is a bit more complicated.
+It resides in the <span class="math notranslate nohighlight">\(\mathbb{R}^{K \times D}\)</span> space, where each element <span class="math notranslate nohighlight">\(\theta_{dk}\)</span> is the parameter
+associated with feature <span class="math notranslate nohighlight">\(d\)</span> conditioned on class <span class="math notranslate nohighlight">\(k\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}} = \begin{bmatrix} 
+\theta_{11} &amp; \theta_{12} &amp; \dots &amp; \theta_{1D} \\
+\theta_{21} &amp; \theta_{22} &amp; \dots &amp; \theta_{2D} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+\theta_{K1} &amp; \theta_{K2} &amp; \dots &amp; \theta_{KD}
+\end{bmatrix}_{K \times D}
+\end{split}\]</div>
+<p>So if <span class="math notranslate nohighlight">\(K=3\)</span> and <span class="math notranslate nohighlight">\(D=2\)</span>, then the parameter vector <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> is a <span class="math notranslate nohighlight">\(3 \times 2\)</span> matrix, i.e.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}} = \begin{bmatrix}
+\theta_{11} &amp; \theta_{12} \\
+\theta_{21} &amp; \theta_{22} \\
+\theta_{31} &amp; \theta_{32}
+\end{bmatrix}_{3 \times 2}
+\end{split}\]</div>
+<p>This means we have effectively reduced our complexity from <span class="math notranslate nohighlight">\(\sim \mathcal{O}(2^D)\)</span> to <span class="math notranslate nohighlight">\(\sim \mathcal{O}(KD + 1)\)</span>.</p>
+<p>One big misconception is that the elements in <span class="math notranslate nohighlight">\(\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}\)</span> are scalar values.
+This is not true, for example, let’s look at the first entry <span class="math notranslate nohighlight">\(\theta_{11}\)</span>, corresponding to
+the parameter of class <span class="math notranslate nohighlight">\(K=1\)</span> and feature <span class="math notranslate nohighlight">\(D=1\)</span>, i.e. <span class="math notranslate nohighlight">\(\theta_{11}\)</span> is the parameter of the class conditional
+density <span class="math notranslate nohighlight">\(\mathbb{P}(X_1 \mid Y = 1)\)</span>. Now <span class="math notranslate nohighlight">\(X_1\)</span> can take on any value in <span class="math notranslate nohighlight">\(\mathbb{R}\)</span>, which is indeed a scalar,
+we further assume that <span class="math notranslate nohighlight">\(X_1\)</span> takes on a univariate Gaussian distribution, then <span class="math notranslate nohighlight">\(\theta_{11}\)</span> is a vector of length 2, i.e.</p>
+<div class="math notranslate nohighlight">
+\[
+\theta_{11} = \begin{bmatrix} \mu_{11} &amp; \sigma_{11} \end{bmatrix}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mu_{11}\)</span> is the mean of the Gaussian distribution and <span class="math notranslate nohighlight">\(\sigma_{11}\)</span> is the standard deviation of the Gaussian distribution.
+This is something we need to take note of.</p>
+<p><strong>We have also reduced the problem of estimating the joint distribution to just individual conditional distributions.</strong></p>
+<p>Overall, before this assumption, you can think of estimating the joint distribution of <span class="math notranslate nohighlight">\(Y\)</span> and <span class="math notranslate nohighlight">\(\mathbf{X}\)</span>,
+and after this assumption, you can simply individually estimate each conditional distribution.</p>
+</section>
+</div><div class="proof remark admonition" id="remark-14">
+<p class="admonition-title"><span class="caption-number">Remark 9 </span> (Notation remark)</p>
+<section class="remark-content" id="proof-content">
+<p>A note, the notation <span class="math notranslate nohighlight">\(\boldsymbol{\theta}_{dk}\)</span> should either be read as <span class="math notranslate nohighlight">\(\boldsymbol{\theta}_{kd}\)</span> since
+we say <span class="math notranslate nohighlight">\(\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}\)</span> is a <span class="math notranslate nohighlight">\(K \times D\)</span> matrix.</p>
+<p>Consider bolding elements of <span class="math notranslate nohighlight">\(\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}\)</span> to indicate that it can be a vector.</p>
+</section>
+</div></section>
+<section id="inductive-bias">
+<h3>Inductive Bias<a class="headerlink" href="#inductive-bias" title="Permalink to this headline">#</a></h3>
+<p>We still need to introduce some inductive bias into <a class="reference internal" href="#equation-eq-naive-bayes-classifier-1">(36)</a>, more concretely, we need to make some assumptions about the distribution
+of <span class="math notranslate nohighlight">\(\mathbb{P}(Y)\)</span> and <span class="math notranslate nohighlight">\(\mathbb{P}(X_d \mid Y)\)</span>.</p>
+<p>For the target variable, we typically model it as a categorical distribution,</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{P}(Y) \sim \mathrm{Categorical}(\boldsymbol{\pi})
+\]</div>
+<p>For the conditional distribution of the features, we typically model it according to what type of features we have.</p>
+<p>For example, if we have binary features, then we can model it as a Bernoulli distribution,</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{P}(X_d \mid Y) \sim \mathrm{Bernoulli}(\theta_{dk})
+\]</div>
+<p>If we have categorical features, then we can model it as a multinomial/catgorical distribution,</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{P}(X_d \mid Y) \sim \mathrm{Multinomial}(\boldsymbol{\theta}_{dk})
+\]</div>
+<p>If we have continuous features, then we can model it as a Gaussian distribution,</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{P}(X_d \mid Y) \sim \mathcal{N}(\mu_{dk}, \sigma_{dk}^2)
+\]</div>
+<p>To reiterate, we want to make some inductive bias assumptions of <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> conditional on <span class="math notranslate nohighlight">\(Y\)</span>,
+as well as with <span class="math notranslate nohighlight">\(Y\)</span>. Note very carefully that we are not talking about the marginal distribution of
+<span class="math notranslate nohighlight">\(\mathbf{X}\)</span> here, instead, we are talking about the conditional distribution of <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> given <span class="math notranslate nohighlight">\(Y\)</span>. The distinction is subtle, but important.</p>
+<section id="discrete-features-targets-categorical-distribution">
+<h4>Discrete Features/Targets (Categorical Distribution)<a class="headerlink" href="#discrete-features-targets-categorical-distribution" title="Permalink to this headline">#</a></h4>
 <p>As mentioned earlier, both <span class="math notranslate nohighlight">\(Y^{(n)}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{X}^{(n)}\)</span> are random variables/vectors. This means we need to estimate both of them.</p>
 <p>We first conveniently assume that <span class="math notranslate nohighlight">\(Y^{(n)}\)</span> is a discrete random variable, and
-follows the <strong><a class="reference external" href="https://en.wikipedia.org/wiki/Categorical_distribution">Category distribution</a></strong><a class="footnote-reference brackets" href="#id6" id="id1">1</a>,
+follows the <strong><a class="reference external" href="https://en.wikipedia.org/wiki/Categorical_distribution">Category distribution</a></strong><a class="footnote-reference brackets" href="#categorical-distribution" id="id7">7</a>,
 an extension of the Bernoulli distribution to multiple classes. Instead of a single parameter <span class="math notranslate nohighlight">\(p\)</span> (probability of success for Bernoulli),
 the Category distribution has <span class="math notranslate nohighlight">\(K\)</span> parameters <span class="math notranslate nohighlight">\(\boldsymbol{\pi}_k\)</span> for <span class="math notranslate nohighlight">\(k = 1, 2, \cdots, K\)</span>.</p>
 <div class="math notranslate nohighlight">
@@ -968,11 +1308,11 @@ Y^{(n)} \overset{\small{\text{i.i.d.}}}{\sim} \text{Category}(\boldsymbol{\pi}) 
 \]</div>
 <p>Equivalently,</p>
 <div class="math notranslate nohighlight" id="equation-eq-category-distribution">
-<span class="eqno">(29)<a class="headerlink" href="#equation-eq-category-distribution" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(37)<a class="headerlink" href="#equation-eq-category-distribution" title="Permalink to this equation">#</a></span>\[
 \mathbb{P}(Y^{(n)} = k) = \pi_k \quad \text{for } k = 1, 2, \cdots, K
 \]</div>
 <div class="proof definition admonition" id="categorical-distribution">
-<p class="admonition-title"><span class="caption-number">Definition 65 </span> (Categorical Distribution)</p>
+<p class="admonition-title"><span class="caption-number">Definition 67 </span> (Categorical Distribution)</p>
 <section class="definition-content" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(Y\)</span> be a discrete random variable with <span class="math notranslate nohighlight">\(K\)</span> number of states.
 Then <span class="math notranslate nohighlight">\(Y\)</span> follows a categorical distribution with parameters <span class="math notranslate nohighlight">\(\boldsymbol{\pi}\)</span> if</p>
@@ -988,9 +1328,9 @@ Then <span class="math notranslate nohighlight">\(Y\)</span> follows a categoric
 <p>where <span class="math notranslate nohighlight">\(I\{Y = k\}\)</span> is the indicator function that is equal to 1 if <span class="math notranslate nohighlight">\(Y = k\)</span> and 0 otherwise.</p>
 </section>
 </div><div class="proof definition admonition" id="categorical-multinomial-distribution">
-<p class="admonition-title"><span class="caption-number">Definition 66 </span> (Categorical (Multinomial) Distribution)</p>
+<p class="admonition-title"><span class="caption-number">Definition 68 </span> (Categorical (Multinomial) Distribution)</p>
 <section class="definition-content" id="proof-content">
-<p>This formulation is adopted by Bishop’s<span id="id2">[<a class="reference internal" href="../../../references_and_resources/bibliography.html#id3" title="CHRISTOPHER M. BISHOP. Pattern recognition and machine learning. SPRINGER-VERLAG NEW YORK, 2016.">BISHOP, 2016</a>]</span>, the categorical distribution is defined as</p>
+<p>This formulation is adopted by Bishop’s<span id="id8">[<a class="reference internal" href="../../../references_and_resources/bibliography.html#id3" title="CHRISTOPHER M. BISHOP. Pattern recognition and machine learning. SPRINGER-VERLAG NEW YORK, 2016.">BISHOP, 2016</a>]</span>, the categorical distribution is defined as</p>
 <div class="math notranslate nohighlight">
 \[
 \mathbb{P}(\mathbf{Y} = \mathbf{y}; \boldsymbol{\pi}) = \prod_{k=1}^K \pi_k^{y_k}
@@ -1027,138 +1367,88 @@ but instead a vector of size <span class="math notranslate nohighlight">\(6\)</s
 \mathrm{y} = \begin{bmatrix} 0 \\ 0 \\ 1 \\ 0 \\ 0 \\ 0 \end{bmatrix}
 \end{split}\]</div>
 </section>
-</div></section>
-<section id="derivation">
-<h2>Derivation<a class="headerlink" href="#derivation" title="Permalink to this headline">#</a></h2>
-<p>Let <span class="math notranslate nohighlight">\(\mathcal{D} = \left \{ \left(\mathrm{X}^{(n)}, Y^{(n)} \right) \right \}_{n=1}^N = \left \{ \left(\mathrm{x}^{(n)}, y^{(n)} \right) \right \}_{n=1}^N\)</span> be the dataset
-with <span class="math notranslate nohighlight">\(N\)</span> samples and <span class="math notranslate nohighlight">\(D\)</span> predictors. All samples are assumed to be <strong>independent and identically distributed (i.i.d.)</strong> from the unknown but fixed joint distribution
-<span class="math notranslate nohighlight">\(\mathbb{P}(\mathcal{X}, \mathcal{Y} ; \boldsymbol{\theta})\)</span>,</p>
-<div class="math notranslate nohighlight">
-\[
-\left \{ \left(\mathrm{X}^{(n)}, Y^{(n)} \right) \right \} \overset{\small{\text{i.i.d.}}}{\sim} \mathbb{P}(\mathcal{X}, \mathcal{Y} ; \boldsymbol{\theta}) \quad \text{for } n = 1, 2, \cdots, N
-\]</div>
-<p>where <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> is the parameter vector of the joint distribution. See <a class="reference internal" href="#joint-distribution-example">Example 12</a> for an example of such.</p>
-<p>Recall that our goal in <strong>INSERT INFERENCE SECTION ALGO</strong> is to find the class <span class="math notranslate nohighlight">\(k \in \{1, 2, \cdots, K\}\)</span> that maximizes the posterior probability
-<span class="math notranslate nohighlight">\(\mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x}^{(q)} ; \boldsymbol{\theta})\)</span>.</p>
+</div><p>In the case where (all) the features <span class="math notranslate nohighlight">\(X_d\)</span> are categorical (<span class="math notranslate nohighlight">\(D\)</span> number of features), i.e. <span class="math notranslate nohighlight">\(X_d \in \{1, 2, \cdots, C\}\)</span>,
+we can use the categorical distribution to model the (<span class="math notranslate nohighlight">\(D\)</span>-dimensional) conditional distribution of <span class="math notranslate nohighlight">\(\mathbf{X} \in \mathbb{R}^{D}\)</span> given <span class="math notranslate nohighlight">\(Y = k\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{aligned}
-\arg \max_{k} \mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x}^{(q)} ; \boldsymbol{\theta}) &amp;= \arg \max_{k} \frac{\mathbb{P}(Y = k, \mathbf{X} = \mathbf{x}^{(q)} ; \boldsymbol{\theta})}{\mathbb{P}(\mathbf{X} = \mathbf{x}^{(q)} ; \boldsymbol{\theta})} \\
-&amp;= \arg \max_{k} \frac{\mathbb{P}(Y = k ; \boldsymbol{\pi}) \mathbb{P}(\mathbf{X} \mid Y = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}})}{\mathbb{P}(\mathbf{X} = \mathbf{x}^{(q)} ; \boldsymbol{\theta})}\\
-&amp;\propto \arg \max_{k} \mathbb{P}(Y = k ; \boldsymbol{\pi}) \mathbb{P}\left(\mathbf{X} \mid Y = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}\right)
-\end{aligned}
+\begin{align*}
+\mathbf{X} \mid Y = k &amp;\overset{\small{\text{i.i.d.}}}{\sim} \text{Category}(\boldsymbol{\pi}_{\{\mathbf{X} \mid Y\}}) \quad \text{where } \boldsymbol{\pi}_{\{\mathbf{X} \mid Y\}} = \begin{bmatrix} \pi_{1, 1} &amp; \dots &amp; \pi_{1, D} \\ \vdots &amp; \ddots &amp; \vdots \\ \pi_{K, 1} &amp; \dots &amp; \pi_{K, D} \end{bmatrix}
+\end{align*}
 \end{split}\]</div>
-<p>We have seen earlier in <strong>iNSERT SECTION ON NORMALIZATING CONSTANT</strong> that since the denominator
-is constant for all <span class="math notranslate nohighlight">\(k\)</span>, we can ignore it and just maximize the numerator, as shown by the proportional sign.</p>
-<p>This suggests we need to find estimates for both <strong>also insert inference section algo</strong> the prior and the likelihood. This of course
-involves ur finding the <span class="math notranslate nohighlight">\(\boldsymbol{\pi}\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}\)</span> that maximize the likelihood function, which we will talk about later.</p>
-<p>In order to meaningfully optimize the expression, we need to decompose the numerator into its components that contain the parameters we want to estimate.</p>
-<div class="math notranslate nohighlight" id="equation-eq-joint-distribution">
-<span class="eqno">(30)<a class="headerlink" href="#equation-eq-joint-distribution" title="Permalink to this equation">#</a></span>\[\begin{split}
-\begin{aligned}
-\mathbb{P}(Y = k ; \boldsymbol{\pi}) \mathbb{P}(\mathbf{X} \mid Y = k ; \boldsymbol{\theta}) &amp;= \mathbb{P}((Y, \mathbf{X}) = (k, \mathbf{x}^{(q)}) ; \boldsymbol{\theta}, \boldsymbol{\pi}) \\
-&amp;= \mathbb{P}(Y, X_1, X_2, \ldots X_D)
-\end{aligned}
-\end{split}\]</div>
-<p>which is actually the joint distribution of <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> and <span class="math notranslate nohighlight">\(Y\)</span><a class="footnote-reference brackets" href="#joint-distribution" id="id3">2</a>.</p>
-<p>This joint distribution expression <a class="reference internal" href="#equation-eq-joint-distribution">(30)</a> can be further decomposed by the chain rule of probability<a class="footnote-reference brackets" href="#chain-rule-of-probability" id="id4">3</a> as</p>
-<div class="math notranslate nohighlight" id="equation-eq-joint-distribution-decomposed">
-<span class="eqno">(31)<a class="headerlink" href="#equation-eq-joint-distribution-decomposed" title="Permalink to this equation">#</a></span>\[\begin{split}
-\begin{aligned}
-\mathbb{P}(Y, X_1, X_2, \ldots X_D) &amp;= \mathbb{P}(Y) \mathbb{P}(X_1, X_2, \ldots X_D \mid Y) \\
-&amp;= \mathbb{P}(Y) \prod_{d=1}^D \mathbb{P}(X_d \mid Y, X_1, X_2, \ldots X_{d-1})
-\end{aligned}
-\end{split}\]</div>
-<p>This alone does not get us any further, we still need to estimate roughly <span class="math notranslate nohighlight">\(2^{D}\)</span> parameters <strong>CITE D2L</strong>,
-which is computationally expensive. Not to forget that we need to estimate for each class <span class="math notranslate nohighlight">\(k \in \{1, 2, 3, \ldots, K\}\)</span>
-which has a complexity of <span class="math notranslate nohighlight">\(\sim \mathcal{O}(2^DK)\)</span>.</p>
-<p>This is where the “Naive” assumption comes in. The Naive Bayes’ classifier assumes that the features are conditionally independent<a class="footnote-reference brackets" href="#conditional-independence" id="id5">4</a> given the class label, i.e.
-the features are conditionally independent given the class label.</p>
-<p>More formally stated,</p>
-<div class="proof definition admonition" id="conditional-independence">
-<p class="admonition-title"><span class="caption-number">Definition 67 </span> (Conditional Independence)</p>
-<section class="definition-content" id="proof-content">
-<div class="math notranslate nohighlight" id="equation-eq-conditional-independence">
-<span class="eqno">(32)<a class="headerlink" href="#equation-eq-conditional-independence" title="Permalink to this equation">#</a></span>\[
-\mathbb{P}(X_d \mid Y = k, X_{d^{'}}) = \mathbb{P}(X_d \mid Y = k) \quad \text{for all } d \neq d^{'}
+<p>where each entry <span class="math notranslate nohighlight">\(\pi_{k, d}\)</span> is the probability distribution (PDF) of <span class="math notranslate nohighlight">\(X_d\)</span> given <span class="math notranslate nohighlight">\(Y = k\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+X_d \mid Y = k \overset{\small{\text{i.i.d.}}}{\sim} \text{Category}(\pi_{k, d})
 \]</div>
-</section>
-</div><p>with this assumption, we can further simplify expression <a class="reference internal" href="#equation-eq-joint-distribution-decomposed">(31)</a> as</p>
+<p>Furthermore,
+each <span class="math notranslate nohighlight">\(\pi_{k, d}\)</span> is <strong>not a scalar</strong> but a <strong>vector of size <span class="math notranslate nohighlight">\(C\)</span></strong> holding the probability of <span class="math notranslate nohighlight">\(X_d = c\)</span> given <span class="math notranslate nohighlight">\(Y = k\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align*}
+\pi_{k, d} = \begin{bmatrix} \pi_{k, d, 1} &amp; \dots &amp; \pi_{k, d, C} \end{bmatrix}
+\end{align*}
+\]</div>
+<p>Then the (chained) multi-dimensional conditional PDF of <span class="math notranslate nohighlight">\(\mathbf{X} = \begin{bmatrix} X_1 &amp; \dots &amp; X_D \end{bmatrix}\)</span> given <span class="math notranslate nohighlight">\(Y = k\)</span> is</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{aligned}
-\mathbb{P}(Y, X_1, X_2, \ldots X_D) &amp;= \mathbb{P}(Y ; \boldsymbol{\pi}) \prod_{d=1}^D \mathbb{P}(X_d \mid Y ; \theta_{d}) \\
-\end{aligned}
+\begin{align*}
+\mathbb{P}(\mathbf{X} = \mathbf{x} | Y = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}) &amp;= \prod_{d=1}^D \text{Categorical}(X_d \mid Y = k; \pi_{k, d}) \\
+&amp;= \prod_{d=1}^D \prod_{c=1}^C \pi_{k, d, c}^{x_{c, d}} \quad \text{for } c = 1, 2, \cdots, C \text{ and } k = 1, 2, \cdots, K
+\end{align*}
 \end{split}\]</div>
-<p>More precisely, after all the simplifications above,</p>
-<div class="math notranslate nohighlight" id="equation-eq-naive-bayes-classifier-1">
-<span class="eqno">(33)<a class="headerlink" href="#equation-eq-naive-bayes-classifier-1" title="Permalink to this equation">#</a></span>\[\begin{split}
-\begin{aligned}
-\mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x} ; \boldsymbol{\theta}) &amp; = \dfrac{\mathbb{P}(Y = k ; \boldsymbol{\pi}) \mathbb{P}(\mathbf{X} \mid Y = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}})}{\mathbb{P}(\mathbf{X})} \\
-&amp;= \dfrac{\mathbb{P}(Y, X_1, X_2, \ldots X_D)}{\mathbb{P}(\mathbf{X})} \\
-&amp;= \dfrac{\mathbb{P}(Y = k ; \boldsymbol{\pi}) \prod_{d=1}^D \mathbb{P}(X_d = x_d \mid Y = k ; \theta_{dk})}{\mathbb{P}(\mathbf{X} = \mathbf{x})} \\
-&amp;\propto \mathbb{P}(Y = k ; \boldsymbol{\pi}) \prod_{d=1}^D \mathbb{P}(X_d = x_d \mid Y = k ; \theta_{dk})
-\end{aligned}
-\end{split}\]</div>
-<p>Consequently, <span class="math notranslate nohighlight">\(\boldsymbol{\pi} = \begin{bmatrix} \pi_1 &amp; \pi_2 &amp; \dots &amp; \pi_K \end{bmatrix}\)</span> and
-<span class="math notranslate nohighlight">\(\pi_k\)</span> refers to the prior probability of class <span class="math notranslate nohighlight">\(k\)</span>, and <span class="math notranslate nohighlight">\(\theta_{dk}\)</span> refers to the parameter of the
-class conditional density for class <span class="math notranslate nohighlight">\(k\)</span> and feature <span class="math notranslate nohighlight">\(d\)</span> (<strong>Cite murphy pp 358</strong>). Furthermore,
-the boldsymbol <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> is the parameter vector,</p>
+<p>As an example, if <span class="math notranslate nohighlight">\(C=3\)</span>, <span class="math notranslate nohighlight">\(D=2\)</span> and <span class="math notranslate nohighlight">\(K=4\)</span>, then the <span class="math notranslate nohighlight">\(\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}\)</span> is a <span class="math notranslate nohighlight">\(K \times D = 4 \times 2\)</span> matrix, but for
+each entry <span class="math notranslate nohighlight">\(\pi_{k, d}\)</span>, is a <span class="math notranslate nohighlight">\(1 \times C\)</span> vector. If one really wants, we can also represent this as a
+<span class="math notranslate nohighlight">\(4 \times 2 \times 3\)</span> tensor, especially in the case of implementing it in code.</p>
+<p>To be more verbose, when we find</p>
 <div class="math notranslate nohighlight">
 \[
-\boldsymbol{\theta} = \left(\boldsymbol{\pi}, \{\theta_{dk}\}_{k=1}^K, \{d=1, \ldots, D\}\right) = \left(\boldsymbol{\pi}, \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}\right)
+\mathbf{X} \mid Y = k \overset{\small{\text{i.i.d.}}}{\sim} \text{Category}(\boldsymbol{\pi}_{\{\mathbf{X} \mid Y\}})
 \]</div>
-<div class="proof definition admonition" id="parameter-vector">
-<p class="admonition-title"><span class="caption-number">Definition 68 </span> (The Parameter Vector)</p>
-<section class="definition-content" id="proof-content">
-<p>There is not much to say about the categorical component <span class="math notranslate nohighlight">\(\boldsymbol{\pi}\)</span>, since we are
-just estimating the prior probabilities of the classes.</p>
-<p>The parameter vector (matrix) <span class="math notranslate nohighlight">\(\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}=\{\theta_{dk}\}_{k=1}^K, \{d=1, \ldots, D\}\)</span> is a bit more complicated.
-It resides in the <span class="math notranslate nohighlight">\(\mathbb{R}^{K \times D}\)</span> space, where each element <span class="math notranslate nohighlight">\(\theta_{dk}\)</span> is the parameter
-associated with feature <span class="math notranslate nohighlight">\(d\)</span> conditioned on class <span class="math notranslate nohighlight">\(k\)</span>.</p>
-<p>So if <span class="math notranslate nohighlight">\(K=3\)</span> and <span class="math notranslate nohighlight">\(D=2\)</span>, then the parameter vector <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> is a <span class="math notranslate nohighlight">\(3 \times 2\)</span> matrix, i.e.</p>
+<p>we are actually finding for all <span class="math notranslate nohighlight">\(k = 1, 2, \cdots, K\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\boldsymbol{\theta} = \begin{bmatrix}
-\theta_{11} &amp; \theta_{12} \\
-\theta_{21} &amp; \theta_{22} \\
-\theta_{31} &amp; \theta_{32}
-\end{bmatrix}_{3 \times 2}
+\begin{align*}
+\mathbf{X} \mid Y &amp;= 1 &amp;\overset{\small{\text{i.i.d.}}}{\sim} \text{Category}(\boldsymbol{\pi}_{\{\mathbf{X} \mid Y\}}) \\
+\mathbf{X} \mid Y &amp;= 2 &amp;\overset{\small{\text{i.i.d.}}}{\sim} \text{Category}(\boldsymbol{\pi}_{\{\mathbf{X} \mid Y\}}) \\
+\vdots \\
+\mathbf{X} \mid Y &amp;= K &amp;\overset{\small{\text{i.i.d.}}}{\sim} \text{Category}(\boldsymbol{\pi}_{\{\mathbf{X} \mid Y\}})
+\end{align*}
 \end{split}\]</div>
-<p>This means we have effectively reduced our complexity from <span class="math notranslate nohighlight">\(\sim \mathcal{O}(2^D)\)</span> to <span class="math notranslate nohighlight">\(\sim \mathcal{O}(DK + 1)\)</span>.</p>
-<p><strong>We have also reduced the problem of estimating the joint distribution to just individual conditional distributions.</strong></p>
 </section>
-</div><div class="proof remark admonition" id="remark-15">
-<p class="admonition-title"><span class="caption-number">Remark 8 </span> (Notation remark)</p>
-<section class="remark-content" id="proof-content">
-<p>A note, the notation <span class="math notranslate nohighlight">\(\boldsymbol{\theta}_{dk}\)</span> should either be read as <span class="math notranslate nohighlight">\(\boldsymbol{\theta}_{kd}\)</span> since
-we say <span class="math notranslate nohighlight">\(\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}\)</span> is a <span class="math notranslate nohighlight">\(K \times D\)</span> matrix.</p>
-</section>
-</div><section id="inductive-bias">
-<h3>Inductive Bias<a class="headerlink" href="#inductive-bias" title="Permalink to this headline">#</a></h3>
-<p>We still need to introduce some inductive bias into <a class="reference internal" href="#equation-eq-naive-bayes-classifier-1">(33)</a>, more concretely, we need to make some assumptions about the distribution
-of <span class="math notranslate nohighlight">\(\mathbb{P}(Y)\)</span> and <span class="math notranslate nohighlight">\(\mathbb{P}(X_d \mid Y)\)</span>.</p>
-<p>For the target variable, we typically model it as a categorical distribution,</p>
-<div class="math notranslate nohighlight">
-\[
-\mathbb{P}(Y) \sim \mathrm{Categorical}(\boldsymbol{\pi})
-\]</div>
-<p>For the conditional distribution of the features, we typically model it according to what type of features we have. For example, if we have binary features, then we can model it as a Bernoulli distribution,</p>
-<div class="math notranslate nohighlight">
-\[
-\mathbb{P}(X_d \mid Y) \sim \mathrm{Bernoulli}(\theta_{dk})
-\]</div>
-<p>If we have continuous features, then we can model it as a Gaussian distribution,</p>
-<div class="math notranslate nohighlight">
-\[
-\mathbb{P}(X_d \mid Y) \sim \mathcal{N}(\mu_{dk}, \sigma_{dk}^2)
-\]</div>
+<section id="continuous-features-gaussian-distribution">
+<h4>Continuous Features (Gaussian Distribution)<a class="headerlink" href="#continuous-features-gaussian-distribution" title="Permalink to this headline">#</a></h4>
+<p>If all features <span class="math notranslate nohighlight">\(X_d\)</span> are continuous, we can use the Gaussian distribution to model the conditional distribution of <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> given <span class="math notranslate nohighlight">\(Y = k\)</span>.</p>
+<hr class="docutils" />
 <p>See <strong>KEVIN MURPHY pp 358 for more details</strong>.</p>
 <p>For simplicity sake, we assume that all features <span class="math notranslate nohighlight">\(X_d\)</span> are of the same type, either all binary or all continuous.
 In reality, this may not need to be the case.</p>
+<p>This section’s content is adapted from <a class="reference external" href="https://dafriedman97.github.io/mlbook/content/c4/concept.html">Machine Learning from Scratch</a>.</p>
+<p>In general, we assume all samples <span class="math notranslate nohighlight">\(X_n\)</span> come from the same <em>family</em> of distributions. This means that for samples <span class="math notranslate nohighlight">\(n = 1\)</span> to <span class="math notranslate nohighlight">\(n = N\)</span>, and class <span class="math notranslate nohighlight">\(k = 1\)</span> to <span class="math notranslate nohighlight">\(k = K\)</span>, we have the following:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\mathrm{X}_n|(Y_n = 1) &amp;\sim \text{Distribution}(\boldsymbol{\theta}_1) \\
+\mathrm{X}_n|(Y_n = 2) &amp;\sim \text{Distribution}(\boldsymbol{\theta}_2) \\
+\vdots &amp; \quad \vdots \\
+\mathrm{X}_n|(Y_n = K) &amp;\sim \text{Distribution}(\boldsymbol{\theta}_K)
+\end{align*}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\boldsymbol{\theta}_k\)</span> is the parameter vector of <span class="math notranslate nohighlight">\(\mathrm{X}_n\)</span> conditioned on the <span class="math notranslate nohighlight">\(k\)</span>-th class. For instance, if we are using a Multivariate Gaussian distribution, then <span class="math notranslate nohighlight">\(\boldsymbol{\theta}_k = \begin{bmatrix} \boldsymbol{\mu_k} &amp; \boldsymbol{\Sigma_k} \end{bmatrix}\)</span>.</p>
+<p>However, it is possible for the individual variables within the random vector <span class="math notranslate nohighlight">\(\mathrm{X}_n\)</span> to follow different distributions. For instance, if <span class="math notranslate nohighlight">\(\mathrm{X}_n = \begin{bmatrix} X_{n1} &amp; X_{n2} \end{bmatrix}^\top\)</span>, we might have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+X_{n1}|(Y_n = k) &amp;\sim \text{Binomial}(n, p_{k}) \\
+X_{n2}|(Y_n = k) &amp;\sim \mathcal{N}(\boldsymbol{\mu_k}, \boldsymbol{\Sigma_k})
+\end{align*}
+\end{split}\]</div>
+<p>The machine learning fitting process is then to estimate the parameters of these distributions. More concretely, we need to estimate <span class="math notranslate nohighlight">\(\boldsymbol{\pi}_k\)</span> for <span class="math notranslate nohighlight">\(k = 1, \dots, K\)</span>, as well as <span class="math notranslate nohighlight">\(\boldsymbol{\theta}_k\)</span> for <span class="math notranslate nohighlight">\(k = 1, \dots, K\)</span> for what might be the possible distributions of <span class="math notranslate nohighlight">\(\mathrm{X}_n \mid Y_n\)</span>. In this example above, we would need to estimate <span class="math notranslate nohighlight">\(p_k\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol{\mu}_k\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{\Sigma}_k\)</span> for <span class="math notranslate nohighlight">\(k = 1, \dots, K\)</span> for the Binomial and Multivariate Gaussian distributions.</p>
+<p>Once that’s done, we can estimate <span class="math notranslate nohighlight">\(\mathbb{P}(Y_n = k)\)</span> and <span class="math notranslate nohighlight">\(\mathbb{P}(\mathrm{X}_n \mid Y_n = k)\)</span> for <span class="math notranslate nohighlight">\(k = 1, \dots, K\)</span>. We can then use these estimates to make predictions about the class of a new sample <span class="math notranslate nohighlight">\(\mathrm{X}_n\)</span> using Bayes’ rule in equation <a class="reference internal" href="#equation-eq-argmax-naive-bayes-2">(31)</a>.</p>
+</section>
+</section>
 </section>
 <section id="model-fitting">
-<h3>Model Fitting<a class="headerlink" href="#model-fitting" title="Permalink to this headline">#</a></h3>
+<h2>Model Fitting<a class="headerlink" href="#model-fitting" title="Permalink to this headline">#</a></h2>
 <p>Everything we have talked about is just 1 single sample, and that won’t work in the realm of
 estimating the best parameters that fit the data. Since we are given a dataset <span class="math notranslate nohighlight">\(\mathcal{D}\)</span>
 consisting of <span class="math notranslate nohighlight">\(N\)</span> samples, we can estimate the parameters of the model by maximizing the likelihood of the data.</p>
@@ -1172,16 +1462,42 @@ consisting of <span class="math notranslate nohighlight">\(N\)</span> samples, w
 &amp;= \prod_{n=1}^N  \left\{\mathbb{P}\left(Y^{(n)}=k ; \boldsymbol{\pi}\right) \prod_{d=1}^D \mathbb{P}\left(X_d^{(n)} \mid Y^{(n)} = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}} \right) \right\}  \\
 \end{align*}
 \end{split}\]</div>
-<p>Then we can maximize <span class="math notranslate nohighlight">\(\prod_{n=1}^N  \mathbb{P}\left(Y^{(n)}=k ; \boldsymbol{\pi}\right)\)</span>
-individually since the above can be decomposed (<strong>CITE MURPHY</strong>).</p>
-</section>
-<section id="previous">
-<h3>Previous<a class="headerlink" href="#previous" title="Permalink to this headline">#</a></h3>
-<p>We denote the (joint) probability distribution of the observed data <span class="math notranslate nohighlight">\(\mathcal{D}\)</span> as</p>
+<p>Then we can maximize</p>
 <div class="math notranslate nohighlight">
 \[
-\mathbb{P}(\mathcal{D} ; \boldsymbol{\theta}) = \mathbb{P}(\mathbf{X})
+\prod_{n=1}^N  \mathbb{P}\left(Y^{(n)}=k ; \boldsymbol{\pi}\right)
 \]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+\prod_{n=1}^N  \prod_{d=1}^D \mathbb{P}\left(X_d^{(n)} \mid Y^{(n)} = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}} \right)
+\]</div>
+<p>individually since the above can be decomposed (<strong>CITE MURPHY</strong>).</p>
+<section id="estimating-priors">
+<h3>Estimating Priors<a class="headerlink" href="#estimating-priors" title="Permalink to this headline">#</a></h3>
+<p>Before we start the formal estimation process, it is intuitive to think that the prior probabilities <span class="math notranslate nohighlight">\(\boldsymbol{\pi}_k\)</span> should be proportional to the number of samples in each class. In other words, if we have <span class="math notranslate nohighlight">\(N_1\)</span> samples in class 1, <span class="math notranslate nohighlight">\(N_2\)</span> samples in class 2, and so on, then we should have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\pi_1 &amp;\propto N_1 \\
+\pi_2 &amp;\propto N_2 \\
+\vdots &amp; \quad \vdots \\
+\pi_K &amp;\propto N_K
+\end{align*}
+\end{split}\]</div>
+<p>For instance, if we have a dataset with <span class="math notranslate nohighlight">\(N=100\)</span> samples with <span class="math notranslate nohighlight">\(K=3\)</span> classes, and <span class="math notranslate nohighlight">\(N_1 = 10\)</span>, <span class="math notranslate nohighlight">\(N_2 = 30\)</span> and <span class="math notranslate nohighlight">\(N_3 = 60\)</span>, then we should have <span class="math notranslate nohighlight">\(\pi_1 = \frac{10}{100} = 0.1\)</span>, <span class="math notranslate nohighlight">\(\pi_2 = \frac{30}{100} = 0.3\)</span> and <span class="math notranslate nohighlight">\(\pi_3 = \frac{60}{100} = 0.6\)</span>. This is just the relative frequency of each class.</p>
+<p>It turns out our intuition matches the formal estimation process.</p>
+</section>
+<section id="maximum-likelihood-estimation-for-priors-categorical-distribution">
+<h3>Maximum Likelihood Estimation for Priors (Categorical Distribution)<a class="headerlink" href="#maximum-likelihood-estimation-for-priors-categorical-distribution" title="Permalink to this headline">#</a></h3>
+<p>Let <span class="math notranslate nohighlight">\(\mathcal{D} = \left \{ \left(\mathrm{X}^{(n)}, Y^{(n)} \right) \right \}_{n=1}^N = \left \{ \left(\mathrm{x}^{(n)}, y^{(n)} \right) \right \}_{n=1}^N\)</span> be the dataset
+with <span class="math notranslate nohighlight">\(N\)</span> samples and <span class="math notranslate nohighlight">\(D\)</span> predictors. All samples are assumed to be <strong>independent and identically distributed (i.i.d.)</strong> from the unknown but fixed joint distribution
+<span class="math notranslate nohighlight">\(\mathbb{D} = \mathbb{P}(\mathcal{X}, \mathcal{Y} ; \boldsymbol{\theta})\)</span> where <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> is the parameter vector of the joint distribution. In other words, <span class="math notranslate nohighlight">\(\mathrm{X}^{(1)}, \mathrm{X}^{(2)}, \dots, \mathrm{X}^{(N)}\)</span> are all i.i.d. from <span class="math notranslate nohighlight">\(\mathbb{D}\)</span>, as well as <span class="math notranslate nohighlight">\(\mathrm{Y}^{(1)}, \mathrm{Y}^{(2)}, \dots, \mathrm{Y}^{(N)}\)</span>.</p>
+<p>We denote the (joint) probability distribution of the observed data <span class="math notranslate nohighlight">\(\mathcal{D}\)</span> as <span class="math notranslate nohighlight">\(\mathbb{P}(\mathcal{D} ; \boldsymbol{\theta})\)</span>.</p>
+<p>For example, if <span class="math notranslate nohighlight">\(D = 2\)</span>, and <span class="math notranslate nohighlight">\(X^{(n)}_1\)</span> and <span class="math notranslate nohighlight">\(X^{(n)}_2\)</span> are both multivariate Gaussian random variables,
+with <span class="math notranslate nohighlight">\(\boldsymbol{\mu}_1\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{\mu}_2\)</span> being the mean vectors of the two distributions,
+and <span class="math notranslate nohighlight">\(\boldsymbol{\Sigma}_1\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{\Sigma}_2\)</span> being the covariance matrices of the two distributions;
+furthermore, <span class="math notranslate nohighlight">\(Y^{(n)}\)</span> is a Bernoulli random variable with parameter <span class="math notranslate nohighlight">\(\pi\)</span>, then we have <span class="math notranslate nohighlight">\(\boldsymbol{\theta} = \begin{bmatrix} \boldsymbol{\mu}_1 &amp; \boldsymbol{\Sigma}_1 &amp; \boldsymbol{\mu}_2 &amp; \boldsymbol{\Sigma}_2 &amp; \pi \end{bmatrix}\)</span>.</p>
 <p>In this context, since we are estimating <span class="math notranslate nohighlight">\(\boldsymbol{\pi}\)</span> but do not really know the parameters of <span class="math notranslate nohighlight">\(\mathrm{X}\)</span> just yet, we can simplify the expression to just</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1237,7 +1553,7 @@ of the definition of the Category distribution.</p>
 \end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(N_k\)</span> is the number of samples that belong to the <span class="math notranslate nohighlight">\(k\)</span>-th category.</p>
 <div class="proof remark admonition" id="notation-overload">
-<p class="admonition-title"><span class="caption-number">Remark 9 </span> (Notation Overload)</p>
+<p class="admonition-title"><span class="caption-number">Remark 10 </span> (Notation Overload)</p>
 <section class="remark-content" id="proof-content">
 <p>We note to ourselves that we are reusing, and hence abusing the notation <span class="math notranslate nohighlight">\(\mathcal{L}\)</span> for the log-likelihood function to be the same as the likelihood function, this is just for the ease of re-defining a new symbol for the log-likelihood function, <span class="math notranslate nohighlight">\(\log \mathcal{L}\)</span>.</p>
 </section>
@@ -1278,27 +1594,141 @@ representation of the samples will be</p>
 \end{align*}
 \end{split}\]</div>
 <p>and summing each column will give us <span class="math notranslate nohighlight">\(N_1 = 2\)</span>, <span class="math notranslate nohighlight">\(N_2 = 3\)</span>, and <span class="math notranslate nohighlight">\(N_3 = 1\)</span>.</p>
+<p>Now we are finally ready to solve the estimation (optimization) problem for <span class="math notranslate nohighlight">\(\boldsymbol{\pi}\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\hat{\boldsymbol{\pi}} &amp;= \underset{\boldsymbol{\pi}}{\mathrm{argmax}} ~~ \mathcal{L}(\boldsymbol{\pi} ; \mathcal{D}) \\
+&amp;= \underset{\boldsymbol{\pi}}{\mathrm{argmax}} ~~ \sum_{k=1}^K N_k \log \pi_k \\
+\end{align*}
+\end{split}\]</div>
+<p>subject to the constraint that</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_{k=1}^K \pi_k = 1
+\]</div>
+<p>which is just saying the probabilities must sum up to 1.</p>
+<p>We can also write the expression as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\max_{\boldsymbol{\pi}} &amp;~~ \sum_{k=1}^K N_k \log \pi_k \\
+\text{subject to} &amp;~~ \sum_{k=1}^K \pi_k = 1
+\end{aligned}
+\end{split}\]</div>
+<p>This is a constrained optimization problem, and we can solve it using the Lagrangian method.</p>
+<div class="proof definition admonition" id="lagrangian-method">
+<p class="admonition-title"><span class="caption-number">Definition 69 </span> (Lagrangian Method)</p>
+<section class="definition-content" id="proof-content">
+<p>The Lagrangian method is a method to solve constrained optimization problems. The idea is to
+convert the constrained optimization problem into an unconstrained optimization problem by
+introducing a Lagrangian multiplier <span class="math notranslate nohighlight">\(\lambda\)</span> and then solve the unconstrained optimization
+problem.</p>
+<p>Given a function <span class="math notranslate nohighlight">\(f(\mathrm{x})\)</span> and a constraint <span class="math notranslate nohighlight">\(g(\mathrm{x}) = 0\)</span>, the Lagrangian function,
+<span class="math notranslate nohighlight">\(\mathcal{L}(\mathrm{x}, \lambda)\)</span> is defined as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\mathcal{L}(\mathrm{x}, \lambda) &amp;= f(\mathrm{x}) - \lambda g(\mathrm{x}) \\
+\end{align*}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\lambda\)</span> is the Lagrangian multiplier and may be either positive or negative. Then,
+the critical points of the Lagrangian function are the same as the critical points of the
+original constrained optimization problem, i.e. setting the gradient vector of the Lagrangian
+function <span class="math notranslate nohighlight">\(\nabla \mathcal{L}(\mathrm{x}, \lambda) = 0\)</span> with respect to <span class="math notranslate nohighlight">\(\mathrm{x}\)</span> and <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
 </section>
+</div><p>One note is that the notation of <span class="math notranslate nohighlight">\(\mathcal{L}\)</span> seems to be overloaded again with the Lagrangian function, we will have to change it to <span class="math notranslate nohighlight">\(\mathcal{L}_\lambda\)</span> to avoid confusion. So, to reiterate, solving the Lagrangian function is equivalent to solving the constrained optimization problem.</p>
+<p>In our problem, we can convert it to Lagrangian form as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\hat{\boldsymbol{\pi}} &amp;= \underset{\boldsymbol{\pi}}{\mathrm{argmax}} ~~ \mathcal{L}_\lambda(\boldsymbol{\pi}, \lambda ; \mathcal{D}) \\
+&amp;= \underset{\boldsymbol{\pi}}{\mathrm{argmax}} ~~ \underbrace{\mathcal{L}(\boldsymbol{\pi} ; \mathcal{D})}_{f(\boldsymbol{\pi})} - \lambda \left(\underbrace{\sum_{k=1}^K \pi_k - 1}_{g(\boldsymbol{\pi})} \right) \\
+&amp;= \underset{\boldsymbol{\pi}}{\mathrm{argmax}} ~~ \sum_{k=1}^K N_k \log \pi_k - \lambda \left( \sum_{k=1}^K \pi_k - 1 \right) \\
+\end{align*}
+\end{split}\]</div>
+<p>which is now an unconstrained optimization problem. We can now solve it by setting the gradient vector of the Lagrangian function <span class="math notranslate nohighlight">\(\nabla \mathcal{L}_\lambda(\boldsymbol{\pi}, \lambda ; \mathcal{D}) = 0\)</span> with respect to <span class="math notranslate nohighlight">\(\boldsymbol{\pi}\)</span> and <span class="math notranslate nohighlight">\(\lambda\)</span>, as follows,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\nabla \mathcal{L}_\lambda(\boldsymbol{\pi}, \lambda ; \mathcal{D}) &amp;\overset{\mathrm{def}}{=} \frac{\partial \mathcal{L}_\lambda(\boldsymbol{\pi}, \lambda ; \mathcal{D})}{\partial \boldsymbol{\pi}} = 0 \quad \text{and} \quad \frac{\partial \mathcal{L}_\lambda(\boldsymbol{\pi}, \lambda ; \mathcal{D})}{\partial \lambda} = 0 \\
+&amp;\iff \frac{\partial}{\partial \boldsymbol{\pi}} \left( \sum_{k=1}^K N_k \log \pi_k - \lambda \left( \sum_{k=1}^K \pi_k - 1 \right) \right) = 0 \quad \text{and} \quad \frac{\partial \mathcal{L}_\lambda(\boldsymbol{\pi}, \lambda ; \mathcal{D})}{\partial \lambda} = 0 \\
+\\
+&amp;\iff \begin{bmatrix} \frac{\partial \mathcal{L}}{\partial \pi_1} \\ \vdots \\ \frac{\partial \mathcal{L}}{\partial \pi_K} \\ \frac{\partial \mathcal{L}}{\partial \lambda} \end{bmatrix} = \begin{bmatrix} 0 \\ \vdots \\ 0 \\ 0 \end{bmatrix} \\
+&amp;\iff \begin{bmatrix} \frac{\partial}{\partial \pi_1} \left( N_1 \log \pi_1 - \lambda \left( \pi_1 - 1 \right) \right) \\ \vdots \\ \frac{\partial}{\partial \pi_K} \left( N_K \log \pi_K - \lambda \left( \pi_K - 1 \right) \right) \\ \frac{\partial \mathcal{L}_\lambda(\boldsymbol{\pi}, \lambda ; \mathcal{D})}{\partial \lambda} \end{bmatrix} = \begin{bmatrix} 0 \\ \vdots \\ 0 \\ 0 \end{bmatrix} \\
+&amp;\iff \begin{bmatrix} \frac{N_1}{\pi_1} - \lambda \\ \vdots \\ \frac{N_K}{\pi_K} - \lambda \\ \sum_{k=1}^K \pi_k - 1 \end{bmatrix} = \begin{bmatrix} 0 \\ \vdots \\ 0 \\ 0 \end{bmatrix} \\
+\end{align*}
+\end{split}\]</div>
+<p>The reason we can unpack <span class="math notranslate nohighlight">\(\frac{\partial}{\partial \pi_k}\left( \sum_{k=1}^K N_k \log \pi_k - \lambda \left( \sum_{k=1}^K \pi_k - 1 \right) \right)\)</span> as <span class="math notranslate nohighlight">\(\frac{\partial}{\partial \pi_k} \left( N_k \log \pi_k - \lambda \left( \pi_k - 1 \right) \right)\)</span> is because we are dealing with partial derivatives, so other terms other than <span class="math notranslate nohighlight">\(\pi_k\)</span> are constant.</p>
+<p>Finally, we have a system of equations for each <span class="math notranslate nohighlight">\(\pi_k\)</span> and if we can solve for <span class="math notranslate nohighlight">\(\pi_k\)</span> for each <span class="math notranslate nohighlight">\(k\)</span>, we can then find the best estimate of <span class="math notranslate nohighlight">\(\boldsymbol{\pi}\)</span>. It turns out we have to find <span class="math notranslate nohighlight">\(\lambda\)</span> first, and this can be solved by setting <span class="math notranslate nohighlight">\(\sum_{k=1}^K \pi_k - 1 = 0\)</span> and solving for <span class="math notranslate nohighlight">\(\lambda\)</span>, which is the last equation in the system of equations above. We first express each <span class="math notranslate nohighlight">\(\pi_k\)</span> in terms of <span class="math notranslate nohighlight">\(\lambda\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\frac{N_1}{\pi_1} - \lambda &amp;= 0 \implies \pi_1 = \frac{N_1}{\lambda} \\
+\frac{N_2}{\pi_2} - \lambda &amp;= 0 \implies \pi_2 = \frac{N_2}{\lambda} \\
+\vdots \\
+\frac{N_K}{\pi_K} - \lambda &amp;= 0 \implies \pi_K = \frac{N_K}{\lambda} \\
+\end{align*}
+\end{split}\]</div>
+<p>Then we substitute these expressions into the last equation in the system of equations above, and solve for <span class="math notranslate nohighlight">\(\lambda\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\sum_{k=1}^K \pi_k - 1 = 0 &amp;\implies \sum_{k=1}^K \frac{N_k}{\lambda} - 1 = 0 \\
+&amp;\implies \sum_{k=1}^K \frac{N_k}{\lambda} = 1 \\
+&amp;\implies \sum_{k=1}^K N_k = \lambda \\
+&amp;\implies \lambda = \sum_{k=1}^K N_k \\
+&amp;\implies \lambda = N \\
+\end{align*}
+\end{split}\]</div>
+<p>and therefore, we can now solve for <span class="math notranslate nohighlight">\(\pi_k\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{\hat{\pi}} = \left .
+  \begin{cases}
+    \pi_1 = \frac{N_1}{N} \\
+    \pi_2 = \frac{N_2}{N} \\
+    \vdots \quad \vdots \quad \vdots \\
+    \pi_K = \frac{N_K}{N} \\
+  \end{cases}
+  \right\} \implies \pi_k = \frac{N_k}{N} \quad \text{for} \quad k = 1, 2, \ldots, K
+\end{split}\]</div>
+<p>We conclude that the maximum likelihood estimate of <span class="math notranslate nohighlight">\(\boldsymbol{\pi}\)</span> is <span class="math notranslate nohighlight">\(\boldsymbol{\pi} = \left( \frac{N_1}{N}, \frac{N_2}{N}, \ldots, \frac{N_K}{N} \right)\)</span>, which is the same as the empirical relative frequency of each class in the training data. This coincides with our intuition.</p>
+<p>For completeness of expression,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\hat{\boldsymbol{\pi}} &amp;= \arg \max_{\boldsymbol{\pi}} \mathcal{L}\left( \boldsymbol{\pi} ; \mathcal{D} \right) \\
+&amp;= \begin{bmatrix} \hat{\pi}_1 \\ \vdots \\ \hat{\pi}_K \end{bmatrix} \\
+&amp;= \begin{bmatrix} \frac{N_1}{N} \\ \vdots \\ \frac{N_K}{N} \end{bmatrix}
+\end{align*}
+\end{split}\]</div>
 </section>
-<section id="maximum-likelihood-estimation-of-categorical-distribution-for-target-variable">
-<h2>Maximum Likelihood Estimation of Categorical Distribution for Target Variable<a class="headerlink" href="#maximum-likelihood-estimation-of-categorical-distribution-for-target-variable" title="Permalink to this headline">#</a></h2>
-<p>aaa</p>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
-<dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Categorical_distribution">Category Distribution</a></p>
+<dt class="label" id="intractable"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Cite Dive into Deep Learning on this. Also, the joint probability is intractable because the number of parameters to estimate is exponential in the number of features. Use binary bits example, see my notes.</p>
 </dd>
-<dt class="label" id="joint-distribution"><span class="brackets"><a class="fn-backref" href="#id3">2</a></span></dt>
+<dt class="label" id="joint-distribution"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
 <dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Joint_probability_distribution#Discrete_case">Joint Probability Distribution</a></p>
 </dd>
-<dt class="label" id="chain-rule-of-probability"><span class="brackets"><a class="fn-backref" href="#id4">3</a></span></dt>
+<dt class="label" id="chain-rule-of-probability"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
 <dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Chain_rule_(probability)">Chain Rule of Probability</a></p>
 </dd>
-<dt class="label" id="conditional-independence"><span class="brackets"><a class="fn-backref" href="#id5">4</a></span></dt>
+<dt class="label" id="dparameters"><span class="brackets"><a class="fn-backref" href="#id4">4</a></span></dt>
+<dd><p>Dive into Deep Learning, Section 22.9, this is only assuming that each feature <span class="math notranslate nohighlight">\(\mathbf{x}_d^{(n)}\)</span> is binary, i.e. <span class="math notranslate nohighlight">\(\mathbf{x}_d^{(n)} \in \{0, 1\}\)</span>.</p>
+</dd>
+<dt class="label" id="id9"><span class="brackets"><a class="fn-backref" href="#id5">5</a></span></dt>
 <dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Conditional_independence">Conditional Independence</a></p>
+</dd>
+<dt class="label" id="kdparameters"><span class="brackets"><a class="fn-backref" href="#id6">6</a></span></dt>
+<dd><p>Probablistic Machine Learning: An Introduction, Section 9.3, pp 328</p>
+</dd>
+<dt class="label" id="categorical-distribution"><span class="brackets"><a class="fn-backref" href="#id7">7</a></span></dt>
+<dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Categorical_distribution">Category Distribution</a></p>
 </dd>
 </dl>
 </section>
@@ -1338,10 +1768,10 @@ representation of the samples will be</p>
             <p class="prev-next-title">Brain Dump</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="naive_bayes.html" title="next page">
+    <a class='right-next' id="next-link" href="naive_bayes_example_1.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Naive Bayes</p>
+        <p class="prev-next-title">Example: Penguins Dataset</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
