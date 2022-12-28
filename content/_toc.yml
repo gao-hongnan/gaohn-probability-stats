@@ -69,8 +69,9 @@ parts:
   - caption: Machine Learning Algorithms
     chapters:
     - file: machine_learning_algorithms/generative/naive_bayes/naive_bayes_concept.md
+    - file: machine_learning_algorithms/generative/naive_bayes/naive_bayes_example_1.ipynb
     - file: machine_learning_algorithms/generative/naive_bayes/naive_bayes.ipynb
-    - file: machine_learning_algorithms/generative/naive_bayes/naive_bayes_example.ipynb
+
 
   - caption: References and Resources
     chapters:

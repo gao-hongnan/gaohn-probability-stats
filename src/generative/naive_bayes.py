@@ -113,7 +113,9 @@ class NaivesBayesClassifier(BaseEstimator):
                 print(feature, mean, var)
                 self.likelihood[i] *= self._calculate_likelihood(feature, mean, var)
         self.posterior = self.likelihood * self.prior
-        print(self.posterior)
+        print(f"self.likelihood: {self.likelihood.shape}")
+        print(f"self.prior: {self.prior.shape}")
+        print(f"self.posterior: {self.posterior.shape}")
         return np.argmax(self.posterior)
 
     def predict(self, X):
@@ -373,6 +375,7 @@ if __name__ == "__main__":
     from sklearn.model_selection import train_test_split
 
     features, labels = load_iris(return_X_y=True)
+
     train_features, test_features, train_labels, test_labels = train_test_split(
         features, labels, test_size=0.5, random_state=0
     )
@@ -388,7 +391,7 @@ if __name__ == "__main__":
     gnb.fit(train_features, train_labels)  # type: ignore
     predictions = gnb.predict(test_features)  # type: ignore
     print(predictions)
-
+    print(features.shape, labels.shape)
     accuracy = accuracy_score(test_labels, predictions)
     precision, recall, fscore, _ = precision_recall_fscore_support(
         test_labels, predictions, average="macro"
