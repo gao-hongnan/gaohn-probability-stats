@@ -238,11 +238,17 @@ In SE post, discriminative model do not need make assumptions of X and therefore
 
 ### Discriminative vs Generative
 
-- We will add a subscript $n$ to denote the $n$-th sample from the dataset. It still is referring to a single sample.
-- Discriminative classifiers model the conditional distribution $\mathbb{P}(Y_n = k \mid X_n =  \mathrm{x}_n)$. This means we are modelling the conditional distribution of the target $Y_n$ given the input $\mathrm{x}_n$.
-- Generative classifiers model the conditional distribution $\mathbb{P}(X_n = \mathrm{x}_n \mid Y_n = k)$. This means we are modelling the conditional distribution of the input $\mathrm{x}_n$ given the target $Y_n$. Then we can use Bayes' rule to compute the conditional distribution of the target $Y_n$ given the input $\mathrm{x}_n$.
-- Both the target $Y_n$ and the input $X_n$ are random variables in the generative model. In the discriminative model, only the target $Y_n$ is a random variable as the input $X_n$ is fixed (we do not need to estimate anything about the input $X$). 
-  
+- Discriminative classifiers model the conditional distribution $\mathbb{P}(Y = k \mid \mathbf{X} =  \mathbf{x})$.
+  This means we are modelling the conditional distribution of the target $Y$ given the input $\mathbf{x}$.
+- Generative classifiers model the conditional distribution $\mathbb{P}(\mathbf{X} = \mathbf{x} \mid Y = k)$. 
+  This means we are modelling the conditional distribution of the input $\mathbf{X}$ given the target $Y$. 
+  Then we can use Bayes' rule to compute the conditional distribution of the target $Y$ given the input $\mathbf{X}$.
+- Both the target $Y$ and the input $\mathbf{X}$ are random variables in the generative model. 
+  In the discriminative model, only the target $Y$ is a random variable as the input $\mathbf{X}$ is fixed (we do not need to estimate anything about the input $\mathbf{X}$). 
+- For example, Logistic Regression models the target $Y$ as a function of predictor's $\mathbf{X} = \begin{bmatrix}X_1 \\ X_2 \\ \vdots \\X_D \end{bmatrix}$.
+- Naive bayes models both the target $Y$ and the predictors $\mathbf{X}$ as a function of each other. 
+  This means we are modelling the joint distribution of the target $Y$ and the predictors $\mathbf{X}$.
+
 ## Naive Bayes Setup
 
 Let 
@@ -269,52 +275,91 @@ Before we look at the fitting/estimating process, let's look at the inference/pr
 
 Suppose the problem at hand has $K$ classes, $k = 1, 2, \cdots, K$, where $k$ is the index of the class.
 
-Then, to find the class of a new test sample $\mathbf{x}^{q} \in \mathbb{R}^{D}$ with $D$ features,
-we can compute the conditional probability of each class $Y = k$ given the sample $\mathbf{x}^{q}$:
+Then, to find the class of a new test sample $\mathbf{x}^{(q)} \in \mathbb{R}^{D}$ with $D$ features,
+we can compute the conditional probability of each class $Y = k$ given the sample $\mathbf{x}^{(q)}$:
+
 
 ```{prf:algorithm} Naive Bayes Inference Algorithm
 :label: naive-bayes-inference-algorithm
+:class: full-width
 
-1. Compute the conditional probability of each class $Y = k$ given the sample $\mathbf{x}^{q}$:
+- Compute the conditional probability of each class $Y = k$ given the sample $\mathbf{x}^{(q)}$:
 
-    $$
-    \mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x}^{q}) = \dfrac{\mathbb{P}(\mathbf{X} = \mathbf{x}^{q} \mid Y = k) \mathbb{P}(Y = k)}{\mathbb{P}(\mathbf{X} = \mathbf{x}^{q})} \quad \text{for } k = 1, 2, \cdots, K
-    $$ (eq:conditional-naive-bayes)
+  $$
+  \mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x}^{(q)}) = \dfrac{\mathbb{P}(Y = k) \mathbb{P}(\mathbf{X} = \mathbf{x}^{(q)} \mid Y = k)}{\mathbb{P}(\mathbf{X} = \mathbf{x}^{(q)})} \quad \text{for } k = 1, 2, \cdots, K
+  $$ (eq:conditional-naive-bayes)
 
-2. Choose the class $k$ that maximizes the conditional probability:
+- Choose the class $k$ that maximizes the conditional probability:
 
-    $$
-    \hat{y}^{(q)} = \arg\max_{k=1}^K \mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x}^{q})
-    $$ (eq:argmax-naive-bayes-1)
+  $$
+  \hat{y}^{(q)} = \arg\max_{k=1}^K \mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x}^{(q)})
+  $$ (eq:argmax-naive-bayes-1)
 
-The observant reader would have noticed that the normalizing constant $\mathbb{P}(X = \mathbf{x}^{(q)})$ is the same for all $k$.
-Therefore, we can ignore it and simply choose the class $k$ that maximizes the numerator of the conditional probability. 
+- The observant reader would have noticed that the normalizing constant 
+$\mathbb{P}\left(X = \mathbf{x}^{(q)}\right)$ is the same for all $k$.
+Therefore, we can ignore it and simply choose the class $k$ that maximizes
+the numerator of the conditional probability in {eq}`eq:conditional-naive-bayes`:
 
-$$
-\hat{y}_q = \arg\max_{k=1}^K \mathbb{P}(X = \mathbf{x}^{q} \mid Y = k) \mathbb{P}(Y = k)
-$$ (eq:argmax-naive-bayes-2)
+  $$
+  \hat{y}^{(q)} = \arg\max_{k=1}^K \mathbb{P}(Y = k) \mathbb{P}(\mathbf{X} = \mathbf{x}^{(q)} \mid Y = k) 
+  $$ (eq:argmax-naive-bayes-2)  
 
-since 
+  since where the normalizing constant is ignored, the conditional probability
 
-$$
-\mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x}^{q}) \propto \mathbb{P}(\mathbf{X} = \mathbf{x}^{q} \mid Y = k) \mathbb{P}(Y = k)
-$$
+  $$
+  \mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x}^{(q)}) \propto \mathbb{P}(Y = k) \mathbb{P}(\mathbf{X} = \mathbf{x}^{(q)} \mid Y = k) 
+  $$ (eq:proportional-naive-bayes)
 
-by a constant factor $\mathbb{P}(\mathbf{X} = \mathbf{x}^{q})$.
+  by a constant factor $\mathbb{P}(\mathbf{X} = \mathbf{x}^{(q)})$.
+  
+- Expressing it in vector form, we have
+
+  $$
+  \begin{aligned}
+  \hat{\mathbf{y}} &= \arg\max_{k=1}^K \begin{bmatrix} \mathbb{P}(Y=1) \mathbb{P}(\mathbf{X} = \mathbf{x}\mid Y = 1) \\ \mathbb{P}(Y=2) \mathbb{P}(\mathbf{X} = \mathbf{x}\mid Y = 2) \\ \vdots \\ \mathbb{P}(Y=K) \mathbb{P}(\mathbf{X} = \mathbf{x} \mid Y = K) \end{bmatrix}_{K \times 1} \\  
+  &= \arg\max_{k=1}^K \begin{bmatrix} \mathbb{P}(Y=1) \\ \mathbb{P}(Y=2) \\ \cdots \\ \mathbb{P}(Y=K) \end{bmatrix}\circ \begin{bmatrix} \mathbb{P}(\mathbf{X} = \mathbf{x} \mid Y = 1) \\ \mathbb{P}(\mathbf{X} = \mathbf{x}\mid Y = 2) \\ \vdots \\ \mathbb{P}(\mathbf{X} = \mathbf{x} \mid Y = K) \end{bmatrix} \\
+  &= \arg\max_{k=1}^K \mathbf{M}_1 \circ \mathbf{M}_2
+  \end{aligned}
+  $$ (eq:argmax-naive-bayes-3)
+
+  where 
+
+  $$
+  \mathbf{M_1} = \begin{bmatrix}
+  \mathbb{P}(Y = 1) \\
+  \mathbb{P}(Y = 2) \\
+  \vdots \\
+  \mathbb{P}(Y = K)
+  \end{bmatrix}_{K \times 1}
+  $$ (eq:naive-bayes-m1)
+
+  $$
+  \mathbf{M_2} = \begin{bmatrix}
+  \mathbb{P}(\mathbf{X} = \mathbf{x} \mid Y = 1) \\
+  \mathbb{P}(\mathbf{X} = \mathbf{x} \mid Y = 2) \\
+  \vdots \\
+  \mathbb{P}(\mathbf{X} = \mathbf{x} \mid Y = K)
+  \end{bmatrix}_{K \times 1}
+  $$ (eq:naive-bayes-m2)
+
+  Note superscript $q$ is removed for simplicity, and $\circ$ is the element-wise (Hadamard) product. 
 ```
 
-Now if we just proceed to estimate the conditional probability $\mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x}^{q})$, we will need to estimate the joint probability $\mathbb{P}(X = \mathbf{x}^{q}, Y = k)$, which is intractable[^intractable]. 
+Now if we just proceed to estimate the conditional probability $\mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x}^{(q)})$, we will need to estimate the joint probability $\mathbb{P}(X = \mathbf{x}^{(q)}, Y = k)$, since by definition, we have
 
-However, if we can ***estimate*** the conditional probability (likelihood) $\mathbb{P}(\mathbf{X} = \mathbf{x}^{q} \mid Y = k)$ 
+$$
+\mathbb{P}(X = \mathbf{x}^{(q)}, Y = k) = \mathbb{P}(Y = k) \mathbb{P}(X = \mathbf{x}^{(q)} \mid Y = k)
+$$ (eq:joint-naive-bayes-1)
+
+which is intractable[^intractable].
+
+However, if we can ***estimate*** the conditional probability (likelihood) $\mathbb{P}(\mathbf{X} = \mathbf{x}^{(q)} \mid Y = k)$ 
 and the prior probability $\mathbb{P}(Y = k)$, then we can use Bayes' rule to 
-compute the posterior conditional probability $\mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x}^{q})$. 
-
+compute the posterior conditional probability $\mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x}^{(q)})$. 
 
 ## The Naive Bayes Assumptions
 
 In this section, we talk about some implicit and explicit assumptions of the Naive Bayes model.
-
-
 
 ### Independent and Identically Distributed (i.i.d.)
 
@@ -368,35 +413,43 @@ $$
 $$
 ```
 
+(naive-bayes-conditional-independence)=
 ### Conditional Independence
 
-The core assumption of the Naive Bayes model is that the predictors $\mathcal{X}$ are conditionally independent given the class label $Y$.
+The core assumption of the Naive Bayes model is that the predictors $\mathbf{X}$
+are conditionally independent given the class label $Y$.
 
 But how did we arrive at the conditional independence assumption? Let's look at what we wanted to achieve in the first place.
 
-Recall that our goal in {ref}`naive-bayes-inference-prediction` is to find the class $k \in \{1, 2, \cdots, K\}$ that maximizes the posterior probability
+Recall that our goal in {ref}`naive-bayes-inference-prediction` is to find the class $k \in \{1, 2, \cdots, K\}$ that maximizes the **posterior** probability
 $\mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x}^{(q)} ; \boldsymbol{\theta})$. 
 
 $$
 \begin{aligned}
-\arg \max_{k} \mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x}^{(q)} ; \boldsymbol{\theta}) &= \arg \max_{k} \frac{\mathbb{P}(Y = k, \mathbf{X} = \mathbf{x}^{(q)} ; \boldsymbol{\theta})}{\mathbb{P}(\mathbf{X} = \mathbf{x}^{(q)} ; \boldsymbol{\theta})} \\
-&= \arg \max_{k} \frac{\mathbb{P}(Y = k ; \boldsymbol{\pi}) \mathbb{P}(\mathbf{X} \mid Y = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}})}{\mathbb{P}(\mathbf{X} = \mathbf{x}^{(q)} ; \boldsymbol{\theta})}\\
-&\propto \arg \max_{k} \mathbb{P}(Y = k ; \boldsymbol{\pi}) \mathbb{P}\left(\mathbf{X} \mid Y = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}\right)
+\hat{y}^{(q)} &= \arg \max_{k} \mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x}^{(q)} ; \boldsymbol{\theta}) \\
+              &= \arg \max_{k} \frac{\mathbb{P}(Y = k, \mathbf{X} = \mathbf{x}^{(q)} ; \boldsymbol{\theta})}{\mathbb{P}(\mathbf{X} = \mathbf{x}^{(q)} ; \boldsymbol{\theta})} \\
+              &= \arg \max_{k} \frac{\mathbb{P}(Y = k ; \boldsymbol{\pi}) \mathbb{P}(\mathbf{X} = \mathbf{x}^{(q)} \mid Y = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}})}{\mathbb{P}(\mathbf{X} = \mathbf{x}^{(q)} ; \boldsymbol{\theta})}\\
 \end{aligned}
-$$ (eq:argmax-naive-bayes-3)
+$$ (eq:argmax-naive-bayes-4)
 
 We have seen earlier in {prf:ref}`naive-bayes-inference-algorithm` that since the denominator 
-is constant for all $k$, we can ignore it and just maximize the numerator, as shown by the proportional sign.
+is constant for all $k$, we can ignore it and just maximize the numerator.
 
-This suggests we need to find estimates for both the prior and the likelihood. This of course 
-involves ur finding the $\boldsymbol{\pi}$ and $\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}$ that maximize the likelihood function, which we will talk about later.
+$$
+\begin{aligned}
+\hat{y}^{(q)} &= \arg \max_{k} \mathbb{P}\left(Y = k ; \boldsymbol{\pi}\right) \mathbb{P}\left(\mathbf{X} = \mathbf{x}^{(q)} \mid Y = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}\right) \\
+\end{aligned}
+$$ (eq:argmax-naive-bayes-5)
 
-In order to meaningfully optimize the expression, we need to decompose the numerator {eq}`eq:argmax-naive-bayes-3`
+This suggests we need to find estimates for both the **prior** and the **likelihood**. This of course 
+involves us finding the $\boldsymbol{\pi}$ and $\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}$ that maximize the likelihood function[^likelihood-1], which we will talk about later.
+
+In order to meaningfully optimize the expression, we need to decompose the expression {eq}`eq:argmax-naive-bayes-5`
 into its components that contain the parameters we want to estimate.
 
 $$
 \begin{aligned}
-\mathbb{P}(Y = k ; \boldsymbol{\pi}) \mathbb{P}(\mathbf{X} \mid Y = k ; \boldsymbol{\theta}) &= \mathbb{P}((Y, \mathbf{X}) = (k, \mathbf{x}^{(q)}) ; \boldsymbol{\theta}, \boldsymbol{\pi}) \\
+\mathbb{P}(Y = k ; \boldsymbol{\pi}) \mathbb{P}(\mathbf{X} \mid Y = k ; \boldsymbol{\theta}) &= \mathbb{P}((Y, \mathbf{X}) ; \boldsymbol{\theta}, \boldsymbol{\pi}) \\
 &= \mathbb{P}(Y, X_1, X_2, \ldots X_D)
 \end{aligned}
 $$ (eq:joint-distribution)
@@ -408,8 +461,9 @@ This joint distribution expression {eq}`eq:joint-distribution` can be further de
 $$
 \begin{aligned}
 \mathbb{P}(Y, X_1, X_2, \ldots X_D) &= \mathbb{P}(Y) \mathbb{P}(X_1, X_2, \ldots X_D \mid Y) \\
-&= \mathbb{P}(Y) \mathbb{P}(X_1 \mid Y) \mathbb{P}(X_2 \mid Y, X_1) \mathbb{P}(X_3 \mid Y, X_1, X_2) \cdots \mathbb{P}(X_D \mid Y, X_1, X_2, \ldots X_{D-1}) \\
-&= \mathbb{P}(Y) \prod_{d=1}^D \mathbb{P}(X_d \mid Y, X_1, X_2, \ldots X_{d-1})
+&= \mathbb{P}(Y) \mathbb{P}(X_1 \mid Y) \mathbb{P}(X_2 \mid Y, X_1) \cdots \mathbb{P}(X_D \mid Y, X_1, X_2, \ldots X_{D-1}) \\
+&= \mathbb{P}(Y) \prod_{d=1}^D \mathbb{P}(X_d \mid Y, X_1, X_2, \ldots X_{d-1}) \\
+&= \mathbb{P}(Y) \prod_{d=1}^{D} \mathbb{P}\left(X_d \middle \vert \bigcap_{d'=1}^{d-1} X_{d'}\right) 
 \end{aligned}
 $$ (eq:joint-distribution-decomposed)
 
@@ -443,8 +497,8 @@ This has two caveats:
 2. Even if we can estimate all the parameters, we are essentially overfitting the data by memorizing the training data. There is no learning involved.
 ```
 
-This is where the "Naive" assumption comes in. The Naive Bayes' classifier assumes that the features are conditionally independent[^conditional-independence] given the class label, i.e.
-the features are conditionally independent given the class label.
+This is where the "Naive" assumption comes in. The Naive Bayes' classifier assumes that
+the features are conditionally independent[^conditional-independence] given the class label.
 
 More formally stated,
 
@@ -462,26 +516,72 @@ $$
 \begin{aligned}
 \mathbb{P}(Y, X_1, X_2, \ldots X_D) &= \mathbb{P}(Y ; \boldsymbol{\pi}) \prod_{d=1}^D \mathbb{P}(X_d \mid Y ; \theta_{d}) \\
 \end{aligned}
-$$
+$$ (eq:conditional-independence-naive-bayes-1)
 
-More precisely, after all the simplifications above,
+More precisely, after the simplification in {eq}`eq:conditional-independence-naive-bayes-1`,
+the argmax expression in {eq}`eq:conditional-naive-bayes` can be written as
 
 $$
 \begin{aligned}
 \mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x} ; \boldsymbol{\theta}) & = \dfrac{\mathbb{P}(Y = k ; \boldsymbol{\pi}) \mathbb{P}(\mathbf{X} \mid Y = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}})}{\mathbb{P}(\mathbf{X})} \\
 &= \dfrac{\mathbb{P}(Y, X_1, X_2, \ldots X_D)}{\mathbb{P}(\mathbf{X})} \\
-&= \dfrac{\mathbb{P}(Y = k ; \boldsymbol{\pi}) \prod_{d=1}^D \mathbb{P}(X_d = x_d \mid Y = k ; \theta_{dk})}{\mathbb{P}(\mathbf{X} = \mathbf{x})} \\
-&\propto \mathbb{P}(Y = k ; \boldsymbol{\pi}) \prod_{d=1}^D \mathbb{P}(X_d = x_d \mid Y = k ; \theta_{dk})
+&= \dfrac{\mathbb{P}(Y = k ; \boldsymbol{\pi}) \prod_{d=1}^D \mathbb{P}(X_d = x_d \mid Y = k ; \theta_{kd})}{\mathbb{P}(\mathbf{X} = \mathbf{x})} \\
 \end{aligned}
 $$ (eq:naive-bayes-classifier-1)
 
-Consequently, $\boldsymbol{\pi} = \begin{bmatrix} \pi_1 & \pi_2 & \dots & \pi_K \end{bmatrix}$ and
-$\pi_k$ refers to the prior probability of class $k$, and $\theta_{dk}$ refers to the parameter of the
+Consequently, our argmax expression in {eq}`eq:argmax-naive-bayes-2` can be written as
+
+$$
+\arg \max_{k=1}^K \mathbb{P}(Y = k \mid \mathbf{X}) = \arg \max_{k=1}^K \mathbb{P}(Y = k ; \boldsymbol{\pi}) \prod_{d=1}^D \mathbb{P}(X_d = x_d \mid Y = k ; \theta_{kd})
+$$ (eq:argmax-naive-bayes-6)
+
+We also make some updates to the vector form {eq}`eq:argmax-naive-bayes-3` by updating $\mathbf{M_2}$ to:
+
+````{div} full-width
+$$
+\begin{aligned}
+  \mathbf{M_2} &= \begin{bmatrix}
+  \mathbb{P}(\mathbf{X} = \mathbf{x} \mid Y = 1) \\
+  \mathbb{P}(\mathbf{X} = \mathbf{x} \mid Y = 2) \\
+  \vdots \\
+  \mathbb{P}(\mathbf{X} = \mathbf{x} \mid Y = K)
+  \end{bmatrix}_{K \times 1} \\
+  &= \begin{bmatrix}
+  \mathbb{P}(X_1 = x_1 \mid Y = 1 ; \theta_{11}) \mathbb{P}(X_2 = x_2 \mid Y = 1 ; \theta_{12}) \cdots \mathbb{P}(X_D = x_D \mid Y = 1 ; \theta_{1D}) \\
+  \mathbb{P}(X_1 = x_1 \mid Y = 2 ; \theta_{21}) \mathbb{P}(X_2 = x_2 \mid Y = 2 ; \theta_{22}) \cdots \mathbb{P}(X_D = x_D \mid Y = 2 ; \theta_{2D}) \\
+  \vdots \\
+  \mathbb{P}(X_1 = x_1 \mid Y = K ; \theta_{K1}) \mathbb{P}(X_2 = x_2 \mid Y = K ; \theta_{K2}) \cdots \mathbb{P}(X_D = x_D \mid Y = K ; \theta_{KD})
+  \end{bmatrix}_{K \times 1} \\
+\end{aligned}
+$$ (eq:naive-bayes-m2-updated)
+
+To easily recover each row of $\mathbf{M_2}$, it is efficient to define a $K \times D$ matrix, denoted $\mathbf{M_3}$
+
+$$
+\begin{aligned}
+  \mathbf{M_3} &= \begin{bmatrix}
+  \mathbb{P}(X_1 = x_1 \mid Y = 1 ; \theta_{11}) & \mathbb{P}(X_2 = x_2 \mid Y = 1 ; \theta_{12}) & \cdots & \mathbb{P}(X_D = x_D \mid Y = 1 ; \theta_{1D}) \\
+  \mathbb{P}(X_1 = x_1 \mid Y = 2 ; \theta_{21}) & \mathbb{P}(X_2 = x_2 \mid Y = 2 ; \theta_{22}) & \cdots & \mathbb{P}(X_D = x_D \mid Y = 2 ; \theta_{2D}) \\
+  \vdots & \vdots & \ddots & \vdots \\
+  \mathbb{P}(X_1 = x_1 \mid Y = K ; \theta_{K1}) & \mathbb{P}(X_2 = x_2 \mid Y = K ; \theta_{K2}) & \cdots & \mathbb{P}(X_D = x_D \mid Y = K ; \theta_{KD})
+  \end{bmatrix}_{K \times D} \\
+\end{aligned}
+$$ (eq:naive-bayes-m3)
+````
+
+where we can easily recover each row of $\mathbf{M_2}$ by taking the product of the corresponding row of $\mathbf{M_3}$.
+
+## Parameter Vector
+
+In the last section on {ref}`naive-bayes-conditional-independence`, we indicated parameters in the expressions.
+Here we discuss a little on this newly introduced notation.
+
+Each $\pi_k$ of $\boldsymbol{\pi}$ refers to the prior probability of class $k$, and $\theta_{kd}$ refers to the parameter of the
 class conditional density for class $k$ and feature $d$[^kdparameters]. Furthermore,
 the boldsymbol $\boldsymbol{\theta}$ is the parameter vector,
 
 $$
-\boldsymbol{\theta} = \left(\boldsymbol{\pi}, \{\theta_{dk}\}_{k=1}^K, \{d=1, \ldots, D\}\right) = \left(\boldsymbol{\pi}, \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}\right)
+\boldsymbol{\theta} = \left(\boldsymbol{\pi}, \{\theta_{kd}\}_{k=1, d=1}^{K, D} \right) = \left(\boldsymbol{\pi}, \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}\right)
 $$
 
 
@@ -492,11 +592,11 @@ There is not much to say about the categorical component $\boldsymbol{\pi}$, sin
 just estimating the prior probabilities of the classes. 
 
 $$
-\boldsymbol{\pi} = \begin{bmatrix} \pi_1 & \pi_2 & \dots & \pi_K \end{bmatrix}
+\boldsymbol{\pi} = \begin{bmatrix} \pi_1 \\ \pi_2 \\ \vdots \\ \pi_K \end{bmatrix}_{K \times 1}
 $$
 
-The parameter vector (matrix) $\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}=\{\theta_{dk}\}_{k=1}^K, \{d=1, \ldots, D\}$ is a bit more complicated.
-It resides in the $\mathbb{R}^{K \times D}$ space, where each element $\theta_{dk}$ is the parameter
+The parameter vector (matrix) $\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}=\{\theta_{kd}\}_{k=1, d=1}^{K, D}$ is a bit more complicated.
+It resides in the $\mathbb{R}^{K \times D}$ space, where each element $\theta_{kd}$ is the parameter
 associated with feature $d$ conditioned on class $k$.
 
 $$
@@ -506,7 +606,7 @@ $$
 \vdots & \vdots & \ddots & \vdots \\
 \theta_{K1} & \theta_{K2} & \dots & \theta_{KD}
 \end{bmatrix}_{K \times D}
-$$
+$$ 
 
 So if $K=3$ and $D=2$, then the parameter vector $\boldsymbol{\theta}$ is a $3 \times 2$ matrix, i.e.
 
@@ -518,7 +618,8 @@ $$
 \end{bmatrix}_{3 \times 2}
 $$
 
-This means we have effectively reduced our complexity from $\sim \mathcal{O}(2^D)$ to $\sim \mathcal{O}(KD + 1)$.
+This means we have effectively reduced our complexity from $\sim \mathcal{O}(2^D)$ to $\sim \mathcal{O}(KD + 1)$
+assuming the same setup in {prf:ref}`2dparameters`.
 
 One big misconception is that the elements in $\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}$ are scalar values.
 This is not true, for example, let's look at the first entry $\theta_{11}$, corresponding to
@@ -539,15 +640,13 @@ Overall, before this assumption, you can think of estimating the joint distribut
 and after this assumption, you can simply individually estimate each conditional distribution.
 ```
 
+Notice that the shape of $\boldsymbol{\pi}$ is $K \times 1$, and the shape of $\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}$ is $K \times D$.
+This corresponds to the shape of the matrix $\mathbf{M_1}$ and $\mathbf{M_3}$ as defined in
+{eq}`eq:naive-bayes-m1` and {eq}`eq:naive-bayes-m3`, respectively. This is expected since 
+$\mathbf{M_1}$ and $\mathbf{M_3}$ hold the PDFs while $\boldsymbol{\pi}$ and $\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}$ hold the parameters
+of these PDFs.
 
-```{prf:remark} Notation remark
-A note, the notation $\boldsymbol{\theta}_{dk}$ should either be read as $\boldsymbol{\theta}_{kd}$ since
-we say $\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}$ is a $K \times D$ matrix.
-
-Consider bolding elements of $\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}$ to indicate that it can be a vector.
-```
-
-### Inductive Bias
+## Inductive Bias (Distribution Assumptions)
 
 We still need to introduce some inductive bias into {eq}`eq:naive-bayes-classifier-1`, more concretely, we need to make some assumptions about the distribution 
 of $\mathbb{P}(Y)$ and $\mathbb{P}(X_d \mid Y)$. 
@@ -582,14 +681,20 @@ To reiterate, we want to make some inductive bias assumptions of $\mathbf{X}$ co
 as well as with $Y$. Note very carefully that we are not talking about the marginal distribution of
 $\mathbf{X}$ here, instead, we are talking about the conditional distribution of $\mathbf{X}$ given $Y$. The distinction is subtle, but important.
 
-#### Discrete Features/Targets (Categorical Distribution)
+### Targets (Categorical Distribution)
 
 As mentioned earlier, both $Y^{(n)}$ and $\mathbf{X}^{(n)}$ are random variables/vectors. This means we need to estimate both of them.
 
 We first conveniently assume that $Y^{(n)}$ is a discrete random variable, and
 follows the **[Category distribution](https://en.wikipedia.org/wiki/Categorical_distribution)**[^categorical-distribution], 
 an extension of the Bernoulli distribution to multiple classes. Instead of a single parameter $p$ (probability of success for Bernoulli), 
-the Category distribution has $K$ parameters $\boldsymbol{\pi}_k$ for $k = 1, 2, \cdots, K$.
+the Category distribution has a vector $\boldsymbol{\pi}$ of $K$ parameters.
+
+$$
+\boldsymbol{\pi} = \begin{bmatrix} \pi_1 & \dots & \pi_K \end{bmatrix}
+$$
+
+where $\pi_k$ is the probability of $Y^{(n)}$ taking on value $k$.
 
 $$
 Y^{(n)} \overset{\small{\text{i.i.d.}}}{\sim} \text{Category}(\boldsymbol{\pi}) \quad \text{where } \boldsymbol{\pi} = \begin{bmatrix} \pi_1 & \dots & \pi_K \end{bmatrix}
@@ -648,7 +753,8 @@ the likelihood function easier.
 ```{prf:example} Categorical Distribution Example
 :label: categorical-distribution-example
 
-Consider rolling a fair six-sided die. Let $Y$ be the random variable that represents the outcome of the die roll. Then $Y$ follows a categorical distribution with parameters $\boldsymbol{\pi}_k$ where $\pi_k = \frac{1}{6}$ for $k = 1, 2, \cdots, 6$.
+Consider rolling a fair six-sided die. Let $Y$ be the random variable that represents the outcome
+of the dice roll. Then $Y$ follows a categorical distribution with parameters $\boldsymbol{\pi}$ where $\pi_k = \frac{1}{6}$ for $k = 1, 2, \cdots, 6$.
 
 $$
 \mathbb{P}(Y = k) = \frac{1}{6} \quad \text{for } k = 1, 2, \cdots, 6
@@ -670,8 +776,12 @@ $$
 $$
 ```
 
-In the case where (all) the features $X_d$ are categorical ($D$ number of features), i.e. $X_d \in \{1, 2, \cdots, C\}$, 
-we can use the categorical distribution to model the ($D$-dimensional) conditional distribution of $\mathbf{X} \in \mathbb{R}^{D}$ given $Y = k$. 
+### Discrete Features (Categorical Distribution)
+
+In the case where (all) the features $X_d$ are categorical ($D$ number of features), 
+i.e. $X_d \in \{1, 2, \cdots, C\}$, 
+we can use the categorical distribution to model the ($D$-dimensional) conditional 
+distribution of $\mathbf{X} \in \mathbb{R}^{D}$ given $Y = k$. 
 
 $$
 \begin{align*}
@@ -1073,9 +1183,9 @@ $$
 
 
 
-
 ## References
 
+[^likelihood-1]: Not to be confused with the likelihood term $\mathbb{P}(\mathbf{X} \mid Y)$ in Bayes' terminology.
 [^2dparameters]: Dive into Deep Learning, Section 22.9, this is only assuming that each feature $\mathbf{x}_d^{(n)}$ is binary, i.e. $\mathbf{x}_d^{(n)} \in \{0, 1\}$.
 [^intractable]: Cite Dive into Deep Learning on this. Also, the joint probability is intractable because the number of parameters to estimate is exponential in the number of features. Use binary bits example, see my notes.
 [^categorical-distribution]: [Category Distribution](https://en.wikipedia.org/wiki/Categorical_distribution)

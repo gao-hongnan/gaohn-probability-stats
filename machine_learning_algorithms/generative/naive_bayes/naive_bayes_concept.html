@@ -59,7 +59,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Example: Penguins Dataset" href="naive_bayes_example_1.html" />
+    <link rel="next" title="Example: Penguins Dataset" href="naive_bayes_example_penguin.html" />
     <link rel="prev" title="Brain Dump" href="../../../05_joint_distributions/braindump.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -405,13 +405,13 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="naive_bayes_example_1.html">
+  <a class="reference internal" href="naive_bayes_example_penguin.html">
    Example: Penguins Dataset
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="naive_bayes.html">
-   Naive Bayes
+  <a class="reference internal" href="naive_bayes_application_mnist.html">
+   Naive Bayes Application (MNIST)
   </a>
  </li>
 </ul>
@@ -645,16 +645,28 @@ title="Print to PDF"
      Conditional Independence
     </a>
    </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#parameter-vector">
+   Parameter Vector
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#inductive-bias-distribution-assumptions">
+   Inductive Bias (Distribution Assumptions)
+  </a>
+  <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#inductive-bias">
-     Inductive Bias
+    <a class="reference internal nav-link" href="#targets-categorical-distribution">
+     Targets (Categorical Distribution)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#discrete-features-categorical-distribution">
+     Discrete Features (Categorical Distribution)
     </a>
     <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#discrete-features-targets-categorical-distribution">
-       Discrete Features/Targets (Categorical Distribution)
-      </a>
-     </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#continuous-features-gaussian-distribution">
        Continuous Features (Gaussian Distribution)
@@ -742,16 +754,28 @@ title="Print to PDF"
      Conditional Independence
     </a>
    </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#parameter-vector">
+   Parameter Vector
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#inductive-bias-distribution-assumptions">
+   Inductive Bias (Distribution Assumptions)
+  </a>
+  <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#inductive-bias">
-     Inductive Bias
+    <a class="reference internal nav-link" href="#targets-categorical-distribution">
+     Targets (Categorical Distribution)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#discrete-features-categorical-distribution">
+     Discrete Features (Categorical Distribution)
     </a>
     <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#discrete-features-targets-categorical-distribution">
-       Discrete Features/Targets (Categorical Distribution)
-      </a>
-     </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#continuous-features-gaussian-distribution">
        Continuous Features (Gaussian Distribution)
@@ -1002,10 +1026,16 @@ the <span class="math notranslate nohighlight">\(\mathbb{P}(Y=k \mid \mathbf{X} 
 <section id="discriminative-vs-generative">
 <h3>Discriminative vs Generative<a class="headerlink" href="#discriminative-vs-generative" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
-<li><p>We will add a subscript <span class="math notranslate nohighlight">\(n\)</span> to denote the <span class="math notranslate nohighlight">\(n\)</span>-th sample from the dataset. It still is referring to a single sample.</p></li>
-<li><p>Discriminative classifiers model the conditional distribution <span class="math notranslate nohighlight">\(\mathbb{P}(Y_n = k \mid X_n =  \mathrm{x}_n)\)</span>. This means we are modelling the conditional distribution of the target <span class="math notranslate nohighlight">\(Y_n\)</span> given the input <span class="math notranslate nohighlight">\(\mathrm{x}_n\)</span>.</p></li>
-<li><p>Generative classifiers model the conditional distribution <span class="math notranslate nohighlight">\(\mathbb{P}(X_n = \mathrm{x}_n \mid Y_n = k)\)</span>. This means we are modelling the conditional distribution of the input <span class="math notranslate nohighlight">\(\mathrm{x}_n\)</span> given the target <span class="math notranslate nohighlight">\(Y_n\)</span>. Then we can use Bayes’ rule to compute the conditional distribution of the target <span class="math notranslate nohighlight">\(Y_n\)</span> given the input <span class="math notranslate nohighlight">\(\mathrm{x}_n\)</span>.</p></li>
-<li><p>Both the target <span class="math notranslate nohighlight">\(Y_n\)</span> and the input <span class="math notranslate nohighlight">\(X_n\)</span> are random variables in the generative model. In the discriminative model, only the target <span class="math notranslate nohighlight">\(Y_n\)</span> is a random variable as the input <span class="math notranslate nohighlight">\(X_n\)</span> is fixed (we do not need to estimate anything about the input <span class="math notranslate nohighlight">\(X\)</span>).</p></li>
+<li><p>Discriminative classifiers model the conditional distribution <span class="math notranslate nohighlight">\(\mathbb{P}(Y = k \mid \mathbf{X} =  \mathbf{x})\)</span>.
+This means we are modelling the conditional distribution of the target <span class="math notranslate nohighlight">\(Y\)</span> given the input <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>.</p></li>
+<li><p>Generative classifiers model the conditional distribution <span class="math notranslate nohighlight">\(\mathbb{P}(\mathbf{X} = \mathbf{x} \mid Y = k)\)</span>.
+This means we are modelling the conditional distribution of the input <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> given the target <span class="math notranslate nohighlight">\(Y\)</span>.
+Then we can use Bayes’ rule to compute the conditional distribution of the target <span class="math notranslate nohighlight">\(Y\)</span> given the input <span class="math notranslate nohighlight">\(\mathbf{X}\)</span>.</p></li>
+<li><p>Both the target <span class="math notranslate nohighlight">\(Y\)</span> and the input <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> are random variables in the generative model.
+In the discriminative model, only the target <span class="math notranslate nohighlight">\(Y\)</span> is a random variable as the input <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> is fixed (we do not need to estimate anything about the input <span class="math notranslate nohighlight">\(\mathbf{X}\)</span>).</p></li>
+<li><p>For example, Logistic Regression models the target <span class="math notranslate nohighlight">\(Y\)</span> as a function of predictor’s <span class="math notranslate nohighlight">\(\mathbf{X} = \begin{bmatrix}X_1 \\ X_2 \\ \vdots \\X_D \end{bmatrix}\)</span>.</p></li>
+<li><p>Naive bayes models both the target <span class="math notranslate nohighlight">\(Y\)</span> and the predictors <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> as a function of each other.
+This means we are modelling the joint distribution of the target <span class="math notranslate nohighlight">\(Y\)</span> and the predictors <span class="math notranslate nohighlight">\(\mathbf{X}\)</span>.</p></li>
 </ul>
 </section>
 </section>
@@ -1029,42 +1059,80 @@ the <span class="math notranslate nohighlight">\(\mathbb{P}(Y=k \mid \mathbf{X} 
 <span id="naive-bayes-inference-prediction"></span><h2>Inference/Prediction<a class="headerlink" href="#inference-prediction" title="Permalink to this headline">#</a></h2>
 <p>Before we look at the fitting/estimating process, let’s look at the inference/prediction process.</p>
 <p>Suppose the problem at hand has <span class="math notranslate nohighlight">\(K\)</span> classes, <span class="math notranslate nohighlight">\(k = 1, 2, \cdots, K\)</span>, where <span class="math notranslate nohighlight">\(k\)</span> is the index of the class.</p>
-<p>Then, to find the class of a new test sample <span class="math notranslate nohighlight">\(\mathbf{x}^{q} \in \mathbb{R}^{D}\)</span> with <span class="math notranslate nohighlight">\(D\)</span> features,
-we can compute the conditional probability of each class <span class="math notranslate nohighlight">\(Y = k\)</span> given the sample <span class="math notranslate nohighlight">\(\mathbf{x}^{q}\)</span>:</p>
-<div class="proof algorithm admonition" id="naive-bayes-inference-algorithm">
+<p>Then, to find the class of a new test sample <span class="math notranslate nohighlight">\(\mathbf{x}^{(q)} \in \mathbb{R}^{D}\)</span> with <span class="math notranslate nohighlight">\(D\)</span> features,
+we can compute the conditional probability of each class <span class="math notranslate nohighlight">\(Y = k\)</span> given the sample <span class="math notranslate nohighlight">\(\mathbf{x}^{(q)}\)</span>:</p>
+<div class="proof algorithm full-width admonition" id="naive-bayes-inference-algorithm">
 <p class="admonition-title"><span class="caption-number">Algorithm 1 </span> (Naive Bayes Inference Algorithm)</p>
 <section class="algorithm-content" id="proof-content">
-<ol>
-<li><p>Compute the conditional probability of each class <span class="math notranslate nohighlight">\(Y = k\)</span> given the sample <span class="math notranslate nohighlight">\(\mathbf{x}^{q}\)</span>:</p>
+<ul>
+<li><p>Compute the conditional probability of each class <span class="math notranslate nohighlight">\(Y = k\)</span> given the sample <span class="math notranslate nohighlight">\(\mathbf{x}^{(q)}\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-eq-conditional-naive-bayes">
 <span class="eqno">(29)<a class="headerlink" href="#equation-eq-conditional-naive-bayes" title="Permalink to this equation">#</a></span>\[
-    \mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x}^{q}) = \dfrac{\mathbb{P}(\mathbf{X} = \mathbf{x}^{q} \mid Y = k) \mathbb{P}(Y = k)}{\mathbb{P}(\mathbf{X} = \mathbf{x}^{q})} \quad \text{for } k = 1, 2, \cdots, K
-    \]</div>
+  \mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x}^{(q)}) = \dfrac{\mathbb{P}(Y = k) \mathbb{P}(\mathbf{X} = \mathbf{x}^{(q)} \mid Y = k)}{\mathbb{P}(\mathbf{X} = \mathbf{x}^{(q)})} \quad \text{for } k = 1, 2, \cdots, K
+  \]</div>
 </li>
 <li><p>Choose the class <span class="math notranslate nohighlight">\(k\)</span> that maximizes the conditional probability:</p>
 <div class="math notranslate nohighlight" id="equation-eq-argmax-naive-bayes-1">
 <span class="eqno">(30)<a class="headerlink" href="#equation-eq-argmax-naive-bayes-1" title="Permalink to this equation">#</a></span>\[
-    \hat{y}^{(q)} = \arg\max_{k=1}^K \mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x}^{q})
-    \]</div>
+  \hat{y}^{(q)} = \arg\max_{k=1}^K \mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x}^{(q)})
+  \]</div>
 </li>
-</ol>
-<p>The observant reader would have noticed that the normalizing constant <span class="math notranslate nohighlight">\(\mathbb{P}(X = \mathbf{x}^{(q)})\)</span> is the same for all <span class="math notranslate nohighlight">\(k\)</span>.
-Therefore, we can ignore it and simply choose the class <span class="math notranslate nohighlight">\(k\)</span> that maximizes the numerator of the conditional probability.</p>
+<li><p>The observant reader would have noticed that the normalizing constant
+<span class="math notranslate nohighlight">\(\mathbb{P}\left(X = \mathbf{x}^{(q)}\right)\)</span> is the same for all <span class="math notranslate nohighlight">\(k\)</span>.
+Therefore, we can ignore it and simply choose the class <span class="math notranslate nohighlight">\(k\)</span> that maximizes
+the numerator of the conditional probability in <a class="reference internal" href="#equation-eq-conditional-naive-bayes">(29)</a>:</p>
 <div class="math notranslate nohighlight" id="equation-eq-argmax-naive-bayes-2">
 <span class="eqno">(31)<a class="headerlink" href="#equation-eq-argmax-naive-bayes-2" title="Permalink to this equation">#</a></span>\[
-\hat{y}_q = \arg\max_{k=1}^K \mathbb{P}(X = \mathbf{x}^{q} \mid Y = k) \mathbb{P}(Y = k)
-\]</div>
-<p>since</p>
-<div class="math notranslate nohighlight">
-\[
-\mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x}^{q}) \propto \mathbb{P}(\mathbf{X} = \mathbf{x}^{q} \mid Y = k) \mathbb{P}(Y = k)
-\]</div>
-<p>by a constant factor <span class="math notranslate nohighlight">\(\mathbb{P}(\mathbf{X} = \mathbf{x}^{q})\)</span>.</p>
+  \hat{y}^{(q)} = \arg\max_{k=1}^K \mathbb{P}(Y = k) \mathbb{P}(\mathbf{X} = \mathbf{x}^{(q)} \mid Y = k) 
+  \]</div>
+<p>since where the normalizing constant is ignored, the conditional probability</p>
+<div class="math notranslate nohighlight" id="equation-eq-proportional-naive-bayes">
+<span class="eqno">(32)<a class="headerlink" href="#equation-eq-proportional-naive-bayes" title="Permalink to this equation">#</a></span>\[
+  \mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x}^{(q)}) \propto \mathbb{P}(Y = k) \mathbb{P}(\mathbf{X} = \mathbf{x}^{(q)} \mid Y = k) 
+  \]</div>
+<p>by a constant factor <span class="math notranslate nohighlight">\(\mathbb{P}(\mathbf{X} = \mathbf{x}^{(q)})\)</span>.</p>
+</li>
+<li><p>Expressing it in vector form, we have</p>
+<div class="math notranslate nohighlight" id="equation-eq-argmax-naive-bayes-3">
+<span class="eqno">(33)<a class="headerlink" href="#equation-eq-argmax-naive-bayes-3" title="Permalink to this equation">#</a></span>\[\begin{split}
+  \begin{aligned}
+  \hat{\mathbf{y}} &amp;= \arg\max_{k=1}^K \begin{bmatrix} \mathbb{P}(Y=1) \mathbb{P}(\mathbf{X} = \mathbf{x}\mid Y = 1) \\ \mathbb{P}(Y=2) \mathbb{P}(\mathbf{X} = \mathbf{x}\mid Y = 2) \\ \vdots \\ \mathbb{P}(Y=K) \mathbb{P}(\mathbf{X} = \mathbf{x} \mid Y = K) \end{bmatrix}_{K \times 1} \\  
+  &amp;= \arg\max_{k=1}^K \begin{bmatrix} \mathbb{P}(Y=1) \\ \mathbb{P}(Y=2) \\ \cdots \\ \mathbb{P}(Y=K) \end{bmatrix}\circ \begin{bmatrix} \mathbb{P}(\mathbf{X} = \mathbf{x} \mid Y = 1) \\ \mathbb{P}(\mathbf{X} = \mathbf{x}\mid Y = 2) \\ \vdots \\ \mathbb{P}(\mathbf{X} = \mathbf{x} \mid Y = K) \end{bmatrix} \\
+  &amp;= \arg\max_{k=1}^K \mathbf{M}_1 \circ \mathbf{M}_2
+  \end{aligned}
+  \end{split}\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight" id="equation-eq-naive-bayes-m1">
+<span class="eqno">(34)<a class="headerlink" href="#equation-eq-naive-bayes-m1" title="Permalink to this equation">#</a></span>\[\begin{split}
+  \mathbf{M_1} = \begin{bmatrix}
+  \mathbb{P}(Y = 1) \\
+  \mathbb{P}(Y = 2) \\
+  \vdots \\
+  \mathbb{P}(Y = K)
+  \end{bmatrix}_{K \times 1}
+  \end{split}\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-naive-bayes-m2">
+<span class="eqno">(35)<a class="headerlink" href="#equation-eq-naive-bayes-m2" title="Permalink to this equation">#</a></span>\[\begin{split}
+  \mathbf{M_2} = \begin{bmatrix}
+  \mathbb{P}(\mathbf{X} = \mathbf{x} \mid Y = 1) \\
+  \mathbb{P}(\mathbf{X} = \mathbf{x} \mid Y = 2) \\
+  \vdots \\
+  \mathbb{P}(\mathbf{X} = \mathbf{x} \mid Y = K)
+  \end{bmatrix}_{K \times 1}
+  \end{split}\]</div>
+<p>Note superscript <span class="math notranslate nohighlight">\(q\)</span> is removed for simplicity, and <span class="math notranslate nohighlight">\(\circ\)</span> is the element-wise (Hadamard) product.</p>
+</li>
+</ul>
 </section>
-</div><p>Now if we just proceed to estimate the conditional probability <span class="math notranslate nohighlight">\(\mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x}^{q})\)</span>, we will need to estimate the joint probability <span class="math notranslate nohighlight">\(\mathbb{P}(X = \mathbf{x}^{q}, Y = k)\)</span>, which is intractable<a class="footnote-reference brackets" href="#intractable" id="id1">1</a>.</p>
-<p>However, if we can <em><strong>estimate</strong></em> the conditional probability (likelihood) <span class="math notranslate nohighlight">\(\mathbb{P}(\mathbf{X} = \mathbf{x}^{q} \mid Y = k)\)</span>
+</div><p>Now if we just proceed to estimate the conditional probability <span class="math notranslate nohighlight">\(\mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x}^{(q)})\)</span>, we will need to estimate the joint probability <span class="math notranslate nohighlight">\(\mathbb{P}(X = \mathbf{x}^{(q)}, Y = k)\)</span>, since by definition, we have</p>
+<div class="math notranslate nohighlight" id="equation-eq-joint-naive-bayes-1">
+<span class="eqno">(36)<a class="headerlink" href="#equation-eq-joint-naive-bayes-1" title="Permalink to this equation">#</a></span>\[
+\mathbb{P}(X = \mathbf{x}^{(q)}, Y = k) = \mathbb{P}(Y = k) \mathbb{P}(X = \mathbf{x}^{(q)} \mid Y = k)
+\]</div>
+<p>which is intractable<a class="footnote-reference brackets" href="#intractable" id="id1">1</a>.</p>
+<p>However, if we can <em><strong>estimate</strong></em> the conditional probability (likelihood) <span class="math notranslate nohighlight">\(\mathbb{P}(\mathbf{X} = \mathbf{x}^{(q)} \mid Y = k)\)</span>
 and the prior probability <span class="math notranslate nohighlight">\(\mathbb{P}(Y = k)\)</span>, then we can use Bayes’ rule to
-compute the posterior conditional probability <span class="math notranslate nohighlight">\(\mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x}^{q})\)</span>.</p>
+compute the posterior conditional probability <span class="math notranslate nohighlight">\(\mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x}^{(q)})\)</span>.</p>
 </section>
 <section id="the-naive-bayes-assumptions">
 <h2>The Naive Bayes Assumptions<a class="headerlink" href="#the-naive-bayes-assumptions" title="Permalink to this headline">#</a></h2>
@@ -1116,43 +1184,51 @@ the relationship that the learner algorithm/concept <span class="math notranslat
 </section>
 </div></section>
 <section id="conditional-independence">
-<h3>Conditional Independence<a class="headerlink" href="#conditional-independence" title="Permalink to this headline">#</a></h3>
-<p>The core assumption of the Naive Bayes model is that the predictors <span class="math notranslate nohighlight">\(\mathcal{X}\)</span> are conditionally independent given the class label <span class="math notranslate nohighlight">\(Y\)</span>.</p>
+<span id="naive-bayes-conditional-independence"></span><h3>Conditional Independence<a class="headerlink" href="#conditional-independence" title="Permalink to this headline">#</a></h3>
+<p>The core assumption of the Naive Bayes model is that the predictors <span class="math notranslate nohighlight">\(\mathbf{X}\)</span>
+are conditionally independent given the class label <span class="math notranslate nohighlight">\(Y\)</span>.</p>
 <p>But how did we arrive at the conditional independence assumption? Let’s look at what we wanted to achieve in the first place.</p>
-<p>Recall that our goal in <a class="reference internal" href="#naive-bayes-inference-prediction"><span class="std std-ref">Inference/Prediction</span></a> is to find the class <span class="math notranslate nohighlight">\(k \in \{1, 2, \cdots, K\}\)</span> that maximizes the posterior probability
+<p>Recall that our goal in <a class="reference internal" href="#naive-bayes-inference-prediction"><span class="std std-ref">Inference/Prediction</span></a> is to find the class <span class="math notranslate nohighlight">\(k \in \{1, 2, \cdots, K\}\)</span> that maximizes the <strong>posterior</strong> probability
 <span class="math notranslate nohighlight">\(\mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x}^{(q)} ; \boldsymbol{\theta})\)</span>.</p>
-<div class="math notranslate nohighlight" id="equation-eq-argmax-naive-bayes-3">
-<span class="eqno">(32)<a class="headerlink" href="#equation-eq-argmax-naive-bayes-3" title="Permalink to this equation">#</a></span>\[\begin{split}
+<div class="math notranslate nohighlight" id="equation-eq-argmax-naive-bayes-4">
+<span class="eqno">(37)<a class="headerlink" href="#equation-eq-argmax-naive-bayes-4" title="Permalink to this equation">#</a></span>\[\begin{split}
 \begin{aligned}
-\arg \max_{k} \mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x}^{(q)} ; \boldsymbol{\theta}) &amp;= \arg \max_{k} \frac{\mathbb{P}(Y = k, \mathbf{X} = \mathbf{x}^{(q)} ; \boldsymbol{\theta})}{\mathbb{P}(\mathbf{X} = \mathbf{x}^{(q)} ; \boldsymbol{\theta})} \\
-&amp;= \arg \max_{k} \frac{\mathbb{P}(Y = k ; \boldsymbol{\pi}) \mathbb{P}(\mathbf{X} \mid Y = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}})}{\mathbb{P}(\mathbf{X} = \mathbf{x}^{(q)} ; \boldsymbol{\theta})}\\
-&amp;\propto \arg \max_{k} \mathbb{P}(Y = k ; \boldsymbol{\pi}) \mathbb{P}\left(\mathbf{X} \mid Y = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}\right)
+\hat{y}^{(q)} &amp;= \arg \max_{k} \mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x}^{(q)} ; \boldsymbol{\theta}) \\
+              &amp;= \arg \max_{k} \frac{\mathbb{P}(Y = k, \mathbf{X} = \mathbf{x}^{(q)} ; \boldsymbol{\theta})}{\mathbb{P}(\mathbf{X} = \mathbf{x}^{(q)} ; \boldsymbol{\theta})} \\
+              &amp;= \arg \max_{k} \frac{\mathbb{P}(Y = k ; \boldsymbol{\pi}) \mathbb{P}(\mathbf{X} = \mathbf{x}^{(q)} \mid Y = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}})}{\mathbb{P}(\mathbf{X} = \mathbf{x}^{(q)} ; \boldsymbol{\theta})}\\
 \end{aligned}
 \end{split}\]</div>
 <p>We have seen earlier in <a class="reference internal" href="#naive-bayes-inference-algorithm">Algorithm 1</a> that since the denominator
-is constant for all <span class="math notranslate nohighlight">\(k\)</span>, we can ignore it and just maximize the numerator, as shown by the proportional sign.</p>
-<p>This suggests we need to find estimates for both the prior and the likelihood. This of course
-involves ur finding the <span class="math notranslate nohighlight">\(\boldsymbol{\pi}\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}\)</span> that maximize the likelihood function, which we will talk about later.</p>
-<p>In order to meaningfully optimize the expression, we need to decompose the numerator <a class="reference internal" href="#equation-eq-argmax-naive-bayes-3">(32)</a>
+is constant for all <span class="math notranslate nohighlight">\(k\)</span>, we can ignore it and just maximize the numerator.</p>
+<div class="math notranslate nohighlight" id="equation-eq-argmax-naive-bayes-5">
+<span class="eqno">(38)<a class="headerlink" href="#equation-eq-argmax-naive-bayes-5" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+\hat{y}^{(q)} &amp;= \arg \max_{k} \mathbb{P}\left(Y = k ; \boldsymbol{\pi}\right) \mathbb{P}\left(\mathbf{X} = \mathbf{x}^{(q)} \mid Y = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}\right) \\
+\end{aligned}
+\end{split}\]</div>
+<p>This suggests we need to find estimates for both the <strong>prior</strong> and the <strong>likelihood</strong>. This of course
+involves us finding the <span class="math notranslate nohighlight">\(\boldsymbol{\pi}\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}\)</span> that maximize the likelihood function<a class="footnote-reference brackets" href="#likelihood-1" id="id2">2</a>, which we will talk about later.</p>
+<p>In order to meaningfully optimize the expression, we need to decompose the expression <a class="reference internal" href="#equation-eq-argmax-naive-bayes-5">(38)</a>
 into its components that contain the parameters we want to estimate.</p>
 <div class="math notranslate nohighlight" id="equation-eq-joint-distribution">
-<span class="eqno">(33)<a class="headerlink" href="#equation-eq-joint-distribution" title="Permalink to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(39)<a class="headerlink" href="#equation-eq-joint-distribution" title="Permalink to this equation">#</a></span>\[\begin{split}
 \begin{aligned}
-\mathbb{P}(Y = k ; \boldsymbol{\pi}) \mathbb{P}(\mathbf{X} \mid Y = k ; \boldsymbol{\theta}) &amp;= \mathbb{P}((Y, \mathbf{X}) = (k, \mathbf{x}^{(q)}) ; \boldsymbol{\theta}, \boldsymbol{\pi}) \\
+\mathbb{P}(Y = k ; \boldsymbol{\pi}) \mathbb{P}(\mathbf{X} \mid Y = k ; \boldsymbol{\theta}) &amp;= \mathbb{P}((Y, \mathbf{X}) ; \boldsymbol{\theta}, \boldsymbol{\pi}) \\
 &amp;= \mathbb{P}(Y, X_1, X_2, \ldots X_D)
 \end{aligned}
 \end{split}\]</div>
-<p>which is actually the joint distribution of <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> and <span class="math notranslate nohighlight">\(Y\)</span><a class="footnote-reference brackets" href="#joint-distribution" id="id2">2</a>.</p>
-<p>This joint distribution expression <a class="reference internal" href="#equation-eq-joint-distribution">(33)</a> can be further decomposed by the chain rule of probability<a class="footnote-reference brackets" href="#chain-rule-of-probability" id="id3">3</a> as</p>
+<p>which is actually the joint distribution of <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> and <span class="math notranslate nohighlight">\(Y\)</span><a class="footnote-reference brackets" href="#joint-distribution" id="id3">3</a>.</p>
+<p>This joint distribution expression <a class="reference internal" href="#equation-eq-joint-distribution">(39)</a> can be further decomposed by the chain rule of probability<a class="footnote-reference brackets" href="#chain-rule-of-probability" id="id4">4</a> as</p>
 <div class="math notranslate nohighlight" id="equation-eq-joint-distribution-decomposed">
-<span class="eqno">(34)<a class="headerlink" href="#equation-eq-joint-distribution-decomposed" title="Permalink to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(40)<a class="headerlink" href="#equation-eq-joint-distribution-decomposed" title="Permalink to this equation">#</a></span>\[\begin{split}
 \begin{aligned}
 \mathbb{P}(Y, X_1, X_2, \ldots X_D) &amp;= \mathbb{P}(Y) \mathbb{P}(X_1, X_2, \ldots X_D \mid Y) \\
-&amp;= \mathbb{P}(Y) \mathbb{P}(X_1 \mid Y) \mathbb{P}(X_2 \mid Y, X_1) \mathbb{P}(X_3 \mid Y, X_1, X_2) \cdots \mathbb{P}(X_D \mid Y, X_1, X_2, \ldots X_{D-1}) \\
-&amp;= \mathbb{P}(Y) \prod_{d=1}^D \mathbb{P}(X_d \mid Y, X_1, X_2, \ldots X_{d-1})
+&amp;= \mathbb{P}(Y) \mathbb{P}(X_1 \mid Y) \mathbb{P}(X_2 \mid Y, X_1) \cdots \mathbb{P}(X_D \mid Y, X_1, X_2, \ldots X_{D-1}) \\
+&amp;= \mathbb{P}(Y) \prod_{d=1}^D \mathbb{P}(X_d \mid Y, X_1, X_2, \ldots X_{d-1}) \\
+&amp;= \mathbb{P}(Y) \prod_{d=1}^{D} \mathbb{P}\left(X_d \middle \vert \bigcap_{d'=1}^{d-1} X_{d'}\right) 
 \end{aligned}
 \end{split}\]</div>
-<p>This alone does not get us any further, we still need to estimate roughly <span class="math notranslate nohighlight">\(2^{D}\)</span> parameters<a class="footnote-reference brackets" href="#dparameters" id="id4">4</a>,
+<p>This alone does not get us any further, we still need to estimate roughly <span class="math notranslate nohighlight">\(2^{D}\)</span> parameters<a class="footnote-reference brackets" href="#dparameters" id="id5">5</a>,
 which is computationally expensive. Not to forget that we need to estimate for each class <span class="math notranslate nohighlight">\(k \in \{1, 2, 3, \ldots, K\}\)</span>
 which has a complexity of <span class="math notranslate nohighlight">\(\sim \mathcal{O}(2^DK)\)</span>.</p>
 <div class="proof remark admonition" id="2dparameters">
@@ -1177,41 +1253,84 @@ To really get the exact joint distribution, we need to estimate the probability 
 <li><p>Even if we can estimate all the parameters, we are essentially overfitting the data by memorizing the training data. There is no learning involved.</p></li>
 </ol>
 </section>
-</div><p>This is where the “Naive” assumption comes in. The Naive Bayes’ classifier assumes that the features are conditionally independent<a class="footnote-reference brackets" href="#id9" id="id5">5</a> given the class label, i.e.
-the features are conditionally independent given the class label.</p>
+</div><p>This is where the “Naive” assumption comes in. The Naive Bayes’ classifier assumes that
+the features are conditionally independent<a class="footnote-reference brackets" href="#id10" id="id6">6</a> given the class label.</p>
 <p>More formally stated,</p>
 <div class="proof definition admonition" id="conditional-independence">
 <p class="admonition-title"><span class="caption-number">Definition 65 </span> (Conditional Independence)</p>
 <section class="definition-content" id="proof-content">
 <div class="math notranslate nohighlight" id="equation-eq-conditional-independence">
-<span class="eqno">(35)<a class="headerlink" href="#equation-eq-conditional-independence" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(41)<a class="headerlink" href="#equation-eq-conditional-independence" title="Permalink to this equation">#</a></span>\[
 \mathbb{P}(X_d \mid Y = k, X_{d^{'}}) = \mathbb{P}(X_d \mid Y = k) \quad \text{for all } d \neq d^{'}
 \]</div>
 </section>
-</div><p>with this assumption, we can further simplify expression <a class="reference internal" href="#equation-eq-joint-distribution-decomposed">(34)</a> as</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
+</div><p>with this assumption, we can further simplify expression <a class="reference internal" href="#equation-eq-joint-distribution-decomposed">(40)</a> as</p>
+<div class="math notranslate nohighlight" id="equation-eq-conditional-independence-naive-bayes-1">
+<span class="eqno">(42)<a class="headerlink" href="#equation-eq-conditional-independence-naive-bayes-1" title="Permalink to this equation">#</a></span>\[\begin{split}
 \begin{aligned}
 \mathbb{P}(Y, X_1, X_2, \ldots X_D) &amp;= \mathbb{P}(Y ; \boldsymbol{\pi}) \prod_{d=1}^D \mathbb{P}(X_d \mid Y ; \theta_{d}) \\
 \end{aligned}
 \end{split}\]</div>
-<p>More precisely, after all the simplifications above,</p>
+<p>More precisely, after the simplification in <a class="reference internal" href="#equation-eq-conditional-independence-naive-bayes-1">(42)</a>,
+the argmax expression in <a class="reference internal" href="#equation-eq-conditional-naive-bayes">(29)</a> can be written as</p>
 <div class="math notranslate nohighlight" id="equation-eq-naive-bayes-classifier-1">
-<span class="eqno">(36)<a class="headerlink" href="#equation-eq-naive-bayes-classifier-1" title="Permalink to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(43)<a class="headerlink" href="#equation-eq-naive-bayes-classifier-1" title="Permalink to this equation">#</a></span>\[\begin{split}
 \begin{aligned}
 \mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x} ; \boldsymbol{\theta}) &amp; = \dfrac{\mathbb{P}(Y = k ; \boldsymbol{\pi}) \mathbb{P}(\mathbf{X} \mid Y = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}})}{\mathbb{P}(\mathbf{X})} \\
 &amp;= \dfrac{\mathbb{P}(Y, X_1, X_2, \ldots X_D)}{\mathbb{P}(\mathbf{X})} \\
-&amp;= \dfrac{\mathbb{P}(Y = k ; \boldsymbol{\pi}) \prod_{d=1}^D \mathbb{P}(X_d = x_d \mid Y = k ; \theta_{dk})}{\mathbb{P}(\mathbf{X} = \mathbf{x})} \\
-&amp;\propto \mathbb{P}(Y = k ; \boldsymbol{\pi}) \prod_{d=1}^D \mathbb{P}(X_d = x_d \mid Y = k ; \theta_{dk})
+&amp;= \dfrac{\mathbb{P}(Y = k ; \boldsymbol{\pi}) \prod_{d=1}^D \mathbb{P}(X_d = x_d \mid Y = k ; \theta_{kd})}{\mathbb{P}(\mathbf{X} = \mathbf{x})} \\
 \end{aligned}
 \end{split}\]</div>
-<p>Consequently, <span class="math notranslate nohighlight">\(\boldsymbol{\pi} = \begin{bmatrix} \pi_1 &amp; \pi_2 &amp; \dots &amp; \pi_K \end{bmatrix}\)</span> and
-<span class="math notranslate nohighlight">\(\pi_k\)</span> refers to the prior probability of class <span class="math notranslate nohighlight">\(k\)</span>, and <span class="math notranslate nohighlight">\(\theta_{dk}\)</span> refers to the parameter of the
-class conditional density for class <span class="math notranslate nohighlight">\(k\)</span> and feature <span class="math notranslate nohighlight">\(d\)</span><a class="footnote-reference brackets" href="#kdparameters" id="id6">6</a>. Furthermore,
+<p>Consequently, our argmax expression in <a class="reference internal" href="#equation-eq-argmax-naive-bayes-2">(31)</a> can be written as</p>
+<div class="math notranslate nohighlight" id="equation-eq-argmax-naive-bayes-6">
+<span class="eqno">(44)<a class="headerlink" href="#equation-eq-argmax-naive-bayes-6" title="Permalink to this equation">#</a></span>\[
+\arg \max_{k=1}^K \mathbb{P}(Y = k \mid \mathbf{X}) = \arg \max_{k=1}^K \mathbb{P}(Y = k ; \boldsymbol{\pi}) \prod_{d=1}^D \mathbb{P}(X_d = x_d \mid Y = k ; \theta_{kd})
+\]</div>
+<p>We also make some updates to the vector form <a class="reference internal" href="#equation-eq-argmax-naive-bayes-3">(33)</a> by updating <span class="math notranslate nohighlight">\(\mathbf{M_2}\)</span> to:</p>
+<div class="full-width docutils">
+<div class="math notranslate nohighlight" id="equation-eq-naive-bayes-m2-updated">
+<span class="eqno">(45)<a class="headerlink" href="#equation-eq-naive-bayes-m2-updated" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+  \mathbf{M_2} &amp;= \begin{bmatrix}
+  \mathbb{P}(\mathbf{X} = \mathbf{x} \mid Y = 1) \\
+  \mathbb{P}(\mathbf{X} = \mathbf{x} \mid Y = 2) \\
+  \vdots \\
+  \mathbb{P}(\mathbf{X} = \mathbf{x} \mid Y = K)
+  \end{bmatrix}_{K \times 1} \\
+  &amp;= \begin{bmatrix}
+  \mathbb{P}(X_1 = x_1 \mid Y = 1 ; \theta_{11}) \mathbb{P}(X_2 = x_2 \mid Y = 1 ; \theta_{12}) \cdots \mathbb{P}(X_D = x_D \mid Y = 1 ; \theta_{1D}) \\
+  \mathbb{P}(X_1 = x_1 \mid Y = 2 ; \theta_{21}) \mathbb{P}(X_2 = x_2 \mid Y = 2 ; \theta_{22}) \cdots \mathbb{P}(X_D = x_D \mid Y = 2 ; \theta_{2D}) \\
+  \vdots \\
+  \mathbb{P}(X_1 = x_1 \mid Y = K ; \theta_{K1}) \mathbb{P}(X_2 = x_2 \mid Y = K ; \theta_{K2}) \cdots \mathbb{P}(X_D = x_D \mid Y = K ; \theta_{KD})
+  \end{bmatrix}_{K \times 1} \\
+\end{aligned}
+\end{split}\]</div>
+<p>To easily recover each row of <span class="math notranslate nohighlight">\(\mathbf{M_2}\)</span>, it is efficient to define a <span class="math notranslate nohighlight">\(K \times D\)</span> matrix, denoted <span class="math notranslate nohighlight">\(\mathbf{M_3}\)</span></p>
+<div class="math notranslate nohighlight" id="equation-eq-naive-bayes-m3">
+<span class="eqno">(46)<a class="headerlink" href="#equation-eq-naive-bayes-m3" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+  \mathbf{M_3} &amp;= \begin{bmatrix}
+  \mathbb{P}(X_1 = x_1 \mid Y = 1 ; \theta_{11}) &amp; \mathbb{P}(X_2 = x_2 \mid Y = 1 ; \theta_{12}) &amp; \cdots &amp; \mathbb{P}(X_D = x_D \mid Y = 1 ; \theta_{1D}) \\
+  \mathbb{P}(X_1 = x_1 \mid Y = 2 ; \theta_{21}) &amp; \mathbb{P}(X_2 = x_2 \mid Y = 2 ; \theta_{22}) &amp; \cdots &amp; \mathbb{P}(X_D = x_D \mid Y = 2 ; \theta_{2D}) \\
+  \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+  \mathbb{P}(X_1 = x_1 \mid Y = K ; \theta_{K1}) &amp; \mathbb{P}(X_2 = x_2 \mid Y = K ; \theta_{K2}) &amp; \cdots &amp; \mathbb{P}(X_D = x_D \mid Y = K ; \theta_{KD})
+  \end{bmatrix}_{K \times D} \\
+\end{aligned}
+\end{split}\]</div>
+</div>
+<p>where we can easily recover each row of <span class="math notranslate nohighlight">\(\mathbf{M_2}\)</span> by taking the product of the corresponding row of <span class="math notranslate nohighlight">\(\mathbf{M_3}\)</span>.</p>
+</section>
+</section>
+<section id="parameter-vector">
+<h2>Parameter Vector<a class="headerlink" href="#parameter-vector" title="Permalink to this headline">#</a></h2>
+<p>In the last section on <a class="reference internal" href="#naive-bayes-conditional-independence"><span class="std std-ref">Conditional Independence</span></a>, we indicated parameters in the expressions.
+Here we discuss a little on this newly introduced notation.</p>
+<p>Each <span class="math notranslate nohighlight">\(\pi_k\)</span> of <span class="math notranslate nohighlight">\(\boldsymbol{\pi}\)</span> refers to the prior probability of class <span class="math notranslate nohighlight">\(k\)</span>, and <span class="math notranslate nohighlight">\(\theta_{kd}\)</span> refers to the parameter of the
+class conditional density for class <span class="math notranslate nohighlight">\(k\)</span> and feature <span class="math notranslate nohighlight">\(d\)</span><a class="footnote-reference brackets" href="#kdparameters" id="id7">7</a>. Furthermore,
 the boldsymbol <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> is the parameter vector,</p>
 <div class="math notranslate nohighlight">
 \[
-\boldsymbol{\theta} = \left(\boldsymbol{\pi}, \{\theta_{dk}\}_{k=1}^K, \{d=1, \ldots, D\}\right) = \left(\boldsymbol{\pi}, \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}\right)
+\boldsymbol{\theta} = \left(\boldsymbol{\pi}, \{\theta_{kd}\}_{k=1, d=1}^{K, D} \right) = \left(\boldsymbol{\pi}, \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}\right)
 \]</div>
 <div class="proof definition admonition" id="parameter-vector">
 <p class="admonition-title"><span class="caption-number">Definition 66 </span> (The Parameter Vector)</p>
@@ -1219,11 +1338,11 @@ the boldsymbol <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\
 <p>There is not much to say about the categorical component <span class="math notranslate nohighlight">\(\boldsymbol{\pi}\)</span>, since we are
 just estimating the prior probabilities of the classes.</p>
 <div class="math notranslate nohighlight">
-\[
-\boldsymbol{\pi} = \begin{bmatrix} \pi_1 &amp; \pi_2 &amp; \dots &amp; \pi_K \end{bmatrix}
-\]</div>
-<p>The parameter vector (matrix) <span class="math notranslate nohighlight">\(\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}=\{\theta_{dk}\}_{k=1}^K, \{d=1, \ldots, D\}\)</span> is a bit more complicated.
-It resides in the <span class="math notranslate nohighlight">\(\mathbb{R}^{K \times D}\)</span> space, where each element <span class="math notranslate nohighlight">\(\theta_{dk}\)</span> is the parameter
+\[\begin{split}
+\boldsymbol{\pi} = \begin{bmatrix} \pi_1 \\ \pi_2 \\ \vdots \\ \pi_K \end{bmatrix}_{K \times 1}
+\end{split}\]</div>
+<p>The parameter vector (matrix) <span class="math notranslate nohighlight">\(\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}=\{\theta_{kd}\}_{k=1, d=1}^{K, D}\)</span> is a bit more complicated.
+It resides in the <span class="math notranslate nohighlight">\(\mathbb{R}^{K \times D}\)</span> space, where each element <span class="math notranslate nohighlight">\(\theta_{kd}\)</span> is the parameter
 associated with feature <span class="math notranslate nohighlight">\(d\)</span> conditioned on class <span class="math notranslate nohighlight">\(k\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1243,7 +1362,8 @@ associated with feature <span class="math notranslate nohighlight">\(d\)</span> 
 \theta_{31} &amp; \theta_{32}
 \end{bmatrix}_{3 \times 2}
 \end{split}\]</div>
-<p>This means we have effectively reduced our complexity from <span class="math notranslate nohighlight">\(\sim \mathcal{O}(2^D)\)</span> to <span class="math notranslate nohighlight">\(\sim \mathcal{O}(KD + 1)\)</span>.</p>
+<p>This means we have effectively reduced our complexity from <span class="math notranslate nohighlight">\(\sim \mathcal{O}(2^D)\)</span> to <span class="math notranslate nohighlight">\(\sim \mathcal{O}(KD + 1)\)</span>
+assuming the same setup in <a class="reference internal" href="#2dparameters">Remark 8</a>.</p>
 <p>One big misconception is that the elements in <span class="math notranslate nohighlight">\(\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}\)</span> are scalar values.
 This is not true, for example, let’s look at the first entry <span class="math notranslate nohighlight">\(\theta_{11}\)</span>, corresponding to
 the parameter of class <span class="math notranslate nohighlight">\(K=1\)</span> and feature <span class="math notranslate nohighlight">\(D=1\)</span>, i.e. <span class="math notranslate nohighlight">\(\theta_{11}\)</span> is the parameter of the class conditional
@@ -1259,17 +1379,15 @@ This is something we need to take note of.</p>
 <p>Overall, before this assumption, you can think of estimating the joint distribution of <span class="math notranslate nohighlight">\(Y\)</span> and <span class="math notranslate nohighlight">\(\mathbf{X}\)</span>,
 and after this assumption, you can simply individually estimate each conditional distribution.</p>
 </section>
-</div><div class="proof remark admonition" id="remark-14">
-<p class="admonition-title"><span class="caption-number">Remark 9 </span> (Notation remark)</p>
-<section class="remark-content" id="proof-content">
-<p>A note, the notation <span class="math notranslate nohighlight">\(\boldsymbol{\theta}_{dk}\)</span> should either be read as <span class="math notranslate nohighlight">\(\boldsymbol{\theta}_{kd}\)</span> since
-we say <span class="math notranslate nohighlight">\(\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}\)</span> is a <span class="math notranslate nohighlight">\(K \times D\)</span> matrix.</p>
-<p>Consider bolding elements of <span class="math notranslate nohighlight">\(\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}\)</span> to indicate that it can be a vector.</p>
+</div><p>Notice that the shape of <span class="math notranslate nohighlight">\(\boldsymbol{\pi}\)</span> is <span class="math notranslate nohighlight">\(K \times 1\)</span>, and the shape of <span class="math notranslate nohighlight">\(\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}\)</span> is <span class="math notranslate nohighlight">\(K \times D\)</span>.
+This corresponds to the shape of the matrix <span class="math notranslate nohighlight">\(\mathbf{M_1}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{M_3}\)</span> as defined in
+<a class="reference internal" href="#equation-eq-naive-bayes-m1">(34)</a> and <a class="reference internal" href="#equation-eq-naive-bayes-m3">(46)</a>, respectively. This is expected since
+<span class="math notranslate nohighlight">\(\mathbf{M_1}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{M_3}\)</span> hold the PDFs while <span class="math notranslate nohighlight">\(\boldsymbol{\pi}\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}\)</span> hold the parameters
+of these PDFs.</p>
 </section>
-</div></section>
-<section id="inductive-bias">
-<h3>Inductive Bias<a class="headerlink" href="#inductive-bias" title="Permalink to this headline">#</a></h3>
-<p>We still need to introduce some inductive bias into <a class="reference internal" href="#equation-eq-naive-bayes-classifier-1">(36)</a>, more concretely, we need to make some assumptions about the distribution
+<section id="inductive-bias-distribution-assumptions">
+<h2>Inductive Bias (Distribution Assumptions)<a class="headerlink" href="#inductive-bias-distribution-assumptions" title="Permalink to this headline">#</a></h2>
+<p>We still need to introduce some inductive bias into <a class="reference internal" href="#equation-eq-naive-bayes-classifier-1">(43)</a>, more concretely, we need to make some assumptions about the distribution
 of <span class="math notranslate nohighlight">\(\mathbb{P}(Y)\)</span> and <span class="math notranslate nohighlight">\(\mathbb{P}(X_d \mid Y)\)</span>.</p>
 <p>For the target variable, we typically model it as a categorical distribution,</p>
 <div class="math notranslate nohighlight">
@@ -1295,20 +1413,25 @@ of <span class="math notranslate nohighlight">\(\mathbb{P}(Y)\)</span> and <span
 <p>To reiterate, we want to make some inductive bias assumptions of <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> conditional on <span class="math notranslate nohighlight">\(Y\)</span>,
 as well as with <span class="math notranslate nohighlight">\(Y\)</span>. Note very carefully that we are not talking about the marginal distribution of
 <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> here, instead, we are talking about the conditional distribution of <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> given <span class="math notranslate nohighlight">\(Y\)</span>. The distinction is subtle, but important.</p>
-<section id="discrete-features-targets-categorical-distribution">
-<h4>Discrete Features/Targets (Categorical Distribution)<a class="headerlink" href="#discrete-features-targets-categorical-distribution" title="Permalink to this headline">#</a></h4>
+<section id="targets-categorical-distribution">
+<h3>Targets (Categorical Distribution)<a class="headerlink" href="#targets-categorical-distribution" title="Permalink to this headline">#</a></h3>
 <p>As mentioned earlier, both <span class="math notranslate nohighlight">\(Y^{(n)}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{X}^{(n)}\)</span> are random variables/vectors. This means we need to estimate both of them.</p>
 <p>We first conveniently assume that <span class="math notranslate nohighlight">\(Y^{(n)}\)</span> is a discrete random variable, and
-follows the <strong><a class="reference external" href="https://en.wikipedia.org/wiki/Categorical_distribution">Category distribution</a></strong><a class="footnote-reference brackets" href="#categorical-distribution" id="id7">7</a>,
+follows the <strong><a class="reference external" href="https://en.wikipedia.org/wiki/Categorical_distribution">Category distribution</a></strong><a class="footnote-reference brackets" href="#categorical-distribution" id="id8">8</a>,
 an extension of the Bernoulli distribution to multiple classes. Instead of a single parameter <span class="math notranslate nohighlight">\(p\)</span> (probability of success for Bernoulli),
-the Category distribution has <span class="math notranslate nohighlight">\(K\)</span> parameters <span class="math notranslate nohighlight">\(\boldsymbol{\pi}_k\)</span> for <span class="math notranslate nohighlight">\(k = 1, 2, \cdots, K\)</span>.</p>
+the Category distribution has a vector <span class="math notranslate nohighlight">\(\boldsymbol{\pi}\)</span> of <span class="math notranslate nohighlight">\(K\)</span> parameters.</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{\pi} = \begin{bmatrix} \pi_1 &amp; \dots &amp; \pi_K \end{bmatrix}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\pi_k\)</span> is the probability of <span class="math notranslate nohighlight">\(Y^{(n)}\)</span> taking on value <span class="math notranslate nohighlight">\(k\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[
 Y^{(n)} \overset{\small{\text{i.i.d.}}}{\sim} \text{Category}(\boldsymbol{\pi}) \quad \text{where } \boldsymbol{\pi} = \begin{bmatrix} \pi_1 &amp; \dots &amp; \pi_K \end{bmatrix}
 \]</div>
 <p>Equivalently,</p>
 <div class="math notranslate nohighlight" id="equation-eq-category-distribution">
-<span class="eqno">(37)<a class="headerlink" href="#equation-eq-category-distribution" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(47)<a class="headerlink" href="#equation-eq-category-distribution" title="Permalink to this equation">#</a></span>\[
 \mathbb{P}(Y^{(n)} = k) = \pi_k \quad \text{for } k = 1, 2, \cdots, K
 \]</div>
 <div class="proof definition admonition" id="categorical-distribution">
@@ -1330,7 +1453,7 @@ Then <span class="math notranslate nohighlight">\(Y\)</span> follows a categoric
 </div><div class="proof definition admonition" id="categorical-multinomial-distribution">
 <p class="admonition-title"><span class="caption-number">Definition 68 </span> (Categorical (Multinomial) Distribution)</p>
 <section class="definition-content" id="proof-content">
-<p>This formulation is adopted by Bishop’s<span id="id8">[<a class="reference internal" href="../../../references_and_resources/bibliography.html#id3" title="CHRISTOPHER M. BISHOP. Pattern recognition and machine learning. SPRINGER-VERLAG NEW YORK, 2016.">BISHOP, 2016</a>]</span>, the categorical distribution is defined as</p>
+<p>This formulation is adopted by Bishop’s<span id="id9">[<a class="reference internal" href="../../../references_and_resources/bibliography.html#id3" title="CHRISTOPHER M. BISHOP. Pattern recognition and machine learning. SPRINGER-VERLAG NEW YORK, 2016.">BISHOP, 2016</a>]</span>, the categorical distribution is defined as</p>
 <div class="math notranslate nohighlight">
 \[
 \mathbb{P}(\mathbf{Y} = \mathbf{y}; \boldsymbol{\pi}) = \prod_{k=1}^K \pi_k^{y_k}
@@ -1349,7 +1472,8 @@ the likelihood function easier.</p>
 </div><div class="proof example admonition" id="categorical-distribution-example">
 <p class="admonition-title"><span class="caption-number">Example 13 </span> (Categorical Distribution Example)</p>
 <section class="example-content" id="proof-content">
-<p>Consider rolling a fair six-sided die. Let <span class="math notranslate nohighlight">\(Y\)</span> be the random variable that represents the outcome of the die roll. Then <span class="math notranslate nohighlight">\(Y\)</span> follows a categorical distribution with parameters <span class="math notranslate nohighlight">\(\boldsymbol{\pi}_k\)</span> where <span class="math notranslate nohighlight">\(\pi_k = \frac{1}{6}\)</span> for <span class="math notranslate nohighlight">\(k = 1, 2, \cdots, 6\)</span>.</p>
+<p>Consider rolling a fair six-sided die. Let <span class="math notranslate nohighlight">\(Y\)</span> be the random variable that represents the outcome
+of the dice roll. Then <span class="math notranslate nohighlight">\(Y\)</span> follows a categorical distribution with parameters <span class="math notranslate nohighlight">\(\boldsymbol{\pi}\)</span> where <span class="math notranslate nohighlight">\(\pi_k = \frac{1}{6}\)</span> for <span class="math notranslate nohighlight">\(k = 1, 2, \cdots, 6\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[
 \mathbb{P}(Y = k) = \frac{1}{6} \quad \text{for } k = 1, 2, \cdots, 6
@@ -1367,8 +1491,13 @@ but instead a vector of size <span class="math notranslate nohighlight">\(6\)</s
 \mathrm{y} = \begin{bmatrix} 0 \\ 0 \\ 1 \\ 0 \\ 0 \\ 0 \end{bmatrix}
 \end{split}\]</div>
 </section>
-</div><p>In the case where (all) the features <span class="math notranslate nohighlight">\(X_d\)</span> are categorical (<span class="math notranslate nohighlight">\(D\)</span> number of features), i.e. <span class="math notranslate nohighlight">\(X_d \in \{1, 2, \cdots, C\}\)</span>,
-we can use the categorical distribution to model the (<span class="math notranslate nohighlight">\(D\)</span>-dimensional) conditional distribution of <span class="math notranslate nohighlight">\(\mathbf{X} \in \mathbb{R}^{D}\)</span> given <span class="math notranslate nohighlight">\(Y = k\)</span>.</p>
+</div></section>
+<section id="discrete-features-categorical-distribution">
+<h3>Discrete Features (Categorical Distribution)<a class="headerlink" href="#discrete-features-categorical-distribution" title="Permalink to this headline">#</a></h3>
+<p>In the case where (all) the features <span class="math notranslate nohighlight">\(X_d\)</span> are categorical (<span class="math notranslate nohighlight">\(D\)</span> number of features),
+i.e. <span class="math notranslate nohighlight">\(X_d \in \{1, 2, \cdots, C\}\)</span>,
+we can use the categorical distribution to model the (<span class="math notranslate nohighlight">\(D\)</span>-dimensional) conditional
+distribution of <span class="math notranslate nohighlight">\(\mathbf{X} \in \mathbb{R}^{D}\)</span> given <span class="math notranslate nohighlight">\(Y = k\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
@@ -1414,7 +1543,6 @@ each entry <span class="math notranslate nohighlight">\(\pi_{k, d}\)</span>, is 
 \mathbf{X} \mid Y &amp;= K &amp;\overset{\small{\text{i.i.d.}}}{\sim} \text{Category}(\boldsymbol{\pi}_{\{\mathbf{X} \mid Y\}})
 \end{align*}
 \end{split}\]</div>
-</section>
 <section id="continuous-features-gaussian-distribution">
 <h4>Continuous Features (Gaussian Distribution)<a class="headerlink" href="#continuous-features-gaussian-distribution" title="Permalink to this headline">#</a></h4>
 <p>If all features <span class="math notranslate nohighlight">\(X_d\)</span> are continuous, we can use the Gaussian distribution to model the conditional distribution of <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> given <span class="math notranslate nohighlight">\(Y = k\)</span>.</p>
@@ -1553,7 +1681,7 @@ of the definition of the Category distribution.</p>
 \end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(N_k\)</span> is the number of samples that belong to the <span class="math notranslate nohighlight">\(k\)</span>-th category.</p>
 <div class="proof remark admonition" id="notation-overload">
-<p class="admonition-title"><span class="caption-number">Remark 10 </span> (Notation Overload)</p>
+<p class="admonition-title"><span class="caption-number">Remark 9 </span> (Notation Overload)</p>
 <section class="remark-content" id="proof-content">
 <p>We note to ourselves that we are reusing, and hence abusing the notation <span class="math notranslate nohighlight">\(\mathcal{L}\)</span> for the log-likelihood function to be the same as the likelihood function, this is just for the ease of re-defining a new symbol for the log-likelihood function, <span class="math notranslate nohighlight">\(\log \mathcal{L}\)</span>.</p>
 </section>
@@ -1712,22 +1840,25 @@ function <span class="math notranslate nohighlight">\(\nabla \mathcal{L}(\mathrm
 <dt class="label" id="intractable"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
 <dd><p>Cite Dive into Deep Learning on this. Also, the joint probability is intractable because the number of parameters to estimate is exponential in the number of features. Use binary bits example, see my notes.</p>
 </dd>
-<dt class="label" id="joint-distribution"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dt class="label" id="likelihood-1"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dd><p>Not to be confused with the likelihood term <span class="math notranslate nohighlight">\(\mathbb{P}(\mathbf{X} \mid Y)\)</span> in Bayes’ terminology.</p>
+</dd>
+<dt class="label" id="joint-distribution"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
 <dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Joint_probability_distribution#Discrete_case">Joint Probability Distribution</a></p>
 </dd>
-<dt class="label" id="chain-rule-of-probability"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
+<dt class="label" id="chain-rule-of-probability"><span class="brackets"><a class="fn-backref" href="#id4">4</a></span></dt>
 <dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Chain_rule_(probability)">Chain Rule of Probability</a></p>
 </dd>
-<dt class="label" id="dparameters"><span class="brackets"><a class="fn-backref" href="#id4">4</a></span></dt>
+<dt class="label" id="dparameters"><span class="brackets"><a class="fn-backref" href="#id5">5</a></span></dt>
 <dd><p>Dive into Deep Learning, Section 22.9, this is only assuming that each feature <span class="math notranslate nohighlight">\(\mathbf{x}_d^{(n)}\)</span> is binary, i.e. <span class="math notranslate nohighlight">\(\mathbf{x}_d^{(n)} \in \{0, 1\}\)</span>.</p>
 </dd>
-<dt class="label" id="id9"><span class="brackets"><a class="fn-backref" href="#id5">5</a></span></dt>
+<dt class="label" id="id10"><span class="brackets"><a class="fn-backref" href="#id6">6</a></span></dt>
 <dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Conditional_independence">Conditional Independence</a></p>
 </dd>
-<dt class="label" id="kdparameters"><span class="brackets"><a class="fn-backref" href="#id6">6</a></span></dt>
+<dt class="label" id="kdparameters"><span class="brackets"><a class="fn-backref" href="#id7">7</a></span></dt>
 <dd><p>Probablistic Machine Learning: An Introduction, Section 9.3, pp 328</p>
 </dd>
-<dt class="label" id="categorical-distribution"><span class="brackets"><a class="fn-backref" href="#id7">7</a></span></dt>
+<dt class="label" id="categorical-distribution"><span class="brackets"><a class="fn-backref" href="#id8">8</a></span></dt>
 <dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Categorical_distribution">Category Distribution</a></p>
 </dd>
 </dl>
@@ -1768,7 +1899,7 @@ function <span class="math notranslate nohighlight">\(\nabla \mathcal{L}(\mathrm
             <p class="prev-next-title">Brain Dump</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="naive_bayes_example_1.html" title="next page">
+    <a class='right-next' id="next-link" href="naive_bayes_example_penguin.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Example: Penguins Dataset</p>

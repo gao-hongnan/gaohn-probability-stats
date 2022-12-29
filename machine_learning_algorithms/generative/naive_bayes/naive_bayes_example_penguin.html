@@ -59,7 +59,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Naive Bayes" href="naive_bayes.html" />
+    <link rel="next" title="Naive Bayes Application (MNIST)" href="naive_bayes_application_mnist.html" />
     <link rel="prev" title="Naive Bayes Concept" href="naive_bayes_concept.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -410,8 +410,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="naive_bayes.html">
-   Naive Bayes
+  <a class="reference internal" href="naive_bayes_application_mnist.html">
+   Naive Bayes Application (MNIST)
   </a>
  </li>
 </ul>
@@ -490,7 +490,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/gao-hongnan/gaohn-probability-stats/main?urlpath=tree/content/machine_learning_algorithms/generative/naive_bayes/naive_bayes_example_1.ipynb"
+        <a href="https://mybinder.org/v2/gh/gao-hongnan/gaohn-probability-stats/main?urlpath=tree/content/machine_learning_algorithms/generative/naive_bayes/naive_bayes_example_penguin.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -508,7 +508,7 @@ title="Launch on Binder"
       </li>
       
       <li>
-        <a href="https://colab.research.google.com/github/gao-hongnan/gaohn-probability-stats/blob/main/content/machine_learning_algorithms/generative/naive_bayes/naive_bayes_example_1.ipynb"
+        <a href="https://colab.research.google.com/github/gao-hongnan/gaohn-probability-stats/blob/main/content/machine_learning_algorithms/generative/naive_bayes/naive_bayes_example_penguin.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -568,7 +568,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/gao-hongnan/gaohn-probability-stats/issues/new?title=Issue%20on%20page%20%2Fmachine_learning_algorithms/generative/naive_bayes/naive_bayes_example_1.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/gao-hongnan/gaohn-probability-stats/issues/new?title=Issue%20on%20page%20%2Fmachine_learning_algorithms/generative/naive_bayes/naive_bayes_example_penguin.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -596,7 +596,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../../_sources/machine_learning_algorithms/generative/naive_bayes/naive_bayes_example_1.ipynb"
+        <a href="../../../_sources/machine_learning_algorithms/generative/naive_bayes/naive_bayes_example_penguin.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -835,69 +835,69 @@ penguins.head().style.set_table_attributes(&#39;style=&quot;font-size: 13px&quot
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_b0e88" style="font-size: 13px">
+<table id="T_e0e54" style="font-size: 13px">
   <thead>
     <tr>
       <th class="blank level0" >&nbsp;</th>
-      <th id="T_b0e88_level0_col0" class="col_heading level0 col0" >species</th>
-      <th id="T_b0e88_level0_col1" class="col_heading level0 col1" >island</th>
-      <th id="T_b0e88_level0_col2" class="col_heading level0 col2" >bill_length_mm</th>
-      <th id="T_b0e88_level0_col3" class="col_heading level0 col3" >bill_depth_mm</th>
-      <th id="T_b0e88_level0_col4" class="col_heading level0 col4" >flipper_length_mm</th>
-      <th id="T_b0e88_level0_col5" class="col_heading level0 col5" >body_mass_g</th>
-      <th id="T_b0e88_level0_col6" class="col_heading level0 col6" >sex</th>
+      <th id="T_e0e54_level0_col0" class="col_heading level0 col0" >species</th>
+      <th id="T_e0e54_level0_col1" class="col_heading level0 col1" >island</th>
+      <th id="T_e0e54_level0_col2" class="col_heading level0 col2" >bill_length_mm</th>
+      <th id="T_e0e54_level0_col3" class="col_heading level0 col3" >bill_depth_mm</th>
+      <th id="T_e0e54_level0_col4" class="col_heading level0 col4" >flipper_length_mm</th>
+      <th id="T_e0e54_level0_col5" class="col_heading level0 col5" >body_mass_g</th>
+      <th id="T_e0e54_level0_col6" class="col_heading level0 col6" >sex</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th id="T_b0e88_level0_row0" class="row_heading level0 row0" >0</th>
-      <td id="T_b0e88_row0_col0" class="data row0 col0" >Adelie</td>
-      <td id="T_b0e88_row0_col1" class="data row0 col1" >Torgersen</td>
-      <td id="T_b0e88_row0_col2" class="data row0 col2" >39.100000</td>
-      <td id="T_b0e88_row0_col3" class="data row0 col3" >18.700000</td>
-      <td id="T_b0e88_row0_col4" class="data row0 col4" >181.000000</td>
-      <td id="T_b0e88_row0_col5" class="data row0 col5" >3750.000000</td>
-      <td id="T_b0e88_row0_col6" class="data row0 col6" >Male</td>
+      <th id="T_e0e54_level0_row0" class="row_heading level0 row0" >0</th>
+      <td id="T_e0e54_row0_col0" class="data row0 col0" >Adelie</td>
+      <td id="T_e0e54_row0_col1" class="data row0 col1" >Torgersen</td>
+      <td id="T_e0e54_row0_col2" class="data row0 col2" >39.100000</td>
+      <td id="T_e0e54_row0_col3" class="data row0 col3" >18.700000</td>
+      <td id="T_e0e54_row0_col4" class="data row0 col4" >181.000000</td>
+      <td id="T_e0e54_row0_col5" class="data row0 col5" >3750.000000</td>
+      <td id="T_e0e54_row0_col6" class="data row0 col6" >Male</td>
     </tr>
     <tr>
-      <th id="T_b0e88_level0_row1" class="row_heading level0 row1" >1</th>
-      <td id="T_b0e88_row1_col0" class="data row1 col0" >Adelie</td>
-      <td id="T_b0e88_row1_col1" class="data row1 col1" >Torgersen</td>
-      <td id="T_b0e88_row1_col2" class="data row1 col2" >39.500000</td>
-      <td id="T_b0e88_row1_col3" class="data row1 col3" >17.400000</td>
-      <td id="T_b0e88_row1_col4" class="data row1 col4" >186.000000</td>
-      <td id="T_b0e88_row1_col5" class="data row1 col5" >3800.000000</td>
-      <td id="T_b0e88_row1_col6" class="data row1 col6" >Female</td>
+      <th id="T_e0e54_level0_row1" class="row_heading level0 row1" >1</th>
+      <td id="T_e0e54_row1_col0" class="data row1 col0" >Adelie</td>
+      <td id="T_e0e54_row1_col1" class="data row1 col1" >Torgersen</td>
+      <td id="T_e0e54_row1_col2" class="data row1 col2" >39.500000</td>
+      <td id="T_e0e54_row1_col3" class="data row1 col3" >17.400000</td>
+      <td id="T_e0e54_row1_col4" class="data row1 col4" >186.000000</td>
+      <td id="T_e0e54_row1_col5" class="data row1 col5" >3800.000000</td>
+      <td id="T_e0e54_row1_col6" class="data row1 col6" >Female</td>
     </tr>
     <tr>
-      <th id="T_b0e88_level0_row2" class="row_heading level0 row2" >2</th>
-      <td id="T_b0e88_row2_col0" class="data row2 col0" >Adelie</td>
-      <td id="T_b0e88_row2_col1" class="data row2 col1" >Torgersen</td>
-      <td id="T_b0e88_row2_col2" class="data row2 col2" >40.300000</td>
-      <td id="T_b0e88_row2_col3" class="data row2 col3" >18.000000</td>
-      <td id="T_b0e88_row2_col4" class="data row2 col4" >195.000000</td>
-      <td id="T_b0e88_row2_col5" class="data row2 col5" >3250.000000</td>
-      <td id="T_b0e88_row2_col6" class="data row2 col6" >Female</td>
+      <th id="T_e0e54_level0_row2" class="row_heading level0 row2" >2</th>
+      <td id="T_e0e54_row2_col0" class="data row2 col0" >Adelie</td>
+      <td id="T_e0e54_row2_col1" class="data row2 col1" >Torgersen</td>
+      <td id="T_e0e54_row2_col2" class="data row2 col2" >40.300000</td>
+      <td id="T_e0e54_row2_col3" class="data row2 col3" >18.000000</td>
+      <td id="T_e0e54_row2_col4" class="data row2 col4" >195.000000</td>
+      <td id="T_e0e54_row2_col5" class="data row2 col5" >3250.000000</td>
+      <td id="T_e0e54_row2_col6" class="data row2 col6" >Female</td>
     </tr>
     <tr>
-      <th id="T_b0e88_level0_row3" class="row_heading level0 row3" >3</th>
-      <td id="T_b0e88_row3_col0" class="data row3 col0" >Adelie</td>
-      <td id="T_b0e88_row3_col1" class="data row3 col1" >Torgersen</td>
-      <td id="T_b0e88_row3_col2" class="data row3 col2" >nan</td>
-      <td id="T_b0e88_row3_col3" class="data row3 col3" >nan</td>
-      <td id="T_b0e88_row3_col4" class="data row3 col4" >nan</td>
-      <td id="T_b0e88_row3_col5" class="data row3 col5" >nan</td>
-      <td id="T_b0e88_row3_col6" class="data row3 col6" >nan</td>
+      <th id="T_e0e54_level0_row3" class="row_heading level0 row3" >3</th>
+      <td id="T_e0e54_row3_col0" class="data row3 col0" >Adelie</td>
+      <td id="T_e0e54_row3_col1" class="data row3 col1" >Torgersen</td>
+      <td id="T_e0e54_row3_col2" class="data row3 col2" >nan</td>
+      <td id="T_e0e54_row3_col3" class="data row3 col3" >nan</td>
+      <td id="T_e0e54_row3_col4" class="data row3 col4" >nan</td>
+      <td id="T_e0e54_row3_col5" class="data row3 col5" >nan</td>
+      <td id="T_e0e54_row3_col6" class="data row3 col6" >nan</td>
     </tr>
     <tr>
-      <th id="T_b0e88_level0_row4" class="row_heading level0 row4" >4</th>
-      <td id="T_b0e88_row4_col0" class="data row4 col0" >Adelie</td>
-      <td id="T_b0e88_row4_col1" class="data row4 col1" >Torgersen</td>
-      <td id="T_b0e88_row4_col2" class="data row4 col2" >36.700000</td>
-      <td id="T_b0e88_row4_col3" class="data row4 col3" >19.300000</td>
-      <td id="T_b0e88_row4_col4" class="data row4 col4" >193.000000</td>
-      <td id="T_b0e88_row4_col5" class="data row4 col5" >3450.000000</td>
-      <td id="T_b0e88_row4_col6" class="data row4 col6" >Female</td>
+      <th id="T_e0e54_level0_row4" class="row_heading level0 row4" >4</th>
+      <td id="T_e0e54_row4_col0" class="data row4 col0" >Adelie</td>
+      <td id="T_e0e54_row4_col1" class="data row4 col1" >Torgersen</td>
+      <td id="T_e0e54_row4_col2" class="data row4 col2" >36.700000</td>
+      <td id="T_e0e54_row4_col3" class="data row4 col3" >19.300000</td>
+      <td id="T_e0e54_row4_col4" class="data row4 col4" >193.000000</td>
+      <td id="T_e0e54_row4_col5" class="data row4 col5" >3450.000000</td>
+      <td id="T_e0e54_row4_col6" class="data row4 col6" >Female</td>
     </tr>
   </tbody>
 </table>
@@ -1487,7 +1487,7 @@ plt.show()
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/naive_bayes_example_1_21_0.png" src="../../../_images/naive_bayes_example_1_21_0.png" />
+<img alt="../../../_images/naive_bayes_example_penguin_21_0.png" src="../../../_images/naive_bayes_example_penguin_21_0.png" />
 </div>
 </div>
 <p>Before we do anything, we are given one categorical variable and for this penguin, it falls under
@@ -1644,7 +1644,7 @@ g.plot_marginals(sns.histplot, discrete=True, color=&quot;red&quot;);
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/naive_bayes_example_1_26_0.png" src="../../../_images/naive_bayes_example_1_26_0.png" />
+<img alt="../../../_images/naive_bayes_example_penguin_26_0.png" src="../../../_images/naive_bayes_example_penguin_26_0.png" />
 </div>
 </div>
 <p>We can also use seaborns <code class="docutils literal notranslate"><span class="pre">jointgrid</span></code> to do a joint distribution plot, the darker tone of red
@@ -1866,7 +1866,7 @@ plt.show();
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/naive_bayes_example_1_36_0.png" src="../../../_images/naive_bayes_example_1_36_0.png" />
+<img alt="../../../_images/naive_bayes_example_penguin_36_0.png" src="../../../_images/naive_bayes_example_penguin_36_0.png" />
 </div>
 </div>
 <p>The kdeplot above is for an univariate, empirical estimation of the whole dataset, not
@@ -1900,7 +1900,7 @@ plt.show();
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/naive_bayes_example_1_38_0.png" src="../../../_images/naive_bayes_example_1_38_0.png" />
+<img alt="../../../_images/naive_bayes_example_penguin_38_0.png" src="../../../_images/naive_bayes_example_penguin_38_0.png" />
 </div>
 </div>
 <p>Before we move on, some EDA on the joint distribution of <span class="math notranslate nohighlight">\(X_2\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>.
@@ -1915,11 +1915,11 @@ sns.jointplot(data=penguins, x=&quot;bill_length_mm&quot;, y=&quot;species&quot;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7fcb03fa5f10&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7fb6cc0e8850&gt;
 </pre></div>
 </div>
-<img alt="../../../_images/naive_bayes_example_1_40_1.png" src="../../../_images/naive_bayes_example_1_40_1.png" />
-<img alt="../../../_images/naive_bayes_example_1_40_2.png" src="../../../_images/naive_bayes_example_1_40_2.png" />
+<img alt="../../../_images/naive_bayes_example_penguin_40_1.png" src="../../../_images/naive_bayes_example_penguin_40_1.png" />
+<img alt="../../../_images/naive_bayes_example_penguin_40_2.png" src="../../../_images/naive_bayes_example_penguin_40_2.png" />
 </div>
 </div>
 <p>We see that the for this penguin with <code class="docutils literal notranslate"><span class="pre">bill_length_mm</span></code> of 50mm, our gut feeling tells us
@@ -2106,7 +2106,7 @@ plt.show();
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/naive_bayes_example_1_50_0.png" src="../../../_images/naive_bayes_example_1_50_0.png" />
+<img alt="../../../_images/naive_bayes_example_penguin_50_0.png" src="../../../_images/naive_bayes_example_penguin_50_0.png" />
 </div>
 </div>
 <p>As we can see, the this naive assumption of Gaussian distribution for <span class="math notranslate nohighlight">\(X_2\)</span> given <span class="math notranslate nohighlight">\(Y\)</span> is not
@@ -2240,7 +2240,7 @@ plt.show();
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/naive_bayes_example_1_58_0.png" src="../../../_images/naive_bayes_example_1_58_0.png" />
+<img alt="../../../_images/naive_bayes_example_penguin_58_0.png" src="../../../_images/naive_bayes_example_penguin_58_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2266,7 +2266,7 @@ plt.show();
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/naive_bayes_example_1_59_0.png" src="../../../_images/naive_bayes_example_1_59_0.png" />
+<img alt="../../../_images/naive_bayes_example_penguin_59_0.png" src="../../../_images/naive_bayes_example_penguin_59_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2292,7 +2292,7 @@ plt.show();
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/naive_bayes_example_1_60_0.png" src="../../../_images/naive_bayes_example_1_60_0.png" />
+<img alt="../../../_images/naive_bayes_example_penguin_60_0.png" src="../../../_images/naive_bayes_example_penguin_60_0.png" />
 </div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">bill_length_mm</span></code> and <code class="docutils literal notranslate"><span class="pre">flipper_length_mm</span></code> are plotted above as density plots,
@@ -2335,12 +2335,12 @@ sns.jointplot(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7fcb03b81a00&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7fb6cbb9d460&gt;
 </pre></div>
 </div>
-<img alt="../../../_images/naive_bayes_example_1_64_1.png" src="../../../_images/naive_bayes_example_1_64_1.png" />
-<img alt="../../../_images/naive_bayes_example_1_64_2.png" src="../../../_images/naive_bayes_example_1_64_2.png" />
-<img alt="../../../_images/naive_bayes_example_1_64_3.png" src="../../../_images/naive_bayes_example_1_64_3.png" />
+<img alt="../../../_images/naive_bayes_example_penguin_64_1.png" src="../../../_images/naive_bayes_example_penguin_64_1.png" />
+<img alt="../../../_images/naive_bayes_example_penguin_64_2.png" src="../../../_images/naive_bayes_example_penguin_64_2.png" />
+<img alt="../../../_images/naive_bayes_example_penguin_64_3.png" src="../../../_images/naive_bayes_example_penguin_64_3.png" />
 </div>
 </div>
 <p>To see the joint distribution conditioned on the class (species) <span class="math notranslate nohighlight">\(Y\)</span>, where <span class="math notranslate nohighlight">\(Y\)</span>
@@ -2362,12 +2362,12 @@ sns.jointplot(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7fcb005c41f0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7fb6c8707520&gt;
 </pre></div>
 </div>
-<img alt="../../../_images/naive_bayes_example_1_66_1.png" src="../../../_images/naive_bayes_example_1_66_1.png" />
-<img alt="../../../_images/naive_bayes_example_1_66_2.png" src="../../../_images/naive_bayes_example_1_66_2.png" />
-<img alt="../../../_images/naive_bayes_example_1_66_3.png" src="../../../_images/naive_bayes_example_1_66_3.png" />
+<img alt="../../../_images/naive_bayes_example_penguin_66_1.png" src="../../../_images/naive_bayes_example_penguin_66_1.png" />
+<img alt="../../../_images/naive_bayes_example_penguin_66_2.png" src="../../../_images/naive_bayes_example_penguin_66_2.png" />
+<img alt="../../../_images/naive_bayes_example_penguin_66_3.png" src="../../../_images/naive_bayes_example_penguin_66_3.png" />
 </div>
 </div>
 <p>Now we plot two dashed lines for where <span class="math notranslate nohighlight">\(X_2=50\)</span> and <span class="math notranslate nohighlight">\(X_3=195\)</span> respectively, and
@@ -2409,7 +2409,7 @@ _ = plt.axhline(x3, color=&quot;black&quot;, linestyle=&quot;--&quot;, label=&qu
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/naive_bayes_example_1_68_0.png" src="../../../_images/naive_bayes_example_1_68_0.png" />
+<img alt="../../../_images/naive_bayes_example_penguin_68_0.png" src="../../../_images/naive_bayes_example_penguin_68_0.png" />
 </div>
 </div>
 </section>
@@ -2457,10 +2457,10 @@ even though it is not perfect.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7fcb037a3370&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7fb6c836a190&gt;
 </pre></div>
 </div>
-<img alt="../../../_images/naive_bayes_example_1_70_1.png" src="../../../_images/naive_bayes_example_1_70_1.png" />
+<img alt="../../../_images/naive_bayes_example_penguin_70_1.png" src="../../../_images/naive_bayes_example_penguin_70_1.png" />
 </div>
 </div>
 <p>Back to our</p>
@@ -2563,7 +2563,7 @@ plt.show();
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/naive_bayes_example_1_74_0.png" src="../../../_images/naive_bayes_example_1_74_0.png" />
+<img alt="../../../_images/naive_bayes_example_penguin_74_0.png" src="../../../_images/naive_bayes_example_penguin_74_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2695,10 +2695,10 @@ found through MLE are the sample mean and sample variance of the data.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fcb006718e0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fb6c87b15e0&gt;
 </pre></div>
 </div>
-<img alt="../../../_images/naive_bayes_example_1_86_1.png" src="../../../_images/naive_bayes_example_1_86_1.png" />
+<img alt="../../../_images/naive_bayes_example_penguin_86_1.png" src="../../../_images/naive_bayes_example_penguin_86_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2708,10 +2708,10 @@ found through MLE are the sample mean and sample variance of the data.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fcb03aabe50&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fb6c87147f0&gt;
 </pre></div>
 </div>
-<img alt="../../../_images/naive_bayes_example_1_88_1.png" src="../../../_images/naive_bayes_example_1_88_1.png" />
+<img alt="../../../_images/naive_bayes_example_penguin_88_1.png" src="../../../_images/naive_bayes_example_penguin_88_1.png" />
 </div>
 </div>
 </section>
@@ -2767,10 +2767,10 @@ is no longer random.</p>
             <p class="prev-next-title">Naive Bayes Concept</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="naive_bayes.html" title="next page">
+    <a class='right-next' id="next-link" href="naive_bayes_application_mnist.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Naive Bayes</p>
+        <p class="prev-next-title">Naive Bayes Application (MNIST)</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
