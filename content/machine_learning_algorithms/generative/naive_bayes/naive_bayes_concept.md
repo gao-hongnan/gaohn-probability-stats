@@ -646,13 +646,6 @@ This corresponds to the shape of the matrix $\mathbf{M_1}$ and $\mathbf{M_3}$ as
 $\mathbf{M_1}$ and $\mathbf{M_3}$ hold the PDFs while $\boldsymbol{\pi}$ and $\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}$ hold the parameters
 of these PDFs.
 
-```{prf:remark} Notation remark
-A note, the notation $\boldsymbol{\theta}_{dk}$ should either be read as $\boldsymbol{\theta}_{kd}$ since
-we say $\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}$ is a $K \times D$ matrix.
-
-Consider bolding elements of $\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}$ to indicate that it can be a vector.
-```
-
 ## Inductive Bias (Distribution Assumptions)
 
 We still need to introduce some inductive bias into {eq}`eq:naive-bayes-classifier-1`, more concretely, we need to make some assumptions about the distribution 
