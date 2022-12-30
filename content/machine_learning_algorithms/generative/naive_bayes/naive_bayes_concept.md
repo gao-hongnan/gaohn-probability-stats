@@ -318,7 +318,8 @@ the numerator of the conditional probability in {eq}`eq:conditional-naive-bayes`
   \begin{aligned}
   \hat{\mathbf{y}} &= \arg\max_{k=1}^K \begin{bmatrix} \mathbb{P}(Y=1) \mathbb{P}(\mathbf{X} = \mathbf{x}\mid Y = 1) \\ \mathbb{P}(Y=2) \mathbb{P}(\mathbf{X} = \mathbf{x}\mid Y = 2) \\ \vdots \\ \mathbb{P}(Y=K) \mathbb{P}(\mathbf{X} = \mathbf{x} \mid Y = K) \end{bmatrix}_{K \times 1} \\  
   &= \arg\max_{k=1}^K \begin{bmatrix} \mathbb{P}(Y=1) \\ \mathbb{P}(Y=2) \\ \cdots \\ \mathbb{P}(Y=K) \end{bmatrix}\circ \begin{bmatrix} \mathbb{P}(\mathbf{X} = \mathbf{x} \mid Y = 1) \\ \mathbb{P}(\mathbf{X} = \mathbf{x}\mid Y = 2) \\ \vdots \\ \mathbb{P}(\mathbf{X} = \mathbf{x} \mid Y = K) \end{bmatrix} \\
-  &= \arg\max_{k=1}^K \mathbf{M}_1 \circ \mathbf{M}_2
+  &= \arg\max_{k=1}^K \mathbf{M_1} \circ \mathbf{M_2} \\
+  &= \arg\max_{k=1}^K \mathbf{M_1} \circ \mathbf{M_3} \\
   \end{aligned}
   $$ (eq:argmax-naive-bayes-3)
 
@@ -342,7 +343,19 @@ the numerator of the conditional probability in {eq}`eq:conditional-naive-bayes`
   \end{bmatrix}_{K \times 1}
   $$ (eq:naive-bayes-m2)
 
+  and
+
+  $$
+  \mathbf{M_3} &= \begin{bmatrix}
+  \mathbb{P}(X_1 = x_1 \mid Y = 1 ; \theta_{11}) & \mathbb{P}(X_2 = x_2 \mid Y = 1 ; \theta_{12}) & \cdots & \mathbb{P}(X_D = x_D \mid Y = 1 ; \theta_{1D}) \\
+  \mathbb{P}(X_1 = x_1 \mid Y = 2 ; \theta_{21}) & \mathbb{P}(X_2 = x_2 \mid Y = 2 ; \theta_{22}) & \cdots & \mathbb{P}(X_D = x_D \mid Y = 2 ; \theta_{2D}) \\
+  \vdots & \vdots & \ddots & \vdots \\
+  \mathbb{P}(X_1 = x_1 \mid Y = K ; \theta_{K1}) & \mathbb{P}(X_2 = x_2 \mid Y = K ; \theta_{K2}) & \cdots & \mathbb{P}(X_D = x_D \mid Y = K ; \theta_{KD})
+  \end{bmatrix}_{K \times D} \\
+  $$ (eq:naive-bayes-m3)
+
   Note superscript $q$ is removed for simplicity, and $\circ$ is the element-wise (Hadamard) product. 
+  We will also explain why we replace $\mathbf{M_2}$ with $\mathbf{M_3}$ in {ref}`naive-bayes-conditional-independence`.
 ```
 
 Now if we just proceed to estimate the conditional probability $\mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x}^{(q)})$, we will need to estimate the joint probability $\mathbb{P}(X = \mathbf{x}^{(q)}, Y = k)$, since by definition, we have
@@ -566,7 +579,7 @@ $$
   \mathbb{P}(X_1 = x_1 \mid Y = K ; \theta_{K1}) & \mathbb{P}(X_2 = x_2 \mid Y = K ; \theta_{K2}) & \cdots & \mathbb{P}(X_D = x_D \mid Y = K ; \theta_{KD})
   \end{bmatrix}_{K \times D} \\
 \end{aligned}
-$$ (eq:naive-bayes-m3)
+$$ (eq:naive-bayes-m3-explained)
 ````
 
 where we can easily recover each row of $\mathbf{M_2}$ by taking the product of the corresponding row of $\mathbf{M_3}$.
@@ -683,7 +696,8 @@ $\mathbf{X}$ here, instead, we are talking about the conditional distribution of
 
 ### Targets (Categorical Distribution)
 
-As mentioned earlier, both $Y^{(n)}$ and $\mathbf{X}^{(n)}$ are random variables/vectors. This means we need to estimate both of them.
+As mentioned earlier, both $Y^{(n)}$ and $\mathbf{X}^{(n)}$ are random variables/vectors. 
+This means we need to estimate both of them.
 
 We first conveniently assume that $Y^{(n)}$ is a discrete random variable, and
 follows the **[Category distribution](https://en.wikipedia.org/wiki/Categorical_distribution)**[^categorical-distribution], 
@@ -691,14 +705,16 @@ an extension of the Bernoulli distribution to multiple classes. Instead of a sin
 the Category distribution has a vector $\boldsymbol{\pi}$ of $K$ parameters.
 
 $$
-\boldsymbol{\pi} = \begin{bmatrix} \pi_1 & \dots & \pi_K \end{bmatrix}
+\boldsymbol{\pi} = \begin{bmatrix} \pi_1 \\ \vdots \\ \pi_K \end{bmatrix}_{K \times 1}
 $$
 
 where $\pi_k$ is the probability of $Y^{(n)}$ taking on value $k$.
 
 $$
-Y^{(n)} \overset{\small{\text{i.i.d.}}}{\sim} \text{Category}(\boldsymbol{\pi}) \quad \text{where } \boldsymbol{\pi} = \begin{bmatrix} \pi_1 & \dots & \pi_K \end{bmatrix}
-$$
+Y^{(n)} \overset{\small{\text{i.i.d.}}}{\sim} \text{Category}(\boldsymbol{\pi}) \quad \text{where } \boldsymbol{\pi} = \begin{bmatrix} \pi_1 \\ \vdots \\ \pi_K \end{bmatrix}_{K \times 1}
+$$ (eq:target-category-distribution)
+
+Consequently, we just need to estimate $\boldsymbol{\pi}$ to recover $\mathbf{M_1}$ defined in {eq}`eq:naive-bayes-m1`.
 
 Equivalently,
 
@@ -732,7 +748,7 @@ This formulation is adopted by Bishop's{cite}`bishop_2016`, the categorical dist
 
 $$
 \mathbb{P}(\mathbf{Y} = \mathbf{y}; \boldsymbol{\pi}) = \prod_{k=1}^K \pi_k^{y_k}
-$$
+$$ (eq:categorical-distribution-bishop)
 
 where
 
@@ -768,15 +784,18 @@ $$
 \mathbb{P}(Y = k) = \prod_{k=1}^6 \frac{1}{6}^{I\{Y = k\}} = \left(\frac{1}{6}\right)^0 \cdot \left(\frac{1}{6}\right)^0 \cdot \left(\frac{1}{6}\right)^1 \cdot \left(\frac{1}{6}\right)^0 \cdot \left(\frac{1}{6}\right)^0 \cdot \left(\frac{1}{6}\right)^0 = \frac{1}{6}
 $$
 
-Using Bishop's notation, the PMF is still the same, only the realization $\mathrm{y}$ is not a scalar,
-but instead a vector of size $6$. In the case where $Y = 3$, the vector $\mathrm{y}$ is
+Using Bishop's notation, the PMF is still the same, only the realization $\mathbf{y}$ is not a scalar,
+but instead a vector of size $6$. In the case where $Y = 3$, the vector $\mathbf{y}$ is
 
 $$
-\mathrm{y} = \begin{bmatrix} 0 \\ 0 \\ 1 \\ 0 \\ 0 \\ 0 \end{bmatrix}
+\mathbf{y} = \begin{bmatrix} 0 \\ 0 \\ 1 \\ 0 \\ 0 \\ 0 \end{bmatrix}
 $$
 ```
 
 ### Discrete Features (Categorical Distribution)
+
+Now, our next task is find parameters $\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}$ to model the conditional distribution of $\mathbf{X}$ given $Y = k$,
+and consequently, recovering the matrix $\mathbf{M_3}$ defined in {eq}`eq:naive-bayes-m3`.
 
 In the case where (all) the features $X_d$ are categorical ($D$ number of features), 
 i.e. $X_d \in \{1, 2, \cdots, C\}$, 
@@ -785,11 +804,19 @@ distribution of $\mathbf{X} \in \mathbb{R}^{D}$ given $Y = k$.
 
 $$
 \begin{align*}
-\mathbf{X} \mid Y = k &\overset{\small{\text{i.i.d.}}}{\sim} \text{Category}(\boldsymbol{\pi}_{\{\mathbf{X} \mid Y\}}) \quad \text{where } \boldsymbol{\pi}_{\{\mathbf{X} \mid Y\}} = \begin{bmatrix} \pi_{1, 1} & \dots & \pi_{1, D} \\ \vdots & \ddots & \vdots \\ \pi_{K, 1} & \dots & \pi_{K, D} \end{bmatrix}
+\mathbf{X} \mid Y = k &\overset{\small{\text{i.i.d.}}}{\sim} \text{Category}\left(\boldsymbol{\pi}_{\{\mathbf{X} \mid Y\}}\right) \quad \text{for } k = 1, 2, \cdots, K
 \end{align*}
-$$
+$$ (eq:naive-bayes-categorical-feature-1)
 
-where each entry $\pi_{k, d}$ is the probability distribution (PDF) of $X_d$ given $Y = k$. 
+where
+
+$$
+\boldsymbol{\pi}_{\{\mathbf{X} \mid Y\}} = \begin{bmatrix} \pi_{1, 1} & \dots & \pi_{1, D} \\ \vdots & \ddots & \vdots \\ \pi_{K, 1} & \dots & \pi_{K, D} \end{bmatrix}_{K \times D} \\
+$$ (eq:naive-bayes-categorical-feature-2)
+
+$\boldsymbol{\pi}_{\{\mathbf{X} \mid Y\}}$ is a matrix of size $K \times D$ where each
+element $\pi_{k, d}$ is the parameter for the
+probability distribution (PDF) of $X_d$ given $Y = k$.
 
 $$
 X_d \mid Y = k \overset{\small{\text{i.i.d.}}}{\sim} \text{Category}(\pi_{k, d})
@@ -811,7 +838,7 @@ $$
 \mathbb{P}(\mathbf{X} = \mathbf{x} | Y = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}) &= \prod_{d=1}^D \text{Categorical}(X_d \mid Y = k; \pi_{k, d}) \\
 &= \prod_{d=1}^D \prod_{c=1}^C \pi_{k, d, c}^{x_{c, d}} \quad \text{for } c = 1, 2, \cdots, C \text{ and } k = 1, 2, \cdots, K
 \end{align*}
-$$
+$$ (eq:naive-bayes-categorical-feature-3)
 
 As an example, if $C=3$, $D=2$ and $K=4$, then the $\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}$ is a $K \times D = 4 \times 2$ matrix, but for
 each entry $\pi_{k, d}$, is a $1 \times C$ vector. If one really wants, we can also represent this as a 
@@ -827,19 +854,56 @@ we are actually finding for all $k = 1, 2, \cdots, K$,
 
 $$
 \begin{align*}
-\mathbf{X} \mid Y &= 1 &\overset{\small{\text{i.i.d.}}}{\sim} \text{Category}(\boldsymbol{\pi}_{\{\mathbf{X} \mid Y\}}) \\
-\mathbf{X} \mid Y &= 2 &\overset{\small{\text{i.i.d.}}}{\sim} \text{Category}(\boldsymbol{\pi}_{\{\mathbf{X} \mid Y\}}) \\
+\mathbf{X} \mid Y = 1 &\overset{\small{\text{i.i.d.}}}{\sim} \text{Category}(\boldsymbol{\pi}_{\{\mathbf{X} \mid Y=1\}}) \\
+\mathbf{X} \mid Y = 2 &\overset{\small{\text{i.i.d.}}}{\sim} \text{Category}(\boldsymbol{\pi}_{\{\mathbf{X} \mid Y=2\}}) \\
 \vdots \\
-\mathbf{X} \mid Y &= K &\overset{\small{\text{i.i.d.}}}{\sim} \text{Category}(\boldsymbol{\pi}_{\{\mathbf{X} \mid Y\}})
+\mathbf{X} \mid Y = K &\overset{\small{\text{i.i.d.}}}{\sim} \text{Category}(\boldsymbol{\pi}_{\{\mathbf{X} \mid Y=K\}})
 \end{align*}
 $$
 
+Each row above corresponds to each row of the matrix $\mathbf{M_2}$ defined in {eq}`eq:naive-bayes-m2`. We
+can further decompose each $\mathbf{X} \mid Y = k$ into $D$ independent random variables, each of which
+is modeled by a categorical distribution, thereby recovering each element of $\mathbf{M_3}$ {eq}`eq:naive-bayes-m3`.
 
-#### Continuous Features (Gaussian Distribution)
+See **Kevin Murphy's Probabilistic Machine Learning: An Introduction** pp 358 for more details.
 
-If all features $X_d$ are continuous, we can use the Gaussian distribution to model the conditional distribution of $\mathbf{X}$ given $Y = k$.
+### Continuous Features (Gaussian Distribution)
 
+Here, the task is still the same, to find parameters $\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}$ to model the conditional distribution of $\mathbf{X}$ given $Y = k$,
+and consequently, recovering the matrix $\mathbf{M_3}$ defined in {eq}`eq:naive-bayes-m3`.
 
+In the case where (all) the features $X_d$ are continuous ($D$ number of features), 
+we can use the Gaussian distribution to model the conditional distribution of $\mathbf{X}$ given $Y = k$.
+
+$$
+\begin{align*}
+\mathbf{X} \mid Y = k \overset{\small{\text{i.i.d.}}}{\sim} \mathcal{N}(\theta_{\{\mathbf{X} \mid Y\}}) \quad \text{for } k = 1, 2, \cdots, K
+\end{align*}
+$$ (eq:naive-bayes-continuous-feature-1)
+
+where
+
+$$
+\begin{align*}
+\theta_{\{\mathbf{X} \mid Y\}} &= \begin{bmatrix} \theta_{1, 1} & \dots & \theta_{1, D} \\ \vdots & \ddots & \vdots \\ \theta_{K, 1} & \dots & \theta_{K, D} \end{bmatrix}_{K \times D} \\
+&= \begin{bmatrix} (\mu_{1, 1}, \sigma_{1, 1}^2) & \dots & (\mu_{1, D}, \sigma_{1, D}^2) \\ \vdots & \ddots & \vdots \\ (\mu_{K, 1}, \sigma_{K, 1}^2) & \dots & (\mu_{K, D}, \sigma_{K, D}^2) \end{bmatrix}_{K \times D}
+\end{align*}
+$$ (eq:naive-bayes-continuous-feature-2)
+
+$\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}$ is a $K \times D$ matrix, where each element
+$\theta_{k, d}$ is a tuple of the mean and variance of the
+Gaussian distribution modeling the conditional distribution of $X_d$ given $Y = k$.
+
+Then the (chained) multivariate Gaussian distribution of $\mathbf{X} = \begin{bmatrix} X_1 & \dots & X_D \end{bmatrix}$ given $Y = k$ is
+
+$$
+\begin{align*}
+\mathbb{P}\left(\mathbf{X} = \mathbf{x} \mid Y = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}\right) &= \prod_{d=1}^D \mathcal{N}(x_d \mid \mu_{k, d}, \sigma_{k, d}^2) \\
+\end{align*}
+$$ (eq:naive-bayes-continuous-feature-3)
+
+where $\mu_{k, d}$ and $\sigma_{k, d}^2$ are the mean and variance of the 
+Gaussian distribution modeling the conditional distribution of $X_d$ given $Y = k$.
 
 ---
 
