@@ -1012,33 +1012,90 @@ consisting of $N$ samples, we can estimate the parameters of the model by maximi
 ```{prf:definition} Likelihood Function of Naive Bayes
 :label: def:naive-bayes-likelihood
 
-Given **i.i.d.** random variables $\{\mathbf{X}^{(1)}, Y^{(1)}\}, \{\mathbf{X}^{(2)}, Y^{(2)}\}, \dots, \{\mathbf{X}^{(N)}, Y^{(N)}\}$,
-Since each sample is **i.i.d.**, we can write the joint probability distribution (likelihood function)
-as the product of the individual probabilities of each sample[^iid-likelihood]:
+Given **i.i.d.** random variables[^iid-tuple] $\left(\mathbf{X}^{(1)}, Y^{(1)}\right), \left(\mathbf{X}^{(2)}, Y^{(2)}\right), \dots, \left(\mathbf{X}^{(N)}, Y^{(N)}\right)$,
+we can write the likelihood function (joint probability distribution)
+as the product of the individual PDF of each sample[^iid-likelihood]:
 
 $$
 \begin{align*}
 \mathcal{L}(\boldsymbol{\theta} \mid \mathcal{D}) \overset{\mathrm{def}}{=} \mathbb{P}(\mathcal{D} ; \boldsymbol{\theta}) &= \mathbb{P}\left(\mathcal{D} ; \left\{\boldsymbol{\pi}, \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}} \right\}\right) \\
-&= \mathbb{P}\left(\{\mathbf{X}^{(1)}, Y^{(1)}\}, \{\mathbf{X}^{(2)}, Y^{(2)}\}, \dots, \{\mathbf{X}^{(N)}, Y^{(N)}\} ; \left\{\boldsymbol{\pi}, \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}} \right\}\right) \\
-&= \prod_{n=1}^N  \mathbb{P}\left(Y^{(n)}=k ; \boldsymbol{\pi}\right) \mathbb{P}\left(\mathrm{X}^{(n)} \mid Y^{(n)} = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}} \right)  \\
-&= \prod_{n=1}^N  \left\{\mathbb{P}\left(Y^{(n)}=k ; \boldsymbol{\pi}\right) \prod_{d=1}^D \mathbb{P}\left(X_d^{(n)} \mid Y^{(n)} = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}} \right) \right\}  \\
+&\overset{(a)}{=} \mathbb{P}\left(\left(\mathbf{X}^{(1)}, Y^{(1)}\right), \left(\mathbf{X}^{(2)}, Y^{(2)}\right), \dots, \left(\mathbf{X}^{(N)}, Y^{(N)}\right) ; \left\{\boldsymbol{\pi}, \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}} \right\}\right) \\
+&\overset{(b)}{=} \prod_{n=1}^N  \mathbb{P}\left(Y^{(n)}=k ; \boldsymbol{\pi}\right) \mathbb{P}\left(\mathrm{X}^{(n)} \mid Y^{(n)} = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}} \right)  \\
+&\overset{(c)}{=} \prod_{n=1}^N  \left\{\mathbb{P}\left(Y^{(n)}=k ; \boldsymbol{\pi}\right) \prod_{d=1}^D \mathbb{P}\left(X_d^{(n)} \mid Y^{(n)} = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}} \right) \right\}  \\
 \end{align*}
 $$ (eq:naive-bayes-likelihood-1)
+
+where each $\left(\mathbf{X}^{(n)}, Y^{(n)}\right)$ in equation $(a)$ is a sample from the dataset $\mathcal{D}$
+and can be expressed more verbosely as a joint distribution $\left(\mathbf{X}^{(n)}, Y^{(n)}\right) = \left(\mathbf{X}_1^{(n)}, \dots, \mathbf{X}_D^{(n)}, Y^{(n)}\right)$
+as in {eq}`eq:joint-distribution`.
+
+Equation $(b)$ is the product of the individual PDF of each sample, where the multiplicand is as in {eq}`eq:joint-distribution`.
+
+Equation $(c)$ is then a consequence of {eq}`eq:conditional-independence-naive-bayes-1`.
 ```
 
 Then we can maximize 
 
 $$
 \prod_{n=1}^N  \mathbb{P}\left(Y^{(n)}=k ; \boldsymbol{\pi}\right)
-$$
+$$ (eq:naive-bayes-likelihood-target)
 
 and
 
 $$
-\prod_{n=1}^N  \prod_{d=1}^D \mathbb{P}\left(X_d^{(n)} \mid Y^{(n)} = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}} \right)
+\prod_{n=1}^N  \prod_{d=1}^D \mathbb{P}\left(X_d^{(n)} \middle \vert Y^{(n)} = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}} \right)
+$$ (eq:naive-bayes-likelihood-feature)
+
+individually since the above can be decomposed[^decomposed-likelihood].
+
+```{prf:definition} Log Likelihood Function of Naive Bayes
+:label: def:naive-bayes-log-likelihood
+
+For numerical stability, we can take the log of the likelihood function:
+
+$$
+\begin{align*}
+\log \mathcal{L}(\boldsymbol{\theta} \mid \mathcal{D}) &= \log \mathbb{P}\left(\mathcal{D} ; \left\{\boldsymbol{\pi}, \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}} \right\}\right) \\
+\end{align*}
 $$
 
-individually since the above can be decomposed (**CITE MURPHY**).
+where the log of the product of the individual PDF of each sample is the sum of the log of each PDF. We
+will go into that later.
+```
+
+Stated formally, 
+
+```{prf:definition} Maximize Priors
+:label: def:naive-bayes-max-priors
+
+The notation for maximizing the prior probabilities is as follows:
+
+$$
+\begin{align*}
+\hat{\boldsymbol{\pi}} &= \arg \max_{\boldsymbol{\pi}} \mathcal{L}(\boldsymbol{\pi} ; \mathcal{D}) \\
+&= \arg \max_{\boldsymbol{\pi}} \prod_{n=1}^N  \mathbb{P}\left(Y^{(n)}=k ; \boldsymbol{\pi}\right) \\
+\end{align*}
+$$ (eq:naive-bayes-max-priors)
+
+A reminder that the shape of $\hat{\boldsymbol{\pi}}$ is $K \times 1$.
+```
+
+Similarly, we can maximize the likelihood function of the feature parameters:
+
+```{prf:definition} Maximize Feature Parameters
+:label: def:naive-bayes-max-feature-params
+
+The notation for maximizing the feature parameters is as follows:
+
+$$
+\begin{align*}
+\hat{\boldsymbol{\theta}}_{\{\mathbf{X} \mid Y\}} &= \arg \max_{\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}} \mathcal{L}(\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}} ; \mathcal{D}) \\
+&= \arg \max_{\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}} \prod_{n=1}^N  \prod_{d=1}^D \mathbb{P}\left(X_d^{(n)} \mid Y^{(n)} = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}} \right) \\
+\end{align*}
+$$ (eq:naive-bayes-max-feature-params)
+
+A reminder that the shape of $\hat{\boldsymbol{\theta}}_{\{\mathbf{X} \mid Y\}}$ is $K \times D$.
+```
 
 ### Estimating Priors
 
@@ -1053,84 +1110,50 @@ $$
 \end{align*}
 $$
 
-For instance, if we have a dataset with $N=100$ samples with $K=3$ classes, and $N_1 = 10$, $N_2 = 30$ and $N_3 = 60$, then we should have $\pi_1 = \frac{10}{100} = 0.1$, $\pi_2 = \frac{30}{100} = 0.3$ and $\pi_3 = \frac{60}{100} = 0.6$. This is just the relative frequency of each class.
+For instance, if we have a dataset with $N=100$ samples with $K=3$ classes, and $N_1 = 10$, $N_2 = 30$ and $N_3 = 60$, then we should have $\pi_1 = \frac{10}{100} = 0.1$, $\pi_2 = \frac{30}{100} = 0.3$ and $\pi_3 = \frac{60}{100} = 0.6$. This is just the relative frequency of each class and
+seems to be a sensible choice.
 
-It turns out our intuition matches the formal estimation process. 
+It turns out our intuition matches the formal estimation process derived from the maximum likelihood estimation (MLE) principle. 
 
 ### Maximum Likelihood Estimation for Priors (Categorical Distribution)
 
-Let $\mathcal{D} = \left \{ \left(\mathrm{X}^{(n)}, Y^{(n)} \right) \right \}_{n=1}^N = \left \{ \left(\mathrm{x}^{(n)}, y^{(n)} \right) \right \}_{n=1}^N$ be the dataset
-with $N$ samples and $D$ predictors. All samples are assumed to be **independent and identically distributed (i.i.d.)** from the unknown but fixed joint distribution 
-$\mathbb{D} = \mathbb{P}(\mathcal{X}, \mathcal{Y} ; \boldsymbol{\theta})$ where $\boldsymbol{\theta}$ is the parameter vector of the joint distribution. In other words, $\mathrm{X}^{(1)}, \mathrm{X}^{(2)}, \dots, \mathrm{X}^{(N)}$ are all i.i.d. from $\mathbb{D}$, as well as $\mathrm{Y}^{(1)}, \mathrm{Y}^{(2)}, \dots, \mathrm{Y}^{(N)}$.
+We have seen earlier that we can maximize the priors and likelihood (target and feature parameters) separately. 
 
-We denote the (joint) probability distribution of the observed data $\mathcal{D}$ as $\mathbb{P}(\mathcal{D} ; \boldsymbol{\theta})$.
-
-For example, if $D = 2$, and $X^{(n)}_1$ and $X^{(n)}_2$ are both multivariate Gaussian random variables, 
-with $\boldsymbol{\mu}_1$ and $\boldsymbol{\mu}_2$ being the mean vectors of the two distributions,
-and $\boldsymbol{\Sigma}_1$ and $\boldsymbol{\Sigma}_2$ being the covariance matrices of the two distributions;
-furthermore, $Y^{(n)}$ is a Bernoulli random variable with parameter $\pi$, then we have $\boldsymbol{\theta} = \begin{bmatrix} \boldsymbol{\mu}_1 & \boldsymbol{\Sigma}_1 & \boldsymbol{\mu}_2 & \boldsymbol{\Sigma}_2 & \pi \end{bmatrix}$.
-
-In this context, since we are estimating $\boldsymbol{\pi}$ but do not really know the parameters of $\mathrm{X}$ just yet, we can simplify the expression to just
-
-$$
-\mathbb{P}(\mathcal{D} ; \left(\boldsymbol{\theta}, \boldsymbol{\pi} \right))
-$$
-
-where $\boldsymbol{\pi} = \begin{bmatrix} \pi_1 & \pi_2 & \dots & \pi_K \end{bmatrix}$ and 
-$\boldsymbol{\theta}$ is the parameter vector of $\mathrm{X}$.
-
-Since each sample is **i.i.d.**, we can write the joint probability distribution as the product of the individual probabilities of each sample:
+Let's start with the priors. Let's state the expression from {eq}`eq:naive-bayes-max-priors` again,
 
 $$
 \begin{align*}
-\mathbb{P}(\mathcal{D} ; \left(\boldsymbol{\pi}, \boldsymbol{\theta} \right)) &= \prod_{n=1}^N \mathbb{P}(\mathrm{X}^{(n)}, Y^{(n)} ;  \left(\boldsymbol{\theta}, \boldsymbol{\pi} \right)) \\
-&= \prod_{n=1}^N \mathbb{P}(\mathrm{X}^{(n)} ; \boldsymbol{\theta}) \mathbb{P}(Y^{(n)} ; \boldsymbol{\pi})
+\hat{\boldsymbol{\pi}} &= \arg \max_{\boldsymbol{\pi}} \mathcal{L}(\boldsymbol{\pi} ; \mathcal{D}) \\
+&= \arg \max_{\boldsymbol{\pi}} \prod_{n=1}^N  \mathbb{P}\left(Y^{(n)}=k ; \boldsymbol{\pi}\right) \\
 \end{align*}
-$$
+$$ (eq:naive-bayes-max-priors-repeated)
 
-There should be no confusion that both $\mathrm{X}$ and $\mathrm{Y}$ are included in the joint distribution,
-since the dataset $\mathcal{D}$ is a joint distribution of $\mathrm{X}$ and $\mathrm{Y}$, and not just $\mathrm{X}$(?) (Verify this.)
-
-Now, we are only interested in the term that depends on $\boldsymbol{\pi}$, so we can drop the term that depends on $\boldsymbol{\theta}$:
+We need to write the multiplicand in {eq}`eq:naive-bayes-max-priors-repeated` in terms of
+the PDF of the Category distribution, as decribed in {eq}`eq:categorical-distribution-bishop`.
+Extending from {eq}`eq:naive-bayes-max-priors-repeated`, we have:
 
 $$
 \begin{align*}
-\mathbb{P}(\mathcal{D} ; \boldsymbol{\pi}) &= \prod_{n=1}^N \mathbb{P}(Y^{(n)} ; \boldsymbol{\pi}) \\
+\hat{\boldsymbol{\pi}} &= \arg \max_{\boldsymbol{\pi}} \mathcal{L}(\boldsymbol{\pi} ; \mathcal{D}) \\
+&= \arg \max_{\boldsymbol{\pi}} \prod_{n=1}^N  \mathbb{P}\left(Y^{(n)}=k ; \boldsymbol{\pi}\right) \\
+&\overset{\mathrm{(a)}}{=} \arg \max_{\boldsymbol{\pi}} \prod_{n=1}^N  \left(\prod_{k=1}^K \pi_k^{y^{(n)}_k}\right) \\
 \end{align*}
-$$
-
-The **likelihood function** is defined as
-
-$$
-\begin{align*}
-\mathcal{L}(\left \{ \boldsymbol{\theta}, \boldsymbol{\pi} \right \} ; \mathcal{D}) &\overset{\mathrm{def}}{=} \mathbb{P}(\mathcal{D} ; \left(\boldsymbol{\theta}, \boldsymbol{\pi} \right)) \\
-&= \prod_{n=1}^N \mathbb{P}(\mathrm{X}^{(n)}, Y^{(n)} ;  \left(\boldsymbol{\theta}, \boldsymbol{\pi} \right)) \\
-\end{align*}
-$$
-
-but since we are only interested in the term that depends on $\boldsymbol{\pi}$, our likelihood function is
-
-$$
-\begin{align*}
-\mathcal{L}(\boldsymbol{\pi} ; \mathcal{D}) &\overset{\mathrm{def}}{=} \mathbb{P}(\mathcal{D} ; \boldsymbol{\pi}) \\
-&= \prod_{n=1}^N \mathbb{P}(Y^{(n)} ; \boldsymbol{\pi}) \\
-&\overset{\mathrm{(a)}}{=} \prod_{n=1}^N \left(\prod_{k=1}^K \pi_k^{y^{(n)}_k} \right) \\
-\end{align*}
-$$
+$$ (eq:naive-bayes-max-priors-2)
 
 where $\left(\prod_{k=1}^K \pi_k^{y^{(n)}_k} \right)$ in equation $(a)$ is a consequence
-of the definition of the Category distribution.
+of the definition of the Category distribution in {prf:ref}`categorical-multinomial-distribution`.
 
-Subsequently, we can take the log of the likelihood function to get the **log-likelihood function** (for the ease of computation):
+Subsequently, knowing maximizing the log likelihood is the same as maximizing the likelihood, we have:
 
 $$
 \begin{align*}
-\mathcal{L}(\boldsymbol{\pi} ; \mathcal{D}) &\overset{\mathrm{def}}{=} \log \mathcal{L}(\boldsymbol{\pi} ; \mathcal{D}) \\
-&= \sum_{n=1}^N \log \left(\prod_{k=1}^K \pi_k^{y^{(n)}_k} \right) \\
-&\overset{(b)}{=} \sum_{n=1}^N \sum_{k=1}^K y^{(n)}_k \log \pi_k \\
-&\overset{(c)}{=} \sum_{k=1}^K N_k \log \pi_k \\
+\hat{\boldsymbol{\pi}} &= \arg \max_{\boldsymbol{\pi}} \mathcal{L}(\boldsymbol{\pi} ; \mathcal{D}) \\
+&= \arg \max_{\boldsymbol{\pi}} \log \mathcal{L}(\boldsymbol{\pi} ; \mathcal{D}) \\
+&\overset{\mathrm{(b)}}{=} \arg \max_{\boldsymbol{\pi}} \sum_{n=1}^N \log \left(\prod_{k=1}^K \pi_k^{y^{(n)}_k} \right) \\
+&\overset{\mathrm{(c)}}{=} \arg \max_{\boldsymbol{\pi}} \sum_{n=1}^N \sum_{k=1}^K y^{(n)}_k \log \pi_k \\
+&\overset{\mathrm{(d)}}{=} \arg \max_{\boldsymbol{\pi}} \sum_{k=1}^K N_k \log \pi_k \\
 \end{align*}
-$$
+$$ (eq:naive-bayes-max-priors-3)
 
 where $N_k$ is the number of samples that belong to the $k$-th category.
 
@@ -1140,7 +1163,9 @@ where $N_k$ is the number of samples that belong to the $k$-th category.
 We note to ourselves that we are reusing, and hence abusing the notation $\mathcal{L}$ for the log-likelihood function to be the same as the likelihood function, this is just for the ease of re-defining a new symbol for the log-likelihood function, $\log \mathcal{L}$.
 ```
 
-Equation $(c)$ is derived by expanding equation $(b)$,
+Equation $(b)$ is derived because placing the logarithm outside the product is equivalent to summing the logarithms of the terms in the product.
+
+Equation $(d)$ is derived by expanding equation $(c)$,
 
 $$
 \begin{align*}
@@ -1149,16 +1174,16 @@ $$
 &+ y^{(2)}_1 \log \pi_1 + y^{(2)}_2 \log \pi_2 + \dots + y^{(2)}_K \log \pi_K \\
 &+ \qquad \vdots \qquad \\
 &+ y^{(N)}_1 \log \pi_1 + y^{(N)}_2 \log \pi_2 + \dots + y^{(N)}_K \log \pi_K \\
-&\overset{(d)}{=} \left( y^{(1)}_1 + y^{(2)}_1 + \dots + y^{(N)}_1 \right) \log \pi_1 \\
+&\overset{(e)}{=} \left( y^{(1)}_1 + y^{(2)}_1 + \dots + y^{(N)}_1 \right) \log \pi_1 \\
 &+ \left( y^{(1)}_2 + y^{(2)}_2 + \dots + y^{(N)}_2 \right) \log \pi_2 \\
 &+ \qquad \vdots \qquad \\
 &+ \left( y^{(1)}_K + y^{(2)}_K + \dots + y^{(N)}_K \right) \log \pi_K \\
-&\overset{(e)}{=} N_1 \log \pi_1 + N_2 \log \pi_2 + \dots + N_K \log \pi_K \\
+&\overset{(f)}{=} N_1 \log \pi_1 + N_2 \log \pi_2 + \dots + N_K \log \pi_K \\
 &= \sum_{k=1}^K N_k \log \pi_k \\
 \end{align*}
 $$
 
-where $(d)$ is derived by summing each column, and $N_k = y^{(1)}_k + y^{(2)}_k + \dots + y^{(N)}_k$
+where $(e)$ is derived by summing each column, and $N_k = y^{(1)}_k + y^{(2)}_k + \dots + y^{(N)}_k$
 is nothing but the number of samples that belong to the $k$-th category. One just need to recall that
 if we have say 6 samples of class $(0, 1, 2, 0, 1, 1)$ where $K=3$, then the one-hot encoded
 representation of the samples will be 
@@ -1184,16 +1209,15 @@ Now we are finally ready to solve the estimation (optimization) problem for $\bo
 
 $$
 \begin{align*}
-\hat{\boldsymbol{\pi}} &= \underset{\boldsymbol{\pi}}{\mathrm{argmax}} ~~ \mathcal{L}(\boldsymbol{\pi} ; \mathcal{D}) \\
-&= \underset{\boldsymbol{\pi}}{\mathrm{argmax}} ~~ \sum_{k=1}^K N_k \log \pi_k \\
+\hat{\boldsymbol{\pi}} &= \underset{\boldsymbol{\pi}}{\mathrm{argmax}} ~~ \sum_{k=1}^K N_k \log \pi_k \\
 \end{align*}
-$$
+$$ (eq:naive-bayes-max-priors-4)
 
 subject to the constraint that 
 
 $$
 \sum_{k=1}^K \pi_k = 1
-$$
+$$ (eq:naive-bayes-max-priors-constraint)
 
 which is just saying the probabilities must sum up to 1.
 
@@ -1243,22 +1267,30 @@ $$
 \end{align*}
 $$
 
-which is now an unconstrained optimization problem. We can now solve it by setting the gradient vector of the Lagrangian function $\nabla \mathcal{L}_\lambda(\boldsymbol{\pi}, \lambda ; \mathcal{D}) = 0$ with respect to $\boldsymbol{\pi}$ and $\lambda$, as follows,
+which is now an unconstrained optimization problem. 
+
+We can now solve it by setting the gradient vector of the Lagrangian function 
+
+$$
+\nabla \mathcal{L}_\lambda(\boldsymbol{\pi}, \lambda ; \mathcal{D}) = 0
+$$ (eq:naive-bayes-max-priors-lagrangian-1)
+
+with respect to $\boldsymbol{\pi}$ and $\lambda$, as follows,
 
 $$
 \begin{align*}
 \nabla \mathcal{L}_\lambda(\boldsymbol{\pi}, \lambda ; \mathcal{D}) &\overset{\mathrm{def}}{=} \frac{\partial \mathcal{L}_\lambda(\boldsymbol{\pi}, \lambda ; \mathcal{D})}{\partial \boldsymbol{\pi}} = 0 \quad \text{and} \quad \frac{\partial \mathcal{L}_\lambda(\boldsymbol{\pi}, \lambda ; \mathcal{D})}{\partial \lambda} = 0 \\
 &\iff \frac{\partial}{\partial \boldsymbol{\pi}} \left( \sum_{k=1}^K N_k \log \pi_k - \lambda \left( \sum_{k=1}^K \pi_k - 1 \right) \right) = 0 \quad \text{and} \quad \frac{\partial \mathcal{L}_\lambda(\boldsymbol{\pi}, \lambda ; \mathcal{D})}{\partial \lambda} = 0 \\
 \\
-&\iff \begin{bmatrix} \frac{\partial \mathcal{L}}{\partial \pi_1} \\ \vdots \\ \frac{\partial \mathcal{L}}{\partial \pi_K} \\ \frac{\partial \mathcal{L}}{\partial \lambda} \end{bmatrix} = \begin{bmatrix} 0 \\ \vdots \\ 0 \\ 0 \end{bmatrix} \\
-&\iff \begin{bmatrix} \frac{\partial}{\partial \pi_1} \left( N_1 \log \pi_1 - \lambda \left( \pi_1 - 1 \right) \right) \\ \vdots \\ \frac{\partial}{\partial \pi_K} \left( N_K \log \pi_K - \lambda \left( \pi_K - 1 \right) \right) \\ \frac{\partial \mathcal{L}_\lambda(\boldsymbol{\pi}, \lambda ; \mathcal{D})}{\partial \lambda} \end{bmatrix} = \begin{bmatrix} 0 \\ \vdots \\ 0 \\ 0 \end{bmatrix} \\
-&\iff \begin{bmatrix} \frac{N_1}{\pi_1} - \lambda \\ \vdots \\ \frac{N_K}{\pi_K} - \lambda \\ \sum_{k=1}^K \pi_k - 1 \end{bmatrix} = \begin{bmatrix} 0 \\ \vdots \\ 0 \\ 0 \end{bmatrix} \\
+&\iff \begin{bmatrix} \frac{\partial \mathcal{L}_\lambda}{\partial \pi_1} \\ \vdots \\ \frac{\partial \mathcal{L}_\lambda}{\partial \pi_K} \end{bmatrix} = \begin{bmatrix} 0 \\ \vdots \\ 0 \end{bmatrix} \quad \text{and} \quad \frac{\partial \mathcal{L}_\lambda(\boldsymbol{\pi}, \lambda ; \mathcal{D})}{\partial \lambda} = 0 \\
+&\iff \begin{bmatrix} \frac{\partial}{\partial \pi_1} \left( N_1 \log \pi_1 - \lambda \left( \pi_1 - 1 \right) \right) \\ \vdots \\ \frac{\partial}{\partial \pi_K} \left( N_K \log \pi_K - \lambda \left( \pi_K - 1 \right) \right) \end{bmatrix} = \begin{bmatrix} 0 \\ \vdots \\ 0 \end{bmatrix} \quad \text{and} \quad \frac{\partial \mathcal{L}_\lambda(\boldsymbol{\pi}, \lambda ; \mathcal{D})}{\partial \lambda} = 0 \\
+&\iff \begin{bmatrix} \frac{N_1}{\pi_1} - \lambda \\ \vdots \\ \frac{N_K}{\pi_K} - \lambda \end{bmatrix} = \begin{bmatrix} 0 \\ \vdots \\ 0 \end{bmatrix} \quad \text{and} \quad \sum_{k=1}^K \pi_k - 1 = 0 \\
 \end{align*}
-$$
+$$ (eq:naive-bayes-max-priors-lagrangian-2)
 
 The reason we can unpack $\frac{\partial}{\partial \pi_k}\left( \sum_{k=1}^K N_k \log \pi_k - \lambda \left( \sum_{k=1}^K \pi_k - 1 \right) \right)$ as $\frac{\partial}{\partial \pi_k} \left( N_k \log \pi_k - \lambda \left( \pi_k - 1 \right) \right)$ is because we are dealing with partial derivatives, so other terms other than $\pi_k$ are constant. 
 
-Finally, we have a system of equations for each $\pi_k$ and if we can solve for $\pi_k$ for each $k$, we can then find the best estimate of $\boldsymbol{\pi}$. It turns out we have to find $\lambda$ first, and this can be solved by setting $\sum_{k=1}^K \pi_k - 1 = 0$ and solving for $\lambda$, which is the last equation in the system of equations above. We first express each $\pi_k$ in terms of $\lambda$,
+Finally, we have a system of equations for each $\pi_k$ and if we can solve for $\pi_k$ for each $k$, we can then find the best estimate of $\boldsymbol{\pi}$. It turns out to solve for $\pi_k$, we have to find $\lambda$ first, and this can be solved by setting $\sum_{k=1}^K \pi_k - 1 = 0$ and solving for $\lambda$, which is the last equation in the system of equations above. We first express each $\pi_k$ in terms of $\lambda$,
 
 $$
 \begin{align*}
@@ -1284,17 +1316,14 @@ $$
 and therefore, we can now solve for $\pi_k$,
 
 $$
-\boldsymbol{\hat{\pi}} = \left .
-  \begin{cases}
-    \pi_1 = \frac{N_1}{N} \\
-    \pi_2 = \frac{N_2}{N} \\
-    \vdots \quad \vdots \quad \vdots \\
-    \pi_K = \frac{N_K}{N} \\
-  \end{cases}
-  \right\} \implies \pi_k = \frac{N_k}{N} \quad \text{for} \quad k = 1, 2, \ldots, K
+\boldsymbol{\hat{\pi}} = \begin{bmatrix} 
+\pi_1 = \frac{N_1}{N} \\ \pi_2 = \frac{N_2}{N} \\ \vdots \\ \pi_K = \frac{N_K}{N} 
+\end{bmatrix}_{K \times 1}
+\implies \pi_k = \frac{N_k}{N} \quad \text{for} \quad k = 1, 2, \ldots, K
 $$
 
-We conclude that the maximum likelihood estimate of $\boldsymbol{\pi}$ is $\boldsymbol{\pi} = \left( \frac{N_1}{N}, \frac{N_2}{N}, \ldots, \frac{N_K}{N} \right)$, which is the same as the empirical relative frequency of each class in the training data. This coincides with our intuition.
+We conclude that the maximum likelihood estimate of $\boldsymbol{\pi}$
+is the same as the empirical relative frequency of each class in the training data. This coincides with our intuition.
 
 For completeness of expression,
 
@@ -1304,7 +1333,7 @@ $$
 &= \begin{bmatrix} \hat{\pi}_1 \\ \vdots \\ \hat{\pi}_K \end{bmatrix} \\
 &= \begin{bmatrix} \frac{N_1}{N} \\ \vdots \\ \frac{N_K}{N} \end{bmatrix}
 \end{align*}
-$$
+$$ (eq:naive-bayes-max-priors-final)
 
 
 
@@ -1324,4 +1353,6 @@ $$
 [^chain-rule-of-probability]: [Chain Rule of Probability](https://en.wikipedia.org/wiki/Chain_rule_(probability))
 [^conditional-independence]: [Conditional Independence](https://en.wikipedia.org/wiki/Conditional_independence)
 [^kdparameters]: Probablistic Machine Learning: An Introduction, Section 9.3, pp 328
-[^iid-likelihood]: Refer to page 470 of {cite}`chan_2021`.
+[^iid-likelihood]: Refer to page 470 of {cite}`chan_2021`. Note that we cannot write it as a product if the data is not independent and identically distributed.
+[^iid-tuple]: $\left(\mathbf{X}^{(n)}, Y^{(1)}\right)$ is written as a tuple, when in fact they can be considered 1 single variable.
+[^decomposed-likelihood]: Cite Kevin Murphy and Bishop.
