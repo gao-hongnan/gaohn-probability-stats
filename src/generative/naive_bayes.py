@@ -103,7 +103,7 @@ class NaivesBayesClassifier(BaseEstimator):
     def _calculate_posterior(self, x):  # x is vector
         self.likelihood = np.ones(
             self.num_classes
-        )  # TODO: must be ones if not will be zero as I did *= later
+        )  # TODO: must be ones if not will be zero as I perform *= later
         for i, c in enumerate(range(self.num_classes)):
             for j, feature in enumerate(x):
                 mean, var = (
