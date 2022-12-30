@@ -905,59 +905,126 @@ $$ (eq:naive-bayes-continuous-feature-3)
 where $\mu_{k, d}$ and $\sigma_{k, d}^2$ are the mean and variance of the 
 Gaussian distribution modeling the conditional distribution of $X_d$ given $Y = k$.
 
----
+### Mixed Features (Discrete and Continuous)
 
-See **KEVIN MURPHY pp 358 for more details**.
+So far we have assumed that each feature $X_d$ is either all discrete, or all continuous. This 
+need not be the case, and may not always be the case. In reality, we may have a mixture of both.
 
-For simplicity sake, we assume that all features $X_d$ are of the same type, either all binary or all continuous.
-In reality, this may not need to be the case.
+For example, if $X_1$ corresponds to the smoking status of a person (i.e. whether they smoke or not), 
+then this feature is binary, and can be modeled by a Bernoulli distribution. 
+On the other hand, if $X_2$ corresponds to the weight of a person, then this feature is continuous, and can be modeled by a Gaussian distribution.
+The nice thing is since within each class $k$, the features $X_d$ are independent of each other, we can model each feature $X_d$ by its own distribution.
 
-This section's content is adapted from [Machine Learning from Scratch](https://dafriedman97.github.io/mlbook/content/c4/concept.html).
-
-
-
-In general, we assume all samples $X_n$ come from the same *family* of distributions. This means that for samples $n = 1$ to $n = N$, and class $k = 1$ to $k = K$, we have the following:
-
-$$
-\begin{align*}
-\mathrm{X}_n|(Y_n = 1) &\sim \text{Distribution}(\boldsymbol{\theta}_1) \\
-\mathrm{X}_n|(Y_n = 2) &\sim \text{Distribution}(\boldsymbol{\theta}_2) \\
-\vdots & \quad \vdots \\
-\mathrm{X}_n|(Y_n = K) &\sim \text{Distribution}(\boldsymbol{\theta}_K)
-\end{align*}
-$$
-
-where $\boldsymbol{\theta}_k$ is the parameter vector of $\mathrm{X}_n$ conditioned on the $k$-th class. For instance, if we are using a Multivariate Gaussian distribution, then $\boldsymbol{\theta}_k = \begin{bmatrix} \boldsymbol{\mu_k} & \boldsymbol{\Sigma_k} \end{bmatrix}$.
-
-However, it is possible for the individual variables within the random vector $\mathrm{X}_n$ to follow different distributions. For instance, if $\mathrm{X}_n = \begin{bmatrix} X_{n1} & X_{n2} \end{bmatrix}^\top$, we might have
+So, carrying over the example above, we have,
 
 $$
 \begin{align*}
-X_{n1}|(Y_n = k) &\sim \text{Binomial}(n, p_{k}) \\
-X_{n2}|(Y_n = k) &\sim \mathcal{N}(\boldsymbol{\mu_k}, \boldsymbol{\Sigma_k})
+X_1 \mid Y = k &\overset{\small{\text{i.i.d.}}}{\sim} \text{Bernoulli}(\pi_{\{X_1 \mid Y=k\}}) \\
+X_2 \mid Y = k &\overset{\small{\text{i.i.d.}}}{\sim} \text{Gaussian}(\mu_{\{X_2 \mid Y=k\}}, \sigma_{\{X_2 \mid Y=k\}}^2)
+\end{align*}
+$$ (eq:naive-bayes-mixed-feature-1)
+
+and subsequently, the chained PDF is
+
+$$
+\begin{align*}
+\mathbb{P}\left(X_1 = x_1, X_2 = x_2 \mid Y = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}\right) &= \prod_{d=1}^D \mathbb{P}\left(X_d = x_d \mid Y = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}\right) \\
+&= \mathbb{P}\left(X_1 = x_1 \mid Y = k ; \boldsymbol{\pi}_{\{X_1 \mid Y\}}\right) \mathbb{P}\left(X_2 = x_2 \mid Y = k ; \boldsymbol{\theta}_{\{X_2 \mid Y\}}\right) \\
+&= \pi_{\{X_1 \mid Y=k\}}^{x_1} (1 - \pi_{\{X_1 \mid Y=k\}})^{1 - x_1} \mathcal{N}(x_2 \mid \mu_{\{X_2 \mid Y=k\}}, \sigma_{\{X_2 \mid Y=k\}}^2)
 \end{align*}
 $$
- 
-The machine learning fitting process is then to estimate the parameters of these distributions. More concretely, we need to estimate $\boldsymbol{\pi}_k$ for $k = 1, \dots, K$, as well as $\boldsymbol{\theta}_k$ for $k = 1, \dots, K$ for what might be the possible distributions of $\mathrm{X}_n \mid Y_n$. In this example above, we would need to estimate $p_k$, $\boldsymbol{\mu}_k$ and $\boldsymbol{\Sigma}_k$ for $k = 1, \dots, K$ for the Binomial and Multivariate Gaussian distributions.
 
-Once that's done, we can estimate $\mathbb{P}(Y_n = k)$ and $\mathbb{P}(\mathrm{X}_n \mid Y_n = k)$ for $k = 1, \dots, K$. We can then use these estimates to make predictions about the class of a new sample $\mathrm{X}_n$ using Bayes' rule in equation {eq}`eq:argmax-naive-bayes-2`.
+See more details in [Machine Learning from Scratch](https://dafriedman97.github.io/mlbook/content/c4/concept.html).
 
 ## Model Fitting
+
+We have so far laid out the model prediction process, the implicit and explicit assumptions, as well as
+the model parameters.
+
+Now, we need to figure out how to fit the model parameters to the data. After all, once we
+find the model parameters that best fit the data, we can use the model to make predictions
+using matrix $\mathbf{M_1}$ and $\mathbf{M_3}$ as defined in {prf:ref}`naive-bayes-inference-algorithm`.
+
+### Fitting Algorithm
+
+```{prf:algorithm} Naive Bayes Estimation Algorithm
+:label: prf:naive-bayes-estimation-algorithm
+
+For each entry in matrix $\mathbf{M_1}$, we seek to find its corresponding parameter matrix $\boldsymbol{\pi}$:
+
+$$
+\begin{align*}
+\boldsymbol{\pi} &= \begin{bmatrix} \pi_1 \\ \vdots \\ \pi_K \end{bmatrix}_{K \times 1} \\
+\end{align*}
+$$ (eq:naive-bayes-estimation-1)
+
+where $\pi_k$ is the probability of class $k$.
+
+For each entry in matrix $\mathbf{M_3}$, we seek to find its corresponding parameter matrix $\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}$:
+
+$$
+\begin{align*}
+\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}} &= \begin{bmatrix} \boldsymbol{\theta}_{\{\mathbf{X} \mid Y=1\}} \\ \vdots \\ \boldsymbol{\theta}_{\{\mathbf{X} \mid Y=K\}} \end{bmatrix}_{K \times D} \\
+&= \begin{bmatrix} \theta_{\{X_1 \mid Y=1\}} & \cdots & \theta_{\{X_D \mid Y=1\}} \\ \vdots & \ddots & \vdots \\ \theta_{\{X_1 \mid Y=K\}} & \cdots & \theta_{\{X_D \mid Y=K\}} \end{bmatrix}_{K \times D} \\
+&= \begin{bmatrix} \theta_{11} & \cdots & \theta_{1D} \\ \vdots & \ddots & \vdots \\ \theta_{K1} & \cdots & \theta_{KD} \end{bmatrix}_{K \times D} \\
+\end{align*}
+$$ (eq:naive-bayes-estimation-2)
+
+where $\theta_{kd}$ is the probability of feature $X_d$ given class $k$.
+
+Both matrices $\boldsymbol{\pi}$ and $\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}$ are estimated by maximizing the likelihood of the data,
+using the Maximum Likelihood Estimation (MLE) method.
+```
+
+### Maximum Likelihood Estimation
+
+First, read chapter 8.1 of {cite}`chan_2021` for a refresher on MLE.
+
+```{prf:remark} Univariate Maximum Likelihood Estimation
+:label: remark-univariate-mle
+
+In [LDA](https://dafriedman97.github.io/mlbook/content/c4/concept.html#linear-discriminative-analysis-lda),
+ $\mathbf{X} \mid Y=k$, the distribution of the features $\mathbf{X}$ conditioned on $Y=k$, has no 
+assumption of conditional independence. Therefore, we need to estimate the parameters of
+$\mathbf{X} = \{\mathbf{X}_1, \dots, \mathbf{X}_D\}$ jointly.
+
+More concretely,
+
+$$
+\begin{align*}
+\mathbf{X} \mid Y = k \overset{\text{i.i.d.}}{\sim} \mathcal{N}\left(\boldsymbol{\mu}_{\{X \mid Y=k\}}, \boldsymbol{\Sigma}_{\{X \mid Y=k\}}\right) \quad \forall k \in \{1, \dots, K\}
+\end{align*}
+$$
+
+where $\boldsymbol{\mu}_{\{X \mid Y=k\}}$ is the mean vector of $\mathbf{X}$ given $Y=k$, and $\boldsymbol{\Sigma}_{\{X \mid Y=k\}}$ is the covariance matrix of $\mathbf{X}$ given $Y=k$.
+
+However, in the case of Naive Bayes, the assumption of conditional independence allows us to estimate the parameters of $\mathbf{X} = \{\mathbf{X}_1, \dots, \mathbf{X}_D\}$ univariately, 
+conditional on $Y=k$.
+
+Looking at expression {eq}`eq:naive-bayes-estimation-2`, we can see that each element 
+is indeed univariate, and we can estimate the parameters of each element univariately.
+```
 
 Everything we have talked about is just 1 single sample, and that won't work in the realm of 
 estimating the best parameters that fit the data. Since we are given a dataset $\mathcal{D}$
 consisting of $N$ samples, we can estimate the parameters of the model by maximizing the likelihood of the data.
 
-Since each sample is **i.i.d.**, we can write the joint probability distribution as the product of the individual probabilities of each sample:
+```{prf:definition} Likelihood Function of Naive Bayes
+:label: def:naive-bayes-likelihood
+
+Given **i.i.d.** random variables $\{\mathbf{X}^{(1)}, Y^{(1)}\}, \{\mathbf{X}^{(2)}, Y^{(2)}\}, \dots, \{\mathbf{X}^{(N)}, Y^{(N)}\}$,
+Since each sample is **i.i.d.**, we can write the joint probability distribution (likelihood function)
+as the product of the individual probabilities of each sample[^iid-likelihood]:
 
 $$
 \begin{align*}
-\mathbb{P}(\mathcal{D} ; \boldsymbol{\theta}) &= \mathbb{P}\left(\mathcal{D} ; \left\{\boldsymbol{\pi}, \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}} \right\}\right) \\
+\mathcal{L}(\boldsymbol{\theta} \mid \mathcal{D}) \overset{\mathrm{def}}{=} \mathbb{P}(\mathcal{D} ; \boldsymbol{\theta}) &= \mathbb{P}\left(\mathcal{D} ; \left\{\boldsymbol{\pi}, \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}} \right\}\right) \\
 &= \mathbb{P}\left(\{\mathbf{X}^{(1)}, Y^{(1)}\}, \{\mathbf{X}^{(2)}, Y^{(2)}\}, \dots, \{\mathbf{X}^{(N)}, Y^{(N)}\} ; \left\{\boldsymbol{\pi}, \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}} \right\}\right) \\
 &= \prod_{n=1}^N  \mathbb{P}\left(Y^{(n)}=k ; \boldsymbol{\pi}\right) \mathbb{P}\left(\mathrm{X}^{(n)} \mid Y^{(n)} = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}} \right)  \\
 &= \prod_{n=1}^N  \left\{\mathbb{P}\left(Y^{(n)}=k ; \boldsymbol{\pi}\right) \prod_{d=1}^D \mathbb{P}\left(X_d^{(n)} \mid Y^{(n)} = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}} \right) \right\}  \\
 \end{align*}
-$$
+$$ (eq:naive-bayes-likelihood-1)
+```
 
 Then we can maximize 
 
@@ -1257,3 +1324,4 @@ $$
 [^chain-rule-of-probability]: [Chain Rule of Probability](https://en.wikipedia.org/wiki/Chain_rule_(probability))
 [^conditional-independence]: [Conditional Independence](https://en.wikipedia.org/wiki/Conditional_independence)
 [^kdparameters]: Probablistic Machine Learning: An Introduction, Section 9.3, pp 328
+[^iid-likelihood]: Refer to page 470 of {cite}`chan_2021`.
