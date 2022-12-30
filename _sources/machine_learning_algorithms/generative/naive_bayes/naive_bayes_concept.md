@@ -867,6 +867,7 @@ is modeled by a categorical distribution, thereby recovering each element of $\m
 
 See **Kevin Murphy's Probabilistic Machine Learning: An Introduction** pp 358 for more details.
 
+(continuous-features-gaussian-distribution)=
 ### Continuous Features (Gaussian Distribution)
 
 Here, the task is still the same, to find parameters $\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}$ to model the conditional distribution of $\mathbf{X}$ given $Y = k$,
@@ -894,13 +895,22 @@ $\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}$ is a $K \times D$ matrix, where ea
 $\theta_{k, d}$ is a tuple of the mean and variance of the
 Gaussian distribution modeling the conditional distribution of $X_d$ given $Y = k$.
 
+To be more precise, each element in the matrix $\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}$ is a tuple of the mean and variance of the
+Gaussian distribution modeling the conditional distribution of $X_d$ given $Y = k$.
+
+$$
+\begin{align*}
+X_d \mid Y = k &\overset{\small{\text{i.i.d.}}}{\sim} \mathcal{N}(\mu_{k, d}, \sigma_{k, d}^2) \quad \text{for } k = 1, 2, \cdots, K
+\end{align*}
+$$ (eq:naive-bayes-continuous-feature-3)
+
 Then the (chained) multivariate Gaussian distribution of $\mathbf{X} = \begin{bmatrix} X_1 & \dots & X_D \end{bmatrix}$ given $Y = k$ is
 
 $$
 \begin{align*}
 \mathbb{P}\left(\mathbf{X} = \mathbf{x} \mid Y = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}\right) &= \prod_{d=1}^D \mathcal{N}(x_d \mid \mu_{k, d}, \sigma_{k, d}^2) \\
 \end{align*}
-$$ (eq:naive-bayes-continuous-feature-3)
+$$ (eq:naive-bayes-continuous-feature-4)
 
 where $\mu_{k, d}$ and $\sigma_{k, d}^2$ are the mean and variance of the 
 Gaussian distribution modeling the conditional distribution of $X_d$ given $Y = k$.
@@ -1021,7 +1031,7 @@ $$
 \mathcal{L}(\boldsymbol{\theta} \mid \mathcal{D}) \overset{\mathrm{def}}{=} \mathbb{P}(\mathcal{D} ; \boldsymbol{\theta}) &= \mathbb{P}\left(\mathcal{D} ; \left\{\boldsymbol{\pi}, \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}} \right\}\right) \\
 &\overset{(a)}{=} \mathbb{P}\left(\left(\mathbf{X}^{(1)}, Y^{(1)}\right), \left(\mathbf{X}^{(2)}, Y^{(2)}\right), \dots, \left(\mathbf{X}^{(N)}, Y^{(N)}\right) ; \left\{\boldsymbol{\pi}, \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}} \right\}\right) \\
 &\overset{(b)}{=} \prod_{n=1}^N  \mathbb{P}\left(Y^{(n)}=k ; \boldsymbol{\pi}\right) \mathbb{P}\left(\mathrm{X}^{(n)} \mid Y^{(n)} = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}} \right)  \\
-&\overset{(c)}{=} \prod_{n=1}^N  \left\{\mathbb{P}\left(Y^{(n)}=k ; \boldsymbol{\pi}\right) \prod_{d=1}^D \mathbb{P}\left(X_d^{(n)} \mid Y^{(n)} = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}} \right) \right\}  \\
+&\overset{(c)}{=} \prod_{n=1}^N  \left\{\mathbb{P}\left(Y^{(n)}=k ; \boldsymbol{\pi}\right) \prod_{d=1}^D \mathbb{P}\left(X_d^{(n)} \mid Y^{(n)} = k ; \boldsymbol{\theta}_{k, d}\right) \right\} \\
 \end{align*}
 $$ (eq:naive-bayes-likelihood-1)
 
@@ -1043,7 +1053,7 @@ $$ (eq:naive-bayes-likelihood-target)
 and
 
 $$
-\prod_{n=1}^N  \prod_{d=1}^D \mathbb{P}\left(X_d^{(n)} \middle \vert Y^{(n)} = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}} \right)
+\prod_{n=1}^N  \prod_{d=1}^D \mathbb{P}\left(X_d^{(n)} \middle \vert Y^{(n)} = k ; \boldsymbol{\theta}_{k, d}\right)
 $$ (eq:naive-bayes-likelihood-feature)
 
 individually since the above can be decomposed[^decomposed-likelihood].
@@ -1090,7 +1100,7 @@ The notation for maximizing the feature parameters is as follows:
 $$
 \begin{align*}
 \hat{\boldsymbol{\theta}}_{\{\mathbf{X} \mid Y\}} &= \arg \max_{\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}} \mathcal{L}(\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}} ; \mathcal{D}) \\
-&= \arg \max_{\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}} \prod_{n=1}^N  \prod_{d=1}^D \mathbb{P}\left(X_d^{(n)} \mid Y^{(n)} = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}} \right) \\
+&= \arg \max_{\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}} \prod_{n=1}^N  \prod_{d=1}^D \mathbb{P}\left(X_d^{(n)} \mid Y^{(n)} = k ; \boldsymbol{\theta}_{k, d}\right) \\
 \end{align*}
 $$ (eq:naive-bayes-max-feature-params)
 
@@ -1119,7 +1129,8 @@ It turns out our intuition matches the formal estimation process derived from th
 
 We have seen earlier that we can maximize the priors and likelihood (target and feature parameters) separately. 
 
-Let's start with the priors. Let's state the expression from {eq}`eq:naive-bayes-max-priors` again,
+Let's start with the priors. Let's state the expression from {eq}`eq:naive-bayes-max-priors` in definition
+{prf:ref}`def:naive-bayes-max-priors` again:
 
 $$
 \begin{align*}
@@ -1335,16 +1346,133 @@ $$
 \end{align*}
 $$ (eq:naive-bayes-max-priors-final)
 
+### Estimating Likelihood (Gaussian Version)
+
+Intuition: The likelihood parameters are the mean and variance of each feature for each class.
+
+### Maximum Likelihood Estimate for Likelihood (Continuous Feature Parameters)
+
+Now that we have found the maximum likelihood estimate for the prior probabilities, 
+we now find the maximum likelihood estimate for the likelihood parameters. 
+
+Let's look at the expression {eq}`eq:naive-bayes-max-feature-params` from {prf:ref}`def:naive-bayes-max-feature-params` again:
+
+$$
+\begin{align*}
+\hat{\boldsymbol{\theta}}_{\{\mathbf{X} \mid Y\}} &= \arg \max_{\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}} \mathcal{L}(\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}} ; \mathcal{D}) \\
+&= \arg \max_{\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}} \prod_{n=1}^N  \prod_{d=1}^D \mathbb{P}\left(X_d^{(n)} \middle \vert Y^{(n)} = k ; \boldsymbol{\theta}_{k, d} \right) \\
+\end{align*}
+$$ (eq:naive-bayes-max-feature-params-repeated)
+
+We will give a formulation for the case when all features $X_d$ are continuous. As mentioned  
+in {ref}`continuous-features-gaussian-distribution`, we will assume that the features $X_d$ given class $Y=k$
+are distributed according to a Gaussian distribution. 
+
+```{admonition} Hand Wavy
+:class: warning
+
+This section will be a bit hand wavy as I did not derive it by hand, but one just need to remember we need
+to find a total of $K \times D$ parameters.
+```
+
+Before we write the multiplicand in {eq}`eq:naive-bayes-max-feature-params-repeated` in terms of the PDF
+of the Gaussian distribution, we will follow Kevin Murphy's method (pp 329) and represent 
+
+$$
+\begin{align*}
+\arg \max_{\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}} \prod_{n=1}^N  \prod_{d=1}^D \mathbb{P}\left(X_d^{(n)} \middle \vert Y^{(n)} = k ; \boldsymbol{\theta}_{k, d} \right) &= \arg \max_{\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}} \prod_{n=1}^N  \prod_{k=1}^K \prod_{d=1}^D \mathbb{P}\left(X_d^{(n)} \middle \vert Y^{(n)} = k ; \boldsymbol{\theta}_{k, d} \right)^{I\left\{ Y^{(n)} = k \right\}} \\
+\end{align*}
+$$ (eq:naive-bayes-max-feature-params-kevin-murphy-1)
+
+Then he applied the log function to both sides of {eq}`eq:naive-bayes-max-feature-params-kevin-murphy-1`,
+
+$$
+\begin{align*}
+\arg \max_{\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}} \log \left( \prod_{n=1}^N  \prod_{k=1}^K \prod_{d=1}^D \mathbb{P}\left(X_d^{(n)} \middle \vert Y^{(n)} = k ; \boldsymbol{\theta}_{k, d} \right)^{I\left\{ Y^{(n)} = k \right\}} \right) &= \arg \max_{\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}} \sum_{n=1}^N  \sum_{k=1}^K \sum_{d=1}^D I\left\{ Y^{(n)} = k \right\} \log \left( \mathbb{P}\left(X_d^{(n)} \middle \vert Y^{(n)} = k ; \boldsymbol{\theta}_{k, d} \right) \right) \\
+&= \arg \max_{\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}} \sum_{k=1}^K \sum_{d=1}^D \left [\sum_{n=1: Y^{(n)} = k}^N \log \left(\mathbb{P}\left(X_d^{(n)} \middle \vert Y = k ; \boldsymbol{\theta}_{k, d} \right) \right)\right]\\
+\end{align*}
+$$ (eq:naive-bayes-max-feature-params-kevin-murphy-2)
+
+where the notation $n=1: Y^{(n)} = k$ means that we are summing over all $n$ where $Y^{(n)} = k$. In other words,
+we are looking at all the data points where the class label is $k$.
+
+We can further simplify {eq}`eq:naive-bayes-max-feature-params-kevin-murphy-2` as:
+
+$$
+\begin{align*}
+\arg \max_{\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}} \sum_{k=1}^K \sum_{d=1}^D \left [\sum_{n=1: Y^{(n)} = k}^N \log \left(\mathbb{P}\left(X_d^{(n)} \middle \vert Y = k ; \boldsymbol{\theta}_{k, d} \right) \right)\right] &= \arg \max_{\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}} \sum_{k=1}^K \sum_{d=1}^D \log \mathbb{P}\left(\mathcal{D}_{dk} ; \boldsymbol{\theta}_{k, d} \right) \\
+&= \arg \max_{\boldsymbol{\theta}_{k, d}} \log \mathbb{P}\left(\mathcal{D}_{11} ; \boldsymbol{\theta}_{1, 1} \right) + \log \mathbb{P}\left(\mathcal{D}_{12} ; \boldsymbol{\theta}_{1, 2} \right) + \cdots + \log \mathbb{P}\left(\mathcal{D}_{1D} ; \boldsymbol{\theta}_{1, D} \right) + \log \mathbb{P}\left(\mathcal{D}_{21} ; \boldsymbol{\theta}_{2, 1} \right) + \log \mathbb{P}\left(\mathcal{D}_{22} ; \boldsymbol{\theta}_{2, 2} \right) + \cdots + \log \mathbb{P}\left(\mathcal{D}_{2D} ; \boldsymbol{\theta}_{2, D} \right) + \cdots + \log \mathbb{P}\left(\mathcal{D}_{K1} ; \boldsymbol{\theta}_{K, 1} \right) + \log \mathbb{P}\left(\mathcal{D}_{K2} ; \boldsymbol{\theta}_{K, 2} \right) + \cdots + \log \mathbb{P}\left(\mathcal{D}_{KD} ; \boldsymbol{\theta}_{K, D} \right) \\
+\end{align*}
+$$ (eq:naive-bayes-max-feature-params-kevin-murphy-3)
+
+where $\mathcal{D}_{dk}$ is the data set of all the data points of feature $d$ and class $k$.
+
+Now we can ***individually maximize*** the parameters of each feature and class pair, i.e. estimate $\mathcal{D}_{dk}$ for each $d$ and $k$.
+
+For example, $\mathcal{D}_{12}$ refers to all the data points of feature $1$ and class $2$.
+
+In terms of earlier in a similar vein from Definition 72 (Maximize Feature Parameters), but now instead of
+multiplying the probabilities, we are summing the log probabilities.
+
+$$
+\begin{align*}
+\arg \max_{\theta_{1, 2}} \log \mathbb{P}\left(\mathcal{D}_{12} ; \theta_{1, 2} \right) &= \arg \max_{\theta_{1, 2}} \sum_{n=1: Y^{(n)} = 2}^N \log \left(\mathbb{P}\left(X_1^{(n)} \middle \vert Y = 2 ; \theta_{1, 2} \right) \right) \\
+\end{align*}
+$$
+
+where we will attempt to find the best estimate $\theta_{1, 2} = \left(\mu_{2, 1}, \sigma_{2, 1} \right)$ for the parameters of the Gaussian distribution of feature $1$ and class $2$.
+
+It turns out that the maximum likelihood estimate for the parameters of the Gaussian distribution is the sample mean and sample variance of the data set $\mathcal{D}_{12}$.
+
+$$
+\begin{align*}
+\arg \max_{\theta_{1, 2}} \log \mathbb{P}\left(\mathcal{D}_{12} ; \theta_{1, 2} \right) &= \begin{bmatrix} \hat{\mu_{2, 1}} \\ \hat{\sigma}_{2, 1} \end{bmatrix} \\
+&= \begin{bmatrix} \frac{1}{N_2} \sum_{n=1}^{N_2} x_1^{(n)} \\ \sqrt{\frac{1}{N_2} \sum_{n=1}^{N_2} \left( x_1^{(n)} - \hat{\mu}_{2, 1} \right)^2} \end{bmatrix} \\
+&= \begin{bmatrix} \bar{x}_{2, 1} \\ s_{2, 1} \end{bmatrix} \\
+\end{align*}
+$$
+
+and for the general form
+
+$$
+\begin{align*}
+\arg \max_{\theta_{k, d}} \log \mathbb{P}\left(\mathcal{D}_{dk} ; \theta_{k, d} \right) &= \begin{bmatrix} \hat{\mu_{k, d}} \\ \hat{\sigma}_{k, d} \end{bmatrix} \\
+&= \begin{bmatrix} \frac{1}{N_k} \sum_{n=1}^{N_k} x_d^{(n)} \\ \sqrt{\frac{1}{N_k} \sum_{n=1}^{N_k} \left( x_d^{(n)} - \hat{\mu}_{k, d} \right)^2} \end{bmatrix} \\
+&= \begin{bmatrix} \bar{x}_{k, d} \\ s_{k, d} \end{bmatrix} \\
+\end{align*}
+$$
+
+where $\bar{x}_{k, d}$ is the sample mean of the data set $\mathcal{D}_{dk}$ and $s_{k, d}$ is the sample standard deviation of the data set $\mathcal{D}_{dk}$.
+
+For completeness, the parameter matrix $\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}$ defined in {eq}`eq:naive-bayes-estimation-2` becomes:
+
+$$
+\begin{align*}
+\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}} &= \begin{bmatrix} \boldsymbol{\theta}_{11} & \boldsymbol{\theta}_{12} & \cdots & \boldsymbol{\theta}_{1D} \\ \boldsymbol{\theta}_{21} & \boldsymbol{\theta}_{22} & \cdots & \boldsymbol{\theta}_{2D} \\ \vdots & \vdots & \ddots & \vdots \\ \boldsymbol{\theta}_{K1} & \boldsymbol{\theta}_{K2} & \cdots & \boldsymbol{\theta}_{KD} \end{bmatrix} \\
+&= \begin{bmatrix} \left(\bar{x}_{1, 1}, s_{1, 1} \right) & \left(\bar{x}_{1, 2}, s_{1, 2} \right) & \cdots & \left(\bar{x}_{1, D}, s_{1, D} \right) \\ \left(\bar{x}_{2, 1}, s_{2, 1} \right) & \left(\bar{x}_{2, 2}, s_{2, 2} \right) & \cdots & \left(\bar{x}_{2, D}, s_{2, D} \right) \\ \vdots & \vdots & \ddots & \vdots \\ \left(\bar{x}_{K, 1}, s_{K, 1} \right) & \left(\bar{x}_{K, 2}, s_{K, 2} \right) & \cdots & \left(\bar{x}_{K, D}, s_{K, D} \right) \end{bmatrix} \\
+\end{align*}
+$$
+
+---
+
+$$
+\begin{align*}
+&= \arg \max_{\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}} \sum_{k=1}^K \sum_{d=1}^D \left [\sum_{n=1: Y^{(n)} = k}^N \log \left(\frac{1}{\sqrt{2 \pi \sigma_{k, d}^2}} \exp \left( -\frac{1}{2 \sigma_{k, d}^2} \left( X_d^{(n)} - \mu_{k, d} \right)^2 \right) \right)\right] \\
+\end{align*}
+$$
 
 
 
 
-
-
+See derivations from section 4.2.5 and 4.2.6 of Probabilistic Machine Learning: An Introduction by Kevin Murphy
+for the univariate and multivariate Gaussian case respectively.
 
 
 ## References
 
+- http://jrmeyer.github.io/machinelearning/2017/08/18/mle.html
+- https://www.youtube.com/watch?v=XtUNwVrWnPM
+- 
 [^likelihood-1]: Not to be confused with the likelihood term $\mathbb{P}(\mathbf{X} \mid Y)$ in Bayes' terminology.
 [^2dparameters]: Dive into Deep Learning, Section 22.9, this is only assuming that each feature $\mathbf{x}_d^{(n)}$ is binary, i.e. $\mathbf{x}_d^{(n)} \in \{0, 1\}$.
 [^intractable]: Cite Dive into Deep Learning on this. Also, the joint probability is intractable because the number of parameters to estimate is exponential in the number of features. Use binary bits example, see my notes.

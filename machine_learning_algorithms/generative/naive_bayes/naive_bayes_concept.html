@@ -704,6 +704,16 @@ title="Print to PDF"
      Maximum Likelihood Estimation for Priors (Categorical Distribution)
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estimating-likelihood-gaussian-version">
+     Estimating Likelihood (Gaussian Version)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#maximum-likelihood-estimate-for-likelihood-continuous-feature-parameters">
+     Maximum Likelihood Estimate for Likelihood (Continuous Feature Parameters)
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -824,6 +834,16 @@ title="Print to PDF"
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#maximum-likelihood-estimation-for-priors-categorical-distribution">
      Maximum Likelihood Estimation for Priors (Categorical Distribution)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estimating-likelihood-gaussian-version">
+     Estimating Likelihood (Gaussian Version)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#maximum-likelihood-estimate-for-likelihood-continuous-feature-parameters">
+     Maximum Likelihood Estimate for Likelihood (Continuous Feature Parameters)
     </a>
    </li>
   </ul>
@@ -1292,7 +1312,7 @@ To really get the exact joint distribution, we need to estimate the probability 
 </ol>
 </section>
 </div><p>This is where the “Naive” assumption comes in. The Naive Bayes’ classifier assumes that
-the features are conditionally independent<a class="footnote-reference brackets" href="#id14" id="id6">6</a> given the class label.</p>
+the features are conditionally independent<a class="footnote-reference brackets" href="#id15" id="id6">6</a> given the class label.</p>
 <p>More formally stated,</p>
 <div class="proof definition admonition" id="conditional-independence">
 <p class="admonition-title"><span class="caption-number">Definition 65 </span> (Conditional Independence)</p>
@@ -1598,7 +1618,7 @@ is modeled by a categorical distribution, thereby recovering each element of <sp
 <p>See <strong>Kevin Murphy’s Probabilistic Machine Learning: An Introduction</strong> pp 358 for more details.</p>
 </section>
 <section id="continuous-features-gaussian-distribution">
-<h3>Continuous Features (Gaussian Distribution)<a class="headerlink" href="#continuous-features-gaussian-distribution" title="Permalink to this headline">#</a></h3>
+<span id="id10"></span><h3>Continuous Features (Gaussian Distribution)<a class="headerlink" href="#continuous-features-gaussian-distribution" title="Permalink to this headline">#</a></h3>
 <p>Here, the task is still the same, to find parameters <span class="math notranslate nohighlight">\(\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}\)</span> to model the conditional distribution of <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> given <span class="math notranslate nohighlight">\(Y = k\)</span>,
 and consequently, recovering the matrix <span class="math notranslate nohighlight">\(\mathbf{M_3}\)</span> defined in <a class="reference internal" href="#equation-eq-naive-bayes-m3">(36)</a>.</p>
 <p>In the case where (all) the features <span class="math notranslate nohighlight">\(X_d\)</span> are continuous (<span class="math notranslate nohighlight">\(D\)</span> number of features),
@@ -1620,9 +1640,17 @@ we can use the Gaussian distribution to model the conditional distribution of <s
 <p><span class="math notranslate nohighlight">\(\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}\)</span> is a <span class="math notranslate nohighlight">\(K \times D\)</span> matrix, where each element
 <span class="math notranslate nohighlight">\(\theta_{k, d}\)</span> is a tuple of the mean and variance of the
 Gaussian distribution modeling the conditional distribution of <span class="math notranslate nohighlight">\(X_d\)</span> given <span class="math notranslate nohighlight">\(Y = k\)</span>.</p>
-<p>Then the (chained) multivariate Gaussian distribution of <span class="math notranslate nohighlight">\(\mathbf{X} = \begin{bmatrix} X_1 &amp; \dots &amp; X_D \end{bmatrix}\)</span> given <span class="math notranslate nohighlight">\(Y = k\)</span> is</p>
+<p>To be more precise, each element in the matrix <span class="math notranslate nohighlight">\(\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}\)</span> is a tuple of the mean and variance of the
+Gaussian distribution modeling the conditional distribution of <span class="math notranslate nohighlight">\(X_d\)</span> given <span class="math notranslate nohighlight">\(Y = k\)</span>.</p>
 <div class="math notranslate nohighlight" id="equation-eq-naive-bayes-continuous-feature-3">
-<span class="eqno">(56)<a class="headerlink" href="#equation-eq-naive-bayes-continuous-feature-3" title="Permalink to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(56)<a class="headerlink" href="#equation-eq-naive-bayes-continuous-feature-3" title="Permalink to this equation">#</a></span>\[
+\begin{align*}
+X_d \mid Y = k &amp;\overset{\small{\text{i.i.d.}}}{\sim} \mathcal{N}(\mu_{k, d}, \sigma_{k, d}^2) \quad \text{for } k = 1, 2, \cdots, K
+\end{align*}
+\]</div>
+<p>Then the (chained) multivariate Gaussian distribution of <span class="math notranslate nohighlight">\(\mathbf{X} = \begin{bmatrix} X_1 &amp; \dots &amp; X_D \end{bmatrix}\)</span> given <span class="math notranslate nohighlight">\(Y = k\)</span> is</p>
+<div class="math notranslate nohighlight" id="equation-eq-naive-bayes-continuous-feature-4">
+<span class="eqno">(57)<a class="headerlink" href="#equation-eq-naive-bayes-continuous-feature-4" title="Permalink to this equation">#</a></span>\[\begin{split}
 \begin{align*}
 \mathbb{P}\left(\mathbf{X} = \mathbf{x} \mid Y = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}\right) &amp;= \prod_{d=1}^D \mathcal{N}(x_d \mid \mu_{k, d}, \sigma_{k, d}^2) \\
 \end{align*}
@@ -1640,7 +1668,7 @@ On the other hand, if <span class="math notranslate nohighlight">\(X_2\)</span> 
 The nice thing is since within each class <span class="math notranslate nohighlight">\(k\)</span>, the features <span class="math notranslate nohighlight">\(X_d\)</span> are independent of each other, we can model each feature <span class="math notranslate nohighlight">\(X_d\)</span> by its own distribution.</p>
 <p>So, carrying over the example above, we have,</p>
 <div class="math notranslate nohighlight" id="equation-eq-naive-bayes-mixed-feature-1">
-<span class="eqno">(57)<a class="headerlink" href="#equation-eq-naive-bayes-mixed-feature-1" title="Permalink to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(58)<a class="headerlink" href="#equation-eq-naive-bayes-mixed-feature-1" title="Permalink to this equation">#</a></span>\[\begin{split}
 \begin{align*}
 X_1 \mid Y = k &amp;\overset{\small{\text{i.i.d.}}}{\sim} \text{Bernoulli}(\pi_{\{X_1 \mid Y=k\}}) \\
 X_2 \mid Y = k &amp;\overset{\small{\text{i.i.d.}}}{\sim} \text{Gaussian}(\mu_{\{X_2 \mid Y=k\}}, \sigma_{\{X_2 \mid Y=k\}}^2)
@@ -1672,7 +1700,7 @@ using matrix <span class="math notranslate nohighlight">\(\mathbf{M_1}\)</span> 
 <section class="algorithm-content" id="proof-content">
 <p>For each entry in matrix <span class="math notranslate nohighlight">\(\mathbf{M_1}\)</span>, we seek to find its corresponding parameter matrix <span class="math notranslate nohighlight">\(\boldsymbol{\pi}\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-eq-naive-bayes-estimation-1">
-<span class="eqno">(58)<a class="headerlink" href="#equation-eq-naive-bayes-estimation-1" title="Permalink to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(59)<a class="headerlink" href="#equation-eq-naive-bayes-estimation-1" title="Permalink to this equation">#</a></span>\[\begin{split}
 \begin{align*}
 \boldsymbol{\pi} &amp;= \begin{bmatrix} \pi_1 \\ \vdots \\ \pi_K \end{bmatrix}_{K \times 1} \\
 \end{align*}
@@ -1680,7 +1708,7 @@ using matrix <span class="math notranslate nohighlight">\(\mathbf{M_1}\)</span> 
 <p>where <span class="math notranslate nohighlight">\(\pi_k\)</span> is the probability of class <span class="math notranslate nohighlight">\(k\)</span>.</p>
 <p>For each entry in matrix <span class="math notranslate nohighlight">\(\mathbf{M_3}\)</span>, we seek to find its corresponding parameter matrix <span class="math notranslate nohighlight">\(\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-eq-naive-bayes-estimation-2">
-<span class="eqno">(59)<a class="headerlink" href="#equation-eq-naive-bayes-estimation-2" title="Permalink to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(60)<a class="headerlink" href="#equation-eq-naive-bayes-estimation-2" title="Permalink to this equation">#</a></span>\[\begin{split}
 \begin{align*}
 \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}} &amp;= \begin{bmatrix} \boldsymbol{\theta}_{\{\mathbf{X} \mid Y=1\}} \\ \vdots \\ \boldsymbol{\theta}_{\{\mathbf{X} \mid Y=K\}} \end{bmatrix}_{K \times D} \\
 &amp;= \begin{bmatrix} \theta_{\{X_1 \mid Y=1\}} &amp; \cdots &amp; \theta_{\{X_D \mid Y=1\}} \\ \vdots &amp; \ddots &amp; \vdots \\ \theta_{\{X_1 \mid Y=K\}} &amp; \cdots &amp; \theta_{\{X_D \mid Y=K\}} \end{bmatrix}_{K \times D} \\
@@ -1694,7 +1722,7 @@ using the Maximum Likelihood Estimation (MLE) method.</p>
 </div></section>
 <section id="maximum-likelihood-estimation">
 <h3>Maximum Likelihood Estimation<a class="headerlink" href="#maximum-likelihood-estimation" title="Permalink to this headline">#</a></h3>
-<p>First, read chapter 8.1 of <span id="id10">[<a class="reference internal" href="../../../references_and_resources/bibliography.html#id2" title="Stanley H. Chan. Introduction to probability for Data Science. Michigan Publishing, 2021.">Chan, 2021</a>]</span> for a refresher on MLE.</p>
+<p>First, read chapter 8.1 of <span id="id11">[<a class="reference internal" href="../../../references_and_resources/bibliography.html#id2" title="Stanley H. Chan. Introduction to probability for Data Science. Michigan Publishing, 2021.">Chan, 2021</a>]</span> for a refresher on MLE.</p>
 <div class="proof remark admonition" id="remark-univariate-mle">
 <p class="admonition-title"><span class="caption-number">Remark 9 </span> (Univariate Maximum Likelihood Estimation)</p>
 <section class="remark-content" id="proof-content">
@@ -1712,7 +1740,7 @@ assumption of conditional independence. Therefore, we need to estimate the param
 <p>where <span class="math notranslate nohighlight">\(\boldsymbol{\mu}_{\{X \mid Y=k\}}\)</span> is the mean vector of <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> given <span class="math notranslate nohighlight">\(Y=k\)</span>, and <span class="math notranslate nohighlight">\(\boldsymbol{\Sigma}_{\{X \mid Y=k\}}\)</span> is the covariance matrix of <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> given <span class="math notranslate nohighlight">\(Y=k\)</span>.</p>
 <p>However, in the case of Naive Bayes, the assumption of conditional independence allows us to estimate the parameters of <span class="math notranslate nohighlight">\(\mathbf{X} = \{\mathbf{X}_1, \dots, \mathbf{X}_D\}\)</span> univariately,
 conditional on <span class="math notranslate nohighlight">\(Y=k\)</span>.</p>
-<p>Looking at expression <a class="reference internal" href="#equation-eq-naive-bayes-estimation-2">(59)</a>, we can see that each element
+<p>Looking at expression <a class="reference internal" href="#equation-eq-naive-bayes-estimation-2">(60)</a>, we can see that each element
 is indeed univariate, and we can estimate the parameters of each element univariately.</p>
 </section>
 </div><p>Everything we have talked about is just 1 single sample, and that won’t work in the realm of
@@ -1721,16 +1749,16 @@ consisting of <span class="math notranslate nohighlight">\(N\)</span> samples, w
 <div class="proof definition admonition" id="def:naive-bayes-likelihood">
 <p class="admonition-title"><span class="caption-number">Definition 69 </span> (Likelihood Function of Naive Bayes)</p>
 <section class="definition-content" id="proof-content">
-<p>Given <strong>i.i.d.</strong> random variables<a class="footnote-reference brackets" href="#iid-tuple" id="id11">9</a> <span class="math notranslate nohighlight">\(\left(\mathbf{X}^{(1)}, Y^{(1)}\right), \left(\mathbf{X}^{(2)}, Y^{(2)}\right), \dots, \left(\mathbf{X}^{(N)}, Y^{(N)}\right)\)</span>,
+<p>Given <strong>i.i.d.</strong> random variables<a class="footnote-reference brackets" href="#iid-tuple" id="id12">9</a> <span class="math notranslate nohighlight">\(\left(\mathbf{X}^{(1)}, Y^{(1)}\right), \left(\mathbf{X}^{(2)}, Y^{(2)}\right), \dots, \left(\mathbf{X}^{(N)}, Y^{(N)}\right)\)</span>,
 we can write the likelihood function (joint probability distribution)
-as the product of the individual PDF of each sample<a class="footnote-reference brackets" href="#iid-likelihood" id="id12">10</a>:</p>
+as the product of the individual PDF of each sample<a class="footnote-reference brackets" href="#iid-likelihood" id="id13">10</a>:</p>
 <div class="math notranslate nohighlight" id="equation-eq-naive-bayes-likelihood-1">
-<span class="eqno">(60)<a class="headerlink" href="#equation-eq-naive-bayes-likelihood-1" title="Permalink to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(61)<a class="headerlink" href="#equation-eq-naive-bayes-likelihood-1" title="Permalink to this equation">#</a></span>\[\begin{split}
 \begin{align*}
 \mathcal{L}(\boldsymbol{\theta} \mid \mathcal{D}) \overset{\mathrm{def}}{=} \mathbb{P}(\mathcal{D} ; \boldsymbol{\theta}) &amp;= \mathbb{P}\left(\mathcal{D} ; \left\{\boldsymbol{\pi}, \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}} \right\}\right) \\
 &amp;\overset{(a)}{=} \mathbb{P}\left(\left(\mathbf{X}^{(1)}, Y^{(1)}\right), \left(\mathbf{X}^{(2)}, Y^{(2)}\right), \dots, \left(\mathbf{X}^{(N)}, Y^{(N)}\right) ; \left\{\boldsymbol{\pi}, \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}} \right\}\right) \\
 &amp;\overset{(b)}{=} \prod_{n=1}^N  \mathbb{P}\left(Y^{(n)}=k ; \boldsymbol{\pi}\right) \mathbb{P}\left(\mathrm{X}^{(n)} \mid Y^{(n)} = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}} \right)  \\
-&amp;\overset{(c)}{=} \prod_{n=1}^N  \left\{\mathbb{P}\left(Y^{(n)}=k ; \boldsymbol{\pi}\right) \prod_{d=1}^D \mathbb{P}\left(X_d^{(n)} \mid Y^{(n)} = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}} \right) \right\}  \\
+&amp;\overset{(c)}{=} \prod_{n=1}^N  \left\{\mathbb{P}\left(Y^{(n)}=k ; \boldsymbol{\pi}\right) \prod_{d=1}^D \mathbb{P}\left(X_d^{(n)} \mid Y^{(n)} = k ; \boldsymbol{\theta}_{k, d}\right) \right\} \\
 \end{align*}
 \end{split}\]</div>
 <p>where each <span class="math notranslate nohighlight">\(\left(\mathbf{X}^{(n)}, Y^{(n)}\right)\)</span> in equation <span class="math notranslate nohighlight">\((a)\)</span> is a sample from the dataset <span class="math notranslate nohighlight">\(\mathcal{D}\)</span>
@@ -1741,15 +1769,15 @@ as in <a class="reference internal" href="#equation-eq-joint-distribution">(40)<
 </section>
 </div><p>Then we can maximize</p>
 <div class="math notranslate nohighlight" id="equation-eq-naive-bayes-likelihood-target">
-<span class="eqno">(61)<a class="headerlink" href="#equation-eq-naive-bayes-likelihood-target" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(62)<a class="headerlink" href="#equation-eq-naive-bayes-likelihood-target" title="Permalink to this equation">#</a></span>\[
 \prod_{n=1}^N  \mathbb{P}\left(Y^{(n)}=k ; \boldsymbol{\pi}\right)
 \]</div>
 <p>and</p>
 <div class="math notranslate nohighlight" id="equation-eq-naive-bayes-likelihood-feature">
-<span class="eqno">(62)<a class="headerlink" href="#equation-eq-naive-bayes-likelihood-feature" title="Permalink to this equation">#</a></span>\[
-\prod_{n=1}^N  \prod_{d=1}^D \mathbb{P}\left(X_d^{(n)} \middle \vert Y^{(n)} = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}} \right)
+<span class="eqno">(63)<a class="headerlink" href="#equation-eq-naive-bayes-likelihood-feature" title="Permalink to this equation">#</a></span>\[
+\prod_{n=1}^N  \prod_{d=1}^D \mathbb{P}\left(X_d^{(n)} \middle \vert Y^{(n)} = k ; \boldsymbol{\theta}_{k, d}\right)
 \]</div>
-<p>individually since the above can be decomposed<a class="footnote-reference brackets" href="#decomposed-likelihood" id="id13">11</a>.</p>
+<p>individually since the above can be decomposed<a class="footnote-reference brackets" href="#decomposed-likelihood" id="id14">11</a>.</p>
 <div class="proof definition admonition" id="def:naive-bayes-log-likelihood">
 <p class="admonition-title"><span class="caption-number">Definition 70 </span> (Log Likelihood Function of Naive Bayes)</p>
 <section class="definition-content" id="proof-content">
@@ -1769,7 +1797,7 @@ will go into that later.</p>
 <section class="definition-content" id="proof-content">
 <p>The notation for maximizing the prior probabilities is as follows:</p>
 <div class="math notranslate nohighlight" id="equation-eq-naive-bayes-max-priors">
-<span class="eqno">(63)<a class="headerlink" href="#equation-eq-naive-bayes-max-priors" title="Permalink to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(64)<a class="headerlink" href="#equation-eq-naive-bayes-max-priors" title="Permalink to this equation">#</a></span>\[\begin{split}
 \begin{align*}
 \hat{\boldsymbol{\pi}} &amp;= \arg \max_{\boldsymbol{\pi}} \mathcal{L}(\boldsymbol{\pi} ; \mathcal{D}) \\
 &amp;= \arg \max_{\boldsymbol{\pi}} \prod_{n=1}^N  \mathbb{P}\left(Y^{(n)}=k ; \boldsymbol{\pi}\right) \\
@@ -1783,10 +1811,10 @@ will go into that later.</p>
 <section class="definition-content" id="proof-content">
 <p>The notation for maximizing the feature parameters is as follows:</p>
 <div class="math notranslate nohighlight" id="equation-eq-naive-bayes-max-feature-params">
-<span class="eqno">(64)<a class="headerlink" href="#equation-eq-naive-bayes-max-feature-params" title="Permalink to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(65)<a class="headerlink" href="#equation-eq-naive-bayes-max-feature-params" title="Permalink to this equation">#</a></span>\[\begin{split}
 \begin{align*}
 \hat{\boldsymbol{\theta}}_{\{\mathbf{X} \mid Y\}} &amp;= \arg \max_{\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}} \mathcal{L}(\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}} ; \mathcal{D}) \\
-&amp;= \arg \max_{\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}} \prod_{n=1}^N  \prod_{d=1}^D \mathbb{P}\left(X_d^{(n)} \mid Y^{(n)} = k ; \boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}} \right) \\
+&amp;= \arg \max_{\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}} \prod_{n=1}^N  \prod_{d=1}^D \mathbb{P}\left(X_d^{(n)} \mid Y^{(n)} = k ; \boldsymbol{\theta}_{k, d}\right) \\
 \end{align*}
 \end{split}\]</div>
 <p>A reminder that the shape of <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\theta}}_{\{\mathbf{X} \mid Y\}}\)</span> is <span class="math notranslate nohighlight">\(K \times D\)</span>.</p>
@@ -1811,19 +1839,20 @@ seems to be a sensible choice.</p>
 <section id="maximum-likelihood-estimation-for-priors-categorical-distribution">
 <h3>Maximum Likelihood Estimation for Priors (Categorical Distribution)<a class="headerlink" href="#maximum-likelihood-estimation-for-priors-categorical-distribution" title="Permalink to this headline">#</a></h3>
 <p>We have seen earlier that we can maximize the priors and likelihood (target and feature parameters) separately.</p>
-<p>Let’s start with the priors. Let’s state the expression from <a class="reference internal" href="#equation-eq-naive-bayes-max-priors">(63)</a> again,</p>
+<p>Let’s start with the priors. Let’s state the expression from <a class="reference internal" href="#equation-eq-naive-bayes-max-priors">(64)</a> in definition
+<a class="reference internal" href="#def:naive-bayes-max-priors">Definition 71</a> again:</p>
 <div class="math notranslate nohighlight" id="equation-eq-naive-bayes-max-priors-repeated">
-<span class="eqno">(65)<a class="headerlink" href="#equation-eq-naive-bayes-max-priors-repeated" title="Permalink to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(66)<a class="headerlink" href="#equation-eq-naive-bayes-max-priors-repeated" title="Permalink to this equation">#</a></span>\[\begin{split}
 \begin{align*}
 \hat{\boldsymbol{\pi}} &amp;= \arg \max_{\boldsymbol{\pi}} \mathcal{L}(\boldsymbol{\pi} ; \mathcal{D}) \\
 &amp;= \arg \max_{\boldsymbol{\pi}} \prod_{n=1}^N  \mathbb{P}\left(Y^{(n)}=k ; \boldsymbol{\pi}\right) \\
 \end{align*}
 \end{split}\]</div>
-<p>We need to write the multiplicand in <a class="reference internal" href="#equation-eq-naive-bayes-max-priors-repeated">(65)</a> in terms of
+<p>We need to write the multiplicand in <a class="reference internal" href="#equation-eq-naive-bayes-max-priors-repeated">(66)</a> in terms of
 the PDF of the Category distribution, as decribed in <a class="reference internal" href="#equation-eq-categorical-distribution-bishop">(50)</a>.
-Extending from <a class="reference internal" href="#equation-eq-naive-bayes-max-priors-repeated">(65)</a>, we have:</p>
+Extending from <a class="reference internal" href="#equation-eq-naive-bayes-max-priors-repeated">(66)</a>, we have:</p>
 <div class="math notranslate nohighlight" id="equation-eq-naive-bayes-max-priors-2">
-<span class="eqno">(66)<a class="headerlink" href="#equation-eq-naive-bayes-max-priors-2" title="Permalink to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(67)<a class="headerlink" href="#equation-eq-naive-bayes-max-priors-2" title="Permalink to this equation">#</a></span>\[\begin{split}
 \begin{align*}
 \hat{\boldsymbol{\pi}} &amp;= \arg \max_{\boldsymbol{\pi}} \mathcal{L}(\boldsymbol{\pi} ; \mathcal{D}) \\
 &amp;= \arg \max_{\boldsymbol{\pi}} \prod_{n=1}^N  \mathbb{P}\left(Y^{(n)}=k ; \boldsymbol{\pi}\right) \\
@@ -1834,7 +1863,7 @@ Extending from <a class="reference internal" href="#equation-eq-naive-bayes-max-
 of the definition of the Category distribution in <a class="reference internal" href="#categorical-multinomial-distribution">Definition 68</a>.</p>
 <p>Subsequently, knowing maximizing the log likelihood is the same as maximizing the likelihood, we have:</p>
 <div class="math notranslate nohighlight" id="equation-eq-naive-bayes-max-priors-3">
-<span class="eqno">(67)<a class="headerlink" href="#equation-eq-naive-bayes-max-priors-3" title="Permalink to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(68)<a class="headerlink" href="#equation-eq-naive-bayes-max-priors-3" title="Permalink to this equation">#</a></span>\[\begin{split}
 \begin{align*}
 \hat{\boldsymbol{\pi}} &amp;= \arg \max_{\boldsymbol{\pi}} \mathcal{L}(\boldsymbol{\pi} ; \mathcal{D}) \\
 &amp;= \arg \max_{\boldsymbol{\pi}} \log \mathcal{L}(\boldsymbol{\pi} ; \mathcal{D}) \\
@@ -1889,14 +1918,14 @@ representation of the samples will be</p>
 <p>and summing each column will give us <span class="math notranslate nohighlight">\(N_1 = 2\)</span>, <span class="math notranslate nohighlight">\(N_2 = 3\)</span>, and <span class="math notranslate nohighlight">\(N_3 = 1\)</span>.</p>
 <p>Now we are finally ready to solve the estimation (optimization) problem for <span class="math notranslate nohighlight">\(\boldsymbol{\pi}\)</span>.</p>
 <div class="math notranslate nohighlight" id="equation-eq-naive-bayes-max-priors-4">
-<span class="eqno">(68)<a class="headerlink" href="#equation-eq-naive-bayes-max-priors-4" title="Permalink to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(69)<a class="headerlink" href="#equation-eq-naive-bayes-max-priors-4" title="Permalink to this equation">#</a></span>\[\begin{split}
 \begin{align*}
 \hat{\boldsymbol{\pi}} &amp;= \underset{\boldsymbol{\pi}}{\mathrm{argmax}} ~~ \sum_{k=1}^K N_k \log \pi_k \\
 \end{align*}
 \end{split}\]</div>
 <p>subject to the constraint that</p>
 <div class="math notranslate nohighlight" id="equation-eq-naive-bayes-max-priors-constraint">
-<span class="eqno">(69)<a class="headerlink" href="#equation-eq-naive-bayes-max-priors-constraint" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(70)<a class="headerlink" href="#equation-eq-naive-bayes-max-priors-constraint" title="Permalink to this equation">#</a></span>\[
 \sum_{k=1}^K \pi_k = 1
 \]</div>
 <p>which is just saying the probabilities must sum up to 1.</p>
@@ -1942,12 +1971,12 @@ function <span class="math notranslate nohighlight">\(\nabla \mathcal{L}(\mathrm
 <p>which is now an unconstrained optimization problem.</p>
 <p>We can now solve it by setting the gradient vector of the Lagrangian function</p>
 <div class="math notranslate nohighlight" id="equation-eq-naive-bayes-max-priors-lagrangian-1">
-<span class="eqno">(70)<a class="headerlink" href="#equation-eq-naive-bayes-max-priors-lagrangian-1" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">(71)<a class="headerlink" href="#equation-eq-naive-bayes-max-priors-lagrangian-1" title="Permalink to this equation">#</a></span>\[
 \nabla \mathcal{L}_\lambda(\boldsymbol{\pi}, \lambda ; \mathcal{D}) = 0
 \]</div>
 <p>with respect to <span class="math notranslate nohighlight">\(\boldsymbol{\pi}\)</span> and <span class="math notranslate nohighlight">\(\lambda\)</span>, as follows,</p>
 <div class="math notranslate nohighlight" id="equation-eq-naive-bayes-max-priors-lagrangian-2">
-<span class="eqno">(71)<a class="headerlink" href="#equation-eq-naive-bayes-max-priors-lagrangian-2" title="Permalink to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(72)<a class="headerlink" href="#equation-eq-naive-bayes-max-priors-lagrangian-2" title="Permalink to this equation">#</a></span>\[\begin{split}
 \begin{align*}
 \nabla \mathcal{L}_\lambda(\boldsymbol{\pi}, \lambda ; \mathcal{D}) &amp;\overset{\mathrm{def}}{=} \frac{\partial \mathcal{L}_\lambda(\boldsymbol{\pi}, \lambda ; \mathcal{D})}{\partial \boldsymbol{\pi}} = 0 \quad \text{and} \quad \frac{\partial \mathcal{L}_\lambda(\boldsymbol{\pi}, \lambda ; \mathcal{D})}{\partial \lambda} = 0 \\
 &amp;\iff \frac{\partial}{\partial \boldsymbol{\pi}} \left( \sum_{k=1}^K N_k \log \pi_k - \lambda \left( \sum_{k=1}^K \pi_k - 1 \right) \right) = 0 \quad \text{and} \quad \frac{\partial \mathcal{L}_\lambda(\boldsymbol{\pi}, \lambda ; \mathcal{D})}{\partial \lambda} = 0 \\
@@ -1991,7 +2020,7 @@ function <span class="math notranslate nohighlight">\(\nabla \mathcal{L}(\mathrm
 is the same as the empirical relative frequency of each class in the training data. This coincides with our intuition.</p>
 <p>For completeness of expression,</p>
 <div class="math notranslate nohighlight" id="equation-eq-naive-bayes-max-priors-final">
-<span class="eqno">(72)<a class="headerlink" href="#equation-eq-naive-bayes-max-priors-final" title="Permalink to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(73)<a class="headerlink" href="#equation-eq-naive-bayes-max-priors-final" title="Permalink to this equation">#</a></span>\[\begin{split}
 \begin{align*}
 \hat{\boldsymbol{\pi}} &amp;= \arg \max_{\boldsymbol{\pi}} \mathcal{L}\left( \boldsymbol{\pi} ; \mathcal{D} \right) \\
 &amp;= \begin{bmatrix} \hat{\pi}_1 \\ \vdots \\ \hat{\pi}_K \end{bmatrix} \\
@@ -1999,9 +2028,113 @@ is the same as the empirical relative frequency of each class in the training da
 \end{align*}
 \end{split}\]</div>
 </section>
+<section id="estimating-likelihood-gaussian-version">
+<h3>Estimating Likelihood (Gaussian Version)<a class="headerlink" href="#estimating-likelihood-gaussian-version" title="Permalink to this headline">#</a></h3>
+<p>Intuition: The likelihood parameters are the mean and variance of each feature for each class.</p>
+</section>
+<section id="maximum-likelihood-estimate-for-likelihood-continuous-feature-parameters">
+<h3>Maximum Likelihood Estimate for Likelihood (Continuous Feature Parameters)<a class="headerlink" href="#maximum-likelihood-estimate-for-likelihood-continuous-feature-parameters" title="Permalink to this headline">#</a></h3>
+<p>Now that we have found the maximum likelihood estimate for the prior probabilities,
+we now find the maximum likelihood estimate for the likelihood parameters.</p>
+<p>Let’s look at the expression <a class="reference internal" href="#equation-eq-naive-bayes-max-feature-params">(65)</a> from <a class="reference internal" href="#def:naive-bayes-max-feature-params">Definition 72</a> again:</p>
+<div class="math notranslate nohighlight" id="equation-eq-naive-bayes-max-feature-params-repeated">
+<span class="eqno">(74)<a class="headerlink" href="#equation-eq-naive-bayes-max-feature-params-repeated" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{align*}
+\hat{\boldsymbol{\theta}}_{\{\mathbf{X} \mid Y\}} &amp;= \arg \max_{\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}} \mathcal{L}(\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}} ; \mathcal{D}) \\
+&amp;= \arg \max_{\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}} \prod_{n=1}^N  \prod_{d=1}^D \mathbb{P}\left(X_d^{(n)} \middle \vert Y^{(n)} = k ; \boldsymbol{\theta}_{k, d} \right) \\
+\end{align*}
+\end{split}\]</div>
+<p>We will give a formulation for the case when all features <span class="math notranslate nohighlight">\(X_d\)</span> are continuous. As mentioned<br />
+in <a class="reference internal" href="#continuous-features-gaussian-distribution"><span class="std std-ref">Continuous Features (Gaussian Distribution)</span></a>, we will assume that the features <span class="math notranslate nohighlight">\(X_d\)</span> given class <span class="math notranslate nohighlight">\(Y=k\)</span>
+are distributed according to a Gaussian distribution.</p>
+<div class="warning admonition">
+<p class="admonition-title">Hand Wavy</p>
+<p>This section will be a bit hand wavy as I did not derive it by hand, but one just need to remember we need
+to find a total of <span class="math notranslate nohighlight">\(K \times D\)</span> parameters.</p>
+</div>
+<p>Before we write the multiplicand in <a class="reference internal" href="#equation-eq-naive-bayes-max-feature-params-repeated">(74)</a> in terms of the PDF
+of the Gaussian distribution, we will follow Kevin Murphy’s method (pp 329) and represent</p>
+<div class="math notranslate nohighlight" id="equation-eq-naive-bayes-max-feature-params-kevin-murphy-1">
+<span class="eqno">(75)<a class="headerlink" href="#equation-eq-naive-bayes-max-feature-params-kevin-murphy-1" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{align*}
+\arg \max_{\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}} \prod_{n=1}^N  \prod_{d=1}^D \mathbb{P}\left(X_d^{(n)} \middle \vert Y^{(n)} = k ; \boldsymbol{\theta}_{k, d} \right) &amp;= \arg \max_{\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}} \prod_{n=1}^N  \prod_{k=1}^K \prod_{d=1}^D \mathbb{P}\left(X_d^{(n)} \middle \vert Y^{(n)} = k ; \boldsymbol{\theta}_{k, d} \right)^{I\left\{ Y^{(n)} = k \right\}} \\
+\end{align*}
+\end{split}\]</div>
+<p>Then he applied the log function to both sides of <a class="reference internal" href="#equation-eq-naive-bayes-max-feature-params-kevin-murphy-1">(75)</a>,</p>
+<div class="math notranslate nohighlight" id="equation-eq-naive-bayes-max-feature-params-kevin-murphy-2">
+<span class="eqno">(76)<a class="headerlink" href="#equation-eq-naive-bayes-max-feature-params-kevin-murphy-2" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{align*}
+\arg \max_{\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}} \log \left( \prod_{n=1}^N  \prod_{k=1}^K \prod_{d=1}^D \mathbb{P}\left(X_d^{(n)} \middle \vert Y^{(n)} = k ; \boldsymbol{\theta}_{k, d} \right)^{I\left\{ Y^{(n)} = k \right\}} \right) &amp;= \arg \max_{\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}} \sum_{n=1}^N  \sum_{k=1}^K \sum_{d=1}^D I\left\{ Y^{(n)} = k \right\} \log \left( \mathbb{P}\left(X_d^{(n)} \middle \vert Y^{(n)} = k ; \boldsymbol{\theta}_{k, d} \right) \right) \\
+&amp;= \arg \max_{\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}} \sum_{k=1}^K \sum_{d=1}^D \left [\sum_{n=1: Y^{(n)} = k}^N \log \left(\mathbb{P}\left(X_d^{(n)} \middle \vert Y = k ; \boldsymbol{\theta}_{k, d} \right) \right)\right]\\
+\end{align*}
+\end{split}\]</div>
+<p>where the notation <span class="math notranslate nohighlight">\(n=1: Y^{(n)} = k\)</span> means that we are summing over all <span class="math notranslate nohighlight">\(n\)</span> where <span class="math notranslate nohighlight">\(Y^{(n)} = k\)</span>. In other words,
+we are looking at all the data points where the class label is <span class="math notranslate nohighlight">\(k\)</span>.</p>
+<p>We can further simplify <a class="reference internal" href="#equation-eq-naive-bayes-max-feature-params-kevin-murphy-2">(76)</a> as:</p>
+<div class="math notranslate nohighlight" id="equation-eq-naive-bayes-max-feature-params-kevin-murphy-3">
+<span class="eqno">(77)<a class="headerlink" href="#equation-eq-naive-bayes-max-feature-params-kevin-murphy-3" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{align*}
+\arg \max_{\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}} \sum_{k=1}^K \sum_{d=1}^D \left [\sum_{n=1: Y^{(n)} = k}^N \log \left(\mathbb{P}\left(X_d^{(n)} \middle \vert Y = k ; \boldsymbol{\theta}_{k, d} \right) \right)\right] &amp;= \arg \max_{\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}} \sum_{k=1}^K \sum_{d=1}^D \log \mathbb{P}\left(\mathcal{D}_{dk} ; \boldsymbol{\theta}_{k, d} \right) \\
+&amp;= \arg \max_{\boldsymbol{\theta}_{k, d}} \log \mathbb{P}\left(\mathcal{D}_{11} ; \boldsymbol{\theta}_{1, 1} \right) + \log \mathbb{P}\left(\mathcal{D}_{12} ; \boldsymbol{\theta}_{1, 2} \right) + \cdots + \log \mathbb{P}\left(\mathcal{D}_{1D} ; \boldsymbol{\theta}_{1, D} \right) + \log \mathbb{P}\left(\mathcal{D}_{21} ; \boldsymbol{\theta}_{2, 1} \right) + \log \mathbb{P}\left(\mathcal{D}_{22} ; \boldsymbol{\theta}_{2, 2} \right) + \cdots + \log \mathbb{P}\left(\mathcal{D}_{2D} ; \boldsymbol{\theta}_{2, D} \right) + \cdots + \log \mathbb{P}\left(\mathcal{D}_{K1} ; \boldsymbol{\theta}_{K, 1} \right) + \log \mathbb{P}\left(\mathcal{D}_{K2} ; \boldsymbol{\theta}_{K, 2} \right) + \cdots + \log \mathbb{P}\left(\mathcal{D}_{KD} ; \boldsymbol{\theta}_{K, D} \right) \\
+\end{align*}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathcal{D}_{dk}\)</span> is the data set of all the data points of feature <span class="math notranslate nohighlight">\(d\)</span> and class <span class="math notranslate nohighlight">\(k\)</span>.</p>
+<p>Now we can <em><strong>individually maximize</strong></em> the parameters of each feature and class pair, i.e. estimate <span class="math notranslate nohighlight">\(\mathcal{D}_{dk}\)</span> for each <span class="math notranslate nohighlight">\(d\)</span> and <span class="math notranslate nohighlight">\(k\)</span>.</p>
+<p>For example, <span class="math notranslate nohighlight">\(\mathcal{D}_{12}\)</span> refers to all the data points of feature <span class="math notranslate nohighlight">\(1\)</span> and class <span class="math notranslate nohighlight">\(2\)</span>.</p>
+<p>In terms of earlier in a similar vein from Definition 72 (Maximize Feature Parameters), but now instead of
+multiplying the probabilities, we are summing the log probabilities.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\arg \max_{\theta_{1, 2}} \log \mathbb{P}\left(\mathcal{D}_{12} ; \theta_{1, 2} \right) &amp;= \arg \max_{\theta_{1, 2}} \sum_{n=1: Y^{(n)} = 2}^N \log \left(\mathbb{P}\left(X_1^{(n)} \middle \vert Y = 2 ; \theta_{1, 2} \right) \right) \\
+\end{align*}
+\end{split}\]</div>
+<p>where we will attempt to find the best estimate <span class="math notranslate nohighlight">\(\theta_{1, 2} = \left(\mu_{2, 1}, \sigma_{2, 1} \right)\)</span> for the parameters of the Gaussian distribution of feature <span class="math notranslate nohighlight">\(1\)</span> and class <span class="math notranslate nohighlight">\(2\)</span>.</p>
+<p>It turns out that the maximum likelihood estimate for the parameters of the Gaussian distribution is the sample mean and sample variance of the data set <span class="math notranslate nohighlight">\(\mathcal{D}_{12}\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\arg \max_{\theta_{1, 2}} \log \mathbb{P}\left(\mathcal{D}_{12} ; \theta_{1, 2} \right) &amp;= \begin{bmatrix} \hat{\mu_{2, 1}} \\ \hat{\sigma}_{2, 1} \end{bmatrix} \\
+&amp;= \begin{bmatrix} \frac{1}{N_2} \sum_{n=1}^{N_2} x_1^{(n)} \\ \sqrt{\frac{1}{N_2} \sum_{n=1}^{N_2} \left( x_1^{(n)} - \hat{\mu}_{2, 1} \right)^2} \end{bmatrix} \\
+&amp;= \begin{bmatrix} \bar{x}_{2, 1} \\ s_{2, 1} \end{bmatrix} \\
+\end{align*}
+\end{split}\]</div>
+<p>and for the general form</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\arg \max_{\theta_{k, d}} \log \mathbb{P}\left(\mathcal{D}_{dk} ; \theta_{k, d} \right) &amp;= \begin{bmatrix} \hat{\mu_{k, d}} \\ \hat{\sigma}_{k, d} \end{bmatrix} \\
+&amp;= \begin{bmatrix} \frac{1}{N_k} \sum_{n=1}^{N_k} x_d^{(n)} \\ \sqrt{\frac{1}{N_k} \sum_{n=1}^{N_k} \left( x_d^{(n)} - \hat{\mu}_{k, d} \right)^2} \end{bmatrix} \\
+&amp;= \begin{bmatrix} \bar{x}_{k, d} \\ s_{k, d} \end{bmatrix} \\
+\end{align*}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\bar{x}_{k, d}\)</span> is the sample mean of the data set <span class="math notranslate nohighlight">\(\mathcal{D}_{dk}\)</span> and <span class="math notranslate nohighlight">\(s_{k, d}\)</span> is the sample standard deviation of the data set <span class="math notranslate nohighlight">\(\mathcal{D}_{dk}\)</span>.</p>
+<p>For completeness, the parameter matrix <span class="math notranslate nohighlight">\(\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}\)</span> defined in <a class="reference internal" href="#equation-eq-naive-bayes-estimation-2">(60)</a> becomes:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}} &amp;= \begin{bmatrix} \boldsymbol{\theta}_{11} &amp; \boldsymbol{\theta}_{12} &amp; \cdots &amp; \boldsymbol{\theta}_{1D} \\ \boldsymbol{\theta}_{21} &amp; \boldsymbol{\theta}_{22} &amp; \cdots &amp; \boldsymbol{\theta}_{2D} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ \boldsymbol{\theta}_{K1} &amp; \boldsymbol{\theta}_{K2} &amp; \cdots &amp; \boldsymbol{\theta}_{KD} \end{bmatrix} \\
+&amp;= \begin{bmatrix} \left(\bar{x}_{1, 1}, s_{1, 1} \right) &amp; \left(\bar{x}_{1, 2}, s_{1, 2} \right) &amp; \cdots &amp; \left(\bar{x}_{1, D}, s_{1, D} \right) \\ \left(\bar{x}_{2, 1}, s_{2, 1} \right) &amp; \left(\bar{x}_{2, 2}, s_{2, 2} \right) &amp; \cdots &amp; \left(\bar{x}_{2, D}, s_{2, D} \right) \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ \left(\bar{x}_{K, 1}, s_{K, 1} \right) &amp; \left(\bar{x}_{K, 2}, s_{K, 2} \right) &amp; \cdots &amp; \left(\bar{x}_{K, D}, s_{K, D} \right) \end{bmatrix} \\
+\end{align*}
+\end{split}\]</div>
+<hr class="docutils" />
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+&amp;= \arg \max_{\boldsymbol{\theta}_{\{\mathbf{X} \mid Y\}}} \sum_{k=1}^K \sum_{d=1}^D \left [\sum_{n=1: Y^{(n)} = k}^N \log \left(\frac{1}{\sqrt{2 \pi \sigma_{k, d}^2}} \exp \left( -\frac{1}{2 \sigma_{k, d}^2} \left( X_d^{(n)} - \mu_{k, d} \right)^2 \right) \right)\right] \\
+\end{align*}
+\end{split}\]</div>
+<p>See derivations from section 4.2.5 and 4.2.6 of Probabilistic Machine Learning: An Introduction by Kevin Murphy
+for the univariate and multivariate Gaussian case respectively.</p>
+</section>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="http://jrmeyer.github.io/machinelearning/2017/08/18/mle.html">http://jrmeyer.github.io/machinelearning/2017/08/18/mle.html</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=XtUNwVrWnPM">https://www.youtube.com/watch?v=XtUNwVrWnPM</a></p></li>
+<li></li>
+</ul>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="intractable"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
@@ -2019,7 +2152,7 @@ is the same as the empirical relative frequency of each class in the training da
 <dt class="label" id="dparameters"><span class="brackets"><a class="fn-backref" href="#id5">5</a></span></dt>
 <dd><p>Dive into Deep Learning, Section 22.9, this is only assuming that each feature <span class="math notranslate nohighlight">\(\mathbf{x}_d^{(n)}\)</span> is binary, i.e. <span class="math notranslate nohighlight">\(\mathbf{x}_d^{(n)} \in \{0, 1\}\)</span>.</p>
 </dd>
-<dt class="label" id="id14"><span class="brackets"><a class="fn-backref" href="#id6">6</a></span></dt>
+<dt class="label" id="id15"><span class="brackets"><a class="fn-backref" href="#id6">6</a></span></dt>
 <dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Conditional_independence">Conditional Independence</a></p>
 </dd>
 <dt class="label" id="kdparameters"><span class="brackets"><a class="fn-backref" href="#id7">7</a></span></dt>
@@ -2028,13 +2161,13 @@ is the same as the empirical relative frequency of each class in the training da
 <dt class="label" id="categorical-distribution"><span class="brackets"><a class="fn-backref" href="#id8">8</a></span></dt>
 <dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Categorical_distribution">Category Distribution</a></p>
 </dd>
-<dt class="label" id="iid-tuple"><span class="brackets"><a class="fn-backref" href="#id11">9</a></span></dt>
+<dt class="label" id="iid-tuple"><span class="brackets"><a class="fn-backref" href="#id12">9</a></span></dt>
 <dd><p><span class="math notranslate nohighlight">\(\left(\mathbf{X}^{(n)}, Y^{(1)}\right)\)</span> is written as a tuple, when in fact they can be considered 1 single variable.</p>
 </dd>
-<dt class="label" id="iid-likelihood"><span class="brackets"><a class="fn-backref" href="#id12">10</a></span></dt>
-<dd><p>Refer to page 470 of <span id="id15">[<a class="reference internal" href="../../../references_and_resources/bibliography.html#id2" title="Stanley H. Chan. Introduction to probability for Data Science. Michigan Publishing, 2021.">Chan, 2021</a>]</span>. Note that we cannot write it as a product if the data is not independent and identically distributed.</p>
+<dt class="label" id="iid-likelihood"><span class="brackets"><a class="fn-backref" href="#id13">10</a></span></dt>
+<dd><p>Refer to page 470 of <span id="id16">[<a class="reference internal" href="../../../references_and_resources/bibliography.html#id2" title="Stanley H. Chan. Introduction to probability for Data Science. Michigan Publishing, 2021.">Chan, 2021</a>]</span>. Note that we cannot write it as a product if the data is not independent and identically distributed.</p>
 </dd>
-<dt class="label" id="decomposed-likelihood"><span class="brackets"><a class="fn-backref" href="#id13">11</a></span></dt>
+<dt class="label" id="decomposed-likelihood"><span class="brackets"><a class="fn-backref" href="#id14">11</a></span></dt>
 <dd><p>Cite Kevin Murphy and Bishop.</p>
 </dd>
 </dl>
