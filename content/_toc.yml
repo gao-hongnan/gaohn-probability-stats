@@ -71,8 +71,7 @@ parts:
     - file: machine_learning_algorithms/generative/naive_bayes/naive_bayes_concept.md
     - file: machine_learning_algorithms/generative/naive_bayes/naive_bayes_example_penguin.ipynb
     - file: machine_learning_algorithms/generative/naive_bayes/naive_bayes_application_mnist.ipynb
-    - file: t.md
-
+    - file: machine_learning_algorithms/generative/naive_bayes/naive_bayes_implementation.md
 
   - caption: References and Resources
     chapters:

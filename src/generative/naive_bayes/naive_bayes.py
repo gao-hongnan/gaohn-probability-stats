@@ -20,19 +20,17 @@ NOTE:
 from __future__ import annotations
 
 import math
-from dataclasses import dataclass
 from typing import Dict, List
 
 import numpy as np
+from sklearn.datasets import load_iris
+from sklearn.metrics import accuracy_score, precision_recall_fscore_support
+from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import GaussianNB
 
 from src.base.estimator import BaseEstimator, T
 from src.base.hyperparams import BaseHyperParams
-
-
-@dataclass
-class NaivesBayesHyperParams(BaseHyperParams):
-    random_state: int
-    num_classes: int
+from src.generative.naive_bayes.config import NaivesBayesHyperParams
 
 
 class NaiveBayesGaussian(BaseEstimator):
@@ -174,14 +172,12 @@ class NaiveBayesGaussian(BaseEstimator):
 
 
 if __name__ == "__main__":
-    from sklearn.datasets import load_iris
-    from sklearn.metrics import accuracy_score, precision_recall_fscore_support
-    from sklearn.model_selection import train_test_split
 
-    features, labels = load_iris(return_X_y=True)
 
-    train_features, test_features, train_labels, test_labels = train_test_split(
-        features, labels, test_size=0.2, random_state=0
+    X, y = load_iris(return_X_y=True)
+
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=0
     )
 
     hparams = {
@@ -191,12 +187,12 @@ if __name__ == "__main__":
     naives_bayes_hyperparams = NaivesBayesHyperParams.from_dict(hparams)
 
     gnb = NaiveBayesGaussian(naives_bayes_hyperparams)
-    gnb.fit(train_features, train_labels)  # type: ignore
-    predictions = gnb.predict(test_features)  # type: ignore
+    gnb.fit(X_train, y_train)
+    predictions = gnb.predict(X_test)
 
-    accuracy = accuracy_score(test_labels, predictions)
+    accuracy = accuracy_score(y_test, predictions)
     precision, recall, fscore, _ = precision_recall_fscore_support(
-        test_labels, predictions, average="macro"
+        y_test, predictions, average="macro"
     )
 
     print(f"Accuracy:  {accuracy:.3f}")
@@ -204,4 +200,20 @@ if __name__ == "__main__":
     print(f"Recall:    {recall:.3f}")
     print(f"F-score:   {fscore:.3f}")
     print()
-    print(f"Mislabeled points: {(predictions != test_labels).sum()}/{test_features.shape[0]}")  # type: ignore
+    print(f"Mislabeled points: {(predictions != y_test).sum()}/{X_test.shape[0]}")
+
+    sk_gnb = GaussianNB(var_smoothing=0)  # to get exact same results as sklearn
+    sk_gnb.fit(X_train, y_train)
+    sk_predictions = sk_gnb.predict(X_test)
+
+    accuracy = accuracy_score(y_test, predictions)
+    precision, recall, fscore, _ = precision_recall_fscore_support(
+        y_test, predictions, average="macro"
+    )
+
+    print(f"Accuracy:  {accuracy:.3f}")
+    print(f"Precision: {precision:.3f}")
+    print(f"Recall:    {recall:.3f}")
+    print(f"F-score:   {fscore:.3f}")
+    print()
+    print(f"Mislabeled points: {(predictions != y_test).sum()}/{X_test.shape[0]}")  # type: ignore
