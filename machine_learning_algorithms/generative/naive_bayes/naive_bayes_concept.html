@@ -717,6 +717,11 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#brain-dump">
+   Brain dump
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#references">
    References
   </a>
@@ -847,6 +852,11 @@ title="Print to PDF"
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#brain-dump">
+   Brain dump
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#references">
@@ -1038,38 +1048,7 @@ follows a discrete distribution such as the Categorical distribution.</p>
 <section class="definition-content" id="proof-content">
 <p>We denote the normalizing constant as <span class="math notranslate nohighlight">\(\mathbb{P}(\mathbf{X} = \mathbf{x}) = \sum_{k=1}^K \mathbb{P}(Y = k) \mathbb{P}(\mathbf{X} = \mathbf{x} \mid Y = k)\)</span>.</p>
 </section>
-</div><p>Brain dump</p>
-<ol class="simple">
-<li><p>The data points <span class="math notranslate nohighlight">\(\mathbf{x}^{(1)}, \mathbf{x}^{(2)}, \ldots, \mathbf{x}^{(N)}\)</span> are <strong>i.i.d.</strong> (independent and identically distributed) realizations from the random variables (random vectors) <span class="math notranslate nohighlight">\(\mathbf{X}^{(1)}, \mathbf{X}^{(2)}, \ldots, \mathbf{X}^{(N)}\)</span>.</p></li>
-<li><p>Each <span class="math notranslate nohighlight">\(\mathbf{X}^{(n)}\)</span> is a random vector, i.e. <span class="math notranslate nohighlight">\(\mathbf{X}^{(n)} \in \mathbb{R}^{D}\)</span>, where <span class="math notranslate nohighlight">\(D\)</span> is the dimensionality of the feature space. This means that <span class="math notranslate nohighlight">\(\mathbf{X}^{(n)}\)</span> can be characterized by an <span class="math notranslate nohighlight">\(D\)</span>-dimensional PDF <span class="math notranslate nohighlight">\(f_{\mathbf{X}^{(n)}}(\mathbf{x}^{(n)}) = f_{X_1^{(n)}, X_2^{(n)}, \ldots, X_D^{(n)}}(x_1^{(n)}, x_2^{(n)}, \ldots, x_D^{(n)})\)</span>.</p></li>
-</ol>
-<p>This means <span class="math notranslate nohighlight">\(\mathbf{X}^{(n)}\)</span> is a multi-dimensional joint distribution,</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
-\mathbf{X}^{(n)} \in \mathbb{R}^{D} = \begin{bmatrix} X_1^{(n)} \\ X_2^{(n)} \\ \vdots \\ X_D^{(n)} \end{bmatrix}
-\end{aligned}
-\end{split}\]</div>
-<p>and can be characterized by an <span class="math notranslate nohighlight">\(D\)</span>-dimensional PDF</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{aligned}
-f_{\mathbf{X}^{(n)}}(\mathbf{x}^{(n)}) = f_{\mathbf{X}^{(n)}}\left(\mathbf{x}^{(n)}\right) = f_{X_1^{(n)}, X_2^{(n)}, \ldots, X_D^{(n)}}\left(x_1^{(n)}, x_2^{(n)}, \ldots, x_D^{(n)}\right)
-\end{aligned}
-\]</div>
-<p>For example, if <span class="math notranslate nohighlight">\(D = 3\)</span>, and the realizations of <span class="math notranslate nohighlight">\(\mathbf{X}^{(n)}\)</span> are <span class="math notranslate nohighlight">\(\mathbf{x}^{(n)} = (22, 80, 1)\)</span>,
-then <span class="math notranslate nohighlight">\(f_{\mathbf{X}^{(n)}}\left(\mathbf{x}^{(n)}\right)\)</span> is the probability density of observing this 3-dimensional vector in <span class="math notranslate nohighlight">\(\mathbb{R}^{3}\)</span>, within the
-sample space <span class="math notranslate nohighlight">\(\Omega_{\mathbf{X}} = \mathbb{R}  \times \mathbb{R} \times \mathbb{R}\)</span>.</p>
-<p>The confusion in the <strong>i.i.d.</strong> assumption is that we are not talking about the individual random variables
-<span class="math notranslate nohighlight">\(X_1^{(n)}, X_2^{(n)}, \ldots, X_D^{(n)}\)</span> here, but the entire random vector <span class="math notranslate nohighlight">\(\mathbf{X}^{(n)}\)</span>.</p>
-<p>This means there is no assumption of <span class="math notranslate nohighlight">\(X_1^{(n)}, X_2^{(n)}, \ldots, X_D^{(n)}\)</span> being <strong>i.i.d.</strong>. Instead, the samples
-<span class="math notranslate nohighlight">\(\mathbf{X}^{(1)}, \mathbf{X}^{(2)}, \ldots, \mathbf{X}^{(N)}\)</span> are <strong>i.i.d.</strong>.</p>
-<ol class="simple">
-<li><p>More confusion, is it iid with label <span class="math notranslate nohighlight">\(Y=k\)</span>, seems like it is together since we can indeed decompose
-the <span class="math notranslate nohighlight">\(\mathbb{P}(Y=k \mid \mathbf{X} = \mathbf{x})\)</span> into proportional <span class="math notranslate nohighlight">\(\mathbb{P}(Y=k) \mathbb{P}(\mathbf{X} = \mathbf{x} \mid Y = k)\)</span>.</p></li>
-</ol>
-<p>In SE post, discriminative model do not need make assumptions of X and therefore they may or may not be i.i.d.</p>
-<section id="discriminative-vs-generative">
+</div><section id="discriminative-vs-generative">
 <h3>Discriminative vs Generative<a class="headerlink" href="#discriminative-vs-generative" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Discriminative classifiers model the conditional distribution <span class="math notranslate nohighlight">\(\mathbb{P}(Y = k \mid \mathbf{X} =  \mathbf{x})\)</span>.
@@ -2127,6 +2106,40 @@ multiplying the probabilities, we are summing the log probabilities.</p>
 <p>See derivations from section 4.2.5 and 4.2.6 of Probabilistic Machine Learning: An Introduction by Kevin Murphy
 for the univariate and multivariate Gaussian case respectively.</p>
 </section>
+</section>
+<section id="brain-dump">
+<h2>Brain dump<a class="headerlink" href="#brain-dump" title="Permalink to this headline">#</a></h2>
+<p>Brain dump</p>
+<ol class="simple">
+<li><p>The data points <span class="math notranslate nohighlight">\(\mathbf{x}^{(1)}, \mathbf{x}^{(2)}, \ldots, \mathbf{x}^{(N)}\)</span> are <strong>i.i.d.</strong> (independent and identically distributed) realizations from the random variables (random vectors) <span class="math notranslate nohighlight">\(\mathbf{X}^{(1)}, \mathbf{X}^{(2)}, \ldots, \mathbf{X}^{(N)}\)</span>.</p></li>
+<li><p>Each <span class="math notranslate nohighlight">\(\mathbf{X}^{(n)}\)</span> is a random vector, i.e. <span class="math notranslate nohighlight">\(\mathbf{X}^{(n)} \in \mathbb{R}^{D}\)</span>, where <span class="math notranslate nohighlight">\(D\)</span> is the dimensionality of the feature space. This means that <span class="math notranslate nohighlight">\(\mathbf{X}^{(n)}\)</span> can be characterized by an <span class="math notranslate nohighlight">\(D\)</span>-dimensional PDF <span class="math notranslate nohighlight">\(f_{\mathbf{X}^{(n)}}(\mathbf{x}^{(n)}) = f_{X_1^{(n)}, X_2^{(n)}, \ldots, X_D^{(n)}}(x_1^{(n)}, x_2^{(n)}, \ldots, x_D^{(n)})\)</span>.</p></li>
+</ol>
+<p>This means <span class="math notranslate nohighlight">\(\mathbf{X}^{(n)}\)</span> is a multi-dimensional joint distribution,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\mathbf{X}^{(n)} \in \mathbb{R}^{D} = \begin{bmatrix} X_1^{(n)} \\ X_2^{(n)} \\ \vdots \\ X_D^{(n)} \end{bmatrix}
+\end{aligned}
+\end{split}\]</div>
+<p>and can be characterized by an <span class="math notranslate nohighlight">\(D\)</span>-dimensional PDF</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{aligned}
+f_{\mathbf{X}^{(n)}}(\mathbf{x}^{(n)}) = f_{\mathbf{X}^{(n)}}\left(\mathbf{x}^{(n)}\right) = f_{X_1^{(n)}, X_2^{(n)}, \ldots, X_D^{(n)}}\left(x_1^{(n)}, x_2^{(n)}, \ldots, x_D^{(n)}\right)
+\end{aligned}
+\]</div>
+<p>For example, if <span class="math notranslate nohighlight">\(D = 3\)</span>, and the realizations of <span class="math notranslate nohighlight">\(\mathbf{X}^{(n)}\)</span> are <span class="math notranslate nohighlight">\(\mathbf{x}^{(n)} = (22, 80, 1)\)</span>,
+then <span class="math notranslate nohighlight">\(f_{\mathbf{X}^{(n)}}\left(\mathbf{x}^{(n)}\right)\)</span> is the probability density of observing this 3-dimensional vector in <span class="math notranslate nohighlight">\(\mathbb{R}^{3}\)</span>, within the
+sample space <span class="math notranslate nohighlight">\(\Omega_{\mathbf{X}} = \mathbb{R}  \times \mathbb{R} \times \mathbb{R}\)</span>.</p>
+<p>The confusion in the <strong>i.i.d.</strong> assumption is that we are not talking about the individual random variables
+<span class="math notranslate nohighlight">\(X_1^{(n)}, X_2^{(n)}, \ldots, X_D^{(n)}\)</span> here, but the entire random vector <span class="math notranslate nohighlight">\(\mathbf{X}^{(n)}\)</span>.</p>
+<p>This means there is no assumption of <span class="math notranslate nohighlight">\(X_1^{(n)}, X_2^{(n)}, \ldots, X_D^{(n)}\)</span> being <strong>i.i.d.</strong>. Instead, the samples
+<span class="math notranslate nohighlight">\(\mathbf{X}^{(1)}, \mathbf{X}^{(2)}, \ldots, \mathbf{X}^{(N)}\)</span> are <strong>i.i.d.</strong>.</p>
+<ol class="simple">
+<li><p>More confusion, is it iid with label <span class="math notranslate nohighlight">\(Y=k\)</span>, seems like it is together since we can indeed decompose
+the <span class="math notranslate nohighlight">\(\mathbb{P}(Y=k \mid \mathbf{X} = \mathbf{x})\)</span> into proportional <span class="math notranslate nohighlight">\(\mathbb{P}(Y=k) \mathbb{P}(\mathbf{X} = \mathbf{x} \mid Y = k)\)</span>.</p></li>
+</ol>
+<p>In SE post, discriminative model do not need make assumptions of X and therefore they may or may not be i.i.d.</p>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>

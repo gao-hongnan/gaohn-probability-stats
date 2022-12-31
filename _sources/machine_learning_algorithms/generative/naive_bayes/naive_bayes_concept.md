@@ -198,44 +198,6 @@ We denote the posterior probability of class $k$ given $\mathbf{x}$ as $\mathbb{
 We denote the normalizing constant as $\mathbb{P}(\mathbf{X} = \mathbf{x}) = \sum_{k=1}^K \mathbb{P}(Y = k) \mathbb{P}(\mathbf{X} = \mathbf{x} \mid Y = k)$.
 ``` 
 
-Brain dump
-
-1. The data points $\mathbf{x}^{(1)}, \mathbf{x}^{(2)}, \ldots, \mathbf{x}^{(N)}$ are **i.i.d.** (independent and identically distributed) realizations from the random variables (random vectors) $\mathbf{X}^{(1)}, \mathbf{X}^{(2)}, \ldots, \mathbf{X}^{(N)}$. 
-
-2. Each $\mathbf{X}^{(n)}$ is a random vector, i.e. $\mathbf{X}^{(n)} \in \mathbb{R}^{D}$, where $D$ is the dimensionality of the feature space. This means that $\mathbf{X}^{(n)}$ can be characterized by an $D$-dimensional PDF $f_{\mathbf{X}^{(n)}}(\mathbf{x}^{(n)}) = f_{X_1^{(n)}, X_2^{(n)}, \ldots, X_D^{(n)}}(x_1^{(n)}, x_2^{(n)}, \ldots, x_D^{(n)})$.
-
-This means $\mathbf{X}^{(n)}$ is a multi-dimensional joint distribution, 
-
-$$
-\begin{aligned}
-\mathbf{X}^{(n)} \in \mathbb{R}^{D} = \begin{bmatrix} X_1^{(n)} \\ X_2^{(n)} \\ \vdots \\ X_D^{(n)} \end{bmatrix}
-\end{aligned}
-$$
-
-and can be characterized by an $D$-dimensional PDF
-
-$$
-\begin{aligned}
-f_{\mathbf{X}^{(n)}}(\mathbf{x}^{(n)}) = f_{\mathbf{X}^{(n)}}\left(\mathbf{x}^{(n)}\right) = f_{X_1^{(n)}, X_2^{(n)}, \ldots, X_D^{(n)}}\left(x_1^{(n)}, x_2^{(n)}, \ldots, x_D^{(n)}\right)
-\end{aligned}
-$$
-
-For example, if $D = 3$, and the realizations of $\mathbf{X}^{(n)}$ are $\mathbf{x}^{(n)} = (22, 80, 1)$, 
-then $f_{\mathbf{X}^{(n)}}\left(\mathbf{x}^{(n)}\right)$ is the probability density of observing this 3-dimensional vector in $\mathbb{R}^{3}$, within the
-sample space $\Omega_{\mathbf{X}} = \mathbb{R}  \times \mathbb{R} \times \mathbb{R}$.
-
-The confusion in the **i.i.d.** assumption is that we are not talking about the individual random variables 
-$X_1^{(n)}, X_2^{(n)}, \ldots, X_D^{(n)}$ here, but the entire random vector $\mathbf{X}^{(n)}$.
-
-This means there is no assumption of $X_1^{(n)}, X_2^{(n)}, \ldots, X_D^{(n)}$ being **i.i.d.**. Instead, the samples
-$\mathbf{X}^{(1)}, \mathbf{X}^{(2)}, \ldots, \mathbf{X}^{(N)}$ are **i.i.d.**.
-
-
-3. More confusion, is it iid with label $Y=k$, seems like it is together since we can indeed decompose 
-  the $\mathbb{P}(Y=k \mid \mathbf{X} = \mathbf{x})$ into proportional $\mathbb{P}(Y=k) \mathbb{P}(\mathbf{X} = \mathbf{x} \mid Y = k)$.
-
-In SE post, discriminative model do not need make assumptions of X and therefore they may or may not be i.i.d.
-
 ### Discriminative vs Generative
 
 - Discriminative classifiers model the conditional distribution $\mathbb{P}(Y = k \mid \mathbf{X} =  \mathbf{x})$.
@@ -1467,6 +1429,45 @@ $$
 See derivations from section 4.2.5 and 4.2.6 of Probabilistic Machine Learning: An Introduction by Kevin Murphy
 for the univariate and multivariate Gaussian case respectively.
 
+## Brain dump
+
+Brain dump
+
+1. The data points $\mathbf{x}^{(1)}, \mathbf{x}^{(2)}, \ldots, \mathbf{x}^{(N)}$ are **i.i.d.** (independent and identically distributed) realizations from the random variables (random vectors) $\mathbf{X}^{(1)}, \mathbf{X}^{(2)}, \ldots, \mathbf{X}^{(N)}$. 
+
+2. Each $\mathbf{X}^{(n)}$ is a random vector, i.e. $\mathbf{X}^{(n)} \in \mathbb{R}^{D}$, where $D$ is the dimensionality of the feature space. This means that $\mathbf{X}^{(n)}$ can be characterized by an $D$-dimensional PDF $f_{\mathbf{X}^{(n)}}(\mathbf{x}^{(n)}) = f_{X_1^{(n)}, X_2^{(n)}, \ldots, X_D^{(n)}}(x_1^{(n)}, x_2^{(n)}, \ldots, x_D^{(n)})$.
+
+This means $\mathbf{X}^{(n)}$ is a multi-dimensional joint distribution, 
+
+$$
+\begin{aligned}
+\mathbf{X}^{(n)} \in \mathbb{R}^{D} = \begin{bmatrix} X_1^{(n)} \\ X_2^{(n)} \\ \vdots \\ X_D^{(n)} \end{bmatrix}
+\end{aligned}
+$$
+
+and can be characterized by an $D$-dimensional PDF
+
+$$
+\begin{aligned}
+f_{\mathbf{X}^{(n)}}(\mathbf{x}^{(n)}) = f_{\mathbf{X}^{(n)}}\left(\mathbf{x}^{(n)}\right) = f_{X_1^{(n)}, X_2^{(n)}, \ldots, X_D^{(n)}}\left(x_1^{(n)}, x_2^{(n)}, \ldots, x_D^{(n)}\right)
+\end{aligned}
+$$
+
+For example, if $D = 3$, and the realizations of $\mathbf{X}^{(n)}$ are $\mathbf{x}^{(n)} = (22, 80, 1)$, 
+then $f_{\mathbf{X}^{(n)}}\left(\mathbf{x}^{(n)}\right)$ is the probability density of observing this 3-dimensional vector in $\mathbb{R}^{3}$, within the
+sample space $\Omega_{\mathbf{X}} = \mathbb{R}  \times \mathbb{R} \times \mathbb{R}$.
+
+The confusion in the **i.i.d.** assumption is that we are not talking about the individual random variables 
+$X_1^{(n)}, X_2^{(n)}, \ldots, X_D^{(n)}$ here, but the entire random vector $\mathbf{X}^{(n)}$.
+
+This means there is no assumption of $X_1^{(n)}, X_2^{(n)}, \ldots, X_D^{(n)}$ being **i.i.d.**. Instead, the samples
+$\mathbf{X}^{(1)}, \mathbf{X}^{(2)}, \ldots, \mathbf{X}^{(N)}$ are **i.i.d.**.
+
+
+3. More confusion, is it iid with label $Y=k$, seems like it is together since we can indeed decompose 
+  the $\mathbb{P}(Y=k \mid \mathbf{X} = \mathbf{x})$ into proportional $\mathbb{P}(Y=k) \mathbb{P}(\mathbf{X} = \mathbf{x} \mid Y = k)$.
+
+In SE post, discriminative model do not need make assumptions of X and therefore they may or may not be i.i.d.
 
 ## References
 
