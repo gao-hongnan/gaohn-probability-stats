@@ -12,10 +12,13 @@ References:
     - Scikit-learn's OOP paradigm
 """
 from __future__ import annotations
+
 from abc import ABC, abstractmethod
+from typing import TypeVar
+
 import numpy as np
 import torch
-from typing import TypeVar, Any, Dict, Union
+
 from src.base.hyperparams import BaseHyperParams
 
 # predict(self, X: T) -> T:

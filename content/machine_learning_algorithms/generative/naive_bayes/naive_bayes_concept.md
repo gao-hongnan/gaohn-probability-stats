@@ -1469,6 +1469,10 @@ $\mathbf{X}^{(1)}, \mathbf{X}^{(2)}, \ldots, \mathbf{X}^{(N)}$ are **i.i.d.**.
 
 In SE post, discriminative model do not need make assumptions of X and therefore they may or may not be i.i.d.
 
+## Decision Boundary Proof
+
+TODO...
+
 ## References
 
 - http://jrmeyer.github.io/machinelearning/2017/08/18/mle.html

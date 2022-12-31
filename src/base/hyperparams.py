@@ -18,10 +18,10 @@ def save_hyperparameters(self, ignore: Optional[List[Any]] = None):
         setattr(self, k, v)
 """
 from __future__ import annotations
-from abc import ABC
-from typing import Any, Mapping, Type
-from dataclasses import dataclass
 
+from abc import ABC
+from dataclasses import dataclass
+from typing import Any, Mapping, Type
 
 from src.utils.general_utils import dataclass_from_dict
 
