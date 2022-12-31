@@ -30,8 +30,6 @@ from src.utils.general_utils import dataclass_from_dict
 class BaseHyperParams(ABC):
     """Base Abstract Class for Hyperparameters."""
 
-    random_state: int
-
     @classmethod
     def from_dict(
         cls: Type[BaseHyperParams], src: Mapping[str, Any]
