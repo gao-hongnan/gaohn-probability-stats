@@ -24,7 +24,7 @@ from typing import Dict, List
 
 import numpy as np
 from sklearn.datasets import load_iris
-from sklearn.metrics import accuracy_score, precision_recall_fscore_support
+from sklearn.metrics import classification_report
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import GaussianNB
 
@@ -173,7 +173,6 @@ class NaiveBayesGaussian(BaseEstimator):
 
 if __name__ == "__main__":
 
-
     X, y = load_iris(return_X_y=True)
 
     X_train, X_test, y_train, y_test = train_test_split(
@@ -188,32 +187,28 @@ if __name__ == "__main__":
 
     gnb = NaiveBayesGaussian(naives_bayes_hyperparams)
     gnb.fit(X_train, y_train)
-    predictions = gnb.predict(X_test)
+    y_preds = gnb.predict(X_test)
 
-    accuracy = accuracy_score(y_test, predictions)
-    precision, recall, fscore, _ = precision_recall_fscore_support(
-        y_test, predictions, average="macro"
+    report = classification_report(
+        y_test,
+        y_preds,
+        labels=[0, 1, 2],
+        target_names=["setosa", "versicolor", "virginica"],
     )
-
-    print(f"Accuracy:  {accuracy:.3f}")
-    print(f"Precision: {precision:.3f}")
-    print(f"Recall:    {recall:.3f}")
-    print(f"F-score:   {fscore:.3f}")
+    print(f"Classification report: \n{report}")
     print()
-    print(f"Mislabeled points: {(predictions != y_test).sum()}/{X_test.shape[0]}")
+    print(f"Mislabeled points: {(y_preds != y_test).sum()}/{X_test.shape[0]}")
 
     sk_gnb = GaussianNB(var_smoothing=0)  # to get exact same results as sklearn
     sk_gnb.fit(X_train, y_train)
-    sk_predictions = sk_gnb.predict(X_test)
+    sk_y_preds = sk_gnb.predict(X_test)
 
-    accuracy = accuracy_score(y_test, predictions)
-    precision, recall, fscore, _ = precision_recall_fscore_support(
-        y_test, predictions, average="macro"
+    report = classification_report(
+        y_test,
+        sk_y_preds,
+        labels=[0, 1, 2],
+        target_names=["setosa", "versicolor", "virginica"],
     )
-
-    print(f"Accuracy:  {accuracy:.3f}")
-    print(f"Precision: {precision:.3f}")
-    print(f"Recall:    {recall:.3f}")
-    print(f"F-score:   {fscore:.3f}")
+    print(f"Classification report: \n{report}")
     print()
-    print(f"Mislabeled points: {(predictions != y_test).sum()}/{X_test.shape[0]}")  # type: ignore
+    print(f"Mislabeled points: {(sk_y_preds != y_test).sum()}/{X_test.shape[0]}")
