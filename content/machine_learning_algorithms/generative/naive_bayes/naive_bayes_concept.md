@@ -243,7 +243,6 @@ we can compute the conditional probability of each class $Y = k$ given the sampl
 
 ```{prf:algorithm} Naive Bayes Inference Algorithm
 :label: naive-bayes-inference-algorithm
-:class: full-width
 
 - Compute the conditional probability of each class $Y = k$ given the sample $\mathbf{x}^{(q)}$:
 
@@ -334,6 +333,41 @@ which is intractable[^intractable].
 However, if we can ***estimate*** the conditional probability (likelihood) $\mathbb{P}(\mathbf{X} = \mathbf{x}^{(q)} \mid Y = k)$ 
 and the prior probability $\mathbb{P}(Y = k)$, then we can use Bayes' rule to 
 compute the posterior conditional probability $\mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x}^{(q)})$. 
+
+## The Naive Bayes Form
+
+Quoted from [Wikipedia](https://en.wikipedia.org/wiki/Bayes%27_theorem#Simple_form_2), it is worth noting that
+there's a few forms of Naive Bayes:
+
+### Simple Form
+
+If $X$ is continuous and $Y$ is discrete,
+
+$$
+f_{X \mid Y=y}(x)=\frac{P(Y=y \mid X=x) f_X(x)}{P(Y=y)}
+$$
+
+where each $f$ is a density function.
+
+If $X$ is discrete and $Y$ is continuous,
+
+$$
+P(X=x \mid Y=y)=\frac{f_{Y \mid X=x}(y) P(X=x)}{f_Y(y)} .
+$$
+
+If both $X$ and $Y$ are continuous,
+
+$$
+f_{X \mid Y=y}(x)=\frac{f_{Y \mid X=x}(y) f_X(x)}{f_Y(y)} .
+$$
+
+### Extended form
+
+A continuous event space is often conceptualized in terms of the numerator terms. It is then useful to eliminate the denominator using the law of total probability. For $f_Y(y)$, this becomes an integral:
+
+$$
+f_Y(y)=\int_{-\infty}^{\infty} f_{Y \mid X=\xi}(y) f_X(\xi) d \xi
+$$
 
 ## The Naive Bayes Assumptions
 
@@ -515,7 +549,6 @@ $$ (eq:argmax-naive-bayes-6)
 
 We also make some updates to the vector form {eq}`eq:argmax-naive-bayes-3` by updating $\mathbf{M_2}$ to:
 
-````{div} full-width
 $$
 \begin{aligned}
   \mathbf{M_2} &= \begin{bmatrix}
@@ -545,7 +578,6 @@ $$
   \end{bmatrix}_{K \times D} \\
 \end{aligned}
 $$ (eq:naive-bayes-m3-explained)
-````
 
 where we can easily recover each row of $\mathbf{M_2}$ by taking the product of the corresponding row of $\mathbf{M_3}$.
 
@@ -1482,17 +1514,22 @@ TODO...
 
 The below text/articles are of which I draw reference from.
 
+- Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J. "Chapter 22.7 Maximum Likelihood." In Dive into Deep Learning, 2021.
 - Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J. "Chapter 22.9 Naive Bayes." In Dive into Deep Learning, 2021.
 - Hal Daumé III. "Chapter 9.3. Naive Bayes Models." In A Course in Machine Learning, January 2017. 
 - Murphy, Kevin P. "Chapter 9.3. Naive Bayes Models." In Probabilistic Machine Learning: An Introduction. Cambridge (Massachusetts): The MIT Press, 2022. 
 - James, Gareth, Daniela Witten, Trevor Hastie, and Robert Tibshirani. "Chapter 4.4.4. Naive Bayes" In An Introduction to Statistical Learning: With Applications in R. Boston: Springer, 2022. 
 - Mitchell, Tom Michael. Machine Learning. New York: McGraw-Hill, 1997. (His new chapter on Generate and Discriminative Classifiers: Naive Bayes and Logistic Regression)
-- Chan, Stanley H. “Chapter 8.1. Maximum-Likelihood Estimation.” In Introduction to Probability for Data Science, 172-180. Ann Arbor, Michigan: Michigan Publishing Services, 2021
+- Chan, Stanley H. "Chapter 8.1. Maximum-Likelihood Estimation." In Introduction to Probability for Data Science, 172-180. Ann Arbor, Michigan: Michigan Publishing Services, 2021
+- Jurafsky, Dan, and James H. Martin. "Chapter 4. Naive Bayes and Sentiment Classification" In Speech and Language Processing: An Introduction to Natural Language Processing, Computational Linguistics, and Speech Recognition. Noida: Pearson, 2022. 
+- [Naive Bayes Classifier, Wikipedia](https://en.wikipedia.org/wiki/Naive_Bayes_classifier)
+- [Joint Probability Distribution, Wikipedia](https://en.wikipedia.org/wiki/Joint_probability_distribution)
 - [Maximum Likelihood Estimation of Gaussian Parameters](http://jrmeyer.github.io/machinelearning/2017/08/18/mle.html)
 - [mathematicalmonk's (ML 4.3) MLE for univariate Gaussian mean](https://www.youtube.com/watch?v=XtUNwVrWnPM)
 - [Machine Learning from Scratch](https://dafriedman97.github.io/mlbook/content/c4/construction.html)
 - [Cornell CS4780/5780: Machine Learning, Bayes Classifier and Naive Bayes](https://www.cs.cornell.edu/courses/cs4780/2018fa/lectures/lecturenote05.html)
-  
+- [On the importance of the i.i.d. assumption in statistical learning](https://stats.stackexchange.com/questions/213464/on-the-importance-of-the-i-i-d-assumption-in-statistical-learning) 
+
 [^likelihood-1]: Not to be confused with the likelihood term $\mathbb{P}(\mathbf{X} \mid Y)$ in Bayes' terminology.
 [^2dparameters]: Dive into Deep Learning, Section 22.9, this is only assuming that each feature $\mathbf{x}_d^{(n)}$ is binary, i.e. $\mathbf{x}_d^{(n)} \in \{0, 1\}$.
 [^intractable]: Cite Dive into Deep Learning on this. Also, the joint probability is intractable because the number of parameters to estimate is exponential in the number of features. Use binary bits example, see my notes.
