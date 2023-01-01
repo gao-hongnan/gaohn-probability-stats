@@ -59,7 +59,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Bibliography" href="../../../references_and_resources/bibliography.html" />
+    <link rel="next" title="Naives Bayes Implementation" href="naive_bayes_implementation.html" />
     <link rel="prev" title="Example: Penguins Dataset" href="naive_bayes_example_penguin.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -412,6 +412,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Naive Bayes Application (MNIST)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="naive_bayes_implementation.html">
+   Naives Bayes Implementation
   </a>
  </li>
 </ul>
@@ -1238,6 +1243,10 @@ mnist_test = torchvision.datasets.MNIST(
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>41.3%
 </pre></div>
 </div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz
+Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz to ./temp/MNIST/raw/train-images-idx3-ubyte.gz
+</pre></div>
+</div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>41.7%
 </pre></div>
 </div>
@@ -1581,10 +1590,6 @@ mnist_test = torchvision.datasets.MNIST(
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>79.3%
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz
-Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz to ./temp/MNIST/raw/train-images-idx3-ubyte.gz
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>79.7%
@@ -1938,9 +1943,6 @@ Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz to ./tem
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100.0%
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100.0%
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz
 Downloading http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz to ./temp/MNIST/raw/train-labels-idx1-ubyte.gz
 Extracting ./temp/MNIST/raw/train-labels-idx1-ubyte.gz to ./temp/MNIST/raw
@@ -1948,13 +1950,20 @@ Extracting ./temp/MNIST/raw/train-labels-idx1-ubyte.gz to ./temp/MNIST/raw
 Downloading http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz
 Downloading http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz to ./temp/MNIST/raw/t10k-images-idx3-ubyte.gz
 Extracting ./temp/MNIST/raw/t10k-images-idx3-ubyte.gz to ./temp/MNIST/raw
-
-Downloading http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz
-Downloading http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz to ./temp/MNIST/raw/t10k-labels-idx1-ubyte.gz
-Extracting ./temp/MNIST/raw/t10k-labels-idx1-ubyte.gz to ./temp/MNIST/raw
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100.0%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz
+Downloading http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz to ./temp/MNIST/raw/t10k-labels-idx1-ubyte.gz
+Extracting ./temp/MNIST/raw/t10k-labels-idx1-ubyte.gz to ./temp/MNIST/raw
 </pre></div>
 </div>
 </div>
@@ -2269,10 +2278,10 @@ float((preds == y).sum()) / len(y)  # Validation accuracy
             <p class="prev-next-title">Example: Penguins Dataset</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../../../references_and_resources/bibliography.html" title="next page">
+    <a class='right-next' id="next-link" href="naive_bayes_implementation.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Bibliography</p>
+        <p class="prev-next-title">Naives Bayes Implementation</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

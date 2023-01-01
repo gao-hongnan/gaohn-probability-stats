@@ -414,6 +414,11 @@ const thebe_selector_output = ".output, .cell_output"
    Naive Bayes Application (MNIST)
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="naive_bayes_implementation.html">
+   Naives Bayes Implementation
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -722,6 +727,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#decision-boundary-proof">
+   Decision Boundary Proof
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#references">
    References
   </a>
@@ -856,6 +866,11 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#brain-dump">
    Brain dump
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#decision-boundary-proof">
+   Decision Boundary Proof
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -1116,6 +1131,8 @@ the numerator of the conditional probability in <a class="reference internal" hr
   \mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x}^{(q)}) \propto \mathbb{P}(Y = k) \mathbb{P}(\mathbf{X} = \mathbf{x}^{(q)} \mid Y = k) 
   \]</div>
 <p>by a constant factor <span class="math notranslate nohighlight">\(\mathbb{P}(\mathbf{X} = \mathbf{x}^{(q)})\)</span>.</p>
+<p>Note however, to recover the normalizing constant is easy, since the numerator <span class="math notranslate nohighlight">\(\mathbb{P}(Y = k) \mathbb{P}(\mathbf{X} = \mathbf{x}^{(q)} \mid Y = k) \)</span>
+must sum up to 1 over all <span class="math notranslate nohighlight">\(k\)</span>, and therefore, the normalizing constant is simply <span class="math notranslate nohighlight">\(\mathbb{P}(\mathbf{X} = \mathbf{x}^{(q)}) = \sum_{k=1}^K \mathbb{P}(Y = k) \mathbb{P}(\mathbf{X} = \mathbf{x}^{(q)} \mid Y = k)\)</span>.</p>
 </li>
 <li><p>Expressing it in vector form, we have</p>
 <div class="math notranslate nohighlight" id="equation-eq-argmax-naive-bayes-3">
@@ -2141,12 +2158,25 @@ the <span class="math notranslate nohighlight">\(\mathbb{P}(Y=k \mid \mathbf{X} 
 </ol>
 <p>In SE post, discriminative model do not need make assumptions of X and therefore they may or may not be i.i.d.</p>
 </section>
+<section id="decision-boundary-proof">
+<h2>Decision Boundary Proof<a class="headerlink" href="#decision-boundary-proof" title="Permalink to this headline">#</a></h2>
+<p>See <a class="reference external" href="https://www.cs.cornell.edu/courses/cs4780/2018fa/lectures/lecturenote05.html">https://www.cs.cornell.edu/courses/cs4780/2018fa/lectures/lecturenote05.html</a>.</p>
+<p>TODO…</p>
+</section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<p>The below text/articles are of which I draw reference from.</p>
 <ul class="simple">
-<li><p><a class="reference external" href="http://jrmeyer.github.io/machinelearning/2017/08/18/mle.html">http://jrmeyer.github.io/machinelearning/2017/08/18/mle.html</a></p></li>
-<li><p><a class="reference external" href="https://www.youtube.com/watch?v=XtUNwVrWnPM">https://www.youtube.com/watch?v=XtUNwVrWnPM</a></p></li>
-<li></li>
+<li><p>Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J. “Chapter 22.9 Naive Bayes.” In Dive into Deep Learning, 2021.</p></li>
+<li><p>Hal Daumé III. “Chapter 9.3. Naive Bayes Models.” In A Course in Machine Learning, January 2017.</p></li>
+<li><p>Murphy, Kevin P. “Chapter 9.3. Naive Bayes Models.” In Probabilistic Machine Learning: An Introduction. Cambridge (Massachusetts): The MIT Press, 2022.</p></li>
+<li><p>James, Gareth, Daniela Witten, Trevor Hastie, and Robert Tibshirani. “Chapter 4.4.4. Naive Bayes” In An Introduction to Statistical Learning: With Applications in R. Boston: Springer, 2022.</p></li>
+<li><p>Mitchell, Tom Michael. Machine Learning. New York: McGraw-Hill, 1997. (His new chapter on Generate and Discriminative Classifiers: Naive Bayes and Logistic Regression)</p></li>
+<li><p>Chan, Stanley H. “Chapter 8.1. Maximum-Likelihood Estimation.” In Introduction to Probability for Data Science, 172-180. Ann Arbor, Michigan: Michigan Publishing Services, 2021</p></li>
+<li><p><a class="reference external" href="http://jrmeyer.github.io/machinelearning/2017/08/18/mle.html">Maximum Likelihood Estimation of Gaussian Parameters</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=XtUNwVrWnPM">mathematicalmonk’s (ML 4.3) MLE for univariate Gaussian mean</a></p></li>
+<li><p><a class="reference external" href="https://dafriedman97.github.io/mlbook/content/c4/construction.html">Machine Learning from Scratch</a></p></li>
+<li><p><a class="reference external" href="https://www.cs.cornell.edu/courses/cs4780/2018fa/lectures/lecturenote05.html">Cornell CS4780/5780: Machine Learning, Bayes Classifier and Naive Bayes</a></p></li>
 </ul>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">

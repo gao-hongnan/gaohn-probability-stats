@@ -274,6 +274,9 @@ the numerator of the conditional probability in {eq}`eq:conditional-naive-bayes`
 
   by a constant factor $\mathbb{P}(\mathbf{X} = \mathbf{x}^{(q)})$.
   
+  Note however, to recover the normalizing constant is easy, since the numerator $\mathbb{P}(Y = k) \mathbb{P}(\mathbf{X} = \mathbf{x}^{(q)} \mid Y = k) $
+  must sum up to 1 over all $k$, and therefore, the normalizing constant is simply $\mathbb{P}(\mathbf{X} = \mathbf{x}^{(q)}) = \sum_{k=1}^K \mathbb{P}(Y = k) \mathbb{P}(\mathbf{X} = \mathbf{x}^{(q)} \mid Y = k)$.
+
 - Expressing it in vector form, we have
 
   $$
@@ -1469,11 +1472,27 @@ $\mathbf{X}^{(1)}, \mathbf{X}^{(2)}, \ldots, \mathbf{X}^{(N)}$ are **i.i.d.**.
 
 In SE post, discriminative model do not need make assumptions of X and therefore they may or may not be i.i.d.
 
+## Decision Boundary Proof
+
+See https://www.cs.cornell.edu/courses/cs4780/2018fa/lectures/lecturenote05.html.
+
+TODO...
+
 ## References
 
-- http://jrmeyer.github.io/machinelearning/2017/08/18/mle.html
-- https://www.youtube.com/watch?v=XtUNwVrWnPM
-- 
+The below text/articles are of which I draw reference from.
+
+- Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J. "Chapter 22.9 Naive Bayes." In Dive into Deep Learning, 2021.
+- Hal Daumé III. "Chapter 9.3. Naive Bayes Models." In A Course in Machine Learning, January 2017. 
+- Murphy, Kevin P. "Chapter 9.3. Naive Bayes Models." In Probabilistic Machine Learning: An Introduction. Cambridge (Massachusetts): The MIT Press, 2022. 
+- James, Gareth, Daniela Witten, Trevor Hastie, and Robert Tibshirani. "Chapter 4.4.4. Naive Bayes" In An Introduction to Statistical Learning: With Applications in R. Boston: Springer, 2022. 
+- Mitchell, Tom Michael. Machine Learning. New York: McGraw-Hill, 1997. (His new chapter on Generate and Discriminative Classifiers: Naive Bayes and Logistic Regression)
+- Chan, Stanley H. “Chapter 8.1. Maximum-Likelihood Estimation.” In Introduction to Probability for Data Science, 172-180. Ann Arbor, Michigan: Michigan Publishing Services, 2021
+- [Maximum Likelihood Estimation of Gaussian Parameters](http://jrmeyer.github.io/machinelearning/2017/08/18/mle.html)
+- [mathematicalmonk's (ML 4.3) MLE for univariate Gaussian mean](https://www.youtube.com/watch?v=XtUNwVrWnPM)
+- [Machine Learning from Scratch](https://dafriedman97.github.io/mlbook/content/c4/construction.html)
+- [Cornell CS4780/5780: Machine Learning, Bayes Classifier and Naive Bayes](https://www.cs.cornell.edu/courses/cs4780/2018fa/lectures/lecturenote05.html)
+  
 [^likelihood-1]: Not to be confused with the likelihood term $\mathbb{P}(\mathbf{X} \mid Y)$ in Bayes' terminology.
 [^2dparameters]: Dive into Deep Learning, Section 22.9, this is only assuming that each feature $\mathbf{x}_d^{(n)}$ is binary, i.e. $\mathbf{x}_d^{(n)} \in \{0, 1\}$.
 [^intractable]: Cite Dive into Deep Learning on this. Also, the joint probability is intractable because the number of parameters to estimate is exponential in the number of features. Use binary bits example, see my notes.
