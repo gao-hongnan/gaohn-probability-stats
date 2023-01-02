@@ -636,6 +636,23 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-naive-bayes-form">
+   The Naive Bayes Form
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#simple-form">
+     Simple Form
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#extended-form">
+     Extended form
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-naive-bayes-assumptions">
    The Naive Bayes Assumptions
   </a>
@@ -729,6 +746,11 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#decision-boundary-proof">
    Decision Boundary Proof
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#time-and-space-complexity">
+   Time and Space Complexity
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -778,6 +800,23 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-naive-bayes-form">
+   The Naive Bayes Form
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#simple-form">
+     Simple Form
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#extended-form">
+     Extended form
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-naive-bayes-assumptions">
    The Naive Bayes Assumptions
   </a>
@@ -871,6 +910,11 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#decision-boundary-proof">
    Decision Boundary Proof
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#time-and-space-complexity">
+   Time and Space Complexity
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -1101,7 +1145,7 @@ This means we are modelling the joint distribution of the target <span class="ma
 <p>Suppose the problem at hand has <span class="math notranslate nohighlight">\(K\)</span> classes, <span class="math notranslate nohighlight">\(k = 1, 2, \cdots, K\)</span>, where <span class="math notranslate nohighlight">\(k\)</span> is the index of the class.</p>
 <p>Then, to find the class of a new test sample <span class="math notranslate nohighlight">\(\mathbf{x}^{(q)} \in \mathbb{R}^{D}\)</span> with <span class="math notranslate nohighlight">\(D\)</span> features,
 we can compute the conditional probability of each class <span class="math notranslate nohighlight">\(Y = k\)</span> given the sample <span class="math notranslate nohighlight">\(\mathbf{x}^{(q)}\)</span>:</p>
-<div class="proof algorithm full-width admonition" id="naive-bayes-inference-algorithm">
+<div class="proof algorithm admonition" id="naive-bayes-inference-algorithm">
 <p class="admonition-title"><span class="caption-number">Algorithm 1 </span> (Naive Bayes Inference Algorithm)</p>
 <section class="algorithm-content" id="proof-content">
 <ul>
@@ -1187,6 +1231,38 @@ We will also explain why we replace <span class="math notranslate nohighlight">\
 <p>However, if we can <em><strong>estimate</strong></em> the conditional probability (likelihood) <span class="math notranslate nohighlight">\(\mathbb{P}(\mathbf{X} = \mathbf{x}^{(q)} \mid Y = k)\)</span>
 and the prior probability <span class="math notranslate nohighlight">\(\mathbb{P}(Y = k)\)</span>, then we can use Bayes’ rule to
 compute the posterior conditional probability <span class="math notranslate nohighlight">\(\mathbb{P}(Y = k \mid \mathbf{X} = \mathbf{x}^{(q)})\)</span>.</p>
+</section>
+<section id="the-naive-bayes-form">
+<h2>The Naive Bayes Form<a class="headerlink" href="#the-naive-bayes-form" title="Permalink to this headline">#</a></h2>
+<p>Quoted from <a class="reference external" href="https://en.wikipedia.org/wiki/Bayes%27_theorem#Simple_form_2">Wikipedia</a>, it is worth noting that
+there’s a few forms of Naive Bayes:</p>
+<section id="simple-form">
+<h3>Simple Form<a class="headerlink" href="#simple-form" title="Permalink to this headline">#</a></h3>
+<p>If <span class="math notranslate nohighlight">\(X\)</span> is continuous and <span class="math notranslate nohighlight">\(Y\)</span> is discrete,</p>
+<div class="math notranslate nohighlight">
+\[
+f_{X \mid Y=y}(x)=\frac{P(Y=y \mid X=x) f_X(x)}{P(Y=y)}
+\]</div>
+<p>where each <span class="math notranslate nohighlight">\(f\)</span> is a density function.</p>
+<p>If <span class="math notranslate nohighlight">\(X\)</span> is discrete and <span class="math notranslate nohighlight">\(Y\)</span> is continuous,</p>
+<div class="math notranslate nohighlight">
+\[
+P(X=x \mid Y=y)=\frac{f_{Y \mid X=x}(y) P(X=x)}{f_Y(y)} .
+\]</div>
+<p>If both <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> are continuous,</p>
+<div class="math notranslate nohighlight">
+\[
+f_{X \mid Y=y}(x)=\frac{f_{Y \mid X=x}(y) f_X(x)}{f_Y(y)} .
+\]</div>
+</section>
+<section id="extended-form">
+<h3>Extended form<a class="headerlink" href="#extended-form" title="Permalink to this headline">#</a></h3>
+<p>A continuous event space is often conceptualized in terms of the numerator terms. It is then useful to eliminate the denominator using the law of total probability. For <span class="math notranslate nohighlight">\(f_Y(y)\)</span>, this becomes an integral:</p>
+<div class="math notranslate nohighlight">
+\[
+f_Y(y)=\int_{-\infty}^{\infty} f_{Y \mid X=\xi}(y) f_X(\xi) d \xi
+\]</div>
+</section>
 </section>
 <section id="the-naive-bayes-assumptions">
 <h2>The Naive Bayes Assumptions<a class="headerlink" href="#the-naive-bayes-assumptions" title="Permalink to this headline">#</a></h2>
@@ -1341,7 +1417,6 @@ the argmax expression in <a class="reference internal" href="#equation-eq-condit
 \arg \max_{k=1}^K \mathbb{P}(Y = k \mid \mathbf{X}) = \arg \max_{k=1}^K \mathbb{P}(Y = k ; \boldsymbol{\pi}) \prod_{d=1}^D \mathbb{P}(X_d = x_d \mid Y = k ; \theta_{kd})
 \]</div>
 <p>We also make some updates to the vector form <a class="reference internal" href="#equation-eq-argmax-naive-bayes-3">(33)</a> by updating <span class="math notranslate nohighlight">\(\mathbf{M_2}\)</span> to:</p>
-<div class="full-width docutils">
 <div class="math notranslate nohighlight" id="equation-eq-naive-bayes-m2-updated">
 <span class="eqno">(46)<a class="headerlink" href="#equation-eq-naive-bayes-m2-updated" title="Permalink to this equation">#</a></span>\[\begin{split}
 \begin{aligned}
@@ -1371,7 +1446,6 @@ the argmax expression in <a class="reference internal" href="#equation-eq-condit
   \end{bmatrix}_{K \times D} \\
 \end{aligned}
 \end{split}\]</div>
-</div>
 <p>where we can easily recover each row of <span class="math notranslate nohighlight">\(\mathbf{M_2}\)</span> by taking the product of the corresponding row of <span class="math notranslate nohighlight">\(\mathbf{M_3}\)</span>.</p>
 </section>
 </section>
@@ -2163,20 +2237,88 @@ the <span class="math notranslate nohighlight">\(\mathbb{P}(Y=k \mid \mathbf{X} 
 <p>See <a class="reference external" href="https://www.cs.cornell.edu/courses/cs4780/2018fa/lectures/lecturenote05.html">https://www.cs.cornell.edu/courses/cs4780/2018fa/lectures/lecturenote05.html</a>.</p>
 <p>TODO…</p>
 </section>
+<section id="time-and-space-complexity">
+<h2>Time and Space Complexity<a class="headerlink" href="#time-and-space-complexity" title="Permalink to this headline">#</a></h2>
+<p>Let <span class="math notranslate nohighlight">\(N\)</span> be the number of training samples, <span class="math notranslate nohighlight">\(D\)</span> be the number of features, and <span class="math notranslate nohighlight">\(K\)</span> be the number of classes.</p>
+<p>During training, the time complexity is <span class="math notranslate nohighlight">\(O(NKD)\)</span> if we are using a brute force approach.
+In my <a class="reference external" href="https://github.com/gao-hongnan/gaohn-probability-stats/blob/naive-bayes/src/generative/naive_bayes/naive_bayes.py">implementation</a>,
+the main training loop is in <code class="docutils literal notranslate"><span class="pre">_estimate_prior_parameters</span></code> and <code class="docutils literal notranslate"><span class="pre">_estimate_likelihood_parameters</span></code> methods.</p>
+<p>In the former, we are looping through the classes <span class="math notranslate nohighlight">\(K\)</span> times, but a hidden operation is calculating the
+sum of the class counts, which is <span class="math notranslate nohighlight">\(\mathcal{O}(N)\)</span>, so the time complexity is <span class="math notranslate nohighlight">\(\mathcal{O}(NK)\)</span>, using the
+vectorized operation <code class="docutils literal notranslate"><span class="pre">np.sum</span></code> helps speed up a bit.</p>
+<p>In the latter, we are looping through the classes <span class="math notranslate nohighlight">\(K\)</span> times, and for each class, we are looping through
+the features <span class="math notranslate nohighlight">\(D\)</span> times, and in each feature loop, we are calculating the mean and variance of the feature,
+so the operation of calculating the mean and variance is <span class="math notranslate nohighlight">\(\mathcal{O}(N) + \mathcal{O}(N)\)</span> respectively, bringing the time complexity
+to <span class="math notranslate nohighlight">\(\mathcal{O}(2NKD) \approx \mathcal{O}(NKD)\)</span>. Even though we are using <code class="docutils literal notranslate"><span class="pre">np.mean</span></code> and <code class="docutils literal notranslate"><span class="pre">np.var</span></code> to speed up, the time complexity
+for brute force approach is still <span class="math notranslate nohighlight">\(\mathcal{O}(NKD)\)</span>.</p>
+<p>For the space complexity, we are storing the prior parameters and likelihood parameters, which are of size <span class="math notranslate nohighlight">\(K\)</span> and <span class="math notranslate nohighlight">\(KD\)</span> respectively,
+in code, that corresponds to <code class="docutils literal notranslate"><span class="pre">self.pi</span></code> and <code class="docutils literal notranslate"><span class="pre">self.theta</span></code>, so the space complexity is <span class="math notranslate nohighlight">\(\mathcal{O}(K + KD) \approx \mathcal{O}(KD)\)</span>.</p>
+<p>During inference/prediction, the time complexity for predicting one single sample
+is <span class="math notranslate nohighlight">\(\mathcal{O}(KD)\)</span>, because the <code class="docutils literal notranslate"><span class="pre">predict_one_sample</span></code> method primarily calls the <code class="docutils literal notranslate"><span class="pre">_calculate_posterior</span></code> method, which in
+turn invokes <code class="docutils literal notranslate"><span class="pre">_calculate_prior</span></code> and <code class="docutils literal notranslate"><span class="pre">_calculate_joint_likelihood</span></code> methods, and the time complexity of these two methods
+is <span class="math notranslate nohighlight">\(\mathcal{O}(1)\)</span> and <span class="math notranslate nohighlight">\(\mathcal{O}(KD)\)</span> respectively. For <code class="docutils literal notranslate"><span class="pre">_calculate_prior</span></code>, it just involves us looking up the
+<code class="docutils literal notranslate"><span class="pre">self.prior</span></code> parameter, which is a constant time operation. For <code class="docutils literal notranslate"><span class="pre">_calculate_joint_likelihood</span></code>, it involves us looping through
+the class <span class="math notranslate nohighlight">\(K\)</span> times and looping through the features <span class="math notranslate nohighlight">\(D\)</span> times, so the time complexity is <span class="math notranslate nohighlight">\(\mathcal{O}(KD)\)</span>, the <code class="docutils literal notranslate"><span class="pre">mean</span></code>
+and <code class="docutils literal notranslate"><span class="pre">var</span></code> parameters are now constant time since they are just looked up from <code class="docutils literal notranslate"><span class="pre">self.theta</span></code>. There is however a <code class="docutils literal notranslate"><span class="pre">np.prod</span></code> operation
+towards the end, but the overall time complexity should still be in the order of <span class="math notranslate nohighlight">\(\mathcal{O}(KD)\)</span>.</p>
+<p>For the space complexity, besides the stored (not counted) parameters, we are storing the posterior probabilities, which is of size <span class="math notranslate nohighlight">\(K\)</span>,
+in code, that corresponds to <code class="docutils literal notranslate"><span class="pre">self.posterior</span></code>, so the space complexity is <span class="math notranslate nohighlight">\(\mathcal{O}(K)\)</span>, and if <span class="math notranslate nohighlight">\(K\)</span> is small, then the space complexity
+is <span class="math notranslate nohighlight">\(\mathcal{O}(1)\)</span>.</p>
+<table class="table" id="time-complexity-naive-bayes">
+<caption><span class="caption-number">Table 2 </span><span class="caption-text">Time Complexity of Naive Bayes</span><a class="headerlink" href="#time-complexity-naive-bayes" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Train</p></th>
+<th class="head"><p>Inference</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\mathcal{O}(NKD)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\mathcal{O}(KD)\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<table class="table" id="space-complexity-naive-bayes">
+<caption><span class="caption-number">Table 3 </span><span class="caption-text">Space Complexity of Naive Bayes</span><a class="headerlink" href="#space-complexity-naive-bayes" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Train</p></th>
+<th class="head"><p>Inference</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\mathcal{O}(KD)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\mathcal{O}(1)\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
 <p>The below text/articles are of which I draw reference from.</p>
 <ul class="simple">
+<li><p>Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J. “Chapter 22.7 Maximum Likelihood.” In Dive into Deep Learning, 2021.</p></li>
 <li><p>Zhang, Aston and Lipton, Zachary C. and Li, Mu and Smola, Alexander J. “Chapter 22.9 Naive Bayes.” In Dive into Deep Learning, 2021.</p></li>
 <li><p>Hal Daumé III. “Chapter 9.3. Naive Bayes Models.” In A Course in Machine Learning, January 2017.</p></li>
 <li><p>Murphy, Kevin P. “Chapter 9.3. Naive Bayes Models.” In Probabilistic Machine Learning: An Introduction. Cambridge (Massachusetts): The MIT Press, 2022.</p></li>
 <li><p>James, Gareth, Daniela Witten, Trevor Hastie, and Robert Tibshirani. “Chapter 4.4.4. Naive Bayes” In An Introduction to Statistical Learning: With Applications in R. Boston: Springer, 2022.</p></li>
 <li><p>Mitchell, Tom Michael. Machine Learning. New York: McGraw-Hill, 1997. (His new chapter on Generate and Discriminative Classifiers: Naive Bayes and Logistic Regression)</p></li>
 <li><p>Chan, Stanley H. “Chapter 8.1. Maximum-Likelihood Estimation.” In Introduction to Probability for Data Science, 172-180. Ann Arbor, Michigan: Michigan Publishing Services, 2021</p></li>
+<li><p>Jurafsky, Dan, and James H. Martin. “Chapter 4. Naive Bayes and Sentiment Classification” In Speech and Language Processing: An Introduction to Natural Language Processing, Computational Linguistics, and Speech Recognition. Noida: Pearson, 2022.</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Naive_Bayes_classifier">Naive Bayes Classifier, Wikipedia</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Joint_probability_distribution">Joint Probability Distribution, Wikipedia</a></p></li>
 <li><p><a class="reference external" href="http://jrmeyer.github.io/machinelearning/2017/08/18/mle.html">Maximum Likelihood Estimation of Gaussian Parameters</a></p></li>
 <li><p><a class="reference external" href="https://www.youtube.com/watch?v=XtUNwVrWnPM">mathematicalmonk’s (ML 4.3) MLE for univariate Gaussian mean</a></p></li>
 <li><p><a class="reference external" href="https://dafriedman97.github.io/mlbook/content/c4/construction.html">Machine Learning from Scratch</a></p></li>
 <li><p><a class="reference external" href="https://www.cs.cornell.edu/courses/cs4780/2018fa/lectures/lecturenote05.html">Cornell CS4780/5780: Machine Learning, Bayes Classifier and Naive Bayes</a></p></li>
+<li><p><a class="reference external" href="https://stats.stackexchange.com/questions/213464/on-the-importance-of-the-i-i-d-assumption-in-statistical-learning">On the importance of the i.i.d. assumption in statistical learning</a></p></li>
+<li><p><a class="reference external" href="https://medium.com/&#64;singhvishal0227/the-good-and-bad-of-naive-bayes-classifier-7b0239c65c84">Time and space complexity of Naive Bayes</a></p></li>
 </ul>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">

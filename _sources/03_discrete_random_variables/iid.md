@@ -34,6 +34,6 @@ sometimes $X_1, X_2, \ldots, X_{10}$ can mean 10 different people drawn and [her
 
 ## Further Readings
 
-- https://en.wikipedia.org/wiki/Independent_and_identically_distributed_random_variables
 - Chan, Stanley H. "Chapter 5.1.6  Independent random variables." In Introduction to Probability for Data Science, 253-254. Ann Arbor, Michigan: Michigan Publishing Services, 2021. 
-- https://stats.stackexchange.com/questions/213464/on-the-importance-of-the-i-i-d-assumption-in-statistical-learning
+- [Wikipedia](https://en.wikipedia.org/wiki/Independent_and_identically_distributed_random_variables)
+- [On the importance of the i.i.d. assumption in statistical learning](https://stats.stackexchange.com/questions/213464/on-the-importance-of-the-i-i-d-assumption-in-statistical-learning) 
