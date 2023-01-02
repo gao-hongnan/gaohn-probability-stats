@@ -1510,6 +1510,60 @@ See https://www.cs.cornell.edu/courses/cs4780/2018fa/lectures/lecturenote05.html
 
 TODO...
 
+## Time and Space Complexity
+
+Let $N$ be the number of training samples, $D$ be the number of features, and $K$ be the number of classes.
+
+During training, the time complexity is $O(NKD)$ if we are using a brute force approach. 
+In my [implementation](https://github.com/gao-hongnan/gaohn-probability-stats/blob/naive-bayes/src/generative/naive_bayes/naive_bayes.py),
+the main training loop is in `_estimate_prior_parameters` and `_estimate_likelihood_parameters` methods.
+
+In the former, we are looping through the classes $K$ times, but a hidden operation is calculating the
+sum of the class counts, which is $\mathcal{O}(N)$, so the time complexity is $\mathcal{O}(NK)$, using the 
+vectorized operation `np.sum` helps speed up a bit.
+
+In the latter, we are looping through the classes $K$ times, and for each class, we are looping through
+the features $D$ times, and in each feature loop, we are calculating the mean and variance of the feature,
+so the operation of calculating the mean and variance is $\mathcal{O}(N) + \mathcal{O}(N)$ respectively, bringing the time complexity
+to $\mathcal{O}(2NKD) \approx \mathcal{O}(NKD)$. Even though we are using `np.mean` and `np.var` to speed up, the time complexity
+for brute force approach is still $\mathcal{O}(NKD)$.
+
+For the space complexity, we are storing the prior parameters and likelihood parameters, which are of size $K$ and $KD$ respectively,
+in code, that corresponds to `self.pi` and `self.theta`, so the space complexity is $\mathcal{O}(K + KD) \approx \mathcal{O}(KD)$.
+
+During inference/prediction, the time complexity for predicting one single sample 
+is $\mathcal{O}(KD)$, because the `predict_one_sample` method primarily calls the `_calculate_posterior` method, which in
+turn invokes `_calculate_prior` and `_calculate_joint_likelihood` methods, and the time complexity of these two methods
+is $\mathcal{O}(1)$ and $\mathcal{O}(KD)$ respectively. For `_calculate_prior`, it just involves us looking up the
+`self.prior` parameter, which is a constant time operation. For `_calculate_joint_likelihood`, it involves us looping through
+the class $K$ times and looping through the features $D$ times, so the time complexity is $\mathcal{O}(KD)$, the `mean`
+and `var` parameters are now constant time since they are just looked up from `self.theta`. There is however a `np.prod` operation
+towards the end, but the overall time complexity should still be in the order of $\mathcal{O}(KD)$.
+
+For the space complexity, besides the stored (not counted) parameters, we are storing the posterior probabilities, which is of size $K$,
+in code, that corresponds to `self.posterior`, so the space complexity is $\mathcal{O}(K)$, and if $K$ is small, then the space complexity
+is $\mathcal{O}(1)$.
+
+```{list-table} Time Complexity of Naive Bayes
+:header-rows: 1
+:name: time-complexity-naive-bayes
+
+* - Train
+  - Inference
+* - $\mathcal{O}(NKD)$
+  - $\mathcal{O}(KD)$
+```
+
+```{list-table} Space Complexity of Naive Bayes
+:header-rows: 1
+:name: space-complexity-naive-bayes
+
+* - Train
+  - Inference
+* - $\mathcal{O}(KD)$
+  - $\mathcal{O}(1)$
+```
+
 ## References
 
 The below text/articles are of which I draw reference from.
@@ -1529,7 +1583,8 @@ The below text/articles are of which I draw reference from.
 - [Machine Learning from Scratch](https://dafriedman97.github.io/mlbook/content/c4/construction.html)
 - [Cornell CS4780/5780: Machine Learning, Bayes Classifier and Naive Bayes](https://www.cs.cornell.edu/courses/cs4780/2018fa/lectures/lecturenote05.html)
 - [On the importance of the i.i.d. assumption in statistical learning](https://stats.stackexchange.com/questions/213464/on-the-importance-of-the-i-i-d-assumption-in-statistical-learning) 
-
+- [Time and space complexity of Naive Bayes](https://medium.com/@singhvishal0227/the-good-and-bad-of-naive-bayes-classifier-7b0239c65c84)
+  
 [^likelihood-1]: Not to be confused with the likelihood term $\mathbb{P}(\mathbf{X} \mid Y)$ in Bayes' terminology.
 [^2dparameters]: Dive into Deep Learning, Section 22.9, this is only assuming that each feature $\mathbf{x}_d^{(n)}$ is binary, i.e. $\mathbf{x}_d^{(n)} \in \{0, 1\}$.
 [^intractable]: Cite Dive into Deep Learning on this. Also, the joint probability is intractable because the number of parameters to estimate is exponential in the number of features. Use binary bits example, see my notes.

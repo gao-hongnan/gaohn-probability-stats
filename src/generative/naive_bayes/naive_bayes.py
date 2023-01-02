@@ -50,7 +50,8 @@ class NaiveBayesGaussian(BaseEstimator):
         self.num_classes = hyperparameters.num_classes
 
     def _set_num_samples_and_features(self, X: T) -> None:
-        self.num_samples, self.num_features = X.shape
+        # num_samples unused since we vectorized when estimating parameters
+        self.num_samples, self.num_features = X.shape 
 
     def fit(self, X: T, y: T) -> NaiveBayesGaussian:
         """Fit Naive Bayes classifier according to X, y.
