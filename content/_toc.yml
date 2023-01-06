@@ -64,7 +64,9 @@ parts:
 
   - caption: Chapter 5. Joint Distributions
     chapters:
-    - file: 05_joint_distributions/braindump.md
+    - file: 05_joint_distributions/from_single_variable_to_joint_distributions.md
+    - file: 05_joint_distributions/0501_joint_distributions.md
+
 
   - caption: Machine Learning Algorithms
     chapters:

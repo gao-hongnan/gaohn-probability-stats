@@ -7,7 +7,7 @@
 
 Let $X_1, X_2, \ldots, X_n$ be a sequence of random variables.
 
-We say that the random variables are ***independent and identically distributed (i.i.d.)** if the following two conditions hold:
+We say that the random variables are ***independent and identically distributed (i.i.d.)*** if the following two conditions hold:
 
 1. The random variables are **independent** of each other. That is, $P(X_i = x_i | X_j = x_j, j \neq i) = P(X_i = x_i)$ for all $i, j$.
 2. The random variables have the **same distribution**. That is, $\P \lsq X_1 = x \rsq = \P \lsq X_2 = x \rsq = \ldots = \P \lsq X_n = x \rsq$ for all $x$.
