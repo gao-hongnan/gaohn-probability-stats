@@ -18,6 +18,7 @@ seed_all(42)
 
 # FIXME:
 # 1. For example, plot_poisson_pmfs and plot_empirical_poisson plot with different colors.
+# 2. Polymorphism and injection. A lot of bugs like line 503 I recreated the Empirical histogram that’s why my Color’s are not truly random. If you pass it as argument then won’t have this issue.
 
 
 @dataclass(frozen=False, init=True)
