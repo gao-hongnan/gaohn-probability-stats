@@ -723,25 +723,25 @@ title="Print to PDF"
 <h1>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import os
-import random
-import string
-from typing import *
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">string</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="o">*</span>
 
-import matplotlib.pyplot as plt
-import numpy as np
-from numpy.random import default_rng
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">numpy.random</span> <span class="kn">import</span> <span class="n">default_rng</span>
 
-# from functools import cache # 3.9
+<span class="c1"># from functools import cache # 3.9</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%cd ..
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">cd</span> ..
 
-from utils import seed_all
+<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">seed_all</span>
 </pre></div>
 </div>
 </div>
@@ -760,13 +760,13 @@ from utils import seed_all
 <h2>Question 6<a class="headerlink" href="#question-6" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def f(x, y):
-    return np.divide(1, np.multiply(2 * np.sqrt(3), np.pi)) * np.exp(
-        np.multiply(
-            np.divide(-1, 6),
-            (x ** 2 - 2 * x * y - 2 * x + 4 * y ** 2 + 2 * y + 1),
-        )
-    )
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span>
+            <span class="p">(</span><span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">y</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -778,12 +778,12 @@ from utils import seed_all
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>X = np.linspace(-3, 3, 10)
-Y = np.linspace(-3, 3, 10)
-X, Y = np.meshgrid(X, Y)
-Z = f(X, Y)
-plt.contour(X, Y, Z, 20, cmap=&#39;RdGy&#39;)
-plt.colorbar();
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdGy&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
@@ -796,60 +796,60 @@ plt.colorbar();
 <h2>Question 9<a class="headerlink" href="#question-9" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># @lru_cache
-def calc_vowel_consonant_prob(
-    num_simulations: int,
-    letters: List[str],
-    vowels: List[str],
-    consonants: List[str],
-    *args,
-    **kwargs,
-) -&gt; float:
-    &quot;&quot;&quot;A collection of 26 English letters, a-z, is mixed in a jar. Two letters are drawn at random,
-    one after the other without replacement. What is the probability of drawing a vowel (a,e,i,o,u)
-    and a consonant in either order?
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># @lru_cache</span>
+<span class="k">def</span> <span class="nf">calc_vowel_consonant_prob</span><span class="p">(</span>
+    <span class="n">num_simulations</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">letters</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+    <span class="n">vowels</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+    <span class="n">consonants</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+    <span class="o">*</span><span class="n">args</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A collection of 26 English letters, a-z, is mixed in a jar. Two letters are drawn at random,</span>
+<span class="sd">    one after the other without replacement. What is the probability of drawing a vowel (a,e,i,o,u)</span>
+<span class="sd">    and a consonant in either order?</span>
 
-    Args:
-        num_simulations (int): Number of simulations to run.
-        letters (List[str]): List of letters.
-        vowels (List[str]): List of vowels.
-        consonants (List[str]): List of consonants.
+<span class="sd">    Args:</span>
+<span class="sd">        num_simulations (int): Number of simulations to run.</span>
+<span class="sd">        letters (List[str]): List of letters.</span>
+<span class="sd">        vowels (List[str]): List of vowels.</span>
+<span class="sd">        consonants (List[str]): List of consonants.</span>
 
-    Returns:
-        (float): The probability of drawing a vowel and a consonant in either order.
-    &quot;&quot;&quot;
-    count = 0
-    rng = default_rng()
+<span class="sd">    Returns:</span>
+<span class="sd">        (float): The probability of drawing a vowel and a consonant in either order.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">rng</span> <span class="o">=</span> <span class="n">default_rng</span><span class="p">()</span>
     
-    letters = np.asarray(letters)
+    <span class="n">letters</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">letters</span><span class="p">)</span>
 
-    for _ in range(num_simulations):
-        sample_2_letters_without_replacement = rng.choice(*args, **kwargs)
-        chosen_letters = letters[sample_2_letters_without_replacement]
-        if not (
-            set(chosen_letters).issubset(vowels)
-            or set(chosen_letters).issubset(consonants)
-        ):
-            count += 1
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_simulations</span><span class="p">):</span>
+        <span class="n">sample_2_letters_without_replacement</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">chosen_letters</span> <span class="o">=</span> <span class="n">letters</span><span class="p">[</span><span class="n">sample_2_letters_without_replacement</span><span class="p">]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span>
+            <span class="nb">set</span><span class="p">(</span><span class="n">chosen_letters</span><span class="p">)</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">vowels</span><span class="p">)</span>
+            <span class="ow">or</span> <span class="nb">set</span><span class="p">(</span><span class="n">chosen_letters</span><span class="p">)</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">consonants</span><span class="p">)</span>
+        <span class="p">):</span>
+            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
 
-    return count / num_simulations
+    <span class="k">return</span> <span class="n">count</span> <span class="o">/</span> <span class="n">num_simulations</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>all_letters = list(string.ascii_lowercase)
-vowels = [&quot;a&quot;, &quot;e&quot;, &quot;i&quot;, &quot;o&quot;, &quot;u&quot;]
-consonants = list(set(all_letters) - set(vowels))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_letters</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">ascii_lowercase</span><span class="p">)</span>
+<span class="n">vowels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;e&quot;</span><span class="p">,</span> <span class="s2">&quot;i&quot;</span><span class="p">,</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="s2">&quot;u&quot;</span><span class="p">]</span>
+<span class="n">consonants</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">all_letters</span><span class="p">)</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">vowels</span><span class="p">))</span>
 
-num_simulations = 1000000
-calc_vowel_consonant_prob(num_simulations, all_letters, vowels, consonants, a=26, size=2, replace=False)
+<span class="n">num_simulations</span> <span class="o">=</span> <span class="mi">1000000</span>
+<span class="n">calc_vowel_consonant_prob</span><span class="p">(</span><span class="n">num_simulations</span><span class="p">,</span> <span class="n">all_letters</span><span class="p">,</span> <span class="n">vowels</span><span class="p">,</span> <span class="n">consonants</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mi">26</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.323145
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.324084
 </pre></div>
 </div>
 </div>
@@ -883,121 +883,121 @@ calc_vowel_consonant_prob(num_simulations, all_letters, vowels, consonants, a=26
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>rng = np.random.default_rng()
-num_possible_birthdays = 365
-num_people = 50
-num_simulations = 1000
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">()</span>
+<span class="n">num_possible_birthdays</span> <span class="o">=</span> <span class="mi">365</span>
+<span class="n">num_people</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">num_simulations</span> <span class="o">=</span> <span class="mi">1000</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def containsDuplicate(nums: List[int]) -&gt; bool:
-    &quot;&quot;&quot;Check if a list contains duplicate elements.
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">containsDuplicate</span><span class="p">(</span><span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if a list contains duplicate elements.</span>
 
-    Args:
-        nums (List[int]): List of integers.
+<span class="sd">    Args:</span>
+<span class="sd">        nums (List[int]): List of integers.</span>
 
-    Returns:
-        bool: Boolean value to indicate if the list contains duplicate elements.
-    &quot;&quot;&quot;
-    dup_dict = {}
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: Boolean value to indicate if the list contains duplicate elements.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dup_dict</span> <span class="o">=</span> <span class="p">{}</span>
 
-    for _, num in enumerate(nums):
-        if num not in dup_dict:
-            dup_dict[num] = 0
-        else:
-            return True
-    return False
+    <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nums</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">num</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dup_dict</span><span class="p">:</span>
+            <span class="n">dup_dict</span><span class="p">[</span><span class="n">num</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="kc">False</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def generate_one_random_birthday(num_possible_birthdays: int = 365) -&gt; int:
-    &quot;&quot;&quot;Generate one random birthday from 1 to num_possible_birthdays.
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_one_random_birthday</span><span class="p">(</span><span class="n">num_possible_birthdays</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">365</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate one random birthday from 1 to num_possible_birthdays.</span>
 
-    Samples 1 integer from 1 to 365 from a uniform distribution.
+<span class="sd">    Samples 1 integer from 1 to 365 from a uniform distribution.</span>
 
-    Args:
-        num_possible_birthdays (int): The number of possible birthdays. Defaults to 365.
+<span class="sd">    Args:</span>
+<span class="sd">        num_possible_birthdays (int): The number of possible birthdays. Defaults to 365.</span>
 
-    Returns:
-        birthday (int): The random birthday in integer.
-    &quot;&quot;&quot;
-    # Return random integers from the &quot;discrete uniform&quot; distribution of the specified dtype. If high is None (the default), then results are from 0 to low.
-    birthday = rng.integers(num_possible_birthdays, size=None) # size=None to return integer instead of array of ints
-    return birthday
+<span class="sd">    Returns:</span>
+<span class="sd">        birthday (int): The random birthday in integer.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Return random integers from the &quot;discrete uniform&quot; distribution of the specified dtype. If high is None (the default), then results are from 0 to low.</span>
+    <span class="n">birthday</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">integers</span><span class="p">(</span><span class="n">num_possible_birthdays</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="c1"># size=None to return integer instead of array of ints</span>
+    <span class="k">return</span> <span class="n">birthday</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def generate_k_birthdays(
-    num_people: int, *args, **kwargs
-) -&gt; List[int]:
-    &quot;&quot;&quot;Generates all possible birthdays for a given number of people sampled
-    from a uniform distribution.
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_k_birthdays</span><span class="p">(</span>
+    <span class="n">num_people</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generates all possible birthdays for a given number of people sampled</span>
+<span class="sd">    from a uniform distribution.</span>
 
-    Example:
-        If there are 3 people, the possible birthdays can be understood to be sampled from a uniform distribution
-        of 1 to 365 inclusive with replacement.
-        &gt;&gt;&gt; generate_k_birthdays(3, 365)
+<span class="sd">    Example:</span>
+<span class="sd">        If there are 3 people, the possible birthdays can be understood to be sampled from a uniform distribution</span>
+<span class="sd">        of 1 to 365 inclusive with replacement.</span>
+<span class="sd">        &gt;&gt;&gt; generate_k_birthdays(3, 365)</span>
 
-    Args:
-        num_people (int): The number of people in the group.
-        num_possible_birthdays (int, optional): Number of possible birthdays. Defaults to 365.
+<span class="sd">    Args:</span>
+<span class="sd">        num_people (int): The number of people in the group.</span>
+<span class="sd">        num_possible_birthdays (int, optional): Number of possible birthdays. Defaults to 365.</span>
 
-    Returns:
-        birthdays (List[int]): A list of birthdays.
+<span class="sd">    Returns:</span>
+<span class="sd">        birthdays (List[int]): A list of birthdays.</span>
 
-    &quot;&quot;&quot;
+<span class="sd">    &quot;&quot;&quot;</span>
 
-    birthdays = [
-        generate_one_random_birthday(*args, **kwargs)
-        for _ in range(num_people)
-    ]
-    return birthdays
+    <span class="n">birthdays</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">generate_one_random_birthday</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_people</span><span class="p">)</span>
+    <span class="p">]</span>
+    <span class="k">return</span> <span class="n">birthdays</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def calculate_same_birthday_probability(
-    num_simulations: int, *args, **kwargs
-) -&gt; float:
-    &quot;&quot;&quot;Calculates the probability of the Birthday Paradox Problem.
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calculate_same_birthday_probability</span><span class="p">(</span>
+    <span class="n">num_simulations</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculates the probability of the Birthday Paradox Problem.</span>
 
-    Args:
-        num_simulations (int, optional): The number of simulations to run.
+<span class="sd">    Args:</span>
+<span class="sd">        num_simulations (int, optional): The number of simulations to run.</span>
 
-    Returns:
-        probability (float): The probability of the Birthday Paradox.
-    &quot;&quot;&quot;
-    count = 0
-    for _ in range(num_simulations):
-        birthdays = generate_k_birthdays(*args, **kwargs)
-        if containsDuplicate(birthdays):
-            count += 1
+<span class="sd">    Returns:</span>
+<span class="sd">        probability (float): The probability of the Birthday Paradox.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_simulations</span><span class="p">):</span>
+        <span class="n">birthdays</span> <span class="o">=</span> <span class="n">generate_k_birthdays</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">containsDuplicate</span><span class="p">(</span><span class="n">birthdays</span><span class="p">):</span>
+            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
 
-    probability = count / num_simulations
-    return probability
+    <span class="n">probability</span> <span class="o">=</span> <span class="n">count</span> <span class="o">/</span> <span class="n">num_simulations</span>
+    <span class="k">return</span> <span class="n">probability</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>calculate_same_birthday_probability(num_simulations=10000, num_people=50, num_possible_birthdays=365)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">calculate_same_birthday_probability</span><span class="p">(</span><span class="n">num_simulations</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">num_people</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">num_possible_birthdays</span><span class="o">=</span><span class="mi">365</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9696
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9714
 </pre></div>
 </div>
 </div>
@@ -1021,45 +1021,45 @@ num_simulations = 1000
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def calculate_same_birthday_probability_rng_choice(
-    num_simulations: int,
-    num_people: int = 50,
-    num_possible_birthdays: int = 365,
-    replace: bool = True,
-) -&gt; float:
-    &quot;&quot;&quot;Calculates the probability of the Birthday Paradox Problem.
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calculate_same_birthday_probability_rng_choice</span><span class="p">(</span>
+    <span class="n">num_simulations</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">num_people</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
+    <span class="n">num_possible_birthdays</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">365</span><span class="p">,</span>
+    <span class="n">replace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculates the probability of the Birthday Paradox Problem.</span>
 
-    Args:
-        num_simulations (int, optional): The number of simulations to run.
-        num_people (int, optional): The number of people in the simulation.
-        num_possible_birthdays (int, optional): The number of possible birthdays.
-        replace (bool, optional): Whether or not to sample with replacement.
+<span class="sd">    Args:</span>
+<span class="sd">        num_simulations (int, optional): The number of simulations to run.</span>
+<span class="sd">        num_people (int, optional): The number of people in the simulation.</span>
+<span class="sd">        num_possible_birthdays (int, optional): The number of possible birthdays.</span>
+<span class="sd">        replace (bool, optional): Whether or not to sample with replacement.</span>
 
-    Returns:
-        probability (float): The probability of the Birthday Paradox.
-    &quot;&quot;&quot;
-    count = 0
-    for _ in range(num_simulations):
-        birthdays = default_rng().choice(
-            a=num_possible_birthdays, size=num_people, replace=True
-        )
-        if containsDuplicate(birthdays):
-            count += 1
+<span class="sd">    Returns:</span>
+<span class="sd">        probability (float): The probability of the Birthday Paradox.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_simulations</span><span class="p">):</span>
+        <span class="n">birthdays</span> <span class="o">=</span> <span class="n">default_rng</span><span class="p">()</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span>
+            <span class="n">a</span><span class="o">=</span><span class="n">num_possible_birthdays</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">num_people</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">containsDuplicate</span><span class="p">(</span><span class="n">birthdays</span><span class="p">):</span>
+            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
 
-    probability = count / num_simulations
-    return probability
+    <span class="n">probability</span> <span class="o">=</span> <span class="n">count</span> <span class="o">/</span> <span class="n">num_simulations</span>
+    <span class="k">return</span> <span class="n">probability</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>calculate_same_birthday_probability_rng_choice(num_simulations=10000, num_people=50, num_possible_birthdays=365, replace=True)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">calculate_same_birthday_probability_rng_choice</span><span class="p">(</span><span class="n">num_simulations</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">num_people</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">num_possible_birthdays</span><span class="o">=</span><span class="mi">365</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9714
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9702
 </pre></div>
 </div>
 </div>
@@ -1067,73 +1067,73 @@ num_simulations = 1000
 <p>The below code is not mine and is taken from <a class="reference external" href="https://www.probabilisticworld.com/birthday-problem-python-simulation/">here</a>. For my reference to see if I coded correctly.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from random import randint
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
  
-import matplotlib.pyplot as plt
-import seaborn as sns
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
  
-MIN_NUM_PEOPLE = 2
-MAX_NUM_PEOPLE = 60
-NUM_POSSIBLE_BIRTHDAYS = 365
-NUM_TRIALS = 10000
+<span class="n">MIN_NUM_PEOPLE</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">MAX_NUM_PEOPLE</span> <span class="o">=</span> <span class="mi">60</span>
+<span class="n">NUM_POSSIBLE_BIRTHDAYS</span> <span class="o">=</span> <span class="mi">365</span>
+<span class="n">NUM_TRIALS</span> <span class="o">=</span> <span class="mi">10000</span>
  
-def generate_random_birthday():
-    birthday = randint(1, NUM_POSSIBLE_BIRTHDAYS)
-    return birthday
+<span class="k">def</span> <span class="nf">generate_random_birthday</span><span class="p">():</span>
+    <span class="n">birthday</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">NUM_POSSIBLE_BIRTHDAYS</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">birthday</span>
  
-def generate_k_birthdays(k):
-    birthdays = [generate_random_birthday() for _ in range(k)]
-    return birthdays
+<span class="k">def</span> <span class="nf">generate_k_birthdays</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+    <span class="n">birthdays</span> <span class="o">=</span> <span class="p">[</span><span class="n">generate_random_birthday</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="n">birthdays</span>
  
-def aloc(birthdays):
-    unique_birthdays = set(birthdays)
+<span class="k">def</span> <span class="nf">aloc</span><span class="p">(</span><span class="n">birthdays</span><span class="p">):</span>
+    <span class="n">unique_birthdays</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">birthdays</span><span class="p">)</span>
  
-    num_birthdays = len(birthdays)
-    num_unique_birthdays = len(unique_birthdays)
-    has_coincidence = (num_birthdays != num_unique_birthdays)
+    <span class="n">num_birthdays</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">birthdays</span><span class="p">)</span>
+    <span class="n">num_unique_birthdays</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">unique_birthdays</span><span class="p">)</span>
+    <span class="n">has_coincidence</span> <span class="o">=</span> <span class="p">(</span><span class="n">num_birthdays</span> <span class="o">!=</span> <span class="n">num_unique_birthdays</span><span class="p">)</span>
  
-    return has_coincidence
+    <span class="k">return</span> <span class="n">has_coincidence</span>
  
-def estimate_p_aloc(k):
-    num_aloc = 0
-    for _ in range(NUM_TRIALS):
-        birthdays = generate_k_birthdays(k)
-        has_coincidence = aloc(birthdays)
-        if has_coincidence:
-            num_aloc += 1
+<span class="k">def</span> <span class="nf">estimate_p_aloc</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+    <span class="n">num_aloc</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">NUM_TRIALS</span><span class="p">):</span>
+        <span class="n">birthdays</span> <span class="o">=</span> <span class="n">generate_k_birthdays</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+        <span class="n">has_coincidence</span> <span class="o">=</span> <span class="n">aloc</span><span class="p">(</span><span class="n">birthdays</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">has_coincidence</span><span class="p">:</span>
+            <span class="n">num_aloc</span> <span class="o">+=</span> <span class="mi">1</span>
  
-    p_aloc = num_aloc / NUM_TRIALS
-    return p_aloc
+    <span class="n">p_aloc</span> <span class="o">=</span> <span class="n">num_aloc</span> <span class="o">/</span> <span class="n">NUM_TRIALS</span>
+    <span class="k">return</span> <span class="n">p_aloc</span>
  
-def estimate_p_aloc_for_range(ks):
-    k_probabilities = []
+<span class="k">def</span> <span class="nf">estimate_p_aloc_for_range</span><span class="p">(</span><span class="n">ks</span><span class="p">):</span>
+    <span class="n">k_probabilities</span> <span class="o">=</span> <span class="p">[]</span>
  
-    for k in ks:
-        p_aloc = estimate_p_aloc(k)
-        k_probabilities.append(p_aloc)
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">ks</span><span class="p">:</span>
+        <span class="n">p_aloc</span> <span class="o">=</span> <span class="n">estimate_p_aloc</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+        <span class="n">k_probabilities</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p_aloc</span><span class="p">)</span>
          
-    return k_probabilities
+    <span class="k">return</span> <span class="n">k_probabilities</span>
  
-ks = range(MIN_NUM_PEOPLE, MAX_NUM_PEOPLE + 1)
-k_probabilities = estimate_p_aloc_for_range(ks)
+<span class="n">ks</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">MIN_NUM_PEOPLE</span><span class="p">,</span> <span class="n">MAX_NUM_PEOPLE</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">k_probabilities</span> <span class="o">=</span> <span class="n">estimate_p_aloc_for_range</span><span class="p">(</span><span class="n">ks</span><span class="p">)</span>
  
-fig, ax = plt.subplots(figsize=(10, 10), dpi=49)
-ax.set_facecolor(&#39;#518792&#39;)
-ax.xaxis.set_tick_params(width=5, color=&#39;#2d3233&#39;)
-ax.yaxis.set_tick_params(width=5, color=&#39;#2d3233&#39;)
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">49</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">&#39;#518792&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#2d3233&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#2d3233&#39;</span><span class="p">)</span>
  
-sns.lineplot(x=ks, y=k_probabilities, color=&#39;#2d3233&#39;)
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">ks</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">k_probabilities</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#2d3233&#39;</span><span class="p">)</span>
  
-plt.xticks(fontsize=15, color=&#39;#2d3233&#39;)
-y_range = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
-plt.yticks(y_range, fontsize=15, color=&#39;#2d3233&#39;)
-plt.grid()
-plt.xlim([0, 60])
-plt.ylim([0, 1])
-plt.xlabel(&#39;Number of people&#39;, fontsize=30, color=&#39;#2d3233&#39;)
-plt.ylabel(&#39;P(At Least One Coincidence)&#39;, fontsize=30, color=&#39;#2d3233&#39;)
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#2d3233&#39;</span><span class="p">)</span>
+<span class="n">y_range</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">y_range</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#2d3233&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">60</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Number of people&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#2d3233&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;P(At Least One Coincidence)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#2d3233&#39;</span><span class="p">)</span>
  
-plt.show()
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>

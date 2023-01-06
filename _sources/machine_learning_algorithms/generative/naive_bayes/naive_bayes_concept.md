@@ -1514,7 +1514,7 @@ TODO...
 
 Let $N$ be the number of training samples, $D$ be the number of features, and $K$ be the number of classes.
 
-During training, the time complexity is $O(NKD)$ if we are using a brute force approach. 
+During training, the time complexity is $\mathcal{O}(NKD)$ if we are using a brute force approach. 
 In my [implementation](https://github.com/gao-hongnan/gaohn-probability-stats/blob/naive-bayes/src/generative/naive_bayes/naive_bayes.py),
 the main training loop is in `_estimate_prior_parameters` and `_estimate_likelihood_parameters` methods.
 

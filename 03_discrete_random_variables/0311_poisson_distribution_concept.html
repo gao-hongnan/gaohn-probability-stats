@@ -801,13 +801,13 @@ X \sim \poisson(\lambda)
 <span class="math notranslate nohighlight">\(\lambda \in \lset 5, 10, 20 \rset\)</span>.</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from plot import plot_poisson_pmfs, plot_empirical_poisson
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">plot</span> <span class="kn">import</span> <span class="n">plot_poisson_pmfs</span><span class="p">,</span> <span class="n">plot_empirical_poisson</span>
 
-_fig, axes = plt.subplots(2, 1, figsize=(12, 10), dpi=125)
-lambdas = [5, 10, 20]
-plot_poisson_pmfs(lambdas=lambdas, ax=axes[0])
-plot_empirical_poisson(lambdas=lambdas, ax=axes[1])
-plt.show()
+<span class="n">_fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">125</span><span class="p">)</span>
+<span class="n">lambdas</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
+<span class="n">plot_poisson_pmfs</span><span class="p">(</span><span class="n">lambdas</span><span class="o">=</span><span class="n">lambdas</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">plot_empirical_poisson</span><span class="p">(</span><span class="n">lambdas</span><span class="o">=</span><span class="n">lambdas</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>

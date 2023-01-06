@@ -2240,7 +2240,7 @@ the <span class="math notranslate nohighlight">\(\mathbb{P}(Y=k \mid \mathbf{X} 
 <section id="time-and-space-complexity">
 <h2>Time and Space Complexity<a class="headerlink" href="#time-and-space-complexity" title="Permalink to this headline">#</a></h2>
 <p>Let <span class="math notranslate nohighlight">\(N\)</span> be the number of training samples, <span class="math notranslate nohighlight">\(D\)</span> be the number of features, and <span class="math notranslate nohighlight">\(K\)</span> be the number of classes.</p>
-<p>During training, the time complexity is <span class="math notranslate nohighlight">\(O(NKD)\)</span> if we are using a brute force approach.
+<p>During training, the time complexity is <span class="math notranslate nohighlight">\(\mathcal{O}(NKD)\)</span> if we are using a brute force approach.
 In my <a class="reference external" href="https://github.com/gao-hongnan/gaohn-probability-stats/blob/naive-bayes/src/generative/naive_bayes/naive_bayes.py">implementation</a>,
 the main training loop is in <code class="docutils literal notranslate"><span class="pre">_estimate_prior_parameters</span></code> and <code class="docutils literal notranslate"><span class="pre">_estimate_likelihood_parameters</span></code> methods.</p>
 <p>In the former, we are looping through the classes <span class="math notranslate nohighlight">\(K\)</span> times, but a hidden operation is calculating the

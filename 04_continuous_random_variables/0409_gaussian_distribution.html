@@ -853,57 +853,57 @@ using the CDF of the standard normal distribution later.</p>
 from <span id="id1">[<a class="reference internal" href="../references_and_resources/bibliography.html#id8" title="John M. Shea. Foundations of data science with python. 2021. URL: https://jmshea.github.io/Foundations-of-Data-Science-with-Python/intro.html.">Shea, 2021</a>]</span>.</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
-import matplotlib.pyplot as plt
-import scipy.stats as stats
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stats</span>
 
-mean_1, mean_2, mean_3, mean_4, mean_5 = -3, -0.3, 0, 1.2, 3
-sigma = 1
+<span class="n">mean_1</span><span class="p">,</span> <span class="n">mean_2</span><span class="p">,</span> <span class="n">mean_3</span><span class="p">,</span> <span class="n">mean_4</span><span class="p">,</span> <span class="n">mean_5</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mi">3</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mi">1</span>
 
-x = np.linspace(-10, 10, 1000)
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
 
-all_params = [
-    (mean_1, sigma),
-    (mean_2, sigma),
-    (mean_3, sigma),
-    (mean_4, sigma),
-    (mean_5, sigma),
-]
+<span class="n">all_params</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="n">mean_1</span><span class="p">,</span> <span class="n">sigma</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">mean_2</span><span class="p">,</span> <span class="n">sigma</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">mean_3</span><span class="p">,</span> <span class="n">sigma</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">mean_4</span><span class="p">,</span> <span class="n">sigma</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">mean_5</span><span class="p">,</span> <span class="n">sigma</span><span class="p">),</span>
+<span class="p">]</span>
 
-for params in all_params:
-    N = stats.norm(params[0], params[1])
-    label = f&quot;Normal({N.mean()}, $\sigma=${N.std() :.1f})&quot;
-    plt.plot(x, N.pdf(x), label=label)
+<span class="k">for</span> <span class="n">params</span> <span class="ow">in</span> <span class="n">all_params</span><span class="p">:</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Normal(</span><span class="si">{</span><span class="n">N</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">}</span><span class="s2">, $\sigma=$</span><span class="si">{</span><span class="n">N</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="w"> </span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">)&quot;</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">N</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
 
-plt.xlim(-12, 12)
-plt.ylim(0, 0.5)
-plt.legend(prop={&#39;size&#39;: 6})
-plt.title(&quot;Fixing $\sigma$ = 1, and varying $\mu$&quot;)
-plt.show()
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">})</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Fixing $\sigma$ = 1, and varying $\mu$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
-mean = 0
-sigma_1, sigma_2, sigma_3, sigma_4, sigma_5 = 0.3, 0.5, 1, 4, 6
+<span class="n">mean</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">sigma_1</span><span class="p">,</span> <span class="n">sigma_2</span><span class="p">,</span> <span class="n">sigma_3</span><span class="p">,</span> <span class="n">sigma_4</span><span class="p">,</span> <span class="n">sigma_5</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span>
 
-x = np.linspace(-10, 10, 1000)
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
 
-all_params = [
-    (mean, sigma_1),
-    (mean, sigma_2),
-    (mean, sigma_3),
-    (mean, sigma_4),
-    (mean, sigma_5),
-]
+<span class="n">all_params</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">sigma_1</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">sigma_2</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">sigma_3</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">sigma_4</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">sigma_5</span><span class="p">),</span>
+<span class="p">]</span>
 
-for params in all_params:
-    N = stats.norm(params[0], params[1])
-    label = f&quot;Normal({N.mean()}, $\sigma=${N.std() :.1f})&quot;
-    plt.plot(x, N.pdf(x), label=label)
+<span class="k">for</span> <span class="n">params</span> <span class="ow">in</span> <span class="n">all_params</span><span class="p">:</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Normal(</span><span class="si">{</span><span class="n">N</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">}</span><span class="s2">, $\sigma=$</span><span class="si">{</span><span class="n">N</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="w"> </span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">)&quot;</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">N</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
 
-plt.xlim(-12, 12)
-plt.ylim(0, 1.5)
-plt.legend(prop={&quot;size&quot;: 6})
-plt.title(&quot;Fixing $\mu$ = 0, and varying $\sigma$&quot;)
-plt.show()
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">})</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Fixing $\mu$ = 0, and varying $\sigma$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -996,22 +996,22 @@ Then <span class="math notranslate nohighlight">\(X\)</span> is said to be a <st
 </section>
 </div><div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import sys
-from pathlib import Path
-parent_dir = str(Path().resolve().parent)
-sys.path.append(parent_dir)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="n">parent_dir</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">parent_dir</span><span class="p">)</span>
 
-import numpy as np
-import scipy.stats as stats
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stats</span>
 
-from utils import seed_all, plot_continuous_pdf_and_cdf
-seed_all()
+<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">seed_all</span><span class="p">,</span> <span class="n">plot_continuous_pdf_and_cdf</span>
+<span class="n">seed_all</span><span class="p">()</span>
 
-# x = np.linspace(0, 10, 5000)
-mean, sigma = 0, 1
-X = stats.norm(mean, sigma)
+<span class="c1"># x = np.linspace(0, 10, 5000)</span>
+<span class="n">mean</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
 
-plot_continuous_pdf_and_cdf(X, -5, 5, title=&quot;Normal Distribution $\mu=0, \sigma=1$&quot;, figsize=(15, 5))
+<span class="n">plot_continuous_pdf_and_cdf</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Normal Distribution $\mu=0, \sigma=1$&quot;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>

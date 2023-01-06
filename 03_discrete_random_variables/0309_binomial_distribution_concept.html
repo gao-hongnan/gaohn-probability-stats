@@ -836,12 +836,12 @@ cumulative distribution function (CDF) of <span class="math notranslate nohighli
 <span class="math notranslate nohighlight">\(n=10\)</span> and <span class="math notranslate nohighlight">\(p=0.5\)</span>, with the latter consisting of 5000 samples drawn from a binomial distribution.</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from plot import plot_binomial_pmfs, plot_empirical_binomial
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">plot</span> <span class="kn">import</span> <span class="n">plot_binomial_pmfs</span><span class="p">,</span> <span class="n">plot_empirical_binomial</span>
 
-_fig, ax = plt.subplots(1, figsize=(12, 8), dpi=125)
-plot_binomial_pmfs(ns=[10], ps=[0.5], ax=ax)
-plot_empirical_binomial(n=10, p=0.5, size=5000, ax=ax)
-plt.show()
+<span class="n">_fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">125</span><span class="p">)</span>
+<span class="n">plot_binomial_pmfs</span><span class="p">(</span><span class="n">ns</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">ps</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">plot_empirical_binomial</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -858,12 +858,12 @@ with the latter consisting of 5000 samples drawn from a binomial distribution.</
 More specifically, when we fix <span class="math notranslate nohighlight">\(n=60\)</span> and <span class="math notranslate nohighlight">\(p\)</span> varies, and when we fix <span class="math notranslate nohighlight">\(p=0.5\)</span> and <span class="math notranslate nohighlight">\(n\)</span> varies.</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from plot import plot_binomial_pmfs
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">plot</span> <span class="kn">import</span> <span class="n">plot_binomial_pmfs</span>
 
-_fig, axes = plt.subplots(2, 1, figsize=(10, 10), dpi=125)
-plot_binomial_pmfs(ns=[60, 60, 60], ps=[0.1, 0.5, 0.9], ax=axes[0])
-plot_binomial_pmfs(ns=[5, 50, 100], ps=[0.5, 0.5, 0.5], ax=axes[1])
-plt.show()
+<span class="n">_fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">125</span><span class="p">)</span>
+<span class="n">plot_binomial_pmfs</span><span class="p">(</span><span class="n">ns</span><span class="o">=</span><span class="p">[</span><span class="mi">60</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">60</span><span class="p">],</span> <span class="n">ps</span><span class="o">=</span><span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">plot_binomial_pmfs</span><span class="p">(</span><span class="n">ns</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="n">ps</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>

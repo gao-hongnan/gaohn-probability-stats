@@ -791,14 +791,14 @@ title="Print to PDF"
 <h1>Example: Penguins Dataset<a class="headerlink" href="#example-penguins-dataset" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import matplotlib.patches as mpatches
-import matplotlib.pyplot as plt
-import numpy as np
-import pandas as pd
-import seaborn as sns
-from scipy import stats
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.patches</span> <span class="k">as</span> <span class="nn">mpatches</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
 
-sns.set_style(&#39;white&#39;)
+<span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -824,85 +824,85 @@ X_1= \begin{cases}1 &amp; \text { above-average weight } \\ 0 &amp; \text { belo
 <p>The penguins_bayes data, originally made available by Gorman, Williams, and Fraser (2014) and distributed by Horst, Hill, and Gorman (2020), contains the above species and feature information for a sample of 344 Antarctic penguins:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>penguins = sns.load_dataset(&#39;penguins&#39;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">penguins</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;penguins&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># display(penguins.head())
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># display(penguins.head())</span>
 
-penguins.head().style.set_table_attributes(&#39;style=&quot;font-size: 13px&quot;&#39;)
+<span class="n">penguins</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">set_table_attributes</span><span class="p">(</span><span class="s1">&#39;style=&quot;font-size: 13px&quot;&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_f9dbc" style="font-size: 13px">
+<table id="T_fbe4c" style="font-size: 13px">
   <thead>
     <tr>
       <th class="blank level0" >&nbsp;</th>
-      <th id="T_f9dbc_level0_col0" class="col_heading level0 col0" >species</th>
-      <th id="T_f9dbc_level0_col1" class="col_heading level0 col1" >island</th>
-      <th id="T_f9dbc_level0_col2" class="col_heading level0 col2" >bill_length_mm</th>
-      <th id="T_f9dbc_level0_col3" class="col_heading level0 col3" >bill_depth_mm</th>
-      <th id="T_f9dbc_level0_col4" class="col_heading level0 col4" >flipper_length_mm</th>
-      <th id="T_f9dbc_level0_col5" class="col_heading level0 col5" >body_mass_g</th>
-      <th id="T_f9dbc_level0_col6" class="col_heading level0 col6" >sex</th>
+      <th id="T_fbe4c_level0_col0" class="col_heading level0 col0" >species</th>
+      <th id="T_fbe4c_level0_col1" class="col_heading level0 col1" >island</th>
+      <th id="T_fbe4c_level0_col2" class="col_heading level0 col2" >bill_length_mm</th>
+      <th id="T_fbe4c_level0_col3" class="col_heading level0 col3" >bill_depth_mm</th>
+      <th id="T_fbe4c_level0_col4" class="col_heading level0 col4" >flipper_length_mm</th>
+      <th id="T_fbe4c_level0_col5" class="col_heading level0 col5" >body_mass_g</th>
+      <th id="T_fbe4c_level0_col6" class="col_heading level0 col6" >sex</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th id="T_f9dbc_level0_row0" class="row_heading level0 row0" >0</th>
-      <td id="T_f9dbc_row0_col0" class="data row0 col0" >Adelie</td>
-      <td id="T_f9dbc_row0_col1" class="data row0 col1" >Torgersen</td>
-      <td id="T_f9dbc_row0_col2" class="data row0 col2" >39.100000</td>
-      <td id="T_f9dbc_row0_col3" class="data row0 col3" >18.700000</td>
-      <td id="T_f9dbc_row0_col4" class="data row0 col4" >181.000000</td>
-      <td id="T_f9dbc_row0_col5" class="data row0 col5" >3750.000000</td>
-      <td id="T_f9dbc_row0_col6" class="data row0 col6" >Male</td>
+      <th id="T_fbe4c_level0_row0" class="row_heading level0 row0" >0</th>
+      <td id="T_fbe4c_row0_col0" class="data row0 col0" >Adelie</td>
+      <td id="T_fbe4c_row0_col1" class="data row0 col1" >Torgersen</td>
+      <td id="T_fbe4c_row0_col2" class="data row0 col2" >39.100000</td>
+      <td id="T_fbe4c_row0_col3" class="data row0 col3" >18.700000</td>
+      <td id="T_fbe4c_row0_col4" class="data row0 col4" >181.000000</td>
+      <td id="T_fbe4c_row0_col5" class="data row0 col5" >3750.000000</td>
+      <td id="T_fbe4c_row0_col6" class="data row0 col6" >Male</td>
     </tr>
     <tr>
-      <th id="T_f9dbc_level0_row1" class="row_heading level0 row1" >1</th>
-      <td id="T_f9dbc_row1_col0" class="data row1 col0" >Adelie</td>
-      <td id="T_f9dbc_row1_col1" class="data row1 col1" >Torgersen</td>
-      <td id="T_f9dbc_row1_col2" class="data row1 col2" >39.500000</td>
-      <td id="T_f9dbc_row1_col3" class="data row1 col3" >17.400000</td>
-      <td id="T_f9dbc_row1_col4" class="data row1 col4" >186.000000</td>
-      <td id="T_f9dbc_row1_col5" class="data row1 col5" >3800.000000</td>
-      <td id="T_f9dbc_row1_col6" class="data row1 col6" >Female</td>
+      <th id="T_fbe4c_level0_row1" class="row_heading level0 row1" >1</th>
+      <td id="T_fbe4c_row1_col0" class="data row1 col0" >Adelie</td>
+      <td id="T_fbe4c_row1_col1" class="data row1 col1" >Torgersen</td>
+      <td id="T_fbe4c_row1_col2" class="data row1 col2" >39.500000</td>
+      <td id="T_fbe4c_row1_col3" class="data row1 col3" >17.400000</td>
+      <td id="T_fbe4c_row1_col4" class="data row1 col4" >186.000000</td>
+      <td id="T_fbe4c_row1_col5" class="data row1 col5" >3800.000000</td>
+      <td id="T_fbe4c_row1_col6" class="data row1 col6" >Female</td>
     </tr>
     <tr>
-      <th id="T_f9dbc_level0_row2" class="row_heading level0 row2" >2</th>
-      <td id="T_f9dbc_row2_col0" class="data row2 col0" >Adelie</td>
-      <td id="T_f9dbc_row2_col1" class="data row2 col1" >Torgersen</td>
-      <td id="T_f9dbc_row2_col2" class="data row2 col2" >40.300000</td>
-      <td id="T_f9dbc_row2_col3" class="data row2 col3" >18.000000</td>
-      <td id="T_f9dbc_row2_col4" class="data row2 col4" >195.000000</td>
-      <td id="T_f9dbc_row2_col5" class="data row2 col5" >3250.000000</td>
-      <td id="T_f9dbc_row2_col6" class="data row2 col6" >Female</td>
+      <th id="T_fbe4c_level0_row2" class="row_heading level0 row2" >2</th>
+      <td id="T_fbe4c_row2_col0" class="data row2 col0" >Adelie</td>
+      <td id="T_fbe4c_row2_col1" class="data row2 col1" >Torgersen</td>
+      <td id="T_fbe4c_row2_col2" class="data row2 col2" >40.300000</td>
+      <td id="T_fbe4c_row2_col3" class="data row2 col3" >18.000000</td>
+      <td id="T_fbe4c_row2_col4" class="data row2 col4" >195.000000</td>
+      <td id="T_fbe4c_row2_col5" class="data row2 col5" >3250.000000</td>
+      <td id="T_fbe4c_row2_col6" class="data row2 col6" >Female</td>
     </tr>
     <tr>
-      <th id="T_f9dbc_level0_row3" class="row_heading level0 row3" >3</th>
-      <td id="T_f9dbc_row3_col0" class="data row3 col0" >Adelie</td>
-      <td id="T_f9dbc_row3_col1" class="data row3 col1" >Torgersen</td>
-      <td id="T_f9dbc_row3_col2" class="data row3 col2" >nan</td>
-      <td id="T_f9dbc_row3_col3" class="data row3 col3" >nan</td>
-      <td id="T_f9dbc_row3_col4" class="data row3 col4" >nan</td>
-      <td id="T_f9dbc_row3_col5" class="data row3 col5" >nan</td>
-      <td id="T_f9dbc_row3_col6" class="data row3 col6" >nan</td>
+      <th id="T_fbe4c_level0_row3" class="row_heading level0 row3" >3</th>
+      <td id="T_fbe4c_row3_col0" class="data row3 col0" >Adelie</td>
+      <td id="T_fbe4c_row3_col1" class="data row3 col1" >Torgersen</td>
+      <td id="T_fbe4c_row3_col2" class="data row3 col2" >nan</td>
+      <td id="T_fbe4c_row3_col3" class="data row3 col3" >nan</td>
+      <td id="T_fbe4c_row3_col4" class="data row3 col4" >nan</td>
+      <td id="T_fbe4c_row3_col5" class="data row3 col5" >nan</td>
+      <td id="T_fbe4c_row3_col6" class="data row3 col6" >nan</td>
     </tr>
     <tr>
-      <th id="T_f9dbc_level0_row4" class="row_heading level0 row4" >4</th>
-      <td id="T_f9dbc_row4_col0" class="data row4 col0" >Adelie</td>
-      <td id="T_f9dbc_row4_col1" class="data row4 col1" >Torgersen</td>
-      <td id="T_f9dbc_row4_col2" class="data row4 col2" >36.700000</td>
-      <td id="T_f9dbc_row4_col3" class="data row4 col3" >19.300000</td>
-      <td id="T_f9dbc_row4_col4" class="data row4 col4" >193.000000</td>
-      <td id="T_f9dbc_row4_col5" class="data row4 col5" >3450.000000</td>
-      <td id="T_f9dbc_row4_col6" class="data row4 col6" >Female</td>
+      <th id="T_fbe4c_level0_row4" class="row_heading level0 row4" >4</th>
+      <td id="T_fbe4c_row4_col0" class="data row4 col0" >Adelie</td>
+      <td id="T_fbe4c_row4_col1" class="data row4 col1" >Torgersen</td>
+      <td id="T_fbe4c_row4_col2" class="data row4 col2" >36.700000</td>
+      <td id="T_fbe4c_row4_col3" class="data row4 col3" >19.300000</td>
+      <td id="T_fbe4c_row4_col4" class="data row4 col4" >193.000000</td>
+      <td id="T_fbe4c_row4_col5" class="data row4 col5" >3450.000000</td>
+      <td id="T_fbe4c_row4_col6" class="data row4 col6" >Female</td>
     </tr>
   </tbody>
 </table>
@@ -910,7 +910,7 @@ penguins.head().style.set_table_attributes(&#39;style=&quot;font-size: 13px&quot
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>display(penguins.info())
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">penguins</span><span class="o">.</span><span class="n">info</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
@@ -938,7 +938,7 @@ memory usage: 18.9+ KB
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>display(penguins.describe())
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">penguins</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
@@ -1031,8 +1031,8 @@ memory usage: 18.9+ KB
 <p>Among these penguins, 152 are Adelies, 68 are Chinstraps, and 124 are Gentoos. We’ll assume throughout that the proportional breakdown of these species in our dataset reflects the species breakdown in the wild. That is, our prior assumption about any new penguin is that it’s most likely an Adelie and least likely a Chinstrap:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>display(penguins[&#39;species&#39;].value_counts(normalize=False))
-display(penguins[&#39;species&#39;].value_counts(normalize=True))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">penguins</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">penguins</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1054,7 +1054,7 @@ Name: species, dtype: float64
 <p>We drop <code class="docutils literal notranslate"><span class="pre">sex</span></code> column for simplicity as there are quite a few missing values in it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>penguins = penguins.drop(columns=[&quot;sex&quot;], inplace=False).reset_index(drop=True)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">penguins</span> <span class="o">=</span> <span class="n">penguins</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;sex&quot;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1062,8 +1062,8 @@ Name: species, dtype: float64
 <p>We also drop the other NA rows, there are only 2 of them.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>penguins = penguins.dropna().reset_index(drop=True) # drop rows with NAs, only 2 rows
-penguins
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">penguins</span> <span class="o">=</span> <span class="n">penguins</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># drop rows with NAs, only 2 rows</span>
+<span class="n">penguins</span>
 </pre></div>
 </div>
 </div>
@@ -1201,8 +1201,8 @@ penguins
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>display(penguins[&#39;species&#39;].value_counts(normalize=False))
-display(penguins[&#39;species&#39;].value_counts(normalize=True))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">penguins</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">penguins</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1223,7 +1223,7 @@ Name: species, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(f&quot;The mean body mass of penguins is {penguins[&#39;body_mass_g&#39;].mean():.2f} grams.&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The mean body mass of penguins is </span><span class="si">{</span><span class="n">penguins</span><span class="p">[</span><span class="s1">&#39;body_mass_g&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> grams.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1237,8 +1237,8 @@ Name: species, dtype: float64
 mean, and 0 otherwise. This feature corresponds to our earlier defined random variable <span class="math notranslate nohighlight">\(X_1\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>penguins[&quot;overweight&quot;] = (penguins[&quot;body_mass_g&quot;] &gt; penguins[&quot;body_mass_g&quot;].mean()).astype(int)
-display(penguins[&quot;overweight&quot;].value_counts())
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">penguins</span><span class="p">[</span><span class="s2">&quot;overweight&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">penguins</span><span class="p">[</span><span class="s2">&quot;body_mass_g&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">penguins</span><span class="p">[</span><span class="s2">&quot;body_mass_g&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">penguins</span><span class="p">[</span><span class="s2">&quot;overweight&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
@@ -1289,24 +1289,24 @@ In other words, what is the probability of this penguin being an Adelie, Chinstr
 <p>Let’s start with the first feature, <code class="docutils literal notranslate"><span class="pre">body_mass_g</span></code> and since the penguin weights less than the average weight of <span class="math notranslate nohighlight">\(4200 \mathrm{~g}\)</span>, it belongs to the category <span class="math notranslate nohighlight">\(0\)</span> of the feature <code class="docutils literal notranslate"><span class="pre">overweight</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>total = penguins.groupby(&quot;species&quot;).size().reset_index(name=&quot;counts&quot;)
-display(total)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total</span> <span class="o">=</span> <span class="n">penguins</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;species&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;counts&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
 
-overweight = (
-    penguins[penguins[&quot;overweight&quot;] == 1]
-    .groupby(&quot;species&quot;)[&quot;overweight&quot;]
-    .sum()
-    .reset_index()
-)
-display(overweight)
+<span class="n">overweight</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">penguins</span><span class="p">[</span><span class="n">penguins</span><span class="p">[</span><span class="s2">&quot;overweight&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;species&quot;</span><span class="p">)[</span><span class="s2">&quot;overweight&quot;</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">overweight</span><span class="p">)</span>
 
-overweight[&quot;overweight&quot;] = [
-    i / j * 100 for i, j in zip(overweight[&quot;overweight&quot;], total[&quot;counts&quot;])
-]
-total[&quot;counts&quot;] = [i / j * 100 for i, j in zip(total[&quot;counts&quot;], total[&quot;counts&quot;])]
+<span class="n">overweight</span><span class="p">[</span><span class="s2">&quot;overweight&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">i</span> <span class="o">/</span> <span class="n">j</span> <span class="o">*</span> <span class="mi">100</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">overweight</span><span class="p">[</span><span class="s2">&quot;overweight&quot;</span><span class="p">],</span> <span class="n">total</span><span class="p">[</span><span class="s2">&quot;counts&quot;</span><span class="p">])</span>
+<span class="p">]</span>
+<span class="n">total</span><span class="p">[</span><span class="s2">&quot;counts&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="o">/</span> <span class="n">j</span> <span class="o">*</span> <span class="mi">100</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">total</span><span class="p">[</span><span class="s2">&quot;counts&quot;</span><span class="p">],</span> <span class="n">total</span><span class="p">[</span><span class="s2">&quot;counts&quot;</span><span class="p">])]</span>
 
-display(total)
-display(overweight)  # percentage of overweight penguins for each species
+<span class="n">display</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">overweight</span><span class="p">)</span>  <span class="c1"># percentage of overweight penguins for each species</span>
 </pre></div>
 </div>
 </div>
@@ -1475,19 +1475,19 @@ display(overweight)  # percentage of overweight penguins for each species
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># bar chart 1 -&gt; top bars (group of &#39;overweight=No&#39;)
-bar1 = sns.barplot(x=&quot;species&quot;, y=&quot;counts&quot;, data=total, color=&quot;darkblue&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># bar chart 1 -&gt; top bars (group of &#39;overweight=No&#39;)</span>
+<span class="n">bar1</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;counts&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">total</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;darkblue&quot;</span><span class="p">)</span>
 
-# bar chart 2 -&gt; bottom bars (group of &#39;overweight=Yes&#39;)
-bar2 = sns.barplot(x=&quot;species&quot;, y=&quot;overweight&quot;, data=overweight, color=&quot;lightblue&quot;)
+<span class="c1"># bar chart 2 -&gt; bottom bars (group of &#39;overweight=Yes&#39;)</span>
+<span class="n">bar2</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;overweight&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">overweight</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;lightblue&quot;</span><span class="p">)</span>
 
-# add legend
-top_bar = mpatches.Patch(color=&quot;darkblue&quot;, label=&quot;overweight = No&quot;)
-bottom_bar = mpatches.Patch(color=&quot;lightblue&quot;, label=&quot;overweight = Yes&quot;)
-plt.legend(handles=[top_bar, bottom_bar])
+<span class="c1"># add legend</span>
+<span class="n">top_bar</span> <span class="o">=</span> <span class="n">mpatches</span><span class="o">.</span><span class="n">Patch</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;darkblue&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;overweight = No&quot;</span><span class="p">)</span>
+<span class="n">bottom_bar</span> <span class="o">=</span> <span class="n">mpatches</span><span class="o">.</span><span class="n">Patch</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;lightblue&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;overweight = Yes&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">handles</span><span class="o">=</span><span class="p">[</span><span class="n">top_bar</span><span class="p">,</span> <span class="n">bottom_bar</span><span class="p">])</span>
 
-# show the graph
-plt.show()
+<span class="c1"># show the graph</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1640,11 +1640,11 @@ both are categorical, it is easy to compute the joint distribution table.</p>
 </figure>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>g = sns.JointGrid(data=penguins, x=&quot;overweight&quot;, y=&quot;species&quot;)
-low, high = 0, 1
-# bins =  np.arange(0, high + 1.5) - 0.5 # [-0.5, 0.5, 1.5]
-g.plot_joint(sns.histplot,discrete=True, cbar=True, color=&quot;red&quot;)
-g.plot_marginals(sns.histplot, discrete=True, color=&quot;red&quot;);
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">JointGrid</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">penguins</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;overweight&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">)</span>
+<span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+<span class="c1"># bins =  np.arange(0, high + 1.5) - 0.5 # [-0.5, 0.5, 1.5]</span>
+<span class="n">g</span><span class="o">.</span><span class="n">plot_joint</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">,</span><span class="n">discrete</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">plot_marginals</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">,</span> <span class="n">discrete</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1770,8 +1770,8 @@ This penguin has a <code class="docutils literal notranslate"><span class="pre">
 <p>Let’s do some EDA.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>bill_length_mm = penguins[[&#39;bill_length_mm&#39;, &#39;species&#39;]]
-bill_length_mm
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bill_length_mm</span> <span class="o">=</span> <span class="n">penguins</span><span class="p">[[</span><span class="s1">&#39;bill_length_mm&#39;</span><span class="p">,</span> <span class="s1">&#39;species&#39;</span><span class="p">]]</span>
+<span class="n">bill_length_mm</span>
 </pre></div>
 </div>
 </div>
@@ -1861,12 +1861,12 @@ bill_length_mm
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># plotting both distibutions on the same figure
-_ = sns.kdeplot(data=penguins, x=&quot;bill_length_mm&quot;, fill=True, common_norm=False, alpha=.5, linewidth=0, legend=True)
-# plot vertical line 
-_ = plt.axvline(x=penguins[&quot;bill_length_mm&quot;].mean(), color=&#39;red&#39;, linestyle=&#39;--&#39;)
-# plt.legend()
-plt.show();
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plotting both distibutions on the same figure</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">penguins</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;bill_length_mm&quot;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">common_norm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># plot vertical line </span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">penguins</span><span class="p">[</span><span class="s2">&quot;bill_length_mm&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="c1"># plt.legend()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
@@ -1884,23 +1884,23 @@ or we can view it as <strong>univariate distribution</strong>. This is because o
 there is no randomness left in <span class="math notranslate nohighlight">\(Y\)</span>, we are only looking at the distribution of <span class="math notranslate nohighlight">\(X_2\)</span> in the reduced sample space <span class="math notranslate nohighlight">\(\mathcal{\Omega}_{X_2|Y}\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># plotting both distibutions on the same figure
-x2 = 50
-_ = sns.kdeplot(
-    data=penguins,
-    x=&quot;bill_length_mm&quot;,
-    hue=&quot;species&quot;,
-    fill=True,
-    common_norm=False,
-    alpha=0.5,
-    linewidth=0,
-    legend=True,
-)
-# plot vertical line
-_ = plt.axvline(x2, color=&quot;r&quot;, linestyle=&quot;--&quot;, label=&quot;50 mm&quot;)
-plt.title(&quot;Density plot of bill length&quot;)
-# plt.legend()
-plt.show();
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plotting both distibutions on the same figure</span>
+<span class="n">x2</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">penguins</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;bill_length_mm&quot;</span><span class="p">,</span>
+    <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">,</span>
+    <span class="n">fill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">common_norm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="c1"># plot vertical line</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;50 mm&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Density plot of bill length&quot;</span><span class="p">)</span>
+<span class="c1"># plt.legend()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
@@ -1912,15 +1912,15 @@ plt.show();
 Note very carefully that this is a <strong>joint distribution</strong> of <span class="math notranslate nohighlight">\(X_2\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>, not a <strong>conditional distribution</strong> of <span class="math notranslate nohighlight">\(X_2\)</span> given <span class="math notranslate nohighlight">\(Y\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>g = sns.JointGrid(data=penguins, x=&quot;bill_length_mm&quot;, y=&quot;species&quot;)
-g.plot_joint(sns.histplot, color = &quot;red&quot;, cbar=True)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">JointGrid</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">penguins</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;bill_length_mm&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">plot_joint</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-sns.jointplot(data=penguins, x=&quot;bill_length_mm&quot;, y=&quot;species&quot;)
+<span class="n">sns</span><span class="o">.</span><span class="n">jointplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">penguins</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;bill_length_mm&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7fab6e9bc8e0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7fd9e51dd7f0&gt;
 </pre></div>
 </div>
 <img alt="../../../_images/naive_bayes_example_penguin_40_1.png" src="../../../_images/naive_bayes_example_penguin_40_1.png" />
@@ -2016,8 +2016,8 @@ is 2.66 mm.</p>
 <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span>, and can be shown by MLE.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>bill_length_mean_std = bill_length_mm.groupby(&#39;species&#39;).agg([&#39;mean&#39;, &#39;std&#39;])
-bill_length_mean_std
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bill_length_mean_std</span> <span class="o">=</span> <span class="n">bill_length_mm</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;species&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;std&#39;</span><span class="p">])</span>
+<span class="n">bill_length_mean_std</span>
 </pre></div>
 </div>
 </div>
@@ -2082,31 +2082,31 @@ We also round off the sample mean and sample standard deviation to 2 decimal pla
 stay true to the original book.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># rv_adelie = stats.norm(bill_length_mean_std.loc[&#39;Adelie&#39;][&#39;bill_length_mm&#39;][&#39;mean&#39;], bill_length_mean_std.loc[&#39;Adelie&#39;][&#39;bill_length_mm&#39;][&#39;std&#39;])
-# rv_chinstrap = stats.norm(bill_length_mean_std.loc[&#39;Chinstrap&#39;][&#39;bill_length_mm&#39;][&#39;mean&#39;], bill_length_mean_std.loc[&#39;Chinstrap&#39;][&#39;bill_length_mm&#39;][&#39;std&#39;])
-# rv_gentoo = stats.norm(bill_length_mean_std.loc[&#39;Gentoo&#39;][&#39;bill_length_mm&#39;][&#39;mean&#39;], bill_length_mean_std.loc[&#39;Gentoo&#39;][&#39;bill_length_mm&#39;][&#39;std&#39;])
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># rv_adelie = stats.norm(bill_length_mean_std.loc[&#39;Adelie&#39;][&#39;bill_length_mm&#39;][&#39;mean&#39;], bill_length_mean_std.loc[&#39;Adelie&#39;][&#39;bill_length_mm&#39;][&#39;std&#39;])</span>
+<span class="c1"># rv_chinstrap = stats.norm(bill_length_mean_std.loc[&#39;Chinstrap&#39;][&#39;bill_length_mm&#39;][&#39;mean&#39;], bill_length_mean_std.loc[&#39;Chinstrap&#39;][&#39;bill_length_mm&#39;][&#39;std&#39;])</span>
+<span class="c1"># rv_gentoo = stats.norm(bill_length_mean_std.loc[&#39;Gentoo&#39;][&#39;bill_length_mm&#39;][&#39;mean&#39;], bill_length_mean_std.loc[&#39;Gentoo&#39;][&#39;bill_length_mm&#39;][&#39;std&#39;])</span>
 
-rv_adelie = stats.norm(38.8, 2.66)
-rv_chinstrap = stats.norm(48.8, 3.34)
-rv_gentoo = stats.norm(47.5, 3.08)
+<span class="n">rv_adelie</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="mf">38.8</span><span class="p">,</span> <span class="mf">2.66</span><span class="p">)</span>
+<span class="n">rv_chinstrap</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="mf">48.8</span><span class="p">,</span> <span class="mf">3.34</span><span class="p">)</span>
+<span class="n">rv_gentoo</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="mf">47.5</span><span class="p">,</span> <span class="mf">3.08</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig, ax = plt.subplots(1, 1)
-ax.plot(np.linspace(30, 60, 100), rv_adelie.pdf(np.linspace(30, 60, 100)), &#39;r-&#39;, lw=5, alpha=0.6, label=&#39;Adelie&#39;)
-ax.plot(np.linspace(30, 60, 100), rv_chinstrap.pdf(np.linspace(30, 60, 100)), &#39;b-&#39;, lw=5, alpha=0.6, label=&#39;Chinstrap&#39;)
-ax.plot(np.linspace(30, 60, 100), rv_gentoo.pdf(np.linspace(30, 60, 100)), &#39;g-&#39;, lw=5, alpha=0.6, label=&#39;Gentoo&#39;)
-# plot vertical line
-_ = plt.axvline(x2, color=&quot;y&quot;, linestyle=&quot;--&quot;, label=&quot;50 mm&quot;)
-_ = plt.axvline(x2+0.5, color=&quot;y&quot;, linestyle=&quot;--&quot;, label=&quot;50.5 mm&quot;)
-_ = plt.axvline(x2-0.5, color=&quot;y&quot;, linestyle=&quot;--&quot;, label=&quot;49.5 mm&quot;)
-ax.set_xlabel(&#39;bill_length_mm&#39;)
-ax.set_ylabel(&#39;Probability density&#39;)
-ax.legend()
-plt.show();
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">rv_adelie</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">100</span><span class="p">)),</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Adelie&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">rv_chinstrap</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">100</span><span class="p">)),</span> <span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Chinstrap&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">rv_gentoo</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">100</span><span class="p">)),</span> <span class="s1">&#39;g-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Gentoo&#39;</span><span class="p">)</span>
+<span class="c1"># plot vertical line</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;50 mm&quot;</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x2</span><span class="o">+</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;50.5 mm&quot;</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x2</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;49.5 mm&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;bill_length_mm&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Probability density&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
@@ -2160,13 +2160,13 @@ Notation wise it is fine but you can also view it as <span class="math notransla
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>px2_given_adelie = rv_adelie.pdf(x2)
-px2_given_chinstrap = rv_chinstrap.pdf(x2)
-px2_given_gentoo = rv_gentoo.pdf(x2)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">px2_given_adelie</span> <span class="o">=</span> <span class="n">rv_adelie</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
+<span class="n">px2_given_chinstrap</span> <span class="o">=</span> <span class="n">rv_chinstrap</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
+<span class="n">px2_given_gentoo</span> <span class="o">=</span> <span class="n">rv_gentoo</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
 
-print(f&#39;P(X_2=50|Adelie) = {px2_given_adelie:.7f}&#39;)
-print(f&#39;P(X_2=50|Chinstrap) = {px2_given_chinstrap:.3f}&#39;)
-print(f&#39;P(X_2=50|Gentoo) = {px2_given_gentoo:.5f}&#39;)
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;P(X_2=50|Adelie) = </span><span class="si">{</span><span class="n">px2_given_adelie</span><span class="si">:</span><span class="s1">.7f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;P(X_2=50|Chinstrap) = </span><span class="si">{</span><span class="n">px2_given_chinstrap</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;P(X_2=50|Gentoo) = </span><span class="si">{</span><span class="n">px2_given_gentoo</span><span class="si">:</span><span class="s1">.5f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2235,12 +2235,12 @@ this is not always the case if the predictors are correlated, or if there are
 too many predictors (curse of dimensionality).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># plotting both distibutions on the same figure
-_ = sns.kdeplot(data=penguins, x=&quot;flipper_length_mm&quot;, fill=True, common_norm=False, alpha=.5, linewidth=0, legend=True)
-# plot vertical line 
-_ = plt.axvline(x=penguins[&quot;flipper_length_mm&quot;].mean(), color=&#39;red&#39;, linestyle=&#39;--&#39;)
-# plt.legend()
-plt.show();
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plotting both distibutions on the same figure</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">penguins</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;flipper_length_mm&quot;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">common_norm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># plot vertical line </span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">penguins</span><span class="p">[</span><span class="s2">&quot;flipper_length_mm&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="c1"># plt.legend()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
@@ -2250,23 +2250,23 @@ plt.show();
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># plotting both distibutions on the same figure
-x3 = 195
-_ = sns.kdeplot(
-    data=penguins,
-    x=&quot;flipper_length_mm&quot;,
-    hue=&quot;species&quot;,
-    fill=True,
-    common_norm=False,
-    alpha=0.5,
-    linewidth=0,
-    legend=True,
-)
-# plot vertical line
-_ = plt.axvline(x3, color=&quot;r&quot;, linestyle=&quot;--&quot;, label=&quot;195 mm&quot;)
-plt.title(&quot;Density plot of flipper length&quot;)
-# plt.legend()
-plt.show();
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plotting both distibutions on the same figure</span>
+<span class="n">x3</span> <span class="o">=</span> <span class="mi">195</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">penguins</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;flipper_length_mm&quot;</span><span class="p">,</span>
+    <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">,</span>
+    <span class="n">fill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">common_norm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="c1"># plot vertical line</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;195 mm&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Density plot of flipper length&quot;</span><span class="p">)</span>
+<span class="c1"># plt.legend()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
@@ -2276,23 +2276,23 @@ plt.show();
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># plotting both distibutions on the same figure
-x2 = 50
-_ = sns.kdeplot(
-    data=penguins,
-    x=&quot;bill_length_mm&quot;,
-    hue=&quot;species&quot;,
-    fill=True,
-    common_norm=False,
-    alpha=0.5,
-    linewidth=0,
-    legend=True,
-)
-# plot vertical line
-_ = plt.axvline(x2, color=&quot;r&quot;, linestyle=&quot;--&quot;, label=&quot;50 mm&quot;)
-plt.title(&quot;Density plot of bill length&quot;)
-# plt.legend()
-plt.show();
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plotting both distibutions on the same figure</span>
+<span class="n">x2</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">penguins</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;bill_length_mm&quot;</span><span class="p">,</span>
+    <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">,</span>
+    <span class="n">fill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">common_norm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="c1"># plot vertical line</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;50 mm&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Density plot of bill length&quot;</span><span class="p">)</span>
+<span class="c1"># plt.legend()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
@@ -2319,28 +2319,28 @@ the color the more points in that bin. You can understand this as impulses from 
 <p>Lastly, the plot with <code class="docutils literal notranslate"><span class="pre">kind=kde</span></code> will show the joint distribution as a contour plot.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.jointplot(data=penguins, x=&quot;bill_length_mm&quot;, y=&quot;flipper_length_mm&quot;, color=&quot;orange&quot;)
-sns.jointplot(
-    data=penguins,
-    x=&quot;bill_length_mm&quot;,
-    y=&quot;flipper_length_mm&quot;,
-    kind=&quot;hist&quot;,
-    color=&quot;orange&quot;,
-    cbar=True,
-)
-sns.jointplot(
-    data=penguins,
-    x=&quot;bill_length_mm&quot;,
-    y=&quot;flipper_length_mm&quot;,
-    kind=&quot;kde&quot;,
-    color=&quot;orange&quot;,
-    # cbar=True,
-)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">jointplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">penguins</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;bill_length_mm&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;flipper_length_mm&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">jointplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">penguins</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;bill_length_mm&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;flipper_length_mm&quot;</span><span class="p">,</span>
+    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;hist&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span>
+    <span class="n">cbar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">jointplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">penguins</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;bill_length_mm&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;flipper_length_mm&quot;</span><span class="p">,</span>
+    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;kde&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span>
+    <span class="c1"># cbar=True,</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7fab6e3c4c40&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7fd9e4be47f0&gt;
 </pre></div>
 </div>
 <img alt="../../../_images/naive_bayes_example_penguin_64_1.png" src="../../../_images/naive_bayes_example_penguin_64_1.png" />
@@ -2356,18 +2356,18 @@ of <span class="math notranslate nohighlight">\(X_2\)</span> and <span class="ma
 hues.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.jointplot(data=penguins, x=&quot;bill_length_mm&quot;, y=&quot;flipper_length_mm&quot;, hue=&quot;species&quot;)
-sns.jointplot(
-    data=penguins, x=&quot;bill_length_mm&quot;, y=&quot;flipper_length_mm&quot;, hue=&quot;species&quot;, kind=&quot;hist&quot;
-)
-sns.jointplot(
-    data=penguins, x=&quot;bill_length_mm&quot;, y=&quot;flipper_length_mm&quot;, hue=&quot;species&quot;, kind=&quot;kde&quot;
-)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">jointplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">penguins</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;bill_length_mm&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;flipper_length_mm&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">jointplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">penguins</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;bill_length_mm&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;flipper_length_mm&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;hist&quot;</span>
+<span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">jointplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">penguins</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;bill_length_mm&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;flipper_length_mm&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;kde&quot;</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7fab70c7c850&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7fd9e745f2e0&gt;
 </pre></div>
 </div>
 <img alt="../../../_images/naive_bayes_example_penguin_66_1.png" src="../../../_images/naive_bayes_example_penguin_66_1.png" />
@@ -2403,13 +2403,13 @@ species of the penguin. We will see later that the geometric interpretation of t
 is correct, with the formula.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># sns.jointplot(data=penguins, x=&quot;bill_length_mm&quot;, y=&quot;flipper_length_mm&quot;, hue=&quot;species&quot;)
-sns.jointplot(
-    data=penguins, x=&quot;bill_length_mm&quot;, y=&quot;flipper_length_mm&quot;, hue=&quot;species&quot;, kind=&quot;hist&quot;
-)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># sns.jointplot(data=penguins, x=&quot;bill_length_mm&quot;, y=&quot;flipper_length_mm&quot;, hue=&quot;species&quot;)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">jointplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">penguins</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;bill_length_mm&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;flipper_length_mm&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;hist&quot;</span>
+<span class="p">)</span>
 
-_ = plt.axvline(x2, color=&quot;black&quot;, linestyle=&quot;--&quot;, label=&quot;50 mm&quot;)
-_ = plt.axhline(x3, color=&quot;black&quot;, linestyle=&quot;--&quot;, label=&quot;195 mm&quot;)
+<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;50 mm&quot;</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">x3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;195 mm&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2457,12 +2457,12 @@ and <code class="docutils literal notranslate"><span class="pre">flipper_length_
 even though it is not perfect.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.jointplot(data=penguins, x=&quot;bill_length_mm&quot;, y=&quot;flipper_length_mm&quot;, hue=&quot;species&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">jointplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">penguins</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;bill_length_mm&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;flipper_length_mm&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7fab66f63d00&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7fd9e198cbb0&gt;
 </pre></div>
 </div>
 <img alt="../../../_images/naive_bayes_example_penguin_70_1.png" src="../../../_images/naive_bayes_example_penguin_70_1.png" />
@@ -2493,8 +2493,8 @@ f_{Y|X_2,X_3}(y|x_2,x_3) &amp;= \frac{f_{X_2|Y}(x_2|y) f_{X_3|Y}(x_3|y) f_{Y}(y)
 \end{split}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>flipper_length_mean_std = penguins.groupby(&quot;species&quot;)[&quot;flipper_length_mm&quot;].agg([&quot;mean&quot;, &quot;std&quot;]) 
-flipper_length_mean_std
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flipper_length_mean_std</span> <span class="o">=</span> <span class="n">penguins</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;species&quot;</span><span class="p">)[</span><span class="s2">&quot;flipper_length_mm&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="s2">&quot;std&quot;</span><span class="p">])</span> 
+<span class="n">flipper_length_mean_std</span>
 </pre></div>
 </div>
 </div>
@@ -2548,22 +2548,22 @@ flipper_length_mean_std
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>rv_adelie = stats.norm(190., 6.54)
-rv_chinstrap = stats.norm(196., 7.13)
-rv_gentoo = stats.norm(217., 6.48)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rv_adelie</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="mf">190.</span><span class="p">,</span> <span class="mf">6.54</span><span class="p">)</span>
+<span class="n">rv_chinstrap</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="mf">196.</span><span class="p">,</span> <span class="mf">7.13</span><span class="p">)</span>
+<span class="n">rv_gentoo</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="mf">217.</span><span class="p">,</span> <span class="mf">6.48</span><span class="p">)</span>
 
-fig, ax = plt.subplots(1, 1)
-ax.plot(np.linspace(170, 240, 100), rv_adelie.pdf(np.linspace(170, 240, 100)), &#39;r-&#39;, lw=5, alpha=0.6, label=&#39;Adelie&#39;)
-ax.plot(np.linspace(170, 240, 100), rv_chinstrap.pdf(np.linspace(170, 240, 100)), &#39;b-&#39;, lw=5, alpha=0.6, label=&#39;Chinstrap&#39;)
-ax.plot(np.linspace(170, 240, 100), rv_gentoo.pdf(np.linspace(170, 240, 100)), &#39;g-&#39;, lw=5, alpha=0.6, label=&#39;Gentoo&#39;)
-# plot vertical line
-_ = plt.axvline(x3, color=&quot;y&quot;, linestyle=&quot;--&quot;, label=&quot;195 mm&quot;)
-_ = plt.axvline(x3+0.5, color=&quot;y&quot;, linestyle=&quot;--&quot;, label=&quot;195.5 mm&quot;)
-_ = plt.axvline(x3-0.5, color=&quot;y&quot;, linestyle=&quot;--&quot;, label=&quot;194.5 mm&quot;)
-ax.set_xlabel(&#39;flipper_length_mm&#39;)
-ax.set_ylabel(&#39;Probability density&#39;)
-ax.legend()
-plt.show();
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">170</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">rv_adelie</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">170</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="mi">100</span><span class="p">)),</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Adelie&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">170</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">rv_chinstrap</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">170</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="mi">100</span><span class="p">)),</span> <span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Chinstrap&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">170</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">rv_gentoo</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">170</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="mi">100</span><span class="p">)),</span> <span class="s1">&#39;g-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Gentoo&#39;</span><span class="p">)</span>
+<span class="c1"># plot vertical line</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;195 mm&quot;</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x3</span><span class="o">+</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;195.5 mm&quot;</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x3</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;194.5 mm&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;flipper_length_mm&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Probability density&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
@@ -2573,13 +2573,13 @@ plt.show();
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>px3_given_adelie = rv_adelie.pdf(x3)
-px3_given_chinstrap = rv_chinstrap.pdf(x3)
-px3_given_gentoo = rv_gentoo.pdf(x3)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">px3_given_adelie</span> <span class="o">=</span> <span class="n">rv_adelie</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x3</span><span class="p">)</span>
+<span class="n">px3_given_chinstrap</span> <span class="o">=</span> <span class="n">rv_chinstrap</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x3</span><span class="p">)</span>
+<span class="n">px3_given_gentoo</span> <span class="o">=</span> <span class="n">rv_gentoo</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x3</span><span class="p">)</span>
 
-print(f&#39;P(X_3=195|Adelie) = {px3_given_adelie:.5f}&#39;)
-print(f&#39;P(X_3=195|Chinstrap) = {px3_given_chinstrap:.5f}&#39;)
-print(f&#39;P(X_3=195|Gentoo) = {px3_given_gentoo:.7f}&#39;)
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;P(X_3=195|Adelie) = </span><span class="si">{</span><span class="n">px3_given_adelie</span><span class="si">:</span><span class="s1">.5f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;P(X_3=195|Chinstrap) = </span><span class="si">{</span><span class="n">px3_given_chinstrap</span><span class="si">:</span><span class="s1">.5f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;P(X_3=195|Gentoo) = </span><span class="si">{</span><span class="n">px3_given_gentoo</span><span class="si">:</span><span class="s1">.7f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2687,20 +2687,19 @@ found through MLE are the sample mean and sample variance of the data.</p>
 <p><span class="math notranslate nohighlight">\(P(x_2=50|y=Adelie)\)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># plot conditional distribution of bill length given species
-
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot conditional distribution of bill length given species</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.displot(penguins, x=&quot;bill_length_mm&quot;, y=&quot;bill_depth_mm&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">penguins</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;bill_length_mm&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;bill_depth_mm&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fab70c75910&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fd9e73f70d0&gt;
 </pre></div>
 </div>
 <img alt="../../../_images/naive_bayes_example_penguin_86_1.png" src="../../../_images/naive_bayes_example_penguin_86_1.png" />
@@ -2708,12 +2707,12 @@ found through MLE are the sample mean and sample variance of the data.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sns.displot(penguins, x=&quot;bill_length_mm&quot;, y=&quot;bill_depth_mm&quot;, hue=&quot;species&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">penguins</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;bill_length_mm&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;bill_depth_mm&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fab70e83310&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fd9e73f7310&gt;
 </pre></div>
 </div>
 <img alt="../../../_images/naive_bayes_example_penguin_88_1.png" src="../../../_images/naive_bayes_example_penguin_88_1.png" />

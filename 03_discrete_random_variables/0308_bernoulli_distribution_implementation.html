@@ -766,29 +766,29 @@ title="Print to PDF"
 <h2>Utilities<a class="headerlink" href="#utilities" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import sys
-from pathlib import Path
-parent_dir = str(Path().resolve().parent)
-sys.path.append(parent_dir)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="n">parent_dir</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">parent_dir</span><span class="p">)</span>
 
-import random
-import warnings
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
 
-import matplotlib.pyplot as plt
-import numpy as np
-import scipy.stats as stats
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stats</span>
 
-warnings.filterwarnings(&quot;ignore&quot;, category=DeprecationWarning)
-%matplotlib inline
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">DeprecationWarning</span><span class="p">)</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
 
-from utils import seed_all, true_pmf, empirical_pmf
+<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">seed_all</span><span class="p">,</span> <span class="n">true_pmf</span><span class="p">,</span> <span class="n">empirical_pmf</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>seed_all(1992)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seed_all</span><span class="p">(</span><span class="mi">1992</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -851,51 +851,51 @@ An important reminder is that in real world, we often won’t know the true popu
 <h2>The PMF (Ideal Histogram)<a class="headerlink" href="#the-pmf-ideal-histogram" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># create a true population of 10000 people of 2000 1s and 8000 0s
-true_population = np.zeros(shape=10000)
-true_population[:2000] = 1
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a true population of 10000 people of 2000 1s and 8000 0s</span>
+<span class="n">true_population</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+<span class="n">true_population</span><span class="p">[:</span><span class="mi">2000</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def plot_true_pmf(population: np.ndarray):
-    &quot;&quot;&quot;Plots the PMF of the true population.&quot;&quot;&quot;
-    bins = np.arange(0, population.max() + 1.5) - 0.5
-    fig, ax = plt.subplots()
-    _ = ax.hist(
-        population,
-        bins,
-        density=True,
-        color=&quot;#0504AA&quot;,
-        alpha=0.5,
-        edgecolor=&quot;black&quot;,
-        linewidth=2,
-    )
-    _ = ax.stem(
-        population,
-        [true_pmf(x, population) for x in population],
-        linefmt=&quot;C3-&quot;,
-        markerfmt=&quot;C3o&quot;,
-        basefmt=&quot;C3-&quot;,
-        use_line_collection=True,
-    )
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_true_pmf</span><span class="p">(</span><span class="n">population</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plots the PMF of the true population.&quot;&quot;&quot;</span>
+    <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">population</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mf">1.5</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+    <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span>
+        <span class="n">population</span><span class="p">,</span>
+        <span class="n">bins</span><span class="p">,</span>
+        <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#0504AA&quot;</span><span class="p">,</span>
+        <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
+        <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span>
+        <span class="n">population</span><span class="p">,</span>
+        <span class="p">[</span><span class="n">true_pmf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">population</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">population</span><span class="p">],</span>
+        <span class="n">linefmt</span><span class="o">=</span><span class="s2">&quot;C3-&quot;</span><span class="p">,</span>
+        <span class="n">markerfmt</span><span class="o">=</span><span class="s2">&quot;C3o&quot;</span><span class="p">,</span>
+        <span class="n">basefmt</span><span class="o">=</span><span class="s2">&quot;C3-&quot;</span><span class="p">,</span>
+        <span class="n">use_line_collection</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
 
-    _ = ax.set_xlabel(&quot;Covid Status&quot;)
-    _ = ax.set_ylabel(&quot;Probability&quot;)
-    _ = ax.set_title(&quot;PMF of the true population&quot;)
-    _ = ax.set_xticks(bins + 0.5)
-    #ax.set_xticklabels([&quot;Negative&quot;, &quot;Positive&quot;])
+    <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Covid Status&quot;</span><span class="p">)</span>
+    <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Probability&quot;</span><span class="p">)</span>
+    <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;PMF of the true population&quot;</span><span class="p">)</span>
+    <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">bins</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span>
+    <span class="c1">#ax.set_xticklabels([&quot;Negative&quot;, &quot;Positive&quot;])</span>
 
-    return fig, ax
+    <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>_ = plot_true_pmf(true_population)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span> <span class="o">=</span> <span class="n">plot_true_pmf</span><span class="p">(</span><span class="n">true_population</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -917,15 +917,15 @@ true_population[:2000] = 1
 <p>We can test it with <code class="docutils literal notranslate"><span class="pre">stats.bernoulli</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>p = 0.2
-# `Y` is now an object that represents a Bernoulli random variable with parameter $p=0.2$.
-Y = stats.bernoulli(0.2)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="c1"># `Y` is now an object that represents a Bernoulli random variable with parameter $p=0.2$.</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">bernoulli</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
 
-y = np.asarray([0, 1])  # {0, 1}
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>  <span class="c1"># {0, 1}</span>
 
-f = Y.pmf(y)
+<span class="n">f</span> <span class="o">=</span> <span class="n">Y</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 
-print(f)
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -937,7 +937,7 @@ print(f)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plt.stem(y, f, use_line_collection=True);
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">use_line_collection</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -948,9 +948,9 @@ print(f)
 <p>The CDF is plotted below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>y = np.linspace(-1, 2, 101) 
-F = Y.cdf(y)
-plt.step(y, F, where=&quot;post&quot;);
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span> 
+<span class="n">F</span> <span class="o">=</span> <span class="n">Y</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">F</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="s2">&quot;post&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -977,21 +977,21 @@ will tend to the true distribution/PMF. See <span id="id2">[<a class="reference 
 \end{split}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># FIXME: unsure if replace=True or False here, but I read they are independent so it should be with replacement.
-sample_1000 = np.random.choice(true_population, 1000, replace=True)
-sample_5000 = np.random.choice(true_population, 5000, replace=True)
-sample_9000 = np.random.choice(true_population, 9000, replace=True)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># FIXME: unsure if replace=True or False here, but I read they are independent so it should be with replacement.</span>
+<span class="n">sample_1000</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">true_population</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sample_5000</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">true_population</span><span class="p">,</span> <span class="mi">5000</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sample_9000</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">true_population</span><span class="p">,</span> <span class="mi">9000</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>counter = 0
-for i in sample_1000:
-    if i == 0:
-        counter += 1
-print(counter) # ok surprisingly quite close..
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sample_1000</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">counter</span><span class="p">)</span> <span class="c1"># ok surprisingly quite close..</span>
 </pre></div>
 </div>
 </div>
@@ -1003,96 +1003,96 @@ print(counter) # ok surprisingly quite close..
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># ideal + empirical
-fig, axs = plt.subplots(2, 2, figsize=(20, 10))
-bins = np.arange(0, true_population.max() + 1.5) - 0.5
-axs[0, 0].hist(
-    true_population,
-    bins,
-    density=True,
-    color=&quot;#0504AA&quot;,
-    alpha=0.5,
-    edgecolor=&quot;black&quot;,
-    linewidth=2,
-)
-axs[0, 0].stem(
-    true_population,
-    [true_pmf(x, true_population) for x in true_population],
-    linefmt=&quot;C3-&quot;,
-    markerfmt=&quot;C3o&quot;,
-    basefmt=&quot;C3-&quot;,
-    use_line_collection=True,
-)
-axs[0, 0].set_title(&quot;PMF of the true population&quot;)
-axs[0, 0].set_xlabel(&quot;Covid Status&quot;)
-axs[0, 0].set_ylabel(&quot;Probability&quot;)
-axs[0, 0].set_xticks(bins + 0.5)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ideal + empirical</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">true_population</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mf">1.5</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span>
+    <span class="n">true_population</span><span class="p">,</span>
+    <span class="n">bins</span><span class="p">,</span>
+    <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#0504AA&quot;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span>
+    <span class="n">true_population</span><span class="p">,</span>
+    <span class="p">[</span><span class="n">true_pmf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">true_population</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">true_population</span><span class="p">],</span>
+    <span class="n">linefmt</span><span class="o">=</span><span class="s2">&quot;C3-&quot;</span><span class="p">,</span>
+    <span class="n">markerfmt</span><span class="o">=</span><span class="s2">&quot;C3o&quot;</span><span class="p">,</span>
+    <span class="n">basefmt</span><span class="o">=</span><span class="s2">&quot;C3-&quot;</span><span class="p">,</span>
+    <span class="n">use_line_collection</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;PMF of the true population&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Covid Status&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Probability&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">bins</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span>
 
-axs[0, 1].hist(
-    sample_1000,
-    bins,
-    density=True,
-    color=&quot;#0504AA&quot;,
-    alpha=0.5,
-    edgecolor=&quot;black&quot;,
-    linewidth=2,
-)
-axs[0, 1].stem(
-    sample_1000,
-    [empirical_pmf(x, sample_1000) for x in sample_1000],
-    linefmt=&quot;C3-&quot;,
-    markerfmt=&quot;C3o&quot;,
-    basefmt=&quot;C3-&quot;,
-    use_line_collection=True,
-)
-axs[0, 1].set_title(&quot;PMF of a sample of size 1000&quot;)
-axs[0, 1].set_xlabel(&quot;Covid Status&quot;)
-axs[0, 1].set_ylabel(&quot;Probability&quot;)
-axs[0, 1].set_xticks(bins + 0.5)
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span>
+    <span class="n">sample_1000</span><span class="p">,</span>
+    <span class="n">bins</span><span class="p">,</span>
+    <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#0504AA&quot;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span>
+    <span class="n">sample_1000</span><span class="p">,</span>
+    <span class="p">[</span><span class="n">empirical_pmf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sample_1000</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">sample_1000</span><span class="p">],</span>
+    <span class="n">linefmt</span><span class="o">=</span><span class="s2">&quot;C3-&quot;</span><span class="p">,</span>
+    <span class="n">markerfmt</span><span class="o">=</span><span class="s2">&quot;C3o&quot;</span><span class="p">,</span>
+    <span class="n">basefmt</span><span class="o">=</span><span class="s2">&quot;C3-&quot;</span><span class="p">,</span>
+    <span class="n">use_line_collection</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;PMF of a sample of size 1000&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Covid Status&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Probability&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">bins</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span>
 
-axs[1, 0].hist(
-    sample_5000,
-    bins,
-    density=True,
-    color=&quot;#0504AA&quot;,
-    alpha=0.5,
-    edgecolor=&quot;black&quot;,
-    linewidth=2,
-)
-axs[1, 0].stem(
-    sample_5000,
-    [empirical_pmf(x, sample_5000) for x in sample_5000],
-    linefmt=&quot;C3-&quot;,
-    markerfmt=&quot;C3o&quot;,
-    basefmt=&quot;C3-&quot;,
-    use_line_collection=True,
-)
-axs[1, 0].set_title(&quot;PMF of a sample of size 5000&quot;)
-axs[1, 0].set_xlabel(&quot;Covid Status&quot;)
-axs[1, 0].set_ylabel(&quot;Probability&quot;)
-axs[1, 0].set_xticks(bins + 0.5)
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span>
+    <span class="n">sample_5000</span><span class="p">,</span>
+    <span class="n">bins</span><span class="p">,</span>
+    <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#0504AA&quot;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span>
+    <span class="n">sample_5000</span><span class="p">,</span>
+    <span class="p">[</span><span class="n">empirical_pmf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sample_5000</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">sample_5000</span><span class="p">],</span>
+    <span class="n">linefmt</span><span class="o">=</span><span class="s2">&quot;C3-&quot;</span><span class="p">,</span>
+    <span class="n">markerfmt</span><span class="o">=</span><span class="s2">&quot;C3o&quot;</span><span class="p">,</span>
+    <span class="n">basefmt</span><span class="o">=</span><span class="s2">&quot;C3-&quot;</span><span class="p">,</span>
+    <span class="n">use_line_collection</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;PMF of a sample of size 5000&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Covid Status&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Probability&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">bins</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span>
 
-axs[1, 1].hist(
-    sample_9000,
-    bins,
-    density=True,
-    color=&quot;#0504AA&quot;,
-    alpha=0.5,
-    edgecolor=&quot;black&quot;,
-    linewidth=2,
-)
-axs[1, 1].stem(
-    sample_9000,
-    [empirical_pmf(x, sample_9000) for x in sample_9000],
-    linefmt=&quot;C3-&quot;,
-    markerfmt=&quot;C3o&quot;,
-    basefmt=&quot;C3-&quot;,
-    use_line_collection=True,
-)
-axs[1, 1].set_title(&quot;PMF of a sample of size 9000&quot;)
-axs[1, 1].set_xlabel(&quot;Covid Status&quot;)
-axs[1, 1].set_ylabel(&quot;Probability&quot;)
-axs[1, 1].set_xticks(bins + 0.5);
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span>
+    <span class="n">sample_9000</span><span class="p">,</span>
+    <span class="n">bins</span><span class="p">,</span>
+    <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#0504AA&quot;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span>
+    <span class="n">sample_9000</span><span class="p">,</span>
+    <span class="p">[</span><span class="n">empirical_pmf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sample_9000</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">sample_9000</span><span class="p">],</span>
+    <span class="n">linefmt</span><span class="o">=</span><span class="s2">&quot;C3-&quot;</span><span class="p">,</span>
+    <span class="n">markerfmt</span><span class="o">=</span><span class="s2">&quot;C3o&quot;</span><span class="p">,</span>
+    <span class="n">basefmt</span><span class="o">=</span><span class="s2">&quot;C3-&quot;</span><span class="p">,</span>
+    <span class="n">use_line_collection</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;PMF of a sample of size 9000&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Covid Status&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Probability&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">bins</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1106,7 +1106,7 @@ axs[1, 1].set_xticks(bins + 0.5);
 <p>The method to do this is called <code class="docutils literal notranslate"><span class="pre">rvs</span></code>. If it is called with no argument, then it generates a single value of that random variable <span id="id3">[<a class="reference internal" href="../references_and_resources/bibliography.html#id8" title="John M. Shea. Foundations of data science with python. 2021. URL: https://jmshea.github.io/Foundations-of-Data-Science-with-Python/intro.html.">Shea, 2021</a>]</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Y.rvs() # 1 sample 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Y</span><span class="o">.</span><span class="n">rvs</span><span class="p">()</span> <span class="c1"># 1 sample </span>
 </pre></div>
 </div>
 </div>
@@ -1118,7 +1118,7 @@ axs[1, 1].set_xticks(bins + 0.5);
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Y.rvs(size=10) # 10 samples from the distribution
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Y</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># 10 samples from the distribution</span>
 </pre></div>
 </div>
 </div>
@@ -1131,13 +1131,13 @@ axs[1, 1].set_xticks(bins + 0.5);
 <p>In our case, we can do the same, 1000, 5000 and 9000 and plot them compared to the true distribution.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>num_sims = 1000
-y = Y.rvs(num_sims)
-counts = np.asarray([list(y).count(0), list(y).count(1)]) # how many no covid vs covid
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_sims</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">Y</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">num_sims</span><span class="p">)</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="nb">list</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="nb">list</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)])</span> <span class="c1"># how many no covid vs covid</span>
 
-print(f&quot;The relative freqs are {counts/num_sims}&quot;)
-plt.bar([0, 1], counts / num_sims, alpha=0.5)
-plt.stem([0, 1], Y.pmf([0, 1]), linefmt=&quot;orange&quot;, use_line_collection=True);
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The relative freqs are </span><span class="si">{</span><span class="n">counts</span><span class="o">/</span><span class="n">num_sims</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">counts</span> <span class="o">/</span> <span class="n">num_sims</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">stem</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">Y</span><span class="o">.</span><span class="n">pmf</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span> <span class="n">linefmt</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="n">use_line_collection</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1150,13 +1150,13 @@ plt.stem([0, 1], Y.pmf([0, 1]), linefmt=&quot;orange&quot;, use_line_collection=
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>num_sims = 5000
-y = Y.rvs(num_sims)
-counts = np.asarray([list(y).count(0), list(y).count(1)]) # how many no covid vs covid
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_sims</span> <span class="o">=</span> <span class="mi">5000</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">Y</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">num_sims</span><span class="p">)</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="nb">list</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="nb">list</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)])</span> <span class="c1"># how many no covid vs covid</span>
 
-print(f&quot;The relative freqs are {counts/num_sims}&quot;)
-plt.bar([0, 1], counts / num_sims, alpha=0.5)
-plt.stem([0, 1], Y.pmf([0, 1]), linefmt=&quot;orange&quot;, use_line_collection=True);
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The relative freqs are </span><span class="si">{</span><span class="n">counts</span><span class="o">/</span><span class="n">num_sims</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">counts</span> <span class="o">/</span> <span class="n">num_sims</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">stem</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">Y</span><span class="o">.</span><span class="n">pmf</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span> <span class="n">linefmt</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="n">use_line_collection</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1169,13 +1169,13 @@ plt.stem([0, 1], Y.pmf([0, 1]), linefmt=&quot;orange&quot;, use_line_collection=
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>num_sims = 9000
-y = Y.rvs(num_sims)
-counts = np.asarray([list(y).count(0), list(y).count(1)]) # how many no covid vs covid
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_sims</span> <span class="o">=</span> <span class="mi">9000</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">Y</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">num_sims</span><span class="p">)</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="nb">list</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="nb">list</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)])</span> <span class="c1"># how many no covid vs covid</span>
 
-print(f&quot;The relative freqs are {counts/num_sims}&quot;)
-plt.bar([0, 1], counts / num_sims, alpha=0.5)
-plt.stem([0, 1], Y.pmf([0, 1]), linefmt=&quot;orange&quot;, use_line_collection=True);
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The relative freqs are </span><span class="si">{</span><span class="n">counts</span><span class="o">/</span><span class="n">num_sims</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">counts</span> <span class="o">/</span> <span class="n">num_sims</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">stem</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">Y</span><span class="o">.</span><span class="n">pmf</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span> <span class="n">linefmt</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="n">use_line_collection</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>

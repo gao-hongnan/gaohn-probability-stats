@@ -777,16 +777,16 @@ title="Print to PDF"
 <h1>Naive Bayes Application (MNIST)<a class="headerlink" href="#naive-bayes-application-mnist" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># !pip install d2l==1.0.0-alpha1.post0
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install d2l==1.0.0-alpha1.post0</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from ipywidgets import Widget
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">Widget</span>
 
-Widget.close_all()
+<span class="n">Widget</span><span class="o">.</span><span class="n">close_all</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -801,45 +801,45 @@ Widget.close_all()
 <p>Learning is all about making assumptions. If we want to classify a new data example that we have never seen before we have to make some assumptions about which data examples are similar to each other. The naive Bayes classifier, a popular and remarkably clear algorithm, assumes all features are independent from each other to simplify the computation. In this section, we will apply this model to recognize characters in images.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%matplotlib inline
-import math
-import torch
-import torchvision
-import matplotlib.pyplot as plt
-import sys
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torchvision</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">sys</span>
 
-from pathlib import Path
-parent_dir = str(Path().resolve().parents[2])
-sys.path.append(parent_dir)
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="n">parent_dir</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parents</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">parent_dir</span><span class="p">)</span>
 
-from utils import use_svg_display
+<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">use_svg_display</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>use_svg_display()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">use_svg_display</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def show_images(imgs, num_rows, num_cols, titles=None, scale=1.5):
-    &quot;&quot;&quot;Plot a list of images.
-    Defined in :numref:`sec_utils`&quot;&quot;&quot;
-    figsize = (num_cols * scale, num_rows * scale)
-    _, axes = plt.subplots(num_rows, num_cols, figsize=figsize)
-    axes = axes.flatten()
-    for i, (ax, img) in enumerate(zip(axes, imgs)):
-        img = img.detach().numpy()
-        ax.imshow(img)
-        ax.axes.get_xaxis().set_visible(False)
-        ax.axes.get_yaxis().set_visible(False)
-        if titles:
-            ax.set_title(titles[i])
-    return axes
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">show_images</span><span class="p">(</span><span class="n">imgs</span><span class="p">,</span> <span class="n">num_rows</span><span class="p">,</span> <span class="n">num_cols</span><span class="p">,</span> <span class="n">titles</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">1.5</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot a list of images.</span>
+<span class="sd">    Defined in :numref:`sec_utils`&quot;&quot;&quot;</span>
+    <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="n">num_cols</span> <span class="o">*</span> <span class="n">scale</span><span class="p">,</span> <span class="n">num_rows</span> <span class="o">*</span> <span class="n">scale</span><span class="p">)</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">num_rows</span><span class="p">,</span> <span class="n">num_cols</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
+    <span class="n">axes</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">axes</span><span class="p">,</span> <span class="n">imgs</span><span class="p">)):</span>
+        <span class="n">img</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">get_xaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">get_yaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">titles</span><span class="p">:</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">titles</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">axes</span>
 </pre></div>
 </div>
 </div>
@@ -855,15 +855,15 @@ by setting the value of the parameter <code class="docutils literal notranslate"
 Each image is a grayscale image with both width and height of <span class="math notranslate nohighlight">\(28\)</span> with shape (<span class="math notranslate nohighlight">\(28\)</span>,<span class="math notranslate nohighlight">\(28\)</span>,<span class="math notranslate nohighlight">\(1\)</span>). We use a customized transformation to remove the last channel dimension. In addition, the dataset represents each pixel by an unsigned <span class="math notranslate nohighlight">\(8\)</span>-bit integer.  We quantize them into binary features to simplify the problem.</p>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>data_transform = torchvision.transforms.Compose([
-    torchvision.transforms.ToTensor(),
-    lambda x: torch.floor(x * 255 / 128).squeeze(dim=0)
-])
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_transform</span> <span class="o">=</span> <span class="n">torchvision</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span>
+    <span class="n">torchvision</span><span class="o">.</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
+    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="mi">255</span> <span class="o">/</span> <span class="mi">128</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="p">])</span>
 
-mnist_train = torchvision.datasets.MNIST(
-    root=&#39;./temp&#39;, train=True, transform=data_transform, download=True)
-mnist_test = torchvision.datasets.MNIST(
-    root=&#39;./temp&#39;, train=False, transform=data_transform, download=True)
+<span class="n">mnist_train</span> <span class="o">=</span> <span class="n">torchvision</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span>
+    <span class="n">root</span><span class="o">=</span><span class="s1">&#39;./temp&#39;</span><span class="p">,</span> <span class="n">train</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">data_transform</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">mnist_test</span> <span class="o">=</span> <span class="n">torchvision</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span>
+    <span class="n">root</span><span class="o">=</span><span class="s1">&#39;./temp&#39;</span><span class="p">,</span> <span class="n">train</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">data_transform</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -896,6 +896,10 @@ mnist_test = torchvision.datasets.MNIST(
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.3%
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz
+Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz to ./temp/MNIST/raw/train-images-idx3-ubyte.gz
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.6%
@@ -1073,10 +1077,6 @@ mnist_test = torchvision.datasets.MNIST(
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>22.8%
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz
-Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz to ./temp/MNIST/raw/train-images-idx3-ubyte.gz
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>23.1%
@@ -1790,6 +1790,14 @@ Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz to ./tem
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100.0%
 </pre></div>
 </div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz
+Downloading http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz to ./temp/MNIST/raw/train-labels-idx1-ubyte.gz
+Extracting ./temp/MNIST/raw/train-labels-idx1-ubyte.gz to ./temp/MNIST/raw
+
+Downloading http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz
+Downloading http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz to ./temp/MNIST/raw/t10k-images-idx3-ubyte.gz
+</pre></div>
+</div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.0%
 </pre></div>
 </div>
@@ -1943,27 +1951,22 @@ Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz to ./tem
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100.0%
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz
-Downloading http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz to ./temp/MNIST/raw/train-labels-idx1-ubyte.gz
-Extracting ./temp/MNIST/raw/train-labels-idx1-ubyte.gz to ./temp/MNIST/raw
-
-Downloading http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz
-Downloading http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz to ./temp/MNIST/raw/t10k-images-idx3-ubyte.gz
-Extracting ./temp/MNIST/raw/t10k-images-idx3-ubyte.gz to ./temp/MNIST/raw
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extracting ./temp/MNIST/raw/t10k-images-idx3-ubyte.gz to ./temp/MNIST/raw
+
+Downloading http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz
+Downloading http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz to ./temp/MNIST/raw/t10k-labels-idx1-ubyte.gz
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100.0%
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extracting ./temp/MNIST/raw/t10k-labels-idx1-ubyte.gz to ./temp/MNIST/raw
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz
-Downloading http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz to ./temp/MNIST/raw/t10k-labels-idx1-ubyte.gz
-Extracting ./temp/MNIST/raw/t10k-labels-idx1-ubyte.gz to ./temp/MNIST/raw
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -1971,8 +1974,8 @@ Extracting ./temp/MNIST/raw/t10k-labels-idx1-ubyte.gz to ./temp/MNIST/raw
 <p>We can access a particular example, which contains the image and the corresponding label.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>image, label = mnist_train[2]
-image.shape, label
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="n">mnist_train</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">label</span>
 </pre></div>
 </div>
 </div>
@@ -1985,7 +1988,7 @@ image.shape, label
 <p>Our example, stored here in the variable <code class="docutils literal notranslate"><span class="pre">image</span></code>, corresponds to an image with a height and width of <span class="math notranslate nohighlight">\(28\)</span> pixels.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>image.shape, image.dtype
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">image</span><span class="o">.</span><span class="n">dtype</span>
 </pre></div>
 </div>
 </div>
@@ -1998,7 +2001,7 @@ image.shape, label
 <p>Our code stores the label of each image as a scalar. Its type is a <span class="math notranslate nohighlight">\(32\)</span>-bit integer.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>label, type(label)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">label</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2011,9 +2014,9 @@ image.shape, label
 <p>We can also access multiple examples at the same time.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>images = torch.stack([mnist_train[i][0] for i in range(10, 38)], dim=0)
-labels = torch.tensor([mnist_train[i][1] for i in range(10, 38)])
-images.shape, labels.shape
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">images</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">mnist_train</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">38</span><span class="p">)],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="n">mnist_train</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">38</span><span class="p">)])</span>
+<span class="n">images</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">labels</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
@@ -2026,7 +2029,7 @@ images.shape, labels.shape
 <p>Let’s visualize these examples.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>show_images(images, 2, 9);
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">show_images</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -2076,14 +2079,14 @@ p(x_i = t_i \mid y) =
 <p>The problem now is that we do not know <span class="math notranslate nohighlight">\(P_{xy}\)</span> and <span class="math notranslate nohighlight">\(P_y\)</span>. So we need to estimate their values given some training data first. This is <em>training</em> the model. Estimating <span class="math notranslate nohighlight">\(P_y\)</span> is not too hard. Since we are only dealing with <span class="math notranslate nohighlight">\(10\)</span> classes, we may count the number of occurrences <span class="math notranslate nohighlight">\(n_y\)</span> for each of the digits and divide it by the total amount of data <span class="math notranslate nohighlight">\(n\)</span>. For instance, if digit 8 occurs <span class="math notranslate nohighlight">\(n_8 = 5,800\)</span> times and we have a total of <span class="math notranslate nohighlight">\(n = 60,000\)</span> images, the probability estimate is <span class="math notranslate nohighlight">\(p(y=8) = 0.0967\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>X = torch.stack([mnist_train[i][0] for i in range(len(mnist_train))], dim=0)
-Y = torch.tensor([mnist_train[i][1] for i in range(len(mnist_train))])
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">mnist_train</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mnist_train</span><span class="p">))],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="n">mnist_train</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mnist_train</span><span class="p">))])</span>
 
-n_y = torch.zeros(10)
-for y in range(10):
-    n_y[y] = (Y == y).sum()
-P_y = n_y / n_y.sum()
-P_y
+<span class="n">n_y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">n_y</span><span class="p">[</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">Y</span> <span class="o">==</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">P_y</span> <span class="o">=</span> <span class="n">n_y</span> <span class="o">/</span> <span class="n">n_y</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">P_y</span>
 </pre></div>
 </div>
 </div>
@@ -2097,12 +2100,12 @@ P_y
 <p>Now on to slightly more difficult things <span class="math notranslate nohighlight">\(P_{xy}\)</span>. Since we picked black and white images, <span class="math notranslate nohighlight">\(p(x_i  \mid  y)\)</span> denotes the probability that pixel <span class="math notranslate nohighlight">\(i\)</span> is switched on for class <span class="math notranslate nohighlight">\(y\)</span>. Just like before we can go and count the number of times <span class="math notranslate nohighlight">\(n_{iy}\)</span> such that an event occurs and divide it by the total number of occurrences of <span class="math notranslate nohighlight">\(y\)</span>, i.e., <span class="math notranslate nohighlight">\(n_y\)</span>. But there is something slightly troubling: certain pixels may never be black (e.g., for well cropped images the corner pixels might always be white). A convenient way for statisticians to deal with this problem is to add pseudo counts to all occurrences. Hence, rather than <span class="math notranslate nohighlight">\(n_{iy}\)</span> we use <span class="math notranslate nohighlight">\(n_{iy}+1\)</span> and instead of <span class="math notranslate nohighlight">\(n_y\)</span> we use <span class="math notranslate nohighlight">\(n_{y}+2\)</span> (since there are two possible values pixel <span class="math notranslate nohighlight">\(i\)</span> can take - it can either be black or white). This is also called <em>Laplace Smoothing</em>.  It may seem ad-hoc, however it can be motivated from a Bayesian point-of-view by a Beta-binomial model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>n_x = torch.zeros((10, 28, 28))
-for y in range(10):
-    n_x[y] = torch.tensor(X.numpy()[Y.numpy() == y].sum(axis=0))
-P_xy = (n_x + 1) / (n_y + 2).reshape(10, 1, 1)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">n_x</span><span class="p">[</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">numpy</span><span class="p">()[</span><span class="n">Y</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span> <span class="o">==</span> <span class="n">y</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">P_xy</span> <span class="o">=</span> <span class="p">(</span><span class="n">n_x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">n_y</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
-show_images(P_xy, 2, 5);
+<span class="n">show_images</span><span class="p">(</span><span class="n">P_xy</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -2113,14 +2116,14 @@ show_images(P_xy, 2, 5);
 <p>Now we can use :eqref:<code class="docutils literal notranslate"><span class="pre">eq_naive_bayes_estimation</span></code> to predict a new image. Given <span class="math notranslate nohighlight">\(\mathbf x\)</span>, the following functions computes <span class="math notranslate nohighlight">\(p(\mathbf x \mid y)p(y)\)</span> for every <span class="math notranslate nohighlight">\(y\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def bayes_pred(x):
-    x = x.unsqueeze(0)  # (28, 28) -&gt; (1, 28, 28)
-    p_xy = P_xy * x + (1 - P_xy)*(1 - x)
-    p_xy = p_xy.reshape(10, -1).prod(dim=1)  # p(x|y)
-    return p_xy * P_y
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bayes_pred</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># (28, 28) -&gt; (1, 28, 28)</span>
+    <span class="n">p_xy</span> <span class="o">=</span> <span class="n">P_xy</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">P_xy</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span>
+    <span class="n">p_xy</span> <span class="o">=</span> <span class="n">p_xy</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># p(x|y)</span>
+    <span class="k">return</span> <span class="n">p_xy</span> <span class="o">*</span> <span class="n">P_y</span>
 
-image, label = mnist_test[0]
-bayes_pred(image)
+<span class="n">image</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="n">mnist_test</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">bayes_pred</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2135,9 +2138,9 @@ bayes_pred(image)
 Even if both <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are small numbers, the logarithm values should be in a proper range.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = 0.1
-print(&#39;underflow:&#39;, a**784)
-print(&#39;logarithm is normal:&#39;, 784*math.log(a))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;underflow:&#39;</span><span class="p">,</span> <span class="n">a</span><span class="o">**</span><span class="mi">784</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;logarithm is normal:&#39;</span><span class="p">,</span> <span class="mi">784</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -2154,18 +2157,18 @@ logarithm is normal: -1805.2267129073316
 <p>We can implement the following stable version:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>log_P_xy = torch.log(P_xy)
-log_P_xy_neg = torch.log(1 - P_xy)
-log_P_y = torch.log(P_y)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">log_P_xy</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">P_xy</span><span class="p">)</span>
+<span class="n">log_P_xy_neg</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">P_xy</span><span class="p">)</span>
+<span class="n">log_P_y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">P_y</span><span class="p">)</span>
 
-def bayes_pred_stable(x):
-    x = x.unsqueeze(0)  # (28, 28) -&gt; (1, 28, 28)
-    p_xy = log_P_xy * x + log_P_xy_neg * (1 - x)
-    p_xy = p_xy.reshape(10, -1).sum(axis=1)  # p(x|y)
-    return p_xy + log_P_y
+<span class="k">def</span> <span class="nf">bayes_pred_stable</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># (28, 28) -&gt; (1, 28, 28)</span>
+    <span class="n">p_xy</span> <span class="o">=</span> <span class="n">log_P_xy</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">log_P_xy_neg</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span>
+    <span class="n">p_xy</span> <span class="o">=</span> <span class="n">p_xy</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># p(x|y)</span>
+    <span class="k">return</span> <span class="n">p_xy</span> <span class="o">+</span> <span class="n">log_P_y</span>
 
-py = bayes_pred_stable(image)
-py
+<span class="n">py</span> <span class="o">=</span> <span class="n">bayes_pred_stable</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+<span class="n">py</span>
 </pre></div>
 </div>
 </div>
@@ -2179,7 +2182,7 @@ py
 <p>We may now check if the prediction is correct.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>py.argmax(dim=0) == label
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">py</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="n">label</span>
 </pre></div>
 </div>
 </div>
@@ -2193,14 +2196,14 @@ py
 classifier works pretty well.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def predict(X):
-    return [bayes_pred_stable(x).argmax(dim=0).type(torch.int32).item()
-            for x in X]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">bayes_pred_stable</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">X</span><span class="p">]</span>
 
-X = torch.stack([mnist_test[i][0] for i in range(18)], dim=0)
-y = torch.tensor([mnist_test[i][1] for i in range(18)])
-preds = predict(X)
-show_images(X, 2, 9, titles=[str(d) for d in preds]);
+<span class="n">X</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">mnist_test</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">18</span><span class="p">)],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="n">mnist_test</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">18</span><span class="p">)])</span>
+<span class="n">preds</span> <span class="o">=</span> <span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">show_images</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="n">titles</span><span class="o">=</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">preds</span><span class="p">]);</span>
 </pre></div>
 </div>
 </div>
@@ -2210,10 +2213,10 @@ show_images(X, 2, 9, titles=[str(d) for d in preds]);
 <p>Finally, let’s compute the overall accuracy of the classifier.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>X = torch.stack([mnist_test[i][0] for i in range(len(mnist_test))], dim=0)
-y = torch.tensor([mnist_test[i][1] for i in range(len(mnist_test))])
-preds = torch.tensor(predict(X), dtype=torch.int32)
-float((preds == y).sum()) / len(y)  # Validation accuracy
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">mnist_test</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mnist_test</span><span class="p">))],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="n">mnist_test</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mnist_test</span><span class="p">))])</span>
+<span class="n">preds</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+<span class="nb">float</span><span class="p">((</span><span class="n">preds</span> <span class="o">==</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>  <span class="c1"># Validation accuracy</span>
 </pre></div>
 </div>
 </div>
