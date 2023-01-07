@@ -1,4 +1,4 @@
-# Joint PMF and PDF
+# Concept
 
 ## Discrete Random Variables
 
@@ -30,7 +30,7 @@ where the sum is over all the possible outcomes in $\eventA$.
 
 Pictorially represented below in {numref}`fig_joint_pmf`, the joint PMF is a 2D array of impulses.
 
-```{figure} ./assets/chan_fig5.4.png
+```{figure} ../assets/chan_fig5.4.png
 ---
 name: fig_joint_pmf
 ---
@@ -74,7 +74,7 @@ $$
 \end{aligned}
 $$
 
-```{figure} ./assets/chan_fig5.5.png
+```{figure} ../assets/chan_fig5.5.png
 ---
 name: fig_joint_pdf
 ---
@@ -127,8 +127,12 @@ From {prf:ref}`thm:law-total-probability`, one can see that the definition of ma
 is closed related to the law of total probability. In fact, [marginalization is a sum
 of conditioned observations](https://math.stackexchange.com/questions/3166711/is-marginalization-a-sum-of-conditioned-observations).
 
-In [](../machine_learning_algorithms/generative/naive_bayes/naive_bayes_concept.md), we see that the
+In the chapter on 
+[Naive Bayes](../../machine_learning_algorithms/generative/naive_bayes/naive_bayes_concept.md), 
+we see that the
 denominator $\mathbb{P}(\mathbf{X})$ can be derived by marginalization.
+
+See the [examples section in the chapter on Conditional PMF and PDF](../0503_conditional_pmf_pdf/examples.md) for a concrete example.
 ```
 
 ```{prf:example} Marginal PDF of Bivariate Normal Distribution
@@ -276,3 +280,49 @@ $$
 Essentially, this joint PDF tells us the probability density of seeing sample 
 data $x_1, \ldots, x_N$.
 ```
+
+## Joint CDF
+
+We now introduce the cumulative distribution function (CDF) for bivariate random variables. 
+Similar to the 1-dimensional distribution, the joint CDF is a function that gives the probability
+in which both $X$ and $Y$ are less than or equal to some values $x$ and $y$, respectively. 
+
+The joint CDF is defined as follows.
+
+```{prf:definition} Joint CDF
+:label: def_joint_cdf
+
+Let $X$ and $Y$ be two random variables. The joint CDF of $X$ and $Y$ is the function 
+$F_{X, Y}(x, y)$ such that
+
+$$
+F_{X, Y}(x, y)=\mathbb{P}[X \leq x \cap Y \leq y]
+$$
+```
+
+```{prf:definition} Joint CDF (cont.)
+:label: def_joint_cdf_cont
+
+If $X$ and $Y$ are discrete, then
+
+$$
+F_{X, Y}(x, y)=\sum_{y^{\prime} \leq y} \sum_{x^{\prime} \leq x} p_{X, Y}\left(x^{\prime}, y^{\prime}\right)
+$$
+
+If $X$ and $Y$ are continuous, then
+
+$$
+F_{X, Y}(x, y)=\int_{-\infty}^y \int_{-\infty}^x f_{X, Y}\left(x^{\prime}, y^{\prime}\right) d x^{\prime} d y^{\prime}
+$$
+
+If the two random variables are independent, then we have
+
+$$
+F_{X, Y}(x, y)=\int_{-\infty}^x f_X\left(x^{\prime}\right) d x^{\prime} \int_{-\infty}^y f_Y\left(y^{\prime}\right) d y^{\prime}=F_X(x) F_Y(y)
+$$
+```
+
+
+## Further Readings
+
+- Chan, Stanley H. "Chapter 5.1. Joint PMF and Joint PDF." In Introduction to Probability for Data Science, 244-257. Ann Arbor, Michigan: Michigan Publishing Services, 2021. 
