@@ -14,7 +14,7 @@ $$ (eq:conditional-pmf-2d)
 ```
 
 ```{prf:remark} Some Intuition
-:label: rmk:conditional-pmf
+:label: remark:conditional-pmf
 
 It is relatively easy to associate the definition of conditional PMF with the definition of conditional probability
 in the chapter on [Conditional Probability](../../02_probability/0204_conditional_probability.md).
@@ -37,8 +37,8 @@ In $(c)$, we use the definition of conditional probability. We see that the defi
 is equivalent to the definition of conditional probability. 
 ```
 
-```{prf:definition} Conditional Distribution is a Distribution for a Sub-Population
-:label: def:conditional-distribution-is-a-distribution-for-a-sub-population
+```{prf:remark} Conditional Distribution is a Distribution for a Sub-Population
+:label: remark:conditional-distribution-is-a-distribution-for-a-sub-population
 
 Here's a very important concept mentioned by Professor Chan. in his book. To interpret
 the notation $p_{X \mid Y}(x \mid y)$, we need to be clear that there is nothing random about

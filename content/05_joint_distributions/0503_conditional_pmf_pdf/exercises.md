@@ -1,4 +1,4 @@
-# Examples
+# Exercises
 
 ## Medical Diagnosis
 

@@ -144,7 +144,7 @@ $$
 :label: prop_sum_poi
 
 Let $X_1, X_2, \ldots, X_n$ be independent Poisson random variables with parameter $\lambda_i$ 
-for $i \in \lset 1, 2, \ldots n \rset. Then the sum of these $n$ random variables 
+for $i \in \lset 1, 2, \ldots n \rset$. Then the sum of these $n$ random variables 
 is also a Poisson random variable with parameter $\lambda = \sum_{i=1}^n \lambda_i$.
 ```
 
