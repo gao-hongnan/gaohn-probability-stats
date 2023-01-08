@@ -51,7 +51,7 @@ class NaiveBayesGaussian(BaseEstimator):
 
     def _set_num_samples_and_features(self, X: T) -> None:
         # num_samples unused since we vectorized when estimating parameters
-        self.num_samples, self.num_features = X.shape 
+        self.num_samples, self.num_features = X.shape
 
     def fit(self, X: T, y: T) -> NaiveBayesGaussian:
         """Fit Naive Bayes classifier according to X, y.
@@ -131,6 +131,8 @@ class NaiveBayesGaussian(BaseEstimator):
 
     def _calculate_joint_likelihood(self, x: T) -> T:
         """Calculate the joint likelihood of the data x given the parameters.
+
+        $P(X|Y) = \prod_{d=1}^{D} P(X_d|Y)$
 
         This is our matrix M2 (M3) in the notes.
 
