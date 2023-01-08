@@ -168,6 +168,7 @@ like a classifier hiding in plain sight
 where our ability to decide whether a patient is healthy
 increases as we obtain more features (test outcomes).
 
+(simplified-probit-model)=
 ## Simplified Probit Model
 
 This example is taken from {cite}`chan_2021`, section 5.3.2, example 5.20.
