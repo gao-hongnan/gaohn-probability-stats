@@ -7,7 +7,7 @@
 
 - $\mathcal{X}$: Input space consists of all possible inputs $\mathbf{x} \in \mathcal{X}$.
   
-- $\mathcal{Y}$: Label space = $\{1, 2, \cdots, K\}$ where $K$ is the number of classes.
+- $\mathcal{Y}$: Label space = $\{1, 2, \ldots, K\}$ where $K$ is the number of classes.
   
 - The mapping between $\mathcal{X}$ and $\mathcal{Y}$ is given by $c: \mathcal{X} \rightarrow \mathcal{Y}$ where $c$ is called *concept* according to the PAC learning theory.
   

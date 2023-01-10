@@ -490,29 +490,87 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Machine Learning Algorithms
+  Machine Learning
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../machine_learning_algorithms/generative/naive_bayes/naive_bayes_concept.html">
-   Naive Bayes Concept
+  <a class="reference internal" href="../../machine_learning/notations.html">
+   Machine Learning Notations
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../machine_learning_algorithms/generative/naive_bayes/naive_bayes_example_penguin.html">
-   Example: Penguins Dataset
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../machine_learning/generative/intro.html">
+   Generative Algorithms
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../machine_learning/generative/naive_bayes/intro.html">
+     Naive Bayes
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+    <label for="toctree-checkbox-11">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../machine_learning/generative/naive_bayes/naive_bayes_concept.html">
+       Naive Bayes Concept
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../machine_learning/generative/naive_bayes/naive_bayes_example_penguin.html">
+       Naive Bayes Application: Penguins
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../machine_learning/generative/naive_bayes/naive_bayes_application_mnist.html">
+       Naive Bayes Application (MNIST)
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../machine_learning/generative/naive_bayes/naive_bayes_implementation.html">
+       Naives Bayes Implementation
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../machine_learning_algorithms/generative/naive_bayes/naive_bayes_application_mnist.html">
-   Naive Bayes Application (MNIST)
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Optimization
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../optimization/gradient_descent/intro.html">
+   Gradient Descent
   </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../machine_learning_algorithms/generative/naive_bayes/naive_bayes_implementation.html">
-   Naives Bayes Implementation
-  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../optimization/gradient_descent/concept.html">
+     Gradient Descent Concept
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../optimization/gradient_descent/implementation.html">
+     Gradient Descent Construction
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -935,7 +993,7 @@ f_X(x) = \int_{\S_Y} \pdfjointxy(x, y) \, dy \quad \text{and} \quad f_Y(y) = \in
 is closed related to the law of total probability. In fact, <a class="reference external" href="https://math.stackexchange.com/questions/3166711/is-marginalization-a-sum-of-conditioned-observations">marginalization is a sum
 of conditioned observations</a>.</p>
 <p>In the chapter on
-<a class="reference internal" href="../../machine_learning_algorithms/generative/naive_bayes/naive_bayes_concept.html"><span class="doc std std-doc">Naive Bayes</span></a>,
+<span class="xref myst">Naive Bayes</span>,
 we see that the
 denominator <span class="math notranslate nohighlight">\(\mathbb{P}(\mathbf{X})\)</span> can be derived by marginalization.</p>
 <p>See the <a class="reference internal" href="../0503_conditional_pmf_pdf/exercises.html"><span class="doc std std-doc">examples section in the chapter on Conditional PMF and PDF</span></a> for a concrete example.</p>

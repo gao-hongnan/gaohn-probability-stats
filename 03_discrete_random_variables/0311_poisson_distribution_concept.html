@@ -490,29 +490,87 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Machine Learning Algorithms
+  Machine Learning
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../machine_learning_algorithms/generative/naive_bayes/naive_bayes_concept.html">
-   Naive Bayes Concept
+  <a class="reference internal" href="../machine_learning/notations.html">
+   Machine Learning Notations
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../machine_learning_algorithms/generative/naive_bayes/naive_bayes_example_penguin.html">
-   Example: Penguins Dataset
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../machine_learning/generative/intro.html">
+   Generative Algorithms
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../machine_learning/generative/naive_bayes/intro.html">
+     Naive Bayes
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+    <label for="toctree-checkbox-11">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../machine_learning/generative/naive_bayes/naive_bayes_concept.html">
+       Naive Bayes Concept
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../machine_learning/generative/naive_bayes/naive_bayes_example_penguin.html">
+       Naive Bayes Application: Penguins
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../machine_learning/generative/naive_bayes/naive_bayes_application_mnist.html">
+       Naive Bayes Application (MNIST)
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../machine_learning/generative/naive_bayes/naive_bayes_implementation.html">
+       Naives Bayes Implementation
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../machine_learning_algorithms/generative/naive_bayes/naive_bayes_application_mnist.html">
-   Naive Bayes Application (MNIST)
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Optimization
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../optimization/gradient_descent/intro.html">
+   Gradient Descent
   </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../machine_learning_algorithms/generative/naive_bayes/naive_bayes_implementation.html">
-   Naives Bayes Implementation
-  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../optimization/gradient_descent/concept.html">
+     Gradient Descent Concept
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../optimization/gradient_descent/implementation.html">
+     Gradient Descent Construction
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -884,7 +942,7 @@ X \sim \poisson(\lambda)
 <p>to say that <span class="math notranslate nohighlight">\(X\)</span> is drawn from a Poisson distribution with parameter <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
 <p>Some conventions:</p>
 <ol class="simple">
-<li><p>The parameter <span class="math notranslate nohighlight">\(\alpha\)</span> determines the <em><strong>average rate of occurrences over time or space</strong></em> <span id="id1">[<a class="reference internal" href="../references_and_resources/bibliography.html#id8" title="John M. Shea. Foundations of data science with python. 2021. URL: https://jmshea.github.io/Foundations-of-Data-Science-with-Python/intro.html.">Shea, 2021</a>]</span>.</p></li>
+<li><p>The parameter <span class="math notranslate nohighlight">\(\alpha\)</span> determines the <em><strong>average rate of occurrences over time or space</strong></em> <span id="id1">[<a class="reference internal" href="../references_and_resources/bibliography.html#id9" title="John M. Shea. Foundations of data science with python. 2021. URL: https://jmshea.github.io/Foundations-of-Data-Science-with-Python/intro.html.">Shea, 2021</a>]</span>.</p></li>
 <li><p><span class="math notranslate nohighlight">\(T\)</span> is a length of time/space being considered.</p></li>
 <li><p><span class="math notranslate nohighlight">\(\lambda = \alpha T\)</span> is the <em><strong>average number of occurrences</strong></em> over the time/space being considered.</p></li>
 </ol>
@@ -949,7 +1007,7 @@ in a two hour time period, then <span class="math notranslate nohighlight">\(\P 
 <section class="example-content" id="proof-content">
 <p>The number of students who arrive at the student union per minute will likely not follow a Poisson distribution,
 because the rate is not constant (low rate during class time, high rate between class times)
-and the arrivals of individual students are not independent (students tend to come in groups) <span id="id4">[<a class="reference internal" href="../references_and_resources/bibliography.html#id11" title="Wiki. Poisson distribution. Oct 2022. URL: https://en.wikipedia.org/wiki/Poisson_distribution.">Wiki, 2022</a>]</span>.</p>
+and the arrivals of individual students are not independent (students tend to come in groups) <span id="id4">[<a class="reference internal" href="../references_and_resources/bibliography.html#id12" title="Wiki. Poisson distribution. Oct 2022. URL: https://en.wikipedia.org/wiki/Poisson_distribution.">Wiki, 2022</a>]</span>.</p>
 </section>
 </div></section>
 <section id="properties">

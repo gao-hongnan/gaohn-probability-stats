@@ -59,8 +59,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Example: Penguins Dataset" href="naive_bayes_example_penguin.html" />
-    <link rel="prev" title="Concept" href="../../../05_joint_distributions/0505_sum_of_random_variables/concept.html" />
+    <link rel="next" title="Naive Bayes Application: Penguins" href="naive_bayes_example_penguin.html" />
+    <link rel="prev" title="Naive Bayes" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -490,29 +490,87 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Machine Learning Algorithms
+  Machine Learning
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Naive Bayes Concept
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../notations.html">
+   Machine Learning Notations
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="naive_bayes_example_penguin.html">
-   Example: Penguins Dataset
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../intro.html">
+   Generative Algorithms
   </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active has-children">
+    <a class="reference internal" href="intro.html">
+     Naive Bayes
+    </a>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+    <label for="toctree-checkbox-11">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="current">
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
+       Naive Bayes Concept
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="naive_bayes_example_penguin.html">
+       Naive Bayes Application: Penguins
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="naive_bayes_application_mnist.html">
+       Naive Bayes Application (MNIST)
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="naive_bayes_implementation.html">
+       Naives Bayes Implementation
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="naive_bayes_application_mnist.html">
-   Naive Bayes Application (MNIST)
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Optimization
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../optimization/gradient_descent/intro.html">
+   Gradient Descent
   </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="naive_bayes_implementation.html">
-   Naives Bayes Implementation
-  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../optimization/gradient_descent/concept.html">
+     Gradient Descent Concept
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../optimization/gradient_descent/implementation.html">
+     Gradient Descent Construction
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -621,7 +679,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/gao-hongnan/gaohn-probability-stats/issues/new?title=Issue%20on%20page%20%2Fmachine_learning_algorithms/generative/naive_bayes/naive_bayes_concept.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/gao-hongnan/gaohn-probability-stats/issues/new?title=Issue%20on%20page%20%2Fmachine_learning/generative/naive_bayes/naive_bayes_concept.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -649,7 +707,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../../_sources/machine_learning_algorithms/generative/naive_bayes/naive_bayes_concept.md"
+        <a href="../../../_sources/machine_learning/generative/naive_bayes/naive_bayes_concept.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -1036,7 +1094,7 @@ title="Print to PDF"
 <section class="definition-content" id="proof-content">
 <ul>
 <li><p><span class="math notranslate nohighlight">\(\mathcal{X}\)</span>: Input space consists of all possible inputs <span class="math notranslate nohighlight">\(\mathbf{x} \in \mathcal{X}\)</span>.</p></li>
-<li><p><span class="math notranslate nohighlight">\(\mathcal{Y}\)</span>: Label space = <span class="math notranslate nohighlight">\(\{1, 2, \cdots, K\}\)</span> where <span class="math notranslate nohighlight">\(K\)</span> is the number of classes.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathcal{Y}\)</span>: Label space = <span class="math notranslate nohighlight">\(\{1, 2, \ldots, K\}\)</span> where <span class="math notranslate nohighlight">\(K\)</span> is the number of classes.</p></li>
 <li><p>The mapping between <span class="math notranslate nohighlight">\(\mathcal{X}\)</span> and <span class="math notranslate nohighlight">\(\mathcal{Y}\)</span> is given by <span class="math notranslate nohighlight">\(c: \mathcal{X} \rightarrow \mathcal{Y}\)</span> where <span class="math notranslate nohighlight">\(c\)</span> is called <em>concept</em> according to the PAC learning theory.</p></li>
 <li><p><span class="math notranslate nohighlight">\(\mathcal{D}\)</span>: The fixed but unknown distribution of the data. Usually, this refers
 to the joint distribution of the input and the label,</p>
@@ -2467,7 +2525,7 @@ is <span class="math notranslate nohighlight">\(\mathcal{O}(1)\)</span>.</p>
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./machine_learning_algorithms/generative/naive_bayes"
+            path: "./machine_learning/generative/naive_bayes"
         },
         predefinedOutput: true
     }
@@ -2481,17 +2539,17 @@ is <span class="math notranslate nohighlight">\(\mathcal{O}(1)\)</span>.</p>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../../../05_joint_distributions/0505_sum_of_random_variables/concept.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Concept</p>
+            <p class="prev-next-title">Naive Bayes</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="naive_bayes_example_penguin.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Example: Penguins Dataset</p>
+        <p class="prev-next-title">Naive Bayes Application: Penguins</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
