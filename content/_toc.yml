@@ -84,12 +84,25 @@ parts:
       - file: 05_joint_distributions/0505_sum_of_random_variables/concept.md
 
 
-  - caption: Machine Learning Algorithms
+  - caption: Machine Learning
     chapters:
-    - file: machine_learning_algorithms/generative/naive_bayes/naive_bayes_concept.md
-    - file: machine_learning_algorithms/generative/naive_bayes/naive_bayes_example_penguin.ipynb
-    - file: machine_learning_algorithms/generative/naive_bayes/naive_bayes_application_mnist.ipynb
-    - file: machine_learning_algorithms/generative/naive_bayes/naive_bayes_implementation.md
+    - file: machine_learning/notations.md
+    - file: machine_learning/generative/intro.md
+      sections:
+      - file: machine_learning/generative/naive_bayes/intro.md
+        sections:
+        - file: machine_learning/generative/naive_bayes/naive_bayes_concept.md
+        - file: machine_learning/generative/naive_bayes/naive_bayes_example_penguin.ipynb
+        - file: machine_learning/generative/naive_bayes/naive_bayes_application_mnist.ipynb
+        - file: machine_learning/generative/naive_bayes/naive_bayes_implementation.md
+
+  - caption: Optimization
+    chapters:
+      - file: optimization/gradient_descent/intro.md
+        sections:
+        - file: optimization/gradient_descent/concept.md
+        - file: optimization/gradient_descent/implementation.ipynb
+    
 
   - caption: References and Resources
     chapters:
