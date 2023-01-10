@@ -1,8 +1,8 @@
-matplotlib==3.5.1
+matplotlib==3.6.0
 torch==1.13.0
 torchvision==0.14.0
 numpy==1.23.3
-pandas>=1.2.4
+pandas==1.5.0
 seaborn==0.12.1
 scipy==1.9.1
 ghp-import==2.1.0
@@ -18,5 +18,4 @@ scikit-learn==1.2.0
 mlxtend==0.21.0
 plotly==5.11.0
 autograd==1.5
-d2l==0.17.6
 # myst-nb==0.16.0 # incompatible for curr jupyter-book but overwrite for new features so install manually
