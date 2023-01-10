@@ -32,6 +32,16 @@ This may be confusing since earlier sections say the conditional distribution of
 a distribution for a sub-population in $X$. See [here](https://en.wikipedia.org/wiki/Conditional_expectation)
 and [here](https://www.math.arizona.edu/~tgk/464_07/cond_exp.pdf) for examples.
 
+Less formally, we can say that the conditional distribution (PDF) of a random variable $X$ given 
+a specific state $Y=y$ can be loosely considered a function of $X$.  Furthermore, when you take the
+expectation of $X \mid Y=y$ for a specific state $Y=y$, you get back a number. This number however is
+dependent on the state $Y=y$ that you have chosen. Therefore the conditional expectation $\mathbb{E}[X \mid Y=y]$
+gives you a number, but $\mathbb{E}[X \mid Y]$ gives you a function where $Y$ is allowed to vary. Since $Y$
+is a random variable, the function $\mathbb{E}[X \mid Y]$ is also a random variable.
+
+See [here](https://stats.stackexchange.com/questions/601223/conditional-expectation-as-a-function-of-x/601240#601240)
+for a more rigourous treatment in terms of measure theory. 
+
 However, do note that in [earlier chapters on Expectation](../../03_discrete_random_variables/0305_expectation.md),
 we have seen that the expectation in itself is deterministic, as it represents the population mean.
 ```
