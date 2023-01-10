@@ -8,7 +8,7 @@ concept of functions of random variables.
 Conside a random variable $X$ with PDF $\pdf(x)$ and CDF $\cdf(x)$. Let $Y = g(X)$, 
 where $g$ is a known and fixed function. We also further assume it is strictly monotonically
 increasing for simplicity since such functions are guaranteed to be continuous
-and invertible. Then, the PDF of $Y$ is given by
+and invertible.
 
 Then, the CDF of $Y$ can be derived as follows:
 
@@ -41,11 +41,33 @@ After finding the CDF of $Y$, we can always find the PDF of $Y$ by taking the de
 
 ## PDF of Functions of Random Variables
 
-As mentioned, we can find the PDF of $Y$ by taking the derivative of the CDF of $Y$. But what
-if we want to find the PDF of $Y$ directly?
+As mentioned, we can find the PDF of $Y$ by taking the derivative of the CDF of $Y$. We formulate
+it as follows.
 
+```{prf:theorem} The Method of Transformations
+:label: theorem:method-of-transformations
+
+Let $X$ be a random variable with PDF $\pdf(x)$ and CDF $\cdf(x)$. 
+
+Let $g$ be a known and fixed function with the following properties:
+
+- $g$ is strictly monotonically increasing.
+- $g$ is invertible, i.e., $g^{-1}$ exists.
+- $g$ is continuous (differentiable).
+
+Let $Y = g(X)$, then the PDF of $Y$ is given by
+
+$$
+f_Y(y) = \begin{cases} \frac{f_X\left(x\right)}{\left|g^{\prime}\left(x\right)\right|} = f_X\left(x\right) \cdot \lvert \frac{dx}{dy} \rvert & \text { where } g\left(x\right)=y \\ 0 & \text { if } g(x)=y \text { does not have a solution }\end{cases}
+$$
+
+
+where $g'(g^{-1}(y))$ is the derivative of $g$ at $g^{-1}(y)$.
+```
 
 (functions-of-random-variables-further-readings)=
 ## Further Readings
 
 - Chan, Stanley H. "Chapter 4.7. Functions of Random Variables." In Introduction to Probability for Data Science, 223-229. Ann Arbor, Michigan: Michigan Publishing Services, 2021. 
+- Pishro-Nik, Hossein. "Chapter 4.1.3. Functions of Continuous Random Variables." In Introduction to Probability, Statistics, and Random Processes, 236-242. Kappa Research, 2014. 
+- [PSU Stat 414. Lesson 22: Functions of One Random Variable](https://online.stat.psu.edu/stat414/lesson/22)

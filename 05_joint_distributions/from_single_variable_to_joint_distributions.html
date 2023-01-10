@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Brain Dump &#8212; Probability &amp; Statistics</title>
+    <title>From Single Variable to Joint Distributions &#8212; Probability &amp; Statistics</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -55,11 +55,11 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"defeq": "\\overset{\\text{def}}{=}", "defa": "\\overset{\\text{(a)}}{=}", "defb": "\\overset{\\text{(b)}}{=}", "defc": "\\overset{\\text{(c)}}{=}", "defd": "\\overset{\\text{(d)}}{=}", "st": "\\mid", "mod": "\\mid", "S": "\\Omega", "s": "\\omega", "e": "\\exp", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "expectation": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "lpar": "\\left(", "rpar": "\\right)", "lcurl": "\\left\\{", "rcurl": "\\right\\}", "pmf": "p_X", "pdf": "f_X", "pdftwo": "f_{X,Y}", "pdfjoint": "f_{\\mathbf{X}}", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})", "var": "\\operatorname{Var}", "std": "\\operatorname{Std}", "bern": "\\operatorname{Bernoulli}", "binomial": "\\operatorname{Binomial}", "geometric": "\\operatorname{Geometric}", "poisson": "\\operatorname{Poisson}", "uniform": "\\operatorname{Uniform}", "normal": "\\operatorname{Normal}", "gaussian": "\\operatorname{Gaussian}", "gaussiansymbol": "\\mathcal{N}", "exponential": "\\operatorname{Exponential}", "iid": "\\textbf{i.i.d.}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"defeq": "\\overset{\\text{def}}{=}", "defa": "\\overset{\\text{(a)}}{=}", "defb": "\\overset{\\text{(b)}}{=}", "defc": "\\overset{\\text{(c)}}{=}", "defd": "\\overset{\\text{(d)}}{=}", "st": "\\mid", "mod": "\\mid", "S": "\\Omega", "s": "\\omega", "e": "\\exp", "P": "\\mathbb{P}", "R": "\\mathbb{R}", "expectation": "\\mathbb{E}", "v": "\\mathbf{v}", "a": "\\mathbf{a}", "b": "\\mathbf{b}", "c": "\\mathbf{c}", "u": "\\mathbf{u}", "w": "\\mathbf{w}", "x": "\\mathbf{x}", "y": "\\mathbf{y}", "z": "\\mathbf{z}", "0": "\\mathbf{0}", "1": "\\mathbf{1}", "A": "\\mathbf{A}", "B": "\\mathbf{B}", "C": "\\mathbf{C}", "E": "\\mathcal{F}", "eventA": "\\mathcal{A}", "lset": "\\left\\{", "rset": "\\right\\}", "lsq": "\\left[", "rsq": "\\right]", "lpar": "\\left(", "rpar": "\\right)", "lcurl": "\\left\\{", "rcurl": "\\right\\}", "pmf": "p_X", "pdf": "f_X", "pdftwo": "f_{X,Y}", "pdfjoint": "f_{\\mathbf{X}}", "pmfjointxy": "p_{X, Y}", "pdfjointxy": "f_{X, Y}", "cdf": "F_X", "pspace": "(\\Omega, \\mathcal{F}, \\mathbb{P})", "var": "\\operatorname{Var}", "std": "\\operatorname{Std}", "bern": "\\operatorname{Bernoulli}", "binomial": "\\operatorname{Binomial}", "geometric": "\\operatorname{Geometric}", "poisson": "\\operatorname{Poisson}", "uniform": "\\operatorname{Uniform}", "normal": "\\operatorname{Normal}", "gaussian": "\\operatorname{Gaussian}", "gaussiansymbol": "\\mathcal{N}", "exponential": "\\operatorname{Exponential}", "iid": "\\textbf{i.i.d.}", "and": "\\text{and}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Naive Bayes Concept" href="../machine_learning_algorithms/generative/naive_bayes/naive_bayes_concept.html" />
+    <link rel="next" title="Joint PMF and PDF" href="0501_joint_pmf_pdf/intro.html" />
     <link rel="prev" title="Functions of Random Variables" href="../04_continuous_random_variables/0412_functions_of_random_variables.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -389,8 +389,103 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Brain Dump
+   From Single Variable to Joint Distributions
   </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="0501_joint_pmf_pdf/intro.html">
+   Joint PMF and PDF
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="0501_joint_pmf_pdf/concept.html">
+     Concept
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="0502_joint_expectation_and_correlation/intro.html">
+   Joint Expectation and Correlation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="0502_joint_expectation_and_correlation/concept.html">
+     Concept
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="0503_conditional_pmf_pdf/intro.html">
+   Conditional PMF and PDF
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="0503_conditional_pmf_pdf/concept.html">
+     Concept
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="0503_conditional_pmf_pdf/exercises.html">
+     Exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="0504_conditional_expectation_variance/intro.html">
+   Conditional Expectation and Variance
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="0504_conditional_expectation_variance/concept.html">
+     Concept
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="0504_conditional_expectation_variance/exercises.html">
+     Exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="0505_sum_of_random_variables/intro.html">
+   Sum of Random Variables
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="0505_sum_of_random_variables/concept.html">
+     Concept
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -526,7 +621,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/gao-hongnan/gaohn-probability-stats/issues/new?title=Issue%20on%20page%20%2F05_joint_distributions/braindump.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/gao-hongnan/gaohn-probability-stats/issues/new?title=Issue%20on%20page%20%2F05_joint_distributions/from_single_variable_to_joint_distributions.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -554,7 +649,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/05_joint_distributions/braindump.md"
+        <a href="../_sources/05_joint_distributions/from_single_variable_to_joint_distributions.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -591,23 +686,60 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#imagenet">
+   ImageNet
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Brain Dump</h1>
+                <h1>From Single Variable to Joint Distributions</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#imagenet">
+   ImageNet
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -615,19 +747,34 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="brain-dump">
-<h1>Brain Dump<a class="headerlink" href="#brain-dump" title="Permalink to this headline">#</a></h1>
-<ul class="simple">
-<li><p>In his page 241-242, he gave intuition, more specifically, my familiar ImageNet example, for why the joint distribution is important.
-For example, an image in ImageNet is a drawn from a latent distribution. Each sample
+  <section class="tex2jax_ignore mathjax_ignore" id="from-single-variable-to-joint-distributions">
+<h1>From Single Variable to Joint Distributions<a class="headerlink" href="#from-single-variable-to-joint-distributions" title="Permalink to this headline">#</a></h1>
+<p>In the simplest sense, joint distributions are extensions of the PDFs and PMFs we studied in the previous chapters. We summarize them as follows.</p>
+<div class="proof remark admonition" id="remark-what-is-a-joint-distribution">
+<p class="admonition-title"><span class="caption-number">Remark 7 </span> (What is a joint distribution?)</p>
+<section class="remark-content" id="proof-content">
+<p>Joint distributions are high-dimensional PDFs (or PMFs or CDFs).</p>
+</section>
+</div><p>What do we mean by a high-dimensional PDF? We know that a single random variable is characterized by a 1-dimensional PDF <span class="math notranslate nohighlight">\(f_X(x)\)</span>. If we have a pair of random variables, then we use a 2-dimensional function <span class="math notranslate nohighlight">\(f_{X, Y}(x, y)\)</span>, and if we have a triplet of random variables, we use a 3-dimensional function <span class="math notranslate nohighlight">\(f_{X, Y, Z}(x, y, z)\)</span>. In general, the dimensionality of the PDF grows as the number of variables:</p>
+<div class="math notranslate nohighlight">
+\[
+\underbrace{f_X(x)}_{\text {one variable }} \Longrightarrow \underbrace{f_{X_1, X_2}\left(x_1, x_2\right)}_{\text {two variables }} \Longrightarrow \cdots \Longrightarrow \underbrace{f_{X_1, \ldots, X_N}\left(x_1, \ldots, x_N\right)}_{N \text { variables }} .
+\]</div>
+<p><span class="math notranslate nohighlight">\(f_{X_1, \ldots, X_N}\left(x_1, \ldots, x_N\right)\)</span> is not a friendly notation. A more concise way to write <span class="math notranslate nohighlight">\(f_{X_1, \ldots, X_N}\left(x_1, \ldots, x_N\right)\)</span> is to define a vector of random variables <span class="math notranslate nohighlight">\(\boldsymbol{X}=\)</span> <span class="math notranslate nohighlight">\(\left[X_1, X_2, \ldots, X_N\right]^T\)</span> with a vector of states <span class="math notranslate nohighlight">\(\boldsymbol{x}=\left[x_1, x_2, \ldots, x_N\right]^T\)</span>, and to define the PDF as</p>
+<div class="math notranslate nohighlight">
+\[
+f_{\boldsymbol{X}}(\boldsymbol{x})=f_{X_1, \ldots, X_N}\left(x_1, \ldots, x_N\right) .
+\]</div>
+<section id="imagenet">
+<h2>ImageNet<a class="headerlink" href="#imagenet" title="Permalink to this headline">#</a></h2>
+<p>For example, an image in ImageNet is a drawn from a latent distribution. Each sample
 is <span class="math notranslate nohighlight">\(x \in \mathbb{R}^{3 \times 224 \times 224}\)</span>, where <span class="math notranslate nohighlight">\(3\)</span> is the number of channels, <span class="math notranslate nohighlight">\(224\)</span> is the height, and <span class="math notranslate nohighlight">\(224\)</span> is the width.
 So, if we flatten the image, we get a vector of <span class="math notranslate nohighlight">\(x \in \mathbb{R}^{150528}\)</span>, then the probability of drawing an image is
 determined by the joint distribution <span class="math notranslate nohighlight">\(\pdfjoint(x_1, x_2, \ldots, x_{150528})\)</span>. For example,
 we can imagine that for the car class, the probability of drawing a Ferrari is lower than
 the probability of drawing a Toyota, just because a Ferrari is more expensive than a Toyota,
-and hence rarer.</p></li>
-<li><p>Note marginalization derives from the law of total probability. <a class="reference external" href="https://math.stackexchange.com/questions/3166711/is-marginalization-a-sum-of-conditioned-observations">https://math.stackexchange.com/questions/3166711/is-marginalization-a-sum-of-conditioned-observations</a></p></li>
-</ul>
+and hence rarer <span id="id1">[<a class="reference internal" href="../references_and_resources/bibliography.html#id2" title="Stanley H. Chan. Introduction to probability for Data Science. Michigan Publishing, 2021.">Chan, 2021</a>]</span>.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -664,10 +811,10 @@ and hence rarer.</p></li>
             <p class="prev-next-title">Functions of Random Variables</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../machine_learning_algorithms/generative/naive_bayes/naive_bayes_concept.html" title="next page">
+    <a class='right-next' id="next-link" href="0501_joint_pmf_pdf/intro.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Naive Bayes Concept</p>
+        <p class="prev-next-title">Joint PMF and PDF</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
