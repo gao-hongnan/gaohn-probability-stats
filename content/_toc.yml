@@ -102,7 +102,6 @@ parts:
         sections:
         - file: optimization/gradient_descent/concept.md
         - file: optimization/gradient_descent/implementation.ipynb
-    
 
   - caption: References and Resources
     chapters:
