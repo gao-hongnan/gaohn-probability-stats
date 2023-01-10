@@ -21,6 +21,7 @@ $$
 f_{\boldsymbol{X}}(\boldsymbol{x})=f_{X_1, \ldots, X_N}\left(x_1, \ldots, x_N\right) .
 $$
 
+(imagenet)=
 ## ImageNet
 
 For example, an image in ImageNet is a drawn from a latent distribution. Each sample

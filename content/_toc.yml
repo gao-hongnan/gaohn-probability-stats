@@ -82,6 +82,9 @@ parts:
     - file: 05_joint_distributions/0505_sum_of_random_variables/intro.md
       sections:
       - file: 05_joint_distributions/0505_sum_of_random_variables/concept.md
+    - file: 05_joint_distributions/0506_random_vectors/intro.md
+      sections:
+      - file: 05_joint_distributions/0506_random_vectors/concept.md
 
 
   - caption: Machine Learning

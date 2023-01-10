@@ -1,15 +1,23 @@
 # Concept
 
-## Discrete Random Variables
+## Joint PMF (Discrete Random Variables)
 
 ```{prf:definition} Joint PMF
 :label: def_joint_pmf
 
 Let $X$ and $Y$ be two discrete random variables with sample spaces $\S_X$ and $\S_Y$ respectively. 
-The ***joint probability mass function (joint PMF)*** of $X$ and $Y$ is the function
+
+Let $\eventA = \lset X(\omega) = x, Y(\xi) = y \rset$ be any event in the sample space $\S_X \times \S_Y$.
+
+The ***joint probability mass function (joint PMF)*** of $X$ and $Y$ of the event $\eventA$ is
+defined as a function $\pmfjointxy(x, y)$ that can be summed to yield a probability
 
 $$
-\pmfjointxy(x, y) = \P \lsq X = x \wedge Y = y \rsq = \P \lsq (\omega, \xi) ~ \lvert ~ X(\omega) = x \wedge Y(\xi) = y \rsq
+\begin{aligned}
+\pmfjointxy(x, y) &= \P \lsq X = x \wedge Y = y \rsq \\
+&= \P \lsq (\omega, \xi) ~ \lvert ~ X(\omega) = x \wedge Y(\xi) = y \rsq \\
+&= \sum_{\omega \in \S_X} \sum_{\xi \in \S_Y} \P \lsq (\omega, \xi) ~ \lvert ~ X(\omega) = x \wedge Y(\xi) = y \rsq
+\end{aligned}
 $$
 
 where $\P$ is the probability function defined over the probability space $\pspace$.
@@ -40,21 +48,22 @@ Image Credit: {cite}`chan_2021`.
 ```
 ````
 
-## Continuous Random Variables
+## Joint PDF (Continuous Random Variables)
 
 ```{prf:definition} Joint PDF
 :label: def_joint_pdf
 
 Let $X$ and $Y$ be two continuous random variables with sample spaces $\S_X$ and $\S_Y$ 
 respectively.
-The joint PDF of $X$ and $Y$ is a function $\pdfjointxy(x, y)$ that can be integrated to yield a 
-probability
+
+Let $\eventA \subseteq \S_X \times \S_Y$ be any event in the sample space $\S_X \times \S_Y$.
+
+Then, the joint PDF of $X$ and $Y$ of the event $\eventA$ is defined as a function $\pdfjointxy(x, y)$ 
+that can be integrated to yield a probability
 
 $$
 \P \lsq \eventA \rsq = \int_{\eventA} \pdfjointxy(x, y) \, dx \, dy
 $$ (eq_joint_pdf)
-
-for any event $\eventA \subseteq \S_X \times \S_Y$.
 ```
 
 ````{prf:remark} Joint PDF 
@@ -128,7 +137,7 @@ is closed related to the law of total probability. In fact, [marginalization is 
 of conditioned observations](https://math.stackexchange.com/questions/3166711/is-marginalization-a-sum-of-conditioned-observations).
 
 In the chapter on 
-[Naive Bayes](../../machine_learning_algorithms/generative/naive_bayes/naive_bayes_concept.md), 
+[Naive Bayes](../../machine_learning/generative/naive_bayes/naive_bayes_concept.md), 
 we see that the
 denominator $\mathbb{P}(\mathbf{X})$ can be derived by marginalization.
 
